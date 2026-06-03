@@ -10,680 +10,380 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
   @media(min-width:700px){.float-cta{display:none!important;}}
-  :root {
-  --primary: #1a1a1a;
-  --accent: #c8a96e;
-  --accent-light: #e8d5a3;
-  --accent-dark: #9a7a45;
-  --bg: #0f0f0f;
-  --bg-alt: #161616;
-  --bg-card: #1e1e1e;
-  --text: #f0ede8;
-  --text-soft: #c8c4bc;
-  --muted: #888078;
-  --border: #2e2a24;
-  --border-accent: #c8a96e40;
-  --shadow-soft: 0 4px 24px rgba(0,0,0,0.45);
-  --shadow-glow: 0 0 32px rgba(200,169,110,0.15);
-  --radius: 2px;
-  --radius-lg: 4px;
-  --font-serif: 'Georgia', 'Times New Roman', serif;
-  --font-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
-  --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap');
+
+:root{
+--c-bg:#0a0a0a;
+--c-bg2:#111010;
+--c-surface:#161414;
+--c-gold:#c9a84c;
+--c-gold-light:#e8c97a;
+--c-cream:#f5f0e8;
+--c-text:#e8e0d4;
+--c-text-muted:#8a8078;
+--c-border:#2a2520;
+--c-overlay:rgba(0,0,0,.62);
+--f-sans:'Inter',sans-serif;
+--f-serif:'Cormorant Garamond',serif;
+--ease:cubic-bezier(.4,0,.2,1);
+--trans:.35s var(--ease);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--c-bg);color:var(--c-text);font-family:var(--f-sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+/* ── Loading Screen ── */
+.loading-screen{position:fixed;inset:0;z-index:9999;background:var(--c-bg);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s var(--ease),visibility .6s var(--ease)}
+.loading-screen.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loading-screen__logo{font-family:var(--f-serif);font-size:2rem;color:var(--c-gold);letter-spacing:.2em;margin-bottom:2rem}
+.loading-screen__bar{width:160px;height:1px;background:var(--c-border);overflow:hidden}
+.loading-screen__bar::after{content:'';display:block;height:100%;background:var(--c-gold);animation:load-progress 1.8s var(--ease) forwards}
+@keyframes load-progress{from{width:0}to{width:100%}}
+.loading-screen__indicator{display:flex;gap:.5rem;margin-top:1.5rem}
+.loading-screen__dot{width:5px;height:5px;border-radius:50%;background:var(--c-gold);opacity:.3;animation:dot-pulse 1.2s ease-in-out infinite}
+.loading-screen__dot:nth-child(2){animation-delay:.2s}
+.loading-screen__dot:nth-child(3){animation-delay:.4s}
+@keyframes dot-pulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-weight: 400;
-  line-height: 1.75;
-  letter-spacing: 0.03em;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* ── Header with Icon Nav ── */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;background:linear-gradient(to bottom,rgba(0,0,0,.85) 0%,transparent 100%);transition:background var(--trans),padding var(--trans)}
+.site-header.is-scrolled{background:rgba(10,10,10,.95);padding:.6rem 2rem;border-bottom:1px solid var(--c-border)}
+.site-header__logo{font-family:var(--f-serif);font-size:1.5rem;color:var(--c-gold);letter-spacing:.15em;font-weight:300}
+.site-header__logo span{display:block;font-family:var(--f-sans);font-size:.55rem;letter-spacing:.35em;color:var(--c-text-muted);text-transform:uppercase;margin-top:.1rem}
+.header-icon-nav{display:flex;align-items:center;gap:.25rem}
+.header-icon-nav__item{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid transparent;color:var(--c-text-muted);transition:all var(--trans);cursor:pointer;position:relative}
+.header-icon-nav__item:hover,.header-icon-nav__item.is-active{color:var(--c-gold);border-color:var(--c-border)}
+.header-icon-nav__item svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+.header-icon-nav__menu-btn{width:44px;height:44px;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;cursor:pointer;margin-left:.5rem}
+.header-icon-nav__menu-btn span{display:block;height:1px;background:var(--c-cream);transition:all var(--trans)}
+.header-icon-nav__menu-btn span:nth-child(1){width:24px}
+.header-icon-nav__menu-btn span:nth-child(2){width:16px}
+.header-icon-nav__menu-btn span:nth-child(3){width:20px}
+.header-icon-nav__menu-btn.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg);width:24px}
+.header-icon-nav__menu-btn.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.header-icon-nav__menu-btn.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);width:24px}
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+/* ── Side Menu Navigation (Drawer) ── */
+.side-drawer{position:fixed;top:0;right:0;bottom:0;z-index:800;width:min(380px,90vw);background:var(--c-surface);border-left:1px solid var(--c-border);transform:translateX(100%);transition:transform .5s var(--ease);display:flex;flex-direction:column;overflow-y:auto}
+.side-drawer.is-open{transform:translateX(0)}
+.side-drawer__overlay{position:fixed;inset:0;z-index:799;background:rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity var(--trans)}
+.side-drawer__overlay.is-visible{opacity:1;pointer-events:auto}
+.side-drawer__header{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2rem;border-bottom:1px solid var(--c-border)}
+.side-drawer__brand{font-family:var(--f-serif);font-size:1.25rem;color:var(--c-gold);letter-spacing:.1em}
+.side-drawer__close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--c-border);border-radius:50%;color:var(--c-text-muted);cursor:pointer;transition:all var(--trans)}
+.side-drawer__close:hover{color:var(--c-gold);border-color:var(--c-gold)}
+.side-drawer__close svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5}
+.side-drawer__icon-nav{display:flex;gap:1rem;padding:1.5rem 2rem;border-bottom:1px solid var(--c-border)}
+.side-drawer__icon-btn{display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--c-text-muted);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:color var(--trans)}
+.side-drawer__icon-btn:hover{color:var(--c-gold)}
+.side-drawer__icon-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5}
+.side-drawer__nav{padding:2rem;flex:1}
+.side-drawer__nav-item{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0;border-bottom:1px solid var(--c-border);color:var(--c-text);font-family:var(--f-serif);font-size:1.25rem;letter-spacing:.08em;cursor:pointer;transition:color var(--trans)}
+.side-drawer__nav-item:hover{color:var(--c-gold)}
+.side-drawer__nav-item span{font-family:var(--f-sans);font-size:.6rem;color:var(--c-text-muted);letter-spacing:.2em;text-transform:uppercase}
+.side-drawer__footer{padding:2rem;border-top:1px solid var(--c-border)}
+.side-drawer__footer p{font-size:.75rem;color:var(--c-text-muted);letter-spacing:.05em;line-height:1.8}
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color var(--transition), opacity var(--transition);
-}
+/* ── Sticky Nav ── */
+#stickyNav{position:fixed;bottom:0;left:0;right:0;z-index:400;background:rgba(10,10,10,.96);border-top:1px solid var(--c-border);display:flex;align-items:stretch;height:60px;transform:translateY(100%);transition:transform var(--trans)}
+#stickyNav.is-visible{transform:translateY(0)}
+#stickyNav .sticky-nav__item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;color:var(--c-text-muted);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:color var(--trans);border-right:1px solid var(--c-border)}
+#stickyNav .sticky-nav__item:last-child{border-right:none}
+#stickyNav .sticky-nav__item:hover,#stickyNav .sticky-nav__item.is-active{color:var(--c-gold)}
+#stickyNav .sticky-nav__item svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
 
-a:hover {
-  color: var(--accent-light);
-  opacity: 0.9;
-}
-
-ul, ol {
-  list-style: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  line-height: 1.3;
-  letter-spacing: 0.06em;
-  color: var(--text);
-}
-
-/* ─── PROTO BANNER ──────────────────────────────── */
-.proto-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  background: linear-gradient(90deg, #b8922a 0%, #c8a96e 40%, #d4b87a 60%, #b8922a 100%);
-  background-size: 200% 100%;
-  animation: bannerShimmer 6s linear infinite;
-  color: #1a1200;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 9px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
-}
-
-@keyframes bannerShimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-.proto-banner a {
-  color: #1a1200;
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.proto-banner a:hover {
-  color: #3a2800;
-}
-
-.proto-banner__divider {
-  width: 1px;
-  height: 12px;
-  background: rgba(0,0,0,0.3);
-  display: inline-block;
-}
-
-/* ─── STICKY NAV ──────────────────────────────── */
-.sticky-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 900;
-  background: rgba(10, 10, 10, 0.96);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border-bottom: 1px solid var(--border-accent);
-  padding: 0 5vw;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              opacity 0.45s ease;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
-}
-
-.sticky-nav.is-visible {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.sticky-nav__logo {
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-  font-style: italic;
-}
-
-.sticky-nav__links {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.sticky-nav__links li a {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-soft);
-  transition: color var(--transition);
-  position: relative;
-  padding-bottom: 4px;
-}
-
-.sticky-nav__links li a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  transition: width var(--transition);
-}
-
-.sticky-nav__links li a:hover {
-  color: var(--accent);
-}
-
-.sticky-nav__links li a:hover::after {
-  width: 100%;
-}
-
-.sticky-nav__cta {
-  background: var(--accent);
-  color: #1a1200 !important;
-  font-weight: 700 !important;
-  padding: 8px 20px !important;
-  letter-spacing: 0.14em !important;
-  border: none;
-  transition: background var(--transition), transform var(--transition) !important;
-}
-
-.sticky-nav__cta::after {
-  display: none !important;
-}
-
-.sticky-nav__cta:hover {
-  background: var(--accent-light) !important;
-  color: #1a1200 !important;
-  transform: translateY(-1px);
-}
-
-/* ─── HERO ──────────────────────────────────────── */
-.hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  overflow: hidden;
-  background-color: #0a0a0a;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    160deg,
-    rgba(0,0,0,0.2) 0%,
-    rgba(0,0,0,0.55) 50%,
-    rgba(0,0,0,0.82) 100%
-  );
-  z-index: 2;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
-  z-index: 3;
-}
-
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-.hero__bg img,
-.hero__bg video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  animation: heroScale 18s ease-in-out infinite alternate;
-}
-
-@keyframes heroScale {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.06); }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 4;
-  padding: 0 8vw 10vh;
-  max-width: 760px;
-}
-
-.hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: fadeInUp 0.9s 0.5s forwards;
-}
-
-.hero__eyebrow::before,
-.hero__eyebrow::after {
-  content: '';
-  display: inline-block;
-  width: 32px;
-  height: 1px;
-  background: var(--accent);
-  opacity: 0.7;
-}
-
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 7vw, 6rem);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  line-height: 1.1;
-  color: #ffffff;
-  margin-bottom: 22px;
-  text-shadow: 0 2px 40px rgba(0,0,0,0.4);
-  opacity: 0;
-  animation: fadeInUp 0.9s 0.75s forwards;
-}
-
-.hero-title em {
-  font-style: italic;
-  color: var(--accent-light);
-}
-
-.hero-sub {
-  font-family: var(--font-sans);
-  font-size: clamp(0.88rem, 1.6vw, 1.05rem);
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  color: rgba(240, 237, 232, 0.82);
-  line-height: 1.8;
-  margin-bottom: 38px;
-  max-width: 480px;
-  opacity: 0;
-  animation: fadeInUp 0.9s 1s forwards;
-}
-
-.hero-cta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  opacity: 0;
-  animation: fadeInUp 0.9s 1.25s forwards;
-}
-
-.hero-cta__primary,
-.hero-cta__secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 16px 36px;
-  border: 1px solid transparent;
-  transition: all var(--transition);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-cta__primary {
-  background: var(--accent);
-  color: #1a1200;
-  border-color: var(--accent);
-}
-
-.hero-cta__primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-
-.hero-cta__primary:hover {
-  background: var(--accent-light);
-  color: #1a1200;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(200,169,110,0.35);
-}
-
-.hero-cta__primary:hover::before {
-  transform: translateX(100%);
-}
-
-.hero-cta__secondary {
-  background: transparent;
-  color: var(--text);
-  border-color: rgba(240,237,232,0.4);
-}
-
-.hero-cta__secondary:hover {
-  background: rgba(240,237,232,0.08);
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-2px);
-}
-
-.hero__scroll {
-  position: absolute;
-  bottom: 32px;
-  right: 8vw;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  opacity: 0;
-  animation: fadeIn 1s 2s forwards;
-}
-
-.hero__scroll span {
-  font-size:
+/* ── Hero Swiper Carousel ── */
+.hero-carousel{position:relative;width:100%;height:100vh;overflow:hidden}
+.hero-carousel .swiper{width:100%;height:100%}
+.hero-carousel__slide{position:relative;width:100%;height:100%;overflow:hidden}
+.hero-carousel__slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.08);transition:transform 6s var(--ease)}
+.swiper-slide-active .hero-carousel__slide-bg{transform:scale(1)}
+.hero-carousel__slide-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.65) 0%,rgba(0,0,0,.25) 60%,rgba(0,0,0,.55) 100%)}
+.hero-carousel__content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:2;padding:0 1
   </style>
 </head>
 <body>
-<div class="proto-banner">
-  🎨 Free demo for Zaytoon Grill — All images, text &amp; colours are placeholders and fully customisable.
-  <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
-</div>
+<body>
 
-<nav class="sticky-nav" id="stickyNav">
-  <div class="nav-logo">Zaytoon Grill</div>
-  <a class="hero-cta" href="tel:020 8617 8060">📞 Call to Reserve</a>
-</nav>
+  <!-- PROTO BANNER -->
+  <div class="proto-banner">
+    <p><strong>🎨 Free demo for Zaytoon Grill</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
+  </div>
 
-<section class="hero" style="background-image: url('images/img_0.jpg');">
-  <div class="hero-content">
-    <span class="open-badge" id="openBadge">● Checking hours…</span>
-    <h1 class="hero-title" data-aos="fade-up">Zaytoon Grill</h1>
-    <p class="hero-sub" data-aos="fade-up" data-aos-delay="100">Fire, Flavour, and Heart in Peckham</p>
-    <p class="hero-sub" data-aos="fade-up" data-aos-delay="150">
-      <span id="ratingCounter" data-rating="4.5" data-count="419">⭐ 4.5 · 419 Google reviews</span>
-    </p>
-    <div data-aos="fade-up" data-aos-delay="200">
-      <a class="hero-cta" href="tel:020 8617 8060">📞 Call Us Now</a>
+  <!-- LOADING SCREEN -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-screen__logo">
+      <span style="font-size:2rem;letter-spacing:0.15em;font-weight:700;color:#fff;">ZAYTOON</span>
+      <span style="font-size:0.85rem;letter-spacing:0.4em;color:#c9a84c;display:block;margin-top:4px;">GRILL</span>
     </div>
+    <div class="loading-screen__bar">
+      <div class="loading-screen__indicator"></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:18px;">
+      <span class="loading-screen__dot"></span>
+      <span class="loading-screen__dot"></span>
+      <span class="loading-screen__dot"></span>
+    </div>
+  </div>
 
-    <div class="social-bar" data-aos="fade-up" data-aos-delay="300">
-      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.775.131 4.602.43 3.635 1.397 2.668 2.364 2.369 3.537 2.31 4.815 2.252 6.095 2.238 6.503 2.238 12c0 5.497.014 5.905.072 7.185.059 1.278.358 2.451 1.325 3.418.967.967 2.14 1.266 3.418 1.325C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.278-.059 2.451-.358 3.418-1.325.967-.967 1.266-2.14 1.325-3.418.058-1.28.072-1.688.072-7.185 0-5.497-.014-5.905-.072-7.185-.059-1.278-.358-2.451-1.325-3.418C19.398.43 18.225.131 16.947.072 15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-        </svg>
+  <!-- SITE HEADER -->
+  <header class="site-header" id="siteHeader">
+    <a href="#" class="site-header__logo">
+      <span style="font-size:1.3rem;font-weight:700;letter-spacing:0.12em;color:#fff;">ZAYTOON <span style="color:#c9a84c;">GRILL</span></span>
+    </a>
+    <nav class="header-icon-nav">
+      <a href="#intro" class="header-icon-nav__item" title="About">
+        <i class="fa fa-info-circle"></i>
       </a>
-      <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-        </svg>
+      <a href="#foodstuff" class="header-icon-nav__item" title="Menu">
+        <i class="fa fa-cutlery"></i>
       </a>
-      <a href="https://wa.me/02086178060" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-        </svg>
+      <a href="https://maps.google.com/?cid=6121066741700307106" class="header-icon-nav__item" target="_blank" title="Location">
+        <i class="fa fa-map-marker"></i>
       </a>
-      <a href="https://maps.google.com/?cid=6121066741700307106" target="_blank" rel="noopener" aria-label="Google Maps">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-        </svg>
+      <a href="tel:020 8617 8060" class="header-icon-nav__item" title="Call">
+        <i class="fa fa-phone"></i>
       </a>
+      <button class="header-icon-nav__menu-btn" id="openDrawer" aria-label="Open Menu">
+        <i class="fa fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <!-- STICKY NAV -->
+  <nav id="stickyNav">
+    <a class="sticky-nav__item" href="#intro">About</a>
+    <a class="sticky-nav__item" href="#foodstuff">Menu</a>
+    <a class="sticky-nav__item" href="https://maps.google.com/?cid=6121066741700307106" target="_blank">Directions</a>
+    <a class="sticky-nav__item" href="tel:020 8617 8060">Call Us</a>
+  </nav>
+
+  <!-- SIDE DRAWER MENU -->
+  <div class="side-drawer" id="sideDrawer">
+    <div class="side-drawer__overlay" id="drawerOverlay"></div>
+    <div class="side-drawer__header">
+      <div class="side-drawer__brand">
+        <span style="font-size:1.4rem;font-weight:700;letter-spacing:0.12em;">ZAYTOON <span style="color:#c9a84c;">GRILL</span></span>
+        <span style="font-size:0.7rem;letter-spacing:0.3em;color:#888;display:block;margin-top:2px;">PECKHAM, LONDON</span>
+      </div>
+      <button class="side-drawer__close" id="closeDrawer" aria-label="Close Menu">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <nav class="side-drawer__icon-nav">
+      <a href="https://wa.me/02086178060" class="side-drawer__icon-btn" target="_blank" aria-label="WhatsApp">
+        <i class="fa fa-whatsapp"></i>
+      </a>
+      <a href="#" class="side-drawer__icon-btn" aria-label="Instagram">
+        <i class="fa fa-instagram"></i>
+      </a>
+      <a href="#" class="side-drawer__icon-btn" aria-label="Facebook">
+        <i class="fa fa-facebook"></i>
+      </a>
+      <a href="https://maps.google.com/?cid=6121066741700307106" class="side-drawer__icon-btn" target="_blank" aria-label="Google Maps">
+        <i class="fa fa-google"></i>
+      </a>
+    </nav>
+
+    <nav class="side-drawer__nav">
+      <a href="#hero" class="side-drawer__nav-item" id="drawerClose1">
+        <i class="fa fa-home" style="width:20px;margin-right:10px;color:#c9a84c;"></i> Home
+      </a>
+      <a href="#intro" class="side-drawer__nav-item" id="drawerClose2">
+        <i class="fa fa-leaf" style="width:20px;margin-right:10px;color:#c9a84c;"></i> Our Story
+      </a>
+      <a href="#foodstuff" class="side-drawer__nav-item" id="drawerClose3">
+        <i class="fa fa-cutlery" style="width:20px;margin-right:10px;color:#c9a84c;"></i> Menu
+      </a>
+      <a href="https://maps.google.com/?cid=6121066741700307106" class="side-drawer__nav-item" target="_blank">
+        <i class="fa fa-map-marker" style="width:20px;margin-right:10px;color:#c9a84c;"></i> Directions
+      </a>
+      <a href="tel:020 8617 8060" class="side-drawer__nav-item">
+        <i class="fa fa-phone" style="width:20px;margin-right:10px;color:#c9a84c;"></i> 020 8617 8060
+      </a>
+    </nav>
+
+    <div class="side-drawer__footer">
+      <p style="font-size:0.78rem;color:#666;margin-bottom:4px;">94 Rye Ln, London SE15 4RZ</p>
+      <p style="font-size:0.78rem;color:#666;">Mon–Sun: 8AM – Late</p>
     </div>
   </div>
-</section>
 
-<section class="about-section">
-  <div class="about-grid">
-    <div>
-      <h2 data-aos="fade-up">About Zaytoon Grill</h2>
-      <p data-aos="fade-up" data-aos-delay="100">
-        Zaytoon Grill is Peckham's beloved neighbourhood grill, serving bold, flame-kissed dishes rooted in the rich traditions of Middle Eastern and Mediterranean cooking. Whether you're stopping in for a quick bite or settling in for a leisurely meal, our welcoming team is here to make every visit feel like home.
-      </p>
-      <p data-aos="fade-up" data-aos-delay="150">
-        📍 94 Rye Ln, London SE15 4RZ &nbsp;|&nbsp; 🍽️ Dine-in · Takeaway · Delivery
-      </p>
+  <!-- HERO SWIPER CAROUSEL -->
+  <section class="hero-carousel" id="hero">
+    <div class="swiper" id="heroSwiper">
+      <div class="swiper-wrapper">
+
+        <!-- Slide 1 -->
+        <div class="hero-carousel__slide swiper-slide">
+          <div class="hero-carousel__slide-bg" style="background-image:url('images/img_0.jpg');"></div>
+          <div class="hero-carousel__slide-overlay"></div>
+          <div class="hero-carousel__content">
+            <p style="font-size:0.75rem;letter-spacing:0.4em;text-transform:uppercase;color:#c9a84c;margin-bottom:14px;">Peckham, London</p>
+            <h1 style="font-size:clamp(2.2rem,6vw,4.5rem);font-weight:700;letter-spacing:0.05em;line-height:1.1;margin-bottom:18px;color:#fff;">ZAYTOON<br><span style="color:#c9a84c;">GRILL</span></h1>
+            <p style="font-size:1.05rem;color:rgba(255,255,255,0.8);max-width:480px;margin:0 auto 28px;font-style:italic;">Where every flame tells a flavourful story</p>
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:28px;">
+              <span id="openBadge" style="background:#c9a84c;color:#111;font-size:0.7rem;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:0.1em;text-transform:uppercase;"></span>
+              <span style="color:rgba(255,255,255,0.6);font-size:0.85rem;">⭐ <span id="ratingCounter" data-rating="4.5" data-count="419">4.5 · 419 reviews</span></span>
+            </div>
+            <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+              <a href="tel:020 8617 8060" style="display:inline-flex;align-items:center;gap:8px;background:#c9a84c;color:#111;padding:14px 28px;font-size:0.9rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;">
+                <i class="fa fa-phone"></i> Reserve a Table
+              </a>
+              <a href="#intro" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.4);color:#fff;padding:14px 28px;font-size:0.9rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;backdrop-filter:blur(4px);">
+                <i class="fa fa-arrow-down"></i> Discover More
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="hero-carousel__slide swiper-slide">
+          <div class="hero-carousel__slide-bg" style="background-image:url('images/img_1.jpg');"></div>
+          <div class="hero-carousel__slide-overlay"></div>
+          <div class="hero-carousel__content">
+            <p style="font-size:0.75rem;letter-spacing:0.4em;text-transform:uppercase;color:#c9a84c;margin-bottom:14px;">Flame-Kissed Cooking</p>
+            <h2 style="font-size:clamp(2rem,5vw,3.8rem);font-weight:700;letter-spacing:0.05em;line-height:1.1;margin-bottom:18px;color:#fff;">Bold Spices.<br><span style="color:#c9a84c;">Fresh Flavours.</span></h2>
+            <p style="font-size:1.05rem;color:rgba(255,255,255,0.8);max-width:480px;margin:0 auto 28px;font-style:italic;">Dine in · Takeaway · Delivery — All from the heart of Peckham</p>
+            <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+              <a href="#foodstuff" style="display:inline-flex;align-items:center;gap:8px;background:#c9a84c;color:#111;padding:14px 28px;font-size:0.9rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;">
+                <i class="fa fa-cutlery"></i> View Our Menu
+              </a>
+              <a href="https://wa.me/02086178060" target="_blank" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.4);color:#fff;padding:14px 28px;font-size:0.9rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;backdrop-filter:blur(4px);">
+                <i class="fa fa-whatsapp"></i> WhatsApp Us
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Swiper Controls -->
+      <div class="swiper-pagination" id="heroPagination"></div>
+      <div class="swiper-button-prev" id="heroPrev"></div>
+      <div class="swiper-button-next" id="heroNext"></div>
     </div>
-    <div>
-      <img src="images/img_1.jpg" alt="Inside Zaytoon Grill" data-aos="fade-up" data-aos-delay="200" />
+
+    <!-- Scroll cue -->
+    <div style="position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.5);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;">
+      <span>Scroll</span>
+      <i class="fa fa-chevron-down" style="animation:bounce 1.5s infinite;"></i>
     </div>
-  </div>
+  </section>
 
-  <div class="about-grid" style="margin-top:2rem;">
-    <div class="value-card" data-aos="fade-up" data-aos-delay="100">
-      <div class="value-icon">🌿</div>
-      <h3>Honest Ingredients</h3>
-      <p>We source fresh, quality produce daily to ensure every dish is as wholesome as it is flavourful.</p>
+  <!-- INTRO SECTION — IMAGE TEXT SPLIT -->
+  <section id="intro" style="background:#0d0d0d;padding:0;">
+
+    <!-- Row 1: Text Left / Image Right -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;min-height:560px;" class="intro-split-row">
+      <div style="padding:80px 60px;display:flex;flex-direction:column;justify-content:center;">
+        <p data-aos="fade-right" style="font-size:0.72rem;letter-spacing:0.4em;text-transform:uppercase;color:#c9a84c;margin-bottom:14px;">Our Story</p>
+        <h2 data-aos="fade-right" data-aos-delay="100" style="font-size:clamp(1.8rem,3vw,3rem);font-weight:700;color:#fff;line-height:1.2;margin-bottom:24px;">A Warm Welcome<br>In the Heart of Peckham</h2>
+        <p data-aos="fade-right" data-aos-delay="200" style="font-size:1rem;color:#999;line-height:1.8;margin-bottom:32px;">
+          Nestled in the vibrant heart of Peckham High Street, Zaytoon Grill is your go-to destination for honest, flame-kissed cooking that warms the soul. We bring together bold spices, fresh ingredients, and generous hospitality to create a dining experience that keeps our guests coming back.
+        </p>
+        <p data-aos="fade-right" data-aos-delay="300" style="font-size:1rem;color:#999;line-height:1.8;margin-bottom:40px;">
+          Whether you're grabbing a quick lunch or settling in for a leisurely meal, we make every visit feel like a welcome home.
+        </p>
+        <div data-aos="fade-right" data-aos-delay="400" style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="tel:020 8617 8060" style="display:inline-flex;align-items:center;gap:8px;background:#c9a84c;color:#111;padding:13px 26px;font-size:0.85rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;">
+            <i class="fa fa-phone"></i> Call Us
+          </a>
+          <a href="https://maps.google.com/?cid=6121066741700307106" target="_blank" style="display:inline-flex;align-items:center;gap:8px;border:1px solid #333;color:#ccc;padding:13px 26px;font-size:0.85rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;">
+            <i class="fa fa-map-marker"></i> Get Directions
+          </a>
+        </div>
+      </div>
+      <div data-aos="fade-left" style="overflow:hidden;min-height:480px;">
+        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=Ab43m-tYxpDB-VtNaRygS-miIWH7fA7Tb9hiklEGeC8pHpoSnUJfC_EAO5Vte1l6A9-IDu-sOr4NQ6j3haO4c3jQ2vPe3nwfodqGN5cWSUb_4ASkF-nJ-Nn_dyEeN6t_sXkRj8sbNy1o34wsN42pwcmSG_rSBxhyP4Z3rbS6AQcNS_5ZiPB-jLtsRqcnB-XUp4CEiIT7pvxuzTdPiSuONrvHqMebOempbFLh351A2I_LHkzbdnVsr2MWqbPeC9RnOeSmEq4OTIZHxrVDAE8lY_yzO2vRTG7XLUIPr9Ik6XD3SLbNKQ&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs"
+          alt="Zaytoon Grill interior"
+          style="width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease;display:block;"
+          onmouseover="this.style.transform='scale(1.05)'"
+          onmouseout="this.style.transform='scale(1)'" />
+      </div>
     </div>
-    <div class="value-card" data-aos="fade-up" data-aos-delay="200">
-      <div class="value-icon">🤝</div>
-      <h3>Welcoming Service</h3>
-      <p>From the moment you walk through our doors, our team is dedicated to making you feel genuinely looked after.</p>
-    </div>
-    <div class="value-card" data-aos="fade-up" data-aos-delay="300">
-      <div class="value-icon">💚</div>
-      <h3>Great Value, Always</h3>
-      <p>We believe exceptional food should be accessible to everyone in our vibrant Peckham community.</p>
-    </div>
-  </div>
-</section>
 
-<section class="reviews-section">
-  <h2 data-aos="fade-up">What Our Guests Say</h2>
-  <p data-aos="fade-up" data-aos-delay="50">⭐ 4.5 · 419 Google reviews</p>
-
-  <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-    <p>"Simply delicious food!!! This is an excellent place, cant wait to go back. Friendly service and very good prices too."</p>
-    <footer>— Daniel Gustafsson &nbsp; ⭐⭐⭐⭐⭐</footer>
-  </div>
-
-  <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-    <p>"A nice little grill spot in the heart of the busy Peckham high street. If you're looking for a quick stop &amp; eat while out shopping in Peckham I recommend this place, the staff are welcoming &amp; happy to help."</p>
-    <footer>— Golden &nbsp; ⭐⭐⭐⭐</footer>
-  </div>
-
-  <div class="review-card" data-aos="fade-up" data-aos-delay="300">
-    <p>"11/10 Ahmed Masri and Mustafa amazing. They make the shop spectacular with the good vibes and amazing food. Everybody must try this place if you like authentic Lebanese food."</p>
-    <footer>— Yasmin Yusuf &nbsp; ⭐⭐⭐⭐⭐</footer>
-  </div>
-</section>
-
-<section class="menu-section">
-  <h2 data-aos="fade-up">Our Menu</h2>
-
-  <h3 data-aos="fade-up" data-aos-delay="50">🥙 Starters</h3>
-
-  <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
-    <div>
-      <strong>Hummus &amp; Warm Flatbread</strong>
-      <p>Silky house-made hummus drizzled with extra virgin olive oil and a dusting of smoky paprika, served with freshly baked flatbread.</p>
-    </div>
-    <span class="menu-price">£5</span>
-  </div>
-
-  <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
-    <div>
-      <strong>Grilled Halloumi</strong>
-      <p>Golden, lightly charred halloumi served with a tangy pomegranate glaze and fresh mint leaves.</p>
-    </div>
-    <span class="menu-price">£6</span>
-  </div>
-
-  <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
-    <div>
-      <strong>Spiced Lamb Kofta Bites</strong>
-      <p>Tender minced lamb seasoned with cumin, coriander and fresh herbs, served with a cool garlic yoghurt dip.</p>
-    </div>
-    <span class="menu-price">£7</span>
-  </div>
-
-  <h3 data-aos="fade-up" data-aos-delay="50" style="margin-top:2rem;">🔥 Mains</h3>
-
-  <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
-    <div>
-      <strong>Mixed Grill Platter</strong>
-      <p>A generous selection of marinated chicken skewers, lamb chops and shish kofta served with grilled vegetables, fluffy rice and a side of fresh salad.</p>
-    </div>
-    <span class="menu-price">£16</span>
-  </div>
-
-  <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
-    <div>
-      <strong>Zaytoon Chicken Shawarma</strong>
-      <p>Slow-roasted spiced chicken carved fresh, wrapped in warm flatbread with pickles, tahini and a vibrant house chilli sauce.</p>
-    </div>
-    <span class="menu-price">£10</span>
-  </div>
-
-  <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
-    <div>
-      <strong>Grilled Sea Bass</strong>
-      <p>Whole sea bass marinated in lemon, garlic and herbs, grilled to perfection and served with saffron rice and a crisp fattoush salad.</p>
-    </div>
-    <span class="menu-price">£15</span>
-  </div>
-
-  <h3 data-aos="fade-up" data-aos-delay="50" style="margin-top:2rem;">🍯 Desserts</h3>
-
-  <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
-    <div>
-      <strong>Baklava Selection</strong>
-      <p>A handcrafted trio of flaky filo pastries filled with pistachios and walnuts, soaked in fragrant rose and orange blossom syrup.</p>
-    </div>
-    <span class="menu-price">£5</span>
-  </div>
-
-  <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
-    <div>
-      <strong>Grilled Pineapple with Honey &amp; Cardamom</strong>
-      <p>Caramelised pineapple spears kissed by the grill, finished with a cardamom honey drizzle and a scoop of creamy vanilla ice cream.</p>
-    </div>
-    <span class="menu-price">£6</span>
-  </div>
-
-  <p data-aos="fade-up" style="margin-top:1.5rem; font-style:italic; opacity:0.7;">* Sample menu for reference. Prices and availability may vary.</p>
-</section>
-
-<section class="visit-section">
-  <h2 data-aos="fade-up">Find Us &amp; Opening Hours</h2>
-
-  <p data-aos="fade-up" data-aos-delay="100">
-    📍 <strong>94 Rye Ln, London SE15 4RZ, UK</strong><br>
-    📞 <a href="tel:020 8617 8060">020 8617 8060</a>
-  </p>
-
-  <a href="https://maps.google.com/?cid=6121066741700307106" target="_blank" rel="noopener" class="hero-cta" data-aos="fade-up" data-aos-delay="150" style="display:inline-block; margin-bottom:1.5rem;">
-    🗺️ Get Directions on Google Maps
-  </a>
-
-  <div data-
+    <!-- Philosophy pillars -->
+    <div style="padding:80px 60px;background:#111;">
+      <p data-aos="fade-up" style="text-align:center;font-size:0.72rem;letter-spacing:0.4em;text-transform:uppercase;color:#c9a84c;margin-bottom:14px;">What We Stand For</p>
+      <h2 data-aos="fade-up" data-aos-delay="100" style="text-align:center;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#fff;margin-bottom:60px;">Our Philosophy</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:700,once:true,offset:60});
+AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
 
-// Sticky nav
-const stickyNav = document.getElementById('stickyNav');
-const heroEl = document.querySelector('.hero,[class*=hero]');
-if(stickyNav && heroEl){
-  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
-}
-
-// Open/Closed badge
-const HOURS={"Monday": "8:00 AM – 1:00 AM", "Tuesday": "8:00 AM – 3:00 AM", "Wednesday": "8:00 AM – 1:00 AM", "Thursday": "8:00 AM – 3:00 AM", "Friday": "8:00 AM – 5:00 AM", "Saturday": "8:00 AM – 5:00 AM", "Sunday": "9:00 AM – 12:00 AM"};
+// Sticky nav on scroll past hero
 (function(){
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
-  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-  const badge=document.getElementById('openBadge');
-  if(!badge)return;
-  if(!m){badge.textContent='See hours below';return;}
-  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
-  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
-  const isOpen=n>=o&&n<(c<o?c+1440:c);
-  badge.textContent=isOpen?'● Open now':'● Closed';
-  badge.style.color=isOpen?'#22c55e':'#ef4444';
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
 })();
 
-// Rating counter
-const rc=document.getElementById('ratingCounter');
-if(rc){
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "8:00 AM – 1:00 AM", "Tuesday": "8:00 AM – 3:00 AM", "Wednesday": "8:00 AM – 1:00 AM", "Thursday": "8:00 AM – 3:00 AM", "Friday": "8:00 AM – 5:00 AM", "Saturday": "8:00 AM – 5:00 AM", "Sunday": "9:00 AM – 12:00 AM"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
   const rating=4.5,cnt=419;
+  if(!rating)return;
   new IntersectionObserver(([e])=>{
     if(!e.isIntersecting)return;
-    rc.textContent='';
-    const animate=(from,to,dec,cb)=>{
-      let start=null;
-      (function step(ts){
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
         if(!start)start=ts;
-        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
         cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
-        if(p<1)requestAnimationFrame(step);
+        if(p<1)requestAnimationFrame(tick);
       })(performance.now());
     };
-    const rs=document.createElement('span'),cs=document.createElement('span');
-    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
-    animate(0,rating,true,v=>rs.textContent=v);
-    animate(0,cnt,false,v=>cs.textContent=v);
-  },{threshold:0.5}).observe(rc);
-}
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
 
-// Ripple
-document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
   btn.addEventListener('click',function(e){
-    const r=document.createElement('span');
-    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
     Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
       left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
-      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
-    this.style.position='relative';this.style.overflow='hidden';
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
     this.append(r);setTimeout(()=>r.remove(),700);
   });
 });
 </script>
-<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
