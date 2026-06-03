@@ -113,7 +113,7 @@ ul{list-style:none}
 .about__badge{display:none!important;position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--c-secondary);color:var(--c-dark);width:100px;height:100px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;line-height:1.3;font-weight:700;box-shadow:var(--shadow-card)}
 .about__list{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
 .about__list li{display:flex;align-items:flex-start;gap:.75rem;font-size:.92rem}
-.about__list li::before{content:'
+.about__list li::before{content:'✓';color:var(--c-gold);margin-right:.5rem}
 </style>
 </head>
 <body>
@@ -288,12 +288,58 @@ ul{list-style:none}
 
       <!-- MAINS -->
       <p class="section__label" data-aos="fade-up" style="margin-bottom:1.5rem;">— Mains —</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;margin-bottom:3.5rem;">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-bottom:3.5rem;">
+        <div class="photo-card" data-aos="fade-up" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
+          <div style="height:220px;background:linear-gradient(135deg,#8b4513,#c8763a);display:flex;align-items:center;justify-content:center;font-size:4rem;">🍗</div>
+          <div class="photo-card__body" style="padding:1.25rem;background:#fff;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;color:#1a1a1a;">Grilled Chicken</h4><span style="font-weight:700;color:#c8763a;">£14</span></div>
+            <p style="font-size:.85rem;color:#555;line-height:1.6;">Our signature Ghanaian grilled chicken, marinated in aromatic spices and served with jollof rice and fried plantain.</p>
+          </div>
+        </div>
+        <div class="photo-card" data-aos="fade-up" data-aos-delay="80" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
+          <div style="height:220px;background:linear-gradient(135deg,#5c2d0a,#9b5e33);display:flex;align-items:center;justify-content:center;font-size:4rem;">🍛</div>
+          <div class="photo-card__body" style="padding:1.25rem;background:#fff;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;color:#1a1a1a;">Goat Light Soup</h4><span style="font-weight:700;color:#c8763a;">£15</span></div>
+            <p style="font-size:.85rem;color:#555;line-height:1.6;">A warming, fragrant Ghanaian light soup with tender goat, tomatoes, and traditional spices — served with fufu.</p>
+          </div>
+        </div>
+        <div class="photo-card" data-aos="fade-up" data-aos-delay="160" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
+          <div style="height:220px;background:linear-gradient(135deg,#1a5276,#2980b9);display:flex;align-items:center;justify-content:center;font-size:4rem;">🐟</div>
+          <div class="photo-card__body" style="padding:1.25rem;background:#fff;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;color:#1a1a1a;">Tilapia Stew</h4><span style="font-weight:700;color:#c8763a;">£16</span></div>
+            <p style="font-size:.85rem;color:#555;line-height:1.6;">Fresh tilapia slow-cooked in rich tomato stew with Ghanaian spices, served with rice and kelewele.</p>
+          </div>
+        </div>
+      </div>
+      <!-- DESSERTS -->
+      <p class="section__label" data-aos="fade-up" style="margin-bottom:1.5rem;">— Desserts —</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-bottom:3rem;">
+        <div class="photo-card" data-aos="fade-up" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
+          <div style="height:220px;background:linear-gradient(135deg,#f4a261,#e76f51);display:flex;align-items:center;justify-content:center;font-size:4rem;">🍌</div>
+          <div class="photo-card__body" style="padding:1.25rem;background:#fff;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;color:#1a1a1a;">Kelewele Dessert</h4><span style="font-weight:700;color:#c8763a;">£5</span></div>
+            <p style="font-size:.85rem;color:#555;line-height:1.6;">Caramelised spiced plantain bites with a drizzle of honey and a scoop of vanilla ice cream.</p>
+          </div>
+        </div>
+        <div class="photo-card" data-aos="fade-up" data-aos-delay="80" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
+          <div style="height:220px;background:linear-gradient(135deg,#3a1a08,#6a3a10);display:flex;align-items:center;justify-content:center;font-size:4rem;">🍰</div>
+          <div class="photo-card__body" style="padding:1.25rem;background:#fff;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;color:#1a1a1a;">Chin Chin</h4><span style="font-weight:700;color:#c8763a;">£4</span></div>
+            <p style="font-size:.85rem;color:#555;line-height:1.6;">Crunchy deep-fried dough snacks lightly sweetened with coconut sugar — a beloved West African classic.</p>
+          </div>
+        </div>
+        <div class="photo-card" data-aos="fade-up" data-aos-delay="160" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
+          <div style="height:220px;background:linear-gradient(135deg,#1a3a08,#3a6a10);display:flex;align-items:center;justify-content:center;font-size:4rem;">🥤</div>
+          <div class="photo-card__body" style="padding:1.25rem;background:#fff;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;color:#1a1a1a;">Sobolo (Hibiscus Drink)</h4><span style="font-weight:700;color:#c8763a;">£3</span></div>
+            <p style="font-size:.85rem;color:#555;line-height:1.6;">A refreshing chilled hibiscus flower drink with ginger and citrus — the perfect finish to your meal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="photo-card" data-aos="fade-up" data-aos-delay="0" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
-          <div style="height:180px;overflow:hidden;">
-            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
 AOS.init({duration:400,once:true,offset:0,easing:'ease-out-cubic'});
 
