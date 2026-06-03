@@ -4,14 +4,14 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Palm Cuisine — South London</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     :root{
-      --primary:   #FFFFFF;
-      --accent:    #000000;
+      --primary:   #000000;
+      --accent:    #FFFFFF;
       /* ヒーロー用（暗い背景向け） */
       --hero-text:  #f5f2ec;
       --hero-muted: rgba(245,242,236,0.65);
@@ -22,7 +22,7 @@
       --sec-bg:   #F5F5F5;
     }
     html{scroll-behavior:smooth;}
-    body{font-family:'Noto Sans JP',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+    body{font-family:'Inter',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
 
     /* PROTO BANNER */
     .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
@@ -35,11 +35,11 @@
     @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
     .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
     .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Jost',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
+    .logo{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
     .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
     .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
     .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Jost',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
+    .hero-tagline{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
     .hero-tagline span{color:var(--accent);}
     .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
     .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
@@ -52,7 +52,7 @@
     .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
     .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
     .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Jost',serif;font-size:1.2rem;font-weight:300;color:#fff;}
+    .mockup-overlay .m-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:300;color:#fff;}
     .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
 
     /* ── SOCIAL BAR ── */
@@ -69,7 +69,7 @@
     /* ── SHARED CONTENT STYLES ── */
     .section-wrap{max-width:1100px;margin:0 auto;}
     .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Jost',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+    .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
 
     /* ── ABOUT（白背景 → 暗い文字） ── */
     .about{padding:6rem 4rem;background:#fff;}
@@ -80,7 +80,7 @@
     .about-values{display:flex;flex-direction:column;}
     .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
     .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Jost',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
+    .value-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
     .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
     .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
 
@@ -107,7 +107,7 @@
     .menu-item-left{flex:1;}
     .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
     .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Jost',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
+    .item-price{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
     .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
 
     /* ── VISIT（薄グレー背景 → 暗い文字） ── */
@@ -130,7 +130,7 @@
     /* ── STICKY HEADER ── */
     .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
     .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Jost',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
+    .sticky-logo{font-family:'Playfair Display',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
     .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
     .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
     .sticky-open.closed{background:#fce4ec;color:#c62828;}
@@ -177,7 +177,7 @@
   </header>
 
   <div class="proto-banner">
-    <p><strong>🎨 Free Preview</strong> — This site was built for Palm Cuisine as a complimentary demo. Images, colours &amp; content are fully customisable once we connect.</p>
+    <p><strong>🎨 Free demo for Palm Cuisine</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
@@ -194,7 +194,7 @@
       </div>
       <div>
         <h1 class="hero-tagline">South London's hidden gem of Caribbean soul</h1>
-        <p class="hero-desc">Tucked away in the heart of South London, Palm Cuisine is a beloved neighbourhood treasure serving generous, home-style Caribbean dishes that keep locals coming back again and again. From slow-cooked oxtail to fragrant curry goat, every plate is crafted with care, bold flavour, and a warmth that feels just like home.</p>
+        <p class="hero-desc">Tucked away in the heart of South London, Palm Cuisine is a beloved neighbourhood treasure serving bold, homestyle Caribbean cooking that keeps guests coming back time and again. From slow-cooked oxtail to fragrant curry goat, every dish is crafted with generous portions and even more generous spirit. Whether you stumbled upon us by chance or came with purpose, you'll leave full, satisfied, and already planning your return.</p>
         <div class="rating-counter" id="ratingCounter" data-rating="4.6" data-count="106">⭐ 4.6 · 106 Google reviews</div>
         <div class="open-badge" id="openBadge"></div>
       </div>
@@ -234,12 +234,12 @@
         <div data-aos="fade-right">
           <p class="section-label">Our Philosophy</p>
           <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Tucked away in the heart of South London, Palm Cuisine is a beloved neighbourhood treasure serving generous, home-style Caribbean dishes that keep locals coming back again and again. From slow-cooked oxtail to fragrant curry goat, every plate is crafted with care, bold flavour, and a warmth that feels just like home.</p>
+          <p class="about-body">Tucked away in the heart of South London, Palm Cuisine is a beloved neighbourhood treasure serving bold, homestyle Caribbean cooking that keeps guests coming back time and again. From slow-cooked oxtail to fragrant curry goat, every dish is crafted with generous portions and even more generous spirit. Whether you stumbled upon us by chance or came with purpose, you'll leave full, satisfied, and already planning your return.</p>
         </div>
         <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Rooted in Tradition</h3><p>Every recipe honours the rich culinary heritage of the Caribbean, passed down through generations and cooked with genuine love.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Generous by Nature</h3><p>We believe great food should fill both your belly and your spirit, which is why every portion is as hearty as it is flavourful.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Community at Heart</h3><p>Palm Cuisine exists to bring neighbours together over soul-nourishing food in a space that always feels welcoming and unhurried.</p></div></div>
+          <div class="value-item"><span class="value-num">01</span><div><h3>Rooted in Tradition</h3><p>Every recipe honours the rich culinary heritage of the Caribbean, passed down through generations and prepared with unwavering authenticity.</p></div></div>
+          <div class="value-item"><span class="value-num">02</span><div><h3>Honest Value</h3><p>We believe exceptional food should never come at the expense of your wallet, which is why quality and generosity sit at the heart of everything we serve.</p></div></div>
+          <div class="value-item"><span class="value-num">03</span><div><h3>Warmth in Every Plate</h3><p>From the moment you order to the final forkful, our team delivers the kind of genuine, attentive service that turns first-time visitors into regulars.</p></div></div>
         </div>
       </div>
     </div>
@@ -267,7 +267,7 @@ Hope your business goes well all the best x"</p><span class="review-author">— 
         <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
         <span class="menu-note">Seasonal · Prices incl. VAT</span>
       </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jerk Chicken Wings</div><div class="item-desc">Crispy, smoky wings marinated overnight in our signature jerk blend, served with a cooling mango dip.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Saltfish Fritters</div><div class="item-desc">Light, golden fritters packed with flaked saltfish, scotch bonnet, and fresh herbs — a true Caribbean classic.</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Plantain & Ackee Bites</div><div class="item-desc">Sweet fried plantain rounds topped with seasoned ackee and a drizzle of chilli honey.</div></div><span class="item-price">£5</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Loaded Oxtail Box</div><div class="item-desc">Fall-off-the-bone oxtail slow-braised in a rich, deep sauce, served with rice and peas and festival dumplings.</div></div><span class="item-price">£15</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Curry Goat</div><div class="item-desc">Tender goat simmered low and slow in a fragrant Jamaican curry, accompanied by fluffy white rice and buttered roti.</div></div><span class="item-price">£14</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Brown Stew Chicken</div><div class="item-desc">Succulent chicken pieces stewed in a savoury-sweet brown sauce with thyme, allspice, and caramelised onions.</div></div><span class="item-price">£12</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Rum & Raisin Bread Pudding</div><div class="item-desc">Warm, pillowy pudding soaked in a dark rum custard, served with a scoop of vanilla ice cream.</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Coconut Drops</div><div class="item-desc">Traditional Jamaican coconut candy with notes of ginger and brown sugar — a sweet bite of nostalgia.</div></div><span class="item-price">£3</span></div></div></div>
+      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Saltfish Fritters</div><div class="item-desc">Crispy golden fritters packed with seasoned saltfish, scotch bonnet and fresh herbs, served with a tangy mango dipping sauce.</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jerk Chicken Wings</div><div class="item-desc">Smoky, fiery wings marinated overnight in a signature jerk blend, grilled to charred perfection and finished with a squeeze of fresh lime.</div></div><span class="item-price">£7</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Pepperpot Soup</div><div class="item-desc">A rich, deeply spiced Caribbean broth slow-simmered with mixed provisions, spinners and tender pieces of beef for a truly warming start.</div></div><span class="item-price">£5</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Loaded Oxtail & Curry Goat Box</div><div class="item-desc">The house favourite — fall-off-the-bone oxtail and fragrant curry goat piled generously over rice and peas, served with macaroni and a side of festival.</div></div><span class="item-price">£15</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Brown Stew Chicken</div><div class="item-desc">Tender chicken pieces slow-braised in a deep, caramelised Creole sauce with thyme, allspice and sweet peppers, served with buttery rice and peas.</div></div><span class="item-price">£13</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Escovitch Red Snapper</div><div class="item-desc">Whole fried red snapper topped with a vibrant pickled scotch bonnet and onion escovitch sauce, accompanied by festival dumplings and bammy.</div></div><span class="item-price">£17</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Rum & Coconut Bread Pudding</div><div class="item-desc">Soft, pillowy bread pudding soaked in a spiced coconut milk custard and finished with a warming aged rum caramel drizzle.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Plantain & Vanilla Ice Cream</div><div class="item-desc">Sweet caramelised fried plantain served warm alongside a generous scoop of creamy vanilla ice cream — simple, indulgent and utterly satisfying.</div></div><span class="item-price">£5</span></div></div></div>
       <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
     </div>
   </section>
