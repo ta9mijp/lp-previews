@@ -11,9 +11,14 @@
     :root{
       --primary:   #FFFFFF;
       --accent:    #FFD700;
-      --text:      #333333;
-      --muted:     rgba(245,242,236,0.6);
-      --sec-bg:    #F5F5F5;
+      /* ヒーロー用（暗い背景向け） */
+      --hero-text:  #f5f2ec;
+      --hero-muted: rgba(245,242,236,0.65);
+      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
+      --c-text:   #1a1a1a;
+      --c-muted:  #6b6b6b;
+      --c-border: rgba(0,0,0,0.08);
+      --sec-bg:   #F5F5F5;
     }
     html{scroll-behavior:smooth;}
     body{font-family:'Sans-serif',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
@@ -24,21 +29,21 @@
     .proto-banner strong{font-weight:700;}
     .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
 
-    /* HERO */
-    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;}
+    /* ── HERO（暗い背景 → 白文字） ── */
+    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
     @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
     .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
     .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Custom SVG typography/hand-drawn style',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text);}
+    .logo{font-family:'Custom SVG typography/stylized logotypes',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
     .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
-    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.75);}
+    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
     .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Custom SVG typography/hand-drawn style',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
+    .hero-tagline{font-family:'Custom SVG typography/stylized logotypes',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
     .hero-tagline span{color:var(--accent);}
-    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.7);font-weight:300;max-width:360px;margin-top:1.2rem;}
-    .rating-line{font-size:0.85rem;color:var(--accent);margin-top:0.8rem;}
+    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
+    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
     .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.2s;}
+    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
     .hero-nav a:hover{color:#fff;}
     .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
     .btn-reserve:hover{opacity:0.85;}
@@ -46,77 +51,79 @@
     .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
     .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
     .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Custom SVG typography/hand-drawn style',serif;font-size:1.2rem;font-weight:300;color:#fff;}
-    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.6);margin-top:0.2rem;}
+    .mockup-overlay .m-name{font-family:'Custom SVG typography/stylized logotypes',serif;font-size:1.2rem;font-weight:300;color:#fff;}
+    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
 
-    /* SOCIAL BAR */
-    .social-bar{background:rgba(255,255,255,0.04);border-top:1px solid rgba(255,255,255,0.07);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+    /* ── SOCIAL BAR ── */
+    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
     .social-icons{display:flex;gap:1.4rem;}
-    .social-link{color:var(--muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
+    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
     .social-link:hover{color:var(--accent);transform:translateY(-2px);}
     .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
-    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(255,255,255,0.07);color:var(--muted);}
-    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--text);text-decoration:none;font-size:0.82rem;border:1px solid rgba(255,255,255,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
+    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
+    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
     .call-link:hover{border-color:var(--accent);color:var(--accent);}
 
-    /* SECTIONS */
+    /* ── SHARED CONTENT STYLES ── */
     .section-wrap{max-width:1100px;margin:0 auto;}
     .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Custom SVG typography/hand-drawn style',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;font-style:italic;line-height:1.2;}
+    .section-title{font-family:'Custom SVG typography/stylized logotypes',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
 
-    /* ABOUT */
-    .about{padding:6rem 4rem;}
+    /* ── ABOUT（白背景 → 暗い文字） ── */
+    .about{padding:6rem 4rem;background:#fff;}
     @media(max-width:700px){.about{padding:4rem 2rem;}}
     .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
     @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
-    .about-body{font-size:0.95rem;line-height:1.9;color:var(--muted);font-weight:300;margin-top:1.2rem;}
+    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
     .about-values{display:flex;flex-direction:column;}
-    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
     .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Custom SVG typography/hand-drawn style',serif;font-size:2rem;color:var(--accent);opacity:0.45;line-height:1;flex-shrink:0;}
-    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;}
-    .value-item p{font-size:0.88rem;color:var(--muted);line-height:1.7;font-weight:300;}
+    .value-num{font-family:'Custom SVG typography/stylized logotypes',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
+    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
+    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
 
-    /* REVIEWS */
-    .reviews{padding:5rem 4rem;background:var(--sec-bg);}
+    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
+    .reviews{padding:5rem 4rem;background:#f7f7f5;}
     @media(max-width:700px){.reviews{padding:4rem 2rem;}}
     .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
-    .review-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:1.5rem;}
-    .review-stars{font-size:0.85rem;margin-bottom:0.75rem;}
-    .review-text{font-size:0.9rem;line-height:1.75;color:var(--muted);font-style:italic;font-weight:300;margin-bottom:0.75rem;}
-    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);}
+    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
+    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
+    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
+    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
 
-    /* MENU */
-    .menu{padding:6rem 4rem;}
+    /* ── MENU（白背景 → 暗い文字） ── */
+    .menu{padding:6rem 4rem;background:#fff;}
     @media(max-width:700px){.menu{padding:4rem 2rem;}}
     .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
-    .menu-note{font-size:0.78rem;color:var(--muted);}
-    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;}
-    .menu-category{padding:2rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .menu-note{font-size:0.78rem;color:var(--c-muted);}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
+    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
     .menu-category:last-child{border-bottom:none;}
-    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;}
-    .menu-item{display:flex;justify-content:space-between;align-items:baseline;padding:0.65rem 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
+    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
     .menu-item:last-child{border-bottom:none;}
-    .item-name{font-size:0.92rem;}
-    .item-desc{font-size:0.76rem;color:var(--muted);margin-top:0.15rem;font-weight:300;}
-    .item-price{font-family:'Custom SVG typography/hand-drawn style',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;margin-left:1rem;}
-    .menu-disclaimer{font-size:0.72rem;color:var(--muted);margin-top:1.5rem;font-style:italic;}
+    .menu-item-left{flex:1;}
+    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
+    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
+    .item-price{font-family:'Custom SVG typography/stylized logotypes',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
+    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
 
-    /* VISIT */
-    .visit{padding:5rem 4rem;background:var(--sec-bg);}
+    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
+    .visit{padding:5rem 4rem;background:#f7f7f5;}
     @media(max-width:700px){.visit{padding:4rem 2rem;}}
     .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
-    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;}
-    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--muted);line-height:1.9;text-decoration:none;font-weight:300;display:block;}
-    .visit-block a:hover{color:var(--text);}
-    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--muted);padding:0.2rem 0;}
-    .hour-row span:first-child{color:rgba(255,255,255,0.4);min-width:36px;}
-    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1px solid rgba(255,255,255,0.2);border-radius:50px;color:var(--text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
+    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
+    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
+    .visit-block a:hover{color:var(--accent);}
+    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
+    .hour-row:last-child{border-bottom:none;}
+    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
+    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
     .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
 
     /* FOOTER */
-    footer{border-top:1px solid rgba(255,255,255,0.07);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.22);}
+    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
     @media(min-width:700px){footer{padding-bottom:2rem;}}
 
     /* FLOAT CALL */
@@ -144,8 +151,8 @@
         </div>
       </div>
       <div>
-        <h1 class="hero-tagline">Bold Caribbean soul, right in the heart of Peckham.</h1>
-        <p class="hero-desc">SoulFood Peckham brings the warmth and vibrancy of Caribbean home cooking to the streets of South London. Every plate is crafted with care, generous portions, and the kind of honest flavour that keeps you coming back. Whether you're a local regular or a first-time visitor, you're always welcome at our table.</p>
+        <h1 class="hero-tagline">Soul-stirring Caribbean flavour in the heart of Peckham</h1>
+        <p class="hero-desc">SoulFood Peckham brings the warmth and vibrancy of Caribbean home cooking to the streets of SE15, serving generous, honest plates that nourish body and spirit. Every dish is crafted with care, bold seasoning, and the kind of love that keeps you coming back.</p>
         <p class="rating-line">⭐ 4.6 · 393 Google reviews</p>
       </div>
       <nav class="hero-nav">
@@ -184,12 +191,12 @@
         <div>
           <p class="section-label">Our Philosophy</p>
           <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">SoulFood Peckham brings the warmth and vibrancy of Caribbean home cooking to the streets of South London. Every plate is crafted with care, generous portions, and the kind of honest flavour that keeps you coming back. Whether you're a local regular or a first-time visitor, you're always welcome at our table.</p>
+          <p class="about-body">SoulFood Peckham brings the warmth and vibrancy of Caribbean home cooking to the streets of SE15, serving generous, honest plates that nourish body and spirit. Every dish is crafted with care, bold seasoning, and the kind of love that keeps you coming back.</p>
         </div>
         <div class="about-values">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Flavour First</h3><p>Every dish is built on deep, authentic Caribbean seasoning that delivers bold, satisfying taste in every single bite.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Honest Value</h3><p>We believe soul-warming food should be accessible to everyone, offering generous portions at prices that never compromise on quality.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Community Roots</h3><p>Rooted firmly in the heart of Peckham, we cook with the spirit of the community that inspires us every day.</p></div></div>
+          <div class="value-item"><span class="value-num">01</span><div><h3>Rooted in Tradition</h3><p>We honour time-honoured Caribbean recipes passed down through generations, letting authentic technique and flavour speak for themselves.</p></div></div>
+          <div class="value-item"><span class="value-num">02</span><div><h3>Generous by Nature</h3><p>From the first scoop of rice to the last piece of tender meat, every portion is sized to satisfy and never to disappoint.</p></div></div>
+          <div class="value-item"><span class="value-num">03</span><div><h3>Community at the Core</h3><p>We believe great food brings people together, and SoulFood Peckham is proud to be a welcoming cornerstone of this vibrant neighbourhood.</p></div></div>
         </div>
       </div>
     </div>
@@ -215,7 +222,7 @@ Shop was also clean and very nice guy at th"</p><span class="review-author">— 
         <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
         <span class="menu-note">Seasonal · Prices incl. VAT</span>
       </div>
-      <div class="menu-grid"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div><div class="item-name">Festival Dumplings</div><div class="item-desc">Lightly sweetened, golden-fried dough fritters with a soft, fluffy centre — a classic Caribbean street-food bite.</div></div><span class="item-price">£3</span></div><div class="menu-item"><div><div class="item-name">Scotch Bonnet Chicken Wings</div><div class="item-desc">Crispy, flame-kissed wings glazed in a fiery house scotch bonnet sauce, served with a cool cucumber dip.</div></div><span class="item-price">£5</span></div><div class="menu-item"><div><div class="item-name">Plantain & Ackee Bites</div><div class="item-desc">Caramelised sweet plantain paired with seasoned ackee, lightly pan-fried and finished with fresh herbs.</div></div><span class="item-price">£4</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div><div class="item-name">Jerk Chicken with Rice & Peas</div><div class="item-desc">Fall-off-the-bone jerk chicken steeped in rich, smoky marinade, served alongside perfectly cooked coconut rice and peas with our signature coleslaw.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div><div class="item-name">Slow-Braised Oxtail</div><div class="item-desc">Tender, melt-in-the-mouth oxtail slow-cooked in a deeply savoury gravy with butter beans, served with fluffy white rice.</div></div><span class="item-price">£10</span></div><div class="menu-item"><div><div class="item-name">Curry Goat</div><div class="item-desc">Hearty Caribbean curry goat simmered low and slow with warming spices and Scotch bonnet, served with rice and peas.</div></div><span class="item-price">£9</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div><div class="item-name">Rum & Raisin Bread Pudding</div><div class="item-desc">A comforting, Caribbean-spiced bread pudding soaked in dark rum custard and topped with a brown sugar glaze.</div></div><span class="item-price">£4</span></div><div class="menu-item"><div><div class="item-name">Coconut Drops</div><div class="item-desc">Traditional Jamaican coconut and ginger candy bites — sweet, chewy, and the perfect end to your meal.</div></div><span class="item-price">£2</span></div></div></div>
+      <div class="menu-grid"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Festival Dumplings</div><div class="item-desc">Lightly sweetened, golden-fried dough with a crisp exterior and pillowy centre, served with a scotch bonnet dipping sauce.</div></div><span class="item-price">£4</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Saltfish Fritters</div><div class="item-desc">Flaky, seasoned saltfish folded into a spiced batter and fried until beautifully golden — a classic Caribbean bite.</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Peppery Plantain</div><div class="item-desc">Ripe plantain slices caramelised to perfection, finished with a dusting of chilli and a squeeze of fresh lime.</div></div><span class="item-price">£4</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jerk Chicken</div><div class="item-desc">Fall-off-the-bone chicken marinated in a rich, smoky jerk blend, served alongside perfectly cooked rice and our lightly dressed, house-made coleslaw.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Oxtail with Rice & Peas</div><div class="item-desc">Slow-braised oxtail in a deep, aromatic gravy served over coconut-infused rice and peas with a side of creamy coleslaw.</div></div><span class="item-price">£10</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Curried Goat</div><div class="item-desc">Tender goat slow-cooked in a fragrant Jamaican curry with scotch bonnet, thyme, and warming spices, served with fluffy white rice.</div></div><span class="item-price">£11</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jamaican Rum Cake</div><div class="item-desc">A dense, moist fruit cake soaked in dark rum and warm spices — a soulful nod to Caribbean celebration baking.</div></div><span class="item-price">£4</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Coconut Pudding</div><div class="item-desc">A silky, gently set coconut cream pudding laced with vanilla and topped with toasted desiccated coconut.</div></div><span class="item-price">£4</span></div></div></div>
       <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
     </div>
   </section>
