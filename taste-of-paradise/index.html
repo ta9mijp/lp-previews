@@ -10,657 +10,336 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
   @media(min-width:700px){.float-cta{display:none!important;}}
-  :root {
-  --primary: #1a1a18;
-  --accent: #c9a96e;
-  --accent-light: #e8d5b0;
-  --accent-dark: #a07840;
-  --bg: #f5f0e8;
-  --bg-dark: #111110;
-  --text: #1a1a18;
-  --text-light: #f5f0e8;
-  --muted: #7a7060;
-  --border: #d4c9b0;
-  --surface: #ffffff;
-  --surface-dark: #1e1e1b;
-  --radius: 2px;
-  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+:root{
+--c-bg:#0a0a0a;
+--c-bg2:#111010;
+--c-surface:#161414;
+--c-border:#2a2520;
+--c-gold:#c9a96e;
+--c-gold-dim:#8a6f42;
+--c-cream:#f5efe6;
+--c-text:#e8e0d5;
+--c-muted:#7a7068;
+--c-overlay:rgba(8,6,4,.62);
+--c-overlay2:rgba(8,6,4,.82);
+--ff-serif:'Cormorant Garamond',Georgia,serif;
+--ff-sans:'Inter',system-ui,sans-serif;
+--fw-light:300;
+--fw-reg:400;
+--fw-med:500;
+--fw-semi:600;
+--radius:2px;
+--radius-lg:4px;
+--trans:all .35s cubic-bezier(.4,0,.2,1);
+--trans-slow:all .65s cubic-bezier(.4,0,.2,1);
+--max-w:1280px;
+--section-pad:clamp(4rem,8vw,8rem);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
+body{background:var(--c-bg);color:var(--c-text);font-family:var(--ff-sans);font-weight:var(--fw-light);line-height:1.7;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none;transition:var(--trans)}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ── LOADING STATE ── */
+.loading-screen{position:fixed;inset:0;z-index:9999;background:var(--c-bg);display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease}
+.loading-screen.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loading-logo{font-family:var(--ff-serif);font-size:clamp(1.5rem,4vw,2.5rem);color:var(--c-gold);letter-spacing:.25em;text-transform:uppercase}
+.loading-bar{width:120px;height:1px;background:var(--c-border);margin:1.5rem auto 0;overflow:hidden}
+.loading-bar::after{content:'';display:block;height:100%;width:0;background:var(--c-gold);animation:loadFill 1.8s ease forwards}
+@keyframes loadFill{to{width:100%}}
+.loading-dot{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--c-gold);margin:.75rem .25rem 0;animation:dotPulse 1.4s ease infinite}
+.loading-dot:nth-child(2){animation-delay:.2s}
+.loading-dot:nth-child(3){animation-delay:.4s}
+@keyframes dotPulse{0%,80%,100%{opacity:.2;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+/* ── STICKY NAV ── */
+#stickyNav{position:fixed;top:0;left:0;right:0;z-index:900;padding:.875rem clamp(1rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;transition:var(--trans-slow);background:transparent}
+#stickyNav.scrolled{background:var(--c-overlay2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border)}
+.nav-logo{font-family:var(--ff-serif);font-size:1.375rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c-cream)}
+.nav-links{display:flex;gap:clamp(1.25rem,3vw,2.5rem);align-items:center}
+.nav-links a{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--c-text);opacity:.8}
+.nav-links a:hover{opacity:1;color:var(--c-gold)}
+.nav-reserve{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;padding:.5rem 1.25rem;border:1px solid var(--c-gold);color:var(--c-gold);transition:var(--trans)}
+.nav-reserve:hover{background:var(--c-gold);color:var(--c-bg)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;padding:.25rem}
+.nav-hamburger span{display:block;width:22px;height:1px;background:var(--c-cream);transition:var(--trans)}
 
-body {
-  font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  font-weight: 300;
-  line-height: 1.7;
-  letter-spacing: 0.02em;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* ── LANGUAGE SELECTOR ── */
+.language-selector{position:fixed;top:1rem;right:clamp(1rem,4vw,3rem);z-index:901;display:flex;gap:.5rem;align-items:center}
+.lang-btn{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .5rem;color:var(--c-muted);border:1px solid transparent;transition:var(--trans);border-radius:var(--radius)}
+.lang-btn.active,.lang-btn:hover{color:var(--c-gold);border-color:var(--c-gold-dim)}
+.lang-divider{width:1px;height:10px;background:var(--c-border)}
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+/* ── PROTO BANNER ── */
+.proto-banner{width:100%;background:var(--c-gold);color:var(--c-bg);text-align:center;padding:.5rem 1rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:var(--fw-med);z-index:950;position:relative}
+.proto-banner a{color:var(--c-bg);text-decoration:underline;text-underline-offset:2px}
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color var(--transition), opacity var(--transition);
-}
+/* ── HERO: full-bleed-center ── */
+.hero{position:relative;width:100%;height:100svh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img,.hero-bg video{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,6,4,.3) 0%,rgba(8,6,4,.5) 50%,rgba(8,6,4,.75) 100%)}
+.hero-parallax{position:absolute;inset:-10%;z-index:0;will-change:transform}
+.hero-parallax img{width:100%;height:120%;object-fit:cover;object-position:center}
+.hero-parallax::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,6,4,.25) 0%,rgba(8,6,4,.55) 60%,rgba(8,6,4,.88) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 clamp(1rem,5vw,4rem);max-width:900px;margin:0 auto}
+.hero-eyebrow{display:block;font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--c-gold);margin-bottom:1.25rem;opacity:.9}
+.hero-title{font-family:var(--ff-serif);font-size:clamp(2.75rem,8vw,7rem);font-weight:var(--fw-light);line-height:1.05;letter-spacing:.04em;color:var(--c-cream);margin-bottom:1rem}
+.hero-title em{font-style:italic;color:var(--c-gold)}
+.hero-sub{font-size:clamp(.8rem,1.5vw,1rem);letter-spacing:.2em;text-transform:uppercase;color:var(--c-text);opacity:.7;margin-bottom:2.5rem}
+.hero-cta-wrap{display:flex;gap:1.25rem;align-items:center;justify-content:center;flex-wrap:wrap}
+.hero-cta-primary{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;padding:.85rem 2.5rem;background:var(--c-gold);color:var(--c-bg);font-weight:var(--fw-med);transition:var(--trans);border:1px solid var(--c-gold)}
+.hero-cta-primary:hover{background:transparent;color:var(--c-gold)}
+.hero-cta-secondary{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;padding:.85rem 2.5rem;border:1px solid rgba(245,239,230,.4);color:var(--c-cream);transition:var(--trans)}
+.hero-cta-secondary:hover{border-color:var(--c-gold);color:var(--c-gold)}
+.hero-scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.6}
+.hero-scroll-hint span{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c-cream)}
+.hero-scroll-line{width:1px;height:40px;background:var(--c-cream);animation:scrollPulse 2s ease infinite}
+@keyframes scrollPulse{0%{opacity:.6;transform:scaleY(1)}50%{opacity:.2;transform:scaleY(.5)}100%{opacity:.6;transform:scaleY(1)}}
 
-a:hover {
-  color: var(--accent);
-}
+/* ── CAROUSEL DOTS ── */
+.hero-indicators{position:absolute;bottom:3.5rem;right:clamp(1rem,3vw,2.5rem);z-index:2;display:flex;flex-direction:column;gap:.5rem}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:rgba(245,239,230,.3);transition:var(--trans);cursor:pointer}
+.hero-dot.active{background:var(--c-gold);transform:scale(1.3)}
 
-/* ─── PROTO BANNER ─── */
-
-.proto-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  background-color: var(--accent);
-  color: var(--primary);
-  text-align: center;
-  padding: 10px 24px;
-  font-family: 'Jost', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-
-.proto-banner span {
-  display: inline-block;
-}
-
-.proto-banner a {
-  color: var(--primary);
-  border-bottom: 1px solid var(--primary);
-  padding-bottom: 1px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  opacity: 0.85;
-  transition: opacity var(--transition);
-}
-
-.proto-banner a:hover {
-  opacity: 1;
-  color: var(--primary);
-}
-
-.proto-banner-close {
-  position: absolute;
-  right: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  color: var(--primary);
-  opacity: 0.6;
-  transition: opacity var(--transition);
-  line-height: 1;
-  padding: 0;
-}
-
-.proto-banner-close:hover {
-  opacity: 1;
-}
-
-/* ─── STICKY NAV ─── */
-
-.sticky-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 990;
-  background-color: rgba(245, 240, 232, 0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform, opacity;
-}
-
-.sticky-nav.is-visible {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.sticky-nav.banner-offset {
-  top: 40px;
-}
-
-.sticky-nav__logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--primary);
-}
-
-.sticky-nav__links {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-  list-style: none;
-}
-
-.sticky-nav__links a {
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text);
-  position: relative;
-  padding-bottom: 3px;
-}
-
-.sticky-nav__links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--accent);
-  transition: width var(--transition);
-}
-
-.sticky-nav__links a:hover {
-  color: var(--text);
-}
-
-.sticky-nav__links a:hover::after {
-  width: 100%;
-}
-
-.sticky-nav__cta {
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--primary);
-  background-color: var(--accent);
-  border: 1px solid var(--accent);
-  padding: 9px 22px;
-  transition: background-color var(--transition), color var(--transition);
-}
-
-.sticky-nav__cta:hover {
-  background-color: transparent;
-  color: var(--accent);
-}
-
-/* ─── HERO ─── */
-
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 600px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  background-color: var(--bg-dark);
-}
-
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('hero-bg.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  transform: scale(1.05);
-  animation: heroZoom 10s ease-out forwards;
-  will-change: transform;
-}
-
-@keyframes heroZoom {
-  from { transform: scale(1.08); }
-  to   { transform: scale(1.0); }
-}
-
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(15, 13, 10, 0.75) 0%,
-    rgba(15, 13, 10, 0.3) 50%,
-    rgba(15, 13, 10, 0.1) 100%
-  );
-  z-index: 1;
-}
-
-.hero__overlay-side {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(15, 13, 10, 0.4) 0%,
-    transparent 60%
-  );
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 80px 96px;
-  max-width: 800px;
-}
-
-.hero-eyebrow {
-  display: block;
-  font-family: 'Jost', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 400;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: fadeUp 0.9s 0.3s ease-out forwards;
-}
-
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3rem, 7vw, 6.5rem);
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  color: var(--text-light);
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: fadeUp 0.9s 0.5s ease-out forwards;
-}
-
-.hero-title em {
-  font-style: italic;
-  font-weight: 300;
-  color: var(--accent-light);
-}
-
-.hero-sub {
-  font-size: 0.9rem;
-  font-weight: 300;
-  letter-spacing: 0.06em;
-  color: rgba(245, 240, 232, 0.72);
-  max-width: 420px;
-  line-height: 1.8;
-  margin-bottom: 44px;
-  opacity: 0;
-  animation: fadeUp 0.9s 0.7s ease-out forwards;
-}
-
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  opacity: 0;
-  animation: fadeUp 0.9s 0.9s ease-out forwards;
-}
-
-.hero-cta__primary {
-  display: inline-block;
-  font-family: 'Jost', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--primary);
-  background-color: var(--accent);
-  padding: 16px 36px;
-  border: 1px solid var(--accent);
-  transition: background-color var(--transition), color var(--transition);
-}
-
-.hero-cta__primary:hover {
-  background-color: transparent;
-  color: var(--accent);
-}
-
-.hero-cta__secondary {
-  display: inline-block;
-  font-family: 'Jost', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(245, 240, 232, 0.8);
-  border-bottom: 1px solid rgba(245, 240, 232, 0.4);
-  padding-bottom: 3px;
-  transition: color var(--transition), border-color var(--transition);
-}
-
-.hero-cta__secondary:hover {
-  color: var(--accent-light);
-  border-color: var(--accent-light);
-}
-
-.hero__scroll-hint {
-  position: absolute;
-  bottom: 40px;
-  right: 60px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  opacity: 0;
-  animation: fadeIn 1s 1.4s ease-out forwards;
-}
-
-.hero__scroll-line {
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(to bottom, rgba(245,240,232,0.6), transparent);
-  animation: scrollPulse 2s 2s ease-in-out infinite;
-}
-
-.hero__scroll-text {
-  font-size: 0.6rem;
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(245, 240, 232, 0.5);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.5; transform: scaleY(1); }
-  50% { opacity: 1; transform: scaleY(1.2); transform-origin: top; }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-/* ─── OPEN BADGE ─── */
-
-.open-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius
+/* ── OPEN BADGE & RATING ── */
+#openBadge{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .875rem;border-radius:99px;background:rgba(10,10,10,.7);border:1px solid var(--c-border);backdrop-filter:blur(8px)}
+#openBadge.open{border-color:#4a7c59;color:#6db585}
+#openBadge.open
   </style>
 </head>
 <body>
 <body>
 
-  <!-- Proto Banner -->
+  <!-- PROTO BANNER -->
   <div class="proto-banner">
-    🎨 Free demo for Taste of Paradise — All images, text &amp; colours are placeholders and fully customisable.
+    <p><strong>🎨 Free demo for Taste of Paradise</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <!-- Sticky Nav -->
-  <nav class="sticky-nav" id="stickyNav">
+  <!-- LOADING STATE -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-logo">Taste of Paradise</div>
+    <div class="loading-bar">
+      <div class="loading-dot"></div>
+      <div class="loading-dot"></div>
+      <div class="loading-dot"></div>
+    </div>
+  </div>
+
+  <!-- STICKY NAV -->
+  <nav id="stickyNav">
     <div class="nav-logo">Taste of Paradise</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#visit">Visit Us</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a class="nav-reserve" href="tel:020 3509 8964">📞 Reserve a Table</a>
+    <a class="nav-reserve" href="tel:020 3509 8964">Reserve</a>
+    <button class="nav-hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero" style="background-image: url('images/img_0.jpg');">
-    <div class="hero-content">
-      <div class="open-badge" id="openBadge">● Checking hours…</div>
-      <h1 class="hero-title">Taste of Paradise</h1>
-      <p class="hero-sub">Where Caribbean Soul Meets South London Warmth</p>
-      <div class="rating-counter" id="ratingCounter" data-rating="4.8" data-count="55">
-        ⭐ 4.8 · <span>55</span> Google reviews
-      </div>
-      <div class="hero-cta">
-        <a href="tel:020 3509 8964" class="btn-primary">📞 Call to Reserve</a>
-        <a href="https://wa.me/02035098964" class="btn-secondary">💬 WhatsApp Us</a>
-      </div>
-      <div class="service-tags">
-        <span>🍽 Dine-In</span>
-        <span>🥡 Takeaway</span>
-        <span>🚴 Delivery</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Social Bar -->
-  <div class="social-bar">
-    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-      </svg>
-    </a>
-    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-      </svg>
-    </a>
-    <a href="https://wa.me/02035098964" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-    </a>
-    <a href="https://maps.google.com/?cid=15866910803748134489" target="_blank" rel="noopener" aria-label="Google Maps">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0C8.007 0 4.4 1.7 1.85 4.41L7.1 9.66C8.3 8.46 9.96 7.71 11.79 7.71c3.37 0 6.1 2.73 6.1 6.1 0 1.83-.76 3.49-1.97 4.68l5.25 5.25C23.4 21.08 25 17.72 25 14c0-7.73-6.27-14-14-14zm-1.79 16.29c-.84-.19-1.61-.6-2.23-1.17l-5.25 5.25C4.74 22.3 7.23 23.5 10 23.86V16.3c-.59-.01-.59-.01-.59-.01l.8-.8zm1.79.81c.28 0 .56-.02.83-.06v7.57C11.55 24.53 10.54 24.5 9.54 24.36v-7.57c.78.19 1.6.31 2.46.31z"/>
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-      </svg>
-    </a>
+  <!-- LANGUAGE SELECTOR -->
+  <div class="language-selector">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <span class="lang-divider">|</span>
+    <button class="lang-btn" data-lang="fr">FR</button>
+    <span class="lang-divider">|</span>
+    <button class="lang-btn" data-lang="es">ES</button>
   </div>
 
-  <!-- About Section -->
-  <section class="about-section" id="about">
-    <div class="about-inner">
-      <div class="about-image" data-aos="fade-right">
-        <img src="images/img_1.jpg" alt="Inside Taste of Paradise restaurant" loading="lazy">
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-parallax" style="background-image: url('images/img_0.jpg');"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">South London · Caribbean Cuisine</span>
+      <h1 class="hero-title">Taste of Paradise</h1>
+      <p class="hero-sub">Where Caribbean Soul Meets South London Heart</p>
+      <div class="hero-meta">
+        <span id="openBadge"></span>
+        <span id="ratingCounter" data-rating="4.8" data-count="55"></span>
       </div>
-      <div class="about-text" data-aos="fade-left">
-        <span class="section-label">Our Story</span>
-        <h2 data-aos="fade-up">A Taste of the Islands, Right Here in South London</h2>
-        <p>Taste of Paradise brings the vibrant heart of the Caribbean to South London, serving fresh, generous plates bursting with authentic island flavour. From the moment you walk through our doors, you are greeted like family — wrapped in good food, great music, and a warmth that keeps our guests coming back.</p>
+      <div class="hero-cta-wrap">
+        <a class="hero-cta-primary" href="tel:020 3509 8964">
+          <i class="fa fa-phone"></i> Call to Reserve
+        </a>
+        <a class="hero-cta-secondary" href="https://wa.me/02035098964" target="_blank" rel="noopener">
+          <i class="fa fa-whatsapp"></i> WhatsApp Us
+        </a>
+      </div>
+      <div class="hero-scroll-hint">
+        <span>Discover More</span>
+        <div class="hero-scroll-line"></div>
       </div>
     </div>
+    <div class="hero-indicators">
+      <span class="hero-dot active"></span>
+      <span class="hero-dot"></span>
+      <span class="hero-dot"></span>
+    </div>
+  </section>
 
-    <div class="about-grid">
-      <div class="value-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="value-icon">🌿</div>
-        <h3>Freshness First</h3>
-        <p>Every dish is crafted from the freshest ingredients, honouring the bold, natural flavours of the Caribbean islands.</p>
-      </div>
-      <div class="value-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="value-icon">🍛</div>
-        <h3>Generous by Nature</h3>
-        <p>We believe a full plate and a full heart go hand in hand, so we never skimp on portions or passion.</p>
-      </div>
-      <div class="value-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="value-icon">🤝</div>
-        <h3>Community at Heart</h3>
-        <p>Our restaurant is a space where every guest feels seen, welcomed, and celebrated from the very first visit.</p>
+  <!-- PRIMARY SECTIONS -->
+
+  <!-- ABOUT / STORY INTRO -->
+  <section class="section primary-sections" id="about">
+    <div class="container">
+      <div class="section-inner two-col">
+        <div class="section-text" data-aos="fade-right">
+          <span class="eyebrow-label">Our Story</span>
+          <h2 class="section-title">A Taste of the Caribbean, Right Here in South London</h2>
+          <p class="section-body">Taste of Paradise brings the warmth, colour, and bold flavours of the Caribbean right to the heart of South London. Every dish is crafted with love, using fresh ingredients and time-honoured recipes that make every guest feel like family. From the moment you walk through our doors, you are welcomed into something truly special.</p>
+          <div class="service-badges">
+            <span class="badge"><i class="fa fa-cutlery"></i> Dine In</span>
+            <span class="badge"><i class="fa fa-shopping-bag"></i> Takeaway</span>
+            <span class="badge"><i class="fa fa-bicycle"></i> Delivery</span>
+          </div>
+          <a class="btn-outline" href="https://maps.google.com/?cid=15866910803748134489" target="_blank" rel="noopener">
+            <i class="fa fa-map-marker"></i> Get Directions on Google Maps
+          </a>
+        </div>
+        <div class="section-image" data-aos="fade-left">
+          <img
+            src="images/img_1.jpg"
+            srcset="
+              https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=Ab43m-ve-jWwbgARuOCYPwZ8H_GJN5v-Cq_gnW341T6hXLrBqZN9d9_pnB43t3_0eNa6PV0YJGHtjU-RlDqFArQDUzCde6Y0m0BcF_JQBBDClxmFeaMyQmaaNCj_qMV9Q6ltH2o5waFSVC-a4sxD5o_qYtPHCiQogn_hN8ZsVIR43L8pSdll4QlS7yhV-0_D2UzT7TNfr7BANlIh5vitAhIOnGdEEESm__SuO4K0aT-Rpel7he0_S6ORWWIuNgLwjLr3O_qOSZHG97AUQ1XD11ojzmgUXYGxUT0GgA_xBhMSzgQs7kq4bpTIbQUPPg27ZoHQnNPP7AEBMvHXRrS-8xf_Y2d3pK1C6Ltkpnr-jMtaXT-FuavVVZwF8ZTAGPczX7BvASo3eYm8enRkBxC0p_zS8MGc0bF1hDEMzNWNhM07VBKSNKom8tYsp6hy9Rx_LA&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs 400w,
+              https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=Ab43m-ve-jWwbgARuOCYPwZ8H_GJN5v-Cq_gnW341T6hXLrBqZN9d9_pnB43t3_0eNa6PV0YJGHtjU-RlDqFArQDUzCde6Y0m0BcF_JQBBDClxmFeaMyQmaaNCj_qMV9Q6ltH2o5waFSVC-a4sxD5o_qYtPHCiQogn_hN8ZsVIR43L8pSdll4QlS7yhV-0_D2UzT7TNfr7BANlIh5vitAhIOnGdEEESm__SuO4K0aT-Rpel7he0_S6ORWWIuNgLwjLr3O_qOSZHG97AUQ1XD11ojzmgUXYGxUT0GgA_xBhMSzgQs7kq4bpTIbQUPPg27ZoHQnNPP7AEBMvHXRrS-8xf_Y2d3pK1C6Ltkpnr-jMtaXT-FuavVVZwF8ZTAGPczX7BvASo3eYm8enRkBxC0p_zS8MGc0bF1hDEMzNWNhM07VBKSNKom8tYsp6hy9Rx_LA&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs 800w,
+              https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=Ab43m-ve-jWwbgARuOCYPwZ8H_GJN5v-Cq_gnW341T6hXLrBqZN9d9_pnB43t3_0eNa6PV0YJGHtjU-RlDqFArQDUzCde6Y0m0BcF_JQBBDClxmFeaMyQmaaNCj_qMV9Q6ltH2o5waFSVC-a4sxD5o_qYtPHCiQogn_hN8ZsVIR43L8pSdll4QlS7yhV-0_D2UzT7TNfr7BANlIh5vitAhIOnGdEEESm__SuO4K0aT-Rpel7he0_S6ORWWIuNgLwjLr3O_qOSZHG97AUQ1XD11ojzmgUXYGxUT0GgA_xBhMSzgQs7kq4bpTIbQUPPg27ZoHQnNPP7AEBMvHXRrS-8xf_Y2d3pK1C6Ltkpnr-jMtaXT-FuavVVZwF8ZTAGPczX7BvASo3eYm8enRkBxC0p_zS8MGc0bF1hDEMzNWNhM07VBKSNKom8tYsp6hy9Rx_LA&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs 1200w
+            "
+            sizes="(max-width: 600px) 400px, (max-width: 1024px) 800px, 1200px"
+            alt="Inside Taste of Paradise restaurant"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Reviews Section -->
-  <section class="reviews-section" id="reviews">
-    <span class="section-label" data-aos="fade-up">What People Are Saying</span>
-    <h2 data-aos="fade-up">⭐ 4.8 on Google · 55 Reviews</h2>
-    <div class="reviews-grid">
-      <div class="review-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p>"Never have I ever been into a carribean restaurant and felt So WELCOMED! This shop is a 10/10. Definitely the best all round 👌🏾"</p>
-        <div class="review-author">— Princess P</div>
+  <!-- PHILOSOPHY PILLARS -->
+  <section class="section philosophy-section" id="philosophy">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="eyebrow-label">Our Philosophy</span>
+        <h2 class="section-title">What Makes Us Different</h2>
       </div>
-      <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p>"Beautiful food best Caribbean I've tasked in a long time, good portions fresh tasty food restaurant lovely atmosphere great staff and even great music played to even enjoy the love of Caribbean food m"</p>
-        <div class="review-author">— Melissa Whitrod</div>
+      <div class="pillars-grid">
+        <div class="pillar-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="pillar-icon">🌿</div>
+          <h3>Rooted in Tradition</h3>
+          <p>Every recipe honours the rich culinary heritage of the Caribbean, passed down through generations and cooked with genuine pride.</p>
+        </div>
+        <div class="pillar-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="pillar-icon">🍋</div>
+          <h3>Fresh Every Day</h3>
+          <p>We source the finest, freshest ingredients daily to ensure every plate bursts with authentic, vibrant flavour.</p>
+        </div>
+        <div class="pillar-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="pillar-icon">🤝</div>
+          <h3>Welcome Above All</h3>
+          <p>We believe great food tastes even better when served with warmth, and every guest leaves feeling truly at home.</p>
+        </div>
       </div>
-      <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p>"The best Caribbean food in Peckham! Quality and consistent food every time!! Absolutely delicious, tasty and filling!"</p>
-        <div class="review-author">— Gloria</div>
-      </div>
-    </div>
-    <div class="reviews-cta" data-aos="fade-up">
-      <a href="https://maps.google.com/?cid=15866910803748134489" target="_blank" rel="noopener" class="btn-outline">Read All Reviews on Google →</a>
     </div>
   </section>
 
-  <!-- Menu Section -->
-  <section class="menu-section" id="menu">
-    <span class="section-label" data-aos="fade-up">What We Serve</span>
-    <h2 data-aos="fade-up">Our Menu</h2>
-
-    <div class="menu-category" data-aos="fade-up">
-      <h3 class="menu-category-title">🥗 Starters</h3>
-      <div class="menu-list">
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
-          <div class="menu-item-info">
-            <h4>Saltfish Fritters</h4>
-            <p>Golden, crispy fritters packed with flaked saltfish, scotch bonnet and fresh herbs, served with a tangy mango dipping sauce.</p>
-          </div>
-          <div class="menu-price">£7</div>
-        </div>
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="80">
-          <div class="menu-item-info">
-            <h4>Jerk Chicken Wings</h4>
-            <p>Smoky, fire-kissed wings marinated overnight in a classic Jamaican jerk blend, served with a cooling coconut-lime dip.</p>
-          </div>
-          <div class="menu-price">£8</div>
-        </div>
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="160">
-          <div class="menu-item-info">
-            <h4>Pumpkin Soup</h4>
-            <p>A velvety, slow-simmered Caribbean pumpkin soup infused with thyme, allspice and a touch of coconut cream.</p>
-          </div>
-          <div class="menu-price">£6</div>
-        </div>
-      </div>
+  <!-- SCENE GALLERY — full-bleed-photo-strip + responsive-image-carousel -->
+  <section class="scene-gallery" id="gallery" aria-label="Restaurant gallery">
+    <div class="gallery-header container" data-aos="fade-up">
+      <span class="eyebrow-label">Gallery</span>
+      <h2 class="section-title">A Taste of the Experience</h2>
     </div>
 
-    <div class="menu-category" data-aos="fade-up">
-      <h3 class="menu-category-title">🍽 Mains</h3>
-      <div class="menu-list">
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
-          <div class="menu-item-info">
-            <h4>Oxtail Stew</h4>
-            <p>Slow-braised oxtail in a rich, deeply spiced gravy with butter beans,
+    <!-- Full-bleed photo strip -->
+    <div class="photo-strip full-bleed-photo-strip">
+      <div class="strip-item">
+        <img
+          src="images/img_2.jpg"
+          srcset="
+            https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=Ab43m-sacI6eU0TvqFPi61Gqgd_Jyy7HgEQJbFjVCNqXjUOnCRnKVG_kj7k7Ai1MzADD3xIP0KHL3a31Fg-OsqFML5XN6mVyATDAgNKDGg77q1e2zxVPZuHoctSfgQfuUui6NX50dOz79mlVA9j0J49RpMQh8rHz2kDAosrgfe07cZkkrNbyVJHpVEuYSojb9xk2msTYFrR1FxWgUymAH2YW1wr9xHTFIcWs2I6D0QdNhDAR13fgpzQoD4NybLhuDkJsRzaLXdLVaDaXHkZfZvGWfg8BUrnhG7W9wNEzlRNstmcDjdbo9iBIZ2-fIDlmhWoND8VfEZpJPEPrCtU3oklrUcveuJjUgSVXRZKJds8JG-yNu-nV2rOSX-5dWgXL07KFu-Svfq96ftWv3pH01vVZR_TQETrmML3LVxKNqLduZn60sm9Ky9bkQ-JAFjt7Pw&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs 400w,
+            https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=Ab43m-sacI6eU0TvqFPi61Gqgd_Jyy7HgEQJbFjVCNqXjUOnCRnKVG_kj7k7Ai1MzADD3xIP0KHL3a31Fg-OsqFML5XN6mVyATDAgNKDGg77q1e2zxVPZuHoctSfgQfuUui6NX50dOz79mlVA9j0J49RpMQh8rHz2kDAosrgfe07cZkkrNbyVJHpVEuYSojb9xk2msTYFrR1FxWgUymAH2YW1wr9xHTFIcWs2I6D0QdNhDAR13fgpzQoD4NybLhuDkJsRzaLXdLVaDaXHkZfZvGWfg8BUrnhG7W9wNEzlRNstmcDjdbo9iBIZ2-fIDlm
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:700,once:true,offset:60});
+AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
 
-// Sticky nav
-const stickyNav = document.getElementById('stickyNav');
-const heroEl = document.querySelector('.hero,[class*=hero]');
-if(stickyNav && heroEl){
-  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
-}
-
-// Open/Closed badge
-const HOURS={"Monday": "11:00 AM – 8:00 PM", "Tuesday": "11:00 AM – 8:00 PM", "Wednesday": "8:00 AM – 8:00 PM", "Thursday": "11:00 AM – 8:00 PM", "Friday": "8:00 AM – 10:00 PM", "Saturday": "8:00 AM – 10:00 PM", "Sunday": "Closed"};
+// Sticky nav on scroll past hero
 (function(){
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
-  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-  const badge=document.getElementById('openBadge');
-  if(!badge)return;
-  if(!m){badge.textContent='See hours below';return;}
-  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
-  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
-  const isOpen=n>=o&&n<(c<o?c+1440:c);
-  badge.textContent=isOpen?'● Open now':'● Closed';
-  badge.style.color=isOpen?'#22c55e':'#ef4444';
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
 })();
 
-// Rating counter
-const rc=document.getElementById('ratingCounter');
-if(rc){
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "11:00 AM – 8:00 PM", "Tuesday": "11:00 AM – 8:00 PM", "Wednesday": "8:00 AM – 8:00 PM", "Thursday": "11:00 AM – 8:00 PM", "Friday": "8:00 AM – 10:00 PM", "Saturday": "8:00 AM – 10:00 PM", "Sunday": "Closed"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
   const rating=4.8,cnt=55;
+  if(!rating)return;
   new IntersectionObserver(([e])=>{
     if(!e.isIntersecting)return;
-    rc.textContent='';
-    const animate=(from,to,dec,cb)=>{
-      let start=null;
-      (function step(ts){
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
         if(!start)start=ts;
-        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
         cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
-        if(p<1)requestAnimationFrame(step);
+        if(p<1)requestAnimationFrame(tick);
       })(performance.now());
     };
-    const rs=document.createElement('span'),cs=document.createElement('span');
-    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
-    animate(0,rating,true,v=>rs.textContent=v);
-    animate(0,cnt,false,v=>cs.textContent=v);
-  },{threshold:0.5}).observe(rc);
-}
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
 
-// Ripple
-document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
   btn.addEventListener('click',function(e){
-    const r=document.createElement('span');
-    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
     Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
       left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
-      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
-    this.style.position='relative';this.style.overflow='hidden';
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
     this.append(r);setTimeout(()=>r.remove(),700);
   });
 });
 </script>
-<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
