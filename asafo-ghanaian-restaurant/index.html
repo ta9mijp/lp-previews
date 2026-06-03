@@ -18,123 +18,106 @@
   @media(min-width:700px){.float-cta{display:none!important;}}
   #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
   #stickyNav.visible{transform:translateY(0);}
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Bebas+Neue&family=Noto+Sans:wght@300;400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600&family=Bebas+Neue&display=swap');
 
 :root {
---c-primary:#D4400A;
+--c-primary:#E8420A;
 --c-secondary:#F5A623;
---c-accent:#1B4332;
---c-gold:#C8960C;
---c-dark:#0D0D0D;
---c-charcoal:#1A1A1A;
---c-offwhite:#FAF7F2;
---c-cream:#F2E8D9;
---c-text:#2C1810;
---c-muted:#8B7355;
+--c-accent:#1A6B3C;
+--c-dark:#1C1208;
+--c-light:#FDF6EC;
 --c-white:#FFFFFF;
---c-overlay:rgba(13,13,13,.55);
---ff-display:'Playfair Display',Georgia,serif;
---ff-sans:'Inter',Helvetica,sans-serif;
---ff-impact:'Bebas Neue',Impact,sans-serif;
---ff-body:'Noto Sans',sans-serif;
---fs-xs:.75rem;
---fs-sm:.875rem;
---fs-base:1rem;
---fs-md:1.125rem;
---fs-lg:1.5rem;
---fs-xl:2rem;
---fs-2xl:3rem;
---fs-3xl:4.5rem;
---fs-4xl:6rem;
---radius-sm:4px;
---radius-md:8px;
---radius-lg:16px;
---radius-pill:999px;
---shadow-sm:0 2px 8px rgba(0,0,0,.12);
---shadow-md:0 8px 32px rgba(0,0,0,.18);
---shadow-lg:0 16px 64px rgba(0,0,0,.28);
---trans-fast:.2s ease;
---trans-base:.35s ease;
---trans-slow:.6s cubic-bezier(.25,.46,.45,.94);
---z-base:1;
---z-nav:100;
---z-overlay:200;
---z-modal:300;
---header-h:72px;
+--c-gold:#D4A017;
+--c-text:#2C1A0E;
+--ff-head:'Playfair Display',serif;
+--ff-display:'Bebas Neue',cursive;
+--ff-body:'Inter',sans-serif;
+--radius:12px;
+--radius-lg:24px;
+--shadow:0 8px 32px rgba(28,18,8,.18);
+--shadow-card:0 4px 20px rgba(28,18,8,.12);
+--trans:.35s cubic-bezier(.4,0,.2,1);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%}
-body{font-family:var(--ff-body);background:var(--c-dark);color:var(--c-offwhite);overflow-x:hidden;line-height:1.6}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--ff-body);color:var(--c-text);background:var(--c-light);overflow-x:hidden;line-height:1.6}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
-ul,ol{list-style:none}
-button{cursor:pointer;border:none;background:none;font-family:inherit}
+ul{list-style:none}
 
-/* ── PROTO BANNER (fixed class) ── */
-.proto-banner{position:fixed;bottom:0;left:0;right:0;z-index:var(--z-modal);background:var(--c-primary);color:var(--c-white);text-align:center;padding:.5rem 1rem;font:600 var(--fs-sm)/1.4 var(--ff-sans);display:flex;align-items:center;justify-content:center;gap:.75rem}
-.proto-banner a{color:var(--c-secondary);text-decoration:underline}
-.proto-banner .proto-close{margin-left:auto;opacity:.7;font-size:1.2rem;transition:opacity var(--trans-fast)}
-.proto-banner .proto-close:hover{opacity:1}
+/* ── STICKY NAV ── */
+#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;background:transparent;transition:background var(--trans),box-shadow var(--trans)}
+#stickyNav.scrolled{background:rgba(28,18,8,.92);backdrop-filter:blur(10px);box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.nav__logo{font-family:var(--ff-display);font-size:1.6rem;letter-spacing:.08em;color:var(--c-white)}
+.nav__links{display:flex;gap:2rem}
+.nav__links a{font-family:var(--ff-body);font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--c-white);padding:.25rem 0;border-bottom:2px solid transparent;transition:border-color var(--trans)}
+.nav__links a:hover{border-bottom-color:var(--c-secondary)}
+.nav__cta{background:var(--c-primary);color:var(--c-white);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.25rem;border-radius:4px;transition:background var(--trans)}
+.nav__cta:hover{background:var(--c-secondary)}
 
-/* ── OPEN BADGE (fixed id) ── */
-#openBadge{position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:var(--z-overlay);background:var(--c-accent);color:var(--c-white);writing-mode:vertical-rl;padding:.75rem .5rem;font:700 var(--fs-sm)/1 var(--ff-impact);letter-spacing:.15em;border-radius:var(--radius-sm) 0 0 var(--radius-sm);box-shadow:var(--shadow-md);transition:background var(--trans-fast),transform var(--trans-fast)}
-#openBadge:hover{background:var(--c-primary);transform:translateY(-50%) translateX(-4px)}
-#openBadge .badge-dot{width:8px;height:8px;background:var(--c-secondary);border-radius:50%;display:block;margin:.4rem auto 0;animation:pulse 2s infinite}
+/* ── PROTO BANNER ── */
+.proto-banner{background:var(--c-primary);color:var(--c-white);text-align:center;padding:.55rem 1rem;font-size:.78rem;font-weight:600;letter-spacing:.06em;position:relative;z-index:101}
 
-/* ── RATING COUNTER (fixed id) ── */
-#ratingCounter{display:flex;align-items:center;gap:.5rem;font-family:var(--ff-sans)}
-#ratingCounter .stars{color:var(--c-secondary);font-size:1.1rem;letter-spacing:.05em}
-#ratingCounter .score{font:700 var(--fs-lg)/1 var(--ff-impact);color:var(--c-secondary)}
-#ratingCounter .count{font:400 var(--fs-xs)/1 var(--ff-sans);color:var(--c-muted)}
+/* ── HERO ── */
+.hero{position:relative;width:100%;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero__bg{position:absolute;inset:0;background:url('hero-bg.jpg') center/cover no-repeat;transform:scale(1.08);will-change:transform;transition:transform .1s linear}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(28,18,8,.72) 0%,rgba(232,66,10,.28) 60%,rgba(28,18,8,.82) 100%)}
+.hero__content{position:relative;z-index:2;max-width:760px;padding:0 1.5rem}
+.hero__eyebrow{font-family:var(--ff-display);font-size:clamp(.9rem,2vw,1.1rem);letter-spacing:.3em;color:var(--c-secondary);text-transform:uppercase;margin-bottom:1rem}
+.hero__title{font-family:var(--ff-head);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;color:var(--c-white);line-height:1.1;margin-bottom:1.25rem}
+.hero__title em{font-style:italic;color:var(--c-secondary)}
+.hero__sub{font-size:clamp(.95rem,2vw,1.15rem);color:rgba(255,255,255,.82);max-width:480px;margin:0 auto 2rem}
+.hero__actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--c-primary);color:var(--c-white);padding:.85rem 2rem;border-radius:4px;font-weight:600;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;transition:background var(--trans),transform var(--trans);display:inline-block}
+.btn-primary:hover{background:var(--c-secondary);transform:translateY(-2px)}
+.btn-outline{border:2px solid var(--c-white);color:var(--c-white);padding:.82rem 2rem;border-radius:4px;font-weight:600;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;transition:background var(--trans),color var(--trans);display:inline-block}
+.btn-outline:hover{background:var(--c-white);color:var(--c-dark)}
+.hero__scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.6);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;z-index:2}
+.hero__scroll::after{content:'';width:1px;height:40px;background:linear-gradient(var(--c-secondary),transparent);animation:scrollPulse 1.8s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.4;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
 
-/* ── STICKY NAV (fixed id) ── */
-#stickyNav{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);height:var(--header-h);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);transition:background var(--trans-base),box-shadow var(--trans-base);background:transparent}
-#stickyNav.scrolled{background:rgba(13,13,13,.92);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.4)}
-#stickyNav .nav-logo img{height:44px;width:auto;transition:opacity var(--trans-fast)}
-#stickyNav .nav-logo img:hover{opacity:.8}
-#stickyNav .nav-links{display:flex;gap:2rem;align-items:center}
-#stickyNav .nav-links a{font:600 var(--fs-sm)/1 var(--ff-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--c-offwhite);position:relative;padding-bottom:.25rem;transition:color var(--trans-fast)}
-#stickyNav .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--c-secondary);transition:width var(--trans-base)}
-#stickyNav .nav-links a:hover{color:var(--c-secondary)}
-#stickyNav .nav-links a:hover::after{width:100%}
-#stickyNav .nav-cta{background:var(--c-primary);color:var(--c-white);padding:.5rem 1.25rem;border-radius:var(--radius-pill);font:600 var(--fs-sm)/1 var(--ff-sans);letter-spacing:.08em;text-transform:uppercase;transition:background var(--trans-fast),transform var(--trans-fast)}
-#stickyNav .nav-cta:hover{background:var(--c-secondary);transform:scale(1.04)}
-#stickyNav .nav-ig{display:flex;align-items:center;gap:.4rem;opacity:.8;transition:opacity var(--trans-fast)}
-#stickyNav .nav-ig:hover{opacity:1}
+/* ── OPEN BADGE ── */
+#openBadge{position:fixed;bottom:5.5rem;right:1.5rem;z-index:99;background:var(--c-accent);color:var(--c-white);width:68px;height:68px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 16px rgba(26,107,60,.4);animation:pulse 2.4s ease-in-out infinite}
+#openBadge span{font-size:1rem;font-weight:700;line-height:1}
+@keyframes pulse{0%,100%{box-shadow:0 4px 16px rgba(26,107,60,.4)}50%{box-shadow:0 4px 28px rgba(26,107,60,.7)}}
 
-/* ── FLOAT CTA (fixed class) ── */
-.float-cta{position:fixed;bottom:5rem;right:1.5rem;z-index:var(--z-overlay);display:flex;flex-direction:column;gap:.75rem}
-.float-cta .fcta-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);transition:transform var(--trans-fast),box-shadow var(--trans-fast);font-size:1.4rem}
-.float-cta .fcta-btn:hover{transform:scale(1.12);box-shadow:var(--shadow-lg)}
-.float-cta .fcta-reserve{background:var(--c-primary)}
-.float-cta .fcta-call{background:var(--c-accent)}
-.float-cta .fcta-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
-.float-cta .fcta-label{position:absolute;right:64px;white-space:nowrap;background:var(--c-charcoal);color:var(--c-white);font:500 var(--fs-xs)/1 var(--ff-sans);padding:.3rem .6rem;border-radius:var(--radius-sm);opacity:0;pointer-events:none;transition:opacity var(--trans-fast)}
-.float-cta .fcta-btn:hover .fcta-label{opacity:1}
+/* ── RATING COUNTER ── */
+#ratingCounter{display:flex;align-items:center;gap:.5rem;background:rgba(212,160,23,.12);border:1px solid var(--c-gold);border-radius:8px;padding:.5rem 1rem;font-size:.85rem;font-weight:600;color:var(--c-gold)}
+#ratingCounter .stars{color:var(--c-gold);letter-spacing:.05em}
+#ratingCounter .count{color:var(--c-text);font-size:.75rem;font-weight:400}
 
-/* ── SITE WRAP ── */
-.asafo-wrap{position:relative;overflow:hidden}
+/* ── FLOAT CTA ── */
+.float-cta{position:fixed;bottom:1.5rem;right:1.5rem;z-index:98;background:var(--c-primary);color:var(--c-white);padding:.8rem 1.5rem;border-radius:50px;font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;box-shadow:var(--shadow);transition:background var(--trans),transform var(--trans);display:flex;align-items:center;gap:.5rem}
+.float-cta:hover{background:var(--c-secondary);transform:translateY(-3px)}
+.float-cta svg{width:16px;height:16px;fill:currentColor}
 
-/* ── HEADER ── */
-.asafo-header{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);height:var(--header-h);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);transition:background var(--trans-base),box-shadow var(--trans-base)}
-.asafo-header.is-scrolled{background:rgba(13,13,13,.9);backdrop-filter:blur(10px);box-shadow:0 2px 24px rgba(0,0,0,.35)}
-.header-logo-wrap a{display:flex;align-items:center;gap:.6rem}
-.header-logo-wrap img{height:40px;width:auto}
-.header-logo-text{font:700 var(--fs-md)/1.1 var(--ff-display);color:var(--c-offwhite)}
-.header-logo-text span{display:block;font:400 var(--fs-xs)/1 var(--ff-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--c-secondary);margin-top:.2rem}
-.header-actions{display:flex;align-items:center;gap:1.25rem}
-.header-ig-link{display:flex;align-items:center;opacity:.75;transition:opacity var(--trans-fast)}
-.header-ig-link:hover{opacity:1}
-.header-ig-link img{width:22px;height:22px}
-.menu-toggle-btn{font:700 var(--fs-sm)/1 var(--ff-impact);letter-spacing:.2em;color:var(--c-secondary);display:flex;align-items:center;gap:.5rem;padding:.4rem .8rem;border:1px solid rgba(245,166,35,.4);border-radius:var(--radius-sm);transition:all var(--trans-fast)}
-.menu-toggle-btn:hover{background:var(--c-secondary);color:var(--c-dark)}
-.menu-toggle-btn .toggle-bars{display:flex;flex-direction:column;gap:4px;width:18px}
-.menu-toggle-btn .toggle-bars span{display:block;height:2px;background:currentColor;transition:all var(--trans-base);
+/* ── SECTION BASE ── */
+.section{padding:6rem 1.5rem}
+.section--dark{background:var(--c-dark);color:var(--c-white)}
+.section--accent{background:var(--c-primary);color:var(--c-white)}
+.section--warm{background:#FDF0E0}
+.container{max-width:1120px;margin:0 auto;width:100%}
+.section__label{font-family:var(--ff-display);font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;color:var(--c-secondary);margin-bottom:.75rem}
+.section__title{font-family:var(--ff-head);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:1.25rem}
+.section__body{font-size:1rem;line-height:1.75;max-width:56ch;color:rgba(44,26,14,.75)}
+.section--dark .section__body{color:rgba(255,255,255,.7)}
+.section--dark .section__title{color:var(--c-white)}
+.divider{width:48px;height:3px;background:var(--c-primary);border-radius:2px;margin:1rem 0 1.5rem}
+.divider--gold{background:var(--c-gold)}
+
+/* ── ABOUT ── */
+.about__grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about__img-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
+.about__img-wrap img{width:100%;height:520px;object-fit:cover}
+.about__badge{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--c-secondary);color:var(--c-dark);width:100px;height:100px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;line-height:1.3;font-weight:700;box-shadow:var(--shadow-card)}
+.about__list{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
+.about__list li{display:flex;align-items:flex-start;gap:.75rem;font-size:.92rem}
+.about__list li::before{content:'
   </style>
 </head>
 <body>
-<body data-page="restaurant-landing">
+<body>
 
   <!-- PROTO BANNER -->
   <div class="proto-banner">
@@ -142,239 +125,175 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <!-- HEADER -->
-  <header class="asafo-wrap asafo-header" id="mainHeader" data-color="dark">
-    <div class="header-inner">
-      <div class="header-logo-text">
-        <span class="logo-mark">✦</span>
-        <span class="logo-name">Asafo</span>
-        <span class="logo-sub">Ghanaian Restaurant</span>
-      </div>
-      <nav class="nav-links desktop-nav" aria-label="Main navigation">
-        <a href="#concept" class="nav-link">Our Story</a>
-        <a href="#menu" class="nav-link">Menu</a>
-        <a href="#drinks" class="nav-link">Drinks</a>
-        <a href="#location" class="nav-link">Visit Us</a>
-      </nav>
-      <div class="header-actions">
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="header-ig-link nav-ig" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="tel:02086788406" class="nav-cta">Reserve a Table</a>
-        <button class="menu-toggle-btn" id="mobileMenuToggle" aria-label="Open menu" aria-expanded="false">
-          <span class="toggle-bars">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </button>
-      </div>
-    </div>
-
-    <!-- MOBILE MENU -->
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <nav class="mobile-nav-links" aria-label="Mobile navigation">
-        <a href="#concept" class="mobile-nav-link">Our Story</a>
-        <a href="#menu" class="mobile-nav-link">Menu</a>
-        <a href="#drinks" class="mobile-nav-link">Drinks</a>
-        <a href="#location" class="mobile-nav-link">Visit Us</a>
-      </nav>
-      <div class="mobile-nav-actions">
-        <a href="tel:02086788406" class="mobile-cta-btn">
-          <i class="fa fa-phone"></i> Call to Reserve
-        </a>
-        <a href="https://wa.me/02086788406" class="mobile-cta-btn mobile-cta-wa" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-whatsapp"></i> WhatsApp Us
-        </a>
-      </div>
-      <div class="mobile-social">
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://wa.me/02086788406" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://maps.google.com/?cid=3060433591634604382" target="_blank" rel="noopener noreferrer" aria-label="Google Maps"><i class="fab fa-google"></i></a>
-      </div>
-    </div>
-  </header>
-
   <!-- STICKY NAV -->
-  <nav id="stickyNav" class="is-scrolled" aria-label="Sticky navigation" data-color="sticky">
-    <div class="sticky-nav-inner">
-      <div class="sticky-logo">
-        <span class="logo-mark">✦</span>
-        <span class="logo-name">Asafo</span>
-      </div>
-      <div class="sticky-nav-links nav-links">
-        <a href="#concept">Our Story</a>
-        <a href="#menu">Menu</a>
-        <a href="#drinks">Drinks</a>
-        <a href="#location">Visit Us</a>
-      </div>
-      <div class="sticky-actions">
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="nav-ig" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="tel:02086788406" class="nav-cta">Reserve</a>
-      </div>
-    </div>
+  <nav id="stickyNav">
+    <a class="nav__logo" href="#">Asafo</a>
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="nav__cta" href="tel:020 8678 8406">📞 Reserve</a>
   </nav>
 
-  <!-- HERO SLIDER WITH LOGO -->
-  <section class="hero-section full-bleed-center" id="hero" data-color="hero" aria-label="Hero carousel">
-
-    <!-- BOKEH BACKGROUND EFFECTS -->
-    <div class="bokeh-container" aria-hidden="true">
-      <span class="bokeh-orb bokeh-orb--1"></span>
-      <span class="bokeh-orb bokeh-orb--2"></span>
-      <span class="bokeh-orb bokeh-orb--3"></span>
-      <span class="bokeh-orb bokeh-orb--4"></span>
-      <span class="bokeh-orb bokeh-orb--5"></span>
-    </div>
-
-    <!-- SWIPER MAIN SLIDER -->
-    <div class="swiper hero-swiper" id="heroSwiper">
-      <div class="swiper-wrapper">
-
-        <!-- SLIDE 1 -->
-        <div class="swiper-slide hero-slide" data-color="slide-1">
-          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');" role="img" aria-label="Asafo restaurant dish"></div>
-          <div class="slide-overlay"></div>
-        </div>
-
-        <!-- SLIDE 2 -->
-        <div class="swiper-slide hero-slide" data-color="slide-2">
-          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');" role="img" aria-label="Asafo restaurant interior"></div>
-          <div class="slide-overlay"></div>
-        </div>
-
-        <!-- SLIDE 3 (duplicate for loop) -->
-        <div class="swiper-slide hero-slide" data-color="slide-3">
-          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');" role="img" aria-label="Asafo food close up"></div>
-          <div class="slide-overlay slide-overlay--deep"></div>
-        </div>
-
+  <!-- ═══════════════════════════════════════════
+       HERO — full-bleed-center + parallax-hero
+  ════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" style="background-image:url('images/img_0.jpg');"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">
+        <span id="openBadge"></span>
+        South London · Ghanaian Cuisine
+      </p>
+      <h1 class="hero__title">Asafo<br>Ghanaian Restaurant</h1>
+      <p class="hero__sub">Where Ghana's Heart Beats in South London</p>
+      <div style="margin-bottom:1.5rem;">
+        <span id="ratingCounter" data-rating="4" data-count="599"></span>
+        <span class="stars">⭐⭐⭐⭐</span>
+        <span class="count">4 · 599 Google reviews</span>
       </div>
-
-      <!-- SWIPER NAVIGATION -->
-      <div class="swiper-button-prev hero-nav-prev" aria-label="Previous slide">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="swiper-button-next hero-nav-next" aria-label="Next slide">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-
-      <!-- SWIPER PAGINATION -->
-      <div class="swiper-pagination hero-pagination"></div>
-    </div>
-
-    <!-- HERO CENTRE CONTENT -->
-    <div class="hero-content-wrap">
-
-      <!-- TYPOGRAPHY SVG OVERLAY -->
-      <div class="hero-svg-overlay" aria-hidden="true">
-        <svg class="hero-svg-deco" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
-          <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle" class="svg-bg-text">GHANA</text>
-        </svg>
-      </div>
-
-      <!-- HERO LOGO LOCKUP -->
-      <div class="hero-logo-lockup" data-aos="fade-down">
-        <div class="hero-crest" aria-hidden="true">
-          <svg viewBox="0 0 80 80" width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="40" r="38" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-            <circle cx="40" cy="40" r="30" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-            <path d="M40 12 L44 28 L60 28 L47 38 L52 54 L40 44 L28 54 L33 38 L20 28 L36 28 Z" fill="rgba(255,200,60,0.85)"/>
-          </svg>
-        </div>
-        <h1 class="hero-restaurant-name">Asafo</h1>
-        <p class="hero-cuisine-label">Ghanaian Restaurant · South London</p>
-      </div>
-
-      <!-- HERO TAGLINE -->
-      <div class="hero-tagline-wrap" data-aos="fade-up" data-aos-delay="100">
-        <p class="hero-tagline">Authentic Ghanaian soul, rooted in South London</p>
-      </div>
-
-      <!-- LOOP TEXT ANIMATION -->
-      <div class="hero-loop-text" aria-hidden="true" data-aos="fade-up" data-aos-delay="150">
-        <div class="loop-track">
-          <span>Kelewele</span>
-          <span class="loop-sep">✦</span>
-          <span>Jollof Rice</span>
-          <span class="loop-sep">✦</span>
-          <span>Groundnut Soup</span>
-          <span class="loop-sep">✦</span>
-          <span>Grilled Tilapia</span>
-          <span class="loop-sep">✦</span>
-          <span>Fufu</span>
-          <span class="loop-sep">✦</span>
-          <span>Bofrot</span>
-          <span class="loop-sep">✦</span>
-          <span>Kelewele</span>
-          <span class="loop-sep">✦</span>
-          <span>Jollof Rice</span>
-          <span class="loop-sep">✦</span>
-          <span>Groundnut Soup</span>
-          <span class="loop-sep">✦</span>
-          <span>Grilled Tilapia</span>
-          <span class="loop-sep">✦</span>
-          <span>Fufu</span>
-          <span class="loop-sep">✦</span>
-          <span>Bofrot</span>
-          <span class="loop-sep">✦</span>
-        </div>
-      </div>
-
-      <!-- RATING BADGE -->
-      <div class="hero-rating-block" data-aos="fade-up" data-aos-delay="200">
-        <span id="openBadge" class="badge-dot" data-color="open" role="status" aria-label="Open now">
-          <span class="badge-pulse"></span>
-          Open Now
-        </span>
-        <div class="hero-stars-wrap">
-          <span class="stars" aria-label="4 star rating">⭐⭐⭐⭐</span>
-          <span id="ratingCounter" data-rating="4" data-count="599" class="score" aria-label="4 out of 5 based on 599 reviews">
-            <strong>4.0</strong>
-            <span class="count">· 599 Google reviews</span>
-          </span>
-        </div>
-      </div>
-
-      <!-- HERO CTA BUTTONS -->
-      <div class="hero-cta-group" data-aos="fade-up" data-aos-delay="250">
-        <a href="tel:02086788406" class="hero-btn hero-btn--primary">
-          <i class="fa fa-phone" aria-hidden="true"></i>
-          <span>Reserve a Table</span>
-        </a>
-        <a href="#menu" class="hero-btn hero-btn--secondary">
-          <span>View Menu</span>
-          <i class="fa fa-arrow-down" aria-hidden="true"></i>
-        </a>
-      </div>
-
-      <!-- SERVICE CHIPS -->
-      <div class="hero-service-chips" data-aos="fade-up" data-aos-delay="300">
-        <span class="service-chip" data-color="chip-dine">
-          <i class="fa fa-utensils" aria-hidden="true"></i> Dine-In
-        </span>
-        <span class="service-chip" data-color="chip-take">
-          <i class="fa fa-bag-shopping" aria-hidden="true"></i> Takeaway
-        </span>
-        <span class="service-chip" data-color="chip-del">
-          <i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery
-        </span>
+      <div class="hero__actions">
+        <a class="btn-primary" href="tel:020 8678 8406"><i class="fa fa-phone" style="margin-right:.4rem;"></i>Reserve a Table</a>
+        <a class="btn-outline" href="#menu">Explore Menu</a>
       </div>
     </div>
+    <div class="hero__scroll">
+      <span>↓ Scroll</span>
+    </div>
+  </section>
 
-    <!-- THUMBNAIL CAROUSEL SYNC -->
-    <div class="hero-thumbs-wrap" aria-label="Slide thumbnails">
-      <div class="swiper hero-thumbs-swiper" id="heroThumbsSwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide hero-thumb-slide">
-            <div class="thumb-img" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');" role="img" aria-label="Thumbnail 1"></div>
-            <span class="thumb-label">The Kitchen</span>
+  <!-- ═══════════════════════════════════════════
+       ABOUT — image-text-alternating
+  ════════════════════════════════════════════ -->
+  <section class="section" id="about">
+    <div class="container">
+
+      <p class="section__label" data-aos="fade-up">Our Story</p>
+      <h2 class="section__title" data-aos="fade-up" data-aos-delay="100">The Soul of West African<br>Cooking in Brixton Hill</h2>
+      <div class="divider divider--gold" data-aos="fade-up" data-aos-delay="150"></div>
+
+      <!-- Alternating block 1: image left, text right -->
+      <div class="about__grid" data-aos="fade-right">
+        <div class="about__img-wrap">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="Asafo Restaurant interior" style="width:100%;height:100%;object-fit:cover;border-radius:1rem;">
+          <div class="about__badge">Est. South London</div>
+        </div>
+        <div>
+          <p class="section__label">Who We Are</p>
+          <h3 class="section__title" style="font-size:2rem;">Warmth, Colour &amp; Soul on Every Plate</h3>
+          <p class="section__body">
+            Asafo Ghanaian Restaurant brings the warmth, colour, and soul of West African cooking to the heart of South London. From our legendary seasoned chicken wings to dishes that taste like home no matter where you're from, every plate is crafted with love and tradition. Whether you're a longtime fan of Ghanaian cuisine or discovering it for the first time, you'll leave feeling like family.
+          </p>
+          <ul class="about__list">
+            <li>✔ Dine-In Available</li>
+            <li>✔ Takeaway &amp; Delivery</li>
+            <li>✔ Authentic Ghanaian Recipes</li>
+          </ul>
+          <a class="btn-primary" href="tel:020 8678 8406" style="display:inline-block;margin-top:1.5rem;"><i class="fa fa-phone" style="margin-right:.4rem;"></i>Book Your Table</a>
+        </div>
+      </div>
+
+      <!-- Alternating block 2: text left, image right -->
+      <div class="about__grid" style="margin-top:4rem;direction:rtl;" data-aos="fade-left">
+        <div class="about__img-wrap" style="direction:ltr;">
+          <img src="images/img_1.jpg" alt="Ghanaian food at Asafo" style="width:100%;height:100%;object-fit:cover;border-radius:1rem;">
+        </div>
+        <div style="direction:ltr;">
+          <p class="section__label">Our Philosophy</p>
+          <h3 class="section__title" style="font-size:2rem;">Roots, Recipes &amp; Real Flavour</h3>
+          <ul class="about__list" style="list-style:none;padding:0;">
+            <li style="margin-bottom:1.2rem;">
+              <strong>🌿 Roots &amp; Recipes</strong><br>
+              Every dish we serve is rooted in the rich culinary traditions of Ghana, prepared with authentic spices and techniques passed down through generations.
+            </li>
+            <li style="margin-bottom:1.2rem;">
+              <strong>🏡 A Taste of Home</strong><br>
+              We believe great food transcends borders — creating a space where Ghanaians abroad and curious newcomers alike find warmth, comfort, and belonging.
+            </li>
+            <li>
+              <strong>✨ Simple Done Brilliantly</strong><br>
+              We celebrate the beauty of honest, unfussy cooking — bold flavours, quality ingredients, and the kind of food that keeps you coming back.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FULL-BLEED PHOTO STRIP -->
+  <div style="width:100%;height:320px;overflow:hidden;position:relative;margin:0;" aria-hidden="true">
+    <img
+      src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80"
+      alt="Asafo Restaurant food spread"
+      style="width:100%;height:100%;object-fit:cover;object-position:center;"
+    >
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;">
+      <p style="color:#fff;font-size:clamp(1.4rem,4vw,2.8rem);font-weight:800;letter-spacing:.05em;text-align:center;text-transform:uppercase;margin:0;padding:0 1rem;">Bold Flavours · Honest Cooking · Ghanaian Soul</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       MENU — photo-cards
+  ════════════════════════════════════════════ -->
+  <section class="section section--warm" id="menu">
+    <div class="container">
+
+      <p class="section__label" data-aos="fade-up">What We Serve</p>
+      <h2 class="section__title" data-aos="fade-up" data-aos-delay="100">Our Menu</h2>
+      <div class="divider divider--gold" data-aos="fade-up" data-aos-delay="150"></div>
+      <p class="section__body" data-aos="fade-up" data-aos-delay="200" style="text-align:center;max-width:600px;margin:0 auto 3rem;">
+        A celebration of West African cooking — bold, authentic and made with love. Every dish is a story from Ghana to your table.
+      </p>
+
+      <!-- STARTERS -->
+      <p class="section__label" data-aos="fade-up" style="margin-bottom:1.5rem;">— Starters —</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;margin-bottom:3.5rem;">
+
+        <div class="photo-card" data-aos="fade-up" data-aos-delay="0" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
+          <div style="height:180px;background:linear-gradient(135deg,#f7b731,#e55039);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍌</div>
+          <div style="padding:1.4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;">
+              <h4 style="margin:0;font-size:1.15rem;font-weight:800;">Kelewele</h4>
+              <span style="font-weight:800;color:#e55039;">£5</span>
+            </div>
+            <p style="margin:0;font-size:.9rem;color:#666;line-height:1.5;">Spiced fried plantain cubes seasoned with ginger, chilli and cloves — sweet, fiery and utterly moreish.</p>
           </div>
-          <div class="swiper-slide hero-thumb-slide">
-            <div class="thumb-img" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80
+        </div>
+
+        <div class="photo-card" data-aos="fade-up" data-aos-delay="80" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
+          <div style="height:180px;background:linear-gradient(135deg,#f9ca24,#f0932b);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🥙</div>
+          <div style="padding:1.4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;">
+              <h4 style="margin:0;font-size:1.15rem;font-weight:800;">Akara Fritters</h4>
+              <span style="font-weight:800;color:#e55039;">£6</span>
+            </div>
+            <p style="margin:0;font-size:.9rem;color:#666;line-height:1.5;">Light, golden black-eyed pea fritters with a crisp exterior and fluffy centre, served with a tangy pepper dipping sauce.</p>
+          </div>
+        </div>
+
+        <div class="photo-card" data-aos="fade-up" data-aos-delay="160" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
+          <div style="height:180px;background:linear-gradient(135deg,#c0392b,#8e44ad);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🥣</div>
+          <div style="padding:1.4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;">
+              <h4 style="margin:0;font-size:1.15rem;font-weight:800;">Groundnut Soup Shot</h4>
+              <span style="font-weight:800;color:#e55039;">£4</span>
+            </div>
+            <p style="margin:0;font-size:.9rem;color:#666;line-height:1.5;">A rich, velvety taster of our house groundnut broth — aromatic with tomato, scotch bonnet and roasted peanut.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MAINS -->
+      <p class="section__label" data-aos="fade-up" style="margin-bottom:1.5rem;">— Mains —</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;margin-bottom:3.5rem;">
+
+        <div class="photo-card" data-aos="fade-up" data-aos-delay="0" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
+          <div style="height:180px;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
 AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
