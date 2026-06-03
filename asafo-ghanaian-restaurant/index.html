@@ -10,686 +10,434 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
   @media(min-width:700px){.float-cta{display:none!important;}}
-  :root {
-  --primary: #1a3a5c;
-  --accent: #c8922a;
-  --bg: #fdf8f0;
-  --text: #1e1e1e;
-  --muted: #7a6e62;
-  --border: #e2d5c0;
-  --white: #ffffff;
-  --red: #b83232;
-  --yellow: #f5e6c0;
-  --dark: #0d1f33;
-  --radius: 2px;
-  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Bebas+Neue&family=Noto+Sans:wght@300;400;700&display=swap');
+
+:root {
+--c-primary:#D4400A;
+--c-secondary:#F5A623;
+--c-accent:#1B4332;
+--c-gold:#C8960C;
+--c-dark:#0D0D0D;
+--c-charcoal:#1A1A1A;
+--c-offwhite:#FAF7F2;
+--c-cream:#F2E8D9;
+--c-text:#2C1810;
+--c-muted:#8B7355;
+--c-white:#FFFFFF;
+--c-overlay:rgba(13,13,13,.55);
+--ff-display:'Playfair Display',Georgia,serif;
+--ff-sans:'Inter',Helvetica,sans-serif;
+--ff-impact:'Bebas Neue',Impact,sans-serif;
+--ff-body:'Noto Sans',sans-serif;
+--fs-xs:.75rem;
+--fs-sm:.875rem;
+--fs-base:1rem;
+--fs-md:1.125rem;
+--fs-lg:1.5rem;
+--fs-xl:2rem;
+--fs-2xl:3rem;
+--fs-3xl:4.5rem;
+--fs-4xl:6rem;
+--radius-sm:4px;
+--radius-md:8px;
+--radius-lg:16px;
+--radius-pill:999px;
+--shadow-sm:0 2px 8px rgba(0,0,0,.12);
+--shadow-md:0 8px 32px rgba(0,0,0,.18);
+--shadow-lg:0 16px 64px rgba(0,0,0,.28);
+--trans-fast:.2s ease;
+--trans-base:.35s ease;
+--trans-slow:.6s cubic-bezier(.25,.46,.45,.94);
+--z-base:1;
+--z-nav:100;
+--z-overlay:200;
+--z-modal:300;
+--header-h:72px;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:var(--ff-body);background:var(--c-dark);color:var(--c-offwhite);overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+/* ── PROTO BANNER (fixed class) ── */
+.proto-banner{position:fixed;bottom:0;left:0;right:0;z-index:var(--z-modal);background:var(--c-primary);color:var(--c-white);text-align:center;padding:.5rem 1rem;font:600 var(--fs-sm)/1.4 var(--ff-sans);display:flex;align-items:center;justify-content:center;gap:.75rem}
+.proto-banner a{color:var(--c-secondary);text-decoration:underline}
+.proto-banner .proto-close{margin-left:auto;opacity:.7;font-size:1.2rem;transition:opacity var(--trans-fast)}
+.proto-banner .proto-close:hover{opacity:1}
 
-body {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.75;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+/* ── OPEN BADGE (fixed id) ── */
+#openBadge{position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:var(--z-overlay);background:var(--c-accent);color:var(--c-white);writing-mode:vertical-rl;padding:.75rem .5rem;font:700 var(--fs-sm)/1 var(--ff-impact);letter-spacing:.15em;border-radius:var(--radius-sm) 0 0 var(--radius-sm);box-shadow:var(--shadow-md);transition:background var(--trans-fast),transform var(--trans-fast)}
+#openBadge:hover{background:var(--c-primary);transform:translateY(-50%) translateX(-4px)}
+#openBadge .badge-dot{width:8px;height:8px;background:var(--c-secondary);border-radius:50%;display:block;margin:.4rem auto 0;animation:pulse 2s infinite}
 
-img {
-  max-width: 100%;
-  display: block;
-}
+/* ── RATING COUNTER (fixed id) ── */
+#ratingCounter{display:flex;align-items:center;gap:.5rem;font-family:var(--ff-sans)}
+#ratingCounter .stars{color:var(--c-secondary);font-size:1.1rem;letter-spacing:.05em}
+#ratingCounter .score{font:700 var(--fs-lg)/1 var(--ff-impact);color:var(--c-secondary)}
+#ratingCounter .count{font:400 var(--fs-xs)/1 var(--ff-sans);color:var(--c-muted)}
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color var(--transition), opacity var(--transition);
-}
+/* ── STICKY NAV (fixed id) ── */
+#stickyNav{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);height:var(--header-h);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);transition:background var(--trans-base),box-shadow var(--trans-base);background:transparent}
+#stickyNav.scrolled{background:rgba(13,13,13,.92);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.4)}
+#stickyNav .nav-logo img{height:44px;width:auto;transition:opacity var(--trans-fast)}
+#stickyNav .nav-logo img:hover{opacity:.8}
+#stickyNav .nav-links{display:flex;gap:2rem;align-items:center}
+#stickyNav .nav-links a{font:600 var(--fs-sm)/1 var(--ff-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--c-offwhite);position:relative;padding-bottom:.25rem;transition:color var(--trans-fast)}
+#stickyNav .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--c-secondary);transition:width var(--trans-base)}
+#stickyNav .nav-links a:hover{color:var(--c-secondary)}
+#stickyNav .nav-links a:hover::after{width:100%}
+#stickyNav .nav-cta{background:var(--c-primary);color:var(--c-white);padding:.5rem 1.25rem;border-radius:var(--radius-pill);font:600 var(--fs-sm)/1 var(--ff-sans);letter-spacing:.08em;text-transform:uppercase;transition:background var(--trans-fast),transform var(--trans-fast)}
+#stickyNav .nav-cta:hover{background:var(--c-secondary);transform:scale(1.04)}
+#stickyNav .nav-ig{display:flex;align-items:center;gap:.4rem;opacity:.8;transition:opacity var(--trans-fast)}
+#stickyNav .nav-ig:hover{opacity:1}
 
-a:hover {
-  opacity: 0.75;
-}
+/* ── FLOAT CTA (fixed class) ── */
+.float-cta{position:fixed;bottom:5rem;right:1.5rem;z-index:var(--z-overlay);display:flex;flex-direction:column;gap:.75rem}
+.float-cta .fcta-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);transition:transform var(--trans-fast),box-shadow var(--trans-fast);font-size:1.4rem}
+.float-cta .fcta-btn:hover{transform:scale(1.12);box-shadow:var(--shadow-lg)}
+.float-cta .fcta-reserve{background:var(--c-primary)}
+.float-cta .fcta-call{background:var(--c-accent)}
+.float-cta .fcta-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+.float-cta .fcta-label{position:absolute;right:64px;white-space:nowrap;background:var(--c-charcoal);color:var(--c-white);font:500 var(--fs-xs)/1 var(--ff-sans);padding:.3rem .6rem;border-radius:var(--radius-sm);opacity:0;pointer-events:none;transition:opacity var(--trans-fast)}
+.float-cta .fcta-btn:hover .fcta-label{opacity:1}
 
-ul {
-  list-style: none;
-}
+/* ── SITE WRAP ── */
+.asafo-wrap{position:relative;overflow:hidden}
 
-/* ─── PROTO BANNER ─────────────────────────────────────────── */
-
-.proto-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-  background-color: var(--accent);
-  color: var(--white);
-  font-family: 'Arial', 'Helvetica', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
-}
-
-.proto-banner a {
-  color: var(--white);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  padding-bottom: 1px;
-  transition: border-color var(--transition);
-}
-
-.proto-banner a:hover {
-  border-color: var(--white);
-  opacity: 1;
-}
-
-.proto-banner span.sep {
-  opacity: 0.4;
-}
-
-/* ─── STICKY NAV ────────────────────────────────────────────── */
-
-.sticky-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 998;
-  background-color: var(--dark);
-  color: var(--white);
-  padding: 0 32px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.45s ease;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-}
-
-.sticky-nav.is-visible {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.sticky-nav .nav-logo {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.sticky-nav ul {
-  display: flex;
-  gap: 32px;
-}
-
-.sticky-nav ul li a {
-  font-family: 'Arial', 'Helvetica', sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
-  transition: color var(--transition);
-}
-
-.sticky-nav ul li a:hover {
-  color: var(--accent);
-  opacity: 1;
-}
-
-.sticky-nav .nav-cta {
-  background-color: var(--accent);
-  color: var(--white);
-  padding: 8px 20px;
-  font-family: 'Arial', 'Helvetica', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  transition: background-color var(--transition);
-}
-
-.sticky-nav .nav-cta:hover {
-  background-color: #a87520;
-  opacity: 1;
-}
-
-/* ─── HERO ──────────────────────────────────────────────────── */
-
-.hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  background-color: var(--dark);
-  background-image: url('../images/hero.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  padding-bottom: 80px;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    160deg,
-    rgba(13, 31, 51, 0.25) 0%,
-    rgba(13, 31, 51, 0.5) 50%,
-    rgba(13, 31, 51, 0.85) 100%
-  );
-  z-index: 1;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background: linear-gradient(90deg, var(--accent), var(--red), var(--accent));
-  z-index: 3;
-}
-
-.hero-bokeh {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.hero-bokeh span {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(200, 146, 42, 0.35) 0%, transparent 70%);
-  animation: bokehFloat 8s ease-in-out infinite;
-}
-
-.hero-bokeh span:nth-child(1)  { width: 200px; height: 200px; top: 10%; left: 5%;  animation-delay: 0s;    animation-duration: 9s;  }
-.hero-bokeh span:nth-child(2)  { width: 120px; height: 120px; top: 30%; left: 80%; animation-delay: 1s;    animation-duration: 11s; }
-.hero-bokeh span:nth-child(3)  { width: 160px; height: 160px; top: 60%; left: 15%; animation-delay: 2s;    animation-duration: 7s;  }
-.hero-bokeh span:nth-child(4)  { width: 90px;  height: 90px;  top: 70%; left: 70%; animation-delay: 3s;    animation-duration: 13s; }
-.hero-bokeh span:nth-child(5)  { width: 250px; height: 250px; top: 5%;  left: 50%; animation-delay: 1.5s;  animation-duration: 10s; }
-
-@keyframes bokehFloat {
-  0%, 100% { transform: translateY(0) scale(1);   opacity: 0.6; }
-  50%       { transform: translateY(-30px) scale(1.1); opacity: 1; }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 6vw;
-  max-width: 820px;
-}
-
-.hero-eyebrow {
-  display: inline-block;
-  font-family: 'Arial', 'Helvetica', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 20px;
-  position: relative;
-  padding-left: 40px;
-}
-
-.hero-eyebrow::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 1px;
-  background-color: var(--accent);
-}
-
-.hero-title {
-  font-size: clamp(2.8rem, 7vw, 6rem);
-  font-weight: 400;
-  line-height: 1.1;
-  color: var(--white);
-  margin-bottom: 24px;
-  letter-spacing: -0.01em;
-}
-
-.hero-title em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-.hero-sub {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: rgba(255, 255, 255, 0.75);
-  max-width: 480px;
-  margin-bottom: 40px;
-  line-height: 1.8;
-}
-
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background-color: var(--accent);
-  color: var(--white);
-  font-family: 'Arial', 'Helvetica', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 18px 36px;
-  border: 2px solid var(--accent);
-  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
-  cursor: pointer;
-}
-
-.hero-cta:hover {
-  background-color: transparent;
-  color: var(--accent);
-  opacity: 1;
-}
-
-.hero-cta.secondary {
-  background-color: transparent;
-  color: var(--white);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.hero-cta.secondary:hover {
-  border-color: var(--white);
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--white);
-}
-
-.hero-scroll-hint {
-  position: absolute;
-  bottom: 32px;
-  right: 6vw;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Arial', 'Helvetica', sans-serif;
-  font-size: 0.62rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  writing-mode: vertical-rl;
-}
-
-.hero-scroll-hint::after {
-  content: '';
-  width: 1px;
-  height: 50px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.5; transform: scaleY(1); }
-  50%       { opacity: 1;   transform: scaleY(1.15); }
-}
-
-/* ─── OPEN BADGE ────────────────────────────────────────────── */
-
-.open-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  border-radius: 999px;
-  font-family: 'Arial', 'Helvetica', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.open-badge::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.open-badge.is-open {
-  background-color: rgba(34, 139, 34, 0.15);
-  color: #228b22;
-  border: 1px solid rgba(34, 139, 34, 0.3);
-}
-
-.open-badge.is-open::before {
-  background-color: #228b22;
-  box-shadow: 0 0 6px rgba(34, 139,
+/* ── HEADER ── */
+.asafo-header{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);height:var(--header-h);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);transition:background var(--trans-base),box-shadow var(--trans-base)}
+.asafo-header.is-scrolled{background:rgba(13,13,13,.9);backdrop-filter:blur(10px);box-shadow:0 2px 24px rgba(0,0,0,.35)}
+.header-logo-wrap a{display:flex;align-items:center;gap:.6rem}
+.header-logo-wrap img{height:40px;width:auto}
+.header-logo-text{font:700 var(--fs-md)/1.1 var(--ff-display);color:var(--c-offwhite)}
+.header-logo-text span{display:block;font:400 var(--fs-xs)/1 var(--ff-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--c-secondary);margin-top:.2rem}
+.header-actions{display:flex;align-items:center;gap:1.25rem}
+.header-ig-link{display:flex;align-items:center;opacity:.75;transition:opacity var(--trans-fast)}
+.header-ig-link:hover{opacity:1}
+.header-ig-link img{width:22px;height:22px}
+.menu-toggle-btn{font:700 var(--fs-sm)/1 var(--ff-impact);letter-spacing:.2em;color:var(--c-secondary);display:flex;align-items:center;gap:.5rem;padding:.4rem .8rem;border:1px solid rgba(245,166,35,.4);border-radius:var(--radius-sm);transition:all var(--trans-fast)}
+.menu-toggle-btn:hover{background:var(--c-secondary);color:var(--c-dark)}
+.menu-toggle-btn .toggle-bars{display:flex;flex-direction:column;gap:4px;width:18px}
+.menu-toggle-btn .toggle-bars span{display:block;height:2px;background:currentColor;transition:all var(--trans-base);
   </style>
 </head>
 <body>
-<body>
+<body data-page="restaurant-landing">
 
-  <!-- Proto Banner -->
+  <!-- PROTO BANNER -->
   <div class="proto-banner">
-    🎨 Free demo for Asafo Ghanaian Restaurant — All images, text &amp; colours are placeholders and fully customisable.
+    <p><strong>🎨 Free demo for Asafo Ghanaian Restaurant</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <!-- Sticky Nav -->
-  <nav class="sticky-nav" id="stickyNav">
-    <div class="nav-logo">Asafo Ghanaian Restaurant</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#visit">Visit</a></li>
-    </ul>
-    <a class="nav-cta" href="tel:020 8678 8406">📞 Reserve a Table</a>
-  </nav>
-
-  <!-- Hero Section -->
-  <section
-    class="hero"
-    style="background-image: url('images/img_0.jpg');"
-  >
-    <div class="hero-content">
-      <span
-        class="open-badge"
-        id="openBadge"
-        aria-live="polite"
-      >● Open Now</span>
-
-      <h1 class="hero-title" data-aos="fade-up">Asafo Ghanaian Restaurant</h1>
-      <p class="hero-sub" data-aos="fade-up" data-aos-delay="100">
-        Ghana's soul, lovingly rooted in South London
-      </p>
-
-      <div class="hero-meta" data-aos="fade-up" data-aos-delay="150">
-        <span class="hero-rating"
-          id="ratingCounter"
-          data-rating="4"
-          data-count="599"
-        >⭐ 4 · 599 Google reviews</span>
-        <span class="hero-tags">Restaurant · South London</span>
+  <!-- HEADER -->
+  <header class="asafo-wrap asafo-header" id="mainHeader" data-color="dark">
+    <div class="header-inner">
+      <div class="header-logo-text">
+        <span class="logo-mark">✦</span>
+        <span class="logo-name">Asafo</span>
+        <span class="logo-sub">Ghanaian Restaurant</span>
       </div>
-
-      <div class="hero-services" data-aos="fade-up" data-aos-delay="175">
-        <span>🍽 Dine-In</span>
-        <span>🥡 Takeaway</span>
-        <span>🚴 Delivery</span>
-      </div>
-
-      <div class="hero-cta" data-aos="fade-up" data-aos-delay="200">
-        <a href="tel:020 8678 8406" class="btn-primary">📞 Call to Reserve</a>
-        <a href="https://wa.me/02086788406" class="btn-secondary" target="_blank" rel="noopener noreferrer">💬 WhatsApp Us</a>
+      <nav class="nav-links desktop-nav" aria-label="Main navigation">
+        <a href="#concept" class="nav-link">Our Story</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#drinks" class="nav-link">Drinks</a>
+        <a href="#location" class="nav-link">Visit Us</a>
+      </nav>
+      <div class="header-actions">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="header-ig-link nav-ig" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="tel:02086788406" class="nav-cta">Reserve a Table</a>
+        <button class="menu-toggle-btn" id="mobileMenuToggle" aria-label="Open menu" aria-expanded="false">
+          <span class="toggle-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
       </div>
     </div>
-  </section>
 
-  <!-- Social Bar -->
-  <div class="social-bar">
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-      </svg>
-      Instagram
-    </a>
-    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-      </svg>
-      Facebook
-    </a>
-    <a href="https://wa.me/02086788406" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      WhatsApp
-    </a>
-    <a href="https://maps.google.com/?cid=3060433591634604382" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-        <path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
-      </svg>
-      Google
-    </a>
-  </div>
-
-  <!-- About Section -->
-  <section class="about-section" id="about">
-    <div class="section-inner">
-      <h2 data-aos="fade-up">Our Story</h2>
-      <div class="about-intro" data-aos="fade-up" data-aos-delay="100">
-        <div class="about-text">
-          <p>
-            Asafo Ghanaian Restaurant brings the warmth, colour and bold flavours of West Africa to the heart of South London.
-            From perfectly seasoned chicken wings to fragrant rice dishes, every plate is crafted to feel like a homecoming.
-            Whether you were born in Accra or simply curious about one of the world's great culinary traditions,
-            you are welcome at our table.
-          </p>
-          <img
-            src="images/img_1.jpg"
-            alt="Inside Asafo Ghanaian Restaurant"
-            class="about-img"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
-      <div class="about-grid">
-        <div class="value-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="value-icon">🌍</div>
-          <h3>Authenticity Above All</h3>
-          <p>Every dish is rooted in Ghanaian tradition, using spices, techniques and recipes passed down through generations.</p>
-        </div>
-        <div class="value-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="value-icon">🏠</div>
-          <h3>A Feeling of Home</h3>
-          <p>We believe great food should wrap around you like a warm embrace, wherever in the world you find yourself.</p>
-        </div>
-        <div class="value-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="value-icon">✨</div>
-          <h3>Simple Done Perfectly</h3>
-          <p>We honour the beauty of unfussy, well-seasoned cooking — letting honest, quality ingredients speak for themselves.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reviews Section -->
-  <section class="reviews-section" id="reviews">
-    <div class="section-inner">
-      <h2 data-aos="fade-up">What Our Guests Say</h2>
-      <p class="section-sub" data-aos="fade-up" data-aos-delay="50">⭐ 4 · 599 Google reviews</p>
-
-      <div class="reviews-grid">
-        <div class="review-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="review-stars">⭐⭐⭐⭐</div>
-          <blockquote>
-            "I'd write a super long review here but… it's been a while since my visit.
-            I will say one thing — the chicken spot on. If you are not sure what to order,
-            keep it simple and get the seasoned chicken win"
-          </blockquote>
-          <cite>— David Callow</cite>
-        </div>
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <blockquote>
-            "No doubt one of best African restaurant. We came from Spain to visit London and after few days
-            we wanted to taste some home food. Food was amazing, the atention was a 10,
-            and feeling of being at home ❤"
-          </blockquote>
-          <cite>— khady niass</cite>
-        </div>
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="review-stars">⭐⭐⭐</div>
-          <blockquote>
-            "I and my husband have been ordering food from Asafo and they always delivered the best
-            especially banku and Okro stew. This evening, I wasn't well and my husband decided to come
-            order some jollof… Omg"
-          </blockquote>
-          <cite>— Ali Habidatu</cite>
-        </div>
-      </div>
-
-      <div class="reviews-cta" data-aos="fade-up">
-        <a href="https://maps.google.com/?cid=3060433591634604382" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-          Read All 599 Reviews on Google →
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <nav class="mobile-nav-links" aria-label="Mobile navigation">
+        <a href="#concept" class="mobile-nav-link">Our Story</a>
+        <a href="#menu" class="mobile-nav-link">Menu</a>
+        <a href="#drinks" class="mobile-nav-link">Drinks</a>
+        <a href="#location" class="mobile-nav-link">Visit Us</a>
+      </nav>
+      <div class="mobile-nav-actions">
+        <a href="tel:02086788406" class="mobile-cta-btn">
+          <i class="fa fa-phone"></i> Call to Reserve
+        </a>
+        <a href="https://wa.me/02086788406" class="mobile-cta-btn mobile-cta-wa" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp"></i> WhatsApp Us
         </a>
       </div>
+      <div class="mobile-social">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/02086788406" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://maps.google.com/?cid=3060433591634604382" target="_blank" rel="noopener noreferrer" aria-label="Google Maps"><i class="fab fa-google"></i></a>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <!-- Menu Section -->
-  <section class="menu-section" id="menu">
-    <div class="section-inner">
-      <h2 data-aos="fade-up">Our Menu</h2>
-      <p class="section-sub" data-aos="fade-up" data-aos-delay="50">
-        Rooted in Ghanaian tradition — bold, fragrant, unforgettable.
-      </p>
+  <!-- STICKY NAV -->
+  <nav id="stickyNav" class="is-scrolled" aria-label="Sticky navigation" data-color="sticky">
+    <div class="sticky-nav-inner">
+      <div class="sticky-logo">
+        <span class="logo-mark">✦</span>
+        <span class="logo-name">Asafo</span>
+      </div>
+      <div class="sticky-nav-links nav-links">
+        <a href="#concept">Our Story</a>
+        <a href="#menu">Menu</a>
+        <a href="#drinks">Drinks</a>
+        <a href="#location">Visit Us</a>
+      </div>
+      <div class="sticky-actions">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="nav-ig" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="tel:02086788406" class="nav-cta">Reserve</a>
+      </div>
+    </div>
+  </nav>
 
-      <!-- Starters -->
-      <div class="menu-category" data-aos="fade-up">
-        <h3 class="menu-category-title">🌶 Starters</h3>
+  <!-- HERO SLIDER WITH LOGO -->
+  <section class="hero-section full-bleed-center" id="hero" data-color="hero" aria-label="Hero carousel">
 
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
-          <div class="menu-item-info">
-            <h4>Kelewele</h4>
-            <p>Crispy fried plantain cubes boldly spiced with ginger, chilli and cloves — a beloved Ghanaian street-food classic.</p>
-          </div>
-          <span class="menu-price">£6</span>
+    <!-- BOKEH BACKGROUND EFFECTS -->
+    <div class="bokeh-container" aria-hidden="true">
+      <span class="bokeh-orb bokeh-orb--1"></span>
+      <span class="bokeh-orb bokeh-orb--2"></span>
+      <span class="bokeh-orb bokeh-orb--3"></span>
+      <span class="bokeh-orb bokeh-orb--4"></span>
+      <span class="bokeh-orb bokeh-orb--5"></span>
+    </div>
+
+    <!-- SWIPER MAIN SLIDER -->
+    <div class="swiper hero-swiper" id="heroSwiper">
+      <div class="swiper-wrapper">
+
+        <!-- SLIDE 1 -->
+        <div class="swiper-slide hero-slide" data-color="slide-1">
+          <div class="slide-bg" style="background-image: url('images/img_0.jpg');" role="img" aria-label="Asafo restaurant dish"></div>
+          <div class="slide-overlay"></div>
         </div>
 
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="75">
-          <div class="menu-item-info">
-            <h4>Koose</h4>
-            <p>Light, golden black-eyed pea fritters seasoned with scotch bonnet and onion, served with a zesty pepper dip.</p>
-          </div>
-          <span class="menu-price">£5</span>
+        <!-- SLIDE 2 -->
+        <div class="swiper-slide hero-slide" data-color="slide-2">
+          <div class="slide-bg" style="background-image: url('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=Ab43m-sLTtZIfDz7G78g16DhodgLQzpr7_G9b8Ln9oiTzFLiU8wBpKgKJ7e7cdqMBwBnlkTkXAJ5pcVXYVw9V97AzcWqoqrR03-5RLSc0h8YQga8_2_zgcMkUVpcRgXZvAWoDEBm74CYih8pE5sjS5smKloZeF14uGBzkFG5nbJpvv2i53LVSrVW6nLhvzys4HksqjU9QwzLRzf8joJ0FUYhFUaNMhvGaitrWyiDzeWLS3S6k5E1G4hbg-deae86ZZ8AGX5oA37Rrs1UfYMZsqHmhx2DOzqJQTRZ9NCQfnL6S2we2gwZB621oY1rBomXYO3ZMmkAqs9Yz0rSQSt4nPHhuaLtU6xDO3jdwOYUXj1D86WdEV04kpntigutCf2Pe29Nscip4gMhzAH8GbJphkgkM5DMpT9j4B-0_c-t1jlyMdzgXKTvqABAVDpq7AfwB6fV&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs');" role="img" aria-label="Asafo restaurant interior"></div>
+          <div class="slide-overlay"></div>
         </div>
 
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
-          <div class="menu-item-info">
-            <h4>Peanut Soup Shot</h4>
-            <p>A rich, velvety groundnut broth with a gentle heat — a warming taste of things to come.</p>
-          </div>
-          <span class="menu-price">£4</span>
+        <!-- SLIDE 3 (duplicate for loop) -->
+        <div class="swiper-slide hero-slide" data-color="slide-3">
+          <div class="slide-bg" style="background-image: url('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=Ab43m-v5M_Y75cmJOJBHBC1J11AUR5Q-HYARSDyRhAAZoE_5zD607Ds9n5i9vHa9R427iN7gqvqXBXq7_HH13x8L7oYkQlVZhYCxaM2uVT6w2a51qt_0-QkPBwt4JyeBOhitUtAxjQzy_oDfBB2L1MoNqYHdnCskvbeRjygyGgCtlayopw7N3oLSqivNtxpa349JNAe8fuNTdbXYQ9MPSpzwjrDNblD_BLxgP5Z7d2nCm1mT74s76WW0MagMBgYhdg-dG4ze6DUhc8o_Po2eiiBkEoOcVvVHSHcv8Lds5lHgkjjPaNcK2TNY0ebA6ixA7MHMM6aW2FgdPbcyDpJ2Ll3TbL5SNjiBHTq5N57bmnMLvE6-lqm_nu_LrbYbyo-RRdGCMWlEyAS1EWHGBia2n2P3ACew5OHeZYi16tBfkhER7SgTWoWF5KEgM4L8E2Le3g&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs');" role="img" aria-label="Asafo food close up"></div>
+          <div class="slide-overlay slide-overlay--deep"></div>
+        </div>
+
+      </div>
+
+      <!-- SWIPER NAVIGATION -->
+      <div class="swiper-button-prev hero-nav-prev" aria-label="Previous slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="swiper-button-next hero-nav-next" aria-label="Next slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- SWIPER PAGINATION -->
+      <div class="swiper-pagination hero-pagination"></div>
+    </div>
+
+    <!-- HERO CENTRE CONTENT -->
+    <div class="hero-content-wrap">
+
+      <!-- TYPOGRAPHY SVG OVERLAY -->
+      <div class="hero-svg-overlay" aria-hidden="true">
+        <svg class="hero-svg-deco" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+          <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle" class="svg-bg-text">GHANA</text>
+        </svg>
+      </div>
+
+      <!-- HERO LOGO LOCKUP -->
+      <div class="hero-logo-lockup" data-aos="fade-down">
+        <div class="hero-crest" aria-hidden="true">
+          <svg viewBox="0 0 80 80" width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="38" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+            <circle cx="40" cy="40" r="30" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <path d="M40 12 L44 28 L60 28 L47 38 L52 54 L40 44 L28 54 L33 38 L20 28 L36 28 Z" fill="rgba(255,200,60,0.85)"/>
+          </svg>
+        </div>
+        <h1 class="hero-restaurant-name">Asafo</h1>
+        <p class="hero-cuisine-label">Ghanaian Restaurant · South London</p>
+      </div>
+
+      <!-- HERO TAGLINE -->
+      <div class="hero-tagline-wrap" data-aos="fade-up" data-aos-delay="100">
+        <p class="hero-tagline">Authentic Ghanaian soul, rooted in South London</p>
+      </div>
+
+      <!-- LOOP TEXT ANIMATION -->
+      <div class="hero-loop-text" aria-hidden="true" data-aos="fade-up" data-aos-delay="150">
+        <div class="loop-track">
+          <span>Kelewele</span>
+          <span class="loop-sep">✦</span>
+          <span>Jollof Rice</span>
+          <span class="loop-sep">✦</span>
+          <span>Groundnut Soup</span>
+          <span class="loop-sep">✦</span>
+          <span>Grilled Tilapia</span>
+          <span class="loop-sep">✦</span>
+          <span>Fufu</span>
+          <span class="loop-sep">✦</span>
+          <span>Bofrot</span>
+          <span class="loop-sep">✦</span>
+          <span>Kelewele</span>
+          <span class="loop-sep">✦</span>
+          <span>Jollof Rice</span>
+          <span class="loop-sep">✦</span>
+          <span>Groundnut Soup</span>
+          <span class="loop-sep">✦</span>
+          <span>Grilled Tilapia</span>
+          <span class="loop-sep">✦</span>
+          <span>Fufu</span>
+          <span class="loop-sep">✦</span>
+          <span>Bofrot</span>
+          <span class="loop-sep">✦</span>
         </div>
       </div>
 
-      <!-- Mains -->
-      <div class="menu-category" data-aos="fade-up">
-        <h3 class="menu-category-title">🍽 Mains</h3>
+      <!-- RATING BADGE -->
+      <div class="hero-rating-block" data-aos="fade-up" data-aos-delay="200">
+        <span id="openBadge" class="badge-dot" data-color="open" role="status" aria-label="Open now">
+          <span class="badge-pulse"></span>
+          Open Now
+        </span>
+        <div class="hero-stars-wrap">
+          <span class="stars" aria-label="4 star rating">⭐⭐⭐⭐</span>
+          <span id="ratingCounter" data-rating="4" data-count="599" class="score" aria-label="4 out of 5 based on 599 reviews">
+            <strong>4.0</strong>
+            <span class="count">· 599 Google reviews</span>
+          </span>
+        </div>
+      </div>
 
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
-          <div class="menu-item-info">
-            <h4>Asafo Seasoned Chicken Wings</h4>
-            <p>Our signature dish — chicken wings marinated in a house blend of Ghanaian spices, grilled to perfection and served with jollof
+      <!-- HERO CTA BUTTONS -->
+      <div class="hero-cta-group" data-aos="fade-up" data-aos-delay="250">
+        <a href="tel:02086788406" class="hero-btn hero-btn--primary">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          <span>Reserve a Table</span>
+        </a>
+        <a href="#menu" class="hero-btn hero-btn--secondary">
+          <span>View Menu</span>
+          <i class="fa fa-arrow-down" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <!-- SERVICE CHIPS -->
+      <div class="hero-service-chips" data-aos="fade-up" data-aos-delay="300">
+        <span class="service-chip" data-color="chip-dine">
+          <i class="fa fa-utensils" aria-hidden="true"></i> Dine-In
+        </span>
+        <span class="service-chip" data-color="chip-take">
+          <i class="fa fa-bag-shopping" aria-hidden="true"></i> Takeaway
+        </span>
+        <span class="service-chip" data-color="chip-del">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery
+        </span>
+      </div>
+    </div>
+
+    <!-- THUMBNAIL CAROUSEL SYNC -->
+    <div class="hero-thumbs-wrap" aria-label="Slide thumbnails">
+      <div class="swiper hero-thumbs-swiper" id="heroThumbsSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide hero-thumb-slide">
+            <div class="thumb-img" style="background-image: url('images/img_2.jpg');" role="img" aria-label="Thumbnail 1"></div>
+            <span class="thumb-label">The Kitchen</span>
+          </div>
+          <div class="swiper-slide hero-thumb-slide">
+            <div class="thumb-img" style="background-image: url('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=Ab43m-sLTtZIfDz7G78g16DhodgLQz
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:700,once:true,offset:60});
+AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
 
-// Sticky nav
-const stickyNav = document.getElementById('stickyNav');
-const heroEl = document.querySelector('.hero,[class*=hero]');
-if(stickyNav && heroEl){
-  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
-}
-
-// Open/Closed badge
-const HOURS={"Monday": "12:00 – 11:30 PM", "Tuesday": "12:00 – 11:30 PM", "Wednesday": "12:00 – 11:30 PM", "Thursday": "12:00 – 11:30 PM", "Friday": "12:00 – 11:30 PM", "Saturday": "12:00 – 11:30 PM", "Sunday": "12:00 – 11:30 PM"};
+// Sticky nav on scroll past hero
 (function(){
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
-  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-  const badge=document.getElementById('openBadge');
-  if(!badge)return;
-  if(!m){badge.textContent='See hours below';return;}
-  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
-  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
-  const isOpen=n>=o&&n<(c<o?c+1440:c);
-  badge.textContent=isOpen?'● Open now':'● Closed';
-  badge.style.color=isOpen?'#22c55e':'#ef4444';
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
 })();
 
-// Rating counter
-const rc=document.getElementById('ratingCounter');
-if(rc){
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "12:00 – 11:30 PM", "Tuesday": "12:00 – 11:30 PM", "Wednesday": "12:00 – 11:30 PM", "Thursday": "12:00 – 11:30 PM", "Friday": "12:00 – 11:30 PM", "Saturday": "12:00 – 11:30 PM", "Sunday": "12:00 – 11:30 PM"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
   const rating=4,cnt=599;
+  if(!rating)return;
   new IntersectionObserver(([e])=>{
     if(!e.isIntersecting)return;
-    rc.textContent='';
-    const animate=(from,to,dec,cb)=>{
-      let start=null;
-      (function step(ts){
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
         if(!start)start=ts;
-        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
         cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
-        if(p<1)requestAnimationFrame(step);
+        if(p<1)requestAnimationFrame(tick);
       })(performance.now());
     };
-    const rs=document.createElement('span'),cs=document.createElement('span');
-    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
-    animate(0,rating,true,v=>rs.textContent=v);
-    animate(0,cnt,false,v=>cs.textContent=v);
-  },{threshold:0.5}).observe(rc);
-}
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
 
-// Ripple
-document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
   btn.addEventListener('click',function(e){
-    const r=document.createElement('span');
-    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
     Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
       left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
-      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
-    this.style.position='relative';this.style.overflow='hidden';
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
     this.append(r);setTimeout(()=>r.remove(),700);
   });
 });
 </script>
-<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
