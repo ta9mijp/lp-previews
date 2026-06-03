@@ -10,405 +10,122 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
   @media(min-width:700px){.float-cta{display:none!important;}}
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Zen+Old+Mincho:wght@400;700&display=swap');
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap');
 
 :root {
-  --primary: #1a1208;
-  --accent: #c8922a;
-  --accent-light: #e8b84b;
-  --accent-dark: #9a6d18;
-  --bg: #faf8f3;
-  --bg-warm: #f5f0e8;
-  --bg-dark: #0f0c06;
-  --text: #2a2218;
-  --text-light: #6b5c3e;
-  --muted: #9e8e72;
-  --border: #d4c4a0;
-  --border-light: #e8dcc8;
-  --white: #ffffff;
-  --shadow-warm: rgba(200, 146, 42, 0.18);
-  --shadow-dark: rgba(15, 12, 6, 0.35);
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --transition-slow: 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+--c-bg:#faf6f1;
+--c-earth:#8b6f47;
+--c-earth-dark:#5c4a2a;
+--c-earth-light:#c4a882;
+--c-warm:#e8d5b7;
+--c-accent:#d4956a;
+--c-accent2:#b5734a;
+--c-text:#2c1f0e;
+--c-text-light:#6b5740;
+--c-white:#fff;
+--c-overlay:rgba(30,18,6,.45);
+--c-pink:#f78da7;
+--ff-head:'Playfair Display',Georgia,serif;
+--ff-body:'Inter',system-ui,sans-serif;
+--r:8px;
+--r-lg:16px;
+--shadow:0 4px 24px rgba(44,31,14,.12);
+--shadow-lg:0 8px 48px rgba(44,31,14,.18);
+--trans:.3s ease;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--ff-body);background:var(--c-bg);color:var(--c-text);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
 
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.2;font-weight:600}
+h1{font-size:clamp(2.4rem,6vw,5rem)}
+h2{font-size:clamp(1.8rem,4vw,3rem)}
+h3{font-size:clamp(1.2rem,2.5vw,1.8rem)}
+h4{font-size:1.1rem}
+p{font-size:clamp(.9rem,1.5vw,1.05rem);color:var(--c-text-light)}
 
-body {
-  font-family: 'Noto Serif JP', 'Zen Old Mincho', serif;
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.8;
-  overflow-x: hidden;
-  letter-spacing: 0.04em;
-}
+/* ── FIXED CLASSES ── */
+.proto-banner{position:fixed;top:0;left:0;width:100%;z-index:9999;background:var(--c-earth-dark);color:var(--c-white);text-align:center;padding:.5rem 1rem;font-size:.82rem;font-family:var(--ff-body);letter-spacing:.04em}
+.proto-banner a{color:var(--c-pink);text-decoration:underline}
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+#openBadge{display:inline-flex;align-items:center;gap:.4rem;background:var(--c-accent);color:var(--c-white);font-size:.78rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;letter-spacing:.05em;text-transform:uppercase}
+#openBadge::before{content:'';width:.55rem;height:.55rem;border-radius:50%;background:#4cde80;display:block;animation:pulse 1.6s infinite}
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color var(--transition);
-}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
 
-ul {
-  list-style: none;
-}
+#ratingCounter{display:inline-flex;align-items:center;gap:.35rem;font-size:.9rem;font-weight:500;color:var(--c-earth-dark)}
+#ratingCounter .stars{color:#f5a623;letter-spacing:-.05em;font-size:1rem}
+#ratingCounter .count{color:var(--c-text-light);font-size:.8rem}
 
-/* ─── ORNAMENT UTILITY ─── */
-.ornament {
-  display: inline-block;
-  width: 60px;
-  height: 1px;
-  background: var(--accent);
-  vertical-align: middle;
-  margin: 0 12px;
-}
+#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background var(--trans),box-shadow var(--trans)}
+#stickyNav.scrolled{background:rgba(250,246,241,.96);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(44,31,14,.1)}
+#stickyNav .nav-logo{font-family:var(--ff-head);font-size:1.4rem;color:var(--c-white);font-weight:600;transition:color var(--trans)}
+#stickyNav.scrolled .nav-logo{color:var(--c-earth-dark)}
+#stickyNav .nav-links{display:flex;gap:2rem;align-items:center}
+#stickyNav .nav-links a{font-size:.85rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);transition:color var(--trans)}
+#stickyNav.scrolled .nav-links a{color:var(--c-text)}
+#stickyNav .nav-links a:hover{color:var(--c-accent)}
+#stickyNav .nav-cta{background:var(--c-accent);color:var(--c-white)!important;padding:.45rem 1.2rem;border-radius:999px;font-size:.8rem!important;transition:background var(--trans)!important}
+#stickyNav .nav-cta:hover{background:var(--c-accent2)!important}
+#stickyNav .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.3rem}
+#stickyNav .nav-hamburger span{display:block;width:24px;height:2px;background:var(--c-white);transition:background var(--trans)}
+#stickyNav.scrolled .nav-hamburger span{background:var(--c-earth-dark)}
 
-.section-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--accent);
-  display: block;
-  margin-bottom: 0.5rem;
-}
+.float-cta{position:fixed;bottom:1.8rem;right:1.8rem;z-index:900;display:flex;flex-direction:column;gap:.7rem;align-items:flex-end}
+.float-cta a{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:999px;font-size:.85rem;font-weight:600;box-shadow:var(--shadow-lg);transition:transform var(--trans),box-shadow var(--trans)}
+.float-cta a:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(44,31,14,.22)}
+.float-cta .cta-reserve{background:var(--c-earth-dark);color:var(--c-white)}
+.float-cta .cta-tel{background:var(--c-white);color:var(--c-earth-dark);border:2px solid var(--c-warm)}
 
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 300;
-  line-height: 1.2;
-  color: var(--primary);
-  letter-spacing: 0.06em;
-}
+/* ── HERO ── */
+.ck-hero{position:relative;width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.ck-hero__bg{position:absolute;inset:0;background-size:cover;background-position:center;background-attachment:fixed;transform:scale(1.04);transition:transform 8s ease}
+.ck-hero__overlay{position:absolute;inset:0;background:var(--c-overlay)}
+.ck-hero__content{position:relative;z-index:2;padding:2rem;max-width:860px;width:100%}
+.ck-hero__eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c-earth-light);margin-bottom:1.2rem;font-family:var(--ff-body)}
+.ck-hero__title{color:var(--c-white);margin-bottom:1.2rem;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.ck-hero__subtitle{color:rgba(255,255,255,.82);font-size:clamp(1rem,2vw,1.25rem);margin-bottom:.6rem;font-family:var(--ff-body);font-weight:300}
+.ck-hero__tagline{color:var(--c-earth-light);font-size:.9rem;letter-spacing:.08em;margin-bottom:2.4rem}
+.ck-hero__actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.ck-hero__scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.6);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;z-index:2}
+.ck-hero__scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{opacity:.6;transform:scaleY(1)}50%{opacity:1;transform:scaleY(.6)}}
 
-.section-title em {
-  font-style: italic;
-  color: var(--accent);
-}
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 2rem;border-radius:999px;font-size:.88rem;font-weight:600;letter-spacing:.04em;cursor:pointer;border:none;transition:all var(--trans)}
+.btn-primary{background:var(--c-accent);color:var(--c-white)}
+.btn-primary:hover{background:var(--c-accent2);transform:translateY(-1px);box-shadow:0 6px 24px rgba(212,149,106,.4)}
+.btn-outline{background:transparent;color:var(--c-white);border:2px solid rgba(255,255,255,.7)}
+.btn-outline:hover{background:rgba(255,255,255,.12);border-color:var(--c-white)}
+.btn-dark{background:var(--c-earth-dark);color:var(--c-white)}
+.btn-dark:hover{background:var(--c-earth);transform:translateY(-1px)}
 
-.divider-line {
-  width: 48px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  margin: 1.5rem auto;
-}
+/* ── SECTION WRAPPER ── */
+.ck-section{padding:6rem 2rem}
+.ck-container{max-width:1240px;margin:0 auto;width:100%}
+.ck-section-head{text-align:center;margin-bottom:4rem}
+.ck-section-head .eyebrow{display:block;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c-accent);margin-bottom:.8rem;font-family:var(--ff-body)}
+.ck-section-head h2{color:var(--c-earth-dark);margin-bottom:1rem}
+.ck-section-head p{max-width:560px;margin:0 auto}
+.ck-divider{width:60px;height:3px;background:linear-gradient(90deg,var(--c-accent),var(--c-earth-light));border-radius:2px;margin:1.2rem auto 0}
 
-/* ─── PROTO BANNER ─── */
-.proto-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  background: linear-gradient(90deg, #1a1208 0%, #2d1f0a 40%, #1a1208 100%);
-  border-bottom: 1px solid var(--accent-dark);
-  padding: 0.55rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.proto-banner::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
-}
-
-.proto-banner-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.22em;
-  color: var(--accent-light);
-  text-align: center;
-  flex: 1;
-}
-
-.proto-banner-text strong {
-  color: var(--white);
-  font-weight: 600;
-}
-
-.proto-banner-cta {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  border: 1px solid var(--accent-dark);
-  padding: 0.25rem 0.9rem;
-  border-radius: var(--radius-sm);
-  white-space: nowrap;
-  transition: all var(--transition);
-}
-
-.proto-banner-cta:hover {
-  background: var(--accent);
-  color: var(--white);
-  border-color: var(--accent);
-}
-
-/* ─── STICKY NAV ─── */
-.sticky-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 990;
-  background: rgba(15, 12, 6, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(200, 146, 42, 0.2);
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: transform var(--transition-slow), opacity var(--transition-slow);
-  padding: 0.8rem 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.sticky-nav.is-visible {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.sticky-nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  font-weight: 300;
-  letter-spacing: 0.18em;
-  color: var(--white);
-}
-
-.sticky-nav-logo span {
-  color: var(--accent);
-}
-
-.sticky-nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-}
-
-.sticky-nav-links a {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-  position: relative;
-  padding-bottom: 2px;
-  transition: color var(--transition);
-}
-
-.sticky-nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  transition: width var(--transition);
-}
-
-.sticky-nav-links a:hover {
-  color: var(--accent-light);
-}
-
-.sticky-nav-links a:hover::after {
-  width: 100%;
-}
-
-.sticky-nav-reserve {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--primary);
-  background: linear-gradient(135deg, var(--accent-light), var(--accent));
-  padding: 0.5rem 1.4rem;
-  border-radius: var(--radius-sm);
-  transition: all var(--transition);
-  box-shadow: 0 2px 12px var(--shadow-warm);
-}
-
-.sticky-nav-reserve:hover {
-  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-  color: var(--white);
-  box-shadow: 0 4px 20px var(--shadow-warm);
-  transform: translateY(-1px);
-}
-
-/* ─── HERO ─── */
-.hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  margin-top: 0;
-  background-color: var(--bg-dark);
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('hero-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  transform: scale(1.05);
-  transition: transform 8s ease-out;
-}
-
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    160deg,
-    rgba(10, 8, 3, 0.72) 0%,
-    rgba(15, 12, 6, 0.55) 40%,
-    rgba(20, 14, 4, 0.75) 100%
-  );
-}
-
-.hero-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(200, 146, 42, 0.03) 2px,
-    rgba(200, 146, 42, 0.03) 4px
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem;
-  max-width: 900px;
-  width: 100%;
-}
-
-.hero-eyebrow {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
-  color: var(--accent-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  opacity: 0;
-  animation: fadeInUp 0.9s 0.3s forwards;
-}
-
-.hero-eyebrow::before,
-.hero-eyebrow::after {
-  content: '';
-  display: block;
-  width: 50px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent));
-}
-
-.hero-eyebrow::after {
-  background: linear-gradient(90deg, var(--accent), transparent);
-}
-
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3rem, 10vw, 6.5rem);
-  font-weight: 300;
-  line-height: 1.05;
-  color: var(--white);
-  letter-spacing: 0.08em;
-  margin-bottom: 1.2rem;
-  opacity: 0;
-  animation: fadeInUp 0.9s 0.5s forwards;
-}
-
-.hero-title .accent-word {
-  color: var(--accent-light);
-  font-style: italic;
-  display: block;
-}
-
-.hero-title .outline-text {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
-  color: transparent;
-  display: block;
-}
-
-.hero-sub {
-  font-family: 'Noto Serif JP', serif;
-  font-size: clamp(0.85rem, 2vw, 1.05rem);
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.78);
-  letter-spacing: 0.18em;
-  max-width: 560px;
-  margin: 0 auto 2.5rem;
-  line-height: 2;
-  opacity: 0;
-  animation: fadeInUp 0.9s 0.7s forwards;
-}
-
-.hero-cta-group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeInUp 0.9s 0.9s forwards;
-}
-
-.hero-cta {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  padding: 1rem
+/* ── CONCEPT / ABOUT ── */
+.ck-concept{background:var(--c-white)}
+.ck-concept__grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.ck-concept__img{position:relative;border-
   </style>
 </head>
 <body>
@@ -416,351 +133,211 @@ ul {
 
   <!-- Proto Banner -->
   <div class="proto-banner">
-    🎨 Free demo for Cool's Kitchen — All images, text &amp; colours are placeholders and fully customisable.
+    <p><strong>🎨 Free demo for Cool's Kitchen</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
   <!-- Sticky Nav -->
-  <nav class="sticky-nav" id="stickyNav">
-    <a class="nav-logo" href="#">Cool's Kitchen</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#visit">Visit</a></li>
-    </ul>
-    <a class="nav-reserve" href="tel:020 3621 6276">📞 Reserve a Table</a>
+  <nav id="stickyNav">
+    <div class="ck-container" style="display:flex;align-items:center;justify-content:space-between;padding:0 2rem;">
+      <a href="#hero" class="nav-logo">Cool's Kitchen</a>
+      <ul class="nav-links" style="display:flex;list-style:none;gap:2rem;margin:0;padding:0;">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#philosophy">Our Values</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="tel:020 3621 6276" class="nav-cta btn btn-primary">Reserve a Table</a>
+      <button class="nav-hamburger" aria-label="Open menu">&#9776;</button>
+    </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section
-    class="hero"
-    style="background-image: url('images/img_0.jpg');"
-  >
-    <div class="hero-content">
-      <span
-        class="open-badge"
-        id="openBadge"
-        data-open="true"
-      >● Open Now</span>
-
-      <h1 class="hero-title" data-aos="fade-up">Cool's Kitchen</h1>
-      <p class="hero-sub" data-aos="fade-up" data-aos-delay="100">
-        Soul food cooked with love in South London
+  <!-- ░░░ HERO ░░░ -->
+  <section class="ck-hero" id="hero">
+    <div class="ck-hero__bg" style="background-image:url('images/img_0.jpg');"></div>
+    <div class="ck-hero__overlay"></div>
+    <div class="ck-hero__content">
+      <span class="ck-hero__eyebrow eyebrow">South London · Restaurant</span>
+      <h1 class="ck-hero__title">Cool's Kitchen</h1>
+      <p class="ck-hero__subtitle">South London soul, cooked with genuine heart</p>
+      <p class="ck-hero__tagline">
+        <span id="openBadge"></span>
+        <span id="ratingCounter" data-rating="4.6" data-count="108">⭐ 4.6 · 108 Google reviews</span>
       </p>
-
-      <div
-        class="hero-rating"
-        data-aos="fade-up"
-        data-aos-delay="150"
-        id="ratingCounter"
-        data-rating="4.6"
-        data-count="108"
-      >
-        ⭐ 4.6 · 108 Google reviews
+      <div class="ck-hero__actions">
+        <a href="tel:020 3621 6276" class="btn btn-primary">📞 Reserve a Table</a>
+        <a href="#menu" class="btn btn-outline">View Menu</a>
       </div>
-
-      <div class="hero-badges" data-aos="fade-up" data-aos-delay="180">
-        <span class="service-badge">🍽 Dine-In</span>
-        <span class="service-badge">🥡 Takeaway</span>
-        <span class="service-badge">🚴 Delivery</span>
+      <div class="ck-hero__scroll">
+        <span>Scroll to explore</span>
+        <div class="ck-hero__scroll-line"></div>
       </div>
-
-      <a
-        class="hero-cta"
-        href="tel:020 3621 6276"
-        data-aos="fade-up"
-        data-aos-delay="200"
-      >📞 Call to Reserve</a>
     </div>
   </section>
 
-  <!-- Social Bar -->
-  <div class="social-bar">
-    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-      </svg>
-      Instagram
-    </a>
-    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-      </svg>
-      Facebook
-    </a>
-    <a href="https://wa.me/02036216276" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-      </svg>
-      WhatsApp
-    </a>
-    <a href="https://maps.google.com/?cid=12608277402466647142" target="_blank" rel="noopener" aria-label="Google Maps">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-      </svg>
-      Google Maps
-    </a>
+  <!-- ░░░ CONTENT SECTIONS ░░░ -->
+
+  <!-- ── ABOUT / CONCEPT ── -->
+  <section class="ck-section" id="about" style="background:#fdf6ef;padding:5rem 0;">
+    <div class="ck-container">
+      <div class="ck-section-head" style="text-align:center;max-width:700px;margin:0 auto 3rem;" data-aos="fade-up">
+        <span class="eyebrow">Our Story</span>
+        <div class="ck-divider"></div>
+        <h2 style="font-size:2.4rem;font-weight:700;color:#2c1a0e;margin:.75rem 0 1rem;">A South London Gem</h2>
+        <p style="color:#6b4f3a;line-height:1.8;font-size:1.05rem;">Cool's Kitchen is a South London gem where home-style cooking meets bold, comforting flavours. Every dish is crafted with care, drawing on rich culinary traditions to bring warmth and satisfaction to your table.</p>
+      </div>
+
+      <!-- Image-Text Alternating Block 1 -->
+      <div class="ck-concept__grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:4rem;" data-aos="fade-right">
+        <div class="ck-concept__img" style="border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(44,26,14,.15);aspect-ratio:4/3;">
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=Ab43m-t3PQq5sbON1Dqk2hEjcV1sef5zBglOfmMGz8glCSFCJ9-JzptPqSumvjRxknImAvm2WgF4teOaJCGCEsfNZfTjkaJmG2u9PhrLisaBOCDl5BnbhTohz5nDCZKVElvEokSTaeXByveEIJIxiOtWgK2bl3aJNV7DTLBZjxp-foQGGKOHA0hBGI1hV9S_DP359KnWgRGngwX6BcFPIa771iB-89hWfl6lpGaMR4xDrkjybSPxjl2zb3qpA4SlyZOroPnINsVjstc1U4ETcrZXlJzSf7ADzMR26cBlSVciOp8_EA8OIuxUtvhR-XEqo91Y245Xkbbl5U2FWW7HRbBBKC2ulrZyObKD4GpNITYJA1GHJiNlNyHFmBsxHOTSaBi4SPLpSOcT_vU6yS1Dh667Yzhp0FnGfvb7opOdiW25ptdMytsNcNFUzu5MseOzHQ-i&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs" alt="Cool's Kitchen interior" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div style="padding:1rem 0;" data-aos="fade-left">
+          <span class="eyebrow">Home-Style Cooking</span>
+          <h3 style="font-size:1.9rem;color:#2c1a0e;margin:.5rem 0 1rem;font-weight:700;">Bold Flavours, Honest Plates</h3>
+          <p style="color:#6b4f3a;line-height:1.9;margin-bottom:1.5rem;">We draw on generations of culinary tradition to bring you dishes that feel familiar yet exciting — seasoned with intention, cooked with pride, and served with genuine love for the community we feed.</p>
+          <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:.75rem;">
+            <li style="display:flex;align-items:center;gap:.75rem;color:#6b4f3a;"><span style="background:#c8601a;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;">✓</span> Dine-in available</li>
+            <li style="display:flex;align-items:center;gap:.75rem;color:#6b4f3a;"><span style="background:#c8601a;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;">✓</span> Takeaway &amp; delivery</li>
+            <li style="display:flex;align-items:center;gap:.75rem;color:#6b4f3a;"><span style="background:#c8601a;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;">✓</span> Open 7 days · 11am–11pm</li>
+          </ul>
+          <a href="tel:020 3621 6276" class="btn btn-primary">Book a Table</a>
+        </div>
+      </div>
+
+      <!-- Image-Text Alternating Block 2 (reversed) -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;" data-aos="fade-left">
+        <div style="padding:1rem 0;" data-aos="fade-right">
+          <span class="eyebrow">Community &amp; Craft</span>
+          <h3 style="font-size:1.9rem;color:#2c1a0e;margin:.5rem 0 1rem;font-weight:700;">Rooted in South London</h3>
+          <p style="color:#6b4f3a;line-height:1.9;margin-bottom:1.5rem;">More than a restaurant — Cool's Kitchen is a gathering place. We exist to nourish our South London neighbours, one honest and hearty meal at a time. Every plate carries a story.</p>
+          <a href="#philosophy" class="btn btn-outline" style="border-color:#c8601a;color:#c8601a;">Our Philosophy</a>
+        </div>
+        <div class="ck-concept__img" style="border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(44,26,14,.15);aspect-ratio:4/3;">
+          <img src="images/img_1.jpg" alt="Cool's Kitchen food" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FULL-BLEED PHOTO STRIP ── -->
+  <div style="width:100%;height:380px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=Ab43m-vqni7TY7iYuPjp_9lETaab1EQBqyFiNmUP8uU5mYfrtcFL5X-1YqAHj6vTsaAM-RZtnxAcoa2MGj4kKwr0YY0iJdKkezdUbZ1xtiqzn6eWTIp1fXJYATL6tOgUTaCKgmpcbkaGo_FSb1dAZ52U1a1GTXz23PGUZzDpoypcZZ8xLf_mXuTf1J1oQ8pikDr4cVHHXpR_WfA69JW_OUrSTJJXSHtBc_Fr7y88hMh9zcq1VJxjpLjhuSo1qZgORZ2dEOBENQSiv6OF5YcreZ5u5h8xiI8KrDufc5SNGdYRdMm84V44FityRjkqTd5HKUsWjpTLZ_5DWOhhahYhPR3Bsx0qAov2n6wia3das_L2SKqoAWdI18NLMRM0B-Ld7xeSMCzuOr79gF444tG65QtqxQVX3J9j6p3IStJXaF1GJ9ECvny4&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs" alt="Cool's Kitchen atmosphere" style="width:100%;height:100%;object-fit:cover;transform:scale(1.05);" />
+    <div style="position:absolute;inset:0;background:rgba(44,26,14,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:2rem;">
+      <p style="font-size:1.1rem;color:rgba(255,255,255,.8);letter-spacing:.15em;text-transform:uppercase;font-weight:600;" data-aos="fade-up">Open Every Day · 11:00 AM – 11:00 PM</p>
+      <h2 style="font-size:2.8rem;color:#fff;font-weight:800;margin:0;text-shadow:0 2px 20px rgba(0,0,0,.4);" data-aos="fade-up" data-aos-delay="100">Every Day Is a Special Day</h2>
+      <a href="tel:020 3621 6276" class="btn btn-primary" style="margin-top:.5rem;" data-aos="fade-up" data-aos-delay="200">📞 020 3621 6276</a>
+    </div>
   </div>
 
-  <!-- About Section -->
-  <section class="about-section" id="about">
-    <div class="about-inner">
-      <h2 data-aos="fade-up">About Cool's Kitchen</h2>
-      <div class="about-grid">
-        <div class="about-text" data-aos="fade-up" data-aos-delay="100">
-          <p>
-            Cool's Kitchen is a South London gem bringing bold, home-style cooking to your table — or your door.
-            Every dish is crafted with the warmth and care of a family kitchen, drawing on rich culinary traditions
-            that turn simple ingredients into something truly special.
-          </p>
-          <div class="about-meta">
-            <span>🍽 Restaurant</span>
-            <span>📍 South London</span>
-            <span>⭐ 4.6 · 108 Reviews</span>
-          </div>
-        </div>
-        <div class="about-image" data-aos="fade-up" data-aos-delay="200">
-          <img
-            src="images/img_1.jpg"
-            alt="Inside Cool's Kitchen"
-          />
-        </div>
+  <!-- ── PHILOSOPHY ── -->
+  <section class="ck-section" id="philosophy" style="background:#2c1a0e;padding:5rem 0;">
+    <div class="ck-container">
+      <div class="ck-section-head" style="text-align:center;max-width:650px;margin:0 auto 3.5rem;" data-aos="fade-up">
+        <span class="eyebrow" style="color:#e8a87c;">Our Philosophy</span>
+        <div class="ck-divider" style="background:#c8601a;"></div>
+        <h2 style="font-size:2.4rem;font-weight:700;color:#fff;margin:.75rem 0 1rem;">What We Stand For</h2>
+        <p style="color:rgba(255,255,255,.65);line-height:1.8;">Every plate we serve carries a set of values we hold dear. This is the soul behind Cool's Kitchen.</p>
       </div>
-
-      <!-- Philosophy Cards -->
-      <div class="about-grid about-values" style="margin-top:3rem;">
-        <div class="value-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="value-icon">🌿</div>
-          <h3>Rooted in Tradition</h3>
-          <p>Every recipe we serve carries the soul of generations of home cooking, reimagined for the South London table.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;" data-aos="fade-up" data-aos-delay="100">
+        <!-- Pillar 1 -->
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2.5rem 2rem;text-align:center;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">🌿</div>
+          <h3 style="color:#e8a87c;font-size:1.25rem;font-weight:700;margin:0 0 1rem;">Rooted in Tradition</h3>
+          <p style="color:rgba(255,255,255,.65);line-height:1.8;font-size:.95rem;">We honour time-honoured recipes passed down through generations, keeping every plate deeply soulful and familiar.</p>
         </div>
-        <div class="value-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="value-icon">🥬</div>
-          <h3>Fresh Every Day</h3>
-          <p>We source and prepare our ingredients daily, because great food begins long before it reaches your plate.</p>
+        <!-- Pillar 2 -->
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2.5rem 2rem;text-align:center;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">🤝</div>
+          <h3 style="color:#e8a87c;font-size:1.25rem;font-weight:700;margin:0 0 1rem;">Community First</h3>
+          <p style="color:rgba(255,255,255,.65);line-height:1.8;font-size:.95rem;">Cool's Kitchen exists to nourish our South London neighbours, one honest, hearty meal at a time.</p>
         </div>
-        <div class="value-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="value-icon">🏘</div>
-          <h3>Community First</h3>
-          <p>Cool's Kitchen exists to feed and uplift the neighbourhood we call home, one generous portion at a time.</p>
+        <!-- Pillar 3 -->
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2.5rem 2rem;text-align:center;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">🔥</div>
+          <h3 style="color:#e8a87c;font-size:1.25rem;font-weight:700;margin:0 0 1rem;">Bold, Honest Flavour</h3>
+          <p style="color:rgba(255,255,255,.65);line-height:1.8;font-size:.95rem;">We believe great food speaks for itself — seasoned with intention, cooked with pride, and served with love.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Reviews Section -->
-  <section class="reviews-section" id="reviews">
-    <div class="reviews-inner">
-      <h2 data-aos="fade-up">What Our Guests Say</h2>
-      <p class="reviews-sub" data-aos="fade-up" data-aos-delay="50">⭐ 4.6 · 108 Google reviews</p>
-      <div class="reviews-grid">
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="review-stars">⭐⭐</div>
-          <p class="review-text">
-            "Today, I ordered from the JustEat App and decided to give Cool's Kitchen a try based on their reviews,
-            which leaned more positive than negative. However, my experience has compelled me to express my d…"
-          </p>
-          <p class="review-author">— Mishel tamayo</p>
-        </div>
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="review-stars">⭐</div>
-          <p class="review-text">
-            "So sad to say, because I was looking forward to it. I got the salmon with plain rice…but how can you put
-            the salmon upon plain rice, with no gravy? It hardly had taste &amp; they put the "rice bottom" in…"
-          </p>
-          <p class="review-author">— A</p>
-        </div>
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <p class="review-text">
-            "I ordered via uber eats; I loved everything I ordered and got to try some of my friend's order. Hers was
-            soup, which was delicious, just on the slightly watery side - wished it was thicker. I ordered t…"
-          </p>
-          <p class="review-author">— Phillipa Lettman</p>
-        </div>
-
-      </div>
-      <div class="reviews-cta" data-aos="fade-up" data-aos-delay="250">
-        <a href="https://maps.google.com/?cid=12608277402466647142" target="_blank" rel="noopener">
-          Read all reviews on Google →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Menu Section -->
-  <section class="menu-section" id="menu">
-    <div class="menu-inner">
-      <h2 data-aos="fade-up">Our Menu</h2>
-      <p class="menu-sub" data-aos="fade-up" data-aos-delay="50">
-        Bold flavours crafted fresh every day
-      </p>
-
-      <!-- Starters -->
-      <h3 class="menu-category" data-aos="fade-up">Starters</h3>
-      <div class="menu-grid">
-
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
-          <div class="menu-item-body">
-            <h4>Spiced Corn Fritters</h4>
-            <p>Golden, crispy fritters seasoned with smoky paprika and fresh herbs, served with a cool mango chutney dip.</p>
-          </div>
-          <span class="menu-price">£5</span>
-        </div>
-
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="80">
-          <div class="menu-item-body">
-            <h4>Peppersoup</h4>
-            <p>A deeply aromatic, slow-simmered broth infused with West African spices and tender pieces of seasoned fish.</p>
-          </div>
-          <span class="menu-price">£6</span>
-        </div>
-
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="160">
-          <div class="menu-item-body">
-            <h4>Jerk Chicken Wings</h4>
-            <p>Succulent wings marinated overnight in a fiery blend of scotch bonnet, allspice and thyme, charred to perfection.</p>
-          </div>
-          <span class="menu-price">£7</span>
-        </div>
-
+  <!-- ── MENU (photo-cards) ── -->
+  <section class="ck-section" id="menu" style="background:#fdf6ef;padding:5rem 0;">
+    <div class="ck-container">
+      <div class="ck-section-head" style="text-align:center;max-width:650px;margin:0 auto 3.5rem;" data-aos="fade-up">
+        <span class="eyebrow">What We Serve</span>
+        <div class="ck-divider"></div>
+        <h2 style="font-size:2.4rem;font-weight:700;color:#2c1a0e;margin:.75rem 0 1rem;">Our Menu</h2>
+        <p style="color:#6b4f3a;line-height:1.8;">Home-style cooking crafted with bold, comforting flavours. Something special for every appetite.</p>
       </div>
 
-      <!-- Mains -->
-      <h3 class="menu-category" data-aos="fade-up">Mains</h3>
-      <div class="menu-grid">
-
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
-          <div class="menu-item-body">
-            <h4>Herb-Crusted Salmon</h4>
-            <p>Pan-seared Atlantic salmon rested on a rich, silky tomato and butter sauce with seasoned rice and steamed greens.</p>
-          </div>
-          <span class="menu-price">£14</span>
-        </div>
-
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="80">
-          <div class="menu-item-body">
-            <h4>Oxtail Stew</h4>
-            <p>Slow-braised oxtail in a deep, velvety gravy of butter beans, thyme and allspice, served with fluffy white rice.</p>
-          </div>
-          <span class="menu-price">£16</span>
-        </div>
-
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="160">
-          <div class="menu-item-body">
-            <h4>Jerk Chicken Platter</h4>
-            <p>A generous half-chicken marinated in Cool's signature jerk blend, served with festival dumplings and coleslaw.</p>
-          </div>
-          <span class="menu-price">£13</span>
-        </div>
-
-      </div>
-
-      <!-- Desserts -->
-      <h3 class="menu-category" data-aos="fade-up">Desserts</h3>
-      <div class="menu-grid">
-
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
-          <div class="menu-item-body">
-            <h4>Rum &amp; Coconut Bread Pudding</h4>
-            <p>A warmly spiced, golden pudding soaked in coconut cream and a hint of dark rum, served with vanilla custard.</p>
-          </div>
-          <span class="menu-price">£6</span>
-        </div>
-
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="80">
-          <div class="menu-item-body">
-            <h4>Mango Cheesecake</h4>
-            <p>A velvety, no-bake cheesecake crowned with fresh mango coulis on a buttery biscuit base.</p>
-          </div>
-          <span class="menu-price">£5</span>
-        </div>
-
-      </div>
-
-      <p class="menu-disclaimer" data-aos="fade-up">* Sample menu for reference. Menu items and prices may vary. Please contact the restaurant for the latest offerings.</p>
-    </div>
-  </section>
-
-  <!-- Visit Section -->
-  <section class="visit-section" id="visit">
-    <div class="visit-inner">
-      <h2 data-aos="fade-up">Find Us</h2>
-
-      <div class="visit-grid">
-
-        <!-- Address & Map -->
-        <div class="visit-address" data-aos="fade-up" data-aos-delay="50">
-          <h3>📍 Address</h3>
-          <address>
-            Cool's Kitchen<br>
+      <!-- STARTERS -->
+      <h3 style="font-size:1.5rem;color:#c8601a;font-weight:700;margin:0 0 1.5rem;padding-bottom:.75rem;border-bottom:2px solid #e8d5c4;" data-aos="fade-right">Starters</h3>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:700,once:true,offset:60});
+AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
 
-// Sticky nav
-const stickyNav = document.getElementById('stickyNav');
-const heroEl = document.querySelector('.hero,[class*=hero]');
-if(stickyNav && heroEl){
-  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
-}
-
-// Open/Closed badge
-const HOURS={"Monday": "11:00 AM – 11:00 PM", "Tuesday": "11:00 AM – 11:00 PM", "Wednesday": "11:00 AM – 11:00 PM", "Thursday": "11:00 AM – 11:00 PM", "Friday": "11:00 AM – 11:00 PM", "Saturday": "11:00 AM – 11:00 PM", "Sunday": "11:00 AM – 11:00 PM"};
+// Sticky nav on scroll past hero
 (function(){
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
-  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-  const badge=document.getElementById('openBadge');
-  if(!badge)return;
-  if(!m){badge.textContent='See hours below';return;}
-  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
-  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
-  const isOpen=n>=o&&n<(c<o?c+1440:c);
-  badge.textContent=isOpen?'● Open now':'● Closed';
-  badge.style.color=isOpen?'#22c55e':'#ef4444';
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
 })();
 
-// Rating counter
-const rc=document.getElementById('ratingCounter');
-if(rc){
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "11:00 AM – 11:00 PM", "Tuesday": "11:00 AM – 11:00 PM", "Wednesday": "11:00 AM – 11:00 PM", "Thursday": "11:00 AM – 11:00 PM", "Friday": "11:00 AM – 11:00 PM", "Saturday": "11:00 AM – 11:00 PM", "Sunday": "11:00 AM – 11:00 PM"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
   const rating=4.6,cnt=108;
+  if(!rating)return;
   new IntersectionObserver(([e])=>{
     if(!e.isIntersecting)return;
-    rc.textContent='';
-    const animate=(from,to,dec,cb)=>{
-      let start=null;
-      (function step(ts){
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
         if(!start)start=ts;
-        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
         cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
-        if(p<1)requestAnimationFrame(step);
+        if(p<1)requestAnimationFrame(tick);
       })(performance.now());
     };
-    const rs=document.createElement('span'),cs=document.createElement('span');
-    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
-    animate(0,rating,true,v=>rs.textContent=v);
-    animate(0,cnt,false,v=>cs.textContent=v);
-  },{threshold:0.5}).observe(rc);
-}
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
 
-// Ripple
-document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
   btn.addEventListener('click',function(e){
-    const r=document.createElement('span');
-    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
     Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
       left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
-      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
-    this.style.position='relative';this.style.overflow='hidden';
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
     this.append(r);setTimeout(()=>r.remove(),700);
   });
 });
 </script>
-<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
