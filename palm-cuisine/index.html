@@ -10,716 +10,300 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
   @media(min-width:700px){.float-cta{display:none!important;}}
-  :root {
-  --primary: #1a1a18;
-  --accent: #c9a84c;
-  --accent-light: #e8c96a;
-  --accent-dark: #a07830;
-  --bg: #f5f0e8;
-  --bg-dark: #1a1a18;
-  --text: #2c2c28;
-  --text-light: #f5f0e8;
-  --muted: #8a8478;
-  --border: #d4c9a8;
-  --border-dark: #3a3830;
-  --white: #ffffff;
-  --shadow: rgba(26, 26, 24, 0.15);
-  --shadow-strong: rgba(26, 26, 24, 0.35);
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-pill: 100px;
-  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --transition-fast: 0.2s ease;
-  --font-serif: 'Georgia', 'Times New Roman', serif;
-  --font-sans: 'Helvetica Neue', 'Arial', sans-serif;
-  --tracking-wide: 0.12em;
-  --tracking-wider: 0.2em;
-  --tracking-widest: 0.35em;
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@200;300;400&display=swap');
+
+:root{
+--clr-bg:#0a0806;
+--clr-surface:#110e0a;
+--clr-surface2:#1a1510;
+--clr-gold:#c9a84c;
+--clr-gold-light:#e2c97e;
+--clr-gold-dim:rgba(201,168,76,.18);
+--clr-cream:#f5efe6;
+--clr-muted:#8a7f72;
+--clr-text:#e8e0d4;
+--clr-white:#fff;
+--clr-overlay:rgba(8,6,4,.62);
+--clr-overlay-heavy:rgba(8,6,4,.82);
+--font-display:'Playfair Display',Georgia,serif;
+--font-serif:'Cormorant Garamond',Georgia,serif;
+--font-sans:'Jost',system-ui,sans-serif;
+--ease-luxury:cubic-bezier(.25,.1,.1,1);
+--ease-slide:cubic-bezier(.76,0,.24,1);
+--radius-sm:2px;
+--radius-md:4px;
+--nav-h:72px;
+--section-pad:clamp(4rem,9vw,9rem);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--clr-bg);color:var(--clr-text);font-family:var(--font-sans);font-weight:300;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+ul{list-style:none}
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* ── Loading Screen ── */
+.loading-screen{position:fixed;inset:0;z-index:9999;background:var(--clr-bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity .8s var(--ease-luxury),visibility .8s}
+.loading-screen.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loading-canvas{width:120px;height:120px;display:block}
+.loading-wordmark{font-family:var(--font-display);font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:.35em;color:var(--clr-gold);text-transform:uppercase}
+.loading-bar{width:160px;height:1px;background:var(--clr-gold-dim);overflow:hidden}
+.loading-bar__fill{height:100%;width:0;background:var(--clr-gold);animation:loadFill 2.2s var(--ease-luxury) forwards}
+@keyframes loadFill{to{width:100%}}
 
-body {
-  font-family: var(--font-sans);
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.75;
-  overflow-x: hidden;
-  font-weight: 300;
-}
+/* ── Language Selector ── */
+.lang-selector{position:fixed;top:calc(var(--nav-h) + 12px);right:clamp(1rem,3vw,2.5rem);z-index:900;display:flex;gap:.35rem;align-items:center}
+.lang-selector__btn{font-family:var(--font-sans);font-size:.65rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--clr-muted);padding:.25rem .45rem;border:1px solid transparent;border-radius:var(--radius-sm);transition:color .3s,border-color .3s}
+.lang-selector__btn.is-active,.lang-selector__btn:hover{color:var(--clr-gold);border-color:var(--clr-gold-dim)}
+.lang-selector__divider{width:1px;height:.8rem;background:var(--clr-muted);opacity:.4}
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+/* ── Transparent Overlay Nav ── */
+#stickyNav{position:fixed;top:0;left:0;right:0;z-index:800;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,4vw,3rem);transition:background .5s var(--ease-luxury),backdrop-filter .5s,box-shadow .5s}
+#stickyNav.scrolled{background:rgba(10,8,6,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(201,168,76,.12)}
+.nav-logo{font-family:var(--font-display);font-size:1.15rem;letter-spacing:.25em;color:var(--clr-cream);text-transform:uppercase;font-weight:400}
+.nav-logo span{color:var(--clr-gold)}
+.nav-links{display:flex;gap:clamp(1.2rem,2.5vw,2rem);align-items:center}
+.nav-links a{font-family:var(--font-sans);font-size:.68rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--clr-muted);transition:color .3s}
+.nav-links a:hover{color:var(--clr-gold)}
+.nav-cta{font-size:.65rem!important;letter-spacing:.2em!important;color:var(--clr-gold)!important;border:1px solid var(--clr-gold);padding:.45rem 1.1rem;border-radius:var(--radius-sm);transition:background .3s,color .3s!important}
+.nav-cta:hover{background:var(--clr-gold);color:var(--clr-bg)!important}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;padding:.5rem}
+.nav-hamburger span{display:block;width:24px;height:1px;background:var(--clr-cream);transition:transform .35s,opacity .35s}
+.nav-hamburger.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-hamburger.is-open span:nth-child(2){opacity:0}
+.nav-hamburger.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.nav-mobile-panel{position:fixed;inset:0;z-index:790;background:var(--clr-overlay-heavy);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;opacity:0;visibility:hidden;transition:opacity .5s var(--ease-luxury),visibility .5s}
+.nav-mobile-panel.is-open{opacity:1;visibility:visible}
+.nav-mobile-panel a{font-family:var(--font-display);font-size:clamp(1.6rem,5vw,2.5rem);color:var(--clr-cream);letter-spacing:.1em;transition:color .3s}
+.nav-mobile-panel a:hover{color:var(--clr-gold)}
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
+/* ── Hero ── */
+.hero-section{position:relative;width:100%;height:100svh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg-track{position:absolute;inset:0;z-index:0}
+.hero-bg-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s var(--ease-luxury);will-change:opacity,transform}
+.hero-bg-slide.is-active{opacity:1}
+.hero-bg-slide img{width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.08);transition:transform 7s var(--ease-luxury)}
+.hero-bg-slide.is-active img{transform:scale(1)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,6,4,.35) 0%,rgba(8,6,4,.55) 60%,rgba(8,6,4,.85) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 clamp(1rem,5vw,3rem);max-width:900px}
+.hero-eyebrow{display:block;font-family:var(--font-sans);font-size:.65rem;font-weight:300;letter-spacing:.5em;text-transform:uppercase;color:var(--clr-gold);margin-bottom:1.5rem}
+.hero-title{font-family:var(--font-display);font-size:clamp(2.8rem,8vw,7rem);font-weight:400;line-height:1.05;color:var(--clr-cream);letter-spacing:.04em;margin-bottom:.75rem}
+.hero-title em{font-style:italic;color:var(--clr-gold-light)}
+.hero-subtitle{font-family:var(--font-serif);font-size:clamp(.95rem,2vw,1.35rem);font-weight:300;font-style:italic;color:rgba(245,239,230,.7);letter-spacing:.1em;margin-bottom:2.5rem}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.hero-scroll-hint span{font-family:var(--font-sans);font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:var(--clr-muted)}
+.hero-scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--clr-gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.4;transform:scaleY(.8)}50%{opacity:1;transform:scaleY(1)}}
+.hero-dots{position:absolute;bottom:3.5rem;right:clamp(1rem,3vw,2.5rem);z-index:2;display:flex;flex-direction:column;gap:.5rem}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--clr-muted);border:none;padding:0;transition:background .3s,transform .3s}
+.hero-dot.is-active{background:var(--clr-gold);transform:scale(1.4)}
 
-ul {
-  list-style: none;
-}
-
-/* ─── PROTO BANNER ─── */
-
-.proto-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-  background-color: var(--accent);
-  background-image: linear-gradient(90deg, var(--accent-dark) 0%, var(--accent) 40%, var(--accent-light) 60%, var(--accent) 100%);
-  padding: 10px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  text-align: center;
-}
-
-.proto-banner p,
-.proto-banner span {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-  color: var(--primary);
-}
-
-.proto-banner a {
-  color: var(--primary);
-  border-bottom: 1px solid var(--primary);
-  opacity: 0.85;
-  transition: opacity var(--transition-fast);
-}
-
-.proto-banner a:hover {
-  opacity: 1;
-}
-
-.proto-banner::before,
-.proto-banner::after {
-  content: '◆';
-  font-size: 0.55rem;
-  color: var(--primary);
-  opacity: 0.6;
-}
-
-/* ─── STICKY NAV ─── */
-
-.sticky-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 900;
-  background-color: rgba(26, 26, 24, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 16px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border-dark);
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: transform var(--transition), opacity var(--transition);
-  pointer-events: none;
-}
-
-.sticky-nav.is-visible {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: all;
-}
-
-.sticky-nav .nav-logo {
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 400;
-  letter-spacing: var(--tracking-wide);
-  color: var(--text-light);
-  text-transform: uppercase;
-}
-
-.sticky-nav .nav-logo span {
-  color: var(--accent);
-}
-
-.sticky-nav ul {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-.sticky-nav ul li a {
-  font-size: 0.68rem;
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-  color: rgba(245, 240, 232, 0.7);
-  font-weight: 400;
-  position: relative;
-  padding-bottom: 3px;
-}
-
-.sticky-nav ul li a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--accent);
-  transition: width var(--transition);
-}
-
-.sticky-nav ul li a:hover {
-  color: var(--text-light);
-}
-
-.sticky-nav ul li a:hover::after {
-  width: 100%;
-}
-
-.sticky-nav .nav-reserve {
-  font-size: 0.65rem;
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--primary);
-  background-color: var(--accent);
-  padding: 10px 24px;
-  border-radius: var(--radius-sm);
-  transition: background-color var(--transition-fast), transform var(--transition-fast);
-  display: inline-block;
-}
-
-.sticky-nav .nav-reserve:hover {
-  background-color: var(--accent-light);
-  transform: translateY(-1px);
-}
-
-/* ─── HERO ─── */
-
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 600px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  background-color: var(--primary);
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transform: scale(1.05);
-  transition: transform 8s ease;
-  will-change: transform;
-}
-
-.hero:hover .hero-bg {
-  transform: scale(1.0);
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(26, 26, 24, 0.88) 0%,
-    rgba(26, 26, 24, 0.4) 50%,
-    rgba(26, 26, 24, 0.15) 100%
-  );
-  z-index: 1;
-}
-
-.hero-overlay-side {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(26, 26, 24, 0.5) 0%,
-    transparent 60%
-  );
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 80px 100px;
-  max-width: 800px;
-}
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 28px;
-}
-
-.hero-eyebrow span {
-  font-size: 0.65rem;
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 500;
-}
-
-.hero-eyebrow::before,
-.hero-eyebrow::after {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 1px;
-  background-color: var(--accent);
-  opacity: 0.7;
-}
-
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(3rem, 7vw, 6.5rem);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--text-light);
-  margin-bottom: 24px;
-}
-
-.hero-title em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-.hero-sub {
-  font-size: clamp(0.85rem, 1.2vw, 1rem);
-  letter-spacing: var(--tracking-wide);
-  color: rgba(245, 240, 232, 0.65);
-  line-height: 1.8;
-  max-width: 420px;
-  margin-bottom: 48px;
-  font-weight: 300;
-}
-
-.hero-cta {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.hero-cta .btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background-color: var(--accent);
-  color: var(--primary);
-  font-size: 0.68rem;
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 18px 40px;
-  border-radius: var(--radius-sm);
-  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-  border: 1px solid var(--accent);
-  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
-}
-
-.hero-cta .btn-primary:hover {
-  background-color: var(--accent-light);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(201, 168, 76, 0.4);
-}
-
-.hero-cta .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background-color: transparent;
-  color: var(--text-light);
-  font-size: 0.68rem;
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-  font-weight: 400;
-  padding: 18px 36px;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(245, 240, 232, 0.3);
-  transition: border-color var(--transition-fast), background-color var(--transition-fast);
-}
-
-.hero-cta .btn-secondary:hover {
-  border-color: rgba(245, 240, 232, 0.7);
-  background-color: rgba(245, 240, 232, 0.06);
-}
-
-.hero-scroll-indicator {
-  position: absolute;
-  bottom: 40px;
-  right: 80px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-}
-
-.hero-scroll-indicator span {
-  font-size: 0.6rem;
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-  color: rgba(245, 240, 232, 0.5);
-  writing-mode: vertical-rl;
-}
-
-.hero-scroll-indicator::after {
-  content: '';
-  display: block;
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(to bottom, rgba(245, 240, 232, 0.5), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.4; transform: scaleY(1); }
-  50% { opacity: 1; transform: scaleY(1.1); }
-}
-
-/* ─── OPEN BADGE ─── */
-
-.open-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  border-radius: var(--radius-pill);
-  font-size: 0.65rem;
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  font-
+/* ── Buttons ── */
+.btn-primary{display:inline-block;font-family:var(--font-sans);font-size:.68rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--clr-bg);background:var(--clr-gold);padding:.85rem 2.2rem;border-radius:var(--radius-sm);transition
   </style>
 </head>
 <body>
 <body>
 
-  <!-- Proto Banner -->
+  <!-- PROTO BANNER -->
   <div class="proto-banner">
-    🎨 Free demo for Palm Cuisine — All images, text &amp; colours are placeholders and fully customisable.
+    <p><strong>🎨 Free demo for Palm Cuisine</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <!-- Sticky Nav -->
-  <nav class="sticky-nav" id="stickyNav">
+  <!-- LOADING SCREEN -->
+  <div class="loading-screen" id="loadingScreen">
+    <canvas class="loading-canvas" id="loadingCanvas"></canvas>
+    <div class="loading-wordmark">Palm Cuisine</div>
+    <div class="loading-bar">
+      <div class="loading-bar__fill" id="loadingBarFill"></div>
+    </div>
+  </div>
+
+  <!-- LANGUAGE SELECTOR -->
+  <div class="lang-selector" id="langSelector">
+    <button class="lang-selector__btn" data-lang="en">EN</button>
+    <span class="lang-selector__divider">|</span>
+    <button class="lang-selector__btn" data-lang="ja">JA</button>
+  </div>
+
+  <!-- STICKY NAV -->
+  <nav id="stickyNav">
     <a class="nav-logo" href="#">Palm Cuisine</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#reviews">Reviews</a></li>
       <li><a href="#menu">Menu</a></li>
-      <li><a href="#visit">Visit</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a class="nav-reserve" href="tel:020 4531 5977">📞 Call to Reserve</a>
+    <a class="nav-cta" href="tel:020 4531 5977">Reserve</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-mobile-panel" id="navMobilePanel">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#story">Story</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:020 4531 5977">Call Us</a>
+    </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section
-    class="hero"
-    style="background-image: url('images/img_0.jpg');"
-  >
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-track" id="heroBgTrack">
+      <div class="hero-bg-slide is-active"
+           style="background-image:url('images/img_0.jpg')">
+        <img
+          src="images/img_1.jpg"
+          srcset="
+            https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=Ab43m-uwcMuJwoYNPYmkVDcAKpA5_aBl7Lz6EK6gQpbWCo7_q_X4YPr5-kuj3v3E9C6OPBtzRdVIecyS1-QaBEg2WUemRTpNBoX-TeHw05Aa4V8noRXxkcqj7rqqpuUeXBsr1p7Y8msWPxuyVN1m2hoihUoTzqsu044WiIw-tdrIZULJh8Zs8xBULFsFx0wvhbg16B95WQ1INBOrqsxIxYqK7bskYsgDoZ7AbbrTO9FZpOD2TgTKpM4y3PUORUH8fDtVPAR2SiOPr76D0LZCbyHcH39lejJwiSTVriQ9DKPUywHpJRQHZkMn8-yTUf7BjDWJ0bXDbSyP8tkCJ2glxxjJTPObaNc7M0eZzLclGI2be9_K5RYjNbMb3YQsbFU8IFptMtme8F9OPl1jiisGcAVTzCvyv129ZNjGDPLmyi4ZwKWv6w&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs 400w,
+            https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=Ab43m-uwcMuJwoYNPYmkVDcAKpA5_aBl7Lz6EK6gQpbWCo7_q_X4YPr5-kuj3v3E9C6OPBtzRdVIecyS1-QaBEg2WUemRTpNBoX-TeHw05Aa4V8noRXxkcqj7rqqpuUeXBsr1p7Y8msWPxuyVN1m2hoihUoTzqsu044WiIw-tdrIZULJh8Zs8xBULFsFx0wvhbg16B95WQ1INBOrqsxIxYqK7bskYsgDoZ7AbbrTO9FZpOD2TgTKpM4y3PUORUH8fDtVPAR2SiOPr76D0LZCbyHcH39lejJwiSTVriQ9DKPUywHpJRQHZkMn8-yTUf7BjDWJ0bXDbSyP8tkCJ2glxxjJTPObaNc7M0eZzLclGI2be9_K5RYjNbMb3YQsbFU8IFptMtme8F9OPl1jiisGcAVTzCvyv129ZNjGDPLmyi4ZwKWv6w&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs 800w,
+            https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=Ab43m-uwcMuJwoYNPYmkVDcAKpA5_aBl7Lz6EK6gQpbWCo7_q_X4YPr5-kuj3v3E9C6OPBtzRdVIecyS1-QaBEg2WUemRTpNBoX-TeHw05Aa4V8noRXxkcqj7rqqpuUeXBsr1p7Y8msWPxuyVN1m2hoihUoTzqsu044WiIw-tdrIZULJh8Zs8xBULFsFx0wvhbg16B95WQ1INBOrqsxIxYqK7bskYsgDoZ7AbbrTO9FZpOD2TgTKpM4y3PUORUH8fDtVPAR2SiOPr76D0LZCbyHcH39lejJwiSTVriQ9DKPUywHpJRQHZkMn8-yTUf7BjDWJ0bXDbSyP8tkCJ2glxxjJTPObaNc7M0eZzLclGI2be9_K5RYjNbMb3YQsbFU8IFptMtme8F9OPl1jiisGcAVTzCvyv129ZNjGDPLmyi4ZwKWv6w&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs 1200w"
+          sizes="100vw"
+          alt="Palm Cuisine interior"
+          style="display:none;"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="hero-bg-slide"
+           style="background-image:url('images/img_2.jpg')">
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <span class="open-badge" id="openBadge">● Open Now</span>
+      <p class="hero-eyebrow">
+        <span id="openBadge"></span>
+        South London · Caribbean Restaurant
+      </p>
       <h1 class="hero-title">Palm Cuisine</h1>
-      <p class="hero-sub">South London's hidden gem of Caribbean soul</p>
-      <div class="hero-rating">
-        <span
-          id="ratingCounter"
-          data-rating="4.6"
-          data-count="106"
-        >⭐ 4.6 · 106 Google reviews</span>
-      </div>
-      <div class="hero-services">
-        <span>🍽 Dine-in</span>
-        <span>🥡 Takeaway</span>
-        <span>🛵 Delivery</span>
-      </div>
-      <a class="hero-cta" href="tel:020 4531 5977">📞 Call Now — 020 4531 5977</a>
-    </div>
-  </section>
-
-  <!-- Social Bar -->
-  <div class="social-bar">
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.974-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.974 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.013 8.332 0 8.741 0 12c0 3.259.013 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.987 8.741 24 12 24c3.259 0 3.668-.013 4.948-.072 1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-      </svg>
-      Instagram
-    </a>
-    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.269h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-      </svg>
-      Facebook
-    </a>
-    <a href="https://wa.me/02045315977" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-      </svg>
-      WhatsApp
-    </a>
-    <a href="https://maps.google.com/?cid=8414123802109231872" target="_blank" rel="noopener" aria-label="Google Maps">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-      </svg>
-      Google
-    </a>
-  </div>
-
-  <!-- About Section -->
-  <section class="about-section" id="about">
-    <div class="about-inner">
-      <h2 data-aos="fade-up">About Palm Cuisine</h2>
-      <div class="about-grid">
-        <div class="about-text" data-aos="fade-up">
-          <p>
-            Tucked away in the heart of South London, Palm Cuisine is a beloved neighbourhood discovery
-            where bold Caribbean flavours meet generous, home-style cooking. From slow-braised oxtail
-            to fragrant curry goat, every dish is crafted with the kind of care and warmth that keeps
-            our guests coming back.
-          </p>
-          <img
-            src="images/img_1.jpg"
-            alt="Inside Palm Cuisine"
-            class="about-img"
-          />
-        </div>
-        <div class="about-values">
-          <div class="value-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="value-icon">🌿</div>
-            <h3>Rooted in Tradition</h3>
-            <p>
-              Every recipe honours the rich culinary heritage of the Caribbean, passed down through
-              generations and cooked with unwavering authenticity.
-            </p>
-          </div>
-          <div class="value-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="value-icon">🍽</div>
-            <h3>Generous by Nature</h3>
-            <p>
-              We believe great food should fill both the plate and the soul, which is why every
-              portion reflects our commitment to true value.
-            </p>
-          </div>
-          <div class="value-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="value-icon">🤝</div>
-            <h3>Community at Heart</h3>
-            <p>
-              Palm Cuisine exists to be a gathering place where South London locals feel welcomed,
-              nourished, and always at home.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reviews Section -->
-  <section class="reviews-section" id="reviews">
-    <div class="reviews-inner">
-      <h2 data-aos="fade-up">What Our Guests Say</h2>
-      <p class="reviews-sub" data-aos="fade-up">⭐ 4.6 · 106 Google reviews</p>
-      <div class="reviews-grid">
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <p class="review-text">
-            "Food was lovely. The portion size for the price is great! Amazing service, will be coming back."
-          </p>
-          <p class="review-author">— Bri</p>
-        </div>
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <p class="review-text">
-            "This little hidden gem, what a find. Originally locating online, when I saw Purley oaks had
-            yard shop (that wasn't the other rubbish one) I was happy. Ordered a loaded half Oxtail /
-            Curry Goat box — absolutely incredible."
-          </p>
-          <p class="review-author">— Anthony Abrams</p>
-        </div>
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <p class="review-text">
-            "Me and my friend came in after work to grab some food, and we wasn't disappointed. The service
-            from Cruz was very good, he was polite and had good customer service skills. The shop was clean
-            and smelt amazing — we'll definitely be back!"
-          </p>
-          <p class="review-author">— Darcey Wasway</p>
-        </div>
-
-      </div>
-      <div class="reviews-cta" data-aos="fade-up">
-        <a href="https://maps.google.com/?cid=8414123802109231872" target="_blank" rel="noopener">
-          Read all reviews on Google →
+      <p class="hero-subtitle">South London's boldest Caribbean flavours, beautifully served.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="tel:020 4531 5977">
+          <i class="fa fa-phone"></i> Reserve a Table
+        </a>
+        <a class="btn-primary" href="https://wa.me/02045315977" target="_blank" rel="noopener">
+          <i class="fa fa-whatsapp"></i> WhatsApp Us
         </a>
       </div>
+      <div class="hero-rating-badge">
+        <span id="ratingCounter" data-rating="4.6" data-count="106">⭐ 4.6 · 106 Google reviews</span>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+    <div class="hero-dots" id="heroDots">
+      <span class="hero-dot is-active" data-index="0"></span>
+      <span class="hero-dot" data-index="1"></span>
     </div>
   </section>
 
-  <!-- Menu Section -->
-  <section class="menu-section" id="menu">
-    <div class="menu-inner">
-      <h2 data-aos="fade-up">Our Menu</h2>
-      <p class="menu-intro" data-aos="fade-up">
-        Bold Caribbean flavours, generous portions, made with love.
-      </p>
+  <!-- PRIMARY SECTIONS -->
+  <section class="primary-sections" id="about">
+    <div class="primary-sections__inner">
 
-      <!-- Starters -->
-      <h3 class="menu-category" data-aos="fade-up">🥗 Starters</h3>
-
-      <div class="menu-item" data-aos="fade-up" data-aos-delay="50">
-        <div class="menu-item-info">
-          <span class="menu-item-name">Saltfish Fritters</span>
-          <span class="menu-item-desc">
-            Crispy golden fritters packed with seasoned saltfish, scotch bonnet and spring onion,
-            served with a tangy mango dipping sauce.
-          </span>
+      <!-- ABOUT BLOCK -->
+      <div class="about-block" data-aos="fade-up">
+        <div class="about-block__text">
+          <span class="section-eyebrow">Our Story</span>
+          <h2 class="section-title">A Hidden Gem in South London</h2>
+          <p class="section-body">Tucked away in the heart of South London, Palm Cuisine is a cherished hidden gem where bold Caribbean cooking meets generous, unpretentious hospitality. From slow-cooked oxtail to fragrant curry goat, every dish is crafted with soul and served with a smile that keeps our guests coming back.</p>
+          <a class="btn-primary" href="tel:020 4531 5977">
+            <i class="fa fa-phone"></i> Call Us
+          </a>
         </div>
-        <span class="menu-price">£6</span>
+        <div class="about-block__image" data-aos="fade-left">
+          <img
+            src="images/img_3.jpg"
+            srcset="
+              https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=Ab43m-t_oFZBZMm1QT-bG0pFB2WE_jpsh9-kao-k37sMLC425VX8473m6-KxYj9RuNncno6kG1od23JBvFWRHc5yg0lybPWLpOWB4qSGw6sZ_2O3762BHZghdkzqBEXNOgw8kFdSRtlFIdw2LguO2oTG7FNeFyeW5Amazqb8cx9gvhU6V4r6qbd-5jiOb-iXd1jyL8p89JV5R-r8gVUW84N5d_ZOSmpXBYUmRjaq1vS4YilHH9EjTNGHR3ecz2oa9srKp1mSI-roY4bOsKGneQ-IhmO8PjFQVh_oi2vbmA3CsLDi-FBNSCWv1itfzfzDK65AdvHnjqgjSGDpYMiKb79lcT6KWaWO_n1mQgeaO_iNcuZOS0nmtas1fCa_t876QNQMAP_401YxLYRenZPaEahiSiTi9NloXt_9kNuGP6vU3CqDg6pbTDOL0Su8IJTUVIag&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs 400w,
+              https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=Ab43m-t_oFZBZMm1QT-bG0pFB2WE_jpsh9-kao-k37sMLC425VX8473m6-KxYj9RuNncno6kG1od23JBvFWRHc5yg0lybPWLpOWB4qSGw6sZ_2O3762BHZghdkzqBEXNOgw8kFdSRtlFIdw2LguO2oTG7FNeFyeW5Amazqb8cx9gvhU6V4r6qbd-5jiOb-iXd1jyL8p89JV5R-r8gVUW84N5d_ZOSmpXBYUmRjaq1vS4YilHH9EjTNGHR3ecz2oa9srKp1mSI-roY4bOsKGneQ-IhmO8PjFQVh_oi2vbmA3CsLDi-FBNSCWv1itfzfzDK65AdvHnjqgjSGDpYMiKb79lcT6KWaWO_n1mQgeaO_iNcuZOS0nmtas1fCa_t876QNQMAP_401YxLYRenZPaEahiSiTi9NloXt_9kNuGP6vU3CqDg6pbTDOL0Su8IJTUVIag&key=AIzaSyAuekzP9VNKhntBY5uRCBGPb37I0HzArvs 800w"
+            sizes="(max-width:768px) 100vw, 50vw"
+            alt="Palm Cuisine food"
+            loading="lazy"
+          />
+        </div>
       </div>
 
-      <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
-        <div class="menu-item-info">
-          <span class="menu-item-name">Jerk Chicken Wings</span>
-          <span class="menu-item-desc">
-            Slow-marinated wings glazed in our signature jerk blend, grilled to a smoky char and
-            finished with a squeeze of fresh lime.
-          </span>
-        </div>
-        <span class="menu-price">£7</span>
-      </div>
-
-      <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
-        <div class="menu-item-info">
-          <span class="menu-item-name">Fried Plantain</span>
-          <span class="menu-item-desc">
-            Sweet, ripe plantain sliced thick and fried to caramelised perfection, served with a
-            cooling coconut yoghurt dip.
-          </span>
-        </div>
-        <span class="menu-price">£5</span>
-      </div>
-
-      <!-- Mains -->
-      <h3 class="menu-category" data-aos="fade-up">🍛 Mains</h3>
-
-      <div class="menu-item" data-aos="fade-up" data-aos-delay="50">
-        <div class="menu-item-info">
-          <span class="menu-item-name">Loaded Oxtail &amp; Curry Goat Box</span>
-          <span class="menu-item-desc">
-            Our showstopper — a generous half-and-half box of fall-off-the-bone oxtail and richly
-            spiced curry goat, served with rice and peas and buttered macaroni.
-          </span>
-        </div>
-        <span class="menu-price">£15</span>
-      </div>
-
-      <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
-        <div class="menu-item-info">
-          <span class="menu-item-name">Brown Stew Chicken</span>
-          <span class="menu-item-desc">
-            Tender chicken pieces slow-cooked in a deeply savoury brown stew gravy
+      <!-- PHILOSOPHY PILLARS -->
+      <div class="philosophy-block">
+        <h2 class="section-title section-title--center" data-aos="fade-up
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:700,once:true,offset:60});
+AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
 
-// Sticky nav
-const stickyNav = document.getElementById('stickyNav');
-const heroEl = document.querySelector('.hero,[class*=hero]');
-if(stickyNav && heroEl){
-  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
-}
-
-// Open/Closed badge
-const HOURS={"Monday": "12:00 – 9:00 PM", "Tuesday": "12:00 – 9:00 PM", "Wednesday": "12:00 – 9:00 PM", "Thursday": "12:00 – 9:00 PM", "Friday": "12:00 – 9:00 PM", "Saturday": "12:00 – 9:00 PM", "Sunday": "12:00 – 9:00 PM"};
+// Sticky nav on scroll past hero
 (function(){
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
-  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-  const badge=document.getElementById('openBadge');
-  if(!badge)return;
-  if(!m){badge.textContent='See hours below';return;}
-  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
-  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
-  const isOpen=n>=o&&n<(c<o?c+1440:c);
-  badge.textContent=isOpen?'● Open now':'● Closed';
-  badge.style.color=isOpen?'#22c55e':'#ef4444';
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
 })();
 
-// Rating counter
-const rc=document.getElementById('ratingCounter');
-if(rc){
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "12:00 – 9:00 PM", "Tuesday": "12:00 – 9:00 PM", "Wednesday": "12:00 – 9:00 PM", "Thursday": "12:00 – 9:00 PM", "Friday": "12:00 – 9:00 PM", "Saturday": "12:00 – 9:00 PM", "Sunday": "12:00 – 9:00 PM"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
   const rating=4.6,cnt=106;
+  if(!rating)return;
   new IntersectionObserver(([e])=>{
     if(!e.isIntersecting)return;
-    rc.textContent='';
-    const animate=(from,to,dec,cb)=>{
-      let start=null;
-      (function step(ts){
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
         if(!start)start=ts;
-        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
         cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
-        if(p<1)requestAnimationFrame(step);
+        if(p<1)requestAnimationFrame(tick);
       })(performance.now());
     };
-    const rs=document.createElement('span'),cs=document.createElement('span');
-    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
-    animate(0,rating,true,v=>rs.textContent=v);
-    animate(0,cnt,false,v=>cs.textContent=v);
-  },{threshold:0.5}).observe(rc);
-}
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
 
-// Ripple
-document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
   btn.addEventListener('click',function(e){
-    const r=document.createElement('span');
-    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
     Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
       left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
-      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
-    this.style.position='relative';this.style.overflow='hidden';
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
     this.append(r);setTimeout(()=>r.remove(),700);
   });
 });
 </script>
-<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
