@@ -4,625 +4,452 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Love Dulwich Turkish BBQ & Meze Restaurant — Peckham, London</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{padding-top:52px;}
-  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
-  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
-  .proto-banner strong{font-weight:700;}
-  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
-  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
-  @media(min-width:700px){.float-cta{display:none!important;}}
-  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
-  #stickyNav.visible{transform:translateY(0);}
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --primary:   #000000;
+      --accent:    #ffffff;
+      /* ヒーロー用（暗い背景向け） */
+      --hero-text:  #f5f2ec;
+      --hero-muted: rgba(245,242,236,0.65);
+      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
+      --c-text:   #1a1a1a;
+      --c-muted:  #6b6b6b;
+      --c-border: rgba(0,0,0,0.08);
+      --sec-bg:   #f5f5f5;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'Zen Kaku Gothic New',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
 
-:root {
---c-bg:#0a0805;
---c-bg2:#111009;
---c-surface:#1a1610;
---c-surface2:#221e15;
---c-gold:#c9a84c;
---c-gold-light:#e8c97a;
---c-gold-dim:#8a6f2e;
---c-cream:#f5efe0;
---c-text:#e8dfc8;
---c-text-muted:#9a8f7a;
---c-border:#2e2820;
---c-border-gold:rgba(201,168,76,.25);
---c-overlay:rgba(10,8,5,.72);
---f-serif:'Playfair Display',Georgia,serif;
---f-body:'Cormorant Garamond',Georgia,serif;
---radius-sm:6px;
---radius-md:12px;
---radius-lg:20px;
---shadow-gold:0 4px 30px rgba(201,168,76,.12);
---shadow-card:0 8px 40px rgba(0,0,0,.6);
---trans:all .35s cubic-bezier(.4,0,.2,1);
-}
+    /* PROTO BANNER */
+    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
+    .proto-banner strong{font-weight:700;}
+    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--c-bg);color:var(--c-text);font-family:var(--f-body);font-weight:300;line-height:1.7;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{color:var(--c-gold);text-decoration:none;transition:var(--trans)}
-a:hover{color:var(--c-gold-light)}
-ul{list-style:none}
-::selection{background:var(--c-gold);color:var(--c-bg)}
+    /* ── HERO（暗い背景 → 白文字） ── */
+    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
+    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
+    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
+    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
+    .logo{font-family:'Zen Kaku Gothic New',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
+    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
+    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
+    .badge-accent{border-color:var(--accent);color:var(--accent);}
+    .hero-tagline{font-family:'Zen Kaku Gothic New',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
+    .hero-tagline span{color:var(--accent);}
+    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
+    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
+    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
+    .hero-nav a:hover{color:#fff;}
+    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
+    .btn-reserve:hover{opacity:0.85;}
+    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
+    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
+    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
+    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
+    .mockup-overlay .m-name{font-family:'Zen Kaku Gothic New',serif;font-size:1.2rem;font-weight:300;color:#fff;}
+    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
 
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--c-bg)}
-::-webkit-scrollbar-thumb{background:var(--c-gold-dim);border-radius:3px}
+    /* ── SOCIAL BAR ── */
+    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
+    .social-icons{display:flex;gap:1.4rem;}
+    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
+    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
+    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
+    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
+    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
+    .call-link:hover{border-color:var(--accent);color:var(--accent);}
 
-/* ── PROTO BANNER ── */
-.proto-banner{
-  background:linear-gradient(90deg,var(--c-gold-dim),var(--c-gold),var(--c-gold-dim));
-  color:var(--c-bg);font-family:var(--f-serif);font-size:.8rem;
-  font-weight:600;letter-spacing:.12em;text-align:center;
-  padding:.55rem 1rem;position:relative;z-index:200;text-transform:uppercase
-}
+    /* ── SHARED CONTENT STYLES ── */
+    .section-wrap{max-width:1100px;margin:0 auto;}
+    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
+    .section-title{font-family:'Zen Kaku Gothic New',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
 
-/* ── STICKY NAV ── */
-#stickyNav{
-  position:sticky;top:0;z-index:150;
-  background:rgba(10,8,5,.92);backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--c-border-gold);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.9rem 4rem;transition:var(--trans)
-}
-#stickyNav .nav-brand{
-  font-family:var(--f-serif);font-size:1.25rem;font-weight:700;
-  color:var(--c-gold);letter-spacing:.06em
-}
-#stickyNav .nav-links{display:flex;gap:2.2rem;align-items:center}
-#stickyNav .nav-links a{
-  font-family:var(--f-body);font-size:.85rem;font-weight:400;
-  color:var(--c-text-muted);letter-spacing:.1em;text-transform:uppercase;
-  transition:var(--trans)
-}
-#stickyNav .nav-links a:hover{color:var(--c-gold)}
-#stickyNav .nav-cta{
-  background:transparent;border:1px solid var(--c-gold);
-  color:var(--c-gold);font-family:var(--f-serif);font-size:.8rem;
-  font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  padding:.55rem 1.4rem;border-radius:var(--radius-sm);cursor:pointer;
-  transition:var(--trans)
-}
-#stickyNav .nav-cta:hover{background:var(--c-gold);color:var(--c-bg)}
+    /* ── ABOUT（白背景 → 暗い文字） ── */
+    .about{padding:6rem 4rem;background:#fff;}
+    @media(max-width:700px){.about{padding:4rem 2rem;}}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
+    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
+    .about-values{display:flex;flex-direction:column;}
+    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
+    .value-item:last-child{border-bottom:none;}
+    .value-num{font-family:'Zen Kaku Gothic New',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
+    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
+    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
 
-/* ── OPEN BADGE ── */
-#openBadge{
-  display:inline-flex;align-items:center;gap:.45rem;
-  background:rgba(201,168,76,.12);border:1px solid var(--c-border-gold);
-  border-radius:50px;padding:.35rem .9rem;
-  font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c-gold)
-}
-#openBadge::before{
-  content:'';width:7px;height:7px;border-radius:50%;
-  background:#4caf50;box-shadow:0 0 8px #4caf50;
-  animation:pulse 2s infinite
-}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
+    .reviews{padding:5rem 4rem;background:#f7f7f5;}
+    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
+    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
+    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
+    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
+    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
+    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
 
-/* ── RATING COUNTER ── */
-#ratingCounter{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-family:var(--f-serif);font-size:1rem;color:var(--c-gold)
-}
-#ratingCounter .stars{font-size:1.1rem;letter-spacing:.05em}
-#ratingCounter .rating-num{font-weight:700;font-size:1.2rem}
-#ratingCounter .rating-count{color:var(--c-text-muted);font-size:.8rem}
+    /* ── MENU（白背景 → 暗い文字） ── */
+    .menu{padding:6rem 4rem;background:#fff;}
+    @media(max-width:700px){.menu{padding:4rem 2rem;}}
+    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+    .menu-note{font-size:0.78rem;color:var(--c-muted);}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
+    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
+    .menu-category:last-child{border-bottom:none;}
+    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
+    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
+    .menu-item:last-child{border-bottom:none;}
+    .menu-item-left{flex:1;}
+    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
+    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
+    .item-price{font-family:'Zen Kaku Gothic New',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
+    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
 
-/* ── HERO (left-text-right-image) ── */
-.hero-section{
-  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
-  position:relative;overflow:hidden
-}
-.hero-section::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,var(--c-bg) 0%,rgba(10,8,5,.9) 50%,rgba(10,8,5,.3) 100%);
-  z-index:1;pointer-events:none
-}
-.hero-text-col{
-  position:relative;z-index:2;display:flex;flex-direction:column;
-  justify-content:center;padding:7rem 4rem 7rem 6rem;
-  background:linear-gradient(90deg,var(--c-bg) 60%,transparent)
-}
-.hero-eyebrow{
-  font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--c-gold);margin-bottom:1.2rem;
-  display:flex;align-items:center;gap:.8rem
-}
-.hero-eyebrow::before{content:'';flex:0 0 30px;height:1px;background:var(--c-gold)}
-.hero-heading{
-  font-family:var(--f-serif);font-size:clamp(2.4rem,4.5vw,4rem);
-  font-weight:700;line-height:1.12;color:var(--c-cream);
-  margin-bottom:.8rem
-}
-.hero-heading em{font-style:italic;color:var(--c-gold)}
-.hero-subheading{
-  font-family:var(--f-body);font-size:1.2rem;font-weight:300;
-  font-style:italic;color:var(--c-text-muted);margin-bottom:1.8rem;
-  letter-spacing:.04em
-}
-.hero-desc{
-  font-size:1rem;color:var(--c-text-muted);max-width:420px;
-  line-height:1.8;margin-bottom:2.5rem
-}
-.hero-badges{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.hero-actions{display:flex;gap:1.2rem;flex-wrap:wrap}
-.hero-image-col{
-  position:relative;z-index:1;overflow:hidden
-}
-.hero-image-col .hero-img{
-  width:100%;height:100%;object-fit:cover;
-  transform:scale(1.08);
-  animation:heroZoom 12s ease-in-out infinite alternate
-}
-@keyframes heroZoom{from{transform:scale(1.08)}to{transform:scale(1.14)}}
-.hero-image-col::before{
-  content:'';position:absolute;inset:0;z-index:2;
-  background:linear-gradient(90deg,var(--c-bg) 0%,transparent 40%);
-  pointer-events:none
-}
-.hero-image-col::after{
-  content:'';position:absolute;inset:0;z-index:2;
-  background:linear-gradient(0deg,var(--c-bg) 0%,transparent 30%);
-  pointer-events:none
-}
-.hero-divider{
-  width:50px;height:2px;background:var(--c-gold);margin:1.5rem 0;
-  position:relative
-}
-.hero-divider::after{
-  content:'◆';position:absolute;left:50%;top:50%;
-  transform:translate(-50%,-50%);font-size:.5rem;
-  color:var(--c-gold);background:var(--c-bg);padding:0 4px
-}
+    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
+    .visit{padding:5rem 4rem;background:#f7f7f5;}
+    @media(max-width:700px){.visit{padding:4rem 2rem;}}
+    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
+    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
+    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
+    .visit-block a:hover{color:var(--accent);}
+    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
+    .hour-row:last-child{border-bottom:none;}
+    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
+    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
+    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
 
-/* ── BUTTONS ── */
-.btn-primary{
-  display:inline-flex;align-items:center;gap:.6rem;
-  background:var(--c-gold);color:var(--c-bg);
-  font-family:var(--f-serif);font-size:.85rem;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  padding:.85rem 2rem;border-radius:var(--radius-sm);
-  border:2px solid var(--c-gold);cursor:pointer;transition:var(--trans)
-}
-.btn-primary:hover{background:transparent;color:var(--c-gold)}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:.6rem;
-  background:transparent;color:var(--c-cream);
-  font-family:var(--f-serif);font-size:.85rem;font-weight:600;
-  letter-spacing:.12em;text-transform:uppercase;
-  padding:.85rem 2rem;border-radius:var(--radius-sm);
-  border:1px solid var(--c-border);cursor:pointer;transition:var(--trans)
-}
-.btn-secondary:hover{border-color:var(--c-gold);color:var(--c-gold)}
+    /* FOOTER */
+    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
+    @media(min-width:700px){footer{padding-bottom:2rem;}}
 
-/* ── SECTION COMMONS ── */
-.section-wrapper{padding:6rem 6rem;max-width:1400px;margin:0 auto}
-.section-header{text-align:center;margin-bottom:4rem}
-.section-tag{
-  font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--c-gold);display:block;margin-bottom:1rem
-}
-.section-title{
-  font-family:var(--f-serif);font-size:clamp(1.8rem,3.5
+    /* ── STICKY HEADER ── */
+    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
+    .sticky-header.visible{transform:translateY(0);}
+    .sticky-logo{font-family:'Zen Kaku Gothic New',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
+    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
+    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
+    .sticky-open.closed{background:#fce4ec;color:#c62828;}
+    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
+    .sticky-cta:hover{opacity:0.85;}
+
+    /* ── OPEN NOW BADGE (hero) ── */
+    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
+    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
+    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
+    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+
+    /* ── COUNTER ── */
+    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
+
+    /* ── PARALLAX ── */
+    .hero-bg{will-change:transform;}
+
+    /* ── IMAGE ZOOM ── */
+    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
+    .mockup:hover img{transform:scale(1.05);}
+
+    /* ── RIPPLE ── */
+    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
+    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
+    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
+
+    /* ── FLOAT CALL ── */
+    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
+    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
+    @media(min-width:700px){.float-call{display:none;}}
   </style>
 </head>
 <body>
-<body>
 
-  <!-- PROTO BANNER -->
+  <!-- STICKY HEADER -->
+  <header class="sticky-header" id="stickyHeader">
+    <div style="display:flex;align-items:center;">
+      <span class="sticky-logo">Love Dulwich Turkish BBQ & Meze Restaurant</span>
+      <span class="sticky-open" id="stickyBadge"></span>
+    </div>
+    <a href="tel:07879 149295" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
+  </header>
+
   <div class="proto-banner">
     <p><strong>🎨 Free demo for Love Dulwich Turkish BBQ & Meze Restaurant</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <!-- STICKY NAV -->
-  <nav id="stickyNav">
-    <div class="nav-brand">Love Dulwich</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#visit">Visit</a></li>
-    </ul>
-    <a href="tel:07879149295" class="nav-cta">Reserve a Table</a>
-  </nav>
-
-  <!-- HERO SECTION -->
-  <section class="hero-section" id="home">
-    <div class="hero-text-col">
-      <span class="hero-eyebrow">Turkish BBQ &amp; Meze · Peckham, London</span>
-      <h1 class="hero-heading">Love Dulwich<br>Turkish BBQ<br>&amp; Meze</h1>
-      <p class="hero-subheading">Where Turkish Fire Meets London's Beating Heart</p>
-      <p class="hero-desc">Smoky charcoal-kissed kebabs, vibrant meze platters, and the warmth of Turkish hospitality — right here on Lordship Lane.</p>
-
-      <div class="hero-badges">
-        <span id="openBadge"></span>
-        <span id="ratingCounter" data-rating="4.9" data-count="839"></span>
-        <span class="stars">⭐⭐⭐⭐⭐</span>
-        <span class="rating-num">4.9</span>
-        <span class="rating-count">· 839 Google Reviews</span>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-left">
+      <div>
+        <div class="logo">Love Dulwich Turkish BBQ & Meze Restaurant</div>
+        <div class="hero-badges">
+          <span class="badge">Restaurant</span>
+          <span class="badge">Peckham, London</span>
+          <span class="badge badge-accent"></span>
+        </div>
       </div>
-
-      <div class="hero-actions">
-        <a href="tel:07879149295" class="btn-primary"><i class="fa fa-phone"></i> Reserve a Table</a>
-        <a href="https://wa.me/07879149295" class="btn-secondary"><i class="fa fa-whatsapp"></i> WhatsApp Us</a>
+      <div>
+        <h1 class="hero-tagline">Where Turkish Flame Meets London's Beating Heart</h1>
+        <p class="hero-desc">Nestled on Lordship Lane in the heart of Peckham, Love Dulwich Turkish BBQ & Meze Restaurant is a passionate celebration of authentic Turkish cuisine, from slow-charred kebabs to vibrant cold mezzes bursting with Anatolian character. Every dish is crafted with the kind of warmth and generosity that turns a first visit into a cherished habit. With a glowing 4.9-star reputation and a dining room full of loyal regulars, Love is more than a restaurant — it's a discovery worth making.</p>
+        <div class="rating-counter" id="ratingCounter" data-rating="4.9" data-count="839">⭐ 4.9 · 839 Google reviews</div>
+        <div class="open-badge" id="openBadge"></div>
       </div>
-
-      <div class="hero-divider"></div>
-
-      <div class="hero-service-tags">
-        <span>🍽️ Dine-In</span>
-        <span>🥡 Takeaway</span>
-        <span>📍 89 Lordship Ln, SE22 8EP</span>
-      </div>
+      <nav class="hero-nav">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#visit">Visit</a>
+        <a href="tel:07879 149295" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
+      </nav>
     </div>
-
-    <div class="hero-image-col">
-      <div class="hero-img-wrap">
-        <img
-          class="hero-img"
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80"
-          alt="Love Dulwich Turkish BBQ Restaurant"
-        />
+    <div class="hero-right">
+      <div class="mockup">
+        <img src="images/img_1.jpg" alt="Love Dulwich Turkish BBQ & Meze Restaurant"/>
+        <div class="mockup-overlay">
+          <div class="m-name">Love Dulwich Turkish BBQ & Meze Restaurant</div>
+          <div class="m-sub">Restaurant · Peckham, London</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT SECTION -->
-  <section class="section-wrapper" id="about">
-    <div class="section-inner">
+  <div class="social-bar">
+    <span>Connect</span>
+    <div class="social-icons">
+      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/07879149295" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://maps.google.com/?cid=5728684385333684036" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
+    </div>
+    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Wine</span> <span class="tag">Beer</span></div>
+    <a href="tel:07879 149295" class="call-link"><i class="fa fa-phone"></i> 07879 149295</a>
+  </div>
 
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Our Story</span>
-        <h2 class="section-title">Fired With Passion,<br>Served With Love</h2>
-      </div>
-
+  <section class="about" id="about">
+    <div class="section-wrap">
       <div class="about-grid">
-        <div class="about-text-col" data-aos="fade-right">
-          <p class="about-intro">Nestled on Lordship Lane in the heart of Peckham, Love Dulwich Turkish BBQ &amp; Meze Restaurant brings the warmth, colour, and bold flavours of Turkish cuisine to South London. From smoky charcoal-kissed kebabs to vibrant cold meze platters, every dish is crafted with passion and the finest ingredients.</p>
-          <p class="about-body">Whether a planned celebration or a happy discovery, Love promises a dining experience that keeps you coming back.</p>
-          <a href="tel:07879149295" class="btn-primary about-cta">Book Your Table</a>
+        <div data-aos="fade-right">
+          <p class="section-label">Our Philosophy</p>
+          <h2 class="section-title">Food that brings people to the same table</h2>
+          <p class="about-body">Nestled on Lordship Lane in the heart of Peckham, Love Dulwich Turkish BBQ & Meze Restaurant is a passionate celebration of authentic Turkish cuisine, from slow-charred kebabs to vibrant cold mezzes bursting with Anatolian character. Every dish is crafted with the kind of warmth and generosity that turns a first visit into a cherished habit. With a glowing 4.9-star reputation and a dining room full of loyal regulars, Love is more than a restaurant — it's a discovery worth making.</p>
         </div>
-
-        <div class="about-image-col" data-aos="fade-left">
-          <div class="about-img-wrap rounded-card">
-            <img
-              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80"
-              alt="Love Dulwich Restaurant Interior"
-            />
-          </div>
+        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
+          <div class="value-item"><span class="value-num">01</span><div><h3>Fired with Tradition</h3><p>Every kebab and grill is prepared over open flame using time-honoured Turkish techniques passed down through generations.</p></div></div>
+          <div class="value-item"><span class="value-num">02</span><div><h3>Mezze as a Way of Life</h3><p>We believe the best meals are shared, which is why our mezze table is designed to bring people closer together with every dish.</p></div></div>
+          <div class="value-item"><span class="value-num">03</span><div><h3>Ingredients That Speak</h3><p>We source the freshest produce and authentic Turkish spices so that quality, not artifice, does all the talking on your plate.</p></div></div>
         </div>
       </div>
-
-      <!-- Philosophy Pillars -->
-      <div class="philosophy-grid">
-        <div class="philosophy-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="philosophy-icon">🔥</div>
-          <h3 class="philosophy-title">Fired With Tradition</h3>
-          <p class="philosophy-desc">Every skewer and grill is prepared using time-honoured Turkish techniques passed down through generations of culinary craft.</p>
-        </div>
-        <div class="philosophy-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="philosophy-icon">🫶</div>
-          <h3 class="philosophy-title">Meze With Heart</h3>
-          <p class="philosophy-desc">Our meze spreads are generous, colourful, and made to be shared — because the best meals are always eaten together.</p>
-        </div>
-        <div class="philosophy-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="philosophy-icon">✨</div>
-          <h3 class="philosophy-title">Warmth in Every Detail</h3>
-          <p class="philosophy-desc">From the first greeting to the last sip of wine, our team ensures every guest leaves feeling genuinely loved.</p>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- MENU SECTION -->
-  <section class="section-wrapper section-dark" id="menu">
-    <div class="section-inner">
+  <section class="reviews">
+    <div class="section-wrap">
+      <p class="section-label" data-aos="fade-up">What guests say</p>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 4.9 · 839 Google reviews</h2>
+      <div class="reviews-grid">
+        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"🔥 Experience the True Taste of Turkish BBQ in London! 🔥
 
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Our Menu</span>
-        <h2 class="section-title">A Journey Through<br>Turkish Flavour</h2>
+Looking for a place where flavor, quality, and atmosphere come together? Visit Love Dulwich Turkish BBQ & Meze Restaurant and enjoy one of the best Turkish dining experiences in London!
+
+From perfectly grilled BBQ to delici"</p><span class="review-author">— Jasmine prince · 2 months ago</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"We were looking for a place to have a late lunch and kitchens along lordship lane were closed, so really it was unplanned to end up at Love - and goodness me what a discovery!
+
+'Love' is a little Mediterranean cuisine gem on the lane. The food was delicious, the service impeccabl"</p><span class="review-author">— Beatriz Lopez · 5 months ago</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Very nice experience dining at LOVE Dulwich. We were greeted and seated immediately, and served water soon after. The menu and choices of meals all sounded divine! Food arrived hot, flavourful and very well presented. We shall be back!"</p><span class="review-author">— Stefanie Stephanie · 7 months ago</span></div></div>
       </div>
+    </div>
+  </section>
 
-      <div class="menu-columns">
-
-        <!-- Starters -->
-        <div class="menu-category" data-aos="fade-up" data-aos-delay="0">
-          <div class="menu-category-header">
-            <span class="menu-category-icon">🥗</span>
-            <h3 class="menu-category-title">Starters</h3>
-          </div>
-          <ul class="menu-elegant-list">
-            <li class="menu-item">
-              <div class="menu-item-top">
-                <span class="menu-item-name">Sigara Böreği</span>
-                <span class="menu-item-price">£7</span>
-              </div>
-              <p class="menu-item-desc">Crispy hand-rolled pastry cigars filled with creamy white cheese and fresh herbs, served with a tangy chilli dip.</p>
-            </li>
-            <li class="menu-item">
-              <div class="menu-item-top">
-                <span class="menu-item-name">Humus Kavurma</span>
-                <span class="menu-item-price">£9</span>
-              </div>
-              <p class="menu-item-desc">Silky house-made hummus topped with tender sautéed lamb and toasted pine nuts, served warm with flatbread.</p>
-            </li>
-            <li class="menu-item">
-              <div class="menu-item-top">
-                <span class="menu-item-name">Patlıcan Salatası</span>
-                <span class="menu-item-price">£8</span>
-              </div>
-              <p class="menu-item-desc">Flame-roasted aubergine blended with garlic, lemon, and tahini, drizzled with extra virgin olive oil.</p>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Mains -->
-        <div class="menu-category" data-aos="fade-up" data-aos-delay="100">
-          <div class="menu-category-header">
-            <span class="menu-category-icon">🍢</span>
-            <h3 class="menu-category-title">Mains</h3>
-          </div>
-          <ul class="menu-elegant-list">
-            <li class="menu-item">
-              <div class="menu-item-top">
-                <span class="menu-item-name">Adana Kebab</span>
-                <span class="menu-item-price">£18</span>
-              </div>
-              <p class="menu-item-desc">Hand-minced spiced lamb moulded on skewers and charcoal-grilled to perfection, served with bulgur pilaf and grilled peppers.</p>
-            </li>
-            <li class="menu-item">
-              <div class="menu-item-top">
-                <span class="menu-item-name">Kuzu Şiş</span>
-                <span class="menu-item-price">£22</span>
-              </div>
-              <p class="menu-item-desc">Tender marinated lamb cubes threaded on skewers and cooked over open flame, accompanied by sumac onions and warm flatbread.</p>
-            </li>
-            <li class="menu-item">
-              <div class="menu-item-top">
-                <span class="menu-item-name">Tavuk Kanat</span>
-                <span class="menu-item-price">£16</span>
-              </div>
-              <p class="menu-item-desc">Smoky charcoal-grilled chicken wings marinated overnight in Turkish spices and pomegranate molasses, served with a cooling yoghurt sauce.</p>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Desserts -->
-        <div class="menu-category" data-aos="fade-up" data-aos-delay="200">
-          <div class="menu-category-header">
-            <span class="menu-category-icon">🍮</span>
-            <h3 class="menu-category-title">Desserts</h3>
-          </div>
-          <ul class="menu-elegant-list">
-            <li class="menu-item">
-              <div class="menu-item-top">
-                <span class="menu-item-name">Fıstıklı Baklava</span>
-                <span class="menu-item-price">£7</span>
-              </div>
-              <p class="menu-item-desc">Layers of gossamer-thin filo pastry filled with crushed Antep pistachios and soaked in fragrant rose-water syrup.</p>
-            </li>
-            <li class="menu-item">
-              <div class="menu-item-top">
-                <span class="menu-item-name">Sütlaç</span>
-                <span class="menu-item-price">£6</span>
-              </div>
-              <p class="menu-item-desc">Classic Turkish baked rice pudding with a delicate caramelised top, scented with vanilla and served chilled.</p>
-            </li>
-          </ul>
-        </div>
-
+  <section class="menu" id="menu">
+    <div class="section-wrap">
+      <div class="menu-header" data-aos="fade-up">
+        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
+        <span class="menu-note">Seasonal · Prices incl. VAT</span>
       </div>
-
+      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Sigara Böreği</div><div class="item-desc">Crisp golden pastry rolls filled with creamy white cheese and fresh herbs, served with a tangy chilli dipping sauce.</div></div><span class="item-price">£7</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Cacık</div><div class="item-desc">Velvety strained yoghurt blended with cool cucumber, wild garlic and a drizzle of grassy olive oil, served with warm pide.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Acili Ezme</div><div class="item-desc">A boldly spiced tomato and walnut salad with pomegranate molasses, fresh flat-leaf parsley and a lingering chilli warmth.</div></div><span class="item-price">£6</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Adana Kebab</div><div class="item-desc">Hand-minced lamb and beef blended with red pepper and sumac, chargrilled on skewers and served with bulgur pilav and roasted tomato.</div></div><span class="item-price">£18</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Kuzu Şiş</div><div class="item-desc">Succulent cubes of marinated lamb shoulder grilled over charcoal until beautifully charred, accompanied by fattoush and flatbread.</div></div><span class="item-price">£22</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Tavuk Kanat</div><div class="item-desc">Slow-marinated free-range chicken wings glazed in pomegranate and harissa, grilled to a smoky crisp and served with garlic yoghurt.</div></div><span class="item-price">£16</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Künefe</div><div class="item-desc">Warm shredded wheat pastry encasing molten Turkish cheese, soaked in rose-scented syrup and dusted with crushed pistachio.</div></div><span class="item-price">£8</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Sütlaç</div><div class="item-desc">A classic Ottoman baked rice pudding, silky and lightly caramelised on top, scented with vanilla and served chilled.</div></div><span class="item-price">£7</span></div></div></div>
       <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
-
-      <div class="menu-cta-wrap" data-aos="fade-up">
-        <a href="tel:07879149295" class="btn-primary">📞 Call to Order or Book</a>
-        <a href="https://wa.me/07879149295" class="btn-secondary">💬 WhatsApp for Menu Enquiries</a>
-      </div>
-
     </div>
   </section>
 
-  <!-- REVIEWS SECTION -->
-  <section class="section-wrapper" id="reviews">
-    <div class="section-inner">
-
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Guest Reviews</span>
-        <h2 class="section-title">What Our Guests Say</h2>
-        <div class="reviews-summary">
-          <span class="stars">⭐⭐⭐⭐⭐</span>
-          <span class="rating-num">4.9</span>
-          <span class="rating-count">· 839 Google Reviews</span>
-        </div>
-      </div>
-
-      <div class="review-card-grid">
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <p class="review-text">"🔥 Experience the True Taste of Turkish BBQ in London! 🔥 Looking for a place where flavor, quality, and atmosphere come together? Visit Love Dulwich Turkish BBQ &amp; Meze Restaurant — a truly remarkable dining experience."</p>
-          <div class="review-author">
-            <div class="review-avatar">JP</div>
-            <div class="review-author-info">
-              <span class="review-name">Jasmine Prince</span>
-              <span class="review-platform">Google Review</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <p class="review-text">"We were looking for a place to have a late lunch and kitchens along Lordship Lane were closed, so really it was unplanned to end up at Love — and goodness me what a discovery! Absolutely wonderful food and service."</p>
-          <div class="review-author">
-            <div class="review-avatar">BL</div>
-            <div class="review-author-info">
-              <span class="review-name">Beatriz Lopez</span>
-              <span class="review-platform">Google Review</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <p class="review-text">"Very nice experience dining at LOVE Dulwich. We were greeted and seated immediately, and served water soon after. The menu and choices of meals all sounded divine! Food arrived hot and was absolutely delicious."</p>
-          <div class="review-author">
-            <div class="review-avatar">SS</div>
-            <div class="review-author-info">
-              <span class="review-name">Stefanie Stephanie</span>
-              <span class="review-platform">Google Review</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="reviews-cta-wrap" data-aos="fade-up">
-        <a href="https://maps.google.com/?cid=5728684385333684036" class="btn-secondary" target="_blank" rel="noopener">
-          <i class="fa fa-google"></i> Read All Reviews on Google
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- VISIT SECTION -->
-  <section class="section-wrapper section-dark" id="visit">
-    <div class="section-inner">
-
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">Find Us</span>
-        <h2 class="section-title">Come Visit Us in Peckham</h2>
-      </div>
-
+  <section class="visit" id="visit">
+    <div class="section-wrap">
+      <p class="section-label" data-aos="fade-up">Find Us</p>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
       <div class="visit-grid">
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
+          <p class="vb-label">Address</p>
+          <p>89 Lordship Ln, London SE22 8EP, UK</p>
+          <a href="https://maps.google.com/?cid=5728684385333684036" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
+        </div>
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
+          <p class="vb-label">Opening Hours</p>
+          <div class="hour-row"><span>Mon</span><span>11:00 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Tue</span><span>11:00 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Wed</span><span>11:00 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Thu</span><span>11:00 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Fri</span><span>11:00 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Sat</span><span>11:00 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Sun</span><span>11:00 AM – 10:00 PM</span></div>
+        </div>
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
+          <p class="vb-label">Reservations</p>
+          <a href="tel:07879 149295"><i class="fa fa-phone" style="font-size:0.75rem"></i> 07879 149295</a>
+          <a href="https://wa.me/07879149295" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?cid=5728684385333684036" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
+    </div>
+  </section>
 
-        <!-- Info Column -->
-        <div class="visit-info-col" data-aos="fade-right">
+  <footer>
+    <span>© 2025 Love Dulwich Turkish BBQ & Meze Restaurant</span>
+    <span>89 Lordship Ln, London SE22 8EP, UK</span>
+  </footer>
 
-          <div class="visit-info-card">
-            <div class="visit-info-block">
-              <span class="visit-info-icon">📍</span>
-              <div>
-                <h4 class="visit-info-label">Address</h4>
-                <p class="visit-info-value">89 Lordship Ln, London SE22 8EP, UK</p>
-                <a href="https://maps.google.com/?cid=5728684385333684036" class="visit-directions-link" target="_blank" rel="noopener">
-                  <i class="fa fa-map-marker"></i> Get Directions on Google Maps
-                </a>
-              </div>
-            </div>
+  <a href="tel:07879 149295" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
 
-            <div class="visit-info-block">
-              <span class="visit-info-icon">📞</span>
-              <div>
-                <h4 class="visit-info-label">Phone</h4>
-                <a href="tel:07879149295" class="visit-info-value visit-phone">07879 149295</a>
-              </div>
-            </div>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+  // ── AOS（スクロールアニメーション）──────────────────
+  AOS.init({ duration: 750, once: true, offset: 80, easing: 'ease-out-cubic' });
 
-            <div class="visit-info-block">
-              <span class="visit-info-icon">🍽️</span>
-              <div>
-                <h4 class="visit-info-label">Services</h4>
-                <div class="visit-services">
-                  <span class="visit-service-tag">✅ Dine-In</span>
-                  <span class="visit-service-tag">✅ Takeaway</span>
-                </div>
-              </div>
-            </div>
+  // ── Parallax（ヒーロー背景）──────────────────────────
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      heroBg.style.transform = `translateY(${y * 0.38}px)`;
+    }, { passive: true });
+  }
 
-            <div class="visit-info-block">
-              <span class="visit-info-icon">🕐</span>
-              <div>
-                <h4 class="visit-info-label">Opening Hours</h4>
-                <ul class="hours-list">
-                  <li><span class="hours-day">Monday</span><span class="hours-time">11:00 AM – 11:00 PM</span></li>
-                  <li><span class="hours-day">Tuesday</span><span class="hours-time">11:00 AM – 11:00 PM</span></li>
-                  <li><span class="hours-day">Wednesday</span><span class="hours-time">11:00 AM – 11:00 PM</span></li>
-                  <li><span class="hours-day">Thursday</span><span class="hours-time">11:00 AM – 11:00 PM</span></li>
-                  <li><span class="hours-day">Friday</span><span class="hours-time">11:00 AM – 11:00 PM</span></li>
-                  <li><span class="hours-day">Saturday</span><span class="hours-time">11:00 AM – 11:00 PM</span></li>
-                  <li><span class="hours-day">Sunday</span><span class="hours-time">11:00 AM – 10:00 PM</span></li>
-                </ul>
-              </div>
-            </div>
+  // ── Sticky Header ────────────────────────────────────
+  const stickyHeader = document.getElementById('stickyHeader');
+  const hero = document.querySelector('.hero');
+  if (stickyHeader && hero) {
+    const observer = new IntersectionObserver(
+      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(hero);
+  }
 
-            <div class="visit-social">
-              <h4 class="visit-info-label">Follow &amp; Connect</h4>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
-
-// Sticky nav on scroll past hero
-(function(){
-  const nav=document.getElementById('stickyNav');
-  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
-  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
-})();
-
-// Open/Closed badge
-(function(){
-  const HOURS={"Monday": "11:00 AM – 11:00 PM", "Tuesday": "11:00 AM – 11:00 PM", "Wednesday": "11:00 AM – 11:00 PM", "Thursday": "11:00 AM – 11:00 PM", "Friday": "11:00 AM – 11:00 PM", "Saturday": "11:00 AM – 11:00 PM", "Sunday": "11:00 AM – 10:00 PM"};
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const day=days[new Date().getDay()],raw=HOURS[day]||'';
-  const badge=document.getElementById('openBadge');
-  if(!badge)return;
-  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-  if(!m){badge.textContent='See hours';return;}
-  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
-  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
-  const open=n>=o&&n<(c<o?c+1440:c);
-  badge.textContent=open?'● Open now':'● Closed';
-  badge.style.color=open?'#22c55e':'#ef4444';
-})();
-
-// Rating counter animation
-(function(){
-  const el=document.getElementById('ratingCounter');
-  if(!el)return;
-  const rating=4.9,cnt=839;
-  if(!rating)return;
-  new IntersectionObserver(([e])=>{
-    if(!e.isIntersecting)return;
-    const anim=(from,to,dec,cb)=>{
-      const dur=1600;let start=null;
-      (function tick(ts){
-        if(!start)start=ts;
-        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
-        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
-        if(p<1)requestAnimationFrame(tick);
-      })(performance.now());
+  // ── 営業中バッジ ──────────────────────────────────────
+  const HOURS = {"Monday": "11:00 AM – 11:00 PM", "Tuesday": "11:00 AM – 11:00 PM", "Wednesday": "11:00 AM – 11:00 PM", "Thursday": "11:00 AM – 11:00 PM", "Friday": "11:00 AM – 11:00 PM", "Saturday": "11:00 AM – 11:00 PM", "Sunday": "11:00 AM – 10:00 PM"};
+  function computeOpenStatus() {
+    const now  = new Date();
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const day  = days[now.getDay()];
+    const raw  = HOURS[day] || '';
+    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
+    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (!m) return { open: false, text: raw };
+    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
+    const openMin  = toMin(m[1], m[2], m[3]);
+    const closeMin = toMin(m[4], m[5], m[6]);
+    const nowMin   = now.getHours() * 60 + now.getMinutes();
+    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
+    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
+    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
+    return {
+      open: isOpen,
+      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
     };
-    const rs=document.createElement('b'),cs=document.createElement('b');
-    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
-    anim(0,rating,true,v=>rs.textContent=v);
-    anim(0,cnt,false,v=>cs.textContent=v);
-  },{threshold:0.4}).observe(el);
-})();
+  }
+  function renderBadge(el, status) {
+    if (!el) return;
+    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
+    el.innerHTML = `<span class="dot"></span> ${status.text}`;
+  }
+  const status = computeOpenStatus();
+  renderBadge(document.getElementById('openBadge'), status);
+  const stickyBadge = document.getElementById('stickyBadge');
+  if (stickyBadge) {
+    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
+    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
+  }
 
-// Ripple on CTA buttons
-document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
-  btn.addEventListener('click',function(e){
-    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
-    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
-      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
-      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
-    this.style.cssText+='position:relative;overflow:hidden;';
-    this.append(r);setTimeout(()=>r.remove(),700);
+  // ── カウンターアニメーション ──────────────────────────
+  function animateCounter(el, target, isDecimal) {
+    let start = 0, duration = 1800, startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const val = start + (target - start) * ease;
+      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const ratingEl = document.getElementById('ratingCounter');
+  if (ratingEl && 4.9) {
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        io.disconnect();
+        const rating = 4.9, count = 839;
+        const rSpan = document.createElement('span');
+        const cSpan = document.createElement('span');
+        ratingEl.innerHTML = '';
+        ratingEl.appendChild(document.createTextNode('⭐ '));
+        rSpan.textContent = '0.0';
+        ratingEl.appendChild(rSpan);
+        ratingEl.appendChild(document.createTextNode(' · '));
+        cSpan.textContent = '0';
+        ratingEl.appendChild(cSpan);
+        ratingEl.appendChild(document.createTextNode(' Google reviews'));
+        animateCounter(rSpan, rating, true);
+        animateCounter(cSpan, count, false);
+      }
+    }, { threshold: 0.5 });
+    io.observe(ratingEl);
+  }
+
+  // ── リップルエフェクト ────────────────────────────────
+  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const r = document.createElement('span');
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      r.className = 'ripple';
+      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
+      this.appendChild(r);
+      setTimeout(() => r.remove(), 700);
+    });
   });
-});
-</script>
-<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+
+  // ── タイプライター（タグライン）────────────────────────
+  const tagline = document.querySelector('.hero-tagline');
+  if (tagline) {
+    const full = tagline.innerHTML;
+    tagline.innerHTML = '';
+    tagline.style.visibility = 'visible';
+    let i = 0;
+    const chars = [...full];
+    let inTag = false;
+    function typeNext() {
+      if (i >= chars.length) return;
+      if (chars[i] === '<') inTag = true;
+      if (!inTag) {
+        tagline.innerHTML += chars[i];
+      } else {
+        let tag = '';
+        while (i < chars.length && (inTag || chars[i] !== '>')) {
+          tag += chars[i];
+          if (chars[i] === '>') inTag = false;
+          i++;
+        }
+        tagline.innerHTML += tag;
+        setTimeout(typeNext, 18);
+        return;
+      }
+      if (chars[i] === '>') inTag = false;
+      i++;
+      setTimeout(typeNext, 28);
+    }
+    setTimeout(typeNext, 600);
+  }
+  </script>
+
 </body>
 </html>
