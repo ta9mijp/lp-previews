@@ -114,7 +114,6 @@ ul{list-style:none}
 .about__list{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
 .about__list li{display:flex;align-items:flex-start;gap:.75rem;font-size:.92rem}
 .about__list li::before{content:'
-  #openBadge{position:static!important;display:inline-flex!important;width:auto!important;height:auto!important;border-radius:50px!important;animation:none!important;font-family:inherit!important;font-size:.8rem!important;font-weight:600!important;padding:.3rem .85rem!important;}
 </style>
 </head>
 <body>
@@ -381,5 +380,24 @@ document.querySelectorAll('[data-tab],[data-filter],[data-category],.menu-tab,.t
   });
 });
 </script>
+
+<style>
+/* Override openBadge circle → inline pill */
+#openBadge{
+  position:static!important;
+  display:inline-flex!important;
+  width:auto!important;
+  height:auto!important;
+  min-width:0!important;
+  min-height:0!important;
+  border-radius:50px!important;
+  animation:none!important;
+  font-size:.8rem!important;
+  font-weight:600!important;
+  padding:.3rem .85rem!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+</style>
 </body>
 </html>
