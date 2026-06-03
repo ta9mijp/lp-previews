@@ -18,351 +18,349 @@
   @media(min-width:700px){.float-cta{display:none!important;}}
   #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
   #stickyNav.visible{transform:translateY(0);}
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&family=Bebas+Neue&display=swap');
 
-:root {
---c-bg:#0a0804;
---c-bg2:#110e08;
---c-bg3:#1a1610;
---c-surface:#1f1a12;
---c-surface2:#2a2318;
---c-gold:#c9a84c;
---c-gold-light:#e2c97e;
---c-gold-dim:#8a6f32;
---c-cream:#f5f0e8;
---c-text:#e8e0d0;
---c-text-muted:#9e9080;
---c-text-dim:#6b5f4e;
---c-accent:#d4523a;
---c-border:rgba(201,168,76,.18);
---c-border2:rgba(201,168,76,.08);
---c-overlay:rgba(10,8,4,.72);
---r-sm:6px;
---r-md:12px;
---r-lg:20px;
---r-xl:32px;
---shadow-gold:0 8px 40px rgba(201,168,76,.12);
---shadow-card:0 4px 24px rgba(0,0,0,.6);
---shadow-deep:0 16px 64px rgba(0,0,0,.8);
---ff-display:'Playfair Display',Georgia,serif;
---ff-body:'Cormorant Garamond',Georgia,serif;
---ff-ui:'Lato',sans-serif;
---transition:all .35s cubic-bezier(.4,0,.2,1);
---section-pad:100px 0;
---container:1180px;
+:root{
+--c-primary:#E8320A;
+--c-secondary:#F5A623;
+--c-accent:#1A1A2E;
+--c-dark:#0D0D0D;
+--c-light:#FAFAF7;
+--c-muted:#6B6B6B;
+--c-card:#FFFFFF;
+--c-overlay:rgba(13,13,13,.55);
+--ff-display:'Playfair Display',serif;
+--ff-sans:'Inter',sans-serif;
+--ff-impact:'Bebas Neue',cursive;
+--radius:12px;
+--radius-lg:24px;
+--trans:.35s cubic-bezier(.4,0,.2,1);
+--shadow:0 8px 32px rgba(0,0,0,.12);
+--shadow-lg:0 24px 64px rgba(0,0,0,.2);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--c-bg);color:var(--c-text);font-family:var(--ff-body);font-weight:300;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-img{max-width:100%;height:auto;display:block}
-a{color:inherit;text-decoration:none;transition:var(--transition)}
+body{font-family:var(--ff-sans);background:var(--c-light);color:var(--c-dark);overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
 ul{list-style:none}
-button{border:none;background:none;cursor:pointer;font-family:inherit}
 
-.container{max-width:var(--container);margin:0 auto;padding:0 32px}
-.section-pad{padding:var(--section-pad)}
+/* ── STICKY NAV ── */
+#stickyNav{
+position:fixed;top:0;left:0;width:100%;z-index:999;
+padding:1rem 2rem;
+display:flex;align-items:center;justify-content:space-between;
+background:transparent;
+transition:background var(--trans),backdrop-filter var(--trans),box-shadow var(--trans);
+}
+#stickyNav.scrolled{
+background:rgba(13,13,13,.85);
+backdrop-filter:blur(12px);
+box-shadow:0 2px 20px rgba(0,0,0,.3);
+}
+#stickyNav .nav-logo{
+font-family:var(--ff-impact);font-size:1.75rem;letter-spacing:.08em;
+color:#fff;
+}
+#stickyNav .nav-links{display:flex;gap:2rem;align-items:center}
+#stickyNav .nav-links a{
+font-family:var(--ff-sans);font-size:.8rem;font-weight:500;
+letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85);
+position:relative;padding-bottom:2px;
+transition:color var(--trans);
+}
+#stickyNav .nav-links a::after{
+content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;
+background:var(--c-secondary);transition:width var(--trans);
+}
+#stickyNav .nav-links a:hover{color:#fff}
+#stickyNav .nav-links a:hover::after{width:100%}
+#stickyNav .nav-cta{
+padding:.5rem 1.25rem;border-radius:50px;
+background:var(--c-primary);color:#fff;
+font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+transition:background var(--trans),transform var(--trans);
+}
+#stickyNav .nav-cta:hover{background:var(--c-secondary);transform:translateY(-1px)}
 
-/* ─── STICKY NAV ─── */
-#stickyNav{position:sticky;top:0;z-index:900;background:rgba(10,8,4,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border2);transition:var(--transition)}
-#stickyNav .nav-inner{max-width:var(--container);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px}
-#stickyNav .nav-logo{font-family:var(--ff-display);font-size:1.25rem;font-weight:700;color:var(--c-gold);letter-spacing:.08em}
-#stickyNav .nav-logo span{font-style:italic;font-weight:400;color:var(--c-gold-light)}
-#stickyNav .nav-links{display:flex;gap:36px;align-items:center}
-#stickyNav .nav-links a{font-family:var(--ff-ui);font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--c-text-muted);padding:4px 0;border-bottom:1px solid transparent;transition:var(--transition)}
-#stickyNav .nav-links a:hover,#stickyNav .nav-links a.active{color:var(--c-gold);border-bottom-color:var(--c-gold)}
-#stickyNav .nav-reserve{font-family:var(--ff-ui);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:10px 22px;border:1px solid var(--c-gold);color:var(--c-gold);border-radius:2px;transition:var(--transition)}
-#stickyNav .nav-reserve:hover{background:var(--c-gold);color:var(--c-bg)}
-#stickyNav .nav-hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
-#stickyNav .nav-hamburger span{display:block;width:24px;height:1px;background:var(--c-gold);transition:var(--transition)}
+/* ── PROTO BANNER ── */
+.proto-banner{
+width:100%;background:var(--c-primary);color:#fff;
+text-align:center;padding:.6rem 1rem;
+font-size:.8rem;font-weight:500;letter-spacing:.06em;
+position:relative;z-index:1000;
+}
+.proto-banner a{color:var(--c-secondary);font-weight:700;margin-left:.35rem}
 
-/* ─── PROTO BANNER ─── */
-.proto-banner{background:linear-gradient(90deg,var(--c-gold-dim),var(--c-gold),var(--c-gold-dim));color:var(--c-bg);text-align:center;padding:10px 20px;font-family:var(--ff-ui);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;position:relative;z-index:950}
+/* ── OPEN BADGE ── */
+#openBadge{
+position:fixed;bottom:6rem;right:1.5rem;z-index:990;
+width:64px;height:64px;border-radius:50%;
+background:var(--c-secondary);color:var(--c-dark);
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+font-family:var(--ff-impact);font-size:.8rem;letter-spacing:.06em;
+box-shadow:var(--shadow-lg);
+animation:pulse 2.5s ease-in-out infinite;
+cursor:default;
+}
+#openBadge span{font-size:.55rem;font-family:var(--ff-sans);font-weight:600;text-transform:uppercase}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,166,35,.5)}60%{box-shadow:0 0 0 14px rgba(245,166,35,0)}}
 
-/* ─── OPEN BADGE ─── */
-#openBadge{position:fixed;bottom:100px;right:28px;z-index:800;display:flex;flex-direction:column;align-items:center;gap:4px}
-#openBadge .badge-dot{width:10px;height:10px;border-radius:50%;background:#4caf50;box-shadow:0 0 0 0 rgba(76,175,80,.4);animation:pulse-dot 2s infinite}
-#openBadge .badge-label{font-family:var(--ff-ui);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#4caf50;writing-mode:vertical-rl;text-orientation:mixed}
-@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(76,175,80,.4)}50%{box-shadow:0 0 0 8px rgba(76,175,80,0)}}
+/* ── RATING COUNTER ── */
+#ratingCounter{
+display:flex;align-items:center;gap:.5rem;
+background:var(--c-card);border-radius:50px;
+padding:.5rem 1rem;box-shadow:var(--shadow);
+font-size:.85rem;font-weight:600;color:var(--c-dark);
+}
+#ratingCounter .stars{color:var(--c-secondary);letter-spacing:2px;font-size:.9rem}
+#ratingCounter .count{color:var(--c-muted);font-size:.75rem;font-weight:400}
 
-/* ─── RATING COUNTER ─── */
-#ratingCounter{display:inline-flex;align-items:center;gap:10px;background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-md);padding:12px 20px}
-#ratingCounter .rating-stars{color:var(--c-gold);font-size:1rem;letter-spacing:2px}
-#ratingCounter .rating-score{font-family:var(--ff-display);font-size:1.5rem;font-weight:700;color:var(--c-gold-light);line-height:1}
-#ratingCounter .rating-count{font-family:var(--ff-ui);font-size:.72rem;color:var(--c-text-muted);line-height:1.3}
+/* ── FLOAT CTA ── */
+.float-cta{
+position:fixed;bottom:1.5rem;right:1.5rem;z-index:990;
+padding:.85rem 1.75rem;border-radius:50px;
+background:var(--c-primary);color:#fff;
+font-family:var(--ff-sans);font-size:.85rem;font-weight:600;
+letter-spacing:.06em;text-transform:uppercase;
+box-shadow:0 8px 24px rgba(232,50,10,.45);
+transition:background var(--trans),transform var(--trans),box-shadow var(--trans);
+display:flex;align-items:center;gap:.5rem;
+}
+.float-cta::before{content:'↗';font-size:1rem}
+.float-cta:hover{
+background:var(--c-secondary);color:var(--c-dark);
+transform:translateY(-3px);
+box-shadow:0 12px 32px rgba(245,166,35,.5);
+}
 
-/* ─── FLOAT CTA ─── */
-.float-cta{position:fixed;bottom:28px;right:28px;z-index:800;background:linear-gradient(135deg,var(--c-gold),var(--c-gold-dim));color:var(--c-bg);font-family:var(--ff-ui);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:14px 24px;border-radius:2px;box-shadow:var(--shadow-gold);transition:var(--transition);display:flex;align-items:center;gap:8px}
-.float-cta::before{content:'';display:block;width:8px;height:8px;border-radius:50%;background:var(--c-bg);opacity:.6}
-.float-cta:hover{transform:translateY(-2px);box-shadow:0 12px 48px rgba(201,168,76,.28);color:var(--c-bg)}
+/* ── HERO ── */
+.ef-hero{
+position:relative;width:100%;height:100vh;min-height:640px;
+display:flex;align-items:center;justify-content:center;
+overflow:hidden;text-align:center;
+}
+.ef-hero__bg{
+position:absolute;inset:0;
+background:url('hero.jpg') center/cover no-repeat;
+transform:scale(1.1);
+will-change:transform;
+transition:transform .1s linear;
+}
+.ef-hero__bg::after{
+content:'';position:absolute;inset:0;
+background:linear-gradient(160deg,rgba(13,13,13,.7) 0%,rgba(232,50,10,.25) 60%,rgba(13,13,13,.6) 100%);
+}
+.ef-hero__body{
+position:relative;z-index:2;
+display:flex;flex-direction:column;align-items:center;gap:1.5rem;
+padding:1rem;
+}
+.ef-hero__eyebrow{
+font-family:var(--ff-sans);font-size:.75rem;font-weight:500;
+letter-spacing:.3em;text-transform:uppercase;color:var(--c-secondary);
+}
+.ef-hero__title{
+font-family:var(--ff-display);font-size:clamp(3rem,9vw,7rem);
+font-weight:900;line-height:1;color:#fff;
+text-shadow:0 4px 24px rgba(0,0,0,.4);
+}
+.ef-hero__title em{
+font-style:italic;color:var(--c-secondary);
+}
+.ef-hero__sub{
+font-family:var(--ff-sans);font-size:clamp(.95rem,2vw,1.15rem);
+font-weight:300;color:rgba(255,255,255,.8);max-width:480px;
+}
+.ef-hero__actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.ef-hero__btn{
+padding:.9rem 2rem;border-radius:50px;
+font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+transition:transform var(--trans),box-shadow var(--trans),background var(--trans);
+}
+.ef-hero__btn--primary{
+background:var(--c-primary);color:#fff;
+box-shadow:0 8px 24px rgba(232,50,10,.5);
+}
+.ef-hero__btn--primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(232,50,10,.65)}
+.ef-hero__btn--ghost{
+background:transparent;color:#fff;
+border:1.5px solid rgba(255,255,255,.6);
+}
+.ef-hero__btn--ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.ef-hero__scroll{
+position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+display:flex;flex-direction:column;align-items:center;gap:.4rem;
+color:rgba(255,255,255,.5);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+}
+.ef-hero__scroll::before{
+content:'';display:block;width:1px;height:40px;
+background:linear-gradient(to bottom,transparent,rgba(255,255,255,.5));
+animation:scrollLine 1.8s ease-in-out infinite;
+}
+@keyframes scrollLine{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.2)}}
 
-/* ─── HERO SECTION ─── */
-.ef-hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;background:var(--c-bg)}
-.ef-hero__left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:120px 64px 120px 80px}
-.ef-hero__eyebrow{font-family:var(--ff-ui);font-size:.7rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--c-gold);margin-bottom:20px;display:flex;align-items:center;gap:14px}
-.ef-hero__eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--c-gold)}
-.ef-hero__title{font-family:var(--ff-display);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.08;color:var(--c-cream);margin-bottom:12px}
-.ef-hero__title em{display:block;font-style:italic;color:var(--c-gold-light);font-weight:400}
-.ef-hero__subtitle{font-family:var(--ff-display);font-size:clamp(1.1rem,2vw,1.5rem);font-style:italic;color:var(--c-gold-dim);margin-bottom:32px;font-weight:400}
-.ef-hero__desc{font-size:1.05rem;color:var(--c-text-muted);line-height:1.85;max-width:420px;margin-bottom:44px}
-.ef-hero__actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.ef-hero__cta-primary{font-family:var(--ff-ui);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:16px 36px;background:linear-gradient(135deg,var(--c-gold),var(--c-gold-dim));color:var(--c-bg);border-radius:2px;transition:var(--transition);box-shadow:var(--shadow-gold)}
-.ef-hero__cta-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,168,76,.3)}
-.ef-hero__cta-secondary{font-family:var(--ff-ui);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:15px 32px;border:1px solid var(--c-border);color:var(--c-text-muted);border-radius:2px;transition:var(--transition)}
-.ef-hero__cta-secondary:hover{border-color:var(--c-gold);color:var(--c-gold)}
-.ef-hero__right{position:relative;overflow:hidden}
-.ef-hero__img-wrap{position:absolute;inset:0;will-change:transform}
-.ef-hero__img-wrap img{width:100%;height:110%;object-fit:cover;transform:translateY
+/* ── SECTION SHARED ── */
+.ef-section{padding:7rem 2rem}
+.ef-section--dark{background:var(--c-dark);color:var(--c-light)}
+.ef-section--alt{background:#F3EDE4}
+.ef-container{max-width:1200px;margin:0 auto}
+.ef-section__label{
+font-family:var(--ff-sans);font-size:.72rem;font-weight:600;
+letter-spacing:.3em;text-transform:uppercase;
+color:var(--c-primary);margin-bottom:.75rem;display:block;
+}
+.ef-section__title{
+font-family:var(--ff-display);font-size:clamp(2rem,5vw,3.5rem);
+font-weight:700;line-height:1.1;margin-bottom:1.25rem;
+}
+.ef-section__title--light{color:#fff}
+.ef-section__body{
+font-size:1rem;color:var(--c-muted);max-width:560px;line-height:1.8;
+}
+.ef-section__body--light{color:rgba(255,255,255,.65)}
+.ef
   </style>
 </head>
 <body>
 <body>
 
-  <!-- Proto Banner -->
-  <div class="proto-banner">
-    <p><strong>🎨 Free demo for Elliott Flava</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
-    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
-  </div>
+  <!-- PROTO BANNER -->
+  <div class="proto-banner"><p><strong>🎨 Free demo for Elliott Flava</strong> — All images, text &amp; colours are placeholders and fully customisable.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
 
-  <!-- Sticky Nav -->
+  <!-- STICKY NAV -->
   <nav id="stickyNav">
-    <div class="nav-inner container">
-      <a class="nav-logo" href="#">Elliott Flava</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#visit">Visit</a></li>
-      </ul>
-      <a class="nav-reserve" href="tel:020 3345 1991">Reserve a Table</a>
-      <button class="nav-hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+    <a class="nav-logo" href="#">Elliott <span>Flava</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" style="color:inherit;font-size:1.1rem;"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" style="color:inherit;font-size:1.1rem;"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/02033451991" target="_blank" aria-label="WhatsApp" style="color:inherit;font-size:1.1rem;"><i class="fab fa-whatsapp"></i></a>
+      <a class="nav-cta" href="tel:020 3345 1991">Reserve Now</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- HERO -->
   <section class="ef-hero" id="hero">
-    <div class="ef-hero__left">
-      <p class="ef-hero__eyebrow">South London · Caribbean Restaurant</p>
-      <h1 class="ef-hero__title">Elliott<br>Flava</h1>
-      <p class="ef-hero__subtitle">Bold Caribbean soul, rooted in South London</p>
-      <p class="ef-hero__desc">From slow-cooked jerk lamb to rich curry goat — every dish is crafted with love, tradition and the vibrant spirit of the Caribbean, right here in SE27.</p>
-
+    <div class="ef-hero__bg" style="background-image:url('images/img_0.jpg');"></div>
+    <div class="ef-hero__body">
+      <p class="ef-hero__eyebrow">South London · Caribbean Soul</p>
+      <h1 class="ef-hero__title">Elliott Flava</h1>
+      <p class="ef-hero__sub">Bold Caribbean Soul, Right in South London</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:2rem;flex-wrap:wrap;">
+        <span id="openBadge"></span>
+        <span class="stars" style="color:#FFD700;font-size:1.1rem;">⭐⭐⭐⭐⭐</span>
+        <span id="ratingCounter" data-rating="5" data-count="174" style="font-size:0.95rem;opacity:0.9;color:#fff;">5 · 174 Google reviews</span>
+      </div>
       <div class="ef-hero__actions">
-        <a class="ef-hero__cta-primary" href="tel:020 3345 1991">
-          <i class="fa fa-phone"></i> Call to Reserve
-        </a>
-        <a class="ef-hero__cta-secondary" href="https://wa.me/02033451991" target="_blank" rel="noopener">
-          <i class="fab fa-whatsapp"></i> WhatsApp Us
-        </a>
-      </div>
-
-      <!-- Rating & Badge -->
-      <div style="display:flex;align-items:center;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;">
-        <span id="openBadge">
-          <span class="badge-dot"></span>
-          <span class="badge-label">Open Now</span>
-        </span>
-        <span id="ratingCounter" data-rating="5" data-count="174">
-          <span class="rating-stars">⭐⭐⭐⭐⭐</span>
-          <span class="rating-score">5.0</span>
-          <span class="rating-count">· 174 Google Reviews</span>
-        </span>
+        <a class="ef-hero__btn ef-hero__btn--primary" href="tel:020 3345 1991"><i class="fa fa-phone" style="margin-right:6px;"></i>Call to Reserve</a>
+        <a class="ef-hero__btn ef-hero__btn--ghost" href="#menu">View Menu</a>
       </div>
     </div>
-
-    <div class="ef-hero__right">
-      <div class="ef-hero__img-wrap">
-        <img
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80"
-          alt="Elliott Flava restaurant — Caribbean food in South London"
-          loading="eager"
-        />
-      </div>
-    </div>
+    <a class="ef-hero__scroll" href="#about" aria-label="Scroll down">
+      <i class="fa fa-chevron-down"></i>
+    </a>
   </section>
 
-  <!-- About Section -->
-  <section class="section-pad" id="about">
-    <div class="container">
+  <!-- ABOUT -->
+  <section class="ef-section" id="about">
+    <div class="ef-container">
+      <p class="ef-section__label" data-aos="fade-up">Our Story</p>
+      <h2 class="ef-section__title" data-aos="fade-up" data-aos-delay="50">Where Caribbean Heart Meets South London Soul</h2>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;" class="about-grid">
-
-        <div data-aos="fade-right">
-          <img
-            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80"
-            alt="Inside Elliott Flava restaurant"
-            style="width:100%;border-radius:1.25rem;object-fit:cover;aspect-ratio:4/3;display:block;"
-            loading="lazy"
-          />
+      <!-- Image-text alternating #1 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:4rem;" data-aos="fade-right">
+        <div style="border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.15);">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="Elliott Flava restaurant" style="width:100%;height:420px;object-fit:cover;display:block;" />
         </div>
-
         <div data-aos="fade-left">
-          <p style="text-transform:uppercase;letter-spacing:.15em;font-size:.8rem;margin-bottom:.75rem;opacity:.65;">Our Story</p>
-          <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.2;margin-bottom:1.25rem;">The Heart &amp; Soul<br>of Caribbean Cooking</h2>
-          <p style="line-height:1.8;margin-bottom:2rem;opacity:.85;">Elliott Flava brings the vibrant, sun-kissed flavours of the Caribbean straight to the heart of South London. From slow-cooked jerk lamb to rich, aromatic curry goat, every dish is crafted with the kind of love and care that keeps our guests coming back — again and again.</p>
+          <p class="ef-section__body" style="font-size:1.15rem;line-height:1.85;">Elliott Flava brings the vibrant, soulful flavours of Caribbean cooking to the heart of South London, where every dish is crafted with care and served with genuine warmth. From slow-cooked classics to fiery jerk specialities, this is food that feeds the spirit as much as the appetite.</p>
+          <a href="tel:020 3345 1991" style="display:inline-flex;align-items:center;gap:8px;margin-top:2rem;padding:14px 28px;background:linear-gradient(135deg,#E8340A,#F5A623);color:#fff;border-radius:50px;font-weight:700;text-decoration:none;font-size:1rem;box-shadow:0 8px 24px rgba(232,52,10,0.3);transition:transform 0.2s;"><i class="fa fa-phone"></i> 020 3345 1991</a>
+        </div>
+      </div>
 
-          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+      <!-- Philosophy pillars -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:5rem;">
+        <div data-aos="fade-up" data-aos-delay="0" style="background:linear-gradient(135deg,#fff7f0,#fff);border-radius:16px;padding:2.2rem;box-shadow:0 8px 32px rgba(0,0,0,0.07);border-top:4px solid #E8340A;">
+          <div style="font-size:2rem;margin-bottom:1rem;">🌿</div>
+          <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:0.75rem;color:#1a1a1a;">Rooted in Tradition</h3>
+          <p style="color:#555;line-height:1.7;font-size:0.95rem;">Every recipe honours the rich culinary heritage of the Caribbean, using time-honoured techniques passed down through generations.</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100" style="background:linear-gradient(135deg,#fff7f0,#fff);border-radius:16px;padding:2.2rem;box-shadow:0 8px 32px rgba(0,0,0,0.07);border-top:4px solid #F5A623;">
+          <div style="font-size:2rem;margin-bottom:1rem;">🥘</div>
+          <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:0.75rem;color:#1a1a1a;">Fresh Every Day</h3>
+          <p style="color:#555;line-height:1.7;font-size:0.95rem;">We prepare our dishes daily from the finest ingredients, so every bite tastes as vibrant and alive as the culture it comes from.</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200" style="background:linear-gradient(135deg,#fff7f0,#fff);border-radius:16px;padding:2.2rem;box-shadow:0 8px 32px rgba(0,0,0,0.07);border-top:4px solid #2DAB66;">
+          <div style="font-size:2rem;margin-bottom:1rem;">🏠</div>
+          <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:0.75rem;color:#1a1a1a;">A Welcome Like Home</h3>
+          <p style="color:#555;line-height:1.7;font-size:0.95rem;">From the moment you walk through our door, you are treated not as a customer, but as a guest we have been expecting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <div data-aos="fade-up" data-aos-delay="100" style="display:flex;gap:1rem;align-items:flex-start;">
-              <span style="font-size:1.5rem;flex-shrink:0;">🌿</span>
-              <div>
-                <h4 style="margin-bottom:.25rem;">Authenticity First</h4>
-                <p style="opacity:.8;line-height:1.7;font-size:.95rem;">Every recipe honours the deep culinary traditions of the Caribbean, using time-honoured techniques and freshly sourced ingredients.</p>
+  <!-- FULL-BLEED PHOTO STRIP -->
+  <div style="width:100%;height:380px;overflow:hidden;position:relative;margin:0;" role="img" aria-label="Elliott Flava atmosphere">
+    <img src="images/img_1.jpg" alt="Elliott Flava food" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(232,52,10,0.65) 0%, rgba(0,0,0,0.3) 50%, rgba(245,166,35,0.55) 100%);display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center;color:#fff;padding:2rem;">
+        <p style="font-size:1rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:600;margin-bottom:0.75rem;opacity:0.9;">Dine-In Experience</p>
+        <h2 style="font-size:clamp(1.8rem,4vw,3rem);font-weight:900;line-height:1.2;text-shadow:0 2px 20px rgba(0,0,0,0.4);">Every Plate Tells a Story</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <section class="ef-section ef-section--alt" id="menu">
+    <div class="ef-container">
+      <p class="ef-section__label" data-aos="fade-up">What We Serve</p>
+      <h2 class="ef-section__title" data-aos="fade-up" data-aos-delay="50">Our Menu</h2>
+      <p class="ef-section__body" style="text-align:center;max-width:560px;margin:0 auto 3.5rem;" data-aos="fade-up" data-aos-delay="100">Authentic Caribbean flavours crafted fresh daily — from golden starters to soul-warming mains and indulgent desserts.</p>
+
+      <!-- STARTERS -->
+      <div style="margin-bottom:4rem;">
+        <h3 data-aos="fade-right" style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;display:flex;align-items:center;gap:12px;color:#1a1a1a;">
+          <span style="width:36px;height:4px;background:linear-gradient(90deg,#E8340A,#F5A623);border-radius:2px;display:inline-block;"></span>
+          Starters
+        </h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.75rem;">
+
+          <div data-aos="fade-up" data-aos-delay="0" style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.09);transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.09)'">
+            <div style="height:180px;background:linear-gradient(135deg,#E8340A15,#F5A62320);display:flex;align-items:center;justify-content:center;font-size:4rem;">🥟</div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+                <h4 style="font-size:1.1rem;font-weight:800;color:#1a1a1a;margin:0;">Scotch Bonnet Patties</h4>
+                <span style="font-size:1.1rem;font-weight:800;color:#E8340A;white-space:nowrap;margin-left:8px;">£4</span>
               </div>
+              <p style="color:#666;font-size:0.9rem;line-height:1.65;margin:0;">Golden, flaky pastry parcels filled with warmly spiced meat, baked fresh and bursting with authentic Caribbean flavour.</p>
             </div>
-
-            <div data-aos="fade-up" data-aos-delay="200" style="display:flex;gap:1rem;align-items:flex-start;">
-              <span style="font-size:1.5rem;flex-shrink:0;">🤝</span>
-              <div>
-                <h4 style="margin-bottom:.25rem;">Warmth in Every Bite</h4>
-                <p style="opacity:.8;line-height:1.7;font-size:.95rem;">We believe a great meal begins the moment you walk through the door, with a welcome as genuine as the food on your plate.</p>
-              </div>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="300" style="display:flex;gap:1rem;align-items:flex-start;">
-              <span style="font-size:1.5rem;flex-shrink:0;">💛</span>
-              <div>
-                <h4 style="margin-bottom:.25rem;">Unbeatable Value</h4>
-                <p style="opacity:.8;line-height:1.7;font-size:.95rem;">Generous, soul-satisfying portions mean you leave not just full, but truly nourished — without ever breaking the bank.</p>
-              </div>
-            </div>
-
           </div>
-        </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- Menu Section -->
-  <section class="section-pad" id="menu" style="position:relative;">
-    <div class="container">
-
-      <div style="text-align:center;max-width:600px;margin:0 auto 3.5rem;" data-aos="fade-up">
-        <p style="text-transform:uppercase;letter-spacing:.15em;font-size:.8rem;margin-bottom:.75rem;opacity:.65;">Explore Our Kitchen</p>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.2;margin-bottom:1rem;">Our Menu</h2>
-        <p style="opacity:.8;line-height:1.7;">A celebration of Caribbean heritage — boldly spiced, lovingly prepared and served straight from the heart of South London.</p>
-      </div>
-
-      <!-- Starters -->
-      <div style="margin-bottom:3rem;" data-aos="fade-up">
-        <h3 style="font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.15);">
-          ✦ Starters
-        </h3>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0;">
-
-          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.08);" data-aos="fade-up" data-aos-delay="50">
-            <div>
-              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Jamaican Beef Patties</p>
-              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Flaky, golden pastry filled with boldly seasoned minced beef — a beloved Caribbean classic baked fresh daily.</p>
+          <div data-aos="fade-up" data-aos-delay="80" style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.09);transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.09)'">
+            <div style="height:180px;background:linear-gradient(135deg,#F5A62315,#E8340A10);display:flex;align-items:center;justify-content:center;font-size:4rem;">🍩</div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+                <h4 style="font-size:1.1rem;font-weight:800;color:#1a1a1a;margin:0;">Festival Dumplings</h4>
+                <span style="font-size:1.1rem;font-weight:800;color:#E8340A;white-space:nowrap;margin-left:8px;">£3</span>
+              </div>
+              <p style="color:#666;font-size:0.9rem;line-height:1.65;margin:0;">Lightly sweetened fried dough, crisp on the outside and pillowy within — the perfect companion to any meal.</p>
             </div>
-            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£4</span>
-          </li>
+          </div>
 
-          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.08);" data-aos="fade-up" data-aos-delay="100">
-            <div>
-              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Festival Dumplings</p>
-              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Lightly sweet, golden-fried dough fingers with a soft, pillowy centre — the perfect companion to any dish.</p>
-            </div>
-            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£3</span>
-          </li>
-
-          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;" data-aos="fade-up" data-aos-delay="150">
-            <div>
-              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Saltfish Fritters</p>
-              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Crispy, herb-flecked fritters packed with flaked saltfish and a gentle kick of scotch bonnet.</p>
-            </div>
-            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£5</span>
-          </li>
-
-        </ul>
-      </div>
-
-      <!-- Mains -->
-      <div style="margin-bottom:3rem;" data-aos="fade-up">
-        <h3 style="font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.15);">
-          ✦ Mains
-        </h3>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0;">
-
-          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.08);" data-aos="fade-up" data-aos-delay="50">
-            <div>
-              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">
-                Signature Jerk Lamb
-                <span style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;padding:.2rem .5rem;border-radius:3rem;margin-left:.5rem;vertical-align:middle;background:rgba(255,200,50,.15);color:#ffd166;">Chef's Pick</span>
-              </p>
-              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Slow-marinated lamb shoulder kissed with smoky allspice, thyme and fiery scotch bonnet, served with rice and coleslaw.</p>
-            </div>
-            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£13</span>
-          </li>
-
-          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.08);" data-aos="fade-up" data-aos-delay="100">
-            <div>
-              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Curry Goat</p>
-              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Tender goat simmered low and slow in a fragrant blend of Caribbean spices until it falls beautifully from the bone.</p>
-            </div>
-            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£12</span>
-          </li>
-
-          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;" data-aos="fade-up" data-aos-delay="150">
-            <div>
-              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Brown Stew Chicken</p>
-              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">A comforting island staple — succulent chicken braised in a rich, caramelised brown stew with peppers, thyme and garlic.</p>
-            </div>
-            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£12</span>
-          </li>
-
-        </ul>
-      </div>
-
-      <!-- Desserts -->
-      <div style="margin-bottom:2rem;" data-aos="fade-up">
-        <h3 style="font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.15);">
-          ✦ Desserts
-        </h3>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0;">
-
-          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.08);" data-aos="fade-up" data-aos-delay="50">
-            <div>
-              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Rum Cake</p>
-              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">A moist, dark Caribbean fruit cake soaked generously in aged rum — rich, indulgent and utterly irresistible.</p>
-            </div>
-            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£5</span>
-          </li>
-
-          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;" data-aos="fade-up" data-aos-delay="100">
-            <div>
-              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Coconut Drops</p>
-              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Traditional Jamaican coconut and ginger sweet bites, chewy and warmly spiced with a satisfying caramel crunch.</p>
-            </div>
-            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£3</span>
-          </li>
-
-        </ul>
-      </div>
-
-      <p style="opacity:.55;font-size:.85rem;text-align:center;margin-top:2rem;" data-aos="fade-up">* Sample menu for reference. Please contact us for today's full menu.</p>
-
-    </div>
-  </section>
-
-  <!-- Reviews Section -->
-  <section class="section-pad" id="reviews">
-    <div class="container">
-
-      <div style="text-align:center;max-width:600px;margin:0 auto 3.5rem;" data-aos="fade-up">
-        <p style="text-transform:uppercase;letter-spacing:.15em;font-size:.8rem;margin-bottom:.75rem;opacity:.65;">What Our Guests Say</p>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.2;margin-bottom:1rem;">Loved by South London</h2>
-        <div style="display:flex;justify-content:center;align-items:center;gap:.75rem;flex-wrap:wrap;">
-          <span style="font-size:1.2rem;">⭐⭐⭐⭐⭐</span>
-          <span style="font-weight:700;font-size:1.1rem;">5.0</span>
-          <span style="opacity:.65;">· 174 reviews on Google</span>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.75rem;">
+          <div data-aos="fade-up" data-aos-delay="160" style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.09);transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.09)'">
+            <div style="height:180px;background:linear-gradient(135deg,#2DAB6615,#F5A62320);display:flex;align-items:center;justify-content:center;font-size:4rem;">🥗</div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+                <h4 style="font-size:1.1rem;font-weight:800;color:#1a1a1a;margin:0;">Coleslaw &amp; Plantain Board</h4>
+                <span style="font-size:1.1rem;font-weight:800;color:#E8340A;white-space:nowrap;margin-left:8px;">£4</span>
+              </div>
+              <p style="color:#666;font-size:0.9rem;line-height:1.65;margin:0;">House-made creamy coleslaw alongside caramelised sweet plantain, a crowd-pleasing classic
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
 AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
