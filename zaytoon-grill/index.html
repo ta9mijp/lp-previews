@@ -228,7 +228,34 @@ color:var(--gold);line-height:1
 /* ── VISIT ── */
 .visit-inner{max-width:1200px;margin:0 auto}
 .visit-header{text-align:center;margin-bottom:3rem}
-.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.visit-block{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,169,110,.12)}
+.visit-block:last-child{border-bottom:none;margin-bottom:0}
+.visit-block h4{font-family:var(--font-serif);font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.visit-block p{color:var(--text-muted);font-size:.9rem;line-height:1.6;margin:.3rem 0}
+.hours-list{list-style:none;padding:0;margin:0}
+.hours-list li{display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid rgba(201,169,110,.08);font-size:.88rem}
+.hours-list .day{color:var(--text-muted)}
+.hours-list .time{color:var(--white);font-weight:500}
+.social-icons{display:flex;gap:1rem;margin-top:.5rem}
+.social-icons a{color:var(--gold);font-size:1.2rem;transition:color var(--transition)}
+.social-icons a:hover{color:var(--gold-light)}
+.visit-directions{display:inline-flex;align-items:center;gap:.5rem;margin-top:.75rem;font-size:.78rem}
+.visit-map iframe{display:block;width:100%;border-radius:var(--radius-lg)}
+
+/* ── MENU ELEGANT LIST ── */
+.menu-section-intro{text-align:center;color:var(--text-muted);font-size:.95rem;max-width:600px;margin:0 auto 3rem}
+.menu-category{margin-bottom:3rem}
+.menu-cat-title{font-family:var(--font-serif);font-size:1.4rem;font-weight:300;color:var(--gold);margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid rgba(201,169,110,.2);display:flex;align-items:center;gap:1rem}
+.menu-cat-title span{flex:1}
+.menu-elegant-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0}
+.menu-item{padding:1.25rem 0;border-bottom:1px solid rgba(201,169,110,.1)}
+.menu-item:last-child{border-bottom:none}
+.menu-item-header{display:flex;align-items:baseline;gap:.75rem;margin-bottom:.5rem}
+.menu-item-name{font-family:var(--font-serif);font-size:1.05rem;font-weight:400;color:var(--white);flex-shrink:0}
+.menu-item-dots{flex:1;border-bottom:1px dotted rgba(201,169,110,.3);margin:0 .5rem;transform:translateY(-.35rem)}
+.menu-item-price{font-size:.95rem;font-weight:600;color:var(--gold);flex-shrink:0}
+.menu-item-desc{font-size:.85rem;color:var(--text-muted);line-height:1.7;margin:0}
   </style>
 </head>
 <body>
