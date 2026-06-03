@@ -124,10 +124,9 @@ section{padding:clamp(3.5rem,7vw,6rem) 0}
 .menu-filter{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
 .filter-btn{padding:.42rem 1.2rem;border-radius:50px;font-size:.82rem;font-weight:500;cursor:pointer;border:1.5px solid var(--c-accent-light);background:transparent;color:var(--c-text-muted);transition:all var(--trans)}
 .filter-btn.active,.filter-btn:hover{background:var(--c-primary);border-color:var(--c-primary);color:var(--c-white)}
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
   </style>
 </head>
-<body>
 <body>
 
   <!-- Proto Banner -->
@@ -259,7 +258,7 @@ section{padding:clamp(3.5rem,7vw,6rem) 0}
       </div>
 
       <!-- STARTERS -->
-      <p class="section-label" style="margin-bottom:1rem; margin-top:2rem;" data-aos="fade-up">Starters</p>
+      <p class="section-label" id="starters" style="margin-bottom:1rem; margin-top:2rem;" data-aos="fade-up">Starters</p>
       <div class="menu-grid" data-aos="fade-up">
 
         <div class="menu-card" data-category="starters" style="background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s;">
@@ -304,7 +303,7 @@ section{padding:clamp(3.5rem,7vw,6rem) 0}
       </div>
 
       <!-- MAINS -->
-      <p class="section-label" style="margin-bottom:1rem; margin-top:2.5rem;" data-aos="fade-up">Mains</p>
+      <p class="section-label" id="mains" style="margin-bottom:1rem; margin-top:2.5rem;" data-aos="fade-up">Mains</p>
       <div class="menu-grid" data-aos="fade-up">
 
         <div class="menu-card" data-category="mains" style="background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s;">
@@ -316,10 +315,60 @@ section{padding:clamp(3.5rem,7vw,6rem) 0}
               <h4 style="font-size:1rem; font-weight:700;">Braised Oxtail with Rice &amp; Peas</h4>
               <span style="font-size:1rem; font-weight:700; color:#c8963e; white-space:nowrap; margin-left:0.5rem;">£18</span>
             </div>
-            <p style="font-size:0.85rem; opacity:0.75; line-height:1.6;">Tender, slow-braised oxtail in a rich, deeply spiced gravy served alongside fluffy coconut rice and p
+            <p style="font-size:0.85rem; opacity:0.75; line-height:1.6;">Tender, slow-braised oxtail in a rich, deeply spiced gravy served alongside fluffy coconut rice and peas.</p>
+          </div>
+        </div>
+        <div class="menu-card" data-category="mains" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
+          <div style="height:200px;background:linear-gradient(135deg,#8b4513,#d4956a);display:flex;align-items:center;justify-content:center;"><i class="fa fa-cutlery" style="font-size:3rem;color:rgba(255,255,255,.5);"></i></div>
+          <div style="padding:1.25rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;">Jerk Chicken Platter</h4><span style="font-size:1rem;font-weight:700;color:#c8963e;">£15</span></div>
+          <p style="font-size:.85rem;opacity:.75;line-height:1.6;">Our signature jerk chicken, marinated overnight and grilled over charcoal, served with rice and peas and fried plantain.</p></div>
+        </div>
+        <div class="menu-card" data-category="mains" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
+          <div style="height:200px;background:linear-gradient(135deg,#5a8a2a,#8bc34a);display:flex;align-items:center;justify-content:center;"><i class="fa fa-leaf" style="font-size:3rem;color:rgba(255,255,255,.5);"></i></div>
+          <div style="padding:1.25rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;">Curried Goat</h4><span style="font-size:1rem;font-weight:700;color:#c8963e;">£17</span></div>
+          <p style="font-size:.85rem;opacity:.75;line-height:1.6;">Slow-cooked goat in a fragrant Scotch bonnet curry, served with basmati rice and freshly made roti.</p></div>
+        </div>
+      </div>
+      <p class="section-label" id="desserts" style="margin-bottom:1rem;margin-top:2.5rem;" data-aos="fade-up">Desserts</p>
+      <div class="menu-grid" data-aos="fade-up">
+        <div class="menu-card" data-category="desserts" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
+          <div style="height:200px;background:linear-gradient(135deg,#f4a261,#e76f51);display:flex;align-items:center;justify-content:center;"><i class="fa fa-birthday-cake" style="font-size:3rem;color:rgba(255,255,255,.5);"></i></div>
+          <div style="padding:1.25rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;">Rum Cake</h4><span style="font-size:1rem;font-weight:700;color:#c8963e;">£6</span></div>
+          <p style="font-size:.85rem;opacity:.75;line-height:1.6;">Moist Caribbean rum cake soaked in aged rum syrup, served warm with vanilla ice cream.</p></div>
+        </div>
+        <div class="menu-card" data-category="desserts" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
+          <div style="height:200px;background:linear-gradient(135deg,#c8963e,#f4d03f);display:flex;align-items:center;justify-content:center;"><i class="fa fa-star" style="font-size:3rem;color:rgba(255,255,255,.5);"></i></div>
+          <div style="padding:1.25rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;">Coconut Bread Pudding</h4><span style="font-size:1rem;font-weight:700;color:#c8963e;">£5</span></div>
+          <p style="font-size:.85rem;opacity:.75;line-height:1.6;">Warm bread pudding with coconut milk and cinnamon, drizzled with caramel sauce.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="visit" style="background:var(--c-surface);padding:clamp(3.5rem,7vw,6rem) 0;">
+    <div class="container">
+      <div class="section-head" data-aos="fade-up"><p class="section-label">Find Us</p><h2 class="section-title">Visit Cool's Kitchen</h2></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;" data-aos="fade-up">
+        <div><h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1.25rem;color:var(--c-primary-dark);">Hours</h3>
+          <div style="font-size:.9rem;border-top:1px solid var(--c-accent-light);"><div style="display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--c-accent-light);"><span>Monday – Sunday</span><span style="font-weight:600;">11:00 AM – 11:00 PM</span></div></div>
+          <a href="tel:020 3621 6276" class="btn btn-primary" style="margin-top:1.5rem;display:inline-flex;"><i class="fa fa-phone"></i> 020 3621 6276</a>
+        </div>
+        <div style="background:var(--c-card);border-radius:var(--radius-lg);padding:2rem;box-shadow:var(--shadow-card);">
+          <h3 style="font-size:1.1rem;font-weight:600;margin-bottom:.75rem;color:var(--c-accent);">📍 South London, UK</h3>
+          <p style="opacity:.75;line-height:1.8;font-size:.9rem;">Walk in or call ahead to reserve your table. We're open every day of the week — no need to plan far in advance.</p>
+          <a href="https://maps.google.com/?q=Cool+Kitchen+South+London" target="_blank" style="display:inline-block;margin-top:1rem;color:var(--c-accent);font-size:.85rem;text-decoration:underline;">View on Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--c-primary);padding:clamp(3rem,5vw,4rem) 0;text-align:center;">
+    <div class="container"><h2 style="font-family:var(--ff-head);font-size:clamp(1.8rem,3.5vw,2.8rem);color:#fff;margin-bottom:1rem;">Ready to Book Your Table?</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:2rem;max-width:480px;margin-inline:auto;">Authentic South London flavours, warm hospitality, open every day.</p>
+      <a href="tel:020 3621 6276" style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--c-primary);padding:1rem 2.5rem;border-radius:50px;font-weight:700;font-size:.95rem;"><i class="fa fa-phone"></i> Reserve Now</a>
+    </div>
+  </section>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
+AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
 
 // Sticky nav on scroll past hero
 (function(){
@@ -381,5 +430,28 @@ document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(bt
 });
 </script>
 <style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+<script>
+// AOS fallback: force all elements visible after 1.2s
+(function(){
+  var t=setTimeout(function(){
+    document.querySelectorAll('[data-aos]').forEach(function(el){
+      el.classList.add('aos-animate');
+      el.style.opacity='1';
+      el.style.transform='none';
+      el.style.transitionDelay='0s';
+    });
+  },1200);
+})();
+
+
+// Menu tab navigation
+document.querySelectorAll('[data-tab],[data-filter],[data-category],.menu-tab,.tab-btn,.tab-button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var target = this.dataset.tab || this.dataset.filter || this.dataset.category || this.textContent.trim().toLowerCase();
+    var section = document.querySelector('#'+target) || document.querySelector('.menu-section-'+target) || document.querySelector('[data-section="'+target+'"]');
+    if(section){ section.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+</script>
 </body>
 </html>
