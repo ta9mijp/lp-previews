@@ -18,289 +18,275 @@
   @media(min-width:700px){.float-cta{display:none!important;}}
   #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
   #stickyNav.visible{transform:translateY(0);}
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap');
 
-:root{
---c-bg:#0a0a0a;
---c-surface:#111111;
---c-surface2:#1a1a1a;
+:root {
+--c-bg:#0a0805;
+--c-surface:#111009;
+--c-card:#161410;
 --c-gold:#c9a84c;
---c-gold-light:#e2c47a;
---c-cream:#f5f0e8;
---c-text:#e8e2d6;
---c-text-muted:#888880;
---c-border:#2a2a2a;
---c-overlay:rgba(0,0,0,.65);
---c-drawer:#0d0d0d;
---ff-head:'Playfair Display',Georgia,serif;
---ff-body:'Inter',system-ui,sans-serif;
+--c-gold-light:#e8c97a;
+--c-gold-dim:rgba(201,168,76,.15);
+--c-text:#f0ebe0;
+--c-text-muted:#8a8070;
+--c-text-dim:#5a5448;
+--c-white:#ffffff;
+--c-overlay:rgba(8,6,4,.62);
+--c-overlay-deep:rgba(4,3,2,.82);
+--ff-serif:'Cormorant Garamond',Georgia,serif;
+--ff-display:'Playfair Display',serif;
+--ff-sans:'Inter',system-ui,sans-serif;
 --fw-light:300;
 --fw-reg:400;
 --fw-med:500;
---fw-semi:600;
+--fw-bold:700;
 --radius:2px;
---radius-lg:6px;
---trans:all .35s cubic-bezier(.4,0,.2,1);
---trans-slow:all .6s cubic-bezier(.4,0,.2,1);
---shadow:0 4px 24px rgba(0,0,0,.6);
---shadow-lg:0 12px 48px rgba(0,0,0,.8);
---z-load:9999;
---z-drawer:900;
---z-header:800;
---z-hero:1;
+--radius-card:4px;
+--transition:.35s cubic-bezier(.4,0,.2,1);
+--shadow-gold:0 0 40px rgba(201,168,76,.12);
+--shadow-card:0 8px 40px rgba(0,0,0,.6);
+--section-pad:clamp(5rem,10vw,9rem) clamp(1.25rem,5vw,3rem);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--c-bg);color:var(--c-text);font-family:var(--ff-body);font-weight:var(--fw-light);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit;text-decoration:none;transition:var(--trans)}
+body{background:var(--c-bg);color:var(--c-text);font-family:var(--ff-sans);font-weight:var(--fw-light);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto;object-fit:cover}
+a{color:inherit;text-decoration:none;transition:color var(--transition)}
 ul{list-style:none}
-button{cursor:pointer;border:none;background:none;font-family:inherit}
+button{cursor:pointer;border:none;background:none;font:inherit}
 
-/* ── Loading Overlay ── */
-.load-overlay{position:fixed;inset:0;z-index:var(--z-load);background:var(--c-bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:opacity .6s ease,visibility .6s ease}
-.load-overlay.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
-.load-spinner{width:48px;height:48px;border:2px solid var(--c-border);border-top-color:var(--c-gold);border-radius:50%;animation:spin .9s linear infinite}
-.load-wordmark{font-family:var(--ff-head);font-size:1.4rem;letter-spacing:.25em;color:var(--c-gold);text-transform:uppercase}
-@keyframes spin{to{transform:rotate(360deg)}}
-.load-bar{width:160px;height:1px;background:var(--c-border);position:relative;overflow:hidden}
-.load-bar::after{content:'';position:absolute;inset:0;background:var(--c-gold);transform:translateX(-100%);animation:loadBar 1.8s ease forwards}
-@keyframes loadBar{to{transform:translateX(0)}}
+/* ── TYPOGRAPHY ── */
+.t-eyebrow{font-family:var(--ff-sans);font-size:.7rem;font-weight:var(--fw-med);letter-spacing:.25em;text-transform:uppercase;color:var(--c-gold)}
+.t-display{font-family:var(--ff-display);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:var(--fw-bold);line-height:1.1;letter-spacing:-.02em}
+.t-heading{font-family:var(--ff-serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:var(--fw-light);font-style:italic;line-height:1.2}
+.t-subhead{font-family:var(--ff-serif);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:var(--fw-light);font-style:italic;color:var(--c-text-muted)}
+.t-body{font-size:.9375rem;line-height:1.8;color:var(--c-text-muted)}
+.t-gold{color:var(--c-gold)}
+.t-center{text-align:center}
 
-/* ── Header ── */
-.site-header{position:fixed;top:0;left:0;right:0;z-index:var(--z-header);display:flex;align-items:center;justify-content:space-between;padding:20px 32px;transition:var(--trans)}
-.site-header.is-scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(12px);padding:14px 32px;border-bottom:1px solid var(--c-border)}
-.header-logo{font-family:var(--ff-head);font-size:1.3rem;letter-spacing:.15em;color:var(--c-gold);text-transform:uppercase;transition:var(--trans)}
-.header-logo:hover{color:var(--c-gold-light)}
-.header-icons{display:flex;align-items:center;gap:8px}
-.header-icon-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--trans);color:var(--c-text);position:relative}
-.header-icon-btn:hover{background:rgba(201,168,76,.12);color:var(--c-gold)}
-.header-icon-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.hamburger-toggle{flex-direction:column;gap:5px;width:44px;height:44px}
-.hamburger-toggle span{display:block;width:22px;height:1.5px;background:var(--c-text);transition:var(--trans);transform-origin:center}
-.hamburger-toggle.is-open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--c-gold)}
-.hamburger-toggle.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.hamburger-toggle.is-open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--c-gold)}
+/* ── GOLD DIVIDER ── */
+.gold-rule{display:block;width:3rem;height:1px;background:var(--c-gold);margin:.75rem auto}
+.gold-rule--left{margin-left:0}
 
-/* ── Side Drawer ── */
-.side-drawer{position:fixed;top:0;right:0;bottom:0;width:min(480px,100vw);z-index:var(--z-drawer);background:var(--c-drawer);transform:translateX(100%);transition:transform .55s cubic-bezier(.77,0,.175,1);display:flex;flex-direction:column;overflow-y:auto}
-.side-drawer.is-open{transform:translateX(0)}
-.drawer-overlay{position:fixed;inset:0;z-index:calc(var(--z-drawer) - 1);background:rgba(0,0,0,.7);opacity:0;visibility:hidden;transition:var(--trans);backdrop-filter:blur(4px)}
-.drawer-overlay.is-visible{opacity:1;visibility:visible}
-.drawer-header{display:flex;align-items:center;justify-content:space-between;padding:24px 32px;border-bottom:1px solid var(--c-border)}
-.drawer-logo{font-family:var(--ff-head);font-size:1.1rem;letter-spacing:.12em;color:var(--c-gold)}
-.drawer-close{width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--c-text-muted);border-radius:50%;transition:var(--trans)}
-.drawer-close:hover{color:var(--c-gold);background:rgba(201,168,76,.1)}
-.drawer-close svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5}
-.drawer-nav{padding:32px 0;flex:1}
-.drawer-nav-item{display:block;position:relative;overflow:hidden}
-.drawer-nav-link{display:flex;align-items:center;padding:0;position:relative;overflow:hidden;aspect-ratio:16/7}
-.drawer-nav-link img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .6s ease;filter:brightness(.55) saturate(.8)}
-.drawer-nav-link:hover img{transform:scale(1.06);filter:brightness(.4) saturate(.6)}
-.drawer-nav-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:20px 32px;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)}
-.drawer-nav-label span{font-family:var(--ff-head);font-size:1.35rem;color:var(--c-cream);letter-spacing:.08em;line-height:1}
-.drawer-nav-label small{font-size:.7rem;letter-spacing:.2em;color:var(--c-gold);text-transform:uppercase;margin-top:4px}
-.drawer-nav-link::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--c-gold);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
-.drawer-nav-link:hover::after{transform:scaleX(1)}
-.drawer-footer{padding:24px 32px;border-top:1px solid var(--c-border);display:flex;gap:16px;align-items:center}
-.drawer-social-link{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--c-border);border-radius:50%;color:var(--c-text-muted);transition:var(--trans);font-size:.75rem}
-.drawer-social-link:hover{border-color:var(--c-gold);color:var(--c-gold)}
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 2rem;font-family:var(--ff-sans);font-size:.75rem;font-weight:var(--fw-med);letter-spacing:.2em;text-transform:uppercase;transition:var(--transition);border-radius:var(--radius)}
+.btn-primary{background:var(--c-gold);color:var(--c-bg)}
+.btn-primary:hover{background:var(--c-gold-light);transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,168,76,.35)}
+.btn-outline{border:1px solid var(--c-gold);color:var(--c-gold)}
+.btn-outline:hover{background:var(--c-gold);color:var(--c-bg);transform:translateY(-2px)}
 
-/* ── Hero Slider (full-bleed-center) ── */
-.hero-slider{position:relative;width:100%;height:100svh;min-height:600px;overflow:hidden;z-index:var(--z-hero)}
-.hero-slider .swiper{width:100%;height:100%}
-.hero-slide{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.hero-slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.08);transition:transform 6s ease}
-.swiper-slide-active .hero-slide-bg{transform:scale(1)}
-.hero-slide-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.3) 0%,rgba(0,0,0,.55) 50%,rgba(0,0,0,.75) 100%)}
-.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:800px}
-.hero-tag{display:inline-block;font-size:.7rem;letter-spacing:.3em;color:var(--c-gold);text-transform:uppercase;margin-bottom:20px;font-weight:var(--fw-med)}
-.hero-title{font-family:var(--ff-head);font-size:clamp(2.8rem,7vw,6rem);color:var(--c-cream);line-height:1.1;letter-spacing:.04em;margin-bottom:20px}
-.hero-subtitle{font-size:clamp(.9rem,2vw,1.1rem);color:rgba(245,240,232,.75);letter-spacing:.08em;font-weight:var(--fw-light);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
-.hero-cta-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;background:var(--c-
+/* ── FIXED REQUIRED CLASSES ── */
+.proto-banner{position:fixed;top:0;left:0;width:100%;z-index:1000;background:linear-gradient(90deg,var(--c-bg),#1a150a,var(--c-bg));padding:.55rem 1rem;text-align:center;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--c-gold);border-bottom:1px solid var(--c-gold-dim)}
+
+#openBadge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .9rem;border:1px solid var(--c-gold);border-radius:20px;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--c-gold);background:var(--c-gold-dim)}
+#openBadge::before{content:'';display:inline-block;width:.45rem;height:.45rem;border-radius:50%;background:#4caf50;animation:pulse 2s infinite}
+
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+
+#ratingCounter{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--ff-serif);font-size:1.1rem;color:var(--c-gold)}
+#ratingCounter .stars{letter-spacing:.1em;font-size:.85rem}
+#ratingCounter .count{font-size:.75rem;font-family:var(--ff-sans);color:var(--c-text-muted)}
+
+#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:900;transition:background var(--transition),box-shadow var(--transition),padding var(--transition)}
+#stickyNav.scrolled{background:rgba(10,8,5,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--c-gold-dim),0 4px 24px rgba(0,0,0,.5)}
+#stickyNav.top{background:transparent}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1280px;margin:0 auto;padding:1.4rem clamp(1.25rem,4vw,3rem);transition:padding var(--transition)}
+#stickyNav.scrolled .nav-inner{padding-top:.9rem;padding-bottom:.9rem}
+.nav-logo{font-family:var(--ff-display);font-size:1.35rem;font-weight:var(--fw-bold);letter-spacing:.05em;color:var(--c-white)}
+.nav-logo span{color:var(--c-gold)}
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-links a{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c-text-muted);transition:color var(--transition)}
+.nav-links a:hover{color:var(--c-gold)}
+.nav-links .btn{padding:.55rem 1.4rem;font-size:.68rem}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;padding:.4rem}
+.nav-hamburger span{display:block;width:24px;height:1px;background:var(--c-text);transition:var(--transition)}
+.nav-hamburger:hover span{background:var(--c-gold)}
+
+.float-cta{position:fixed;bottom:2rem;right:2rem;z-index:800;display:flex;flex-direction:column;gap:.6rem;align-items:flex-end}
+.float-cta .btn{box-shadow:0 8px 32px rgba(0,0,0,.5),var(--shadow-gold);padding:.75rem 1.5rem}
+.float-cta .float-badge{background:var(--c-gold);color:var(--c-bg);font-size:.6rem;font-weight:var(--fw-bold);letter-spacing:.12em;text-transform:uppercase;padding:.25rem .6rem;border-radius:20px;align-self:flex-end}
+
+/* ── HERO ── */
+.hero{position:relative;width:100%;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-attachment:fixed;background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1.08);transition:transform 12s ease-out}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.3) 0%,var(--c-overlay) 50%,rgba(10,8,5,.92) 100%)}
+.hero-content{position:relative;z-index:2;max-width:860px;padding:2rem clamp(1.25rem,5vw,3rem)}
+.hero-content .t-eyebrow{margin-bottom:1.2rem}
+.hero-content .t-display{color:var(--c-white);margin-bottom:.75rem}
+.hero-content .t-display em{font-family:var(--ff-serif);font-style:italic;color:var(--c-gold)}
+.hero-content .t-subhead{margin:1rem auto 2.5rem;max-width:560px}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c-text-dim)}
+.hero-scroll::after{content:'';display:block;width:1px;height:2.5rem;background:linear-gradient(to bottom,var(--c-gold),transparent);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ── ABOUT ── */
+.about{padding:var(--section-pad);background:var(--c-bg)}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,6rem);align-items:center
   </style>
 </head>
 <body>
 <body>
 
-  <!-- Proto Banner -->
-  <div class="proto-banner"><p><strong>🎨 Free demo for Jerk Island</strong> — All images, text &amp; colours are placeholders and fully customisable.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
-
-  <!-- Loading Overlay -->
-  <div class="load-overlay" id="loadOverlay">
-    <div class="load-spinner"></div>
-    <div class="load-wordmark">Jerk Island</div>
-    <div class="load-bar"></div>
+  <!-- PROTO BANNER -->
+  <div class="proto-banner">
+    <p><strong>🎨 Free demo for Jerk Island</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <!-- Site Header -->
-  <header class="site-header" id="siteHeader">
-    <a href="#" class="header-logo">Jerk Island</a>
-    <div class="header-icons">
-      <a href="tel:020 7733 5611" class="header-icon-btn" aria-label="Call us">
-        <i class="fa fa-phone"></i>
-      </a>
-      <a href="https://wa.me/02077335611" class="header-icon-btn" aria-label="WhatsApp">
-        <i class="fa fa-whatsapp"></i>
-      </a>
-      <a href="https://maps.google.com/?cid=7875594308046136933" class="header-icon-btn" aria-label="Directions" target="_blank" rel="noopener">
-        <i class="fa fa-map-marker"></i>
-      </a>
-      <button class="hamburger-toggle header-icon-btn" id="hamburgerToggle" aria-label="Open menu" aria-expanded="false">
+  <!-- STICKY NAV -->
+  <nav id="stickyNav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Jerk Island</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Our Values</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <a href="tel:020 7733 5611" class="btn btn-primary">Reserve</a>
+      <button class="nav-hamburger" aria-label="Open menu">
         <i class="fa fa-bars"></i>
       </button>
     </div>
-  </header>
-
-  <!-- Sticky Nav -->
-  <nav id="stickyNav">
-    <a href="#intro">About</a>
-    <a href="#foodstuff">Menu</a>
-    <a href="tel:020 7733 5611">Reserve</a>
-    <a href="https://maps.google.com/?cid=7875594308046136933" target="_blank" rel="noopener">Directions</a>
   </nav>
 
-  <!-- Side Drawer Overlay -->
-  <div class="drawer-overlay" id="drawerOverlay"></div>
-
-  <!-- Side Drawer Menu -->
-  <aside class="side-drawer" id="sideDrawer" role="dialog" aria-label="Navigation menu">
-    <div class="drawer-header">
-      <span class="drawer-logo">Jerk Island</span>
-      <button class="drawer-close" id="drawerClose" aria-label="Close menu">
-        <i class="fa fa-times"></i>
-      </button>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');"></div>
+    <div class="hero-content t-center">
+      <p class="t-eyebrow t-gold">South London · Caribbean Cuisine</p>
+      <h1 class="t-display">Jerk Island</h1>
+      <p class="t-subhead">Island soul, cooked straight from the heart</p>
+      <div style="display:flex; align-items:center; justify-content:center; gap:0.5rem; margin: 1rem 0;">
+        <span class="stars">⭐⭐⭐⭐⭐</span>
+        <span id="ratingCounter" data-rating="4.3" data-count="138" class="count">4.3 · 138 Google reviews</span>
+        <span id="openBadge"></span>
+      </div>
+      <div class="hero-actions">
+        <a href="tel:020 7733 5611" class="btn btn-primary"><i class="fa fa-phone"></i> Reserve a Table</a>
+        <a href="#menu" class="btn btn-outline">View Menu</a>
+      </div>
     </div>
-    <nav class="drawer-nav" aria-label="Main navigation">
-      <div class="drawer-nav-item">
-        <a class="drawer-nav-link" href="#intro"
-           style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');">
-          <span class="drawer-nav-label">Our Story</span>
-        </a>
-      </div>
-      <div class="drawer-nav-item">
-        <a class="drawer-nav-link" href="#foodstuff"
-           style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');">
-          <span class="drawer-nav-label">Menu</span>
-        </a>
-      </div>
-      <div class="drawer-nav-item">
-        <a class="drawer-nav-link" href="tel:020 7733 5611"
-           style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');">
-          <span class="drawer-nav-label">Reserve a Table</span>
-        </a>
-      </div>
-      <div class="drawer-nav-item">
-        <a class="drawer-nav-link" href="https://maps.google.com/?cid=7875594308046136933" target="_blank" rel="noopener"
-           style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');">
-          <span class="drawer-nav-label">Find Us</span>
-        </a>
-      </div>
-    </nav>
-    <div class="drawer-footer">
-      <p style="margin:0 0 0.75rem; font-size:0.8rem; opacity:0.6; letter-spacing:0.1em; text-transform:uppercase;">Follow Us</p>
-      <a href="#" class="drawer-social-link" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-      <a href="#" class="drawer-social-link" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-      <a href="https://wa.me/02077335611" class="drawer-social-link" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
-      <a href="https://maps.google.com/?cid=7875594308046136933" class="drawer-social-link" aria-label="Google Maps" target="_blank" rel="noopener"><i class="fa fa-map-marker"></i></a>
-    </div>
-  </aside>
+    <a href="#about" class="hero-scroll" aria-label="Scroll down">
+      <i class="fa fa-chevron-down"></i>
+    </a>
+  </section>
 
-  <!-- Hero Slider -->
-  <section class="hero-slider" aria-label="Hero showcase">
-    <div class="swiper" id="heroSwiper">
-      <div class="swiper-wrapper">
-
-        <!-- Slide 1 -->
-        <div class="swiper-slide hero-slide">
-          <div class="hero-slide-bg" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');"></div>
-          <div class="hero-slide-overlay"></div>
-          <div class="hero-content">
-            <span class="hero-tag">Caribbean · South London</span>
-            <h1 class="hero-title">Jerk Island</h1>
-            <p class="hero-subtitle">Island soul, cooked straight from the heart</p>
-            <div class="hero-cta-group">
-              <a href="tel:020 7733 5611" class="btn-primary">
-                <i class="fa fa-phone"></i> Reserve a Table
-              </a>
-              <a href="#intro" class="btn-primary" style="background:transparent; border:2px solid rgba(255,255,255,0.6);">
-                Discover More
-              </a>
-            </div>
-            <div style="margin-top:1.5rem; display:flex; align-items:center; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
-              <span id="openBadge"></span>
-              <span id="ratingCounter" data-rating="4.3" data-count="138" style="color:rgba(255,255,255,0.85); font-size:0.9rem;">
-                ⭐ 4.3 · 138 Google reviews
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="swiper-slide hero-slide">
-          <div class="hero-slide-bg" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');"></div>
-          <div class="hero-slide-overlay"></div>
-          <div class="hero-content">
-            <span class="hero-tag">Authentic · Handcrafted</span>
-            <h1 class="hero-title">Bold Caribbean Flavour</h1>
-            <p class="hero-subtitle">Time-honoured recipes, spices that tell a story</p>
-            <div class="hero-cta-group">
-              <a href="#foodstuff" class="btn-primary">
-                <i class="fa fa-cutlery"></i> View Our Menu
-              </a>
-              <a href="https://maps.google.com/?cid=7875594308046136933" target="_blank" rel="noopener" class="btn-primary" style="background:transparent; border:2px solid rgba(255,255,255,0.6);">
-                <i class="fa fa-map-marker"></i> Get Directions
-              </a>
-            </div>
-          </div>
-        </div>
-
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-text" data-aos="fade-right">
+        <p class="t-eyebrow t-gold">Our Story</p>
+        <div class="gold-rule--left"></div>
+        <h2 class="t-heading">Flavours Passed Down Through Generations</h2>
+        <p class="t-body">Jerk Island brings the bold, sun-drenched flavours of the Caribbean to the heart of South London. Every dish is crafted with the kind of love and authenticity that only comes from cooking passed down through generations. Come hungry, leave with a little piece of the islands in your soul.</p>
+        <a href="tel:020 7733 5611" class="btn btn-primary" style="margin-top:1.5rem;"><i class="fa fa-phone"></i> Call Us</a>
       </div>
-      <!-- Swiper Pagination -->
-      <div class="swiper-pagination"></div>
-      <!-- Swiper Navigation -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+      <div class="about-image" data-aos="fade-left">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Jerk Island restaurant food" loading="lazy" />
+      </div>
     </div>
   </section>
 
-  <!-- Intro Section -->
-  <section class="intro-section" id="intro" aria-label="About Jerk Island">
-    <div style="max-width:1100px; margin:0 auto; padding:5rem 2rem;">
+  <!-- FEATURES / PHILOSOPHY -->
+  <section id="features" style="background:#0a0a0a; padding: 5rem 1.5rem;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div class="t-center" data-aos="fade-up" style="margin-bottom:3rem;">
+        <p class="t-eyebrow t-gold">Our Philosophy</p>
+        <div class="gold-rule"></div>
+        <h2 class="t-heading" style="color:#fff;">Why Jerk Island?</h2>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:2rem;">
 
-      <!-- Section Heading -->
-      <div style="text-align:center; margin-bottom:3.5rem;" data-aos="fade-up">
-        <span style="display:inline-block; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; opacity:0.6; margin-bottom:0.75rem;">Our Story</span>
-        <h2 style="font-size:clamp(2rem,5vw,3.2rem); font-weight:300; line-height:1.15; margin:0 0 1.25rem;">
-          Where the Caribbean<br>meets South London
-        </h2>
-        <p style="max-width:600px; margin:0 auto; opacity:0.75; line-height:1.8; font-size:1.05rem;">
-          Nestled in the heart of South London, Jerk Island brings the vibrant, sun-soaked flavours of the Caribbean to your plate with passion and pride. Every dish is crafted by hand using time-honoured recipes and spices that tell a story generations in the making.
-        </p>
+        <!-- Feature 1 -->
+        <div data-aos="fade-up" data-aos-delay="0" style="background:#111; border:1px solid #2a2a2a; border-top: 3px solid #c9a84c; padding:2rem; border-radius:4px;">
+          <div style="font-size:2rem; margin-bottom:1rem;">❤️</div>
+          <h3 class="t-subhead t-gold">Cooked with Heart</h3>
+          <p class="t-body" style="color:#aaa; margin-top:0.75rem;">Every recipe is a labour of love, prepared with the same devotion as a family meal made for the people you cherish most.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div data-aos="fade-up" data-aos-delay="150" style="background:#111; border:1px solid #2a2a2a; border-top: 3px solid #c9a84c; padding:2rem; border-radius:4px;">
+          <div style="font-size:2rem; margin-bottom:1rem;">🌿</div>
+          <h3 class="t-subhead t-gold">True to the Islands</h3>
+          <p class="t-body" style="color:#aaa; margin-top:0.75rem;">We honour Caribbean culinary tradition, using time-honoured spice blends and techniques that have stood the test of generations.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div data-aos="fade-up" data-aos-delay="300" style="background:#111; border:1px solid #2a2a2a; border-top: 3px solid #c9a84c; padding:2rem; border-radius:4px;">
+          <div style="font-size:2rem; margin-bottom:1rem;">🍽️</div>
+          <h3 class="t-subhead t-gold">Generous by Nature</h3>
+          <p class="t-body" style="color:#aaa; margin-top:0.75rem;">We believe great food should never leave you wanting — our portions are as warm and abundant as the culture that inspires them.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL-BLEED PHOTO STRIP -->
+  <div style="width:100%; height:380px; overflow:hidden; position:relative;" data-aos="fade-up">
+    <div style="
+      width:100%;
+      height:100%;
+      background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');
+      background-size:cover;
+      background-position:center 40%;
+      background-attachment: fixed;
+    ">
+      <div style="width:100%; height:100%; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1rem;">
+        <p class="t-eyebrow t-gold">Experience Jerk Island</p>
+        <h2 class="t-display t-center" style="color:#fff; font-size:clamp(2rem,5vw,3.5rem); max-width:700px; padding:0 1rem;">Taste the Caribbean, Right Here in South London</h2>
+        <a href="tel:020 7733 5611" class="btn btn-primary"><i class="fa fa-phone"></i> Book Your Table</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <section id="menu" style="background:#0d0d0d; padding: 5rem 1.5rem;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="t-center" data-aos="fade-up" style="margin-bottom:3rem;">
+        <p class="t-eyebrow t-gold">What We Serve</p>
+        <div class="gold-rule"></div>
+        <h2 class="t-heading" style="color:#fff;">Our Menu</h2>
+        <p class="t-body" style="color:#888; max-width:550px; margin:1rem auto 0;">Bold Caribbean flavours, made with love and authenticity.</p>
       </div>
 
-      <!-- Philosophy Cards -->
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:2rem; margin-bottom:4rem;">
+      <!-- Starters -->
+      <div style="margin-bottom:3.5rem;">
+        <h3 class="t-subhead t-gold" data-aos="fade-up" style="text-transform:uppercase; letter-spacing:0.2em; margin-bottom:1.5rem; border-bottom:1px solid #2a2a2a; padding-bottom:0.75rem;">Starters</h3>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem;">
 
-        <div data-aos="fade-up" data-aos-delay="0" style="padding:2rem; border:1px solid rgba(255,255,255,0.08); border-radius:4px; position:relative; overflow:hidden;">
-          <div style="width:40px; height:2px; background:currentColor; opacity:0.4; margin-bottom:1.25rem;"></div>
-          <h3 style="font-size:1.1rem; font-weight:500; margin:0 0 0.75rem;">🔥 Cooked with Heart</h3>
-          <p style="opacity:0.7; line-height:1.75; font-size:0.95rem; margin:0;">
-            Every recipe is a labour of love, guided by the hands and instincts of a chef who has never once forgotten where the food comes from.
-          </p>
-        </div>
+          <div data-aos="fade-up" data-aos-delay="0" style="background:#111; border:1px solid #222; border-radius:6px; overflow:hidden;">
+            <div style="height:180px; background: linear-gradient(135deg,#1a1a1a,#2a2a2a); display:flex; align-items:center; justify-content:center;">
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Jerk Chicken Wings" style="width:100%; height:180px; object-fit:cover; opacity:0.8;" loading="lazy" />
+            </div>
+            <div style="padding:1.25rem;">
+              <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.5rem;">
+                <h4 class="t-subhead" style="color:#fff; margin:0;">Jerk Chicken Wings</h4>
+                <span class="t-gold" style="font-weight:700; font-size:1.1rem;">£7</span>
+              </div>
+              <p class="t-body" style="color:#888; font-size:0.9rem; margin:0;">Slow-marinated in our signature scotch bonnet and allspice blend, charred to smoky perfection and served with a cooling mango dip.</p>
+            </div>
+          </div>
 
-        <div data-aos="fade-up" data-aos-delay="100" style="padding:2rem; border:1px solid rgba(255,255,255,0.08); border-radius:4px; position:relative; overflow:hidden;">
-          <div style="width:40px; height:2px; background:currentColor; opacity:0.4; margin-bottom:1.25rem;"></div>
-          <h3 style="font-size:1.1rem; font-weight:500; margin:0 0 0.75rem;">🌴 Authentically Caribbean</h3>
-          <p style="opacity:0.7; line-height:1.75; font-size:0.95rem; margin:0;">
-            We honour the bold, aromatic traditions of island cooking, bringing genuine warmth and character to every single dish we serve.
-          </p>
-        </div>
+          <div data-aos="fade-up" data-aos-delay="100" style="background:#111; border:1px solid #222; border-radius:6px; overflow:hidden;">
+            <div style="height:180px; overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Saltfish Fritters" style="width:100%; height:180px; object-fit:cover; opacity:0.8;" loading="lazy" />
+            </div>
+            <div style="padding:1.25rem;">
+              <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.5rem;">
+                <h4 class="t-subhead" style="color:#fff; margin:0;">Saltfish Fritters</h4>
+                <span class="t-gold" style="font-weight:700; font-size:1.1rem;">£5</span>
+              </div>
+              <p class="t-body" style="color:#888; font-size:0.9rem; margin:0;">Crisp golden parcels of flaked saltfish, spring onion and thyme — a beloved Caribbean classic done the proper way.</p>
+            </div>
+          </div>
 
-        <div data-aos="fade-up" data-aos-delay="200" style="padding:2rem; border
+          <div data-aos="fade-up" data-aos-delay="200" style="background:#111; border:1px solid #222; border-radius:6px; overflow:hidden;">
+            <div style="height:180px; overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
 AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
