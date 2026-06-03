@@ -163,10 +163,6 @@ h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.2}
         <a href="tel:020 7524 3555" class="btn btn-primary">📞 Reserve a Table</a>
         <a href="#menu" class="btn btn-outline">Explore Menu</a>
       </div>
-      <div class="hero-scroll">
-        <div class="hero-scroll-line"></div>
-        <span>Scroll to discover</span>
-      </div>
     </div>
   </section>
 
@@ -244,124 +240,74 @@ h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.2}
   </section>
 
   <!-- Menu Section -->
-  <section id="menu" style="padding:100px 0; background:#faf7f2;">
+  <section id="menu" style="padding:80px 0; background:#faf7f2;">
     <div class="container">
-      <div style="text-align:center; margin-bottom:60px;" data-aos="fade-up">
+      <div style="text-align:center; margin-bottom:50px;" data-aos="fade-up">
         <p class="section-label">What We're Serving</p>
         <h2 class="section-title">Our Menu</h2>
-        <div class="divider"></div>
-        <p class="section-sub">Island flavours crafted fresh daily — from light bites to soul-warming mains.</p>
+        <div class="divider" style="margin:12px auto;"></div>
+        <p class="section-sub">Island flavours crafted fresh daily.</p>
       </div>
 
-      <!-- Starters -->
-      <p class="section-label" style="margin-bottom:24px;" data-aos="fade-up">Starters</p>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:28px; margin-bottom:56px;">
+      <p class="section-label" style="margin-bottom:20px;">Starters</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;">
+        <div data-aos="fade-up" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);">
+          <div style="height:180px;background:linear-gradient(135deg,#c8a26b,#e2c07a);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🥟</div>
+          <div style="padding:20px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><h4 style="margin:0;font-size:1rem;font-weight:700;">Festival &amp; Ackee Bites</h4><span style="font-weight:700;color:#c8763a;">£7</span></div>
+          <p style="margin:0;opacity:.7;font-size:.88rem;line-height:1.6;">Golden fried festival dumplings with creamy ackee and saltfish filling, topped with scotch bonnet aioli.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="80" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);">
+          <div style="height:180px;background:linear-gradient(135deg,#b85c2a,#e07a3f);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍗</div>
+          <div style="padding:20px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><h4 style="margin:0;font-size:1rem;font-weight:700;">Jerk Chicken Wings</h4><span style="font-weight:700;color:#c8763a;">£8</span></div>
+          <p style="margin:0;opacity:.7;font-size:.88rem;line-height:1.6;">Slow-marinated wings in our signature island spice blend, grilled to smoky perfection with a mango dip.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="160" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);">
+          <div style="height:180px;background:linear-gradient(135deg,#4a7c59,#6daa7a);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🥣</div>
+          <div style="padding:20px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><h4 style="margin:0;font-size:1rem;font-weight:700;">Callaloo Soup</h4><span style="font-weight:700;color:#c8763a;">£6</span></div>
+          <p style="margin:0;opacity:.7;font-size:.88rem;line-height:1.6;">Velvety herb-rich Jamaican callaloo soup with coconut milk, fresh thyme, and a whisper of allspice.</p></div>
+        </div>
+      </div>
 
-        <div data-aos="fade-up" data-aos-delay="0" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
-          <div style="height:190px; background:linear-gradient(135deg,#c8a26b,#e2c07a); display:flex; align-items:center; justify-content:center; font-size:4rem;">🥟</div>
-          <div style="padding:24px;">
-            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-              <h4 style="margin:0;font-size:1.1rem;font-weight:700;">Curry Goat</h4>
-              <span style="font-weight:700;font-size:1.05rem;color:#c8763a;">£15</span>
-            </div>
-            <p style="margin:0;opacity:.7;font-size:.9rem;line-height:1.6;">Tender goat slow-cooked in a rich, aromatic Caribbean curry, served with fluffy basmati rice.</p>
+      <p class="section-label" style="margin-bottom:20px;">Mains</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;">
+        <div data-aos="fade-up" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);">
+          <div style="height:180px;background:linear-gradient(135deg,#6b3a1f,#9b5e33);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍖</div>
+          <div style="padding:20px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><h4 style="margin:0;font-size:1rem;font-weight:700;">Oxtail &amp; Butter Beans</h4><span style="font-weight:700;color:#c8763a;">£16</span></div>
+          <p style="margin:0;opacity:.7;font-size:.88rem;line-height:1.6;">Slow-braised oxtail in rich spiced gravy with tender butter beans, served with white rice and peas.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="80" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);">
+          <div style="height:180px;background:linear-gradient(135deg,#1a5276,#2980b9);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🐟</div>
+          <div style="padding:20px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><h4 style="margin:0;font-size:1rem;font-weight:700;">Jerk Salmon</h4><span style="font-weight:700;color:#c8763a;">£17</span></div>
+          <p style="margin:0;opacity:.7;font-size:.88rem;line-height:1.6;">Fresh salmon in traditional jerk seasoning, grilled and served with coconut rice, plantain, and pineapple salsa.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="160" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);">
+          <div style="height:180px;background:linear-gradient(135deg,#7d6608,#b7950b);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍛</div>
+          <div style="padding:20px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><h4 style="margin:0;font-size:1rem;font-weight:700;">Curry Goat</h4><span style="font-weight:700;color:#c8763a;">£15</span></div>
+          <p style="margin:0;opacity:.7;font-size:.88rem;line-height:1.6;">Tender goat slow-cooked in aromatic Caribbean curry, served with fluffy basmati rice.</p></div>
+        </div>
+      </div>
+
+      <p class="section-label" style="margin-bottom:20px;">Desserts</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:24px;">
+        <div data-aos="fade-up" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);">
+          <div style="height:180px;background:linear-gradient(135deg,#3a1a08,#6a3a10);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍰</div>
+          <div style="padding:20px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><h4 style="margin:0;font-size:1rem;font-weight:700;">Rum Cake</h4><span style="font-weight:700;color:#c8763a;">£6</span></div>
+          <p style="margin:0;opacity:.7;font-size:.88rem;line-height:1.6;">Moist Caribbean rum cake soaked in aged rum syrup, served warm with vanilla ice cream.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="80" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);">
+          <div style="height:180px;background:linear-gradient(135deg,#1a3a08,#3a6a10);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🥥</div>
+          <div style="padding:20px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><h4 style="margin:0;font-size:1rem;font-weight:700;">Coconut Bread Pudding</h4><span style="font-weight:700;color:#c8763a;">£5</span></div>
+          <p style="margin:0;opacity:.7;font-size:.88rem;line-height:1.6;">Warm bread pudding with coconut milk and cinnamon, drizzled with caramel sauce.</p></div>
+        </div>
+        <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);display:flex;align-items:center;justify-content:center;min-height:280px;">
+          <div style="text-align:center;padding:2rem;opacity:.4;">
+            <div style="font-size:2.5rem;margin-bottom:.5rem;">🍽️</div>
+            <p style="font-size:.85rem;">Ask for today's special</p>
           </div>
-        </div>
-      </div>
-
-      <!-- Desserts -->
-      <p class="section-label" style="margin-bottom:24px;" data-aos="fade-up">Desserts</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-bottom:56px;">
-        <div data-aos="fade-up" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.07);">
-          <div style="height:190px;background:linear-gradient(135deg,#3a1a08,#6a3a10);display:flex;align-items:center;justify-content:center;font-size:4rem;">🍰</div>
-          <div style="padding:24px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;"><h4 style="margin:0;font-size:1.1rem;font-weight:700;">Rum Cake</h4><span style="font-weight:700;font-size:1.05rem;color:#c8763a;">£6</span></div>
-          <p style="margin:0;opacity:.7;font-size:.9rem;line-height:1.6;">Moist Caribbean rum cake soaked in aged rum syrup, served warm with vanilla ice cream.</p></div>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="80" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.07);">
-          <div style="height:190px;background:linear-gradient(135deg,#1a3a08,#3a6a10);display:flex;align-items:center;justify-content:center;font-size:4rem;">🥥</div>
-          <div style="padding:24px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;"><h4 style="margin:0;font-size:1.1rem;font-weight:700;">Coconut Bread Pudding</h4><span style="font-weight:700;font-size:1.05rem;color:#c8763a;">£5</span></div>
-          <p style="margin:0;opacity:.7;font-size:.9rem;line-height:1.6;">Warm bread pudding with coconut milk and cinnamon, drizzled with caramel sauce.</p></div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Menu Section -->
-  <section id="menu" style="padding:100px 0; background:#faf7f2;">
-    <div class="container">
-      <div style="text-align:center; margin-bottom:60px;" data-aos="fade-up">
-        <p class="section-label">What We're Serving</p>
-        <h2 class="section-title">Our Menu</h2>
-        <div class="divider"></div>
-        <p class="section-sub">Island flavours crafted fresh daily — from light bites to soul-warming mains.</p>
-      </div>
-      <p class="section-label" style="margin-bottom:24px;" data-aos="fade-up">Starters</p>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:28px; margin-bottom:56px;">
-        <div data-aos="fade-up" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
-          <div style="height:190px; background:linear-gradient(135deg,#c8a26b,#e2c07a); display:flex; align-items:center; justify-content:center; font-size:4rem;">🥟</div>
-          <div style="padding:24px;"><div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;"><h4 style="margin:0; font-size:1.1rem; font-weight:700;">Festival &amp; Ackee Bites</h4><span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£7</span></div>
-          <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">Golden fried festival dumplings paired with a creamy ackee and saltfish filling, topped with a scotch bonnet aioli.</p></div>
-        </div>
-              <span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£7</span>
-            </div>
-            <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">Golden fried festival dumplings paired with a creamy ackee and saltfish filling, topped with a scotch bonnet aioli.</p>
-          </div>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="80" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
-          <div style="height:190px; background:linear-gradient(135deg,#b85c2a,#e07a3f); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍗</div>
-          <div style="padding:24px;">
-            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-              <h4 style="margin:0; font-size:1.1rem; font-weight:700;">Jerk Chicken Wings</h4>
-              <span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£8</span>
-            </div>
-            <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">Slow-marinated in our signature blend of island spices and grilled to smoky, charred perfection, served with a cooling mango dip.</p>
-          </div>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="160" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
-          <div style="height:190px; background:linear-gradient(135deg,#4a7c59,#6daa7a); display:flex; align-items:center; justify-content:center; font-size:4rem;">🥣</div>
-          <div style="padding:24px;">
-            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-              <h4 style="margin:0; font-size:1.1rem; font-weight:700;">Callaloo Soup</h4>
-              <span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£6</span>
-            </div>
-            <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">A velvety, herb-rich Jamaican callaloo soup simmered with coconut milk, fresh thyme, and a whisper of allspice.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Mains -->
-      <p class="section-label" style="margin-bottom:24px;" data-aos="fade-up">Mains</p>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:28px; margin-bottom:56px;">
-
-        <div data-aos="fade-up" data-aos-delay="0" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
-          <div style="height:190px; background:linear-gradient(135deg,#6b3a1f,#9b5e33); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍖</div>
-          <div style="padding:24px;">
-            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-              <h4 style="margin:0; font-size:1.1rem; font-weight:700;">Oxtail &amp; Butter Beans</h4>
-              <span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£16</span>
-            </div>
-            <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">Slow-braised oxtail in a rich, deeply spiced gravy with tender butter beans, served with fluffy white rice and peas.</p>
-          </div>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="80" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
-          <div style="height:190px; background:linear-gradient(135deg,#1a5276,#2980b9); display:flex; align-items:center; justify-content:center; font-size:4rem;">🐟</div>
-          <div style="padding:24px;">
-            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-              <h4 style="margin:0; font-size:1.1rem; font-weight:700;">Jerk Salmon</h4>
-              <span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£17</span>
-            </div>
-            <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">Fresh salmon fillet rubbed in traditional jerk seasoning, grilled and served alongside coconut rice, plantain, and a fresh pineapple salsa.</p>
-          </div>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="160" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
-          <div style="height:190px; background:linear-gradient(135deg,#7d6608,#b7950b); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍛</div>
-          <div style="padding:24px;">
-            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-              <h4 style="margin:0; font-
 
   <section id="visit" style="background:var(--c-surface);padding:clamp(4rem,8vw,6rem) 0;">
     <div class="container">
