@@ -4,448 +4,690 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Beyroot Grill Peckham — Peckham, London</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{
-      --primary:   #000000;
-      --accent:    #ffffff;
-      /* ヒーロー用（暗い背景向け） */
-      --hero-text:  #f5f2ec;
-      --hero-muted: rgba(245,242,236,0.65);
-      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
-      --c-text:   #1a1a1a;
-      --c-muted:  #6b6b6b;
-      --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #f5f5f5;
-    }
-    html{scroll-behavior:smooth;}
-    body{font-family:'Montserrat',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{padding-top:52px;}
+  @media(min-width:700px){.float-cta{display:none!important;}}
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-    /* PROTO BANNER */
-    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
-    .proto-banner strong{font-weight:700;}
-    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+:root {
+  --primary: #1a1a1a;
+  --accent: #c9a84c;
+  --accent-light: #e8c97a;
+  --accent-dark: #a07830;
+  --bg: #0d0d0d;
+  --bg-section: #111111;
+  --bg-alt: #161616;
+  --text: #f0ece4;
+  --text-secondary: #c8c0b0;
+  --muted: #6b6560;
+  --border: rgba(201, 168, 76, 0.25);
+  --border-subtle: rgba(240, 236, 228, 0.08);
+  --shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --radius: 2px;
+  --radius-lg: 4px;
+  --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --font-display: 'Playfair Display', 'Noto Serif', Georgia, serif;
+  --font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
+  --letter-spacing-wide: 0.15em;
+  --letter-spacing-wider: 0.25em;
+}
 
-    /* ── HERO（暗い背景 → 白文字） ── */
-    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
-    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
-    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
-    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Montserrat',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
-    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
-    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
-    .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Montserrat',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
-    .hero-tagline span{color:var(--accent);}
-    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
-    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
-    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
-    .hero-nav a:hover{color:#fff;}
-    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
-    .btn-reserve:hover{opacity:0.85;}
-    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
-    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
-    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
-    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Montserrat',serif;font-size:1.2rem;font-weight:300;color:#fff;}
-    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    /* ── SOCIAL BAR ── */
-    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
-    .social-icons{display:flex;gap:1.4rem;}
-    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
-    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
-    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
-    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
-    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
-    .call-link:hover{border-color:var(--accent);color:var(--accent);}
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+}
 
-    /* ── SHARED CONTENT STYLES ── */
-    .section-wrap{max-width:1100px;margin:0 auto;}
-    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Montserrat',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-    /* ── ABOUT（白背景 → 暗い文字） ── */
-    .about{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.about{padding:4rem 2rem;}}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
-    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
-    .about-values{display:flex;flex-direction:column;}
-    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
-    .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Montserrat',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
-    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
-    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
-    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
-    .reviews{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
-    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
-    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
-    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
-    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
-    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
 
-    /* ── MENU（白背景 → 暗い文字） ── */
-    .menu{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.menu{padding:4rem 2rem;}}
-    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
-    .menu-note{font-size:0.78rem;color:var(--c-muted);}
-    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
-    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
-    .menu-category:last-child{border-bottom:none;}
-    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
-    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
-    .menu-item:last-child{border-bottom:none;}
-    .menu-item-left{flex:1;}
-    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
-    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Montserrat',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
-    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
+ul {
+  list-style: none;
+}
 
-    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
-    .visit{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.visit{padding:4rem 2rem;}}
-    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
-    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
-    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
-    .visit-block a:hover{color:var(--accent);}
-    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
-    .hour-row:last-child{border-bottom:none;}
-    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
-    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
-    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
+/* =====================
+   PROTO BANNER
+   ===================== */
 
-    /* FOOTER */
-    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
-    @media(min-width:700px){footer{padding-bottom:2rem;}}
+.proto-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: linear-gradient(90deg, var(--accent-dark) 0%, var(--accent) 50%, var(--accent-dark) 100%);
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  box-shadow: 0 2px 20px rgba(201, 168, 76, 0.3);
+}
 
-    /* ── STICKY HEADER ── */
-    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
-    .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Montserrat',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
-    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
-    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
-    .sticky-open.closed{background:#fce4ec;color:#c62828;}
-    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
-    .sticky-cta:hover{opacity:0.85;}
+.proto-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 40px,
+    rgba(255, 255, 255, 0.04) 40px,
+    rgba(255, 255, 255, 0.04) 41px
+  );
+  pointer-events: none;
+}
 
-    /* ── OPEN NOW BADGE (hero) ── */
-    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
-    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
-    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
-    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+.proto-banner p,
+.proto-banner span,
+.proto-banner a {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--primary);
+  position: relative;
+}
 
-    /* ── COUNTER ── */
-    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
+.proto-banner a {
+  border-bottom: 1px solid rgba(26, 26, 26, 0.4);
+  padding-bottom: 1px;
+}
 
-    /* ── PARALLAX ── */
-    .hero-bg{will-change:transform;}
+.proto-banner a:hover {
+  border-bottom-color: var(--primary);
+}
 
-    /* ── IMAGE ZOOM ── */
-    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
-    .mockup:hover img{transform:scale(1.05);}
+.proto-banner__divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(26, 26, 26, 0.3);
+  flex-shrink: 0;
+}
 
-    /* ── RIPPLE ── */
-    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
-    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
-    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
+/* =====================
+   STICKY NAV
+   ===================== */
 
-    /* ── FLOAT CALL ── */
-    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
-    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
-    @media(min-width:700px){.float-call{display:none;}}
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  background: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.sticky-nav.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sticky-nav__logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text);
+}
+
+.sticky-nav__logo span {
+  color: var(--accent);
+}
+
+.sticky-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.sticky-nav__links a {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.sticky-nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.sticky-nav__links a:hover {
+  color: var(--text);
+}
+
+.sticky-nav__links a:hover::after {
+  width: 100%;
+}
+
+.sticky-nav__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--primary) !important;
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  letter-spacing: var(--letter-spacing-wide) !important;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 1px solid var(--accent);
+  transition: var(--transition) !important;
+}
+
+.sticky-nav__cta::after {
+  display: none !important;
+}
+
+.sticky-nav__cta:hover {
+  background: transparent !important;
+  color: var(--accent) !important;
+}
+
+/* =====================
+   HERO
+   ===================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--bg);
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: var(--hero-image, url(''));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.05);
+  animation: heroZoom 12s ease-out forwards;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.1); }
+  to   { transform: scale(1.02); }
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 1;
+}
+
+.hero__overlay-texture {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+.hero__scroll-indicator span {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero__scroll-indicator::after {
+  content: '';
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+/* =====================
+   HERO CONTENT
+   ===================== */
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 120px 24px 80px;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.hero-content__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.3s forwards;
+}
+
+.hero-content__eyebrow::before,
+.hero-content__eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.5s forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-title strong {
+  display: block;
+  font-weight: 900;
+}
+
+.hero-sub {
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  max-width: 480px;
+  line-height: 1.9;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.7s forwards;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.9s forwards;
+}
+
+.hero-cta__primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: var(--primary);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border: 2px solid var
   </style>
 </head>
 <body>
+<body>
 
-  <!-- STICKY HEADER -->
-  <header class="sticky-header" id="stickyHeader">
-    <div style="display:flex;align-items:center;">
-      <span class="sticky-logo">Beyroot Grill Peckham</span>
-      <span class="sticky-open" id="stickyBadge"></span>
-    </div>
-    <a href="tel:020 3336 7568" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
-  </header>
-
+  <!-- Proto Banner -->
   <div class="proto-banner">
-    <p><strong>🎨 Free demo for Beyroot Grill Peckham</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    🎨 Free demo for Beyroot Grill Peckham — All images, text &amp; colours are placeholders and fully customisable.
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-left">
-      <div>
-        <div class="logo">Beyroot Grill Peckham</div>
-        <div class="hero-badges">
-          <span class="badge">Restaurant</span>
-          <span class="badge">Peckham, London</span>
-          <span class="badge badge-accent"></span>
-        </div>
+  <!-- Sticky Nav -->
+  <nav class="sticky-nav" id="stickyNav">
+    <div class="nav-logo">Beyroot Grill Peckham</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="nav-cta" href="tel:020 3336 7568">📞 Reserve a Table</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section
+    class="hero"
+    style="background-image: url('images/img_0.jpg');"
+  >
+    <div class="hero-content">
+      <div
+        class="open-badge"
+        id="openBadge"
+        data-hours='{"Mon":"10:00-03:00","Tue":"10:00-03:00","Wed":"10:00-03:00","Thu":"10:00-03:00","Fri":"10:00-05:00","Sat":"10:00-05:00","Sun":"10:00-03:00"}'
+      >
+        ● Open Now
       </div>
-      <div>
-        <h1 class="hero-tagline">Where Beirut's fire meets Peckham's soul.</h1>
-        <p class="hero-desc">Beyroot Grill Peckham brings the bold, smoky heart of Lebanese grilling to the vibrant streets of South London. Every dish is crafted from fresh ingredients, cooked to order, and served with the warmth that keeps our community coming back. This is more than a meal — it's an experience worth savouring.</p>
-        <div class="rating-counter" id="ratingCounter" data-rating="4.8" data-count="269">⭐ 4.8 · 269 Google reviews</div>
-        <div class="open-badge" id="openBadge"></div>
+
+      <h1 class="hero-title" data-aos="fade-up">Beyroot Grill Peckham</h1>
+      <p class="hero-sub" data-aos="fade-up" data-aos-delay="100">
+        Where Beirut's fire meets Peckham's soul.
+      </p>
+
+      <div
+        class="hero-rating"
+        id="ratingCounter"
+        data-rating="4.8"
+        data-count="269"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+        ⭐ 4.8 · 269 Google reviews
       </div>
-      <nav class="hero-nav">
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#visit">Visit</a>
-        <a href="tel:020 3336 7568" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
-      </nav>
-    </div>
-    <div class="hero-right">
-      <div class="mockup">
-        <img src="images/img_1.jpg" alt="Beyroot Grill Peckham"/>
-        <div class="mockup-overlay">
-          <div class="m-name">Beyroot Grill Peckham</div>
-          <div class="m-sub">Restaurant · Peckham, London</div>
-        </div>
+
+      <div class="hero-services" data-aos="fade-up" data-aos-delay="200">
+        <span class="service-tag">🍽 Dine-In</span>
+        <span class="service-tag">🥡 Takeaway</span>
+        <span class="service-tag">🛵 Delivery</span>
+      </div>
+
+      <div class="hero-cta" data-aos="fade-up" data-aos-delay="250">
+        <a class="btn-primary" href="tel:020 3336 7568">📞 Call to Reserve</a>
+        <a class="btn-secondary" href="https://wa.me/02033367568" target="_blank" rel="noopener">💬 WhatsApp Us</a>
       </div>
     </div>
   </section>
 
+  <!-- Social Bar -->
   <div class="social-bar">
-    <span>Connect</span>
-    <div class="social-icons">
-      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/02033367568" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://maps.google.com/?cid=11599066084449253977" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
-    </div>
-    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Delivery</span></div>
-    <a href="tel:020 3336 7568" class="call-link"><i class="fa fa-phone"></i> 020 3336 7568</a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.516 2.497 5.783 2.226 7.149 2.163 8.415 2.105 8.795 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038C23.986 15.668 24 15.259 24 12s-.014-3.668-.072-4.948c-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.024 4.388 11.02 10.125 11.927v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796v8.437C19.612 23.093 24 18.097 24 12.073z"/></svg>
+      Facebook
+    </a>
+    <a href="https://wa.me/02033367568" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://maps.google.com/?cid=11599066084449253977" target="_blank" rel="noopener" aria-label="Google Maps">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+      Google Maps
+    </a>
   </div>
 
-  <section class="about" id="about">
-    <div class="section-wrap">
-      <div class="about-grid">
-        <div data-aos="fade-right">
-          <p class="section-label">Our Philosophy</p>
-          <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Beyroot Grill Peckham brings the bold, smoky heart of Lebanese grilling to the vibrant streets of South London. Every dish is crafted from fresh ingredients, cooked to order, and served with the warmth that keeps our community coming back. This is more than a meal — it's an experience worth savouring.</p>
-        </div>
-        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Freshness First</h3><p>Every ingredient is sourced with care and prepared fresh the moment you order, ensuring every bite is alive with flavour.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Fire & Craft</h3><p>Our grill masters honour time-honoured Lebanese techniques, coaxing deep, smoky character from every cut of meat.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Generous Hospitality</h3><p>We believe great food is made greater by warm, attentive service that makes every guest feel truly at home.</p></div></div>
-        </div>
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 data-aos="fade-up">Our Story</h2>
+        <p data-aos="fade-up" data-aos-delay="100">
+          Beyroot Grill Peckham brings the bold, smoky traditions of Lebanese grilling to the heart of South London. Every dish is cooked fresh to order, using hand-selected ingredients that honour the flavours of the Levant. Come for the food, stay for the warmth — this is hospitality the way it was meant to be.
+        </p>
+      </div>
+      <div class="about-image" data-aos="fade-up" data-aos-delay="150">
+        <img
+          src="images/img_1.jpg"
+          alt="Inside Beyroot Grill Peckham"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <!-- Philosophy Cards -->
+    <div class="philosophy-cards">
+      <div class="value-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="value-icon">🔥</div>
+        <h3>Fresh, Always</h3>
+        <p>Every order is cooked from scratch the moment you place it, because great food simply cannot be rushed or reheated.</p>
+      </div>
+      <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="value-icon">🫙</div>
+        <h3>Flavour Without Compromise</h3>
+        <p>From perfectly spiced kebabs to fall-apart lamb, every ingredient is chosen to deliver the most authentic Levantine experience possible.</p>
+      </div>
+      <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="value-icon">🤝</div>
+        <h3>A Place to Belong</h3>
+        <p>We believe a great meal is nothing without great atmosphere, and we pour as much care into our welcome as we do into every dish.</p>
       </div>
     </div>
   </section>
 
-  <section class="reviews">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">What guests say</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 4.8 · 269 Google reviews</h2>
-      <div class="reviews-grid">
-        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Great service and variety of food options, fresh ingredients cooked when you ordered.
-Friendly staff, amazing atmosphere and tidy place."</p><span class="review-author">— Elmer Rodriguez · 6 months ago</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"One of the best grill I’ve had in a very long time!
-Everything about this platter hit the spot. For £20 you get loads! The chicken was juicy and packed with flavor, the kebab was perfectly spiced, and the lamb chunks were so tender and juicy! I loved the little touches — the gril"</p><span class="review-author">— Zabi · 10 months ago</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"This review is more about the kindness and incredible support the owner of the establishment did. Despite the initial confusion, the owner was extremely understanding, and attempted to make up for the situation. This already left a better impression of the guy, but what he did af"</p><span class="review-author">— Oleg Shkarovskyy · 2 months ago</span></div></div>
+  <!-- Reviews Section -->
+  <section class="reviews-section" id="reviews">
+    <h2 data-aos="fade-up">What Our Guests Say</h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="50">⭐ 4.8 · 269 Google reviews</p>
+
+    <div class="reviews-grid">
+      <div class="review-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">
+          "Great service and variety of food options, fresh ingredients cooked when you ordered. Friendly staff, amazing atmosphere and tidy place."
+        </p>
+        <div class="review-author">— Elmer Rodriguez</div>
       </div>
+
+      <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">
+          "One of the best grill I've had in a very long time! Everything about this platter hit the spot. For £20 you get loads! The chicken was juicy and packed with flavor, the kebab was perfectly spiced, and…"
+        </p>
+        <div class="review-author">— Zabi</div>
+      </div>
+
+      <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">
+          "This review is more about the kindness and incredible support the owner of the establishment did. Despite the initial confusion, the owner was extremely understanding, and attempted to make up for the…"
+        </p>
+        <div class="review-author">— Oleg Shkarovskyy</div>
+      </div>
+    </div>
+
+    <div class="reviews-cta" data-aos="fade-up">
+      <a href="https://maps.google.com/?cid=11599066084449253977" target="_blank" rel="noopener" class="btn-outline">
+        Read All Reviews on Google ↗
+      </a>
     </div>
   </section>
 
-  <section class="menu" id="menu">
-    <div class="section-wrap">
-      <div class="menu-header" data-aos="fade-up">
-        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
-        <span class="menu-note">Seasonal · Prices incl. VAT</span>
+  <!-- Menu Section -->
+  <section class="menu-section" id="menu">
+    <h2 data-aos="fade-up">Our Menu</h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="50">Fresh Lebanese flavours, grilled to order.</p>
+
+    <!-- Starters -->
+    <div class="menu-category" data-aos="fade-up">
+      <h3 class="menu-category-title">🫓 Starters</h3>
+
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="50">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Hummus Beiruti</span>
+          <span class="menu-item-desc">Silky hand-blended chickpea hummus drizzled with warm olive oil, dusted with sumac, and served with freshly baked flatbread.</span>
+        </div>
+        <span class="menu-price">£5</span>
       </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Mezze Board</div><div class="item-desc">A vibrant spread of house-made hummus, smoky baba ganoush, warm flatbread, and pickled vegetables to awaken the palate.</div></div><span class="item-price">£8</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Grilled Halloumi</div><div class="item-desc">Golden, crisp-edged halloumi served with fresh mint, pomegranate seeds, and a drizzle of wild honey.</div></div><span class="item-price">£7</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Lamb Kibbeh</div><div class="item-desc">Delicately spiced minced lamb and bulgur wheat croquettes, fried to perfection and served with cooling yoghurt dip.</div></div><span class="item-price">£7</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">The Beyroot Mixed Grill Platter</div><div class="item-desc">Our showstopping centrepiece — succulent chargrilled chicken, perfectly spiced kafta kebab, and meltingly tender lamb chunks, served with grilled vegetables, rice, and warm flatbread.</div></div><span class="item-price">£20</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Shish Taouk</div><div class="item-desc">Marinated chicken thigh skewers, slow-grilled over charcoal and served with garlic toum, seasoned fries, and a crisp house salad.</div></div><span class="item-price">£14</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Lamb Chops</div><div class="item-desc">Thick-cut lamb chops rubbed with aromatic Lebanese spices, grilled over open flame, and finished with fresh herbs and a squeeze of lemon.</div></div><span class="item-price">£18</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Warm Knafeh</div><div class="item-desc">A classic Lebanese indulgence of shredded pastry and soft white cheese soaked in rose-scented syrup and crowned with crushed pistachios.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Baklava Selection</div><div class="item-desc">A trio of house-made baklava layered with honey, walnuts, and orange blossom — a sweet and fragrant finale to your feast.</div></div><span class="item-price">£5</span></div></div></div>
-      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
-    </div>
-  </section>
 
-  <section class="visit" id="visit">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">Find Us</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
-      <div class="visit-grid">
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
-          <p class="vb-label">Address</p>
-          <p>63 Peckham High St, London SE15 5EB, UK</p>
-          <a href="https://maps.google.com/?cid=11599066084449253977" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Fattoush Salad</span>
+          <span class="menu-item-desc">A vibrant medley of crisp romaine, ripe tomato, cucumber, and toasted pita croutons tossed in a zesty pomegranate molasses dressing.</span>
         </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
-          <p class="vb-label">Opening Hours</p>
-          <div class="hour-row"><span>Mon</span><span>10:00 AM – 3:00 AM</span></div>
-<div class="hour-row"><span>Tue</span><span>10:00 AM – 3:00 AM</span></div>
-<div class="hour-row"><span>Wed</span><span>10:00 AM – 3:00 AM</span></div>
-<div class="hour-row"><span>Thu</span><span>10:00 AM – 3:00 AM</span></div>
-<div class="hour-row"><span>Fri</span><span>10:00 AM – 5:00 AM</span></div>
-<div class="hour-row"><span>Sat</span><span>10:00 AM – 5:00 AM</span></div>
-<div class="hour-row"><span>Sun</span><span>10:00 AM – 3:00 AM</span></div>
-        </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
-          <p class="vb-label">Reservations</p>
-          <a href="tel:020 3336 7568"><i class="fa fa-phone" style="font-size:0.75rem"></i> 020 3336 7568</a>
-          <a href="https://wa.me/02033367568" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
-        </div>
+        <span class="menu-price">£6</span>
       </div>
-      <a href="https://maps.google.com/?cid=11599066084449253977" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
+
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Grilled Halloumi</span>
+          <span class="menu-item-desc">Golden, char-marked halloumi served with a fresh herb salad, a squeeze of lemon, and a drizzle of chilli oil.</span>
+        </div>
+        <span class="menu-price">£7</span>
+      </div>
     </div>
-  </section>
 
-  <footer>
-    <span>© 2025 Beyroot Grill Peckham</span>
-    <span>63 Peckham High St, London SE15 5EB, UK</span>
-  </footer>
+    <!-- Mains -->
+    <div class="menu-category" data-aos="fade-up">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:700,once:true,offset:60});
 
-  <a href="tel:020 3336 7568" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
+// Sticky nav
+const stickyNav = document.getElementById('stickyNav');
+const heroEl = document.querySelector('.hero,[class*=hero]');
+if(stickyNav && heroEl){
+  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
+}
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-  // ── AOS（スクロールアニメーション）──────────────────
-  AOS.init({ duration: 750, once: true, offset: 80, easing: 'ease-out-cubic' });
+// Open/Closed badge
+const HOURS={"Monday": "10:00 AM – 3:00 AM", "Tuesday": "10:00 AM – 3:00 AM", "Wednesday": "10:00 AM – 3:00 AM", "Thursday": "10:00 AM – 3:00 AM", "Friday": "10:00 AM – 5:00 AM", "Saturday": "10:00 AM – 5:00 AM", "Sunday": "10:00 AM – 3:00 AM"};
+(function(){
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  if(!m){badge.textContent='See hours below';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const isOpen=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=isOpen?'● Open now':'● Closed';
+  badge.style.color=isOpen?'#22c55e':'#ef4444';
+})();
 
-  // ── Parallax（ヒーロー背景）──────────────────────────
-  const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      heroBg.style.transform = `translateY(${y * 0.38}px)`;
-    }, { passive: true });
-  }
-
-  // ── Sticky Header ────────────────────────────────────
-  const stickyHeader = document.getElementById('stickyHeader');
-  const hero = document.querySelector('.hero');
-  if (stickyHeader && hero) {
-    const observer = new IntersectionObserver(
-      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(hero);
-  }
-
-  // ── 営業中バッジ ──────────────────────────────────────
-  const HOURS = {"Monday": "10:00 AM – 3:00 AM", "Tuesday": "10:00 AM – 3:00 AM", "Wednesday": "10:00 AM – 3:00 AM", "Thursday": "10:00 AM – 3:00 AM", "Friday": "10:00 AM – 5:00 AM", "Saturday": "10:00 AM – 5:00 AM", "Sunday": "10:00 AM – 3:00 AM"};
-  function computeOpenStatus() {
-    const now  = new Date();
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const day  = days[now.getDay()];
-    const raw  = HOURS[day] || '';
-    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
-    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-    if (!m) return { open: false, text: raw };
-    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
-    const openMin  = toMin(m[1], m[2], m[3]);
-    const closeMin = toMin(m[4], m[5], m[6]);
-    const nowMin   = now.getHours() * 60 + now.getMinutes();
-    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
-    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
-    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
-    return {
-      open: isOpen,
-      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
+// Rating counter
+const rc=document.getElementById('ratingCounter');
+if(rc){
+  const rating=4.8,cnt=269;
+  new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    rc.textContent='';
+    const animate=(from,to,dec,cb)=>{
+      let start=null;
+      (function step(ts){
+        if(!start)start=ts;
+        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
+        if(p<1)requestAnimationFrame(step);
+      })(performance.now());
     };
-  }
-  function renderBadge(el, status) {
-    if (!el) return;
-    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
-    el.innerHTML = `<span class="dot"></span> ${status.text}`;
-  }
-  const status = computeOpenStatus();
-  renderBadge(document.getElementById('openBadge'), status);
-  const stickyBadge = document.getElementById('stickyBadge');
-  if (stickyBadge) {
-    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
-    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
-  }
+    const rs=document.createElement('span'),cs=document.createElement('span');
+    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
+    animate(0,rating,true,v=>rs.textContent=v);
+    animate(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.5}).observe(rc);
+}
 
-  // ── カウンターアニメーション ──────────────────────────
-  function animateCounter(el, target, isDecimal) {
-    let start = 0, duration = 1800, startTime = null;
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const val = start + (target - start) * ease;
-      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  const ratingEl = document.getElementById('ratingCounter');
-  if (ratingEl && 4.8) {
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        io.disconnect();
-        const rating = 4.8, count = 269;
-        const rSpan = document.createElement('span');
-        const cSpan = document.createElement('span');
-        ratingEl.innerHTML = '';
-        ratingEl.appendChild(document.createTextNode('⭐ '));
-        rSpan.textContent = '0.0';
-        ratingEl.appendChild(rSpan);
-        ratingEl.appendChild(document.createTextNode(' · '));
-        cSpan.textContent = '0';
-        ratingEl.appendChild(cSpan);
-        ratingEl.appendChild(document.createTextNode(' Google reviews'));
-        animateCounter(rSpan, rating, true);
-        animateCounter(cSpan, count, false);
-      }
-    }, { threshold: 0.5 });
-    io.observe(ratingEl);
-  }
-
-  // ── リップルエフェクト ────────────────────────────────
-  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const r = document.createElement('span');
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      r.className = 'ripple';
-      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
-      this.appendChild(r);
-      setTimeout(() => r.remove(), 700);
-    });
+// Ripple
+document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span');
+    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
+      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
+      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
+    this.style.position='relative';this.style.overflow='hidden';
+    this.append(r);setTimeout(()=>r.remove(),700);
   });
-
-  // ── タイプライター（タグライン）────────────────────────
-  const tagline = document.querySelector('.hero-tagline');
-  if (tagline) {
-    const full = tagline.innerHTML;
-    tagline.innerHTML = '';
-    tagline.style.visibility = 'visible';
-    let i = 0;
-    const chars = [...full];
-    let inTag = false;
-    function typeNext() {
-      if (i >= chars.length) return;
-      if (chars[i] === '<') inTag = true;
-      if (!inTag) {
-        tagline.innerHTML += chars[i];
-      } else {
-        let tag = '';
-        while (i < chars.length && (inTag || chars[i] !== '>')) {
-          tag += chars[i];
-          if (chars[i] === '>') inTag = false;
-          i++;
-        }
-        tagline.innerHTML += tag;
-        setTimeout(typeNext, 18);
-        return;
-      }
-      if (chars[i] === '>') inTag = false;
-      i++;
-      setTimeout(typeNext, 28);
-    }
-    setTimeout(typeNext, 600);
-  }
-  </script>
-
+});
+</script>
+<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
