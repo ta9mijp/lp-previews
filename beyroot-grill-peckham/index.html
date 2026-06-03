@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beyroot Grill Peckham — Peckham, London</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #111010;
+      --accent:  #c8a96e;
+      --bg:      #f5f2ec;
+      --white:   #f5f2ec;
+      --muted:   rgba(245,242,236,0.55);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--primary); color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 100svh; min-height: 600px;
+      display: grid; grid-template-columns: 1fr 1fr; align-items: center; overflow: hidden;
+    }
+    @media (max-width: 680px) { .hero { grid-template-columns: 1fr; } }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('images/img_0.jpg') center/cover no-repeat;
+      filter: brightness(0.35);
+    }
+    .hero-left {
+      position: relative; z-index: 2; padding: 4rem 3rem 4rem 4rem;
+      display: flex; flex-direction: column; justify-content: space-between; height: 100%;
+    }
+    .logo { font-family: 'DM Serif Display', serif; font-size: 1.05rem; letter-spacing: 0.18em; text-transform: uppercase; }
+    .hero-badges { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+    .badge {
+      font-size: 0.72rem; padding: 0.25rem 0.75rem; border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.75);
+    }
+    .badge-accent { border-color: var(--accent); color: var(--accent); }
+    .hero-tagline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      line-height: 1.05; font-weight: 300; font-style: italic;
+    }
+    .hero-tagline span { color: var(--accent); }
+    .hero-desc {
+      font-size: 0.9rem; line-height: 1.85; color: var(--muted);
+      font-weight: 300; max-width: 360px; margin-top: 1.2rem;
+    }
+    .rating-line { font-size: 0.85rem; color: var(--accent); margin-top: 0.8rem; }
+    .hero-nav { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .hero-nav a {
+      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .hero-nav a:hover { color: var(--white); }
+    .btn-reserve {
+      margin-left: auto; background: var(--accent); color: #fff;
+      padding: 0.6rem 1.5rem; border-radius: 50px; font-size: 0.78rem;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      font-weight: 500; white-space: nowrap; transition: opacity 0.2s;
+    }
+    .btn-reserve:hover { opacity: 0.85; }
+    .hero-right {
+      position: relative; z-index: 2; display: flex;
+      justify-content: center; align-items: center; height: 100%; padding: 3rem 4rem 3rem 1rem;
+    }
+    .mockup {
+      width: min(270px, 40vw); aspect-ratio: 9/19; border-radius: 36px;
+      overflow: hidden; border: 2px solid rgba(255,255,255,0.15);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6); position: relative; background: #000;
+    }
+    .mockup img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+    .mockup-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    }
+    .mockup-overlay .m-name { font-family: 'DM Serif Display', serif; font-size: 1.25rem; font-weight: 300; }
+    .mockup-overlay .m-sub { font-size: 0.7rem; color: var(--muted); margin-top: 0.2rem; }
+    @media (max-width: 680px) { .hero-right { display: none; } .hero-left { padding: 3rem 2rem; } }
+
+    /* ── SOCIAL BAR ── */
+    .social-bar {
+      background: rgba(255,255,255,0.04); border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 1.1rem 3rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+    }
+    .social-bar span { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .social-icons { display: flex; gap: 1.4rem; }
+    .social-link { color: var(--muted); font-size: 1.2rem; text-decoration: none; transition: color 0.2s, transform 0.2s; }
+    .social-link:hover { color: var(--accent); transform: translateY(-2px); }
+    .tags-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-left: 1rem; }
+    .tag { font-size: 0.68rem; padding: 0.2rem 0.7rem; border-radius: 50px; background: rgba(255,255,255,0.07); color: var(--muted); }
+    .call-link {
+      margin-left: auto; display: flex; align-items: center; gap: 0.5rem;
+      color: var(--white); text-decoration: none; font-size: 0.82rem;
+      border: 1px solid rgba(255,255,255,0.2); padding: 0.45rem 1.1rem;
+      border-radius: 50px; transition: border-color 0.2s, color 0.2s; white-space: nowrap;
+    }
+    .call-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── SHARED ── */
+    .section-wrap { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; font-style: italic; line-height: 1.2; }
+    .divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); }
+
+    /* ── ABOUT ── */
+    .about { padding: 7rem 4rem; }
+    @media (max-width: 700px) { .about { padding: 4rem 2rem; } }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; gap: 3rem; } }
+    .about-body { font-size: 0.95rem; line-height: 1.9; color: var(--muted); font-weight: 300; margin-top: 1.2rem; }
+    .about-values { display: flex; flex-direction: column; gap: 0; }
+    .value-item {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .value-item:last-child { border-bottom: none; }
+    .value-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--accent); opacity: 0.45; line-height: 1; flex-shrink: 0; }
+    .value-item h3 { font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.35rem; }
+    .value-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+    /* ── REVIEWS ── */
+    .reviews { padding: 5rem 4rem; background: rgba(255,255,255,0.02); }
+    @media (max-width: 700px) { .reviews { padding: 4rem 2rem; } }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .review-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.5rem;
+    }
+    .review-stars { font-size: 0.85rem; margin-bottom: 0.75rem; }
+    .review-text { font-size: 0.9rem; line-height: 1.75; color: var(--muted); font-style: italic; font-weight: 300; margin-bottom: 0.75rem; }
+    .review-author { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+
+    /* ── MENU ── */
+    .menu { padding: 6rem 4rem; }
+    @media (max-width: 700px) { .menu { padding: 4rem 2rem; } }
+    .menu-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+    .menu-note { font-size: 0.78rem; color: var(--muted); }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; }
+    .menu-category { padding: 2rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .menu-category:last-child { border-bottom: none; }
+    .cat-name { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+    .menu-item { display: flex; justify-content: space-between; align-items: baseline; padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .menu-item:last-child { border-bottom: none; }
+    .item-name { font-size: 0.92rem; }
+    .item-desc { font-size: 0.76rem; color: var(--muted); margin-top: 0.15rem; font-weight: 300; }
+    .item-price { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: var(--accent); flex-shrink: 0; margin-left: 1rem; }
+    .menu-disclaimer { font-size: 0.72rem; color: var(--muted); margin-top: 1.5rem; font-style: italic; }
+
+    /* ── VISIT ── */
+    .visit { padding: 5rem 4rem; background: rgba(255,255,255,0.02); }
+    @media (max-width: 700px) { .visit { padding: 4rem 2rem; } }
+    .visit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-top: 2.5rem; }
+    .visit-block .vb-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem; }
+    .visit-block p, .visit-block a { font-size: 0.92rem; color: var(--muted); line-height: 1.9; text-decoration: none; font-weight: 300; display: block; }
+    .visit-block a:hover { color: var(--white); }
+    .hour-row { display: flex; justify-content: space-between; font-size: 0.88rem; color: var(--muted); padding: 0.2rem 0; }
+    .hour-row span:first-child { color: rgba(255,255,255,0.5); min-width: 40px; }
+
+    /* ── MAP ── */
+    .map-wrap { margin-top: 3rem; border-radius: 16px; overflow: hidden; height: 260px; border: 1px solid rgba(255,255,255,0.07); }
+    .map-wrap iframe { width: 100%; height: 100%; border: none; filter: grayscale(30%); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 2rem 4rem 7rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem; font-size: 0.76rem; color: rgba(255,255,255,0.22);
+    }
+    @media (min-width: 700px) { footer { padding-bottom: 2rem; } }
+
+    /* ── DIRECTIONS BTN ── */
+    .directions-btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      margin-top: 2.5rem; padding: 0.8rem 1.8rem;
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;
+      color: var(--white); text-decoration: none; font-size: 0.85rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .directions-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── PROTOTYPE BANNER ── */
+    .proto-banner {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(200,169,110,0.95);
+      backdrop-filter: blur(8px);
+      padding: 0.6rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .proto-banner p {
+      font-size: 0.8rem; color: #1e1e1e; font-weight: 500; line-height: 1.4;
+    }
+    .proto-banner strong { font-weight: 700; }
+    .proto-banner a {
+      font-size: 0.78rem; color: #1e1e1e; font-weight: 600;
+      border: 1.5px solid #1e1e1e; padding: 0.35rem 1rem;
+      border-radius: 50px; text-decoration: none; white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .proto-banner a:hover { background: rgba(0,0,0,0.1); }
+    body { padding-top: 48px; }
+
+    /* ── FLOAT CALL ── */
+    .float-call {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 200; background: var(--accent); color: #fff;
+      padding: 0.9rem 2rem; border-radius: 50px;
+      display: flex; align-items: center; gap: 0.55rem;
+      font-size: 0.88rem; font-weight: 500; text-decoration: none;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4); white-space: nowrap;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .float-call:hover { transform: translateX(-50%) translateY(-2px); opacity: 0.92; }
+    @media (min-width: 700px) { .float-call { display: none; } }
+  </style>
+</head>
+<body>
+
+  <!-- PROTOTYPE BANNER -->
+  <div class="proto-banner">
+    <p>
+      <strong>🎨 Free Preview</strong> — This site was built for Beyroot Grill Peckham as a complimentary demo.
+      Images, colours, and content are all fully customisable once we connect.
+    </p>
+    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-left">
+      <div>
+        <div class="logo">Beyroot Grill Peckham</div>
+        <div class="hero-badges" style="margin-top:0.8rem">
+          <span class="badge">Restaurant</span>
+          <span class="badge">Peckham, London</span>
+          <span class="badge badge-accent"></span>
+        </div>
+      </div>
+      <div>
+        <h1 class="hero-tagline">Where the Charcoal Speaks and the Flavours Sing</h1>
+        <p class="hero-desc">Nestled in the vibrant heart of Peckham, Beyroot Grill brings the soulful traditions of Levantine grilling to London's most eclectic neighbourhood. Every dish is cooked to order over open flame, using the freshest ingredients and spices that tell a story rooted in culture and craft. From the warmth of our staff to the smoky embrace of our platters, this is a place where community and cuisine are one.</p>
+        <p class="rating-line">⭐ 4.8 · 269 Google reviews</p>
+      </div>
+      <nav class="hero-nav">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#visit">Visit</a>
+        <a href="tel:020 3336 7568" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
+      </nav>
+    </div>
+    <div class="hero-right">
+      <div class="mockup">
+        <img src="images/img_1.jpg" alt="Beyroot Grill Peckham" />
+        <div class="mockup-overlay">
+          <div class="m-name">Beyroot Grill Peckham</div>
+          <div class="m-sub">Restaurant · Peckham, London</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL + CALL BAR -->
+  <div class="social-bar">
+    <span>Connect</span>
+    <div class="social-icons">
+      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/02033367568" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://maps.google.com/?cid=11599066084449253977" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
+    </div>
+    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Delivery</span></div>
+    <a href="tel:020 3336 7568" class="call-link"><i class="fa fa-phone"></i> 020 3336 7568</a>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-wrap">
+      <div class="about-grid">
+        <div>
+          <p class="section-label">Our Philosophy</p>
+          <h2 class="section-title">Food that brings people to the same table</h2>
+          <p class="about-body">Nestled in the vibrant heart of Peckham, Beyroot Grill brings the soulful traditions of Levantine grilling to London's most eclectic neighbourhood. Every dish is cooked to order over open flame, using the freshest ingredients and spices that tell a story rooted in culture and craft. From the warmth of our staff to the smoky embrace of our platters, this is a place where community and cuisine are one.</p>
+        </div>
+        <div class="about-values">
+          <div class="value-item">
+            <span class="value-num">01</span>
+            <div><h3>Fired to Order</h3><p>Every skewer, every cut of meat is grilled fresh the moment you order — never rushed, never reheated.</p></div>
+          </div>
+          <div class="value-item">
+            <span class="value-num">02</span>
+            <div><h3>Honest Ingredients</h3><p>We source only the freshest produce and finest cuts, letting quality speak louder than shortcuts.</p></div>
+          </div>
+          <div class="value-item">
+            <span class="value-num">03</span>
+            <div><h3>Generous by Nature</h3><p>Rooted in the tradition of Levantine hospitality, every plate is crafted to leave you satisfied, not just fed.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews">
+    <div class="section-wrap">
+      <p class="section-label">What guests say</p>
+      <h2 class="section-title">⭐ 4.8 · 269 Google reviews</h2>
+      <div class="reviews-grid">
+        
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Great service and variety of food options, fresh ingredients cooked when you ordered.
+Friendly staff, amazing atmosphere and tidy place."</p>
+          <span class="review-author">— Elmer Rodriguez · 6 months ago</span>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"One of the best grill I’ve had in a very long time!
+Everything about this platter hit the spot. For £20 you get loads! The chicken was juicy and packed with flavor, the kebab was perfectly spiced, and the lamb chunks were so tender and juicy! I loved the little touches — the gril"</p>
+          <span class="review-author">— Zabi · 10 months ago</span>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"This review is more about the kindness and incredible support the owner of the establishment did. Despite the initial confusion, the owner was extremely understanding, and attempted to make up for the situation. This already left a better impression of the guy, but what he did af"</p>
+          <span class="review-author">— Oleg Shkarovskyy · 2 months ago</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="section-wrap">
+      <div class="menu-header">
+        <div>
+          <p class="section-label">What we serve</p>
+          <h2 class="section-title">A taste of the menu</h2>
+        </div>
+        <span class="menu-note">Seasonal · Prices incl. VAT</span>
+      </div>
+      <div class="menu-grid"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item">
+              <div><div class="item-name">Hummus bil Lahme</div>
+              <div class="item-desc">Silky house-made hummus topped with spiced minced lamb, toasted pine nuts and a drizzle of warm olive oil, served with fresh-baked flatbread.</div></div>
+              <span class="item-price">£6</span>
+            </div><div class="menu-item">
+              <div><div class="item-name">Fattoush Salad</div>
+              <div class="item-desc">A bright, tangy salad of ripe tomatoes, crisp cucumber, radish, fresh herbs and sumac-toasted flatbread shards, dressed in pomegranate molasses.</div></div>
+              <span class="item-price">£5</span>
+            </div><div class="menu-item">
+              <div><div class="item-name">Moutabal</div>
+              <div class="item-desc">Flame-charred aubergine blended into a smoky, creamy dip with tahini, lemon and garlic, finished with a touch of paprika oil.</div></div>
+              <span class="item-price">£5</span>
+            </div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item">
+              <div><div class="item-name">Beyroot Mixed Grill Platter</div>
+              <div class="item-desc">Our signature centrepiece — juicy marinated chicken, perfectly spiced lamb kofta kebab and tender chargrilled lamb chunks, served with grilled flatbread, salad, pickles and garlic sauce.</div></div>
+              <span class="item-price">£20</span>
+            </div><div class="menu-item">
+              <div><div class="item-name">Shish Tawook</div>
+              <div class="item-desc">Succulent cubes of chicken marinated in a rich blend of yoghurt, lemon and warm spices, grilled over charcoal and served with golden fries and toum.</div></div>
+              <span class="item-price">£14</span>
+            </div><div class="menu-item">
+              <div><div class="item-name">Lamb Chops & Rice</div>
+              <div class="item-desc">Slow-marinated lamb chops grilled to a smoky, caramelised finish, plated over fragrant saffron rice with a side of roasted vegetables and mint yoghurt.</div></div>
+              <span class="item-price">£18</span>
+            </div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item">
+              <div><div class="item-name">Knafeh</div>
+              <div class="item-desc">Warm shredded pastry layered over molten sweet cheese, soaked in orange blossom syrup and scattered with crushed pistachios.</div></div>
+              <span class="item-price">£6</span>
+            </div><div class="menu-item">
+              <div><div class="item-name">Baklawa Plate</div>
+              <div class="item-desc">A selection of house-made baklawa — flaky, buttered filo filled with chopped nuts and drenched in rose-scented honey syrup.</div></div>
+              <span class="item-price">£5</span>
+            </div></div></div>
+      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="section-wrap">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Come visit</h2>
+      <div class="visit-grid">
+        <div class="visit-block">
+          <p class="vb-label">Address</p>
+          <p>63 Peckham High St, London SE15 5EB, UK</p>
+          <a href="https://maps.google.com/?cid=11599066084449253977" target="_blank" style="margin-top:0.5rem; color:var(--accent)">
+            <i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps
+          </a>
+        </div>
+        <div class="visit-block">
+          <p class="vb-label">Opening Hours</p>
+          <div class='hour-row'><span>Mon</span><span>10:00 AM – 3:00 AM</span></div>
+<div class='hour-row'><span>Tue</span><span>10:00 AM – 3:00 AM</span></div>
+<div class='hour-row'><span>Wed</span><span>10:00 AM – 3:00 AM</span></div>
+<div class='hour-row'><span>Thu</span><span>10:00 AM – 3:00 AM</span></div>
+<div class='hour-row'><span>Fri</span><span>10:00 AM – 5:00 AM</span></div>
+<div class='hour-row'><span>Sat</span><span>10:00 AM – 5:00 AM</span></div>
+<div class='hour-row'><span>Sun</span><span>10:00 AM – 3:00 AM</span></div>
+        </div>
+        <div class="visit-block">
+          <p class="vb-label">Reservations</p>
+          <a href="tel:020 3336 7568"><i class="fa fa-phone" style="font-size:0.75rem"></i> 020 3336 7568</a>
+          <a href="https://wa.me/02033367568" target="_blank" style="margin-top:0.3rem">
+            <i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us
+          </a>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?cid=11599066084449253977" target="_blank" class="directions-btn">
+        <i class="fab fa-google"></i> Get Directions on Google Maps
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2024 Beyroot Grill Peckham</span>
+    <span>63 Peckham High St, London SE15 5EB, UK</span>
+  </footer>
+
+  <!-- FLOAT CALL (mobile) -->
+  <a href="tel:020 3336 7568" class="float-call">
+    <i class="fa fa-phone"></i> Call to Reserve
+  </a>
+
+</body>
+</html>
