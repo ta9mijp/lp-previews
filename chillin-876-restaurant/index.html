@@ -10,8 +10,8 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     :root{
-      --primary:   #ffffff;
-      --accent:    #da532c;
+      --primary:   #32373c;
+      --accent:    #f78da7;
       /* ヒーロー用（暗い背景向け） */
       --hero-text:  #f5f2ec;
       --hero-muted: rgba(245,242,236,0.65);
@@ -19,10 +19,10 @@
       --c-text:   #1a1a1a;
       --c-muted:  #6b6b6b;
       --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #f78da7;
+      --sec-bg:   #ffffff;
     }
     html{scroll-behavior:smooth;}
-    body{font-family:'System sans-serif stack',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+    body{font-family:'Noto Sans JP',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
 
     /* PROTO BANNER */
     .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
@@ -35,11 +35,11 @@
     @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
     .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
     .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Custom sans-serif with bilingual support (English/Japanese)',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
+    .logo{font-family:'Noto Sans JP',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
     .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
     .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
     .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Custom sans-serif with bilingual support (English/Japanese)',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
+    .hero-tagline{font-family:'Noto Sans JP',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
     .hero-tagline span{color:var(--accent);}
     .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
     .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
@@ -52,7 +52,7 @@
     .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
     .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
     .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Custom sans-serif with bilingual support (English/Japanese)',serif;font-size:1.2rem;font-weight:300;color:#fff;}
+    .mockup-overlay .m-name{font-family:'Noto Sans JP',serif;font-size:1.2rem;font-weight:300;color:#fff;}
     .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
 
     /* ── SOCIAL BAR ── */
@@ -69,7 +69,7 @@
     /* ── SHARED CONTENT STYLES ── */
     .section-wrap{max-width:1100px;margin:0 auto;}
     .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Custom sans-serif with bilingual support (English/Japanese)',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+    .section-title{font-family:'Noto Sans JP',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
 
     /* ── ABOUT（白背景 → 暗い文字） ── */
     .about{padding:6rem 4rem;background:#fff;}
@@ -80,7 +80,7 @@
     .about-values{display:flex;flex-direction:column;}
     .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
     .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Custom sans-serif with bilingual support (English/Japanese)',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
+    .value-num{font-family:'Noto Sans JP',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
     .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
     .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
 
@@ -107,7 +107,7 @@
     .menu-item-left{flex:1;}
     .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
     .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Custom sans-serif with bilingual support (English/Japanese)',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
+    .item-price{font-family:'Noto Sans JP',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
     .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
 
     /* ── VISIT（薄グレー背景 → 暗い文字） ── */
@@ -130,7 +130,7 @@
     /* ── STICKY HEADER ── */
     .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
     .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Custom sans-serif with bilingual support (English/Japanese)',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
+    .sticky-logo{font-family:'Noto Sans JP',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
     .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
     .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
     .sticky-open.closed{background:#fce4ec;color:#c62828;}
@@ -177,7 +177,7 @@
   </header>
 
   <div class="proto-banner">
-    <p><strong>🎨 Free Preview</strong> — This site was built for Chillin 876 Restaurant as a complimentary demo. Images, colours &amp; content are fully customisable once we connect.</p>
+    <p><strong>🎨 Free demo for Chillin 876 Restaurant</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
@@ -194,7 +194,7 @@
       </div>
       <div>
         <h1 class="hero-tagline">Authentic Jamaican Soul, Fresh Every Single Day</h1>
-        <p class="hero-desc">Chillin 876 brings the warmth and vibrancy of Jamaica straight to the heart of South London, serving honest, home-cooked flavours made fresh daily. With generous portions, stunning décor, and a team that greets every guest like family, this is more than a meal — it's an experience. Rated 4.8 stars and beloved by locals, Chillin 876 is South London's home for the real taste of the island.</p>
+        <p class="hero-desc">Nestled in the heart of South London, Chillin 876 brings the vibrant flavours and warm spirit of Jamaica straight to your table. Every dish is crafted with fresh ingredients and genuine love, tasting exactly like a home-cooked meal from the island itself. With stunning décor, generous portions, and staff who greet you like family, this is your home away from home.</p>
         <div class="rating-counter" id="ratingCounter" data-rating="4.8" data-count="90">⭐ 4.8 · 90 Google reviews</div>
         <div class="open-badge" id="openBadge"></div>
       </div>
@@ -234,12 +234,12 @@
         <div data-aos="fade-right">
           <p class="section-label">Our Philosophy</p>
           <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Chillin 876 brings the warmth and vibrancy of Jamaica straight to the heart of South London, serving honest, home-cooked flavours made fresh daily. With generous portions, stunning décor, and a team that greets every guest like family, this is more than a meal — it's an experience. Rated 4.8 stars and beloved by locals, Chillin 876 is South London's home for the real taste of the island.</p>
+          <p class="about-body">Nestled in the heart of South London, Chillin 876 brings the vibrant flavours and warm spirit of Jamaica straight to your table. Every dish is crafted with fresh ingredients and genuine love, tasting exactly like a home-cooked meal from the island itself. With stunning décor, generous portions, and staff who greet you like family, this is your home away from home.</p>
         </div>
         <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Always Fresh</h3><p>Every dish is prepared fresh each day, because great Jamaican cooking was never meant to wait.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Rooted in Authenticity</h3><p>We cook the way Jamaica intended — bold spices, generous spirit, and recipes that carry generations of flavour.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Welcome Like Family</h3><p>From the moment you walk through our doors, our warm and smiling team ensures every guest feels right at home.</p></div></div>
+          <div class="value-item"><span class="value-num">01</span><div><h3>Always Fresh</h3><p>We prepare every dish from scratch, every day, because great Jamaican food should never taste like yesterday.</p></div></div>
+          <div class="value-item"><span class="value-num">02</span><div><h3>Rooted in Authenticity</h3><p>Our recipes honour the true flavours of Jamaica, using traditional techniques and bold, island-sourced spices.</p></div></div>
+          <div class="value-item"><span class="value-num">03</span><div><h3>Community & Warmth</h3><p>Every guest who walks through our doors is welcomed with a genuine smile and the kind of hospitality that keeps you coming back.</p></div></div>
         </div>
       </div>
     </div>
@@ -261,7 +261,7 @@
         <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
         <span class="menu-note">Seasonal · Prices incl. VAT</span>
       </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Saltfish Fritters</div><div class="item-desc">Golden, crispy fritters packed with flaked saltfish, scotch bonnet and spring onion, served with a zesty pepper dipping sauce.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jerk Chicken Wings</div><div class="item-desc">Smoky, fire-kissed wings marinated overnight in our house jerk seasoning, served with a cooling mango chutney.</div></div><span class="item-price">£8</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Festival & Ackee Bites</div><div class="item-desc">Lightly fried festival dumplings paired with creamy ackee seasoned with onion, thyme and sweet peppers.</div></div><span class="item-price">£7</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Oxtail Stew</div><div class="item-desc">Slow-braised oxtail melting off the bone in a rich, buttery gravy with butter beans, served with rice and peas.</div></div><span class="item-price">£16</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Curry Goat</div><div class="item-desc">Tender goat simmered low and slow in a fragrant Jamaican curry, served with fluffy white rice and roti.</div></div><span class="item-price">£15</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jerk Chicken Platter</div><div class="item-desc">A generous half-chicken chargrilled with authentic jerk seasoning, accompanied by festival, coleslaw and rice and peas.</div></div><span class="item-price">£14</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Sweet Potato Pudding</div><div class="item-desc">A beloved Caribbean classic — dense, spiced and beautifully sweet, baked to perfection with coconut and vanilla.</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Rum Cake</div><div class="item-desc">Moist, dark and deeply indulgent, our signature rum cake is soaked in Jamaican rum and dusted with icing sugar.</div></div><span class="item-price">£5</span></div></div></div>
+      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Saltfish Fritters</div><div class="item-desc">Golden, crispy fritters packed with flaked saltfish, scotch bonnet and spring onion, served with a tangy festival dipping sauce.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jerk Chicken Wings</div><div class="item-desc">Slow-marinated wings kissed with authentic jerk seasoning, grilled over open flame and served with a cooling mango chutney.</div></div><span class="item-price">£8</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Callaloo Soup</div><div class="item-desc">A velvety, richly spiced Jamaican callaloo broth simmered with coconut milk, okra and sweet potato.</div></div><span class="item-price">£5</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Brown Stew Chicken</div><div class="item-desc">Tender, fall-off-the-bone chicken slow-cooked in a deeply flavoured brown stew with thyme, allspice and caramelised onions, served with rice and peas.</div></div><span class="item-price">£14</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Oxtail & Butter Beans</div><div class="item-desc">A beloved Jamaican classic — succulent oxtail braised low and slow in a rich, herb-infused gravy with creamy butter beans and steamed white rice.</div></div><span class="item-price">£17</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Ackee & Saltfish</div><div class="item-desc">Jamaica's national dish done with pride — silky ackee sautéed with salted cod, scotch bonnet, tomatoes and onions, paired with fried dumplings and plantain.</div></div><span class="item-price">£13</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Rum Cake</div><div class="item-desc">A moist, richly spiced Jamaican rum cake soaked in dark rum syrup and served warm with a scoop of vanilla ice cream.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Coconut Drops</div><div class="item-desc">Traditional Jamaican coconut drops — chewy, caramelised nuggets of fresh coconut and ginger, a sweet taste of island nostalgia.</div></div><span class="item-price">£4</span></div></div></div>
       <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
     </div>
   </section>
