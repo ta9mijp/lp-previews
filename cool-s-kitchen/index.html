@@ -21,260 +21,302 @@
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap');
 
 :root {
---c-bg:#faf6f1;
---c-earth:#8b6f47;
---c-earth-dark:#5c4a2a;
---c-earth-light:#c4a882;
---c-warm:#e8d5b7;
+--c-bg:#faf6f0;
+--c-surface:#f2ebe0;
+--c-card:#fff9f2;
+--c-primary:#b5651d;
+--c-primary-dark:#8b4513;
 --c-accent:#d4956a;
---c-accent2:#b5734a;
---c-text:#2c1f0e;
---c-text-light:#6b5740;
+--c-accent-light:#e8c4a0;
+--c-text:#2c1a0e;
+--c-text-muted:#7a5c42;
 --c-white:#fff;
---c-overlay:rgba(30,18,6,.45);
---c-pink:#f78da7;
+--c-overlay:rgba(28,14,4,.52);
+--c-overlay-grad:linear-gradient(to bottom,rgba(28,14,4,.18) 0%,rgba(28,14,4,.65) 100%);
 --ff-head:'Playfair Display',Georgia,serif;
---ff-body:'Inter',system-ui,sans-serif;
---r:8px;
---r-lg:16px;
---shadow:0 4px 24px rgba(44,31,14,.12);
---shadow-lg:0 8px 48px rgba(44,31,14,.18);
+--ff-body:'Inter',sans-serif;
+--radius:10px;
+--radius-lg:18px;
+--shadow:0 4px 24px rgba(44,26,14,.10);
+--shadow-card:0 2px 16px rgba(44,26,14,.09);
 --trans:.3s ease;
+--max-w:1160px;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--ff-body);background:var(--c-bg);color:var(--c-text);line-height:1.6;overflow-x:hidden}
-img{max-width:100%;height:auto;display:block}
-a{color:inherit;text-decoration:none}
+body{font-family:var(--ff-body);background:var(--c-bg);color:var(--c-text);line-height:1.7;overflow-x:hidden}
+img{display:block;max-width:100%;object-fit:cover}
+a{text-decoration:none;color:inherit;transition:color var(--trans)}
 ul{list-style:none}
 
-/* ── TYPOGRAPHY ── */
+/* ─── TYPOGRAPHY ─── */
 h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.2;font-weight:600}
-h1{font-size:clamp(2.4rem,6vw,5rem)}
-h2{font-size:clamp(1.8rem,4vw,3rem)}
-h3{font-size:clamp(1.2rem,2.5vw,1.8rem)}
-h4{font-size:1.1rem}
-p{font-size:clamp(.9rem,1.5vw,1.05rem);color:var(--c-text-light)}
+h1{font-size:clamp(2.4rem,6vw,4.2rem)}
+h2{font-size:clamp(1.7rem,3.5vw,2.6rem)}
+h3{font-size:clamp(1.1rem,2vw,1.4rem)}
+p{font-size:clamp(.9rem,1.5vw,1rem);color:var(--c-text-muted)}
+.section-label{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--c-accent);display:block;margin-bottom:.5rem}
+.section-title{margin-bottom:1rem}
+.section-desc{max-width:560px;margin:0 auto 2.5rem;text-align:center}
 
-/* ── FIXED CLASSES ── */
-.proto-banner{position:fixed;top:0;left:0;width:100%;z-index:9999;background:var(--c-earth-dark);color:var(--c-white);text-align:center;padding:.5rem 1rem;font-size:.82rem;font-family:var(--ff-body);letter-spacing:.04em}
-.proto-banner a{color:var(--c-pink);text-decoration:underline}
+/* ─── LAYOUT HELPERS ─── */
+.container{width:min(var(--max-w),92%);margin:0 auto}
+.section-head{text-align:center;margin-bottom:3rem}
+section{padding:clamp(3.5rem,7vw,6rem) 0}
 
-#openBadge{display:inline-flex;align-items:center;gap:.4rem;background:var(--c-accent);color:var(--c-white);font-size:.78rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;letter-spacing:.05em;text-transform:uppercase}
-#openBadge::before{content:'';width:.55rem;height:.55rem;border-radius:50%;background:#4cde80;display:block;animation:pulse 1.6s infinite}
+/* ─── PROTO BANNER ─── */
+.proto-banner{background:var(--c-primary);color:var(--c-white);text-align:center;padding:.55rem 1rem;font-size:.82rem;font-weight:500;letter-spacing:.06em;position:relative;z-index:110}
+.proto-banner a{color:var(--c-accent-light);text-decoration:underline}
 
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
-
-#ratingCounter{display:inline-flex;align-items:center;gap:.35rem;font-size:.9rem;font-weight:500;color:var(--c-earth-dark)}
-#ratingCounter .stars{color:#f5a623;letter-spacing:-.05em;font-size:1rem}
-#ratingCounter .count{color:var(--c-text-light);font-size:.8rem}
-
-#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background var(--trans),box-shadow var(--trans)}
-#stickyNav.scrolled{background:rgba(250,246,241,.96);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(44,31,14,.1)}
-#stickyNav .nav-logo{font-family:var(--ff-head);font-size:1.4rem;color:var(--c-white);font-weight:600;transition:color var(--trans)}
-#stickyNav.scrolled .nav-logo{color:var(--c-earth-dark)}
-#stickyNav .nav-links{display:flex;gap:2rem;align-items:center}
-#stickyNav .nav-links a{font-size:.85rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);transition:color var(--trans)}
+/* ─── STICKY NAV ─── */
+#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:1.2rem 0;transition:background var(--trans),padding var(--trans),box-shadow var(--trans)}
+#stickyNav.scrolled{background:rgba(250,246,240,.96);backdrop-filter:blur(8px);padding:.7rem 0;box-shadow:0 2px 18px rgba(44,26,14,.10)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:min(var(--max-w),92%);margin:0 auto}
+.nav-logo{font-family:var(--ff-head);font-size:1.35rem;font-weight:600;color:var(--c-white);transition:color var(--trans)}
+#stickyNav.scrolled .nav-logo{color:var(--c-primary-dark)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.88);letter-spacing:.04em;transition:color var(--trans)}
+.nav-links a:hover{color:var(--c-accent-light)}
 #stickyNav.scrolled .nav-links a{color:var(--c-text)}
-#stickyNav .nav-links a:hover{color:var(--c-accent)}
-#stickyNav .nav-cta{background:var(--c-accent);color:var(--c-white)!important;padding:.45rem 1.2rem;border-radius:999px;font-size:.8rem!important;transition:background var(--trans)!important}
-#stickyNav .nav-cta:hover{background:var(--c-accent2)!important}
-#stickyNav .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.3rem}
-#stickyNav .nav-hamburger span{display:block;width:24px;height:2px;background:var(--c-white);transition:background var(--trans)}
-#stickyNav.scrolled .nav-hamburger span{background:var(--c-earth-dark)}
+#stickyNav.scrolled .nav-links a:hover{color:var(--c-primary)}
+.nav-cta{background:var(--c-primary);color:var(--c-white)!important;padding:.45rem 1.2rem;border-radius:50px;font-size:.82rem!important;transition:background var(--trans)!important}
+.nav-cta:hover{background:var(--c-primary-dark)!important}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.3rem}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--c-white);border-radius:2px;transition:background var(--trans)}
+#stickyNav.scrolled .nav-toggle span{background:var(--c-text)}
 
-.float-cta{position:fixed;bottom:1.8rem;right:1.8rem;z-index:900;display:flex;flex-direction:column;gap:.7rem;align-items:flex-end}
-.float-cta a{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:999px;font-size:.85rem;font-weight:600;box-shadow:var(--shadow-lg);transition:transform var(--trans),box-shadow var(--trans)}
-.float-cta a:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(44,31,14,.22)}
-.float-cta .cta-reserve{background:var(--c-earth-dark);color:var(--c-white)}
-.float-cta .cta-tel{background:var(--c-white);color:var(--c-earth-dark);border:2px solid var(--c-warm)}
-
-/* ── HERO ── */
-.ck-hero{position:relative;width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-.ck-hero__bg{position:absolute;inset:0;background-size:cover;background-position:center;background-attachment:fixed;transform:scale(1.04);transition:transform 8s ease}
-.ck-hero__overlay{position:absolute;inset:0;background:var(--c-overlay)}
-.ck-hero__content{position:relative;z-index:2;padding:2rem;max-width:860px;width:100%}
-.ck-hero__eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c-earth-light);margin-bottom:1.2rem;font-family:var(--ff-body)}
-.ck-hero__title{color:var(--c-white);margin-bottom:1.2rem;text-shadow:0 2px 20px rgba(0,0,0,.3)}
-.ck-hero__subtitle{color:rgba(255,255,255,.82);font-size:clamp(1rem,2vw,1.25rem);margin-bottom:.6rem;font-family:var(--ff-body);font-weight:300}
-.ck-hero__tagline{color:var(--c-earth-light);font-size:.9rem;letter-spacing:.08em;margin-bottom:2.4rem}
-.ck-hero__actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;align-items:center}
-.ck-hero__scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.6);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;z-index:2}
-.ck-hero__scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent);animation:scrollLine 2s ease-in-out infinite}
-@keyframes scrollLine{0%,100%{opacity:.6;transform:scaleY(1)}50%{opacity:1;transform:scaleY(.6)}}
-
-/* ── BUTTONS ── */
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 2rem;border-radius:999px;font-size:.88rem;font-weight:600;letter-spacing:.04em;cursor:pointer;border:none;transition:all var(--trans)}
-.btn-primary{background:var(--c-accent);color:var(--c-white)}
-.btn-primary:hover{background:var(--c-accent2);transform:translateY(-1px);box-shadow:0 6px 24px rgba(212,149,106,.4)}
-.btn-outline{background:transparent;color:var(--c-white);border:2px solid rgba(255,255,255,.7)}
+/* ─── HERO ─── */
+.hero-section{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600') center/cover no-repeat;transform:scale(1.04);transition:transform 8s ease}
+.hero-section:hover .hero-bg{transform:scale(1)}
+.hero-overlay{position:absolute;inset:0;background:var(--c-overlay-grad)}
+.hero-content{position:relative;z-index:2;padding:2rem 1rem;display:flex;flex-direction:column;align-items:center;gap:1.4rem}
+.hero-eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--c-accent-light)}
+.hero-title{color:var(--c-white);text-shadow:0 2px 16px rgba(28,14,4,.4)}
+.hero-sub{color:rgba(255,255,255,.82);font-size:clamp(1rem,2vw,1.2rem);max-width:540px;font-weight:300}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:.5rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.75rem 1.9rem;border-radius:50px;font-size:.9rem;font-weight:600;letter-spacing:.04em;cursor:pointer;border:2px solid transparent;transition:all var(--trans)}
+.btn-primary{background:var(--c-primary);color:var(--c-white);border-color:var(--c-primary)}
+.btn-primary:hover{background:var(--c-primary-dark);border-color:var(--c-primary-dark)}
+.btn-outline{background:transparent;color:var(--c-white);border-color:rgba(255,255,255,.7)}
 .btn-outline:hover{background:rgba(255,255,255,.12);border-color:var(--c-white)}
-.btn-dark{background:var(--c-earth-dark);color:var(--c-white)}
-.btn-dark:hover{background:var(--c-earth);transform:translateY(-1px)}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.6);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;z-index:2}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.6));animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{opacity:.3;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
 
-/* ── SECTION WRAPPER ── */
-.ck-section{padding:6rem 2rem}
-.ck-container{max-width:1240px;margin:0 auto;width:100%}
-.ck-section-head{text-align:center;margin-bottom:4rem}
-.ck-section-head .eyebrow{display:block;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c-accent);margin-bottom:.8rem;font-family:var(--ff-body)}
-.ck-section-head h2{color:var(--c-earth-dark);margin-bottom:1rem}
-.ck-section-head p{max-width:560px;margin:0 auto}
-.ck-divider{width:60px;height:3px;background:linear-gradient(90deg,var(--c-accent),var(--c-earth-light));border-radius:2px;margin:1.2rem auto 0}
+/* ─── OPEN BADGE ─── */
+#openBadge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.3);color:var(--c-white);font-size:.8rem;font-weight:500;padding:.4rem 1rem;border-radius:50px}
+#openBadge .dot{width:8px;height:8px;border-radius:50%;background:#6fcf97;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(111,207,151,.5)}50%{box-shadow:0 0 0 6px rgba(111,207,151,0)}}
 
-/* ── CONCEPT / ABOUT ── */
-.ck-concept{background:var(--c-white)}
-.ck-concept__grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.ck-concept__img{position:relative;border-
+/* ─── FEATURES ─── */
+.features-section{background:var(--c-surface)}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+.feature-card{background:var(--c-card);border-radius:var(--radius-lg);padding:2rem 1.5rem;text-align:center;box-shadow:var(--shadow-card);transition:transform var(--trans),box-shadow var(--trans)}
+.feature-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.feature-icon{width:54px;height:54px;background:linear-gradient(135deg,var(--c-accent-light),var(--c-accent));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.5rem}
+.feature-card h3{font-size:1.05rem;margin-bottom:.5rem;color:var(--c-text)}
+.feature-card p{font-size:.88rem;color:var(--c-text-muted)}
+
+/* ─── MENU ─── */
+.menu-section{background:var(--c-bg)}
+.menu-filter{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter-btn{padding:.42rem 1.2rem;border-radius:50px;font-size:.82rem;font-weight:500;cursor:pointer;border:1.5px solid var(--c-accent-light);background:transparent;color:var(--c-text-muted);transition:all var(--trans)}
+.filter-btn.active,.filter-btn:hover{background:var(--c-primary);border-color:var(--c-primary);color:var(--c-white)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(
   </style>
 </head>
 <body>
 <body>
 
   <!-- Proto Banner -->
-  <div class="proto-banner">
-    <p><strong>🎨 Free demo for Cool's Kitchen</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
-    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
-  </div>
+  <div class="proto-banner"><p><strong>🎨 Free demo for Cool's Kitchen</strong> — All images, text &amp; colours are placeholders and fully customisable.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
 
   <!-- Sticky Nav -->
   <nav id="stickyNav">
-    <div class="ck-container" style="display:flex;align-items:center;justify-content:space-between;padding:0 2rem;">
-      <a href="#hero" class="nav-logo">Cool's Kitchen</a>
-      <ul class="nav-links" style="display:flex;list-style:none;gap:2rem;margin:0;padding:0;">
-        <li><a href="#about">About</a></li>
+    <div class="nav-inner">
+      <div class="nav-logo">Cool's Kitchen</div>
+      <ul class="nav-links">
+        <li><a href="#features">About</a></li>
         <li><a href="#menu">Menu</a></li>
-        <li><a href="#philosophy">Our Values</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#visit">Visit</a></li>
       </ul>
       <a href="tel:020 3621 6276" class="nav-cta btn btn-primary">Reserve a Table</a>
-      <button class="nav-hamburger" aria-label="Open menu">&#9776;</button>
+      <button class="nav-toggle" aria-label="Toggle menu"><i class="fa fa-bars"></i></button>
     </div>
   </nav>
 
-  <!-- ░░░ HERO ░░░ -->
-  <section class="ck-hero" id="hero">
-    <div class="ck-hero__bg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');"></div>
-    <div class="ck-hero__overlay"></div>
-    <div class="ck-hero__content">
-      <span class="ck-hero__eyebrow eyebrow">South London · Restaurant</span>
-      <h1 class="ck-hero__title">Cool's Kitchen</h1>
-      <p class="ck-hero__subtitle">South London soul, cooked with genuine heart</p>
-      <p class="ck-hero__tagline">
-        <span id="openBadge"></span>
-        <span id="ratingCounter" data-rating="4.6" data-count="108">⭐ 4.6 · 108 Google reviews</span>
-      </p>
-      <div class="ck-hero__actions">
-        <a href="tel:020 3621 6276" class="btn btn-primary">📞 Reserve a Table</a>
+  <!-- ═══════════════════════════════════════════
+       HERO — full-bleed-center
+  ═══════════════════════════════════════════ -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow" data-aos="fade-up">South London · Est. Cool's Kitchen</p>
+      <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">Cool's Kitchen</h1>
+      <p class="hero-sub" data-aos="fade-up" data-aos-delay="200">Soul-stirring flavours rooted in South London warmth</p>
+      <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
+        <a href="tel:020 3621 6276" class="btn btn-primary"><i class="fa fa-phone"></i> Reserve a Table</a>
         <a href="#menu" class="btn btn-outline">View Menu</a>
       </div>
-      <div class="ck-hero__scroll">
-        <span>Scroll to explore</span>
-        <div class="ck-hero__scroll-line"></div>
+      <div data-aos="fade-up" data-aos-delay="400" style="margin-top:1.5rem; display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;">
+        <span id="openBadge" style="background:rgba(255,255,255,0.15); color:#fff; padding:0.35rem 0.9rem; border-radius:2rem; font-size:0.85rem; font-weight:600; backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.3);">🟢 Open Now</span>
+        <span id="ratingCounter" data-rating="4.6" data-count="108" style="background:rgba(255,255,255,0.15); color:#fff; padding:0.35rem 0.9rem; border-radius:2rem; font-size:0.85rem; font-weight:600; backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.3);">⭐ 4.6 · 108 Google Reviews</span>
       </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span class="dot"></span>
     </div>
   </section>
 
-  <!-- ░░░ CONTENT SECTIONS ░░░ -->
-
-  <!-- ── ABOUT / CONCEPT ── -->
-  <section class="ck-section" id="about" style="background:#fdf6ef;padding:5rem 0;">
-    <div class="ck-container">
-      <div class="ck-section-head" style="text-align:center;max-width:700px;margin:0 auto 3rem;" data-aos="fade-up">
-        <span class="eyebrow">Our Story</span>
-        <div class="ck-divider"></div>
-        <h2 style="font-size:2.4rem;font-weight:700;color:#2c1a0e;margin:.75rem 0 1rem;">A South London Gem</h2>
-        <p style="color:#6b4f3a;line-height:1.8;font-size:1.05rem;">Cool's Kitchen is a South London gem where home-style cooking meets bold, comforting flavours. Every dish is crafted with care, drawing on rich culinary traditions to bring warmth and satisfaction to your table.</p>
+  <!-- ═══════════════════════════════════════════
+       FEATURES — image-text-alternating
+  ═══════════════════════════════════════════ -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-head" data-aos="fade-up">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">Bold Cooking. Honest Flavour.</h2>
+        <p class="section-desc">Cool's Kitchen brings bold, heartfelt cooking to the heart of South London, drawing on rich culinary traditions to create dishes that feel like home. Every plate is crafted with care, celebrating the vibrant, diverse flavours that define our community.</p>
       </div>
 
-      <!-- Image-Text Alternating Block 1 -->
-      <div class="ck-concept__grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:4rem;" data-aos="fade-right">
-        <div class="ck-concept__img" style="border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(44,26,14,.15);aspect-ratio:4/3;">
-          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Cool's Kitchen interior" style="width:100%;height:100%;object-fit:cover;" />
+      <!-- Image–Text Alternating Block 1 -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; margin-bottom:4rem;" data-aos="fade-right">
+        <div style="border-radius:1rem; overflow:hidden; height:400px;">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Cool's Kitchen Interior" style="width:100%; height:100%; object-fit:cover;" />
         </div>
-        <div style="padding:1rem 0;" data-aos="fade-left">
-          <span class="eyebrow">Home-Style Cooking</span>
-          <h3 style="font-size:1.9rem;color:#2c1a0e;margin:.5rem 0 1rem;font-weight:700;">Bold Flavours, Honest Plates</h3>
-          <p style="color:#6b4f3a;line-height:1.9;margin-bottom:1.5rem;">We draw on generations of culinary tradition to bring you dishes that feel familiar yet exciting — seasoned with intention, cooked with pride, and served with genuine love for the community we feed.</p>
-          <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:.75rem;">
-            <li style="display:flex;align-items:center;gap:.75rem;color:#6b4f3a;"><span style="background:#c8601a;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;">✓</span> Dine-in available</li>
-            <li style="display:flex;align-items:center;gap:.75rem;color:#6b4f3a;"><span style="background:#c8601a;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;">✓</span> Takeaway &amp; delivery</li>
-            <li style="display:flex;align-items:center;gap:.75rem;color:#6b4f3a;"><span style="background:#c8601a;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;">✓</span> Open 7 days · 11am–11pm</li>
-          </ul>
-          <a href="tel:020 3621 6276" class="btn btn-primary">Book a Table</a>
+        <div>
+          <p class="section-label">Our Philosophy</p>
+          <h3 style="font-size:1.8rem; font-weight:700; margin-bottom:1rem; line-height:1.3;">Rooted in Flavour</h3>
+          <p style="line-height:1.8; margin-bottom:1.2rem; opacity:0.85;">We believe every dish should tell a story through bold, considered seasoning and time-honoured technique. Our recipes draw from generations of culinary wisdom, adapted for the South London table.</p>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; font-weight:600;"><span style="width:8px; height:8px; border-radius:50%; background:#c8963e; display:inline-block;"></span> Dine-In</div>
+            <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; font-weight:600;"><span style="width:8px; height:8px; border-radius:50%; background:#c8963e; display:inline-block;"></span> Takeaway</div>
+            <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; font-weight:600;"><span style="width:8px; height:8px; border-radius:50%; background:#c8963e; display:inline-block;"></span> Delivery</div>
+          </div>
         </div>
       </div>
 
-      <!-- Image-Text Alternating Block 2 (reversed) -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;" data-aos="fade-left">
-        <div style="padding:1rem 0;" data-aos="fade-right">
-          <span class="eyebrow">Community &amp; Craft</span>
-          <h3 style="font-size:1.9rem;color:#2c1a0e;margin:.5rem 0 1rem;font-weight:700;">Rooted in South London</h3>
-          <p style="color:#6b4f3a;line-height:1.9;margin-bottom:1.5rem;">More than a restaurant — Cool's Kitchen is a gathering place. We exist to nourish our South London neighbours, one honest and hearty meal at a time. Every plate carries a story.</p>
-          <a href="#philosophy" class="btn btn-outline" style="border-color:#c8601a;color:#c8601a;">Our Philosophy</a>
+      <!-- Image–Text Alternating Block 2 (reversed) -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; margin-bottom:4rem;" data-aos="fade-left">
+        <div style="order:2; border-radius:1rem; overflow:hidden; height:400px;">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Cool's Kitchen Food" style="width:100%; height:100%; object-fit:cover;" />
         </div>
-        <div class="ck-concept__img" style="border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(44,26,14,.15);aspect-ratio:4/3;">
-          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Cool's Kitchen food" style="width:100%;height:100%;object-fit:cover;" />
+        <div style="order:1;">
+          <p class="section-label">Community</p>
+          <h3 style="font-size:1.8rem; font-weight:700; margin-bottom:1rem; line-height:1.3;">Community First</h3>
+          <p style="line-height:1.8; margin-bottom:1.2rem; opacity:0.85;">Cool's Kitchen exists to nourish our South London neighbours with food that feels personal, generous, and true. From the first chop to the final garnish, every element on your plate receives the attention it deserves.</p>
+          <a href="tel:020 3621 6276" class="btn btn-primary"><i class="fa fa-phone"></i> Book a Table</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ── FULL-BLEED PHOTO STRIP ── -->
-  <div style="width:100%;height:380px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;">
-    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Cool's Kitchen atmosphere" style="width:100%;height:100%;object-fit:cover;transform:scale(1.05);" />
-    <div style="position:absolute;inset:0;background:rgba(44,26,14,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:2rem;">
-      <p style="font-size:1.1rem;color:rgba(255,255,255,.8);letter-spacing:.15em;text-transform:uppercase;font-weight:600;" data-aos="fade-up">Open Every Day · 11:00 AM – 11:00 PM</p>
-      <h2 style="font-size:2.8rem;color:#fff;font-weight:800;margin:0;text-shadow:0 2px 20px rgba(0,0,0,.4);" data-aos="fade-up" data-aos-delay="100">Every Day Is a Special Day</h2>
-      <a href="tel:020 3621 6276" class="btn btn-primary" style="margin-top:.5rem;" data-aos="fade-up" data-aos-delay="200">📞 020 3621 6276</a>
-    </div>
-  </div>
-
-  <!-- ── PHILOSOPHY ── -->
-  <section class="ck-section" id="philosophy" style="background:#2c1a0e;padding:5rem 0;">
-    <div class="ck-container">
-      <div class="ck-section-head" style="text-align:center;max-width:650px;margin:0 auto 3.5rem;" data-aos="fade-up">
-        <span class="eyebrow" style="color:#e8a87c;">Our Philosophy</span>
-        <div class="ck-divider" style="background:#c8601a;"></div>
-        <h2 style="font-size:2.4rem;font-weight:700;color:#fff;margin:.75rem 0 1rem;">What We Stand For</h2>
-        <p style="color:rgba(255,255,255,.65);line-height:1.8;">Every plate we serve carries a set of values we hold dear. This is the soul behind Cool's Kitchen.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;" data-aos="fade-up" data-aos-delay="100">
-        <!-- Pillar 1 -->
-        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2.5rem 2rem;text-align:center;">
-          <div style="font-size:2.5rem;margin-bottom:1rem;">🌿</div>
-          <h3 style="color:#e8a87c;font-size:1.25rem;font-weight:700;margin:0 0 1rem;">Rooted in Tradition</h3>
-          <p style="color:rgba(255,255,255,.65);line-height:1.8;font-size:.95rem;">We honour time-honoured recipes passed down through generations, keeping every plate deeply soulful and familiar.</p>
+      <!-- Features Grid -->
+      <div class="features-grid" data-aos="fade-up">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa fa-fire"></i></div>
+          <h4>Bold Flavours</h4>
+          <p>Every dish is seasoned with intention, celebrating the rich culinary traditions of our diverse community.</p>
         </div>
-        <!-- Pillar 2 -->
-        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2.5rem 2rem;text-align:center;">
-          <div style="font-size:2.5rem;margin-bottom:1rem;">🤝</div>
-          <h3 style="color:#e8a87c;font-size:1.25rem;font-weight:700;margin:0 0 1rem;">Community First</h3>
-          <p style="color:rgba(255,255,255,.65);line-height:1.8;font-size:.95rem;">Cool's Kitchen exists to nourish our South London neighbours, one honest, hearty meal at a time.</p>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa fa-heart"></i></div>
+          <h4>Made with Love</h4>
+          <p>From prep to plate, our kitchen team pours passion into every meal we send out.</p>
         </div>
-        <!-- Pillar 3 -->
-        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2.5rem 2rem;text-align:center;">
-          <div style="font-size:2.5rem;margin-bottom:1rem;">🔥</div>
-          <h3 style="color:#e8a87c;font-size:1.25rem;font-weight:700;margin:0 0 1rem;">Bold, Honest Flavour</h3>
-          <p style="color:rgba(255,255,255,.65);line-height:1.8;font-size:.95rem;">We believe great food speaks for itself — seasoned with intention, cooked with pride, and served with love.</p>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa fa-users"></i></div>
+          <h4>For the Community</h4>
+          <p>Rooted in South London, we cook for our neighbours with generosity and heart.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa fa-clock-o"></i></div>
+          <h4>Open Daily</h4>
+          <p>We're open every day from 11 AM to 11 PM — ready whenever you are.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── MENU (photo-cards) ── -->
-  <section class="ck-section" id="menu" style="background:#fdf6ef;padding:5rem 0;">
-    <div class="ck-container">
-      <div class="ck-section-head" style="text-align:center;max-width:650px;margin:0 auto 3.5rem;" data-aos="fade-up">
-        <span class="eyebrow">What We Serve</span>
-        <div class="ck-divider"></div>
-        <h2 style="font-size:2.4rem;font-weight:700;color:#2c1a0e;margin:.75rem 0 1rem;">Our Menu</h2>
-        <p style="color:#6b4f3a;line-height:1.8;">Home-style cooking crafted with bold, comforting flavours. Something special for every appetite.</p>
+  <!-- ═══════════════════════════════════════════
+       MENU — photo-cards
+  ═══════════════════════════════════════════ -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-head" data-aos="fade-up">
+        <p class="section-label">What We Serve</p>
+        <h2 class="section-title">Our Menu</h2>
+        <p class="section-desc">Handcrafted dishes inspired by bold Caribbean and South London culinary traditions.</p>
+      </div>
+
+      <div class="menu-filter" data-aos="fade-up">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="starters">Starters</button>
+        <button class="filter-btn" data-filter="mains">Mains</button>
+        <button class="filter-btn" data-filter="desserts">Desserts</button>
       </div>
 
       <!-- STARTERS -->
-      <h3 style="font-size:1.5rem;color:#c8601a;font-weight:700;margin:0 0 1.5rem;padding-bottom:.75rem;border-bottom:2px solid #e8d5c4;" data-aos="fade-right">Starters</h3>
+      <p class="section-label" style="margin-bottom:1rem; margin-top:2rem;" data-aos="fade-up">Starters</p>
+      <div class="menu-grid" data-aos="fade-up">
+
+        <div class="menu-card" data-category="starters" style="background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s;">
+          <div style="height:200px; background:linear-gradient(135deg, #c8963e 0%, #8b4513 100%); display:flex; align-items:center; justify-content:center;">
+            <i class="fa fa-cutlery" style="font-size:3rem; color:rgba(255,255,255,0.5);"></i>
+          </div>
+          <div style="padding:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+              <h4 style="font-size:1rem; font-weight:700;">Peppered Prawn Skewers</h4>
+              <span style="font-size:1rem; font-weight:700; color:#c8963e; white-space:nowrap; margin-left:0.5rem;">£8</span>
+            </div>
+            <p style="font-size:0.85rem; opacity:0.75; line-height:1.6;">Juicy tiger prawns marinated in a smoky pepper and herb blend, grilled and served with a zesty mango dipping sauce.</p>
+          </div>
+        </div>
+
+        <div class="menu-card" data-category="starters" style="background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s;">
+          <div style="height:200px; background:linear-gradient(135deg, #8b4513 0%, #c8963e 100%); display:flex; align-items:center; justify-content:center;">
+            <i class="fa fa-cutlery" style="font-size:3rem; color:rgba(255,255,255,0.5);"></i>
+          </div>
+          <div style="padding:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+              <h4 style="font-size:1rem; font-weight:700;">Jerk Chicken Wings</h4>
+              <span style="font-size:1rem; font-weight:700; color:#c8963e; white-space:nowrap; margin-left:0.5rem;">£7</span>
+            </div>
+            <p style="font-size:0.85rem; opacity:0.75; line-height:1.6;">Slow-marinated wings kissed with authentic Jamaican jerk spice, served with a cooling coconut and lime dip.</p>
+          </div>
+        </div>
+
+        <div class="menu-card" data-category="starters" style="background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s;">
+          <div style="height:200px; background:linear-gradient(135deg, #d4a843 0%, #7a3b1e 100%); display:flex; align-items:center; justify-content:center;">
+            <i class="fa fa-cutlery" style="font-size:3rem; color:rgba(255,255,255,0.5);"></i>
+          </div>
+          <div style="padding:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+              <h4 style="font-size:1rem; font-weight:700;">Spiced Lentil Soup</h4>
+              <span style="font-size:1rem; font-weight:700; color:#c8963e; white-space:nowrap; margin-left:0.5rem;">£6</span>
+            </div>
+            <p style="font-size:0.85rem; opacity:0.75; line-height:1.6;">A velvety, slow-cooked red lentil soup seasoned with cumin, coriander, and a hint of chilli, finished with a swirl of herb oil.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MAINS -->
+      <p class="section-label" style="margin-bottom:1rem; margin-top:2.5rem;" data-aos="fade-up">Mains</p>
+      <div class="menu-grid" data-aos="fade-up">
+
+        <div class="menu-card" data-category="mains" style="background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s;">
+          <div style="height:200px; background:linear-gradient(135deg, #5c2d0a 0%, #c8963e 100%); display:flex; align-items:center; justify-content:center;">
+            <i class="fa fa-cutlery" style="font-size:3rem; color:rgba(255,255,255,0.5);"></i>
+          </div>
+          <div style="padding:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+              <h4 style="font-size:1rem; font-weight:700;">Braised Oxtail with Rice &amp; Peas</h4>
+              <span style="font-size:1rem; font-weight:700; color:#c8963e; white-space:nowrap; margin-left:0.5rem;">£18</span>
+            </div>
+            <p style="font-size:0.85rem; opacity:0.75; line-height:1.6;">Tender, slow-braised oxtail in a rich, deeply spiced gravy served alongside fluffy coconut rice and p
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
 AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
