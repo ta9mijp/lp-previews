@@ -210,7 +210,6 @@ color:var(--gold);line-height:1
   </style>
 </head>
 <body>
-<body>
 
   <!-- Proto Banner -->
   <div class="proto-banner"><p><strong>🎨 Free demo for Zaytoon Grill</strong> — All images, text &amp; colours are placeholders and fully customisable.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
@@ -404,7 +403,7 @@ color:var(--gold);line-height:1
       <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
       <div class="menu-cta" data-aos="fade-up">
         <a class="btn-primary" href="tel:020 8617 8060"><i class="fa fa-phone"></i> Call to Order</a>
-        <a class="btn-outline" href="https://wa.me/02086178060" target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i> WhatsApp Us</a>
+        <a class="btn-outline" href="https://wa.me/02086178060" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
       </div>
     </div>
   </section>
@@ -489,7 +488,7 @@ color:var(--gold);line-height:1
           <div class="visit-block">
             <h4><i class="fa fa-phone"></i> Contact</h4>
             <p><a href="tel:020 8617 8060">020 8617 8060</a></p>
-            <p><a href="https://wa.me/02086178060" target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i> Chat on WhatsApp</a></p>
+            <p><a href="https://wa.me/02086178060" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a></p>
           </div>
 
           <div class="visit-block">
@@ -508,12 +507,12 @@ color:var(--gold);line-height:1
           <div class="visit-block">
             <h4><i class="fa fa-share-alt"></i> Follow Us</h4>
             <div class="social-icons">
-              <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa fa-instagram"></i></a>
-              <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
-              <a href="https://wa.me/02086178060" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i></a>
+              <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+              <a href="https://wa.me/02086178060" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
+AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
 
 // Sticky nav on scroll past hero
 (function(){
@@ -575,5 +574,28 @@ document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(bt
 });
 </script>
 <style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+<script>
+// AOS fallback: force all elements visible after 1.2s
+(function(){
+  var t=setTimeout(function(){
+    document.querySelectorAll('[data-aos]').forEach(function(el){
+      el.classList.add('aos-animate');
+      el.style.opacity='1';
+      el.style.transform='none';
+      el.style.transitionDelay='0s';
+    });
+  },1200);
+})();
+
+
+// Menu tab navigation
+document.querySelectorAll('[data-tab],[data-filter],[data-category],.menu-tab,.tab-btn,.tab-button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var target = this.dataset.tab || this.dataset.filter || this.dataset.category || this.textContent.trim().toLowerCase();
+    var section = document.querySelector('#'+target) || document.querySelector('.menu-section-'+target) || document.querySelector('[data-section="'+target+'"]');
+    if(section){ section.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+</script>
 </body>
 </html>
