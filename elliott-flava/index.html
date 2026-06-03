@@ -4,446 +4,602 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Elliott Flava — South London</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{
-      --primary:   #0066cc;
-      --accent:    #ffcc00;
-      /* ヒーロー用（暗い背景向け） */
-      --hero-text:  #f5f2ec;
-      --hero-muted: rgba(245,242,236,0.65);
-      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
-      --c-text:   #1a1a1a;
-      --c-muted:  #6b6b6b;
-      --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #ff3333;
-    }
-    html{scroll-behavior:smooth;}
-    body{font-family:'Noto Sans JP',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{padding-top:52px;}
+  @media(min-width:700px){.float-cta{display:none!important;}}
+  :root {
+  --primary: #1a2e4a;
+  --accent: #c8a96e;
+  --accent-dark: #a8823e;
+  --accent-light: #e8d5a8;
+  --bg: #faf8f4;
+  --bg-dark: #0f1c2e;
+  --bg-card: #ffffff;
+  --text: #1a2e4a;
+  --text-light: #ffffff;
+  --muted: #7a8a9a;
+  --border: #d4c5a0;
+  --red: #c0392b;
+  --warm-cream: #f5f0e8;
+  --shadow-soft: 0 4px 24px rgba(26, 46, 74, 0.08);
+  --shadow-medium: 0 8px 40px rgba(26, 46, 74, 0.14);
+  --shadow-strong: 0 16px 60px rgba(26, 46, 74, 0.22);
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+  --font-sans: 'Helvetica Neue', 'Arial', sans-serif;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-    /* PROTO BANNER */
-    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
-    .proto-banner strong{font-weight:700;}
-    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    /* ── HERO（暗い背景 → 白文字） ── */
-    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
-    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
-    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
-    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
-    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
-    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
-    .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
-    .hero-tagline span{color:var(--accent);}
-    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
-    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
-    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
-    .hero-nav a:hover{color:#fff;}
-    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
-    .btn-reserve:hover{opacity:0.85;}
-    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
-    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
-    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
-    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:300;color:#fff;}
-    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
-    /* ── SOCIAL BAR ── */
-    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
-    .social-icons{display:flex;gap:1.4rem;}
-    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
-    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
-    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
-    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
-    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
-    .call-link:hover{border-color:var(--accent);color:var(--accent);}
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-    /* ── SHARED CONTENT STYLES ── */
-    .section-wrap{max-width:1100px;margin:0 auto;}
-    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
-    /* ── ABOUT（白背景 → 暗い文字） ── */
-    .about{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.about{padding:4rem 2rem;}}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
-    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
-    .about-values{display:flex;flex-direction:column;}
-    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
-    .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
-    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
-    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition), opacity var(--transition);
+}
 
-    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
-    .reviews{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
-    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
-    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
-    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
-    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
-    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
+a:hover {
+  opacity: 0.75;
+}
 
-    /* ── MENU（白背景 → 暗い文字） ── */
-    .menu{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.menu{padding:4rem 2rem;}}
-    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
-    .menu-note{font-size:0.78rem;color:var(--c-muted);}
-    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
-    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
-    .menu-category:last-child{border-bottom:none;}
-    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
-    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
-    .menu-item:last-child{border-bottom:none;}
-    .menu-item-left{flex:1;}
-    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
-    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
-    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
+ul {
+  list-style: none;
+}
 
-    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
-    .visit{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.visit{padding:4rem 2rem;}}
-    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
-    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
-    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
-    .visit-block a:hover{color:var(--accent);}
-    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
-    .hour-row:last-child{border-bottom:none;}
-    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
-    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
-    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
+/* ─── PROTO BANNER ─────────────────────────────────────── */
 
-    /* FOOTER */
-    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
-    @media(min-width:700px){footer{padding-bottom:2rem;}}
+.proto-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color: var(--primary);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  box-shadow: 0 2px 12px rgba(200, 169, 110, 0.35);
+}
 
-    /* ── STICKY HEADER ── */
-    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
-    .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Playfair Display',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
-    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
-    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
-    .sticky-open.closed{background:#fce4ec;color:#c62828;}
-    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
-    .sticky-cta:hover{opacity:0.85;}
+.proto-banner::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.5;
+}
 
-    /* ── OPEN NOW BADGE (hero) ── */
-    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
-    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
-    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
-    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+.proto-banner::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.5;
+}
 
-    /* ── COUNTER ── */
-    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
+.proto-banner a {
+  color: var(--primary);
+  border-bottom: 1px solid rgba(26, 46, 74, 0.4);
+  padding-bottom: 1px;
+  transition: border-color var(--transition);
+}
 
-    /* ── PARALLAX ── */
-    .hero-bg{will-change:transform;}
+.proto-banner a:hover {
+  opacity: 1;
+  border-color: var(--primary);
+}
 
-    /* ── IMAGE ZOOM ── */
-    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
-    .mockup:hover img{transform:scale(1.05);}
+/* ─── STICKY NAV ────────────────────────────────────────── */
 
-    /* ── RIPPLE ── */
-    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
-    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
-    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  background: rgba(15, 28, 46, 0.96);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(-110%);
+  opacity: 0;
+  transition: transform var(--transition-slow), opacity var(--transition-slow);
+  will-change: transform;
+}
 
-    /* ── FLOAT CALL ── */
-    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
-    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
-    @media(min-width:700px){.float-call{display:none;}}
+.sticky-nav.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sticky-nav .nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--text-light);
+}
+
+.sticky-nav .nav-logo span {
+  color: var(--accent);
+}
+
+.sticky-nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.sticky-nav .nav-links a {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--transition);
+  position: relative;
+}
+
+.sticky-nav .nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width var(--transition);
+}
+
+.sticky-nav .nav-links a:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.sticky-nav .nav-links a:hover::after {
+  width: 100%;
+}
+
+.sticky-nav .nav-cta {
+  background: var(--accent);
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 9px 22px;
+  border-radius: var(--radius-pill);
+  transition: background var(--transition), transform var(--transition);
+}
+
+.sticky-nav .nav-cta:hover {
+  background: var(--accent-dark);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* ─── HERO ─────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  background-image: url('hero-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(10, 18, 30, 0.72) 0%,
+    rgba(10, 18, 30, 0.45) 50%,
+    rgba(10, 18, 30, 0.78) 100%
+  );
+  z-index: 1;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
+  z-index: 2;
+}
+
+.hero-bokeh {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-bokeh span {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 169, 110, 0.35) 0%, transparent 70%);
+  animation: bokehFloat 8s ease-in-out infinite;
+  opacity: 0;
+}
+
+.hero-bokeh span:nth-child(1)  { width: 80px;  height: 80px;  top: 15%; left: 8%;   animation-delay: 0s;    animation-duration: 9s; }
+.hero-bokeh span:nth-child(2)  { width: 40px;  height: 40px;  top: 30%; left: 20%;  animation-delay: 1.2s;  animation-duration: 7s; }
+.hero-bokeh span:nth-child(3)  { width: 120px; height: 120px; top: 60%; left: 5%;   animation-delay: 2.5s;  animation-duration: 11s; }
+.hero-bokeh span:nth-child(4)  { width: 60px;  height: 60px;  top: 80%; left: 30%;  animation-delay: 0.8s;  animation-duration: 8s; }
+.hero-bokeh span:nth-child(5)  { width: 90px;  height: 90px;  top: 20%; right: 10%; animation-delay: 3s;    animation-duration: 10s; }
+.hero-bokeh span:nth-child(6)  { width: 50px;  height: 50px;  top: 50%; right: 20%; animation-delay: 1.5s;  animation-duration: 6s; }
+.hero-bokeh span:nth-child(7)  { width: 70px;  height: 70px;  top: 70%; right: 8%;  animation-delay: 4s;    animation-duration: 9s; }
+.hero-bokeh span:nth-child(8)  { width: 100px; height: 100px; top: 10%; right: 35%; animation-delay: 0.5s;  animation-duration: 12s; }
+
+@keyframes bokehFloat {
+  0%   { opacity: 0;    transform: translateY(0) scale(0.8); }
+  25%  { opacity: 0.6; }
+  50%  { opacity: 0.3;  transform: translateY(-30px) scale(1.1); }
+  75%  { opacity: 0.7; }
+  100% { opacity: 0;    transform: translateY(0) scale(0.8); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 40px 24px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  padding: 6px 18px;
+  border: 1px solid rgba(200, 169, 110, 0.4);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(6px);
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-title span {
+  display: block;
+}
+
+.hero-sub {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 40px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform:
   </style>
 </head>
 <body>
+<body>
 
-  <!-- STICKY HEADER -->
-  <header class="sticky-header" id="stickyHeader">
-    <div style="display:flex;align-items:center;">
-      <span class="sticky-logo">Elliott Flava</span>
-      <span class="sticky-open" id="stickyBadge"></span>
-    </div>
-    <a href="tel:020 3345 1991" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
-  </header>
-
+  <!-- Proto Banner -->
   <div class="proto-banner">
-    <p><strong>🎨 Free demo for Elliott Flava</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    🎨 Free demo for Elliott Flava — All images, text &amp; colours are placeholders and fully customisable.
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-left">
-      <div>
-        <div class="logo">Elliott Flava</div>
-        <div class="hero-badges">
-          <span class="badge">Restaurant</span>
-          <span class="badge">South London</span>
-          <span class="badge badge-accent"></span>
-        </div>
+  <!-- Sticky Nav -->
+  <nav class="sticky-nav" id="stickyNav">
+    <div class="nav-logo">Elliott Flava</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit Us</a></li>
+    </ul>
+    <a class="nav-reserve-btn" href="tel:020 3345 1991">📞 Reserve a Table</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" style="background-image: url('images/img_0.jpg');">
+    <div class="hero-content">
+      <div class="open-badge" id="openBadge"></div>
+      <h1 class="hero-title">Elliott Flava</h1>
+      <p class="hero-sub">Bold Caribbean Soul, Right in South London</p>
+      <div class="hero-rating">
+        <span id="ratingCounter" data-rating="5" data-count="174">⭐ 5 · 174 Google reviews</span>
       </div>
-      <div>
-        <h1 class="hero-tagline">Bold Caribbean soul, rooted in South London.</h1>
-        <p class="hero-desc">Elliott Flava brings the vibrant, heartwarming flavours of Caribbean home cooking to the heart of South London. From slow-cooked jerk lamb to rich, aromatic curry goat, every dish is crafted with love and served with a warmth that keeps our guests coming back. This is more than a meal — it's a flavour experience you'll crave again before you've even left.</p>
-        <div class="rating-counter" id="ratingCounter" data-rating="5" data-count="174">⭐ 5 · 174 Google reviews</div>
-        <div class="open-badge" id="openBadge"></div>
-      </div>
-      <nav class="hero-nav">
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#visit">Visit</a>
-        <a href="tel:020 3345 1991" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
-      </nav>
-    </div>
-    <div class="hero-right">
-      <div class="mockup">
-        <img src="images/img_1.jpg" alt="Elliott Flava"/>
-        <div class="mockup-overlay">
-          <div class="m-name">Elliott Flava</div>
-          <div class="m-sub">Restaurant · South London</div>
-        </div>
-      </div>
+      <a class="hero-cta" href="tel:020 3345 1991">📞 Call to Book — 020 3345 1991</a>
     </div>
   </section>
 
+  <!-- Social Bar -->
   <div class="social-bar">
-    <span>Connect</span>
-    <div class="social-icons">
-      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/02033451991" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://maps.google.com/?cid=5652007482559096400" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
-    </div>
-    <div class="tags-row"><span class="tag">Dine In</span></div>
-    <a href="tel:020 3345 1991" class="call-link"><i class="fa fa-phone"></i> 020 3345 1991</a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.013 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.013 8.333 0 8.741 0 12c0 3.259.013 3.667.072 4.947.085 1.856.601 3.698 1.942 5.039 1.341 1.341 3.183 1.857 5.039 1.942C8.333 23.987 8.741 24 12 24s3.667-.013 4.947-.072c1.856-.085 3.698-.601 5.039-1.942 1.341-1.341 1.857-3.183 1.942-5.039.059-1.28.072-1.688.072-4.947s-.013-3.667-.072-4.947c-.085-1.856-.601-3.698-1.942-5.039C20.645.673 18.803.157 16.947.072 15.667.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      <span>Instagram</span>
+    </a>
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.883v2.271h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+      <span>Facebook</span>
+    </a>
+    <a href="https://wa.me/02033451991" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a href="https://maps.google.com/?cid=5652007482559096400" target="_blank" rel="noopener" aria-label="Google Maps">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+      <span>Google</span>
+    </a>
   </div>
 
-  <section class="about" id="about">
-    <div class="section-wrap">
-      <div class="about-grid">
-        <div data-aos="fade-right">
-          <p class="section-label">Our Philosophy</p>
-          <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Elliott Flava brings the vibrant, heartwarming flavours of Caribbean home cooking to the heart of South London. From slow-cooked jerk lamb to rich, aromatic curry goat, every dish is crafted with love and served with a warmth that keeps our guests coming back. This is more than a meal — it's a flavour experience you'll crave again before you've even left.</p>
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <h2 data-aos="fade-up">About Elliott Flava</h2>
+        <p data-aos="fade-up" data-aos-delay="100">
+          Elliott Flava brings the vibrant, soulful flavours of the Caribbean to the heart of South London, where every dish is crafted with genuine care and a whole lot of love. From slow-cooked brown stew chicken to smoky jerk lamb, our kitchen serves food that tastes like home — whether you've been here before or not.
+        </p>
+        <div class="about-services" data-aos="fade-up" data-aos-delay="150">
+          <span class="service-tag service-active">🍽️ Dine-In</span>
+          <span class="service-tag service-inactive">🥡 Takeaway</span>
+          <span class="service-tag service-inactive">🚴 Delivery</span>
         </div>
-        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Made with Heart</h3><p>Every dish is prepared fresh daily, honouring the bold, time-honoured techniques of Caribbean cuisine.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Generous by Nature</h3><p>We believe great food should be abundant and accessible, filling both your plate and your soul.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>A Community Table</h3><p>From the moment you walk through our doors, you're welcomed like family — because here, everyone belongs.</p></div></div>
-        </div>
+      </div>
+      <div class="about-image" data-aos="fade-up" data-aos-delay="200">
+        <img src="images/img_1.jpg" alt="Elliott Flava restaurant interior" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="value-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="value-icon">🌶️</div>
+        <h3>Flavour First</h3>
+        <p>Every dish on our menu is built around bold, authentic seasoning passed down through generations of Caribbean cooking tradition.</p>
+      </div>
+      <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="value-icon">🤝</div>
+        <h3>Warmth in Every Visit</h3>
+        <p>From the moment you walk through our doors, we treat every guest like a familiar face returning for seconds.</p>
+      </div>
+      <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="value-icon">💛</div>
+        <h3>Honest Value</h3>
+        <p>We believe exceptional food should be generous and accessible, giving you more than you ever expected for your money.</p>
       </div>
     </div>
   </section>
 
-  <section class="reviews">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">What guests say</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 5 · 174 Google reviews</h2>
-      <div class="reviews-grid">
-        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Benin there 3 times in just over a week. Warm welcome. Patties nice and taste fresh. Brown stew chicken, curry goat, fried chicken, pepper steak and my favourite- jerk lamb, all so tasty. Highly recommend! My new fave."</p><span class="review-author">— leeszla D · 4 months ago</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"From the moment you step inside, you’re greeted with thoughtful, attentive service & a genuine sense of warmth that instantly makes you feel at home. I was confused in-store today, paying £12 for a mix of meat dishes, a choice of rice & coleslaw - I still have leftovers. So..I ha"</p><span class="review-author">— Kassy Smith · 4 months ago</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Delicious food and even better customer service! Jerk lamb, oxtail, curry coat, patties, fresh jerk pork and chicken. Everything tastes so good here, tastes like home made Jamaican food and so you can taste the love. Never dined in but will be bringing my mum in for some lunch. E"</p><span class="review-author">— J · 4 months ago</span></div></div>
+  <!-- Reviews Section -->
+  <section class="reviews-section" id="reviews">
+    <h2 data-aos="fade-up">What Our Guests Say</h2>
+    <p class="reviews-sub" data-aos="fade-up" data-aos-delay="80">⭐ 5 · 174 Google reviews — South London's Caribbean favourite</p>
+    <div class="reviews-grid">
+      <div class="review-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Benin there 3 times in just over a week. Warm welcome. Patties nice and taste fresh. Brown stew chicken, curry goat, fried chicken, pepper steak and my favourite — jerk lamb, all so tasty. Highly recom"</p>
+        <p class="review-author">— leeszla D</p>
       </div>
+      <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"From the moment you step inside, you're greeted with thoughtful, attentive service &amp; a genuine sense of warmth that instantly makes you feel at home. I was confused in-store today, paying £12 for a mi"</p>
+        <p class="review-author">— Kassy Smith</p>
+      </div>
+      <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Delicious food and even better customer service! Jerk lamb, oxtail, curry goat, patties, fresh jerk pork and chicken. Everything tastes so good here, tastes like home made Jamaican food and so you can"</p>
+        <p class="review-author">— J</p>
+      </div>
+    </div>
+    <div class="reviews-cta" data-aos="fade-up" data-aos-delay="250">
+      <a href="https://maps.google.com/?cid=5652007482559096400" target="_blank" rel="noopener">Read all 174 reviews on Google →</a>
     </div>
   </section>
 
-  <section class="menu" id="menu">
-    <div class="section-wrap">
-      <div class="menu-header" data-aos="fade-up">
-        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
-        <span class="menu-note">Seasonal · Prices incl. VAT</span>
+  <!-- Menu Section -->
+  <section class="menu-section" id="menu">
+    <h2 data-aos="fade-up">Our Menu</h2>
+    <p class="menu-intro" data-aos="fade-up" data-aos-delay="80">Authentic Caribbean flavours, made fresh every day in our South London kitchen.</p>
+
+    <!-- Starters -->
+    <div class="menu-category">
+      <h3 class="menu-category-title" data-aos="fade-up">Starters</h3>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="50">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Beef Patties</span>
+          <span class="menu-item-desc">Freshly baked golden pastry filled with richly spiced minced beef — a Caribbean classic done the Elliott Flava way.</span>
+        </div>
+        <span class="menu-price">£3</span>
       </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jamaican Beef Patties</div><div class="item-desc">Golden, flaky pastry filled with boldly seasoned minced beef, baked fresh throughout the day.</div></div><span class="item-price">£3</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Festival Dumplings</div><div class="item-desc">Lightly sweetened, golden-fried dough — the perfect companion to any Caribbean spread.</div></div><span class="item-price">£2</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Pepper Sauce Wings</div><div class="item-desc">Crispy chicken wings tossed in a fiery homemade scotch bonnet glaze with a cooling lime finish.</div></div><span class="item-price">£5</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Signature Jerk Lamb</div><div class="item-desc">Slow-marinated lamb, kissed with smoky jerk spices and served with rice and peas and fresh coleslaw.</div></div><span class="item-price">£12</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Curry Goat</div><div class="item-desc">Tender goat slow-cooked in a richly spiced Caribbean curry, served with fluffy white rice.</div></div><span class="item-price">£12</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Brown Stew Chicken</div><div class="item-desc">A beloved Caribbean classic — succulent chicken braised in a deep, caramelised brown stew with thyme and allspice.</div></div><span class="item-price">£12</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Rum & Coconut Cake</div><div class="item-desc">A moist, fragrant sponge infused with dark rum and toasted coconut, served warm with vanilla cream.</div></div><span class="item-price">£4</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Mango Sorbet</div><div class="item-desc">Vibrantly sweet, silky-smooth sorbet made from ripe Alphonso mangoes — a refreshing tropical finale.</div></div><span class="item-price">£3</span></div></div></div>
-      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
-    </div>
-  </section>
-
-  <section class="visit" id="visit">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">Find Us</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
-      <div class="visit-grid">
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
-          <p class="vb-label">Address</p>
-          <p>101 Norwood High St, Norwood, London SE27 9JF, UK</p>
-          <a href="https://maps.google.com/?cid=5652007482559096400" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Festival Dumplings</span>
+          <span class="menu-item-desc">Lightly sweet, golden-fried cornmeal dumplings with a soft, pillowy centre — the perfect bite to begin.</span>
         </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
-          <p class="vb-label">Opening Hours</p>
-          <div class="hour-row"><span>Mon</span><span>7:00 AM – 10:00 PM</span></div>
-<div class="hour-row"><span>Tue</span><span>7:00 AM – 10:00 PM</span></div>
-<div class="hour-row"><span>Wed</span><span>7:00 AM – 10:00 PM</span></div>
-<div class="hour-row"><span>Thu</span><span>7:00 AM – 10:00 PM</span></div>
-<div class="hour-row"><span>Fri</span><span>7:00 AM – 11:00 PM</span></div>
-<div class="hour-row"><span>Sat</span><span>7:00 AM – 11:00 PM</span></div>
-<div class="hour-row"><span>Sun</span><span>Closed</span></div>
-        </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
-          <p class="vb-label">Reservations</p>
-          <a href="tel:020 3345 1991"><i class="fa fa-phone" style="font-size:0.75rem"></i> 020 3345 1991</a>
-          <a href="https://wa.me/02033451991" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
-        </div>
+        <span class="menu-price">£2</span>
       </div>
-      <a href="https://maps.google.com/?cid=5652007482559096400" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Peppery Chicken Wings</span>
+          <span class="menu-item-desc">Crispy wings marinated in a fiery blend of Scotch bonnet and island spices, served with a cooling dip.</span>
+        </div>
+        <span class="menu-price">£5</span>
+      </div>
     </div>
-  </section>
 
-  <footer>
-    <span>© 2025 Elliott Flava</span>
-    <span>101 Norwood High St, Norwood, London SE27 9JF, UK</span>
-  </footer>
+    <!-- Mains -->
+    <div class="menu-category">
+      <h3 class="menu-category-title" data-aos="fade-up">Mains</h3>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="50">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Jerk Lamb</span>
+          <span class="menu-item-desc">Our signature — slow-cooked lamb rubbed in smoky jerk seasoning, served with rice and peas and a side of coleslaw.</span>
+        </div>
+        <span class="menu-price">£12</span>
+      </div>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Curry Goat</span>
+          <span class="menu-item-desc">Tender goat slow-simmered in a fragrant blend of Caribbean curry spices until falling beautifully off the bone.</span>
+        </div>
+        <span class="menu-price">£12
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:700,once:true,offset:60});
 
-  <a href="tel:020 3345 1991" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
+// Sticky nav
+const stickyNav = document.getElementById('stickyNav');
+const heroEl = document.querySelector('.hero,[class*=hero]');
+if(stickyNav && heroEl){
+  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
+}
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-  // ── AOS（スクロールアニメーション）──────────────────
-  AOS.init({ duration: 750, once: true, offset: 80, easing: 'ease-out-cubic' });
+// Open/Closed badge
+const HOURS={"Monday": "7:00 AM – 10:00 PM", "Tuesday": "7:00 AM – 10:00 PM", "Wednesday": "7:00 AM – 10:00 PM", "Thursday": "7:00 AM – 10:00 PM", "Friday": "7:00 AM – 11:00 PM", "Saturday": "7:00 AM – 11:00 PM", "Sunday": "Closed"};
+(function(){
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  if(!m){badge.textContent='See hours below';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const isOpen=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=isOpen?'● Open now':'● Closed';
+  badge.style.color=isOpen?'#22c55e':'#ef4444';
+})();
 
-  // ── Parallax（ヒーロー背景）──────────────────────────
-  const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      heroBg.style.transform = `translateY(${y * 0.38}px)`;
-    }, { passive: true });
-  }
-
-  // ── Sticky Header ────────────────────────────────────
-  const stickyHeader = document.getElementById('stickyHeader');
-  const hero = document.querySelector('.hero');
-  if (stickyHeader && hero) {
-    const observer = new IntersectionObserver(
-      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(hero);
-  }
-
-  // ── 営業中バッジ ──────────────────────────────────────
-  const HOURS = {"Monday": "7:00 AM – 10:00 PM", "Tuesday": "7:00 AM – 10:00 PM", "Wednesday": "7:00 AM – 10:00 PM", "Thursday": "7:00 AM – 10:00 PM", "Friday": "7:00 AM – 11:00 PM", "Saturday": "7:00 AM – 11:00 PM", "Sunday": "Closed"};
-  function computeOpenStatus() {
-    const now  = new Date();
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const day  = days[now.getDay()];
-    const raw  = HOURS[day] || '';
-    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
-    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-    if (!m) return { open: false, text: raw };
-    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
-    const openMin  = toMin(m[1], m[2], m[3]);
-    const closeMin = toMin(m[4], m[5], m[6]);
-    const nowMin   = now.getHours() * 60 + now.getMinutes();
-    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
-    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
-    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
-    return {
-      open: isOpen,
-      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
+// Rating counter
+const rc=document.getElementById('ratingCounter');
+if(rc){
+  const rating=5,cnt=174;
+  new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    rc.textContent='';
+    const animate=(from,to,dec,cb)=>{
+      let start=null;
+      (function step(ts){
+        if(!start)start=ts;
+        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
+        if(p<1)requestAnimationFrame(step);
+      })(performance.now());
     };
-  }
-  function renderBadge(el, status) {
-    if (!el) return;
-    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
-    el.innerHTML = `<span class="dot"></span> ${status.text}`;
-  }
-  const status = computeOpenStatus();
-  renderBadge(document.getElementById('openBadge'), status);
-  const stickyBadge = document.getElementById('stickyBadge');
-  if (stickyBadge) {
-    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
-    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
-  }
+    const rs=document.createElement('span'),cs=document.createElement('span');
+    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
+    animate(0,rating,true,v=>rs.textContent=v);
+    animate(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.5}).observe(rc);
+}
 
-  // ── カウンターアニメーション ──────────────────────────
-  function animateCounter(el, target, isDecimal) {
-    let start = 0, duration = 1800, startTime = null;
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const val = start + (target - start) * ease;
-      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  const ratingEl = document.getElementById('ratingCounter');
-  if (ratingEl && 5) {
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        io.disconnect();
-        const rating = 5, count = 174;
-        const rSpan = document.createElement('span');
-        const cSpan = document.createElement('span');
-        ratingEl.innerHTML = '';
-        ratingEl.appendChild(document.createTextNode('⭐ '));
-        rSpan.textContent = '0.0';
-        ratingEl.appendChild(rSpan);
-        ratingEl.appendChild(document.createTextNode(' · '));
-        cSpan.textContent = '0';
-        ratingEl.appendChild(cSpan);
-        ratingEl.appendChild(document.createTextNode(' Google reviews'));
-        animateCounter(rSpan, rating, true);
-        animateCounter(cSpan, count, false);
-      }
-    }, { threshold: 0.5 });
-    io.observe(ratingEl);
-  }
-
-  // ── リップルエフェクト ────────────────────────────────
-  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const r = document.createElement('span');
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      r.className = 'ripple';
-      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
-      this.appendChild(r);
-      setTimeout(() => r.remove(), 700);
-    });
+// Ripple
+document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span');
+    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
+      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
+      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
+    this.style.position='relative';this.style.overflow='hidden';
+    this.append(r);setTimeout(()=>r.remove(),700);
   });
-
-  // ── タイプライター（タグライン）────────────────────────
-  const tagline = document.querySelector('.hero-tagline');
-  if (tagline) {
-    const full = tagline.innerHTML;
-    tagline.innerHTML = '';
-    tagline.style.visibility = 'visible';
-    let i = 0;
-    const chars = [...full];
-    let inTag = false;
-    function typeNext() {
-      if (i >= chars.length) return;
-      if (chars[i] === '<') inTag = true;
-      if (!inTag) {
-        tagline.innerHTML += chars[i];
-      } else {
-        let tag = '';
-        while (i < chars.length && (inTag || chars[i] !== '>')) {
-          tag += chars[i];
-          if (chars[i] === '>') inTag = false;
-          i++;
-        }
-        tagline.innerHTML += tag;
-        setTimeout(typeNext, 18);
-        return;
-      }
-      if (chars[i] === '>') inTag = false;
-      i++;
-      setTimeout(typeNext, 28);
-    }
-    setTimeout(typeNext, 600);
-  }
-  </script>
-
+});
+</script>
+<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
