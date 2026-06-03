@@ -108,12 +108,7 @@ cursor:default;
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,166,35,.5)}60%{box-shadow:0 0 0 14px rgba(245,166,35,0)}}
 
 /* ── RATING COUNTER ── */
-#ratingCounter{
-display:flex;align-items:center;gap:.5rem;
-background:var(--c-card);border-radius:50px;
-padding:.5rem 1rem;box-shadow:var(--shadow);
-font-size:.85rem;font-weight:600;color:var(--c-dark);
-}
+#ratingCounter{display:inline-flex;align-items:center;gap:.35rem;font-size:.9rem;font-weight:600;color:#fff;}
 #ratingCounter .stars{color:var(--c-secondary);letter-spacing:2px;font-size:.9rem}
 #ratingCounter .count{color:var(--c-muted);font-size:.75rem;font-weight:400}
 
@@ -220,10 +215,9 @@ font-weight:700;line-height:1.1;margin-bottom:1.25rem;
 font-size:1rem;color:var(--c-muted);max-width:560px;line-height:1.8;
 }
 .ef-section__body--light{color:rgba(255,255,255,.65)}
-.ef
+.ef-section__divider{width:48px;height:3px;background:var(--c-primary);margin:1rem 0 2rem;}
   </style>
 </head>
-<body>
 <body>
 
   <!-- PROTO BANNER -->
@@ -360,10 +354,86 @@ font-size:1rem;color:var(--c-muted);max-width:560px;line-height:1.8;
                 <h4 style="font-size:1.1rem;font-weight:800;color:#1a1a1a;margin:0;">Coleslaw &amp; Plantain Board</h4>
                 <span style="font-size:1.1rem;font-weight:800;color:#E8340A;white-space:nowrap;margin-left:8px;">£4</span>
               </div>
-              <p style="color:#666;font-size:0.9rem;line-height:1.65;margin:0;">House-made creamy coleslaw alongside caramelised sweet plantain, a crowd-pleasing classic
+              <p style="color:#666;font-size:0.9rem;line-height:1.65;margin:0;">House-made creamy coleslaw alongside caramelised sweet plantain, a crowd-pleasing classic paired with a tangy tamarind dressing.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MAINS -->
+      <div style="margin-bottom:4rem;">
+        <h3 data-aos="fade-right" style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;display:flex;align-items:center;gap:12px;color:#1a1a1a;">
+          <span style="width:36px;height:4px;background:linear-gradient(90deg,#E8340A,#F5A623);border-radius:2px;display:inline-block;"></span>Mains</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.75rem;">
+          <div data-aos="fade-up" style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.09);">
+            <div style="height:180px;background:linear-gradient(135deg,#E8340A15,#F5A62320);display:flex;align-items:center;justify-content:center;font-size:4rem;">🍗</div>
+            <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1.1rem;font-weight:800;color:#1a1a1a;">Jerk Chicken</h4><span style="font-size:1.1rem;font-weight:800;color:#E8340A;">£13</span></div>
+            <p style="color:#666;font-size:.9rem;line-height:1.65;">Our signature jerk chicken, slow-marinated and chargrilled, served with rice and peas, fried plantain, and coleslaw.</p></div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="80" style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.09);">
+            <div style="height:180px;background:linear-gradient(135deg,#F5A62315,#E8340A10);display:flex;align-items:center;justify-content:center;font-size:4rem;">🍖</div>
+            <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1.1rem;font-weight:800;color:#1a1a1a;">Oxtail Stew</h4><span style="font-size:1.1rem;font-weight:800;color:#E8340A;">£17</span></div>
+            <p style="color:#666;font-size:.9rem;line-height:1.65;">Slow-braised oxtail in rich spiced gravy with butter beans, served alongside coconut rice and peas.</p></div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="160" style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.09);">
+            <div style="height:180px;background:linear-gradient(135deg,#2DAB6615,#F5A62320);display:flex;align-items:center;justify-content:center;font-size:4rem;">🐟</div>
+            <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1.1rem;font-weight:800;color:#1a1a1a;">Escovitch Fish</h4><span style="font-size:1.1rem;font-weight:800;color:#E8340A;">£16</span></div>
+            <p style="color:#666;font-size:.9rem;line-height:1.65;">Whole fried snapper in tangy pickled pepper sauce, served with festival and breadfruit.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESSERTS -->
+      <div>
+        <h3 data-aos="fade-right" style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;display:flex;align-items:center;gap:12px;color:#1a1a1a;">
+          <span style="width:36px;height:4px;background:linear-gradient(90deg,#E8340A,#F5A623);border-radius:2px;display:inline-block;"></span>Desserts</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.75rem;">
+          <div data-aos="fade-up" style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.09);">
+            <div style="height:180px;background:linear-gradient(135deg,#E8340A10,#F5A62325);display:flex;align-items:center;justify-content:center;font-size:4rem;">🍰</div>
+            <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1.1rem;font-weight:800;color:#1a1a1a;">Rum Cake</h4><span style="font-size:1.1rem;font-weight:800;color:#E8340A;">£6</span></div>
+            <p style="color:#666;font-size:.9rem;line-height:1.65;">Moist Caribbean rum cake soaked in aged rum syrup, served warm with vanilla ice cream.</p></div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="80" style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.09);">
+            <div style="height:180px;background:linear-gradient(135deg,#2DAB6610,#E8340A10);display:flex;align-items:center;justify-content:center;font-size:4rem;">🥥</div>
+            <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1.1rem;font-weight:800;color:#1a1a1a;">Coconut Bread Pudding</h4><span style="font-size:1.1rem;font-weight:800;color:#E8340A;">£5</span></div>
+            <p style="color:#666;font-size:.9rem;line-height:1.65;">Warm bread pudding with coconut milk and cinnamon, drizzled with caramel sauce.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" style="background:#f3ede4;padding:5rem 1.5rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:3rem;" data-aos="fade-up">
+        <span style="font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#E8320A;font-weight:600;display:block;margin-bottom:.75rem;">Find Us</span>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#1a1a1a;">Visit Elliott Flava</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" data-aos="fade-up">
+        <div><h3 style="font-size:1.2rem;font-weight:700;margin-bottom:1.25rem;">Opening Hours</h3>
+          <div style="font-size:.85rem;color:#555;"><div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid #eee"><span>Monday – Thursday</span><span>7:00 AM – 10:00 PM</span></div>
+<div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid #eee"><span>Friday – Saturday</span><span>7:00 AM – 11:00 PM</span></div>
+<div style="display:flex;justify-content:space-between;padding:.5rem 0"><span>Sunday</span><span style="color:#ef4444">Closed</span></div></div>
+          <a href="tel:020 3345 1991" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;background:#E8320A;color:#fff;padding:.85rem 1.8rem;border-radius:50px;font-weight:700;font-size:.85rem;">📞 020 3345 1991</a>
+        </div>
+        <div style="background:#fff;border-radius:16px;padding:2rem;box-shadow:0 8px 32px rgba(0,0,0,.08);">
+          <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:.75rem;color:#E8320A;">📍 South London, UK</h3>
+          <p style="color:#666;line-height:1.8;font-size:.9rem;margin-bottom:1rem;">Walk in or call ahead — we're always ready to welcome you.</p>
+          <a href="https://maps.google.com/?q=Elliott+Flava+South+London" target="_blank" style="color:#E8320A;font-size:.85rem;text-decoration:underline;">View on Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="background:#E8320A;padding:4rem 0;text-align:center;">
+    <div><h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fff;margin-bottom:.75rem;">Book Your Table Today</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;">Bold Caribbean soul, right in South London.</p>
+      <a href="tel:020 3345 1991" style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#E8320A;padding:1rem 2.5rem;border-radius:50px;font-weight:700;font-size:.85rem;">📞 Reserve a Table</a>
+    </div>
+  </section>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
+AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
 
 // Sticky nav on scroll past hero
 (function(){
@@ -425,5 +495,28 @@ document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(bt
 });
 </script>
 <style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+<script>
+// AOS fallback: force all elements visible after 1.2s
+(function(){
+  var t=setTimeout(function(){
+    document.querySelectorAll('[data-aos]').forEach(function(el){
+      el.classList.add('aos-animate');
+      el.style.opacity='1';
+      el.style.transform='none';
+      el.style.transitionDelay='0s';
+    });
+  },1200);
+})();
+
+
+// Menu tab navigation
+document.querySelectorAll('[data-tab],[data-filter],[data-category],.menu-tab,.tab-btn,.tab-button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var target = this.dataset.tab || this.dataset.filter || this.dataset.category || this.textContent.trim().toLowerCase();
+    var section = document.querySelector('#'+target) || document.querySelector('.menu-section-'+target) || document.querySelector('[data-section="'+target+'"]');
+    if(section){ section.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+</script>
 </body>
 </html>
