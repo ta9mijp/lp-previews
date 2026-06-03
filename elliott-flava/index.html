@@ -10,366 +10,109 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
   @media(min-width:700px){.float-cta{display:none!important;}}
-  :root {
-  --primary: #1a2e4a;
-  --accent: #c8a96e;
-  --accent-dark: #a8823e;
-  --accent-light: #e8d5a8;
-  --bg: #faf8f4;
-  --bg-dark: #0f1c2e;
-  --bg-card: #ffffff;
-  --text: #1a2e4a;
-  --text-light: #ffffff;
-  --muted: #7a8a9a;
-  --border: #d4c5a0;
-  --red: #c0392b;
-  --warm-cream: #f5f0e8;
-  --shadow-soft: 0 4px 24px rgba(26, 46, 74, 0.08);
-  --shadow-medium: 0 8px 40px rgba(26, 46, 74, 0.14);
-  --shadow-strong: 0 16px 60px rgba(26, 46, 74, 0.22);
-  --radius-sm: 4px;
-  --radius-md: 12px;
-  --radius-lg: 24px;
-  --radius-pill: 999px;
-  --font-serif: 'Georgia', 'Times New Roman', serif;
-  --font-sans: 'Helvetica Neue', 'Arial', sans-serif;
-  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+--c-bg:#0a0804;
+--c-bg2:#110e08;
+--c-bg3:#1a1610;
+--c-surface:#1f1a12;
+--c-surface2:#2a2318;
+--c-gold:#c9a84c;
+--c-gold-light:#e2c97e;
+--c-gold-dim:#8a6f32;
+--c-cream:#f5f0e8;
+--c-text:#e8e0d0;
+--c-text-muted:#9e9080;
+--c-text-dim:#6b5f4e;
+--c-accent:#d4523a;
+--c-border:rgba(201,168,76,.18);
+--c-border2:rgba(201,168,76,.08);
+--c-overlay:rgba(10,8,4,.72);
+--r-sm:6px;
+--r-md:12px;
+--r-lg:20px;
+--r-xl:32px;
+--shadow-gold:0 8px 40px rgba(201,168,76,.12);
+--shadow-card:0 4px 24px rgba(0,0,0,.6);
+--shadow-deep:0 16px 64px rgba(0,0,0,.8);
+--ff-display:'Playfair Display',Georgia,serif;
+--ff-body:'Cormorant Garamond',Georgia,serif;
+--ff-ui:'Lato',sans-serif;
+--transition:all .35s cubic-bezier(.4,0,.2,1);
+--section-pad:100px 0;
+--container:1180px;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--c-bg);color:var(--c-text);font-family:var(--ff-body);font-weight:300;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none;transition:var(--transition)}
+ul{list-style:none}
+button{border:none;background:none;cursor:pointer;font-family:inherit}
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+.container{max-width:var(--container);margin:0 auto;padding:0 32px}
+.section-pad{padding:var(--section-pad)}
 
-body {
-  font-family: var(--font-sans);
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* ─── STICKY NAV ─── */
+#stickyNav{position:sticky;top:0;z-index:900;background:rgba(10,8,4,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border2);transition:var(--transition)}
+#stickyNav .nav-inner{max-width:var(--container);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px}
+#stickyNav .nav-logo{font-family:var(--ff-display);font-size:1.25rem;font-weight:700;color:var(--c-gold);letter-spacing:.08em}
+#stickyNav .nav-logo span{font-style:italic;font-weight:400;color:var(--c-gold-light)}
+#stickyNav .nav-links{display:flex;gap:36px;align-items:center}
+#stickyNav .nav-links a{font-family:var(--ff-ui);font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--c-text-muted);padding:4px 0;border-bottom:1px solid transparent;transition:var(--transition)}
+#stickyNav .nav-links a:hover,#stickyNav .nav-links a.active{color:var(--c-gold);border-bottom-color:var(--c-gold)}
+#stickyNav .nav-reserve{font-family:var(--ff-ui);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:10px 22px;border:1px solid var(--c-gold);color:var(--c-gold);border-radius:2px;transition:var(--transition)}
+#stickyNav .nav-reserve:hover{background:var(--c-gold);color:var(--c-bg)}
+#stickyNav .nav-hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+#stickyNav .nav-hamburger span{display:block;width:24px;height:1px;background:var(--c-gold);transition:var(--transition)}
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+/* ─── PROTO BANNER ─── */
+.proto-banner{background:linear-gradient(90deg,var(--c-gold-dim),var(--c-gold),var(--c-gold-dim));color:var(--c-bg);text-align:center;padding:10px 20px;font-family:var(--ff-ui);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;position:relative;z-index:950}
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color var(--transition), opacity var(--transition);
-}
+/* ─── OPEN BADGE ─── */
+#openBadge{position:fixed;bottom:100px;right:28px;z-index:800;display:flex;flex-direction:column;align-items:center;gap:4px}
+#openBadge .badge-dot{width:10px;height:10px;border-radius:50%;background:#4caf50;box-shadow:0 0 0 0 rgba(76,175,80,.4);animation:pulse-dot 2s infinite}
+#openBadge .badge-label{font-family:var(--ff-ui);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#4caf50;writing-mode:vertical-rl;text-orientation:mixed}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(76,175,80,.4)}50%{box-shadow:0 0 0 8px rgba(76,175,80,0)}}
 
-a:hover {
-  opacity: 0.75;
-}
+/* ─── RATING COUNTER ─── */
+#ratingCounter{display:inline-flex;align-items:center;gap:10px;background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-md);padding:12px 20px}
+#ratingCounter .rating-stars{color:var(--c-gold);font-size:1rem;letter-spacing:2px}
+#ratingCounter .rating-score{font-family:var(--ff-display);font-size:1.5rem;font-weight:700;color:var(--c-gold-light);line-height:1}
+#ratingCounter .rating-count{font-family:var(--ff-ui);font-size:.72rem;color:var(--c-text-muted);line-height:1.3}
 
-ul {
-  list-style: none;
-}
+/* ─── FLOAT CTA ─── */
+.float-cta{position:fixed;bottom:28px;right:28px;z-index:800;background:linear-gradient(135deg,var(--c-gold),var(--c-gold-dim));color:var(--c-bg);font-family:var(--ff-ui);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:14px 24px;border-radius:2px;box-shadow:var(--shadow-gold);transition:var(--transition);display:flex;align-items:center;gap:8px}
+.float-cta::before{content:'';display:block;width:8px;height:8px;border-radius:50%;background:var(--c-bg);opacity:.6}
+.float-cta:hover{transform:translateY(-2px);box-shadow:0 12px 48px rgba(201,168,76,.28);color:var(--c-bg)}
 
-/* ─── PROTO BANNER ─────────────────────────────────────── */
-
-.proto-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-  color: var(--primary);
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 8px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  box-shadow: 0 2px 12px rgba(200, 169, 110, 0.35);
-}
-
-.proto-banner::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary);
-  opacity: 0.5;
-}
-
-.proto-banner::after {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary);
-  opacity: 0.5;
-}
-
-.proto-banner a {
-  color: var(--primary);
-  border-bottom: 1px solid rgba(26, 46, 74, 0.4);
-  padding-bottom: 1px;
-  transition: border-color var(--transition);
-}
-
-.proto-banner a:hover {
-  opacity: 1;
-  border-color: var(--primary);
-}
-
-/* ─── STICKY NAV ────────────────────────────────────────── */
-
-.sticky-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 900;
-  background: rgba(15, 28, 46, 0.96);
-  backdrop-filter: blur(12px) saturate(1.4);
-  -webkit-backdrop-filter: blur(12px) saturate(1.4);
-  border-bottom: 1px solid rgba(200, 169, 110, 0.2);
-  padding: 14px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transform: translateY(-110%);
-  opacity: 0;
-  transition: transform var(--transition-slow), opacity var(--transition-slow);
-  will-change: transform;
-}
-
-.sticky-nav.is-visible {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.sticky-nav .nav-logo {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  color: var(--text-light);
-}
-
-.sticky-nav .nav-logo span {
-  color: var(--accent);
-}
-
-.sticky-nav .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-}
-
-.sticky-nav .nav-links a {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
-  transition: color var(--transition);
-  position: relative;
-}
-
-.sticky-nav .nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  transition: width var(--transition);
-}
-
-.sticky-nav .nav-links a:hover {
-  color: var(--accent);
-  opacity: 1;
-}
-
-.sticky-nav .nav-links a:hover::after {
-  width: 100%;
-}
-
-.sticky-nav .nav-cta {
-  background: var(--accent);
-  color: var(--primary);
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 9px 22px;
-  border-radius: var(--radius-pill);
-  transition: background var(--transition), transform var(--transition);
-}
-
-.sticky-nav .nav-cta:hover {
-  background: var(--accent-dark);
-  opacity: 1;
-  transform: translateY(-1px);
-}
-
-/* ─── HERO ─────────────────────────────────────────────── */
-
-.hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: var(--bg-dark);
-  background-image: url('hero-bg.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    160deg,
-    rgba(10, 18, 30, 0.72) 0%,
-    rgba(10, 18, 30, 0.45) 50%,
-    rgba(10, 18, 30, 0.78) 100%
-  );
-  z-index: 1;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 220px;
-  background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
-  z-index: 2;
-}
-
-.hero-bokeh {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.hero-bokeh span {
-  position: absolute;
-  display: block;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(200, 169, 110, 0.35) 0%, transparent 70%);
-  animation: bokehFloat 8s ease-in-out infinite;
-  opacity: 0;
-}
-
-.hero-bokeh span:nth-child(1)  { width: 80px;  height: 80px;  top: 15%; left: 8%;   animation-delay: 0s;    animation-duration: 9s; }
-.hero-bokeh span:nth-child(2)  { width: 40px;  height: 40px;  top: 30%; left: 20%;  animation-delay: 1.2s;  animation-duration: 7s; }
-.hero-bokeh span:nth-child(3)  { width: 120px; height: 120px; top: 60%; left: 5%;   animation-delay: 2.5s;  animation-duration: 11s; }
-.hero-bokeh span:nth-child(4)  { width: 60px;  height: 60px;  top: 80%; left: 30%;  animation-delay: 0.8s;  animation-duration: 8s; }
-.hero-bokeh span:nth-child(5)  { width: 90px;  height: 90px;  top: 20%; right: 10%; animation-delay: 3s;    animation-duration: 10s; }
-.hero-bokeh span:nth-child(6)  { width: 50px;  height: 50px;  top: 50%; right: 20%; animation-delay: 1.5s;  animation-duration: 6s; }
-.hero-bokeh span:nth-child(7)  { width: 70px;  height: 70px;  top: 70%; right: 8%;  animation-delay: 4s;    animation-duration: 9s; }
-.hero-bokeh span:nth-child(8)  { width: 100px; height: 100px; top: 10%; right: 35%; animation-delay: 0.5s;  animation-duration: 12s; }
-
-@keyframes bokehFloat {
-  0%   { opacity: 0;    transform: translateY(0) scale(0.8); }
-  25%  { opacity: 0.6; }
-  50%  { opacity: 0.3;  transform: translateY(-30px) scale(1.1); }
-  75%  { opacity: 0.7; }
-  100% { opacity: 0;    transform: translateY(0) scale(0.8); }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  padding: 40px 24px;
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.hero-eyebrow {
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 24px;
-  padding: 6px 18px;
-  border: 1px solid rgba(200, 169, 110, 0.4);
-  border-radius: var(--radius-pill);
-  backdrop-filter: blur(6px);
-}
-
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(3rem, 8vw, 6.5rem);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.01em;
-  color: var(--text-light);
-  margin-bottom: 20px;
-  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
-}
-
-.hero-title em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-.hero-title span {
-  display: block;
-}
-
-.hero-sub {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 40px;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.8;
-}
-
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--accent);
-  color: var(--primary);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  text-transform:
+/* ─── HERO SECTION ─── */
+.ef-hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;background:var(--c-bg)}
+.ef-hero__left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:120px 64px 120px 80px}
+.ef-hero__eyebrow{font-family:var(--ff-ui);font-size:.7rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--c-gold);margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.ef-hero__eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--c-gold)}
+.ef-hero__title{font-family:var(--ff-display);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.08;color:var(--c-cream);margin-bottom:12px}
+.ef-hero__title em{display:block;font-style:italic;color:var(--c-gold-light);font-weight:400}
+.ef-hero__subtitle{font-family:var(--ff-display);font-size:clamp(1.1rem,2vw,1.5rem);font-style:italic;color:var(--c-gold-dim);margin-bottom:32px;font-weight:400}
+.ef-hero__desc{font-size:1.05rem;color:var(--c-text-muted);line-height:1.85;max-width:420px;margin-bottom:44px}
+.ef-hero__actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ef-hero__cta-primary{font-family:var(--ff-ui);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:16px 36px;background:linear-gradient(135deg,var(--c-gold),var(--c-gold-dim));color:var(--c-bg);border-radius:2px;transition:var(--transition);box-shadow:var(--shadow-gold)}
+.ef-hero__cta-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,168,76,.3)}
+.ef-hero__cta-secondary{font-family:var(--ff-ui);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:15px 32px;border:1px solid var(--c-border);color:var(--c-text-muted);border-radius:2px;transition:var(--transition)}
+.ef-hero__cta-secondary:hover{border-color:var(--c-gold);color:var(--c-gold)}
+.ef-hero__right{position:relative;overflow:hidden}
+.ef-hero__img-wrap{position:absolute;inset:0;will-change:transform}
+.ef-hero__img-wrap img{width:100%;height:110%;object-fit:cover;transform:translateY
   </style>
 </head>
 <body>
@@ -377,229 +120,312 @@ ul {
 
   <!-- Proto Banner -->
   <div class="proto-banner">
-    🎨 Free demo for Elliott Flava — All images, text &amp; colours are placeholders and fully customisable.
+    <p><strong>🎨 Free demo for Elliott Flava</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
   <!-- Sticky Nav -->
-  <nav class="sticky-nav" id="stickyNav">
-    <div class="nav-logo">Elliott Flava</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#visit">Visit Us</a></li>
-    </ul>
-    <a class="nav-reserve-btn" href="tel:020 3345 1991">📞 Reserve a Table</a>
+  <nav id="stickyNav">
+    <div class="nav-inner container">
+      <a class="nav-logo" href="#">Elliott Flava</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <a class="nav-reserve" href="tel:020 3345 1991">Reserve a Table</a>
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero" style="background-image: url('images/img_0.jpg');">
-    <div class="hero-content">
-      <div class="open-badge" id="openBadge"></div>
-      <h1 class="hero-title">Elliott Flava</h1>
-      <p class="hero-sub">Bold Caribbean Soul, Right in South London</p>
-      <div class="hero-rating">
-        <span id="ratingCounter" data-rating="5" data-count="174">⭐ 5 · 174 Google reviews</span>
+  <section class="ef-hero" id="hero">
+    <div class="ef-hero__left">
+      <p class="ef-hero__eyebrow">South London · Caribbean Restaurant</p>
+      <h1 class="ef-hero__title">Elliott<br>Flava</h1>
+      <p class="ef-hero__subtitle">Bold Caribbean soul, rooted in South London</p>
+      <p class="ef-hero__desc">From slow-cooked jerk lamb to rich curry goat — every dish is crafted with love, tradition and the vibrant spirit of the Caribbean, right here in SE27.</p>
+
+      <div class="ef-hero__actions">
+        <a class="ef-hero__cta-primary" href="tel:020 3345 1991">
+          <i class="fa fa-phone"></i> Call to Reserve
+        </a>
+        <a class="ef-hero__cta-secondary" href="https://wa.me/02033451991" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> WhatsApp Us
+        </a>
       </div>
-      <a class="hero-cta" href="tel:020 3345 1991">📞 Call to Book — 020 3345 1991</a>
+
+      <!-- Rating & Badge -->
+      <div style="display:flex;align-items:center;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;">
+        <span id="openBadge">
+          <span class="badge-dot"></span>
+          <span class="badge-label">Open Now</span>
+        </span>
+        <span id="ratingCounter" data-rating="5" data-count="174">
+          <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+          <span class="rating-score">5.0</span>
+          <span class="rating-count">· 174 Google Reviews</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="ef-hero__right">
+      <div class="ef-hero__img-wrap">
+        <img
+          src="images/img_0.jpg"
+          alt="Elliott Flava restaurant — Caribbean food in South London"
+          loading="eager"
+        />
+      </div>
     </div>
   </section>
-
-  <!-- Social Bar -->
-  <div class="social-bar">
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.013 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.013 8.333 0 8.741 0 12c0 3.259.013 3.667.072 4.947.085 1.856.601 3.698 1.942 5.039 1.341 1.341 3.183 1.857 5.039 1.942C8.333 23.987 8.741 24 12 24s3.667-.013 4.947-.072c1.856-.085 3.698-.601 5.039-1.942 1.341-1.341 1.857-3.183 1.942-5.039.059-1.28.072-1.688.072-4.947s-.013-3.667-.072-4.947c-.085-1.856-.601-3.698-1.942-5.039C20.645.673 18.803.157 16.947.072 15.667.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-      <span>Instagram</span>
-    </a>
-    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.883v2.271h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-      <span>Facebook</span>
-    </a>
-    <a href="https://wa.me/02033451991" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-      <span>WhatsApp</span>
-    </a>
-    <a href="https://maps.google.com/?cid=5652007482559096400" target="_blank" rel="noopener" aria-label="Google Maps">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-      <span>Google</span>
-    </a>
-  </div>
 
   <!-- About Section -->
-  <section class="about-section" id="about">
-    <div class="about-inner">
-      <div class="about-text">
-        <h2 data-aos="fade-up">About Elliott Flava</h2>
-        <p data-aos="fade-up" data-aos-delay="100">
-          Elliott Flava brings the vibrant, soulful flavours of the Caribbean to the heart of South London, where every dish is crafted with genuine care and a whole lot of love. From slow-cooked brown stew chicken to smoky jerk lamb, our kitchen serves food that tastes like home — whether you've been here before or not.
-        </p>
-        <div class="about-services" data-aos="fade-up" data-aos-delay="150">
-          <span class="service-tag service-active">🍽️ Dine-In</span>
-          <span class="service-tag service-inactive">🥡 Takeaway</span>
-          <span class="service-tag service-inactive">🚴 Delivery</span>
+  <section class="section-pad" id="about">
+    <div class="container">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;" class="about-grid">
+
+        <div data-aos="fade-right">
+          <img
+            src="images/img_1.jpg"
+            alt="Inside Elliott Flava restaurant"
+            style="width:100%;border-radius:1.25rem;object-fit:cover;aspect-ratio:4/3;display:block;"
+            loading="lazy"
+          />
         </div>
-      </div>
-      <div class="about-image" data-aos="fade-up" data-aos-delay="200">
-        <img src="images/img_1.jpg" alt="Elliott Flava restaurant interior" loading="lazy" />
-      </div>
-    </div>
 
-    <div class="about-grid">
-      <div class="value-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="value-icon">🌶️</div>
-        <h3>Flavour First</h3>
-        <p>Every dish on our menu is built around bold, authentic seasoning passed down through generations of Caribbean cooking tradition.</p>
-      </div>
-      <div class="value-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="value-icon">🤝</div>
-        <h3>Warmth in Every Visit</h3>
-        <p>From the moment you walk through our doors, we treat every guest like a familiar face returning for seconds.</p>
-      </div>
-      <div class="value-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="value-icon">💛</div>
-        <h3>Honest Value</h3>
-        <p>We believe exceptional food should be generous and accessible, giving you more than you ever expected for your money.</p>
-      </div>
-    </div>
-  </section>
+        <div data-aos="fade-left">
+          <p style="text-transform:uppercase;letter-spacing:.15em;font-size:.8rem;margin-bottom:.75rem;opacity:.65;">Our Story</p>
+          <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.2;margin-bottom:1.25rem;">The Heart &amp; Soul<br>of Caribbean Cooking</h2>
+          <p style="line-height:1.8;margin-bottom:2rem;opacity:.85;">Elliott Flava brings the vibrant, sun-kissed flavours of the Caribbean straight to the heart of South London. From slow-cooked jerk lamb to rich, aromatic curry goat, every dish is crafted with the kind of love and care that keeps our guests coming back — again and again.</p>
 
-  <!-- Reviews Section -->
-  <section class="reviews-section" id="reviews">
-    <h2 data-aos="fade-up">What Our Guests Say</h2>
-    <p class="reviews-sub" data-aos="fade-up" data-aos-delay="80">⭐ 5 · 174 Google reviews — South London's Caribbean favourite</p>
-    <div class="reviews-grid">
-      <div class="review-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p class="review-text">"Benin there 3 times in just over a week. Warm welcome. Patties nice and taste fresh. Brown stew chicken, curry goat, fried chicken, pepper steak and my favourite — jerk lamb, all so tasty. Highly recom"</p>
-        <p class="review-author">— leeszla D</p>
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+            <div data-aos="fade-up" data-aos-delay="100" style="display:flex;gap:1rem;align-items:flex-start;">
+              <span style="font-size:1.5rem;flex-shrink:0;">🌿</span>
+              <div>
+                <h4 style="margin-bottom:.25rem;">Authenticity First</h4>
+                <p style="opacity:.8;line-height:1.7;font-size:.95rem;">Every recipe honours the deep culinary traditions of the Caribbean, using time-honoured techniques and freshly sourced ingredients.</p>
+              </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="200" style="display:flex;gap:1rem;align-items:flex-start;">
+              <span style="font-size:1.5rem;flex-shrink:0;">🤝</span>
+              <div>
+                <h4 style="margin-bottom:.25rem;">Warmth in Every Bite</h4>
+                <p style="opacity:.8;line-height:1.7;font-size:.95rem;">We believe a great meal begins the moment you walk through the door, with a welcome as genuine as the food on your plate.</p>
+              </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="300" style="display:flex;gap:1rem;align-items:flex-start;">
+              <span style="font-size:1.5rem;flex-shrink:0;">💛</span>
+              <div>
+                <h4 style="margin-bottom:.25rem;">Unbeatable Value</h4>
+                <p style="opacity:.8;line-height:1.7;font-size:.95rem;">Generous, soul-satisfying portions mean you leave not just full, but truly nourished — without ever breaking the bank.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
-      <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p class="review-text">"From the moment you step inside, you're greeted with thoughtful, attentive service &amp; a genuine sense of warmth that instantly makes you feel at home. I was confused in-store today, paying £12 for a mi"</p>
-        <p class="review-author">— Kassy Smith</p>
-      </div>
-      <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p class="review-text">"Delicious food and even better customer service! Jerk lamb, oxtail, curry goat, patties, fresh jerk pork and chicken. Everything tastes so good here, tastes like home made Jamaican food and so you can"</p>
-        <p class="review-author">— J</p>
-      </div>
-    </div>
-    <div class="reviews-cta" data-aos="fade-up" data-aos-delay="250">
-      <a href="https://maps.google.com/?cid=5652007482559096400" target="_blank" rel="noopener">Read all 174 reviews on Google →</a>
     </div>
   </section>
 
   <!-- Menu Section -->
-  <section class="menu-section" id="menu">
-    <h2 data-aos="fade-up">Our Menu</h2>
-    <p class="menu-intro" data-aos="fade-up" data-aos-delay="80">Authentic Caribbean flavours, made fresh every day in our South London kitchen.</p>
+  <section class="section-pad" id="menu" style="position:relative;">
+    <div class="container">
 
-    <!-- Starters -->
-    <div class="menu-category">
-      <h3 class="menu-category-title" data-aos="fade-up">Starters</h3>
-      <div class="menu-item" data-aos="fade-up" data-aos-delay="50">
-        <div class="menu-item-info">
-          <span class="menu-item-name">Beef Patties</span>
-          <span class="menu-item-desc">Freshly baked golden pastry filled with richly spiced minced beef — a Caribbean classic done the Elliott Flava way.</span>
-        </div>
-        <span class="menu-price">£3</span>
+      <div style="text-align:center;max-width:600px;margin:0 auto 3.5rem;" data-aos="fade-up">
+        <p style="text-transform:uppercase;letter-spacing:.15em;font-size:.8rem;margin-bottom:.75rem;opacity:.65;">Explore Our Kitchen</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.2;margin-bottom:1rem;">Our Menu</h2>
+        <p style="opacity:.8;line-height:1.7;">A celebration of Caribbean heritage — boldly spiced, lovingly prepared and served straight from the heart of South London.</p>
       </div>
-      <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
-        <div class="menu-item-info">
-          <span class="menu-item-name">Festival Dumplings</span>
-          <span class="menu-item-desc">Lightly sweet, golden-fried cornmeal dumplings with a soft, pillowy centre — the perfect bite to begin.</span>
-        </div>
-        <span class="menu-price">£2</span>
+
+      <!-- Starters -->
+      <div style="margin-bottom:3rem;" data-aos="fade-up">
+        <h3 style="font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.15);">
+          ✦ Starters
+        </h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0;">
+
+          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.08);" data-aos="fade-up" data-aos-delay="50">
+            <div>
+              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Jamaican Beef Patties</p>
+              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Flaky, golden pastry filled with boldly seasoned minced beef — a beloved Caribbean classic baked fresh daily.</p>
+            </div>
+            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£4</span>
+          </li>
+
+          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.08);" data-aos="fade-up" data-aos-delay="100">
+            <div>
+              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Festival Dumplings</p>
+              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Lightly sweet, golden-fried dough fingers with a soft, pillowy centre — the perfect companion to any dish.</p>
+            </div>
+            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£3</span>
+          </li>
+
+          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;" data-aos="fade-up" data-aos-delay="150">
+            <div>
+              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Saltfish Fritters</p>
+              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Crispy, herb-flecked fritters packed with flaked saltfish and a gentle kick of scotch bonnet.</p>
+            </div>
+            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£5</span>
+          </li>
+
+        </ul>
       </div>
-      <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
-        <div class="menu-item-info">
-          <span class="menu-item-name">Peppery Chicken Wings</span>
-          <span class="menu-item-desc">Crispy wings marinated in a fiery blend of Scotch bonnet and island spices, served with a cooling dip.</span>
-        </div>
-        <span class="menu-price">£5</span>
+
+      <!-- Mains -->
+      <div style="margin-bottom:3rem;" data-aos="fade-up">
+        <h3 style="font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.15);">
+          ✦ Mains
+        </h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0;">
+
+          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.08);" data-aos="fade-up" data-aos-delay="50">
+            <div>
+              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">
+                Signature Jerk Lamb
+                <span style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;padding:.2rem .5rem;border-radius:3rem;margin-left:.5rem;vertical-align:middle;background:rgba(255,200,50,.15);color:#ffd166;">Chef's Pick</span>
+              </p>
+              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Slow-marinated lamb shoulder kissed with smoky allspice, thyme and fiery scotch bonnet, served with rice and coleslaw.</p>
+            </div>
+            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£13</span>
+          </li>
+
+          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.08);" data-aos="fade-up" data-aos-delay="100">
+            <div>
+              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Curry Goat</p>
+              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Tender goat simmered low and slow in a fragrant blend of Caribbean spices until it falls beautifully from the bone.</p>
+            </div>
+            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£12</span>
+          </li>
+
+          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;" data-aos="fade-up" data-aos-delay="150">
+            <div>
+              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Brown Stew Chicken</p>
+              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">A comforting island staple — succulent chicken braised in a rich, caramelised brown stew with peppers, thyme and garlic.</p>
+            </div>
+            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£12</span>
+          </li>
+
+        </ul>
       </div>
+
+      <!-- Desserts -->
+      <div style="margin-bottom:2rem;" data-aos="fade-up">
+        <h3 style="font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.15);">
+          ✦ Desserts
+        </h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0;">
+
+          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.08);" data-aos="fade-up" data-aos-delay="50">
+            <div>
+              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Rum Cake</p>
+              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">A moist, dark Caribbean fruit cake soaked generously in aged rum — rich, indulgent and utterly irresistible.</p>
+            </div>
+            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£5</span>
+          </li>
+
+          <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.25rem 0;" data-aos="fade-up" data-aos-delay="100">
+            <div>
+              <p style="font-size:1.1rem;font-weight:600;margin-bottom:.3rem;">Coconut Drops</p>
+              <p style="opacity:.75;font-size:.92rem;line-height:1.6;">Traditional Jamaican coconut and ginger sweet bites, chewy and warmly spiced with a satisfying caramel crunch.</p>
+            </div>
+            <span style="font-size:1.05rem;font-weight:700;white-space:nowrap;flex-shrink:0;">£3</span>
+          </li>
+
+        </ul>
+      </div>
+
+      <p style="opacity:.55;font-size:.85rem;text-align:center;margin-top:2rem;" data-aos="fade-up">* Sample menu for reference. Please contact us for today's full menu.</p>
+
     </div>
+  </section>
 
-    <!-- Mains -->
-    <div class="menu-category">
-      <h3 class="menu-category-title" data-aos="fade-up">Mains</h3>
-      <div class="menu-item" data-aos="fade-up" data-aos-delay="50">
-        <div class="menu-item-info">
-          <span class="menu-item-name">Jerk Lamb</span>
-          <span class="menu-item-desc">Our signature — slow-cooked lamb rubbed in smoky jerk seasoning, served with rice and peas and a side of coleslaw.</span>
+  <!-- Reviews Section -->
+  <section class="section-pad" id="reviews">
+    <div class="container">
+
+      <div style="text-align:center;max-width:600px;margin:0 auto 3.5rem;" data-aos="fade-up">
+        <p style="text-transform:uppercase;letter-spacing:.15em;font-size:.8rem;margin-bottom:.75rem;opacity:.65;">What Our Guests Say</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.2;margin-bottom:1rem;">Loved by South London</h2>
+        <div style="display:flex;justify-content:center;align-items:center;gap:.75rem;flex-wrap:wrap;">
+          <span style="font-size:1.2rem;">⭐⭐⭐⭐⭐</span>
+          <span style="font-weight:700;font-size:1.1rem;">5.0</span>
+          <span style="opacity:.65;">· 174 reviews on Google</span>
         </div>
-        <span class="menu-price">£12</span>
       </div>
-      <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
-        <div class="menu-item-info">
-          <span class="menu-item-name">Curry Goat</span>
-          <span class="menu-item-desc">Tender goat slow-simmered in a fragrant blend of Caribbean curry spices until falling beautifully off the bone.</span>
-        </div>
-        <span class="menu-price">£12
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.75rem;">
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:700,once:true,offset:60});
+AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
 
-// Sticky nav
-const stickyNav = document.getElementById('stickyNav');
-const heroEl = document.querySelector('.hero,[class*=hero]');
-if(stickyNav && heroEl){
-  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
-}
-
-// Open/Closed badge
-const HOURS={"Monday": "7:00 AM – 10:00 PM", "Tuesday": "7:00 AM – 10:00 PM", "Wednesday": "7:00 AM – 10:00 PM", "Thursday": "7:00 AM – 10:00 PM", "Friday": "7:00 AM – 11:00 PM", "Saturday": "7:00 AM – 11:00 PM", "Sunday": "Closed"};
+// Sticky nav on scroll past hero
 (function(){
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
-  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-  const badge=document.getElementById('openBadge');
-  if(!badge)return;
-  if(!m){badge.textContent='See hours below';return;}
-  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
-  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
-  const isOpen=n>=o&&n<(c<o?c+1440:c);
-  badge.textContent=isOpen?'● Open now':'● Closed';
-  badge.style.color=isOpen?'#22c55e':'#ef4444';
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
 })();
 
-// Rating counter
-const rc=document.getElementById('ratingCounter');
-if(rc){
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "7:00 AM – 10:00 PM", "Tuesday": "7:00 AM – 10:00 PM", "Wednesday": "7:00 AM – 10:00 PM", "Thursday": "7:00 AM – 10:00 PM", "Friday": "7:00 AM – 11:00 PM", "Saturday": "7:00 AM – 11:00 PM", "Sunday": "Closed"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
   const rating=5,cnt=174;
+  if(!rating)return;
   new IntersectionObserver(([e])=>{
     if(!e.isIntersecting)return;
-    rc.textContent='';
-    const animate=(from,to,dec,cb)=>{
-      let start=null;
-      (function step(ts){
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
         if(!start)start=ts;
-        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
         cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
-        if(p<1)requestAnimationFrame(step);
+        if(p<1)requestAnimationFrame(tick);
       })(performance.now());
     };
-    const rs=document.createElement('span'),cs=document.createElement('span');
-    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
-    animate(0,rating,true,v=>rs.textContent=v);
-    animate(0,cnt,false,v=>cs.textContent=v);
-  },{threshold:0.5}).observe(rc);
-}
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
 
-// Ripple
-document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
   btn.addEventListener('click',function(e){
-    const r=document.createElement('span');
-    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
     Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
       left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
-      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
-    this.style.position='relative';this.style.overflow='hidden';
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
     this.append(r);setTimeout(()=>r.remove(),700);
   });
 });
 </script>
-<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
