@@ -18,101 +18,111 @@
   @media(min-width:700px){.float-cta{display:none!important;}}
   #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
   #stickyNav.visible{transform:translateY(0);}
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap');
 
 :root {
---c-bg:#0a0a0a;
---c-surface:#111111;
---c-card:#1a1a1a;
---c-gold:#c9a84c;
---c-gold-light:#e8c97a;
---c-cream:#f5f0e8;
---c-text:#e8e0d0;
---c-muted:#8a8070;
---c-border:#2a2520;
---c-overlay:rgba(0,0,0,.65);
---ff-heading:'Playfair Display',Georgia,serif;
---ff-body:'Cormorant Garamond',Georgia,serif;
+--c-bg:#faf6f1;
+--c-surface:#f2ebe0;
+--c-primary:#8b5e3c;
+--c-primary-dk:#6b4226;
+--c-accent:#c8894a;
+--c-accent-lt:#e8c49a;
+--c-text:#2c1f14;
+--c-text-muted:#7a6552;
+--c-white:#ffffff;
+--c-overlay:rgba(28,16,6,.55);
+--c-overlay-grad:linear-gradient(to bottom,rgba(28,16,6,.15) 0%,rgba(28,16,6,.72) 100%);
+--ff-head:'Playfair Display',Georgia,serif;
+--ff-body:'Inter',system-ui,sans-serif;
 --fw-light:300;
---fw-regular:400;
---fw-bold:700;
---radius-card:12px;
---radius-img:16px;
---trans:all .35s cubic-bezier(.4,0,.2,1);
---shadow-card:0 8px 40px rgba(0,0,0,.6);
---shadow-gold:0 4px 24px rgba(201,168,76,.25);
---max-w:1200px;
---section-py:100px;
+--fw-reg:400;
+--fw-med:500;
+--fw-semi:600;
+--radius-sm:6px;
+--radius-md:12px;
+--radius-lg:20px;
+--shadow-sm:0 2px 8px rgba(44,31,20,.10);
+--shadow-md:0 6px 24px rgba(44,31,20,.14);
+--shadow-lg:0 16px 48px rgba(44,31,20,.18);
+--trans:all .3s ease;
+--max-w:1160px;
+--gap:clamp(1rem,3vw,2rem);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--c-bg);color:var(--c-text);font-family:var(--ff-body);font-weight:var(--fw-light);line-height:1.7;overflow-x:hidden}
-img{display:block;max-width:100%;height:auto}
-a{color:var(--c-gold);text-decoration:none;transition:var(--trans)}
-a:hover{color:var(--c-gold-light)}
-h1,h2,h3,h4{font-family:var(--ff-heading);font-weight:var(--fw-bold);line-height:1.2;letter-spacing:.02em}
-p{font-size:1.05rem;letter-spacing:.01em}
-::selection{background:var(--c-gold);color:#000}
+body{font-family:var(--ff-body);background:var(--c-bg);color:var(--c-text);line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto;object-fit:cover}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.2}
 
-/* ── STICKY NAV ── */
-#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(8,8,8,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);transition:var(--trans)}
-.nav-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px 40px}
-.nav-logo{font-family:var(--ff-heading);font-size:1.4rem;color:var(--c-gold);letter-spacing:.08em;text-transform:uppercase}
-.nav-links{display:flex;gap:36px;list-style:none}
-.nav-links a{font-family:var(--ff-body);font-size:.95rem;color:var(--c-cream);letter-spacing:.06em;text-transform:uppercase;position:relative;padding-bottom:4px}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--c-gold);transition:width .3s ease}
-.nav-links a:hover{color:var(--c-gold)}
-.nav-links a:hover::after{width:100%}
-.nav-cta-btn{background:var(--c-gold);color:#000;font-family:var(--ff-body);font-size:.9rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 26px;border-radius:40px;border:none;cursor:pointer;transition:var(--trans)}
-.nav-cta-btn:hover{background:var(--c-gold-light);box-shadow:var(--shadow-gold);transform:translateY(-1px)}
+.container{max-width:var(--max-w);margin-inline:auto;padding-inline:clamp(1rem,4vw,2.5rem)}
+.section-label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c-accent);font-weight:var(--fw-semi);display:block;margin-bottom:.5rem}
+.section-title{font-size:clamp(1.8rem,4vw,3rem);color:var(--c-primary-dk);margin-bottom:1rem}
+.section-sub{font-size:clamp(.9rem,1.5vw,1.05rem);color:var(--c-text-muted);max-width:560px;line-height:1.7}
+.divider{width:48px;height:3px;background:var(--c-accent);border-radius:2px;margin:1rem 0 1.5rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.75rem;border-radius:50px;font-family:var(--ff-body);font-size:.9rem;font-weight:var(--fw-semi);letter-spacing:.04em;cursor:pointer;border:2px solid transparent;transition:var(--trans)}
+.btn-primary{background:var(--c-primary);color:var(--c-white);border-color:var(--c-primary)}
+.btn-primary:hover{background:var(--c-primary-dk);border-color:var(--c-primary-dk);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-outline{background:transparent;color:var(--c-white);border-color:var(--c-white)}
+.btn-outline:hover{background:var(--c-white);color:var(--c-primary)}
+.btn-accent{background:var(--c-accent);color:var(--c-white);border-color:var(--c-accent)}
+.btn-accent:hover{background:var(--c-primary);border-color:var(--c-primary);transform:translateY(-2px)}
+
+/* ── NAV ── */
+#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:.9rem 0;transition:background .4s ease,box-shadow .4s ease}
+#stickyNav.scrolled{background:rgba(250,246,241,.97);backdrop-filter:blur(10px);box-shadow:var(--shadow-sm)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:var(--max-w);margin-inline:auto;padding-inline:clamp(1rem,4vw,2.5rem)}
+.nav-logo{font-family:var(--ff-head);font-size:1.35rem;font-weight:var(--fw-semi);color:var(--c-white);letter-spacing:.02em;transition:color .3s}
+#stickyNav.scrolled .nav-logo{color:var(--c-primary-dk)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.85rem;font-weight:var(--fw-med);letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.9);transition:color .3s}
+#stickyNav.scrolled .nav-links a{color:var(--c-text-muted)}
+.nav-links a:hover{color:var(--c-accent)}
+.nav-reserve{font-size:.82rem;padding:.55rem 1.3rem}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-hamburger span{width:24px;height:2px;background:var(--c-white);border-radius:2px;transition:var(--trans)}
+#stickyNav.scrolled .nav-hamburger span{background:var(--c-primary)}
+
+/* ── HERO ── */
+.hero-section{position:relative;width:100%;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('hero-bg.jpg') center/cover no-repeat;transform:scale(1.05);transition:transform 8s ease}
+.hero-bg.loaded{transform:scale(1)}
+.hero-overlay{position:absolute;inset:0;background:var(--c-overlay-grad)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:2rem;max-width:780px}
+.hero-eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--c-accent-lt);font-weight:var(--fw-semi);margin-bottom:1.25rem;display:block}
+.hero-title{font-family:var(--ff-head);font-size:clamp(2.4rem,7vw,5.2rem);color:var(--c-white);line-height:1.1;margin-bottom:1.25rem;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.hero-title em{color:var(--c-accent-lt);font-style:italic}
+.hero-tagline{font-size:clamp(.95rem,1.8vw,1.15rem);color:rgba(255,255,255,.85);margin-bottom:2.25rem;font-weight:var(--fw-light);letter-spacing:.02em}
+.hero-cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-scroll{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.7);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.7),transparent);animation:scrollPulse 2s ease infinite}
+@keyframes scrollPulse{0%,100%{opacity:.7;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.1)}}
 
 /* ── PROTO BANNER ── */
-.proto-banner{background:linear-gradient(90deg,var(--c-gold) 0%,#a07830 100%);color:#000;text-align:center;padding:10px 20px;font-family:var(--ff-body);font-size:.9rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;z-index:1001;position:relative}
-
-/* ── HERO (left-text-right-image + parallax) ── */
-.hero-section{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:80px;background:var(--c-bg)}
-.hero-parallax-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#1a1208 60%,#0a0a0a 100%);z-index:0}
-.hero-parallax-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 70% 50%,rgba(201,168,76,.08) 0%,transparent 70%)}
-.hero-inner{position:relative;z-index:2;max-width:var(--max-w);margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%}
-.hero-text-col{display:flex;flex-direction:column;gap:28px}
-.hero-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-body);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c-gold)}
-.hero-tag::before{content:'';display:block;width:30px;height:1px;background:var(--c-gold)}
-.hero-title{font-size:clamp(2.8rem,5vw,4.2rem);color:var(--c-cream);line-height:1.08}
-.hero-title em{font-style:italic;color:var(--c-gold)}
-.hero-subtitle{font-size:1.15rem;color:var(--c-muted);line-height:1.8;max-width:480px}
-.hero-divider{width:60px;height:2px;background:linear-gradient(90deg,var(--c-gold),transparent)}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.btn-primary{display:inline-block;background:var(--c-gold);color:#000;font-family:var(--ff-heading);font-size:1rem;font-weight:var(--fw-bold);letter-spacing:.06em;padding:16px 36px;border-radius:50px;border:2px solid var(--c-gold);transition:var(--trans)}
-.btn-primary:hover{background:transparent;color:var(--c-gold);box-shadow:var(--shadow-gold);transform:translateY(-2px)}
-.btn-ghost{display:inline-block;background:transparent;color:var(--c-cream);font-family:var(--ff-heading);font-size:1rem;letter-spacing:.06em;padding:16px 36px;border-radius:50px;border:2px solid var(--c-border);transition:var(--trans)}
-.btn-ghost:hover{border-color:var(--c-gold);color:var(--c-gold)}
-.hero-stats{display:flex;gap:36px;padding-top:12px;border-top:1px solid var(--c-border)}
-.hero-stat-val{font-family:var(--ff-heading);font-size:1.8rem;color:var(--c-gold);display:block}
-.hero-stat-lbl{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c-muted)}
-.hero-image-col{position:relative;display:flex;justify-content:center;align-items:center}
-.hero-img-frame{position:relative;width:100%;max-width:560px;border-radius:var(--radius-img);overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.8),0 0 0 1px var(--c-border)}
-.hero-img-frame img{width:100%;height:620px;object-fit:cover;border-radius:var(--radius-img)}
-.hero-img-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4) 0%,transparent 50%);border-radius:var(--radius-img)}
-.hero-img-badge{position:absolute;bottom:32px;left:-28px;background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--radius-card);padding:16px 20px;box-shadow:var(--shadow-card);z-index:3}
-.hero-img-badge span{font-family:var(--ff-heading);font-size:1.1rem;color:var(--c-gold);display:block}
-.hero-img-badge small{font-size:.75rem;color:var(--c-muted);letter-spacing:.08em;text-transform:uppercase}
-.hero-gold-accent{position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.15) 0%,transparent 70%);pointer-events:none}
+.proto-banner{background:var(--c-primary);color:var(--c-white);text-align:center;padding:.6rem 1rem;font-size:.82rem;letter-spacing:.04em;font-weight:var(--fw-med);position:relative;z-index:1001}
+.proto-banner a{color:var(--c-accent-lt);text-decoration:underline}
 
 /* ── OPEN BADGE ── */
-#openBadge{display:inline-flex;align-items:center;gap:8px;background:var(--c-card);border:1px solid var(--c-border);border-radius:40px;padding:8px 16px;font-family:var(--ff-body);font-size:.85rem;color:var(--c-text);margin-bottom:12px;width:fit-content}
-#openBadge .badge-dot{width:8px;height:8px;border-radius:50%;background:#4caf50;animation:pulse-dot 2s ease infinite}
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
+#openBadge{position:fixed;bottom:5.5rem;right:1.5rem;z-index:900;background:var(--c-accent);color:var(--c-white);border-radius:50px;padding:.55rem 1.1rem;font-size:.78rem;font-weight:var(--fw-semi);letter-spacing:.04em;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:.4rem;animation:badgePop .4s ease}
+#openBadge::before{content:'';width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block;animation:blink 1.5s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes badgePop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
 
 /* ── RATING COUNTER ── */
-#ratingCounter{display:flex;align-items:center;gap:10px;font-family:var(--ff-body);font-size:1rem;color:var(--c-text)}
-#ratingCounter .stars{color:var(--c-gold);font-size:1.1rem;letter-spacing:2px}
-#ratingCounter .rating-val{font-family:var(--ff-heading);font-size:1.2rem;color:var(--c-gold);font-weight:700}
-#ratingCounter .rating-count{color:var(--c-muted);font-size:.85rem}
+#ratingCounter{display:flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:var(--fw-semi);color:var(--c-primary)}
+#ratingCounter .stars{color:#f59e0b;letter-spacing:1px;font-size:.95rem}
+#ratingCounter .count{color:var(--c-text-muted);font-weight:var(--fw-reg);font-size:.78rem}
 
 /* ── FLOAT CTA ── */
-.float-cta{position:fixed;bottom:32px;right:32px;z-index:999;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
-.float-cta-btn{display:flex;align-items:center;gap:10px;background:var(--c-gold);color:#000;font
+.float-cta{position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;background:var(--c-primary);color:var(--c-white);border:none;border-radius:50px;padding:.75rem 1.5rem;font-family:var(--ff-body);font-size:.85rem;font-weight:var(--fw-semi);cursor:pointer;box-shadow:var(--shadow-lg);transition:var(--trans);display:flex;align-items:center;gap:.5rem}
+.float-cta:hover{background:var(--c-primary-dk);transform:translateY(-3px);box-shadow:0 20px 60px rgba(44,31,20,.25)}
+.float-cta svg{width:16px;height:16px;fill:currentColor}
+
+/* ── FEATURES ── */
+.features-section{padding:clamp(4rem,8vw,7rem) 0;background:var(--c-white)}
+.
   </style>
 </head>
 <body>
@@ -126,357 +136,195 @@ p{font-size:1.05rem;letter-spacing:.01em}
 
   <!-- Sticky Nav -->
   <nav id="stickyNav">
-    <div class="nav-inner">
-      <div class="nav-logo">Chillin <span>876</span></div>
+    <div class="nav-inner container">
+      <div class="nav-logo">Chillin 876</div>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
+        <li><a href="#features">About</a></li>
         <li><a href="#menu">Menu</a></li>
-        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#visit">Visit</a></li>
       </ul>
-      <a href="tel:020 7524 3555" class="nav-cta-btn">Reserve a Table</a>
+      <a href="tel:020 7524 3555" class="nav-reserve btn btn-accent">Reserve</a>
+      <button class="nav-hamburger" aria-label="Open menu">&#9776;</button>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero-section" id="hero">
-    <div class="hero-parallax-bg"></div>
-    <div class="hero-inner">
-
-      <!-- Left: Text Column -->
-      <div class="hero-text-col">
-        <span class="hero-tag">
-          <span id="openBadge"></span>
-          South London · Jamaican Cuisine
-        </span>
-
-        <h1 class="hero-title">Chillin&nbsp;876<br>Restaurant</h1>
-
-        <p class="hero-subtitle">Authentic Jamaican Soul, Fresh Every Single Day</p>
-
-        <div class="hero-divider"></div>
-
-        <div class="hero-actions">
-          <a href="tel:020 7524 3555" class="btn-primary">
-            <i class="fa fa-phone"></i> Reserve a Table
-          </a>
-          <a href="https://wa.me/02075243555" class="btn-ghost" target="_blank" rel="noopener">
-            <i class="fa fa-whatsapp"></i> WhatsApp Us
-          </a>
-        </div>
-
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="hero-stat-val">
-              <span class="stars">★★★★★</span>
-              <span id="ratingCounter" data-rating="4.8" data-count="90">4.8</span>
-            </div>
-            <div class="hero-stat-lbl">Google Rating · 90 Reviews</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-val">3</div>
-            <div class="hero-stat-lbl">Ways to Enjoy</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-val">100%</div>
-            <div class="hero-stat-lbl">Fresh Daily</div>
-          </div>
-        </div>
+  <section class="hero-section">
+    <div class="hero-bg" style="background-image: url('images/img_0.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <p class="hero-eyebrow">
+        <span id="openBadge"></span>
+        <span class="stars">⭐⭐⭐⭐⭐</span>
+        <span id="ratingCounter" data-rating="4.8" data-count="90">4.8 · 90 Google Reviews</span>
+      </p>
+      <h1 class="hero-title">Chillin 876<br>Restaurant</h1>
+      <p class="hero-tagline">Authentic Jamaican Soul, Fresh Every Single Day</p>
+      <div class="hero-cta-group">
+        <a href="tel:020 7524 3555" class="btn btn-primary">📞 Reserve a Table</a>
+        <a href="#menu" class="btn btn-outline">Explore Menu</a>
       </div>
-
-      <!-- Right: Image Column -->
-      <div class="hero-image-col">
-        <div class="hero-img-frame">
-          <img
-            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80"
-            alt="Chillin 876 Restaurant – Signature Jamaican Dishes"
-          />
-          <div class="hero-img-badge" id="openBadge-badge">
-            <span class="badge-dot"></span>
-            Open Today
-          </div>
-          <div class="hero-gold-accent"></div>
-        </div>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        <span>Scroll to discover</span>
       </div>
-
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about-section" id="about">
+  <!-- Features / About Section -->
+  <section class="features-section" id="features">
     <div class="container">
 
-      <div class="about-intro" data-aos="fade-up">
-        <span class="section-tag">Our Story</span>
-        <h2 class="section-title">A Taste of Jamaica<br>in South London</h2>
-        <div class="section-divider"></div>
-        <p class="about-lead">
-          Nestled in the heart of South London, Chillin 876 brings the warmth and bold flavours of Jamaica straight to your plate. Every dish is crafted with fresh ingredients and cooked with the kind of love you'd only find in a Jamaican kitchen. Come for the food, stay for the smiles.
-        </p>
+      <!-- Intro text block -->
+      <div style="text-align:center; max-width:720px; margin:0 auto 60px;" data-aos="fade-up">
+        <p class="section-label">South London · Jamaican</p>
+        <h2 class="section-title">A Taste of the Island,<br>Right Here in Mitcham</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Nestled in the heart of South London, Chillin 876 brings the warmth, colour, and irresistible flavours of Jamaica straight to your plate. Every dish is crafted with fresh ingredients and cooked with the kind of love you only find in a proper home kitchen. With stunning décor, generous portions, and a smile from every member of our team, this is your home away from home.</p>
       </div>
 
-      <div class="about-grid">
-
-        <div class="about-image-col" data-aos="fade-right">
-          <div class="about-img-frame">
-            <img
-              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80"
-              alt="Inside Chillin 876 Restaurant"
-            />
+      <!-- Image-Text Alternating: Block 1 -->
+      <div style="display:flex; align-items:center; gap:60px; margin-bottom:70px; flex-wrap:wrap;" data-aos="fade-right">
+        <div style="flex:1; min-width:280px;">
+          <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80"
+               alt="Chillin 876 Restaurant interior"
+               style="width:100%; border-radius:12px; object-fit:cover; height:380px; display:block;">
+        </div>
+        <div style="flex:1; min-width:280px;">
+          <p class="section-label">Our Philosophy</p>
+          <h3 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem); line-height:1.3;">Cooked with Love.<br>Served with Soul.</h3>
+          <div class="divider" style="margin:20px 0;"></div>
+          <div style="display:flex; flex-direction:column; gap:22px;">
+            <div style="display:flex; gap:18px; align-items:flex-start;">
+              <span style="font-size:2rem; line-height:1;">🌿</span>
+              <div>
+                <strong style="display:block; margin-bottom:4px; font-size:1.05rem;">Always Fresh</strong>
+                <p style="margin:0; opacity:.8; line-height:1.7;">Every dish is prepared fresh daily, because great Jamaican food deserves nothing less than ingredients at their very best.</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:18px; align-items:flex-start;">
+              <span style="font-size:2rem; line-height:1;">🇯🇲</span>
+              <div>
+                <strong style="display:block; margin-bottom:4px; font-size:1.05rem;">Rooted in Authenticity</strong>
+                <p style="margin:0; opacity:.8; line-height:1.7;">Our recipes honour the true flavours of Jamaica, bringing the island's rich culinary heritage to the streets of South London.</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:18px; align-items:flex-start;">
+              <span style="font-size:2rem; line-height:1;">❤️</span>
+              <div>
+                <strong style="display:block; margin-bottom:4px; font-size:1.05rem;">Served with Heart</strong>
+                <p style="margin:0; opacity:.8; line-height:1.7;">From the kitchen to your table, every plate is delivered with warmth, generosity, and a genuine smile.</p>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="about-pillars-col" data-aos="fade-left">
-          <div class="about-pillar">
-            <div class="pillar-icon">🌶️</div>
-            <div class="pillar-body">
-              <h3>Always Fresh</h3>
-              <p>Every dish is prepared daily from scratch, because great Jamaican food deserves nothing less than the finest fresh ingredients.</p>
-            </div>
-          </div>
-          <div class="about-pillar">
-            <div class="pillar-icon">🏠</div>
-            <div class="pillar-body">
-              <h3>Taste of Home</h3>
-              <p>We cook every plate the way it was meant to be — with the depth, warmth, and soul of a true home-cooked Jamaican meal.</p>
-            </div>
-          </div>
-          <div class="about-pillar">
-            <div class="pillar-icon">🤝</div>
-            <div class="pillar-body">
-              <h3>Welcoming Spirit</h3>
-              <p>From the moment you walk through our doors, our family-minded team is committed to making every guest feel genuinely at home.</p>
-            </div>
-          </div>
-
-          <div class="about-services">
-            <span class="service-badge"><i class="fa fa-cutlery"></i> Dine-In</span>
-            <span class="service-badge"><i class="fa fa-shopping-bag"></i> Takeaway</span>
-            <span class="service-badge"><i class="fa fa-motorcycle"></i> Delivery</span>
-          </div>
-        </div>
-
       </div>
+
+      <!-- Image-Text Alternating: Block 2 (reversed) -->
+      <div style="display:flex; align-items:center; gap:60px; flex-wrap:wrap; flex-direction:row-reverse;" data-aos="fade-left">
+        <div style="flex:1; min-width:280px;">
+          <img src="images/img_1.jpg"
+               alt="Chillin 876 food"
+               style="width:100%; border-radius:12px; object-fit:cover; height:380px; display:block;">
+        </div>
+        <div style="flex:1; min-width:280px;">
+          <p class="section-label">How We Serve You</p>
+          <h3 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem); line-height:1.3;">Your Way,<br>Every Time.</h3>
+          <div class="divider" style="margin:20px 0;"></div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:28px;">
+            <span style="background:rgba(0,0,0,.07); border-radius:50px; padding:10px 22px; font-weight:600; font-size:.95rem;">🍽 Dine-In</span>
+            <span style="background:rgba(0,0,0,.07); border-radius:50px; padding:10px 22px; font-weight:600; font-size:.95rem;">📦 Takeaway</span>
+            <span style="background:rgba(0,0,0,.07); border-radius:50px; padding:10px 22px; font-weight:600; font-size:.95rem;">🛵 Delivery</span>
+          </div>
+          <p style="opacity:.8; line-height:1.8; margin-bottom:28px;">Whether you're joining us for a sit-down feast, grabbing a quick takeaway, or having the flavours of Jamaica delivered to your door — we've got you covered.</p>
+          <a href="tel:020 7524 3555" class="btn btn-primary">📞 Call Us Now</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- Menu Section -->
-  <section class="menu-section" id="menu">
+  <section id="menu" style="padding:100px 0; background:#faf7f2;">
     <div class="container">
-
-      <div class="menu-header" data-aos="fade-up">
-        <span class="section-tag">Our Menu</span>
-        <h2 class="section-title">Crafted with Soul,<br>Served with Pride</h2>
-        <div class="section-divider"></div>
-        <p class="menu-intro">Bold Jamaican flavours, made fresh every day. A selection of our finest dishes.</p>
+      <div style="text-align:center; margin-bottom:60px;" data-aos="fade-up">
+        <p class="section-label">What We're Serving</p>
+        <h2 class="section-title">Our Menu</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Island flavours crafted fresh daily — from light bites to soul-warming mains.</p>
       </div>
 
       <!-- Starters -->
-      <div class="menu-category" data-aos="fade-up">
-        <div class="menu-category-label">
-          <span class="menu-cat-line"></span>
-          <h3>Starters</h3>
-          <span class="menu-cat-line"></span>
+      <p class="section-label" style="margin-bottom:24px;" data-aos="fade-up">Starters</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:28px; margin-bottom:56px;">
+
+        <div data-aos="fade-up" data-aos-delay="0" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
+          <div style="height:190px; background:linear-gradient(135deg,#c8a26b,#e2c07a); display:flex; align-items:center; justify-content:center; font-size:4rem;">🥟</div>
+          <div style="padding:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+              <h4 style="margin:0; font-size:1.1rem; font-weight:700;">Festival &amp; Ackee Bites</h4>
+              <span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£7</span>
+            </div>
+            <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">Golden fried festival dumplings paired with a creamy ackee and saltfish filling, topped with a scotch bonnet aioli.</p>
+          </div>
         </div>
-        <ul class="menu-elegant-list">
-          <li class="menu-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="menu-item-header">
-              <span class="menu-item-name">Scotch Bonnet Pepper Prawns</span>
-              <span class="menu-item-dots"></span>
-              <span class="menu-item-price">£9</span>
+
+        <div data-aos="fade-up" data-aos-delay="80" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
+          <div style="height:190px; background:linear-gradient(135deg,#b85c2a,#e07a3f); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍗</div>
+          <div style="padding:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+              <h4 style="margin:0; font-size:1.1rem; font-weight:700;">Jerk Chicken Wings</h4>
+              <span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£8</span>
             </div>
-            <p class="menu-item-desc">Juicy tiger prawns tossed in a fiery scotch bonnet and garlic butter glaze, served with warm festival bread.</p>
-          </li>
-          <li class="menu-item" data-aos="fade-up" data-aos-delay="150">
-            <div class="menu-item-header">
-              <span class="menu-item-name">Jerk Chicken Wings</span>
-              <span class="menu-item-dots"></span>
-              <span class="menu-item-price">£8</span>
+            <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">Slow-marinated in our signature blend of island spices and grilled to smoky, charred perfection, served with a cooling mango dip.</p>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="160" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
+          <div style="height:190px; background:linear-gradient(135deg,#4a7c59,#6daa7a); display:flex; align-items:center; justify-content:center; font-size:4rem;">🥣</div>
+          <div style="padding:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+              <h4 style="margin:0; font-size:1.1rem; font-weight:700;">Callaloo Soup</h4>
+              <span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£6</span>
             </div>
-            <p class="menu-item-desc">Crispy, flame-kissed wings marinated overnight in our signature jerk spice blend, served with a cooling mango dip.</p>
-          </li>
-          <li class="menu-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="menu-item-header">
-              <span class="menu-item-name">Saltfish Fritters</span>
-              <span class="menu-item-dots"></span>
-              <span class="menu-item-price">£7</span>
-            </div>
-            <p class="menu-item-desc">Golden, lightly spiced codfish fritters made to a traditional Jamaican recipe, served with a zesty escovitch sauce.</p>
-          </li>
-        </ul>
+            <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">A velvety, herb-rich Jamaican callaloo soup simmered with coconut milk, fresh thyme, and a whisper of allspice.</p>
+          </div>
+        </div>
+
       </div>
 
       <!-- Mains -->
-      <div class="menu-category" data-aos="fade-up">
-        <div class="menu-category-label">
-          <span class="menu-cat-line"></span>
-          <h3>Mains</h3>
-          <span class="menu-cat-line"></span>
-        </div>
-        <ul class="menu-elegant-list">
-          <li class="menu-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="menu-item-header">
-              <span class="menu-item-name">Slow-Cooked Oxtail</span>
-              <span class="menu-item-dots"></span>
-              <span class="menu-item-price">£18</span>
+      <p class="section-label" style="margin-bottom:24px;" data-aos="fade-up">Mains</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:28px; margin-bottom:56px;">
+
+        <div data-aos="fade-up" data-aos-delay="0" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
+          <div style="height:190px; background:linear-gradient(135deg,#6b3a1f,#9b5e33); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍖</div>
+          <div style="padding:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+              <h4 style="margin:0; font-size:1.1rem; font-weight:700;">Oxtail &amp; Butter Beans</h4>
+              <span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£16</span>
             </div>
-            <p class="menu-item-desc">Tender oxtail braised low and slow in a rich, herb-laden gravy with butter beans, served with rice and peas.</p>
-          </li>
-          <li class="menu-item" data-aos="fade-up" data-aos-delay="150">
-            <div class="menu-item-header">
-              <span class="menu-item-name">Brown Stew Chicken</span>
-              <span class="menu-item-dots"></span>
-              <span class="menu-item-price">£15</span>
-            </div>
-            <p class="menu-item-desc">Free-range chicken slow-cooked in a deeply savoury brown stew with thyme, allspice, and sweet peppers, served with plantain and rice.</p>
-          </li>
-          <li class="menu-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="menu-item-header">
-              <span class="menu-item-name">Ackee &amp; Saltfish</span>
-              <span class="menu-item-dots"></span>
-              <span class="menu-item-price">£14</span>
-            </div>
-            <p class="menu-item-desc">Jamaica's beloved national dish — silky ackee folded with flaked saltfish, onions, and scotch bonnet, served with fried dumplings and callaloo.</p>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Desserts -->
-      <div class="menu-category" data-aos="fade-up">
-        <div class="menu-category-label">
-          <span class="menu-cat-line"></span>
-          <h3>Desserts</h3>
-          <span class="menu-cat-line"></span>
-        </div>
-        <ul class="menu-elegant-list">
-          <li class="menu-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="menu-item-header">
-              <span class="menu-item-name">Rum &amp; Coconut Bread Pudding</span>
-              <span class="menu-item-dots"></span>
-              <span class="menu-item-price">£7</span>
-            </div>
-            <p class="menu-item-desc">Warm, indulgent bread pudding infused with Jamaican rum and toasted coconut, drizzled with a brown sugar caramel sauce.</p>
-          </li>
-          <li class="menu-item" data-aos="fade-up" data-aos-delay="150">
-            <div class="menu-item-header">
-              <span class="menu-item-name">Grater Cake</span>
-              <span class="menu-item-dots"></span>
-              <span class="menu-item-price">£4</span>
-            </div>
-            <p class="menu-item-desc">A classic Jamaican sweet treat of shredded coconut and sugar, set in a beautiful pink and white layer — nostalgic, simple, and utterly delicious.</p>
-          </li>
-        </ul>
-      </div>
-
-      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
-
-      <div class="menu-cta" data-aos="fade-up">
-        <a href="tel:020 7524 3555" class="btn-primary"><i class="fa fa-phone"></i> Call to Order</a>
-        <a href="https://wa.me/02075243555" class="btn-ghost" target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i> Order via WhatsApp</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Reviews Section -->
-  <section class="reviews-section" id="reviews">
-    <div class="container">
-
-      <div class="reviews-header" data-aos="fade-up">
-        <span class="section-tag">Guest Reviews</span>
-        <h2 class="section-title">What Our Guests Say</h2>
-        <div class="section-divider"></div>
-        <div class="reviews-overall">
-          <span class="stars rating-stars">★★★★★</span>
-          <span class="rating-val">4.8</span>
-          <span class="rating-count">· 90 Google Reviews</span>
-        </div>
-      </div>
-
-      <div class="reviews-card-grid">
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="review-card-stars">★★★★★</div>
-          <p class="review-card-text">
-            "When I tell you I've been looking for a proper authentic Jamaican food where the food doesn't taste like 3days ago. Chillin876 got that on lock foods always fresh, amazing staff al"
-          </p>
-          <div class="review-card-footer">
-            <div class="reviewer-avatar">M</div>
-            <div class="reviewer-info">
-              <span class="reviewer-name">Mahrs Music</span>
-              <span class="reviewer-source"><i class="fa fa-google"></i> Google Review</span>
-            </div>
+            <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">Slow-braised oxtail in a rich, deeply spiced gravy with tender butter beans, served with fluffy white rice and peas.</p>
           </div>
         </div>
 
-        <div class="review-card review-card-featured" data-aos="fade-up" data-aos-delay="200">
-          <div class="review-card-stars">★★★★★</div>
-          <p class="review-card-text">
-            "Had the most delicious meal at Chillin 876! The food is incredible, delicious flavours, fresh ingredients and tastes like a home cooked meal!! Very reasonably price, the portions"
-          </p>
-          <div class="review-card-footer">
-            <div class="reviewer-avatar">R</div>
-            <div class="reviewer-info">
-              <span class="reviewer-name">Rachel Pugh</span>
-              <span class="reviewer-source"><i class="fa fa-google"></i> Google Review</span>
+        <div data-aos="fade-up" data-aos-delay="80" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
+          <div style="height:190px; background:linear-gradient(135deg,#1a5276,#2980b9); display:flex; align-items:center; justify-content:center; font-size:4rem;">🐟</div>
+          <div style="padding:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+              <h4 style="margin:0; font-size:1.1rem; font-weight:700;">Jerk Salmon</h4>
+              <span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£17</span>
             </div>
+            <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">Fresh salmon fillet rubbed in traditional jerk seasoning, grilled and served alongside coconut rice, plantain, and a fresh pineapple salsa.</p>
           </div>
         </div>
 
-        <div class="review-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="review-card-stars">★★★★★</div>
-          <p class="review-card-text">
-            "Food was hot and fresh, nice person helping us and waited no more than 5 minutes for the food."
-          </p>
-          <div class="review-card-footer">
-            <div class="reviewer-avatar">A</div>
-            <div class="reviewer-info">
-              <span class="reviewer-name">Mr Adam</span>
-              <span class="reviewer-source"><i class="fa fa-google"></i> Google Review</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="reviews-cta" data-aos="fade-up">
-        <a href="https://maps.google.com/?cid=17156970084897610214" target="_blank" rel="noopener" class="btn-ghost">
-          <i class="fa fa-google"></i> Read All Reviews on Google
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Visit Section -->
-  <section class="visit-section" id="visit">
-    <div class="container">
-
-      <div class="visit-header" data-aos="fade-up">
-        <span class="section-tag">Find Us</span>
-        <h2 class="section-title">Come Visit Us</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="visit-grid">
-
-        <!-- Info Column -->
-        <div class="visit-info-col" data-aos="fade-right">
-
-          <div class="visit-info-card">
-            <div class="visit-info-block">
-              <div class="visit-info-icon"><i class="fa fa-map-marker"></i></div>
-              <div class="visit-info-text">
-                <h4>Address</h4>
-                <p>221 London Rd, Mitcham CR4 2JD, UK</p>
-                <a href="https://maps.google.com/?cid=17156970084897610214" target="_blank" rel="noopener" class="visit-map-link">
-                  <i class="fa fa-location-arrow"></i> Get Directions on Google Maps
-                </a>
-              </div>
-            </div>
-
-            <div class="visit-info-block">
-              <div class="visit
+        <div data-aos="fade-up" data-aos-delay="160" style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.07);">
+          <div style="height:190px; background:linear-gradient(135deg,#7d6608,#b7950b); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍛</div>
+          <div style="padding:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+              <h4 style="margin:0; font-
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
 AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
