@@ -105,7 +105,7 @@ h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.2}
 .proto-banner a{color:var(--c-accent-lt);text-decoration:underline}
 
 /* ── OPEN BADGE ── */
-#openBadge{position:fixed;bottom:5.5rem;right:1.5rem;z-index:900;background:var(--c-accent);color:var(--c-white);border-radius:50px;padding:.55rem 1.1rem;font-size:.78rem;font-weight:var(--fw-semi);letter-spacing:.04em;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:.4rem;animation:badgePop .4s ease}
+#openBadge{display:inline-flex;align-items:center;gap:.4rem;background:var(--c-accent);color:var(--c-white);border-radius:50px;padding:.35rem .9rem;font-size:.78rem;font-weight:var(--fw-semi);letter-spacing:.04em}
 #openBadge::before{content:'';width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block;animation:blink 1.5s ease infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 @keyframes badgePop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
@@ -122,10 +122,8 @@ h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.2}
 
 /* ── FEATURES ── */
 .features-section{padding:clamp(4rem,8vw,7rem) 0;background:var(--c-white)}
-.
   </style>
 </head>
-<body>
 <body>
 
   <!-- Proto Banner -->
@@ -263,7 +261,30 @@ h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.2}
           <div style="height:190px; background:linear-gradient(135deg,#c8a26b,#e2c07a); display:flex; align-items:center; justify-content:center; font-size:4rem;">🥟</div>
           <div style="padding:24px;">
             <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-              <h4 style="margin:0; font-size:1.1rem; font-weight:700;">Festival &amp; Ackee Bites</h4>
+              <h4 style="margin:0;font-size:1.1rem;font-weight:700;">Curry Goat</h4>
+              <span style="font-weight:700;font-size:1.05rem;color:#c8763a;">£15</span>
+            </div>
+            <p style="margin:0;opacity:.7;font-size:.9rem;line-height:1.6;">Tender goat slow-cooked in a rich, aromatic Caribbean curry, served with fluffy basmati rice.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desserts -->
+      <p class="section-label" style="margin-bottom:24px;" data-aos="fade-up">Desserts</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-bottom:56px;">
+        <div data-aos="fade-up" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.07);">
+          <div style="height:190px;background:linear-gradient(135deg,#3a1a08,#6a3a10);display:flex;align-items:center;justify-content:center;font-size:4rem;">🍰</div>
+          <div style="padding:24px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;"><h4 style="margin:0;font-size:1.1rem;font-weight:700;">Rum Cake</h4><span style="font-weight:700;font-size:1.05rem;color:#c8763a;">£6</span></div>
+          <p style="margin:0;opacity:.7;font-size:.9rem;line-height:1.6;">Moist Caribbean rum cake soaked in aged rum syrup, served warm with vanilla ice cream.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="80" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.07);">
+          <div style="height:190px;background:linear-gradient(135deg,#1a3a08,#3a6a10);display:flex;align-items:center;justify-content:center;font-size:4rem;">🥥</div>
+          <div style="padding:24px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;"><h4 style="margin:0;font-size:1.1rem;font-weight:700;">Coconut Bread Pudding</h4><span style="font-weight:700;font-size:1.05rem;color:#c8763a;">£5</span></div>
+          <p style="margin:0;opacity:.7;font-size:.9rem;line-height:1.6;">Warm bread pudding with coconut milk and cinnamon, drizzled with caramel sauce.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>size:1.1rem; font-weight:700;">Festival &amp; Ackee Bites</h4>
               <span style="font-weight:700; font-size:1.05rem; color:#c8763a;">£7</span>
             </div>
             <p style="margin:0; opacity:.7; font-size:.9rem; line-height:1.6;">Golden fried festival dumplings paired with a creamy ackee and saltfish filling, topped with a scotch bonnet aioli.</p>
@@ -325,9 +346,40 @@ h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.2}
           <div style="padding:24px;">
             <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
               <h4 style="margin:0; font-
+
+  <section id="visit" style="background:var(--c-surface);padding:clamp(4rem,8vw,6rem) 0;">
+    <div class="container">
+      <div style="text-align:center;max-width:640px;margin:0 auto 3rem;" data-aos="fade-up">
+        <p class="section-label">Find Us</p>
+        <h2 class="section-title">Visit Chillin 876</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" data-aos="fade-up">
+        <div>
+          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1.25rem;color:var(--c-primary-dk);">Opening Hours</h3>
+          <div style="font-size:.9rem;"><div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--c-accent-lt)"><span>Monday</span><span style="color:#ef4444">Closed</span></div>
+<div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--c-accent-lt)"><span>Tuesday – Thursday</span><span>11:00 AM – 8:00 PM</span></div>
+<div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--c-accent-lt)"><span>Friday – Saturday</span><span>11:00 AM – 10:00 PM</span></div>
+<div style="display:flex;justify-content:space-between;padding:.5rem 0"><span>Sunday</span><span style="color:#ef4444">Closed</span></div></div>
+          <a href="tel:020 7524 3555" class="btn btn-primary" style="margin-top:1.5rem;display:inline-flex;"><i class="fa fa-phone"></i> 020 7524 3555</a>
+        </div>
+        <div style="background:var(--c-white);border-radius:var(--radius-lg);padding:2rem;box-shadow:var(--shadow-md);">
+          <h3 style="font-size:1.1rem;font-weight:600;margin-bottom:.75rem;color:var(--c-accent);">📍 South London, UK</h3>
+          <p style="opacity:.75;line-height:1.8;font-size:.9rem;margin-bottom:1rem;">Authentic Jamaican flavours in the heart of Mitcham. Walk in or call ahead to reserve.</p>
+          <a href="https://maps.google.com/?q=Chillin+876+Mitcham+London" target="_blank" style="color:var(--c-accent);font-size:.85rem;text-decoration:underline;">View on Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--c-primary);padding:clamp(3rem,5vw,4rem) 0;text-align:center;">
+    <div class="container">
+      <h2 style="font-family:var(--ff-head);font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--c-white);margin-bottom:1rem;">Ready for a Taste of Jamaica?</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:2rem;">Fresh every day. Warm every visit. Open Tuesday to Saturday.</p>
+      <a href="tel:020 7524 3555" class="btn btn-accent" style="display:inline-flex;align-items:center;gap:.5rem;font-size:.95rem;padding:1rem 2.5rem;"><i class="fa fa-phone"></i> Reserve Now</a>
+    </div>
+  </section>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
+AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
 
 // Sticky nav on scroll past hero
 (function(){
@@ -389,5 +441,28 @@ document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(bt
 });
 </script>
 <style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+<script>
+// AOS fallback: force all elements visible after 1.2s
+(function(){
+  var t=setTimeout(function(){
+    document.querySelectorAll('[data-aos]').forEach(function(el){
+      el.classList.add('aos-animate');
+      el.style.opacity='1';
+      el.style.transform='none';
+      el.style.transitionDelay='0s';
+    });
+  },1200);
+})();
+
+
+// Menu tab navigation
+document.querySelectorAll('[data-tab],[data-filter],[data-category],.menu-tab,.tab-btn,.tab-button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var target = this.dataset.tab || this.dataset.filter || this.dataset.category || this.textContent.trim().toLowerCase();
+    var section = document.querySelector('#'+target) || document.querySelector('.menu-section-'+target) || document.querySelector('[data-section="'+target+'"]');
+    if(section){ section.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+</script>
 </body>
 </html>
