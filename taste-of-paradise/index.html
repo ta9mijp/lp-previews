@@ -4,446 +4,663 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Taste of Paradise — South London</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{
-      --primary:   #000000;
-      --accent:    #ffffff;
-      /* ヒーロー用（暗い背景向け） */
-      --hero-text:  #f5f2ec;
-      --hero-muted: rgba(245,242,236,0.65);
-      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
-      --c-text:   #1a1a1a;
-      --c-muted:  #6b6b6b;
-      --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #f5f5f5;
-    }
-    html{scroll-behavior:smooth;}
-    body{font-family:'Inter',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{padding-top:52px;}
+  @media(min-width:700px){.float-cta{display:none!important;}}
+  :root {
+  --primary: #1a1a18;
+  --accent: #c9a96e;
+  --accent-light: #e8d5b0;
+  --accent-dark: #a07840;
+  --bg: #f5f0e8;
+  --bg-dark: #111110;
+  --text: #1a1a18;
+  --text-light: #f5f0e8;
+  --muted: #7a7060;
+  --border: #d4c9b0;
+  --surface: #ffffff;
+  --surface-dark: #1e1e1b;
+  --radius: 2px;
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
-    /* PROTO BANNER */
-    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
-    .proto-banner strong{font-weight:700;}
-    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap');
 
-    /* ── HERO（暗い背景 → 白文字） ── */
-    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
-    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
-    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
-    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
-    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
-    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
-    .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
-    .hero-tagline span{color:var(--accent);}
-    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
-    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
-    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
-    .hero-nav a:hover{color:#fff;}
-    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
-    .btn-reserve:hover{opacity:0.85;}
-    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
-    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
-    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
-    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:300;color:#fff;}
-    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    /* ── SOCIAL BAR ── */
-    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
-    .social-icons{display:flex;gap:1.4rem;}
-    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
-    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
-    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
-    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
-    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
-    .call-link:hover{border-color:var(--accent);color:var(--accent);}
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
-    /* ── SHARED CONTENT STYLES ── */
-    .section-wrap{max-width:1100px;margin:0 auto;}
-    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+body {
+  font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-    /* ── ABOUT（白背景 → 暗い文字） ── */
-    .about{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.about{padding:4rem 2rem;}}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
-    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
-    .about-values{display:flex;flex-direction:column;}
-    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
-    .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
-    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
-    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
-    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
-    .reviews{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
-    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
-    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
-    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
-    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
-    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition), opacity var(--transition);
+}
 
-    /* ── MENU（白背景 → 暗い文字） ── */
-    .menu{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.menu{padding:4rem 2rem;}}
-    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
-    .menu-note{font-size:0.78rem;color:var(--c-muted);}
-    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
-    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
-    .menu-category:last-child{border-bottom:none;}
-    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
-    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
-    .menu-item:last-child{border-bottom:none;}
-    .menu-item-left{flex:1;}
-    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
-    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
-    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
+a:hover {
+  color: var(--accent);
+}
 
-    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
-    .visit{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.visit{padding:4rem 2rem;}}
-    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
-    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
-    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
-    .visit-block a:hover{color:var(--accent);}
-    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
-    .hour-row:last-child{border-bottom:none;}
-    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
-    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
-    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
+/* ─── PROTO BANNER ─── */
 
-    /* FOOTER */
-    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
-    @media(min-width:700px){footer{padding-bottom:2rem;}}
+.proto-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: var(--accent);
+  color: var(--primary);
+  text-align: center;
+  padding: 10px 24px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
 
-    /* ── STICKY HEADER ── */
-    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
-    .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Playfair Display',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
-    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
-    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
-    .sticky-open.closed{background:#fce4ec;color:#c62828;}
-    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
-    .sticky-cta:hover{opacity:0.85;}
+.proto-banner span {
+  display: inline-block;
+}
 
-    /* ── OPEN NOW BADGE (hero) ── */
-    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
-    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
-    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
-    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+.proto-banner a {
+  color: var(--primary);
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: 1px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  opacity: 0.85;
+  transition: opacity var(--transition);
+}
 
-    /* ── COUNTER ── */
-    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
+.proto-banner a:hover {
+  opacity: 1;
+  color: var(--primary);
+}
 
-    /* ── PARALLAX ── */
-    .hero-bg{will-change:transform;}
+.proto-banner-close {
+  position: absolute;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--primary);
+  opacity: 0.6;
+  transition: opacity var(--transition);
+  line-height: 1;
+  padding: 0;
+}
 
-    /* ── IMAGE ZOOM ── */
-    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
-    .mockup:hover img{transform:scale(1.05);}
+.proto-banner-close:hover {
+  opacity: 1;
+}
 
-    /* ── RIPPLE ── */
-    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
-    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
-    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
+/* ─── STICKY NAV ─── */
 
-    /* ── FLOAT CALL ── */
-    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
-    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
-    @media(min-width:700px){.float-call{display:none;}}
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 990;
+  background-color: rgba(245, 240, 232, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity;
+}
+
+.sticky-nav.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sticky-nav.banner-offset {
+  top: 40px;
+}
+
+.sticky-nav__logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.sticky-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.sticky-nav__links a {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text);
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.sticky-nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: width var(--transition);
+}
+
+.sticky-nav__links a:hover {
+  color: var(--text);
+}
+
+.sticky-nav__links a:hover::after {
+  width: 100%;
+}
+
+.sticky-nav__cta {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background-color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 9px 22px;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.sticky-nav__cta:hover {
+  background-color: transparent;
+  color: var(--accent);
+}
+
+/* ─── HERO ─── */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  background-color: var(--bg-dark);
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('hero-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform: scale(1.05);
+  animation: heroZoom 10s ease-out forwards;
+  will-change: transform;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1.0); }
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 13, 10, 0.75) 0%,
+    rgba(15, 13, 10, 0.3) 50%,
+    rgba(15, 13, 10, 0.1) 100%
+  );
+  z-index: 1;
+}
+
+.hero__overlay-side {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(15, 13, 10, 0.4) 0%,
+    transparent 60%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 80px 96px;
+  max-width: 800px;
+}
+
+.hero-eyebrow {
+  display: block;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.3s ease-out forwards;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--text-light);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.5s ease-out forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent-light);
+}
+
+.hero-sub {
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: rgba(245, 240, 232, 0.72);
+  max-width: 420px;
+  line-height: 1.8;
+  margin-bottom: 44px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.7s ease-out forwards;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.9s ease-out forwards;
+}
+
+.hero-cta__primary {
+  display: inline-block;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background-color: var(--accent);
+  padding: 16px 36px;
+  border: 1px solid var(--accent);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.hero-cta__primary:hover {
+  background-color: transparent;
+  color: var(--accent);
+}
+
+.hero-cta__secondary {
+  display: inline-block;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.8);
+  border-bottom: 1px solid rgba(245, 240, 232, 0.4);
+  padding-bottom: 3px;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.hero-cta__secondary:hover {
+  color: var(--accent-light);
+  border-color: var(--accent-light);
+}
+
+.hero__scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: fadeIn 1s 1.4s ease-out forwards;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.6), transparent);
+  animation: scrollPulse 2s 2s ease-in-out infinite;
+}
+
+.hero__scroll-text {
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.5);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.5; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); transform-origin: top; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── OPEN BADGE ─── */
+
+.open-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius
   </style>
 </head>
 <body>
+<body>
 
-  <!-- STICKY HEADER -->
-  <header class="sticky-header" id="stickyHeader">
-    <div style="display:flex;align-items:center;">
-      <span class="sticky-logo">Taste of Paradise</span>
-      <span class="sticky-open" id="stickyBadge"></span>
-    </div>
-    <a href="tel:020 3509 8964" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
-  </header>
-
+  <!-- Proto Banner -->
   <div class="proto-banner">
-    <p><strong>🎨 Free demo for Taste of Paradise</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    🎨 Free demo for Taste of Paradise — All images, text &amp; colours are placeholders and fully customisable.
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-left">
-      <div>
-        <div class="logo">Taste of Paradise</div>
-        <div class="hero-badges">
-          <span class="badge">Restaurant</span>
-          <span class="badge">South London</span>
-          <span class="badge badge-accent"></span>
-        </div>
+  <!-- Sticky Nav -->
+  <nav class="sticky-nav" id="stickyNav">
+    <div class="nav-logo">Taste of Paradise</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit Us</a></li>
+    </ul>
+    <a class="nav-reserve" href="tel:020 3509 8964">📞 Reserve a Table</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" style="background-image: url('images/img_0.jpg');">
+    <div class="hero-content">
+      <div class="open-badge" id="openBadge">● Checking hours…</div>
+      <h1 class="hero-title">Taste of Paradise</h1>
+      <p class="hero-sub">Where Caribbean Soul Meets South London Warmth</p>
+      <div class="rating-counter" id="ratingCounter" data-rating="4.8" data-count="55">
+        ⭐ 4.8 · <span>55</span> Google reviews
       </div>
-      <div>
-        <h1 class="hero-tagline">Where Caribbean Soul Meets South London Heart</h1>
-        <p class="hero-desc">Taste of Paradise brings the warmth, colour, and bold flavours of the Caribbean straight to South London. Every dish is crafted with fresh ingredients, generous portions, and the kind of love that makes you feel instantly at home. From the moment you walk in, the music, the aromas, and the smiling faces tell you this is somewhere truly special.</p>
-        <div class="rating-counter" id="ratingCounter" data-rating="4.8" data-count="55">⭐ 4.8 · 55 Google reviews</div>
-        <div class="open-badge" id="openBadge"></div>
+      <div class="hero-cta">
+        <a href="tel:020 3509 8964" class="btn-primary">📞 Call to Reserve</a>
+        <a href="https://wa.me/02035098964" class="btn-secondary">💬 WhatsApp Us</a>
       </div>
-      <nav class="hero-nav">
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#visit">Visit</a>
-        <a href="tel:020 3509 8964" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
-      </nav>
-    </div>
-    <div class="hero-right">
-      <div class="mockup">
-        <img src="images/img_1.jpg" alt="Taste of Paradise"/>
-        <div class="mockup-overlay">
-          <div class="m-name">Taste of Paradise</div>
-          <div class="m-sub">Restaurant · South London</div>
-        </div>
+      <div class="service-tags">
+        <span>🍽 Dine-In</span>
+        <span>🥡 Takeaway</span>
+        <span>🚴 Delivery</span>
       </div>
     </div>
   </section>
 
+  <!-- Social Bar -->
   <div class="social-bar">
-    <span>Connect</span>
-    <div class="social-icons">
-      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/02035098964" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://maps.google.com/?cid=15866910803748134489" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
-    </div>
-    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Delivery</span></div>
-    <a href="tel:020 3509 8964" class="call-link"><i class="fa fa-phone"></i> 020 3509 8964</a>
+    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+    <a href="https://wa.me/02035098964" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+    <a href="https://maps.google.com/?cid=15866910803748134489" target="_blank" rel="noopener" aria-label="Google Maps">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C8.007 0 4.4 1.7 1.85 4.41L7.1 9.66C8.3 8.46 9.96 7.71 11.79 7.71c3.37 0 6.1 2.73 6.1 6.1 0 1.83-.76 3.49-1.97 4.68l5.25 5.25C23.4 21.08 25 17.72 25 14c0-7.73-6.27-14-14-14zm-1.79 16.29c-.84-.19-1.61-.6-2.23-1.17l-5.25 5.25C4.74 22.3 7.23 23.5 10 23.86V16.3c-.59-.01-.59-.01-.59-.01l.8-.8zm1.79.81c.28 0 .56-.02.83-.06v7.57C11.55 24.53 10.54 24.5 9.54 24.36v-7.57c.78.19 1.6.31 2.46.31z"/>
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+    </a>
   </div>
 
-  <section class="about" id="about">
-    <div class="section-wrap">
-      <div class="about-grid">
-        <div data-aos="fade-right">
-          <p class="section-label">Our Philosophy</p>
-          <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Taste of Paradise brings the warmth, colour, and bold flavours of the Caribbean straight to South London. Every dish is crafted with fresh ingredients, generous portions, and the kind of love that makes you feel instantly at home. From the moment you walk in, the music, the aromas, and the smiling faces tell you this is somewhere truly special.</p>
-        </div>
-        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Fresh Every Day</h3><p>We source the finest ingredients daily to ensure every plate bursts with authentic Caribbean flavour.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Genuine Hospitality</h3><p>We believe great food tastes even better when you're made to feel like family from the moment you arrive.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Culture on a Plate</h3><p>Every recipe carries the spirit of the Caribbean — its heritage, its vibrancy, and its infectious joy for life.</p></div></div>
-        </div>
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-image" data-aos="fade-right">
+        <img src="images/img_1.jpg" alt="Inside Taste of Paradise restaurant" loading="lazy">
+      </div>
+      <div class="about-text" data-aos="fade-left">
+        <span class="section-label">Our Story</span>
+        <h2 data-aos="fade-up">A Taste of the Islands, Right Here in South London</h2>
+        <p>Taste of Paradise brings the vibrant heart of the Caribbean to South London, serving fresh, generous plates bursting with authentic island flavour. From the moment you walk through our doors, you are greeted like family — wrapped in good food, great music, and a warmth that keeps our guests coming back.</p>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="value-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="value-icon">🌿</div>
+        <h3>Freshness First</h3>
+        <p>Every dish is crafted from the freshest ingredients, honouring the bold, natural flavours of the Caribbean islands.</p>
+      </div>
+      <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="value-icon">🍛</div>
+        <h3>Generous by Nature</h3>
+        <p>We believe a full plate and a full heart go hand in hand, so we never skimp on portions or passion.</p>
+      </div>
+      <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="value-icon">🤝</div>
+        <h3>Community at Heart</h3>
+        <p>Our restaurant is a space where every guest feels seen, welcomed, and celebrated from the very first visit.</p>
       </div>
     </div>
   </section>
 
-  <section class="reviews">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">What guests say</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 4.8 · 55 Google reviews</h2>
-      <div class="reviews-grid">
-        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Never have I ever been into a carribean restaurant and felt So WELCOMED! This shop is a 10/10. Definitely the best all round 👌🏾"</p><span class="review-author">— Princess P · 7 months ago</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Beautiful food best Caribbean I’ve tasked in a long time, good portions fresh tasty food restaurant lovely atmosphere great staff and even great music played to even enjoy the love of Caribbean food more. Compliments to the chef highly recommended"</p><span class="review-author">— Melissa Whitrod · 10 months ago</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"The best Caribbean food in Peckham! Quality and consistent food every time!! Absolutely delicious, tasty and filling!"</p><span class="review-author">— Gloria · 4 months ago</span></div></div>
+  <!-- Reviews Section -->
+  <section class="reviews-section" id="reviews">
+    <span class="section-label" data-aos="fade-up">What People Are Saying</span>
+    <h2 data-aos="fade-up">⭐ 4.8 on Google · 55 Reviews</h2>
+    <div class="reviews-grid">
+      <div class="review-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p>"Never have I ever been into a carribean restaurant and felt So WELCOMED! This shop is a 10/10. Definitely the best all round 👌🏾"</p>
+        <div class="review-author">— Princess P</div>
       </div>
+      <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p>"Beautiful food best Caribbean I've tasked in a long time, good portions fresh tasty food restaurant lovely atmosphere great staff and even great music played to even enjoy the love of Caribbean food m"</p>
+        <div class="review-author">— Melissa Whitrod</div>
+      </div>
+      <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p>"The best Caribbean food in Peckham! Quality and consistent food every time!! Absolutely delicious, tasty and filling!"</p>
+        <div class="review-author">— Gloria</div>
+      </div>
+    </div>
+    <div class="reviews-cta" data-aos="fade-up">
+      <a href="https://maps.google.com/?cid=15866910803748134489" target="_blank" rel="noopener" class="btn-outline">Read All Reviews on Google →</a>
     </div>
   </section>
 
-  <section class="menu" id="menu">
-    <div class="section-wrap">
-      <div class="menu-header" data-aos="fade-up">
-        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
-        <span class="menu-note">Seasonal · Prices incl. VAT</span>
-      </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Saltfish Fritters</div><div class="item-desc">Crispy golden fritters packed with seasoned saltfish, scotch bonnet and spring onion, served with a tangy mango dipping sauce.</div></div><span class="item-price">£7</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jerk Chicken Wings</div><div class="item-desc">Tender wings marinated in our signature jerk blend, slow-grilled and served with a cooling coconut-lime yoghurt.</div></div><span class="item-price">£8</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Ackee & Plantain Bites</div><div class="item-desc">Lightly fried sweet plantain rounds topped with creamy seasoned ackee and a hint of fresh thyme.</div></div><span class="item-price">£6</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Slow-Cooked Oxtail</div><div class="item-desc">Melt-off-the-bone oxtail braised in a rich, fragrant gravy with butter beans, served alongside rice and peas and steamed greens.</div></div><span class="item-price">£18</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jerk Chicken Platter</div><div class="item-desc">Half chicken marinated for 24 hours in traditional jerk spices, chargrilled to perfection and served with festival dumplings and coleslaw.</div></div><span class="item-price">£15</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Curry Goat</div><div class="item-desc">Tender goat slow-cooked in aromatic Caribbean curry sauce with potato, served with fluffy white rice and soft roti.</div></div><span class="item-price">£17</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Rum & Coconut Bread Pudding</div><div class="item-desc">A warming, indulgent pudding made with coconut milk and a generous splash of Caribbean rum, finished with a vanilla toffee drizzle.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Fried Plantain with Vanilla Ice Cream</div><div class="item-desc">Caramelised ripe plantain served warm alongside a generous scoop of velvety vanilla ice cream and a dusting of cinnamon.</div></div><span class="item-price">£5</span></div></div></div>
-      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
-    </div>
-  </section>
+  <!-- Menu Section -->
+  <section class="menu-section" id="menu">
+    <span class="section-label" data-aos="fade-up">What We Serve</span>
+    <h2 data-aos="fade-up">Our Menu</h2>
 
-  <section class="visit" id="visit">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">Find Us</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
-      <div class="visit-grid">
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
-          <p class="vb-label">Address</p>
-          <p>207 Rye Ln, London SE15 4TP, UK</p>
-          <a href="https://maps.google.com/?cid=15866910803748134489" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
+    <div class="menu-category" data-aos="fade-up">
+      <h3 class="menu-category-title">🥗 Starters</h3>
+      <div class="menu-list">
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="menu-item-info">
+            <h4>Saltfish Fritters</h4>
+            <p>Golden, crispy fritters packed with flaked saltfish, scotch bonnet and fresh herbs, served with a tangy mango dipping sauce.</p>
+          </div>
+          <div class="menu-price">£7</div>
         </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
-          <p class="vb-label">Opening Hours</p>
-          <div class="hour-row"><span>Mon</span><span>11:00 AM – 8:00 PM</span></div>
-<div class="hour-row"><span>Tue</span><span>11:00 AM – 8:00 PM</span></div>
-<div class="hour-row"><span>Wed</span><span>8:00 AM – 8:00 PM</span></div>
-<div class="hour-row"><span>Thu</span><span>11:00 AM – 8:00 PM</span></div>
-<div class="hour-row"><span>Fri</span><span>8:00 AM – 10:00 PM</span></div>
-<div class="hour-row"><span>Sat</span><span>8:00 AM – 10:00 PM</span></div>
-<div class="hour-row"><span>Sun</span><span>Closed</span></div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="80">
+          <div class="menu-item-info">
+            <h4>Jerk Chicken Wings</h4>
+            <p>Smoky, fire-kissed wings marinated overnight in a classic Jamaican jerk blend, served with a cooling coconut-lime dip.</p>
+          </div>
+          <div class="menu-price">£8</div>
         </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
-          <p class="vb-label">Reservations</p>
-          <a href="tel:020 3509 8964"><i class="fa fa-phone" style="font-size:0.75rem"></i> 020 3509 8964</a>
-          <a href="https://wa.me/02035098964" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="160">
+          <div class="menu-item-info">
+            <h4>Pumpkin Soup</h4>
+            <p>A velvety, slow-simmered Caribbean pumpkin soup infused with thyme, allspice and a touch of coconut cream.</p>
+          </div>
+          <div class="menu-price">£6</div>
         </div>
       </div>
-      <a href="https://maps.google.com/?cid=15866910803748134489" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
     </div>
-  </section>
 
-  <footer>
-    <span>© 2025 Taste of Paradise</span>
-    <span>207 Rye Ln, London SE15 4TP, UK</span>
-  </footer>
+    <div class="menu-category" data-aos="fade-up">
+      <h3 class="menu-category-title">🍽 Mains</h3>
+      <div class="menu-list">
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="menu-item-info">
+            <h4>Oxtail Stew</h4>
+            <p>Slow-braised oxtail in a rich, deeply spiced gravy with butter beans,
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:700,once:true,offset:60});
 
-  <a href="tel:020 3509 8964" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
+// Sticky nav
+const stickyNav = document.getElementById('stickyNav');
+const heroEl = document.querySelector('.hero,[class*=hero]');
+if(stickyNav && heroEl){
+  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
+}
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-  // ── AOS（スクロールアニメーション）──────────────────
-  AOS.init({ duration: 750, once: true, offset: 80, easing: 'ease-out-cubic' });
+// Open/Closed badge
+const HOURS={"Monday": "11:00 AM – 8:00 PM", "Tuesday": "11:00 AM – 8:00 PM", "Wednesday": "8:00 AM – 8:00 PM", "Thursday": "11:00 AM – 8:00 PM", "Friday": "8:00 AM – 10:00 PM", "Saturday": "8:00 AM – 10:00 PM", "Sunday": "Closed"};
+(function(){
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  if(!m){badge.textContent='See hours below';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const isOpen=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=isOpen?'● Open now':'● Closed';
+  badge.style.color=isOpen?'#22c55e':'#ef4444';
+})();
 
-  // ── Parallax（ヒーロー背景）──────────────────────────
-  const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      heroBg.style.transform = `translateY(${y * 0.38}px)`;
-    }, { passive: true });
-  }
-
-  // ── Sticky Header ────────────────────────────────────
-  const stickyHeader = document.getElementById('stickyHeader');
-  const hero = document.querySelector('.hero');
-  if (stickyHeader && hero) {
-    const observer = new IntersectionObserver(
-      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(hero);
-  }
-
-  // ── 営業中バッジ ──────────────────────────────────────
-  const HOURS = {"Monday": "11:00 AM – 8:00 PM", "Tuesday": "11:00 AM – 8:00 PM", "Wednesday": "8:00 AM – 8:00 PM", "Thursday": "11:00 AM – 8:00 PM", "Friday": "8:00 AM – 10:00 PM", "Saturday": "8:00 AM – 10:00 PM", "Sunday": "Closed"};
-  function computeOpenStatus() {
-    const now  = new Date();
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const day  = days[now.getDay()];
-    const raw  = HOURS[day] || '';
-    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
-    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-    if (!m) return { open: false, text: raw };
-    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
-    const openMin  = toMin(m[1], m[2], m[3]);
-    const closeMin = toMin(m[4], m[5], m[6]);
-    const nowMin   = now.getHours() * 60 + now.getMinutes();
-    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
-    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
-    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
-    return {
-      open: isOpen,
-      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
+// Rating counter
+const rc=document.getElementById('ratingCounter');
+if(rc){
+  const rating=4.8,cnt=55;
+  new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    rc.textContent='';
+    const animate=(from,to,dec,cb)=>{
+      let start=null;
+      (function step(ts){
+        if(!start)start=ts;
+        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
+        if(p<1)requestAnimationFrame(step);
+      })(performance.now());
     };
-  }
-  function renderBadge(el, status) {
-    if (!el) return;
-    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
-    el.innerHTML = `<span class="dot"></span> ${status.text}`;
-  }
-  const status = computeOpenStatus();
-  renderBadge(document.getElementById('openBadge'), status);
-  const stickyBadge = document.getElementById('stickyBadge');
-  if (stickyBadge) {
-    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
-    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
-  }
+    const rs=document.createElement('span'),cs=document.createElement('span');
+    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
+    animate(0,rating,true,v=>rs.textContent=v);
+    animate(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.5}).observe(rc);
+}
 
-  // ── カウンターアニメーション ──────────────────────────
-  function animateCounter(el, target, isDecimal) {
-    let start = 0, duration = 1800, startTime = null;
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const val = start + (target - start) * ease;
-      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  const ratingEl = document.getElementById('ratingCounter');
-  if (ratingEl && 4.8) {
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        io.disconnect();
-        const rating = 4.8, count = 55;
-        const rSpan = document.createElement('span');
-        const cSpan = document.createElement('span');
-        ratingEl.innerHTML = '';
-        ratingEl.appendChild(document.createTextNode('⭐ '));
-        rSpan.textContent = '0.0';
-        ratingEl.appendChild(rSpan);
-        ratingEl.appendChild(document.createTextNode(' · '));
-        cSpan.textContent = '0';
-        ratingEl.appendChild(cSpan);
-        ratingEl.appendChild(document.createTextNode(' Google reviews'));
-        animateCounter(rSpan, rating, true);
-        animateCounter(cSpan, count, false);
-      }
-    }, { threshold: 0.5 });
-    io.observe(ratingEl);
-  }
-
-  // ── リップルエフェクト ────────────────────────────────
-  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const r = document.createElement('span');
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      r.className = 'ripple';
-      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
-      this.appendChild(r);
-      setTimeout(() => r.remove(), 700);
-    });
+// Ripple
+document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span');
+    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
+      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
+      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
+    this.style.position='relative';this.style.overflow='hidden';
+    this.append(r);setTimeout(()=>r.remove(),700);
   });
-
-  // ── タイプライター（タグライン）────────────────────────
-  const tagline = document.querySelector('.hero-tagline');
-  if (tagline) {
-    const full = tagline.innerHTML;
-    tagline.innerHTML = '';
-    tagline.style.visibility = 'visible';
-    let i = 0;
-    const chars = [...full];
-    let inTag = false;
-    function typeNext() {
-      if (i >= chars.length) return;
-      if (chars[i] === '<') inTag = true;
-      if (!inTag) {
-        tagline.innerHTML += chars[i];
-      } else {
-        let tag = '';
-        while (i < chars.length && (inTag || chars[i] !== '>')) {
-          tag += chars[i];
-          if (chars[i] === '>') inTag = false;
-          i++;
-        }
-        tagline.innerHTML += tag;
-        setTimeout(typeNext, 18);
-        return;
-      }
-      if (chars[i] === '>') inTag = false;
-      i++;
-      setTimeout(typeNext, 28);
-    }
-    setTimeout(typeNext, 600);
-  }
-  </script>
-
+});
+</script>
+<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
