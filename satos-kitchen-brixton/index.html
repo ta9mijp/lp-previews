@@ -10,669 +10,353 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
   @media(min-width:700px){.float-cta{display:none!important;}}
-  :root {
-  --primary: #1a1a1a;
-  --accent: #c9a84c;
-  --accent-light: #e8c97a;
-  --accent-dark: #a07830;
-  --bg: #f5f0e8;
-  --bg-dark: #111111;
-  --text: #2c2c2c;
-  --muted: #7a7a7a;
-  --border: #d4c4a0;
-  --white: #ffffff;
-  --overlay: rgba(10, 8, 5, 0.62);
-  --font-display: 'Montserrat', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
-  --font-body: 'Montserrat', 'Hiragino Kaku Gothic ProN', sans-serif;
-  --radius: 2px;
-  --radius-pill: 999px;
-  --transition: 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --shadow-soft: 0 4px 32px rgba(0,0,0,0.10);
-  --shadow-card: 0 8px 40px rgba(0,0,0,0.13);
-  --shadow-gold: 0 2px 24px rgba(201,168,76,0.18);
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&display=swap');
+
+:root {
+--c-bg:#0a0a0a;
+--c-surface:#111111;
+--c-card:#1a1a1a;
+--c-border:#2a2a2a;
+--c-gold:#c9a84c;
+--c-gold-light:#e8c97a;
+--c-gold-dim:rgba(201,168,76,.15);
+--c-text:#f0ead6;
+--c-muted:#9a8f7a;
+--c-white:#ffffff;
+--c-overlay:rgba(0,0,0,.72);
+--ff-head:'Playfair Display',Georgia,serif;
+--ff-body:'Cormorant Garamond',Georgia,serif;
+--fs-xs:.75rem;
+--fs-sm:.875rem;
+--fs-base:1rem;
+--fs-md:1.125rem;
+--fs-lg:1.5rem;
+--fs-xl:2rem;
+--fs-2xl:2.75rem;
+--fs-3xl:3.5rem;
+--fs-hero:clamp(2.5rem,6vw,5rem);
+--sp-xs:.25rem;
+--sp-sm:.5rem;
+--sp-md:1rem;
+--sp-lg:1.5rem;
+--sp-xl:2rem;
+--sp-2xl:3rem;
+--sp-3xl:5rem;
+--sp-4xl:8rem;
+--radius-sm:.375rem;
+--radius-md:.75rem;
+--radius-lg:1.25rem;
+--radius-xl:2rem;
+--shadow-gold:0 0 40px rgba(201,168,76,.12);
+--shadow-card:0 8px 32px rgba(0,0,0,.6);
+--transition:.3s cubic-bezier(.4,0,.2,1);
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--c-bg);color:var(--c-text);font-family:var(--ff-body);font-weight:400;line-height:1.7;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--c-gold);text-decoration:none;transition:color var(--transition)}
+a:hover{color:var(--c-gold-light)}
+::selection{background:var(--c-gold);color:var(--c-bg)}
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+#stickyNav{position:sticky;top:0;z-index:1000;background:rgba(10,10,10,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);transition:background var(--transition)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:.875rem var(--sp-xl);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-xl)}
+.nav-logo{font-family:var(--ff-head);font-size:1.35rem;font-weight:700;color:var(--c-gold);letter-spacing:.08em;white-space:nowrap}
+.nav-links{display:flex;gap:var(--sp-xl);list-style:none}
+.nav-links a{font-family:var(--ff-body);font-size:var(--fs-sm);font-weight:500;color:var(--c-muted);letter-spacing:.12em;text-transform:uppercase;transition:color var(--transition)}
+.nav-links a:hover{color:var(--c-gold)}
+.nav-reserve{padding:.5rem 1.25rem;border:1px solid var(--c-gold);color:var(--c-gold);font-family:var(--ff-body);font-size:var(--fs-sm);letter-spacing:.1em;text-transform:uppercase;border-radius:var(--radius-sm);transition:all var(--transition)}
+.nav-reserve:hover{background:var(--c-gold);color:var(--c-bg)}
 
-body {
-  font-family: var(--font-body);
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.75;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
+.proto-banner{background:linear-gradient(90deg,var(--c-gold) 0%,#a8862e 50%,var(--c-gold) 100%);color:var(--c-bg);text-align:center;padding:var(--sp-sm) var(--sp-md);font-family:var(--ff-body);font-size:var(--fs-sm);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+.hero-section{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;position:relative;overflow:hidden}
+.hero-text-col{display:flex;flex-direction:column;justify-content:center;padding:var(--sp-4xl) var(--sp-3xl) var(--sp-4xl) clamp(var(--sp-xl),6vw,var(--sp-4xl));position:relative;z-index:2}
+.hero-text-col::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--c-bg) 0%,rgba(10,10,10,.97) 100%);z-index:-1}
+.hero-eyebrow{font-size:var(--fs-xs);font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--c-gold);margin-bottom:var(--sp-md);display:flex;align-items:center;gap:var(--sp-md)}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--c-gold)}
+.hero-heading{font-family:var(--ff-head);font-size:var(--fs-hero);font-weight:700;line-height:1.1;color:var(--c-white);margin-bottom:var(--sp-md)}
+.hero-heading em{font-style:italic;color:var(--c-gold)}
+.hero-divider{width:60px;height:2px;background:linear-gradient(90deg,var(--c-gold),transparent);margin:var(--sp-lg) 0}
+.hero-subtext{font-size:var(--fs-md);color:var(--c-muted);max-width:42ch;line-height:1.8;margin-bottom:var(--sp-2xl)}
+.hero-cta-group{display:flex;gap:var(--sp-md);flex-wrap:wrap;margin-bottom:var(--sp-2xl)}
+.btn-primary{display:inline-flex;align-items:center;gap:var(--sp-sm);padding:.875rem 2rem;background:linear-gradient(135deg,var(--c-gold) 0%,#a8862e 100%);color:var(--c-bg);font-family:var(--ff-body);font-size:var(--fs-sm);font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:var(--radius-sm);border:none;cursor:pointer;transition:all var(--transition);box-shadow:0 4px 20px rgba(201,168,76,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.45);color:var(--c-bg)}
+.btn-secondary{display:inline-flex;align-items:center;gap:var(--sp-sm);padding:.875rem 2rem;background:transparent;color:var(--c-text);font-family:var(--ff-body);font-size:var(--fs-sm);font-weight:500;letter-spacing:.12em;text-transform:uppercase;border-radius:var(--radius-sm);border:1px solid var(--c-border);cursor:pointer;transition:all var(--transition)}
+.btn-secondary:hover{border-color:var(--c-gold);color:var(--c-gold);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:var(--sp-xl)}
+.hero-stat{text-align:left}
+.hero-stat-num{font-family:var(--ff-head);font-size:var(--fs-xl);font-weight:700;color:var(--c-gold);line-height:1}
+.hero-stat-label{font-size:var(--fs-xs);color:var(--c-muted);letter-spacing:.15em;text-transform:uppercase;margin-top:var(--sp-xs)}
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color var(--transition), opacity var(--transition);
-}
+.hero-image-col{position:relative;overflow:hidden;min-height:100vh}
+.hero-image-col .hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform;transition:transform 0.1s linear}
+.hero-image-col::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.6) 0%,transparent 40%)}
+.hero-scroll-hint{position:absolute;bottom:var(--sp-xl);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:var(--sp-sm);color:var(--c-muted);font-size:var(--fs-xs);letter-spacing:.2em;text-transform:uppercase;z-index:2}
+.hero-scroll-hint span{width:1px;height:48px;background:linear-gradient(to bottom,var(--c-gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.2)}}
 
-a:hover {
-  color: var(--accent);
-}
+#openBadge{position:fixed;bottom:var(--sp-xl);right:calc(var(--sp-xl) + 80px);z-index:900;display:flex;align-items:center;gap:var(--sp-sm);padding:.5rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:999px;font-size:var(--fs-xs);color:var(--c-muted);letter-spacing:.1em;text-transform:uppercase;box-shadow:var(--shadow-card)}
+#openBadge .badge-dot{width:8px;height:8px;border-radius:50%;background:#4caf50;animation:badgePulse 2s ease-in-out infinite;flex-shrink:0}
+@keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(76,175,80,.4)}50%{box-shadow:0 0 0 6px rgba(76,175,80,0)}}
 
-ul {
-  list-style: none;
-}
-
-/* ─── PROTO BANNER ─────────────────────────────────────────── */
-
-.proto-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-  background: linear-gradient(90deg, #b8893a 0%, #c9a84c 40%, #e8c97a 60%, #c9a84c 100%);
-  color: var(--primary);
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 9px 16px;
-  box-shadow: 0 2px 12px rgba(201,168,76,0.35);
-}
-
-.proto-banner a {
-  color: var(--primary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  margin-left: 10px;
-  font-weight: 700;
-}
-
-.proto-banner a:hover {
-  opacity: 0.75;
-  color: var(--primary);
-}
-
-/* ─── STICKY NAV ────────────────────────────────────────────── */
-
-.sticky-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 990;
-  background: rgba(17, 13, 8, 0.96);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(201,168,76,0.22);
-  padding: 0 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              opacity 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  pointer-events: none;
-}
-
-.sticky-nav.is-visible {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.sticky-nav__logo {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: var(--accent);
-  text-transform: uppercase;
-}
-
-.sticky-nav__links {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.sticky-nav__links a {
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.8);
-  font-weight: 600;
-  transition: color var(--transition);
-  position: relative;
-  padding-bottom: 4px;
-}
-
-.sticky-nav__links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  transition: width var(--transition);
-}
-
-.sticky-nav__links a:hover {
-  color: var(--accent);
-}
-
-.sticky-nav__links a:hover::after {
-  width: 100%;
-}
-
-.sticky-nav__cta {
-  background: var(--accent);
-  color: var(--primary) !important;
-  font-weight: 700;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 10px 22px;
-  border-radius: var(--radius);
-  transition: background var(--transition), transform var(--transition) !important;
-}
-
-.sticky-nav__cta:hover {
-  background: var(--accent-light) !important;
-  transform: translateY(-1px);
-}
-
-.sticky-nav__cta::after {
-  display: none !important;
-}
-
-/* ─── HERO ──────────────────────────────────────────────────── */
-
-.hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  overflow: hidden;
-  background-color: var(--bg-dark);
-  padding-top: 36px;
-}
-
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  transform: scale(1.04);
-  transition: transform 8s ease-out;
-  will-change: transform;
-}
-
-.hero__bg.is-loaded {
-  transform: scale(1);
-}
-
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    160deg,
-    rgba(10,8,5,0.18) 0%,
-    rgba(10,8,5,0.52) 50%,
-    rgba(10,8,5,0.82) 100%
-  );
-  z-index: 1;
-}
-
-.hero__overlay::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 220px;
-  background: linear-gradient(to top, rgba(10,8,5,0.88) 0%, transparent 100%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 6vw 9vh;
-  max-width: 800px;
-}
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 22px;
-  opacity: 0;
-  transform: translateY(18px);
-  animation: fadeUp 0.8s 0.3s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 1px;
-  background: var(--accent);
-}
-
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.6rem, 6vw, 5rem);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.01em;
-  color: var(--white);
-  margin-bottom: 20px;
-  opacity: 0;
-  transform: translateY(22px);
-  animation: fadeUp 0.9s 0.5s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.hero-title em {
-  font-style: normal;
-  color: var(--accent);
-  display: block;
-}
-
-.hero-sub {
-  font-size: 1.02rem;
-  font-weight: 400;
-  color: rgba(255,255,255,0.78);
-  line-height: 1.7;
-  max-width: 460px;
-  margin-bottom: 36px;
-  letter-spacing: 0.02em;
-  opacity: 0;
-  transform: translateY(18px);
-  animation: fadeUp 0.85s 0.7s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.hero-cta {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 0.85s 0.9s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.hero-cta__primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #c9a84c 0%, #e8c97a 50%, #c9a84c 100%);
-  background-size: 200% 100%;
-  color: var(--primary);
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  padding: 18px 36px;
-  border-radius: var(--radius);
-  border: none;
-  cursor: pointer;
-  transition: background-position 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 20px rgba(201,168,76,0.38);
-  text-decoration: none;
-}
-
-.hero-cta__primary:hover {
-  background-position: 100% 0;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(201,168,76,0.52);
-  color: var(--primary);
-}
-
-.hero-cta__secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: transparent;
-  color: var(--white);
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  padding: 17px 32px;
-  border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,0.38);
-  cursor: pointer;
-  transition: border-color var(--transition), background var(--transition), color var(--transition);
-  text-decoration: none;
-}
-
-.hero-cta__secondary:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(201,168,76,0.06);
-}
-
-.hero__scroll-hint {
-  position: absolute;
-  bottom: 32px;
-  right: 6vw;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  opacity: 0;
-  animation: fadeIn 1s 1.4s forwards ease;
-}
-
-.hero__scroll-hint span {
-  font-size: 0.58rem;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  font-weight: 600;
-  writing-mode: vertical-rl;
-}
-
-.hero__scroll-hint::after {
-  content: '';
-  display: block;
+#ratingCounter{position:fixed;bottom:var(--sp-xl);right:var(--sp-xl);z-index:900;display:flex;flex-direction:column;align-items:center;gap:2px;padding:.625rem .875rem;background:var(--c-card);border:1px solid var(--c-gold-dim);border-radius:var(--radius-md);box-shadow:var(--shadow-card);min-width:60px}
+#ratingCounter .rating-num{font-family:var(--ff-head);font-size:var(--
   </style>
 </head>
 <body>
 <body>
 
   <!-- Proto Banner -->
-  <div class="proto-banner">
-    🎨 Free demo for Satos Kitchen Brixton — All images, text &amp; colours are placeholders and fully customisable.
-    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
-  </div>
+  <div class="proto-banner"><p><strong>🎨 Free demo for Satos Kitchen Brixton</strong> — All images, text &amp; colours are placeholders and fully customisable.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
 
   <!-- Sticky Nav -->
-  <nav class="sticky-nav" id="stickyNav">
-    <div class="nav-logo">Sato's Kitchen Brixton</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#visit">Visit</a></li>
-    </ul>
-    <a class="nav-reserve" href="tel:07756296450">📞 Reserve a Table</a>
+  <nav id="stickyNav">
+    <div class="nav-inner">
+      <div class="nav-logo">Sato's Kitchen</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <a href="tel:07756296450" class="nav-reserve">Reserve a Table</a>
+    </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero" style="background-image: url('images/img_0.jpg');">
-    <div class="hero-content">
-      <div class="open-badge" id="openBadge">● Checking hours…</div>
-      <h1 class="hero-title">Sato's Kitchen Brixton</h1>
-      <p class="hero-sub">South London's heart, served on every plate.</p>
-      <div
-        class="rating-counter"
-        id="ratingCounter"
-        data-rating="4.9"
-        data-count="77"
-        aria-label="Rated 4.9 out of 5 based on 77 Google reviews">
-        ⭐ <span class="rating-value">4.9</span> · <span class="review-count">77</span> Google reviews
+  <section class="hero-section" id="hero">
+    <div class="hero-text-col">
+      <span class="hero-eyebrow">Nigerian · Brixton · South London</span>
+      <h1 class="hero-heading">Sato's<br>Kitchen<br>Brixton</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-subtext">South London's soul, served straight from the heart</p>
+
+      <div class="hero-cta-group">
+        <a href="tel:07756296450" class="btn-primary">Reserve a Table</a>
+        <a href="#menu" class="btn-secondary">View Menu</a>
       </div>
-      <div class="hero-badges">
-        <span class="service-badge">🍽️ Dine-In</span>
-        <span class="service-badge">🥡 Takeaway</span>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">
+            <span id="ratingCounter" data-rating="4.9" data-count="77">4.9 ⭐</span>
+          </span>
+          <span class="hero-stat-label">Google Rating · 77 Reviews</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">SW9</span>
+          <span class="hero-stat-label">Stockwell Rd, Brixton</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">
+            <span id="openBadge"><span class="badge-dot"></span>Open Now</span>
+          </span>
+          <span class="hero-stat-label">Wed–Sun from 12pm</span>
+        </div>
       </div>
-      <a class="hero-cta" href="tel:07756296450">📞 Call to Reserve — 07756 296450</a>
+    </div>
+
+    <div class="hero-image-col">
+      <div class="hero-bg-img" style="background-image: url('images/img_0.jpg');"></div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll to explore</span>
+      <i class="fa fa-chevron-down"></i>
     </div>
   </section>
-
-  <!-- Social Bar -->
-  <div class="social-bar">
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.333 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.333-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.333-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.645 2.014 1.986.673 3.327.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.725 1.942 5.066 1.341 1.341 3.211 1.857 5.066 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.725-.601 5.066-1.942 1.341-1.341 1.857-3.211 1.942-5.066.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.668-.072-4.948-.085-1.855-.601-3.725-1.942-5.066C20.673.645 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-      </svg>
-      Instagram
-    </a>
-    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-      </svg>
-      Facebook
-    </a>
-    <a href="https://wa.me/07756296450" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      WhatsApp
-    </a>
-    <a href="https://maps.google.com/?cid=12457041405622932666" target="_blank" rel="noopener" aria-label="Google Maps">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-      </svg>
-      Google
-    </a>
-  </div>
 
   <!-- About Section -->
-  <section class="about-section" id="about">
-    <div class="section-inner">
-      <h2 data-aos="fade-up">Our Story</h2>
-      <p class="section-intro" data-aos="fade-up" data-aos-delay="100">
-        Nestled in the vibrant streets of Brixton, Sato's Kitchen brings the warmth and soul of authentic Nigerian home cooking to South London. With a near-perfect 4.9 rating and guests who leave with full hearts — and full takeaway bags — this is a place where every meal feels like a celebration. Whether you're marking a milestone or simply craving something real, Sato's Kitchen is where flavour meets family.
-      </p>
-      <div class="about-grid">
+  <section id="about" style="padding: 100px 0; background: #0d0d0d; color: #f5f0e8;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
 
-        <div class="value-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="value-icon">🌿</div>
-          <h3>Rooted in Tradition</h3>
-          <p>Every dish is crafted from cherished recipes that honour the rich, bold heritage of Nigerian home cooking.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+
+        <div>
+          <p data-aos="fade-right" style="font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif; font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase; color: #c9a96e; margin-bottom: 16px;">Our Story</p>
+          <h2 data-aos="fade-right" data-aos-delay="100" style="font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: #f5f0e8; line-height: 1.2; margin-bottom: 24px;">Where Nigerian<br>Heritage Meets<br>South London Soul</h2>
+          <div data-aos="fade-right" data-aos-delay="150" style="width: 60px; height: 2px; background: #c9a96e; margin-bottom: 32px;"></div>
+          <p data-aos="fade-right" data-aos-delay="200" style="font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.85; color: #b8b0a0; margin-bottom: 24px;">
+            Sato's Kitchen brings the bold, soulful flavours of Nigerian home cooking to the heart of Brixton. With a near-perfect 4.9 rating and a loyal following that keeps coming back for more, this is the kind of food that turns first-time visitors into lifelong regulars.
+          </p>
+          <p data-aos="fade-right" data-aos-delay="250" style="font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.85; color: #b8b0a0; margin-bottom: 40px;">
+            From celebration parties to everyday cravings, every plate is made with the warmth and care of a proper home-cooked meal.
+          </p>
+          <a href="tel:07756296450" data-aos="fade-right" data-aos-delay="300" class="btn-primary" style="display: inline-block; background: #c9a96e; color: #0d0d0d; padding: 14px 36px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; font-weight: 700;">Book a Table</a>
         </div>
 
-        <div class="value-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="value-icon">❤️</div>
-          <h3>Made with Love</h3>
-          <p>We cook each plate as though it's destined for our own table — generous, soulful, and completely unforgettable.</p>
+        <div data-aos="fade-left" data-aos-delay="100">
+          <div style="border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.5);">
+            <img src="images/img_1.jpg" alt="Sato's Kitchen interior" style="width: 100%; height: 520px; object-fit: cover; display: block;">
+          </div>
         </div>
-
-        <div class="value-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="value-icon">🤝</div>
-          <h3>Community at the Core</h3>
-          <p>From intimate dinners to landmark celebrations, Sato's Kitchen exists to bring people together over food that truly means something.</p>
-        </div>
-
       </div>
 
-      <div class="about-image" data-aos="fade-up" data-aos-delay="150">
-        <img
-          src="images/img_1.jpg"
-          alt="Inside Sato's Kitchen Brixton"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  </section>
+      <!-- Philosophy pillars -->
+      <div style="margin-top: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
 
-  <!-- Reviews Section -->
-  <section class="reviews-section" id="reviews">
-    <div class="section-inner">
-      <h2 data-aos="fade-up">What Our Guests Say</h2>
-      <p class="section-sub" data-aos="fade-up" data-aos-delay="80">⭐ 4.9 · 77 Google Reviews</p>
-
-      <div class="reviews-grid">
-
-        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <blockquote>
-            "Omg, I recently had my 50th birthday party at Sato's Kitchen and it was so worth it. I was glad I chose to spend my special day there. The food was so good and all of my guests went home with to go or…"
-          </blockquote>
-          <p class="review-author">— Lucy Wilson</p>
+        <div data-aos="fade-up" data-aos-delay="100" style="background: #161616; border: 1px solid #2a2a2a; border-top: 3px solid #c9a96e; border-radius: 12px; padding: 40px 32px;">
+          <div style="font-size: 2rem; margin-bottom: 16px;">🌿</div>
+          <h3 style="font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif; font-size: 1.3rem; color: #c9a96e; margin-bottom: 12px;">Rooted in Tradition</h3>
+          <p style="font-family: Georgia, serif; font-size: 0.95rem; line-height: 1.75; color: #8a8070;">Every dish honours the rich culinary heritage of Nigerian cooking, prepared with time-honoured techniques passed down through generations.</p>
         </div>
 
-        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <blockquote>
-            "It wouldn't be farfetched to say this is one of the best Nigerian restaurants in London. I went in last week and ordered jollof rice with beef, fried rice with turkey wings, chicken wings, plantain a…"
-          </blockquote>
-          <p class="review-author">— Azim Ahmed</p>
+        <div data-aos="fade-up" data-aos-delay="200" style="background: #161616; border: 1px solid #2a2a2a; border-top: 3px solid #c9a96e; border-radius: 12px; padding: 40px 32px;">
+          <div style="font-size: 2rem; margin-bottom: 16px;">❤️</div>
+          <h3 style="font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif; font-size: 1.3rem; color: #c9a96e; margin-bottom: 12px;">Made with Love</h3>
+          <p style="font-family: Georgia, serif; font-size: 0.95rem; line-height: 1.75; color: #8a8070;">We cook every plate as if it's going on the table of someone we care deeply about — because it is.</p>
         </div>
 
-        <div class="review-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <blockquote>
-            "Wow, what an amazing experience I had at Satos Kitchen! Well the fish was authentically delicious, and the spices were on point!!!! My daughter's ogbuno with assorted fish and pounded yam and my son's…"
-          </blockquote>
-          <p class="review-author">— Ola Adesanya</p>
+        <div data-aos="fade-up" data-aos-delay="300" style="background: #161616; border: 1px solid #2a2a2a; border-top: 3px solid #c9a96e; border-radius: 12px; padding: 40px 32px;">
+          <div style="font-size: 2rem; margin-bottom: 16px;">🤝</div>
+          <h3 style="font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif; font-size: 1.3rem; color: #c9a96e; margin-bottom: 12px;">Community at the Core</h3>
+          <p style="font-family: Georgia, serif; font-size: 0.95rem; line-height: 1.75; color: #8a8070;">From birthday celebrations to weeknight dinners, Sato's Kitchen is a gathering place where South London comes together over food that truly feeds the soul.</p>
         </div>
 
-      </div>
-
-      <div class="reviews-cta" data-aos="fade-up" data-aos-delay="200">
-        <a href="https://maps.google.com/?cid=12457041405622932666" target="_blank" rel="noopener">
-          Read all reviews on Google Maps →
-        </a>
       </div>
     </div>
   </section>
 
   <!-- Menu Section -->
-  <section class="menu-section" id="menu">
-    <div class="section-inner">
-      <h2 data-aos="fade-up">Our Menu</h2>
-      <p class="section-sub" data-aos="fade-up" data-aos-delay="80">Authentic Nigerian flavours, made from the heart.</p>
+  <section id="menu" style="padding: 100px 0; background: #111111; color: #f5f0e8;">
+    <div style="max-width: 900px; margin: 0 auto; padding: 0 40px;">
+
+      <div style="text-align: center; margin-bottom: 72px;">
+        <p data-aos="fade-up" style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase; color: #c9a96e; margin-bottom: 16px;">Our Offering</p>
+        <h2 data-aos="fade-up" data-aos-delay="100" style="font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: #f5f0e8; margin-bottom: 20px;">A Taste of Nigeria</h2>
+        <div data-aos="fade-up" data-aos-delay="150" style="width: 60px; height: 2px; background: #c9a96e; margin: 0 auto 24px;"></div>
+        <p data-aos="fade-up" data-aos-delay="200" style="font-family: Georgia, serif; font-size: 1rem; color: #8a8070; max-width: 500px; margin: 0 auto;">Bold flavours, traditional recipes, cooked with love in the heart of Brixton</p>
+      </div>
 
       <!-- Starters -->
-      <div class="menu-category" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="menu-category-title">🥘 Starters</h3>
-
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="120">
-          <div class="menu-item-info">
-            <span class="menu-item-name">Puff Puff</span>
-            <span class="menu-item-desc">Golden, pillowy fried dough balls dusted lightly and served warm — a beloved Nigerian street classic.</span>
-          </div>
-          <span class="menu-price">£5</span>
+      <div data-aos="fade-up" style="margin-bottom: 64px;">
+        <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 40px;">
+          <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: #c9a96e;">Starters</span>
+          <div style="flex: 1; height: 1px; background: #2a2a2a;"></div>
         </div>
 
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="160">
-          <div class="menu-item-info">
-            <span class="menu-item-name">Chicken Wings</span>
-            <span class="menu-item-desc">Crispy, deeply seasoned wings glazed in a smoky, spiced sauce with a satisfying heat.</span>
-          </div>
-          <span class="menu-price">£8</span>
-        </div>
+        <div style="display: flex; flex-direction: column; gap: 0;">
 
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
-          <div class="menu-item-info">
-            <span class="menu-item-name">Sweet Plantain</span>
-            <span class="menu-item-desc">Ripe plantain slices fried to caramelised perfection — soft within, golden without.</span>
+          <div data-aos="fade-up" data-aos-delay="50" style="display: flex; justify-content: space-between; align-items: baseline; padding: 24px 0; border-bottom: 1px solid #1e1e1e; gap: 20px;">
+            <div style="flex: 1;">
+              <h4 style="font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif; font-size: 1.2rem; color: #f5f0e8; margin-bottom: 6px; font-weight: 600;">Puff Puff</h4>
+              <p style="font-family: Georgia, serif; font-size: 0.9rem; color: #6a6055; line-height: 1.6;">Golden, pillowy fried dough balls with a light sweetness — a beloved Nigerian street-food classic to start your journey.</p>
+            </div>
+            <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; color: #c9a96e; white-space: nowrap; font-style: italic; font-weight: 600;">£4</span>
           </div>
-          <span class="menu-price">£4</span>
+
+          <div data-aos="fade-up" data-aos-delay="100" style="display: flex; justify-content: space-between; align-items: baseline; padding: 24px 0; border-bottom: 1px solid #1e1e1e; gap: 20px;">
+            <div style="flex: 1;">
+              <h4 style="font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif; font-size: 1.2rem; color: #f5f0e8; margin-bottom: 6px; font-weight: 600;">Chicken Wings</h4>
+              <p style="font-family: Georgia, serif; font-size: 0.9rem; color: #6a6055; line-height: 1.6;">Crispy, boldly seasoned wings marinated in a house spice blend and fried to perfection — impossible to stop at just one.</p>
+            </div>
+            <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; color: #c9a96e; white-space: nowrap; font-style: italic; font-weight: 600;">£7</span>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="150" style="display: flex; justify-content: space-between; align-items: baseline; padding: 24px 0; border-bottom: 1px solid #1e1e1e; gap: 20px;">
+            <div style="flex: 1;">
+              <h4 style="font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif; font-size: 1.2rem; color: #f5f0e8; margin-bottom: 6px; font-weight: 600;">Fried Plantain</h4>
+              <p style="font-family: Georgia, serif; font-size: 0.9rem; color: #6a6055; line-height: 1.6;">Ripe plantain sliced and fried until caramelised and tender, offering the perfect balance of sweetness and warmth.</p>
+            </div>
+            <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; color: #c9a96e; white-space: nowrap; font-style: italic; font-weight: 600;">£4</span>
+          </div>
+
         </div>
       </div>
 
       <!-- Mains -->
-      <div class="menu-category" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="menu-category-title">🍛 Mains</h3>
-
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="120">
-          <div class="menu-item-info">
-            <span class="menu-item-name">Signature Jollof Rice with Beef</span>
-            <span class="menu-item-desc">Our legendary smoky jollof, slow-cooked with aromatic spices and crowned with tender, braised beef.</span>
-          </div>
-          <span class="menu-price">£14</span>
+      <div data-aos="fade-up" style="margin-bottom: 64px;">
+        <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 40px;">
+          <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: #c9a96e;">Main Courses</span>
+          <div style="flex: 1; height: 1px; background: #2a2a2a;"></div>
         </div>
 
-        <div class="menu-item" data-aos="fade-up" data-aos-delay="160">
-          <div class="menu-item-info">
-            <span class="menu-item-name">Fried Rice with Turkey Wings</span>
-            <span class="menu-item-desc">
+        <div style="display: flex; flex-direction: column; gap: 0;">
+
+          <div data-aos="fade-up" data-aos-delay="50" style="display: flex; justify-content: space-between; align-items: baseline; padding: 24px 0; border-bottom: 1px solid #1e1e1e; gap: 20px;">
+            <div style="flex: 1;">
+              <h4 style="font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif; font-size: 1.2rem; color: #f5f0e8; margin-bottom: 6px; font-weight: 600;">Nigerian Jollof Rice with Beef</h4>
+              <p style="font-family: Georgia, serif; font-size: 0.9rem; color: #6a6055; line-height: 1.6;">Our signature smoky, richly spiced jollof rice slow-cooked with tomatoes, peppers and aromatic herbs, served with succulent braised beef.</p>
+            </div>
+            <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; color: #c9a96e; white-space: nowrap; font-style: italic; font-weight: 600;">£13</span>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100" style="display: flex; justify-content: space-between; align-items: baseline; padding: 24px 0; border-bottom: 1px solid #1e1e1e; gap: 20px;">
+            <div style="flex: 1;">
+              <h4 style="font-family: 'Cormorant Garamond
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:700,once:true,offset:60});
+AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
 
-// Sticky nav
-const stickyNav = document.getElementById('stickyNav');
-const heroEl = document.querySelector('.hero,[class*=hero]');
-if(stickyNav && heroEl){
-  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
-}
-
-// Open/Closed badge
-const HOURS={"Monday": "Closed", "Tuesday": "Closed", "Wednesday": "12:00 – 9:00 PM", "Thursday": "12:00 – 9:00 PM", "Friday": "12:00 – 10:00 PM", "Saturday": "12:00 – 10:00 PM", "Sunday": "1:00 – 9:00 PM"};
+// Sticky nav on scroll past hero
 (function(){
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
-  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-  const badge=document.getElementById('openBadge');
-  if(!badge)return;
-  if(!m){badge.textContent='See hours below';return;}
-  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
-  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
-  const isOpen=n>=o&&n<(c<o?c+1440:c);
-  badge.textContent=isOpen?'● Open now':'● Closed';
-  badge.style.color=isOpen?'#22c55e':'#ef4444';
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
 })();
 
-// Rating counter
-const rc=document.getElementById('ratingCounter');
-if(rc){
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "Closed", "Tuesday": "Closed", "Wednesday": "12:00 – 9:00 PM", "Thursday": "12:00 – 9:00 PM", "Friday": "12:00 – 10:00 PM", "Saturday": "12:00 – 10:00 PM", "Sunday": "1:00 – 9:00 PM"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
   const rating=4.9,cnt=77;
+  if(!rating)return;
   new IntersectionObserver(([e])=>{
     if(!e.isIntersecting)return;
-    rc.textContent='';
-    const animate=(from,to,dec,cb)=>{
-      let start=null;
-      (function step(ts){
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
         if(!start)start=ts;
-        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
         cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
-        if(p<1)requestAnimationFrame(step);
+        if(p<1)requestAnimationFrame(tick);
       })(performance.now());
     };
-    const rs=document.createElement('span'),cs=document.createElement('span');
-    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
-    animate(0,rating,true,v=>rs.textContent=v);
-    animate(0,cnt,false,v=>cs.textContent=v);
-  },{threshold:0.5}).observe(rc);
-}
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
 
-// Ripple
-document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
   btn.addEventListener('click',function(e){
-    const r=document.createElement('span');
-    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
     Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
       left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
-      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
-    this.style.position='relative';this.style.overflow='hidden';
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
     this.append(r);setTimeout(()=>r.remove(),700);
   });
 });
 </script>
-<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
