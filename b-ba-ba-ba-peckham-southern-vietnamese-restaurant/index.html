@@ -4,446 +4,674 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Bà Ba (Ba Ba Peckham) Southern Vietnamese Restaurant — Peckham, London</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{
-      --primary:   #FF0000;
-      --accent:    #FFFFFF;
-      /* ヒーロー用（暗い背景向け） */
-      --hero-text:  #f5f2ec;
-      --hero-muted: rgba(245,242,236,0.65);
-      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
-      --c-text:   #1a1a1a;
-      --c-muted:  #6b6b6b;
-      --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #000000;
-    }
-    html{scroll-behavior:smooth;}
-    body{font-family:'Suisse BP',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{padding-top:52px;}
+  @media(min-width:700px){.float-cta{display:none!important;}}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap');
 
-    /* PROTO BANNER */
-    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
-    .proto-banner strong{font-weight:700;}
-    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+:root {
+  --primary: #1a1208;
+  --accent: #c8922a;
+  --accent-light: #e8b84b;
+  --accent-muted: #8b6520;
+  --bg: #faf6ee;
+  --bg-alt: #f0e8d8;
+  --bg-dark: #120d04;
+  --text: #1a1208;
+  --text-light: #faf6ee;
+  --muted: #7a6a52;
+  --border: #d4c4a0;
+  --border-dark: #3a2e1a;
+  --shadow: rgba(26, 18, 8, 0.12);
+  --shadow-strong: rgba(26, 18, 8, 0.28);
+  --radius: 2px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'DM Mono', 'Courier New', monospace;
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
-    /* ── HERO（暗い背景 → 白文字） ── */
-    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
-    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
-    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
-    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Suisse BP',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
-    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
-    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
-    .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Suisse BP',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
-    .hero-tagline span{color:var(--accent);}
-    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
-    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
-    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
-    .hero-nav a:hover{color:#fff;}
-    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
-    .btn-reserve:hover{opacity:0.85;}
-    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
-    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
-    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
-    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Suisse BP',serif;font-size:1.2rem;font-weight:300;color:#fff;}
-    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    /* ── SOCIAL BAR ── */
-    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
-    .social-icons{display:flex;gap:1.4rem;}
-    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
-    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
-    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
-    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
-    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
-    .call-link:hover{border-color:var(--accent);color:var(--accent);}
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-    /* ── SHARED CONTENT STYLES ── */
-    .section-wrap{max-width:1100px;margin:0 auto;}
-    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Suisse BP',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
 
-    /* ── ABOUT（白背景 → 暗い文字） ── */
-    .about{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.about{padding:4rem 2rem;}}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
-    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
-    .about-values{display:flex;flex-direction:column;}
-    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
-    .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Suisse BP',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
-    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
-    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
-    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
-    .reviews{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
-    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
-    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
-    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
-    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
-    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
 
-    /* ── MENU（白背景 → 暗い文字） ── */
-    .menu{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.menu{padding:4rem 2rem;}}
-    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
-    .menu-note{font-size:0.78rem;color:var(--c-muted);}
-    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
-    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
-    .menu-category:last-child{border-bottom:none;}
-    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
-    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
-    .menu-item:last-child{border-bottom:none;}
-    .menu-item-left{flex:1;}
-    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
-    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Suisse BP',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
-    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
+a:hover {
+  color: var(--accent);
+}
 
-    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
-    .visit{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.visit{padding:4rem 2rem;}}
-    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
-    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
-    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
-    .visit-block a:hover{color:var(--accent);}
-    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
-    .hour-row:last-child{border-bottom:none;}
-    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
-    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
-    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
+ul {
+  list-style: none;
+}
 
-    /* FOOTER */
-    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
-    @media(min-width:700px){footer{padding-bottom:2rem;}}
+/* ─── PROTO BANNER ─────────────────────────────────────── */
 
-    /* ── STICKY HEADER ── */
-    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
-    .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Suisse BP',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
-    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
-    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
-    .sticky-open.closed{background:#fce4ec;color:#c62828;}
-    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
-    .sticky-cta:hover{opacity:0.85;}
+.proto-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: var(--accent);
+  color: var(--primary);
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
 
-    /* ── OPEN NOW BADGE (hero) ── */
-    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
-    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
-    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
-    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+.proto-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 120px,
+    rgba(255, 255, 255, 0.06) 120px,
+    rgba(255, 255, 255, 0.06) 121px
+  );
+  pointer-events: none;
+}
 
-    /* ── COUNTER ── */
-    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
+.proto-banner__track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+  animation: marquee-slide 28s linear infinite;
+  will-change: transform;
+}
 
-    /* ── PARALLAX ── */
-    .hero-bg{will-change:transform;}
+.proto-banner__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 32px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
 
-    /* ── IMAGE ZOOM ── */
-    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
-    .mockup:hover img{transform:scale(1.05);}
+.proto-banner__item::after {
+  content: '✦';
+  font-size: 9px;
+  opacity: 0.6;
+}
 
-    /* ── RIPPLE ── */
-    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
-    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
-    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
+@keyframes marquee-slide {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
-    /* ── FLOAT CALL ── */
-    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
-    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
-    @media(min-width:700px){.float-call{display:none;}}
+/* ─── STICKY NAV ────────────────────────────────────────── */
+
+.sticky-nav {
+  position: fixed;
+  top: 36px;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform var(--transition), opacity var(--transition);
+  pointer-events: none;
+}
+
+.sticky-nav.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.sticky-nav__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.sticky-nav__logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.sticky-nav__logo span {
+  color: var(--accent);
+}
+
+.sticky-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.sticky-nav__links a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.sticky-nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: width var(--transition-fast);
+}
+
+.sticky-nav__links a:hover {
+  color: var(--primary);
+}
+
+.sticky-nav__links a:hover::after {
+  width: 100%;
+}
+
+.sticky-nav__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background-color: var(--primary);
+  color: var(--bg) !important;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--primary);
+  transition: background-color var(--transition-fast), color var(--transition-fast) !important;
+  flex-shrink: 0;
+}
+
+.sticky-nav__cta:hover {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--primary) !important;
+}
+
+/* ─── HERO ──────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 640px;
+  display: flex;
+  align-items: flex-end;
+  background-color: var(--bg-dark);
+  overflow: hidden;
+  padding-top: 36px;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: var(--hero-img, none);
+  background-size: cover;
+  background-position: center 30%;
+  will-change: transform;
+  transform: scale(1.05);
+  transition: transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero__bg.is-loaded {
+  transform: scale(1);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 13, 4, 0.15) 0%,
+    rgba(18, 13, 4, 0.02) 35%,
+    rgba(18, 13, 4, 0.55) 70%,
+    rgba(18, 13, 4, 0.88) 100%
+  );
+}
+
+.hero__overlay-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='1' height='1' fill='%23000' fill-opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.hero__grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(200, 146, 42, 0.06) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(200, 146, 42, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px 80px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  align-items: end;
+  gap: 0 60px;
+}
+
+.hero-content__left {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-content__right {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7.5vw, 110px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text-light);
+  position: relative;
+}
+
+.hero-title em {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-light);
+}
+
+.hero-title__accent-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  margin-top: 16px;
+}
+
+.hero-sub {
+  max-width: 480px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(250, 246, 238, 0.72);
+  letter-spacing: 0.02em;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-cta__primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background-color: var(--accent);
+  color: var(--primary) !important;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent);
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta__primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color:
   </style>
 </head>
 <body>
+<body>
 
-  <!-- STICKY HEADER -->
-  <header class="sticky-header" id="stickyHeader">
-    <div style="display:flex;align-items:center;">
-      <span class="sticky-logo">Bà Ba (Ba Ba Peckham) Southern Vietnamese Restaurant</span>
-      <span class="sticky-open" id="stickyBadge"></span>
-    </div>
-    <a href="tel:020 7207 2935" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
-  </header>
-
+  <!-- Proto Banner -->
   <div class="proto-banner">
-    <p><strong>🎨 Free demo for Bà Ba (Ba Ba Peckham) Southern Vietnamese Restaurant</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    🎨 Free demo for Bà Ba (Ba Ba Peckham) Southern Vietnamese Restaurant — All images, text &amp; colours are placeholders and fully customisable.
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-left">
-      <div>
-        <div class="logo">Bà Ba (Ba Ba Peckham) Southern Vietnamese Restaurant</div>
-        <div class="hero-badges">
-          <span class="badge">Restaurant</span>
-          <span class="badge">Peckham, London</span>
-          <span class="badge badge-accent">££</span>
-        </div>
+  <!-- Sticky Nav -->
+  <nav class="sticky-nav" id="stickyNav">
+    <a class="nav-logo" href="#">Bà Ba</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="nav-reserve" href="tel:020 7207 2935">☎ Reserve a Table</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" style="background-image: url('images/img_0.jpg');">
+    <div class="hero-content">
+      <span class="open-badge" id="openBadge">⬤ Checking hours…</span>
+      <h1 class="hero-title" data-aos="fade-up">Bà Ba</h1>
+      <p class="hero-sub" data-aos="fade-up" data-aos-delay="100">Southern Vietnamese soul, rooted in Peckham's heart</p>
+      <div class="hero-meta" data-aos="fade-up" data-aos-delay="150">
+        <span class="hero-rating"
+              id="ratingCounter"
+              data-rating="4.5"
+              data-count="687">
+          ⭐ 4.5 · 687 Google reviews
+        </span>
+        <span class="hero-tags">Dine-in &nbsp;·&nbsp; Takeaway &nbsp;·&nbsp; Delivery</span>
       </div>
-      <div>
-        <h1 class="hero-tagline">Southern Vietnamese soul, right in the heart of Peckham</h1>
-        <p class="hero-desc">Bà Ba brings the warmth and vibrancy of Southern Vietnam to the streets of Peckham, serving soul-nourishing dishes rooted in family tradition and bold, sun-drenched flavour. From expertly curated wine pairings to a calm, homelike atmosphere, every visit feels like a quiet escape to somewhere beautifully familiar.</p>
-        <div class="rating-counter" id="ratingCounter" data-rating="4.5" data-count="687">⭐ 4.5 · 687 Google reviews</div>
-        <div class="open-badge" id="openBadge"></div>
-      </div>
-      <nav class="hero-nav">
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#visit">Visit</a>
-        <a href="tel:020 7207 2935" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
-      </nav>
-    </div>
-    <div class="hero-right">
-      <div class="mockup">
-        <img src="images/img_1.jpg" alt="Bà Ba (Ba Ba Peckham) Southern Vietnamese Restaurant"/>
-        <div class="mockup-overlay">
-          <div class="m-name">Bà Ba (Ba Ba Peckham) Southern Vietnamese Restaurant</div>
-          <div class="m-sub">Restaurant · Peckham, London</div>
-        </div>
-      </div>
+      <a class="hero-cta" href="tel:020 7207 2935" data-aos="fade-up" data-aos-delay="200">☎ Call to Reserve</a>
     </div>
   </section>
 
+  <!-- Social Bar -->
   <div class="social-bar">
-    <span>Connect</span>
-    <div class="social-icons">
-      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/02072072935" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://maps.google.com/?cid=13677632140146227073" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
-    </div>
-    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Delivery</span> <span class="tag">Wine</span> <span class="tag">Beer</span></div>
-    <a href="tel:020 7207 2935" class="call-link"><i class="fa fa-phone"></i> 020 7207 2935</a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 1.938 2.09.522 3.507.006 5.349-.079 7.204-.137 8.484-.15 8.893-.15 12c0 3.107.013 3.516.071 4.796.085 1.855.601 3.697 2.018 5.114 1.417 1.417 3.259 1.933 5.114 2.018C8.484 23.987 8.893 24 12 24c3.107 0 3.516-.013 4.796-.071 1.855-.085 3.697-.601 5.114-2.018 1.417-1.417 1.933-3.259 2.018-5.114.058-1.28.071-1.689.071-4.797 0-3.107-.013-3.516-.071-4.796-.085-1.855-.601-3.697-2.018-5.114C20.493.673 18.651.157 16.796.072 15.516.014 15.107 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+      Facebook
+    </a>
+    <a href="https://wa.me/02072072935" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://maps.google.com/?cid=13677632140146227073" target="_blank" rel="noopener" aria-label="Google Maps">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+      Google
+    </a>
   </div>
 
-  <section class="about" id="about">
-    <div class="section-wrap">
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <h2 data-aos="fade-up">Our Story</h2>
+      <div class="about-image" data-aos="fade-up" data-aos-delay="50">
+        <img src="images/img_1.jpg" alt="Inside Bà Ba restaurant" />
+      </div>
+      <p class="about-body" data-aos="fade-up" data-aos-delay="100">
+        Bà Ba brings the sun-drenched flavours of Southern Vietnam to the vibrant streets of Peckham, where every dish tells a story of family, memory, and tradition. Named with the warmth of a grandmother's kitchen, we craft honest, soulful Vietnamese cooking in a space that feels like coming home.
+      </p>
       <div class="about-grid">
-        <div data-aos="fade-right">
-          <p class="section-label">Our Philosophy</p>
-          <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Bà Ba brings the warmth and vibrancy of Southern Vietnam to the streets of Peckham, serving soul-nourishing dishes rooted in family tradition and bold, sun-drenched flavour. From expertly curated wine pairings to a calm, homelike atmosphere, every visit feels like a quiet escape to somewhere beautifully familiar.</p>
+        <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="value-icon">🌿</div>
+          <h3>Rooted in Tradition</h3>
+          <p>Every recipe honours the bold, fragrant culinary heritage of Southern Vietnam, passed down through generations and cooked with unwavering respect.</p>
         </div>
-        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Rooted in Tradition</h3><p>Every dish honours the time-honoured recipes and bold aromatics of Southern Vietnamese home cooking.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Warmth in Every Detail</h3><p>From the moment you arrive, our team is devoted to making you feel genuinely welcomed and cared for.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Thoughtfully Paired</h3><p>Our curated wine list is chosen to complement the delicate balance of sweet, sour, and savoury that defines our cuisine.</p></div></div>
+        <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="value-icon">🏠</div>
+          <h3>A Welcome Like Family</h3>
+          <p>From the moment you step through our door, our team ensures you feel guided, cared for, and truly at ease — just as a grandmother would.</p>
+        </div>
+        <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="value-icon">🥬</div>
+          <h3>Honest Ingredients, Honest Cooking</h3>
+          <p>We source with care and cook with intention, letting the natural depth of Vietnamese herbs, broths, and spices speak for themselves.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="reviews">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">What guests say</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 4.5 · 687 Google reviews</h2>
+  <!-- Reviews Section -->
+  <section class="reviews-section" id="reviews">
+    <div class="reviews-inner">
+      <h2 data-aos="fade-up">What Our Guests Say</h2>
+      <p class="reviews-meta" data-aos="fade-up" data-aos-delay="50">⭐ 4.5 · 687 Google reviews</p>
       <div class="reviews-grid">
-        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Stopped over for a quick bite and from the moment I entered the service was fantastic. I was advised on the wine selection, the notes of each were explained to me and I went with the staff recommendation. The ambiance of the place is very calm and homelike, overall I enjoyed the "</p><span class="review-author">— yvonne Patrick · 3 months ago</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐⭐</div><p class="review-text">"I used to absolutely LOVE banh banh but unfortunately it’s really gone down hill recently. I used to get the tofu bun salad and it would be a massive portion and was the best Vietnamese food around but since they’ve changed the recipe it’s just not that good sadly. They’ve also h"</p><span class="review-author">— Bollo · 4 months ago</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"I used to visit quite often but had to stop for a while as I found the food quality had gone downhill. I went back for dinner tonight with a friend and I’m happy that I could feel the cooking passion again. The food was fresh and flavourful, the decor is warm and welcoming. My fr"</p><span class="review-author">— Tuyen Hong-Jones · 3 months ago</span></div></div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Stopped over for a quick bite and from the moment I entered the service was fantastic. I was advised on the wine selection, the notes of each were explained to me and I went with the staff recommendat…"</p>
+          <p class="review-author">— Yvonne Patrick</p>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="review-stars">⭐⭐</div>
+          <p class="review-text">"I used to absolutely LOVE banh banh but unfortunately it's really gone down hill recently. I used to get the tofu bun salad and it would be a massive portion and was the best Vietnamese food around bu…"</p>
+          <p class="review-author">— Bollo</p>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"I used to visit quite often but had to stop for a while as I found the food quality had gone downhill. I went back for dinner tonight with a friend and I'm happy that I could feel the cooking passion…"</p>
+          <p class="review-author">— Tuyen Hong-Jones</p>
+        </div>
+      </div>
+      <div class="reviews-cta" data-aos="fade-up" data-aos-delay="350">
+        <a href="https://maps.google.com/?cid=13677632140146227073" target="_blank" rel="noopener">Read all reviews on Google →</a>
       </div>
     </div>
   </section>
 
-  <section class="menu" id="menu">
-    <div class="section-wrap">
-      <div class="menu-header" data-aos="fade-up">
-        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
-        <span class="menu-note">Seasonal · Prices incl. VAT</span>
+  <!-- Menu Section -->
+  <section class="menu-section" id="menu">
+    <div class="menu-inner">
+      <h2 data-aos="fade-up">Our Menu</h2>
+
+      <!-- Starters -->
+      <h3 class="menu-category" data-aos="fade-up" data-aos-delay="50">Starters</h3>
+
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Gỏi Cuốn Tôm</span>
+          <p class="menu-item-desc">Delicate rice paper rolls filled with poached tiger prawns, vermicelli, fresh mint, and shredded lettuce, served with a roasted peanut hoisin dipping sauce.</p>
+        </div>
+        <span class="menu-price">£8</span>
       </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Gỏi Cuốn Tôm</div><div class="item-desc">Fresh prawn summer rolls wrapped in rice paper with vermicelli, mint, and a tangy peanut hoisin dipping sauce.</div></div><span class="item-price">£7</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Bánh Xèo</div><div class="item-desc">Crispy turmeric-spiced Vietnamese crêpe filled with pork, prawn, and bean sprouts, served with fresh herb leaves and nuoc cham.</div></div><span class="item-price">£8</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Chả Giò Chay</div><div class="item-desc">Golden fried vegetarian spring rolls stuffed with glass noodles, mushroom, and water chestnut, paired with a light chilli dipping sauce.</div></div><span class="item-price">£6</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Cơm Tấm Sườn Nướng</div><div class="item-desc">Grilled lemongrass pork chop served over broken jasmine rice with a fried egg, pickled daikon, and fragrant fish sauce caramel.</div></div><span class="item-price">£15</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Bún Bò Huế</div><div class="item-desc">A richly spiced lemongrass and shrimp-paste broth with tender beef, pork hock, and thick round noodles, topped with fresh herbs and chilli oil.</div></div><span class="item-price">£14</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Cà Ri Chay Đậu Hũ</div><div class="item-desc">Velvety Southern-style coconut curry with silken tofu, sweet potato, and aubergine, served with a warm baguette for dipping.</div></div><span class="item-price">£13</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Chè Ba Màu</div><div class="item-desc">A layered three-colour dessert of mung bean, pandan jelly, and red bean, crowned with sweetened coconut cream and crushed ice.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Bánh Chuối Nướng</div><div class="item-desc">Warm baked banana cake infused with coconut milk and pandan, served with a scoop of salted coconut ice cream.</div></div><span class="item-price">£7</span></div></div></div>
-      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
-    </div>
-  </section>
 
-  <section class="visit" id="visit">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">Find Us</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
-      <div class="visit-grid">
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
-          <p class="vb-label">Address</p>
-          <p>46 Peckham Rye, London SE15 4JR, UK</p>
-          <a href="https://maps.google.com/?cid=13677632140146227073" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Bánh Xèo</span>
+          <p class="menu-item-desc">Crispy sizzling crêpe filled with pork belly, beansprouts, and spring onion, wrapped in mustard leaf and dipped in a tangy nước chấm.</p>
         </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
-          <p class="vb-label">Opening Hours</p>
-          <div class="hour-row"><span>Mon</span><span>12:00 – 3:00 PM, 6:00 – 10:00 PM</span></div>
-<div class="hour-row"><span>Tue</span><span>Closed</span></div>
-<div class="hour-row"><span>Wed</span><span>12:00 – 3:00 PM, 6:00 – 10:00 PM</span></div>
-<div class="hour-row"><span>Thu</span><span>12:00 – 3:00 PM, 6:00 – 10:00 PM</span></div>
-<div class="hour-row"><span>Fri</span><span>12:00 – 3:00 PM, 6:00 – 10:30 PM</span></div>
-<div class="hour-row"><span>Sat</span><span>12:00 – 10:30 PM</span></div>
-<div class="hour-row"><span>Sun</span><span>12:00 – 9:00 PM</span></div>
-        </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
-          <p class="vb-label">Reservations</p>
-          <a href="tel:020 7207 2935"><i class="fa fa-phone" style="font-size:0.75rem"></i> 020 7207 2935</a>
-          <a href="https://wa.me/02072072935" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
-        </div>
+        <span class="menu-price">£9</span>
       </div>
-      <a href="https://maps.google.com/?cid=13677632140146227073" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
-    </div>
-  </section>
 
-  <footer>
-    <span>© 2025 Bà Ba (Ba Ba Peckham) Southern Vietnamese Restaurant</span>
-    <span>46 Peckham Rye, London SE15 4JR, UK</span>
-  </footer>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Chả Giò Chay</span>
+          <p class="menu-item-desc">Golden fried vegetarian spring rolls packed with glass noodles, wood ear mushroom, and tofu, served with pickled daikon and carrot.</p>
+        </div>
+        <span class="menu-price">£7</span>
+      </div>
 
-  <a href="tel:020 7207 2935" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
+      <!-- Mains -->
+      <h3 class="menu-category" data-aos="fade-up" data-aos-delay="50">Mains</h3>
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-  // ── AOS（スクロールアニメーション）──────────────────
-  AOS.init({ duration: 750, once: true, offset: 80, easing: 'ease-out-cubic' });
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Phở Bò Đặc Biệt</span>
+          <p class="menu-item-desc">Our signature Southern-style beef pho, slow-simmered for twelve hours with star anise and charred ginger, topped with rare sirloin, brisket, fresh herbs, and a squeeze of lime.</p>
+        </div>
+        <span class="menu-price">£16</span>
+      </div>
 
-  // ── Parallax（ヒーロー背景）──────────────────────────
-  const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      heroBg.style.transform = `translateY(${y * 0.38}px)`;
-    }, { passive: true });
-  }
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Cơm Tấm Sườn Nướng</span>
+          <p class="menu-item-desc">Chargrilled lemongrass pork chop served over broken jasmine rice with a fried egg, shredded pork skin, and house-made scallion oil.</p>
+        </div>
+        <span class="menu-price">£17</span>
+      </div>
 
-  // ── Sticky Header ────────────────────────────────────
-  const stickyHeader = document.getElementById('stickyHeader');
-  const hero = document.querySelector('.hero');
-  if (stickyHeader && hero) {
-    const observer = new IntersectionObserver(
-      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(hero);
-  }
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="menu-item-info">
+          <span class="menu-item-name">Cà Ri Chay Dừa</span>
+          <p class="menu-item-desc">A rich, aromatic coconut vegetable curry with sweet potato, aubergine, and tofu, fragrant with turmeric and Vietnamese coriander, served with steamed jasmine rice.</p>
+        </div>
+        <span class="menu-price">£14</span>
+      </div>
 
-  // ── 営業中バッジ ──────────────────────────────────────
-  const HOURS = {"Monday": "12:00 – 3:00 PM, 6:00 – 10:00 PM", "Tuesday": "Closed", "Wednesday": "12:00 – 3:00 PM, 6:00 – 10:00 PM", "Thursday": "12:00 – 3:00 PM, 6:00 – 10:00 PM", "Friday": "12:00 – 3:00 PM, 6:00 – 10:30 PM", "Saturday": "12:00 – 10:30 PM", "Sunday": "12:00 – 9:00 PM"};
-  function computeOpenStatus() {
-    const now  = new Date();
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const day  = days[now.getDay()];
-    const raw  = HOURS[day] || '';
-    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
-    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-    if (!m) return { open: false, text: raw };
-    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
-    const openMin  = toMin(m[1], m[2], m[3]);
-    const closeMin = toMin(m[4], m[5], m[6]);
-    const nowMin   = now.getHours() * 60 + now.getMinutes();
-    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
-    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
-    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
-    return {
-      open: isOpen,
-      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
+      <!-- Desserts -->
+      <h3 class="menu-category" data-aos="fade-up" data-aos-delay="50">Desserts</h3>
+
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
+        <div
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:700,once:true,offset:60});
+
+// Sticky nav
+const stickyNav = document.getElementById('stickyNav');
+const heroEl = document.querySelector('.hero,[class*=hero]');
+if(stickyNav && heroEl){
+  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
+}
+
+// Open/Closed badge
+const HOURS={"Monday": "12:00 – 3:00 PM, 6:00 – 10:00 PM", "Tuesday": "Closed", "Wednesday": "12:00 – 3:00 PM, 6:00 – 10:00 PM", "Thursday": "12:00 – 3:00 PM, 6:00 – 10:00 PM", "Friday": "12:00 – 3:00 PM, 6:00 – 10:30 PM", "Saturday": "12:00 – 10:30 PM", "Sunday": "12:00 – 9:00 PM"};
+(function(){
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  if(!m){badge.textContent='See hours below';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const isOpen=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=isOpen?'● Open now':'● Closed';
+  badge.style.color=isOpen?'#22c55e':'#ef4444';
+})();
+
+// Rating counter
+const rc=document.getElementById('ratingCounter');
+if(rc){
+  const rating=4.5,cnt=687;
+  new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    rc.textContent='';
+    const animate=(from,to,dec,cb)=>{
+      let start=null;
+      (function step(ts){
+        if(!start)start=ts;
+        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
+        if(p<1)requestAnimationFrame(step);
+      })(performance.now());
     };
-  }
-  function renderBadge(el, status) {
-    if (!el) return;
-    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
-    el.innerHTML = `<span class="dot"></span> ${status.text}`;
-  }
-  const status = computeOpenStatus();
-  renderBadge(document.getElementById('openBadge'), status);
-  const stickyBadge = document.getElementById('stickyBadge');
-  if (stickyBadge) {
-    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
-    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
-  }
+    const rs=document.createElement('span'),cs=document.createElement('span');
+    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
+    animate(0,rating,true,v=>rs.textContent=v);
+    animate(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.5}).observe(rc);
+}
 
-  // ── カウンターアニメーション ──────────────────────────
-  function animateCounter(el, target, isDecimal) {
-    let start = 0, duration = 1800, startTime = null;
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const val = start + (target - start) * ease;
-      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  const ratingEl = document.getElementById('ratingCounter');
-  if (ratingEl && 4.5) {
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        io.disconnect();
-        const rating = 4.5, count = 687;
-        const rSpan = document.createElement('span');
-        const cSpan = document.createElement('span');
-        ratingEl.innerHTML = '';
-        ratingEl.appendChild(document.createTextNode('⭐ '));
-        rSpan.textContent = '0.0';
-        ratingEl.appendChild(rSpan);
-        ratingEl.appendChild(document.createTextNode(' · '));
-        cSpan.textContent = '0';
-        ratingEl.appendChild(cSpan);
-        ratingEl.appendChild(document.createTextNode(' Google reviews'));
-        animateCounter(rSpan, rating, true);
-        animateCounter(cSpan, count, false);
-      }
-    }, { threshold: 0.5 });
-    io.observe(ratingEl);
-  }
-
-  // ── リップルエフェクト ────────────────────────────────
-  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const r = document.createElement('span');
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      r.className = 'ripple';
-      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
-      this.appendChild(r);
-      setTimeout(() => r.remove(), 700);
-    });
+// Ripple
+document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span');
+    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
+      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
+      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
+    this.style.position='relative';this.style.overflow='hidden';
+    this.append(r);setTimeout(()=>r.remove(),700);
   });
-
-  // ── タイプライター（タグライン）────────────────────────
-  const tagline = document.querySelector('.hero-tagline');
-  if (tagline) {
-    const full = tagline.innerHTML;
-    tagline.innerHTML = '';
-    tagline.style.visibility = 'visible';
-    let i = 0;
-    const chars = [...full];
-    let inTag = false;
-    function typeNext() {
-      if (i >= chars.length) return;
-      if (chars[i] === '<') inTag = true;
-      if (!inTag) {
-        tagline.innerHTML += chars[i];
-      } else {
-        let tag = '';
-        while (i < chars.length && (inTag || chars[i] !== '>')) {
-          tag += chars[i];
-          if (chars[i] === '>') inTag = false;
-          i++;
-        }
-        tagline.innerHTML += tag;
-        setTimeout(typeNext, 18);
-        return;
-      }
-      if (chars[i] === '>') inTag = false;
-      i++;
-      setTimeout(typeNext, 28);
-    }
-    setTimeout(typeNext, 600);
-  }
-  </script>
-
+});
+</script>
+<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
