@@ -121,7 +121,16 @@ section{padding:var(--sp-xl) var(--sp-lg)}
 .about-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;max-width:1400px;margin:0 auto}
 .about-photo{position:relative;min-height:560px;overflow:hidden}
 .about-photo img{position:absolute;inset:0;width
-  </style>
+  /* Fix menu card text visibility */
+#menu .photo-card__name, #menu .photo-card h4, #menu [class*="card"] h4, #menu [class*="card"] h3 {color:#1a1a1a!important;}
+#menu .photo-card__desc, #menu .photo-card p, #menu [class*="card"] p {color:#555!important;}
+#menu .photo-card__price, #menu [class*="price"], #menu [class*="item-price"] {color:var(--c-accent)!important;}
+#menu [class*="card"] {background:#fff!important;}
+#menu .photo-card__body, #menu [class*="card-body"] {background:#fff!important;}
+/* Fix section title visibility */
+#menu .section-title, #menu [class*="section-title"] {color:#1a1a1a!important;}
+#menu .section-label, #menu [class*="section-label"], #menu [class*="eyebrow"] {color:var(--c-accent)!important;}
+</style>
 </head>
 <body>
 
