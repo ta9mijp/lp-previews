@@ -9,7 +9,7 @@
   <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
-  body{padding-top:52px;}
+  body{padding-top:44px;}
   .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
   .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
   .proto-banner strong{font-weight:700;}
@@ -92,7 +92,7 @@ section{padding-block:clamp(4rem,8vw,9rem)}
 /* ══════════════════════════════════════
    FIXED CLASSES
 ══════════════════════════════════════ */
-.proto-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--c-gold);color:var(--c-bg);text-align:center;padding:.5rem var(--gutter);font-size:var(--fs-sm);font-weight:var(--fw-med);letter-spacing:.1em;display:flex;align-items:center;justify-content:center;gap:1rem}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--c-gold);color:var(--c-bg);text-align:center;padding:.5rem var(--gutter);font-size:var(--fs-sm);font-weight:var(--fw-med);letter-spacing:.1em;display:flex;align-items:center;justify-content:center;gap:1rem}
 .proto-banner a{color:var(--c-bg);text-decoration:underline}
 
 #openBadge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .85rem;border-radius:999px;font-size:var(--fs-sm);font-weight:var(--fw-med);letter-spacing:.1em;background:rgba(0,180,80,.15);border:1px solid rgba(0,180,80,.4);color:#4ddb8a;line-height:1}
@@ -132,10 +132,12 @@ section{padding-block:clamp(4rem,8vw,9rem)}
 .hero-bg img{height:110%;object-position:center}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,6,.3) 0%,rgba(10,8,6,.6) 60%,var(--c-bg) 100%)}
 .hero-content{position:relative;z-index:2;padding:var(--gutter);max-width:900px}
-.hero-eyebrow{font-size:var(--fs-sm);letter-spacing:.35em;text-transform:uppercase;color:var(--c-gold);font-family:var(--ff-sans);font-weight:var(--fw-med);margin-bottom:1.5rem
+.hero-eyebrow{font-size:var(--fs-sm);letter-spacing:.35em;text-transform:uppercase;color:var(--c-gold);font-family:var(--ff-sans);font-weight:var(--fw-med);margin-bottom:1.5rem}
+.hero-title{font-family:var(--ff-serif);font-size:var(--fs-hero);font-weight:var(--fw-thin);line-height:1.1;color:var(--c-white);margin-bottom:.75rem}
+.hero-subtitle{font-family:var(--ff-sans);font-size:1.1rem;color:var(--c-muted);margin-bottom:2rem}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
   </style>
 </head>
-<body>
 <body>
 
 <!-- Proto Banner -->
@@ -162,8 +164,8 @@ section{padding-block:clamp(4rem,8vw,9rem)}
   <div class="hero-overlay"></div>
   <div class="hero-content text-center">
     <p class="hero-eyebrow section-label t-gold" data-aos="fade-down">Peckham, London</p>
-    <h1 class="t-serif" data-aos="fade-up" data-aos-delay="100">Beyroot Grill<br>Peckham</h1>
-    <p class="t-muted" data-aos="fade-up" data-aos-delay="200" style="font-size:1.25rem; max-width:560px; margin:1rem auto 1.5rem;">Beirut's flame-kissed soul, alive in Peckham</p>
+    <h1 class="t-serif" data-aos="fade-up" data-aos-delay="100" style="color:#fff;font-size:var(--fs-hero);font-weight:300;line-height:1.1;margin-bottom:.75rem;">Beyroot Grill<br>Peckham</h1>
+    <p data-aos="fade-up" data-aos-delay="200" style="font-size:1.15rem;max-width:560px;margin:1rem auto 1.5rem;color:rgba(245,240,232,.75);">Beirut's flame-kissed soul, alive in Peckham</p>
     <div data-aos="fade-up" data-aos-delay="300" style="display:flex; gap:0.5rem; justify-content:center; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap;">
       <span id="openBadge"></span>
       <span id="ratingCounter" data-rating="4.8" data-count="269" style="color:#c9a84c; font-size:0.95rem;">⭐ 4.8 · 269 Google reviews</span>
@@ -262,8 +264,74 @@ section{padding-block:clamp(4rem,8vw,9rem)}
             <p class="t-muted t-sm" style="line-height:1.7; margin:0;">Silky hand-blended chickpea hummus finished with extra virgin olive oil, paprika, and warm toasted flatbread.</p>
           </div>
         </div>
-        <div data-aos="fade-up" data-aos-delay="200" style="background:#161616; border:1px solid #222; border-radius:4px; overflow:hidden;">
-          <div style="height:180px; background:linear-gradient(135deg,#1a1a1a,#252525); display:flex; align-items:center; justify-content:center; font-size:3rem;">🧀</div>
+        <div data-aos="fade-up" data-aos-delay="200" style="background:#161616;border:1px solid #222;border-radius:4px;overflow:hidden;">
+          <div style="height:180px;background:linear-gradient(135deg,#1a1a1a,#252525);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍗</div>
+          <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;"><h4 class="t-serif" style="font-size:1.1rem;margin:0;">Chicken Shawarma</h4><span class="t-gold" style="font-weight:700;">£14</span></div>
+          <p class="t-muted t-sm" style="line-height:1.7;margin:0;">Spiced chicken slow-cooked on the spit, carved fresh and served in warm flatbread with garlic sauce, pickles, and chilli.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300" style="background:#161616;border:1px solid #222;border-radius:4px;overflow:hidden;">
+          <div style="height:180px;background:linear-gradient(135deg,#101a10,#1a2e1a);display:flex;align-items:center;justify-content:center;font-size:3rem;">🥙</div>
+          <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;"><h4 class="t-serif" style="font-size:1.1rem;margin:0;">Lamb Kofta Plate</h4><span class="t-gold" style="font-weight:700;">£17</span></div>
+          <p class="t-muted t-sm" style="line-height:1.7;margin:0;">Hand-rolled minced lamb kofta, grilled over an open flame and served with saffron rice, salad, and tzatziki.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desserts -->
+    <div style="margin-bottom:3.5rem;">
+      <h3 class="t-serif t-gold" data-aos="fade-right" style="font-size:1.5rem;margin-bottom:2rem;border-bottom:1px solid #2a2a2a;padding-bottom:.75rem;">Desserts</h3>
+      <div class="grid-3" style="gap:2rem;">
+        <div data-aos="fade-up" data-aos-delay="100" style="background:#161616;border:1px solid #222;border-radius:4px;overflow:hidden;">
+          <div style="height:180px;background:linear-gradient(135deg,#1a1510,#2a1e10);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍮</div>
+          <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;"><h4 class="t-serif" style="font-size:1.1rem;margin:0;">Baklava Selection</h4><span class="t-gold" style="font-weight:700;">£6</span></div>
+          <p class="t-muted t-sm" style="line-height:1.7;margin:0;">Our house-made baklava — layers of crisp filo, crushed pistachio, and warm rose-water honey syrup.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200" style="background:#161616;border:1px solid #222;border-radius:4px;overflow:hidden;">
+          <div style="height:180px;background:linear-gradient(135deg,#1a1a1a,#252525);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍦</div>
+          <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;"><h4 class="t-serif" style="font-size:1.1rem;margin:0;">Rose &amp; Pistachio Ice Cream</h4><span class="t-gold" style="font-weight:700;">£5</span></div>
+          <p class="t-muted t-sm" style="line-height:1.7;margin:0;">Creamy rosewater-scented ice cream studded with crushed pistachios — a refreshing Lebanese classic.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300" style="background:#161616;border:1px solid #222;border-radius:4px;overflow:hidden;">
+          <div style="height:180px;background:linear-gradient(135deg,#101510,#1a2a1a);display:flex;align-items:center;justify-content:center;font-size:3rem;">☕</div>
+          <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;"><h4 class="t-serif" style="font-size:1.1rem;margin:0;">Lebanese Coffee &amp; Maamoul</h4><span class="t-gold" style="font-weight:700;">£5</span></div>
+          <p class="t-muted t-sm" style="line-height:1.7;margin:0;">Cardamom-spiced Lebanese coffee served with two date-filled maamoul shortbread biscuits.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit" style="background:#111;padding:5rem 1.5rem;">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem;" data-aos="fade-up">
+      <p class="section-label t-gold">Find Us</p>
+      <div class="gold-rule" style="margin:0 auto 1rem;"></div>
+      <h2 class="section-title t-serif">Visit Beyroot Grill Peckham</h2>
+    </div>
+    <div class="grid-2" style="gap:4rem;" data-aos="fade-up">
+      <div>
+        <h3 class="t-serif t-gold" style="font-size:1.3rem;margin-bottom:1.5rem;">Opening Hours</h3>
+        <div style="font-size:.85rem;color:#aaa;">
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid #222"><span>Monday – Thursday</span><span>10:00 AM – 3:00 AM</span></div>
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid #222"><span>Friday – Saturday</span><span>10:00 AM – 5:00 AM</span></div>
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0"><span>Sunday</span><span>10:00 AM – 3:00 AM</span></div>
+        </div>
+        <a href="tel:020 3336 7568" class="btn btn-gold" style="margin-top:1.5rem;display:inline-flex;">📞 020 3336 7568</a>
+      </div>
+      <div style="background:var(--c-surface2);border:1px solid rgba(201,168,76,.2);padding:2rem;border-radius:4px;">
+        <h3 class="t-serif t-gold" style="font-size:1.2rem;margin-bottom:.75rem;">📍 Peckham, South London</h3>
+        <p class="t-muted" style="line-height:1.8;font-size:.9rem;margin-bottom:1rem;">Flame-grilled Lebanese cuisine in the heart of Peckham. Walk in any time or reserve ahead for groups.</p>
+        <a href="https://maps.google.com/?q=Beyroot+Grill+Peckham" target="_blank" class="t-gold" style="font-size:.8rem;text-decoration:underline;">View on Google Maps →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section style="background:var(--c-gold);padding:4rem 0;text-align:center;">
+  <div class="container"><h2 class="t-serif" style="font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--c-bg);margin-bottom:.75rem;">A Feast Awaits in Peckham</h2>
+    <p style="color:rgba(10,8,6,.7);margin-bottom:1.5rem;">Fresh to order. Generous portions. Open late, seven nights a week.</p>
+    <a href="tel:020 3336 7568" class="btn" style="background:var(--c-bg);color:var(--c-gold);border:1px solid var(--c-bg);">📞 Reserve a Table</a>
+  </div>
+</section>1a,#252525); display:flex; align-items:center; justify-content:center; font-size:3rem;">🧀</div>
           <div style="padding:1.5rem;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
               <h4 class="t-serif" style="font-size:1.1rem; margin:0;">Grilled Halloumi</h4>
@@ -300,11 +368,77 @@ section{padding-block:clamp(4rem,8vw,9rem)}
             <p class="t-muted t-sm" style="line-height:1.7; margin:0;">A showstopping spread of juicy spiced chicken, hand-rolled kebab, and tender lamb chunks grilled over an open flame, served with rice, salad, and sauces.</p>
           </div>
         </div>
-        <div data-aos="fade-up" data-aos-delay="200" style="background:#161616; border:1px solid #222; border-radius:4px; overflow:hidden;">
-          <div style="height:180px; background:linear-gradient(135deg,#1a1a
+        <div data-aos="fade-up" data-aos-delay="200" style="background:#161616;border:1px solid #222;border-radius:4px;overflow:hidden;">
+          <div style="height:180px;background:linear-gradient(135deg,#1a1a1a,#252525);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍗</div>
+          <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;"><h4 class="t-serif" style="font-size:1.1rem;margin:0;">Chicken Shawarma</h4><span class="t-gold" style="font-weight:700;">£14</span></div>
+          <p class="t-muted t-sm" style="line-height:1.7;margin:0;">Spiced chicken slow-cooked on the spit, carved fresh and served in warm flatbread with garlic sauce, pickles, and chilli.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300" style="background:#161616;border:1px solid #222;border-radius:4px;overflow:hidden;">
+          <div style="height:180px;background:linear-gradient(135deg,#101a10,#1a2e1a);display:flex;align-items:center;justify-content:center;font-size:3rem;">🥙</div>
+          <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;"><h4 class="t-serif" style="font-size:1.1rem;margin:0;">Lamb Kofta Plate</h4><span class="t-gold" style="font-weight:700;">£17</span></div>
+          <p class="t-muted t-sm" style="line-height:1.7;margin:0;">Hand-rolled minced lamb kofta, grilled over an open flame and served with saffron rice, salad, and tzatziki.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desserts -->
+    <div style="margin-bottom:3.5rem;">
+      <h3 class="t-serif t-gold" data-aos="fade-right" style="font-size:1.5rem;margin-bottom:2rem;border-bottom:1px solid #2a2a2a;padding-bottom:.75rem;">Desserts</h3>
+      <div class="grid-3" style="gap:2rem;">
+        <div data-aos="fade-up" data-aos-delay="100" style="background:#161616;border:1px solid #222;border-radius:4px;overflow:hidden;">
+          <div style="height:180px;background:linear-gradient(135deg,#1a1510,#2a1e10);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍮</div>
+          <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;"><h4 class="t-serif" style="font-size:1.1rem;margin:0;">Baklava Selection</h4><span class="t-gold" style="font-weight:700;">£6</span></div>
+          <p class="t-muted t-sm" style="line-height:1.7;margin:0;">Our house-made baklava — layers of crisp filo, crushed pistachio, and warm rose-water honey syrup.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200" style="background:#161616;border:1px solid #222;border-radius:4px;overflow:hidden;">
+          <div style="height:180px;background:linear-gradient(135deg,#1a1a1a,#252525);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍦</div>
+          <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;"><h4 class="t-serif" style="font-size:1.1rem;margin:0;">Rose &amp; Pistachio Ice Cream</h4><span class="t-gold" style="font-weight:700;">£5</span></div>
+          <p class="t-muted t-sm" style="line-height:1.7;margin:0;">Creamy rosewater-scented ice cream studded with crushed pistachios — a refreshing Lebanese classic.</p></div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300" style="background:#161616;border:1px solid #222;border-radius:4px;overflow:hidden;">
+          <div style="height:180px;background:linear-gradient(135deg,#101510,#1a2a1a);display:flex;align-items:center;justify-content:center;font-size:3rem;">☕</div>
+          <div style="padding:1.5rem;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;"><h4 class="t-serif" style="font-size:1.1rem;margin:0;">Lebanese Coffee &amp; Maamoul</h4><span class="t-gold" style="font-weight:700;">£5</span></div>
+          <p class="t-muted t-sm" style="line-height:1.7;margin:0;">Cardamom-spiced Lebanese coffee served with two date-filled maamoul shortbread biscuits.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit" style="background:#111;padding:5rem 1.5rem;">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem;" data-aos="fade-up">
+      <p class="section-label t-gold">Find Us</p>
+      <div class="gold-rule" style="margin:0 auto 1rem;"></div>
+      <h2 class="section-title t-serif">Visit Beyroot Grill Peckham</h2>
+    </div>
+    <div class="grid-2" style="gap:4rem;" data-aos="fade-up">
+      <div>
+        <h3 class="t-serif t-gold" style="font-size:1.3rem;margin-bottom:1.5rem;">Opening Hours</h3>
+        <div style="font-size:.85rem;color:#aaa;">
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid #222"><span>Monday – Thursday</span><span>10:00 AM – 3:00 AM</span></div>
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid #222"><span>Friday – Saturday</span><span>10:00 AM – 5:00 AM</span></div>
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0"><span>Sunday</span><span>10:00 AM – 3:00 AM</span></div>
+        </div>
+        <a href="tel:020 3336 7568" class="btn btn-gold" style="margin-top:1.5rem;display:inline-flex;">📞 020 3336 7568</a>
+      </div>
+      <div style="background:var(--c-surface2);border:1px solid rgba(201,168,76,.2);padding:2rem;border-radius:4px;">
+        <h3 class="t-serif t-gold" style="font-size:1.2rem;margin-bottom:.75rem;">📍 Peckham, South London</h3>
+        <p class="t-muted" style="line-height:1.8;font-size:.9rem;margin-bottom:1rem;">Flame-grilled Lebanese cuisine in the heart of Peckham. Walk in any time or reserve ahead for groups.</p>
+        <a href="https://maps.google.com/?q=Beyroot+Grill+Peckham" target="_blank" class="t-gold" style="font-size:.8rem;text-decoration:underline;">View on Google Maps →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section style="background:var(--c-gold);padding:4rem 0;text-align:center;">
+  <div class="container"><h2 class="t-serif" style="font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--c-bg);margin-bottom:.75rem;">A Feast Awaits in Peckham</h2>
+    <p style="color:rgba(10,8,6,.7);margin-bottom:1.5rem;">Fresh to order. Generous portions. Open late, seven nights a week.</p>
+    <a href="tel:020 3336 7568" class="btn" style="background:var(--c-bg);color:var(--c-gold);border:1px solid var(--c-bg);">📞 Reserve a Table</a>
+  </div>
+</section>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:750,once:true,offset:70,easing:'ease-out-cubic'});
+AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
 
 // Sticky nav on scroll past hero
 (function(){
@@ -366,5 +500,28 @@ document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(bt
 });
 </script>
 <style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+<script>
+// AOS fallback: force all elements visible after 1.2s
+(function(){
+  var t=setTimeout(function(){
+    document.querySelectorAll('[data-aos]').forEach(function(el){
+      el.classList.add('aos-animate');
+      el.style.opacity='1';
+      el.style.transform='none';
+      el.style.transitionDelay='0s';
+    });
+  },1200);
+})();
+
+
+// Menu tab navigation
+document.querySelectorAll('[data-tab],[data-filter],[data-category],.menu-tab,.tab-btn,.tab-button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var target = this.dataset.tab || this.dataset.filter || this.dataset.category || this.textContent.trim().toLowerCase();
+    var section = document.querySelector('#'+target) || document.querySelector('.menu-section-'+target) || document.querySelector('[data-section="'+target+'"]');
+    if(section){ section.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+</script>
 </body>
 </html>
