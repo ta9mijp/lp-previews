@@ -10,8 +10,8 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     :root{
-      --primary:   #FFFFFF;
-      --accent:    #FFD700;
+      --primary:   #0066CC;
+      --accent:    #FF0000;
       /* ヒーロー用（暗い背景向け） */
       --hero-text:  #f5f2ec;
       --hero-muted: rgba(245,242,236,0.65);
@@ -19,10 +19,10 @@
       --c-text:   #1a1a1a;
       --c-muted:  #6b6b6b;
       --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #F5F5F5;
+      --sec-bg:   #FFFF00;
     }
     html{scroll-behavior:smooth;}
-    body{font-family:'Sans-serif',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+    body{font-family:'Helvetica Neue',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
 
     /* PROTO BANNER */
     .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
@@ -35,11 +35,11 @@
     @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
     .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
     .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Custom SVG typography / Display typeface',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
+    .logo{font-family:'Georgia',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
     .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
     .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
     .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Custom SVG typography / Display typeface',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
+    .hero-tagline{font-family:'Georgia',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
     .hero-tagline span{color:var(--accent);}
     .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
     .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
@@ -52,7 +52,7 @@
     .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
     .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
     .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Custom SVG typography / Display typeface',serif;font-size:1.2rem;font-weight:300;color:#fff;}
+    .mockup-overlay .m-name{font-family:'Georgia',serif;font-size:1.2rem;font-weight:300;color:#fff;}
     .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
 
     /* ── SOCIAL BAR ── */
@@ -69,7 +69,7 @@
     /* ── SHARED CONTENT STYLES ── */
     .section-wrap{max-width:1100px;margin:0 auto;}
     .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Custom SVG typography / Display typeface',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+    .section-title{font-family:'Georgia',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
 
     /* ── ABOUT（白背景 → 暗い文字） ── */
     .about{padding:6rem 4rem;background:#fff;}
@@ -80,7 +80,7 @@
     .about-values{display:flex;flex-direction:column;}
     .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
     .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Custom SVG typography / Display typeface',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
+    .value-num{font-family:'Georgia',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
     .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
     .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
 
@@ -107,7 +107,7 @@
     .menu-item-left{flex:1;}
     .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
     .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Custom SVG typography / Display typeface',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
+    .item-price{font-family:'Georgia',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
     .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
 
     /* ── VISIT（薄グレー背景 → 暗い文字） ── */
@@ -130,7 +130,7 @@
     /* ── STICKY HEADER ── */
     .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
     .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Custom SVG typography / Display typeface',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
+    .sticky-logo{font-family:'Georgia',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
     .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
     .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
     .sticky-open.closed{background:#fce4ec;color:#c62828;}
@@ -177,7 +177,7 @@
   </header>
 
   <div class="proto-banner">
-    <p><strong>🎨 Free Preview</strong> — This site was built for Asafo Ghanaian Restaurant as a complimentary demo. Images, colours &amp; content are fully customisable once we connect.</p>
+    <p><strong>🎨 Free demo for Asafo Ghanaian Restaurant</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
@@ -193,8 +193,8 @@
         </div>
       </div>
       <div>
-        <h1 class="hero-tagline">Authentic Ghanaian soul, rooted in South London</h1>
-        <p class="hero-desc">Asafo brings the vibrant heart of Ghanaian cooking to South London, where every dish tells a story of tradition, warmth, and home. From perfectly seasoned chicken wings to richly spiced stews, our kitchen honours the flavours passed down through generations. Whether you are a longtime lover of West African cuisine or discovering it for the first time, you will leave feeling like family.</p>
+        <h1 class="hero-tagline">Authentic Ghanaian soul, right in South London</h1>
+        <p class="hero-desc">Asafo Ghanaian Restaurant brings the vibrant, heartwarming flavours of Ghana to the heart of South London. From perfectly seasoned chicken wings to fragrant rice dishes, every plate is crafted with the kind of care that makes you feel truly at home.</p>
         <div class="rating-counter" id="ratingCounter" data-rating="4" data-count="599">⭐ 4 · 599 Google reviews</div>
         <div class="open-badge" id="openBadge"></div>
       </div>
@@ -234,12 +234,12 @@
         <div data-aos="fade-right">
           <p class="section-label">Our Philosophy</p>
           <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Asafo brings the vibrant heart of Ghanaian cooking to South London, where every dish tells a story of tradition, warmth, and home. From perfectly seasoned chicken wings to richly spiced stews, our kitchen honours the flavours passed down through generations. Whether you are a longtime lover of West African cuisine or discovering it for the first time, you will leave feeling like family.</p>
+          <p class="about-body">Asafo Ghanaian Restaurant brings the vibrant, heartwarming flavours of Ghana to the heart of South London. From perfectly seasoned chicken wings to fragrant rice dishes, every plate is crafted with the kind of care that makes you feel truly at home.</p>
         </div>
         <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Rooted in Tradition</h3><p>Every recipe we serve draws from the rich culinary heritage of Ghana, cooked with the same care and seasoning that has defined the cuisine for generations.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>A Taste of Home</h3><p>We believe food is the fastest way to feel at home, and we pour that sense of warmth and belonging into every plate that leaves our kitchen.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Honest, Bold Flavours</h3><p>We let quality ingredients and authentic spicing do the talking, with no shortcuts and nothing to hide.</p></div></div>
+          <div class="value-item"><span class="value-num">01</span><div><h3>Rooted in Tradition</h3><p>Every dish honours the bold, aromatic culinary heritage of Ghana, cooked with time-honoured recipes passed through generations.</p></div></div>
+          <div class="value-item"><span class="value-num">02</span><div><h3>A Warm Welcome</h3><p>From the moment you walk through our doors, we treat every guest like family — whether you've travelled from around the corner or across the world.</p></div></div>
+          <div class="value-item"><span class="value-num">03</span><div><h3>Real Food, Real Flavour</h3><p>We believe great food needs no pretence — just quality ingredients, generous seasoning, and cooking made with genuine love.</p></div></div>
         </div>
       </div>
     </div>
@@ -263,7 +263,7 @@ I will say one thing- the chicken spot on. If you are not sure what to order, ke
         <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
         <span class="menu-note">Seasonal · Prices incl. VAT</span>
       </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Kelewele</div><div class="item-desc">Spiced fried plantain tossed in ginger, chilli and cloves — a beloved Ghanaian street snack with a fiery, fragrant kick.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Chin Chin</div><div class="item-desc">Light, golden deep-fried dough bites seasoned with nutmeg and coconut, served as a crisp and moreish opening to your meal.</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Scotch Bonnet Pepper Soup</div><div class="item-desc">A deeply aromatic, clear broth infused with traditional Ghanaian spices and fresh herbs, warming from the very first sip.</div></div><span class="item-price">£7</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Seasoned Chicken Wings with Jollof Rice</div><div class="item-desc">Our most celebrated dish — boldly marinated chicken wings grilled to perfection, served alongside smoky, richly spiced Ghanaian jollof rice.</div></div><span class="item-price">£14</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Groundnut Soup with Fufu</div><div class="item-desc">A slow-cooked peanut-based stew layered with tender meat and warming spices, served with smooth, hand-pounded fufu for a truly traditional experience.</div></div><span class="item-price">£15</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Kontomire Stew with Boiled Yam</div><div class="item-desc">Hearty cocoyam leaf stew simmered with smoked fish and palm oil, paired with soft boiled yam for a comforting, home-style plate.</div></div><span class="item-price">£13</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Bofrot</div><div class="item-desc">Soft, pillowy Ghanaian doughnuts dusted with sugar and served warm — a nostalgic treat that brings every meal to a joyful close.</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Sobolo Sorbet</div><div class="item-desc">A refreshing, vibrant sorbet crafted from hibiscus and ginger, capturing the bold, floral notes of Ghana's favourite chilled drink.</div></div><span class="item-price">£6</span></div></div></div>
+      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Kelewele</div><div class="item-desc">Spiced fried plantain cubes seasoned with ginger, chilli and cloves — a beloved Ghanaian street-food classic.</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Accra Bean Fritters</div><div class="item-desc">Light, crispy black-eyed pea fritters served with a tangy pepper dipping sauce.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Grilled Suya Skewers</div><div class="item-desc">Tender beef skewers rubbed with a fragrant West African spice blend and served with sliced onion and tomato.</div></div><span class="item-price">£7</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Seasoned Chicken Wings & Rice</div><div class="item-desc">Our signature dish — boldly marinated chicken wings, grilled to perfection and served alongside fluffy steamed rice. Simply unmissable.</div></div><span class="item-price">£14</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Groundnut Soup with Fufu</div><div class="item-desc">A rich, slow-cooked peanut broth with tender chicken, served with hand-pounded fufu — comfort in its purest form.</div></div><span class="item-price">£15</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jollof Rice with Fried Plantain</div><div class="item-desc">Ghana's legendary smoky, tomato-based rice cooked to a deep, caramelised finish, accompanied by golden sweet plantain.</div></div><span class="item-price">£12</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Bofrot</div><div class="item-desc">Soft, pillowy Ghanaian doughnuts lightly dusted with sugar — a sweet, nostalgic finish to any meal.</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Coconut Cake</div><div class="item-desc">A moist, fragrant sponge made with fresh coconut, served with a drizzle of warm spiced honey.</div></div><span class="item-price">£6</span></div></div></div>
       <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
     </div>
   </section>
