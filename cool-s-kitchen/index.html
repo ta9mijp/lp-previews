@@ -249,97 +249,29 @@ section{padding:clamp(3.5rem,7vw,6rem) 0}
         <h2 class="section-title">Our Menu</h2>
         <p class="section-desc">Handcrafted dishes inspired by bold Caribbean and South London culinary traditions.</p>
       </div>
-
-      <div class="menu-filter" data-aos="fade-up">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="starters">Starters</button>
-        <button class="filter-btn" data-filter="mains">Mains</button>
-        <button class="filter-btn" data-filter="desserts">Desserts</button>
-      </div>
-
-      <!-- STARTERS -->
-      <p class="section-label" id="starters" style="margin-bottom:1rem; margin-top:2rem;" data-aos="fade-up">Starters</p>
-      <div class="menu-grid" data-aos="fade-up">
-
-        <div class="menu-card" data-category="starters" style="background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s;">
-          <div style="height:200px; background:linear-gradient(135deg, #c8963e 0%, #8b4513 100%); display:flex; align-items:center; justify-content:center;">
-            <i class="fa fa-cutlery" style="font-size:3rem; color:rgba(255,255,255,0.5);"></i>
-          </div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h4 style="font-size:1rem; font-weight:700;">Peppered Prawn Skewers</h4>
-              <span style="font-size:1rem; font-weight:700; color:#c8963e; white-space:nowrap; margin-left:0.5rem;">£8</span>
-            </div>
-            <p style="font-size:0.85rem; opacity:0.75; line-height:1.6;">Juicy tiger prawns marinated in a smoky pepper and herb blend, grilled and served with a zesty mango dipping sauce.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;" data-aos="fade-up">
+        <div>
+          <h3 id="starters" style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;padding-bottom:.5rem;border-bottom:2px solid var(--c-accent-light);color:var(--c-primary-dark);">Starters</h3>
+          <div style="display:flex;flex-direction:column;gap:1.1rem;">
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:.25rem;"><strong>Peppered Prawn Skewers</strong><span style="color:var(--c-primary);font-weight:700;">£8</span></div><p style="font-size:.87rem;opacity:.75;margin:0;">Juicy tiger prawns in smoky pepper blend, with mango dipping sauce.</p></div>
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:.25rem;"><strong>Jerk Chicken Wings</strong><span style="color:var(--c-primary);font-weight:700;">£7</span></div><p style="font-size:.87rem;opacity:.75;margin:0;">Slow-marinated wings in authentic Jamaican jerk spice, with coconut lime dip.</p></div>
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:.25rem;"><strong>Spiced Lentil Soup</strong><span style="color:var(--c-primary);font-weight:700;">£6</span></div><p style="font-size:.87rem;opacity:.75;margin:0;">Velvety red lentil soup with cumin, coriander, and herb oil.</p></div>
           </div>
         </div>
-
-        <div class="menu-card" data-category="starters" style="background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s;">
-          <div style="height:200px; background:linear-gradient(135deg, #8b4513 0%, #c8963e 100%); display:flex; align-items:center; justify-content:center;">
-            <i class="fa fa-cutlery" style="font-size:3rem; color:rgba(255,255,255,0.5);"></i>
-          </div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h4 style="font-size:1rem; font-weight:700;">Jerk Chicken Wings</h4>
-              <span style="font-size:1rem; font-weight:700; color:#c8963e; white-space:nowrap; margin-left:0.5rem;">£7</span>
-            </div>
-            <p style="font-size:0.85rem; opacity:0.75; line-height:1.6;">Slow-marinated wings kissed with authentic Jamaican jerk spice, served with a cooling coconut and lime dip.</p>
+        <div>
+          <h3 id="mains" style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;padding-bottom:.5rem;border-bottom:2px solid var(--c-accent-light);color:var(--c-primary-dark);">Mains</h3>
+          <div style="display:flex;flex-direction:column;gap:1.1rem;">
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:.25rem;"><strong>Braised Oxtail</strong><span style="color:var(--c-primary);font-weight:700;">£18</span></div><p style="font-size:.87rem;opacity:.75;margin:0;">Slow-braised in rich spiced gravy, with coconut rice and peas.</p></div>
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:.25rem;"><strong>Jerk Chicken Platter</strong><span style="color:var(--c-primary);font-weight:700;">£15</span></div><p style="font-size:.87rem;opacity:.75;margin:0;">Charcoal-grilled jerk chicken with rice and peas and fried plantain.</p></div>
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:.25rem;"><strong>Curried Goat</strong><span style="color:var(--c-primary);font-weight:700;">£17</span></div><p style="font-size:.87rem;opacity:.75;margin:0;">Slow-cooked goat in fragrant Scotch bonnet curry, served with basmati rice.</p></div>
           </div>
         </div>
-
-        <div class="menu-card" data-category="starters" style="background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s;">
-          <div style="height:200px; background:linear-gradient(135deg, #d4a843 0%, #7a3b1e 100%); display:flex; align-items:center; justify-content:center;">
-            <i class="fa fa-cutlery" style="font-size:3rem; color:rgba(255,255,255,0.5);"></i>
+        <div>
+          <h3 id="desserts" style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;padding-bottom:.5rem;border-bottom:2px solid var(--c-accent-light);color:var(--c-primary-dark);">Desserts</h3>
+          <div style="display:flex;flex-direction:column;gap:1.1rem;">
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:.25rem;"><strong>Rum Cake</strong><span style="color:var(--c-primary);font-weight:700;">£6</span></div><p style="font-size:.87rem;opacity:.75;margin:0;">Moist Caribbean rum cake with vanilla ice cream.</p></div>
+            <div><div style="display:flex;justify-content:space-between;margin-bottom:.25rem;"><strong>Coconut Bread Pudding</strong><span style="color:var(--c-primary);font-weight:700;">£5</span></div><p style="font-size:.87rem;opacity:.75;margin:0;">Warm pudding with coconut milk and cinnamon, drizzled with caramel.</p></div>
           </div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h4 style="font-size:1rem; font-weight:700;">Spiced Lentil Soup</h4>
-              <span style="font-size:1rem; font-weight:700; color:#c8963e; white-space:nowrap; margin-left:0.5rem;">£6</span>
-            </div>
-            <p style="font-size:0.85rem; opacity:0.75; line-height:1.6;">A velvety, slow-cooked red lentil soup seasoned with cumin, coriander, and a hint of chilli, finished with a swirl of herb oil.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- MAINS -->
-      <p class="section-label" id="mains" style="margin-bottom:1rem; margin-top:2.5rem;" data-aos="fade-up">Mains</p>
-      <div class="menu-grid" data-aos="fade-up">
-
-        <div class="menu-card" data-category="mains" style="background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s;">
-          <div style="height:200px; background:linear-gradient(135deg, #5c2d0a 0%, #c8963e 100%); display:flex; align-items:center; justify-content:center;">
-            <i class="fa fa-cutlery" style="font-size:3rem; color:rgba(255,255,255,0.5);"></i>
-          </div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-              <h4 style="font-size:1rem; font-weight:700;">Braised Oxtail with Rice &amp; Peas</h4>
-              <span style="font-size:1rem; font-weight:700; color:#c8963e; white-space:nowrap; margin-left:0.5rem;">£18</span>
-            </div>
-            <p style="font-size:0.85rem; opacity:0.75; line-height:1.6;">Tender, slow-braised oxtail in a rich, deeply spiced gravy served alongside fluffy coconut rice and peas.</p>
-          </div>
-        </div>
-        <div class="menu-card" data-category="mains" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
-          <div style="height:200px;background:linear-gradient(135deg,#8b4513,#d4956a);display:flex;align-items:center;justify-content:center;"><i class="fa fa-cutlery" style="font-size:3rem;color:rgba(255,255,255,.5);"></i></div>
-          <div style="padding:1.25rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;">Jerk Chicken Platter</h4><span style="font-size:1rem;font-weight:700;color:#c8963e;">£15</span></div>
-          <p style="font-size:.85rem;opacity:.75;line-height:1.6;">Our signature jerk chicken, marinated overnight and grilled over charcoal, served with rice and peas and fried plantain.</p></div>
-        </div>
-        <div class="menu-card" data-category="mains" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
-          <div style="height:200px;background:linear-gradient(135deg,#5a8a2a,#8bc34a);display:flex;align-items:center;justify-content:center;"><i class="fa fa-leaf" style="font-size:3rem;color:rgba(255,255,255,.5);"></i></div>
-          <div style="padding:1.25rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;">Curried Goat</h4><span style="font-size:1rem;font-weight:700;color:#c8963e;">£17</span></div>
-          <p style="font-size:.85rem;opacity:.75;line-height:1.6;">Slow-cooked goat in a fragrant Scotch bonnet curry, served with basmati rice and freshly made roti.</p></div>
-        </div>
-      </div>
-      <p class="section-label" id="desserts" style="margin-bottom:1rem;margin-top:2.5rem;" data-aos="fade-up">Desserts</p>
-      <div class="menu-grid" data-aos="fade-up">
-        <div class="menu-card" data-category="desserts" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
-          <div style="height:200px;background:linear-gradient(135deg,#f4a261,#e76f51);display:flex;align-items:center;justify-content:center;"><i class="fa fa-birthday-cake" style="font-size:3rem;color:rgba(255,255,255,.5);"></i></div>
-          <div style="padding:1.25rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;">Rum Cake</h4><span style="font-size:1rem;font-weight:700;color:#c8963e;">£6</span></div>
-          <p style="font-size:.85rem;opacity:.75;line-height:1.6;">Moist Caribbean rum cake soaked in aged rum syrup, served warm with vanilla ice cream.</p></div>
-        </div>
-        <div class="menu-card" data-category="desserts" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
-          <div style="height:200px;background:linear-gradient(135deg,#c8963e,#f4d03f);display:flex;align-items:center;justify-content:center;"><i class="fa fa-star" style="font-size:3rem;color:rgba(255,255,255,.5);"></i></div>
-          <div style="padding:1.25rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;"><h4 style="font-size:1rem;font-weight:700;">Coconut Bread Pudding</h4><span style="font-size:1rem;font-weight:700;color:#c8963e;">£5</span></div>
-          <p style="font-size:.85rem;opacity:.75;line-height:1.6;">Warm bread pudding with coconut milk and cinnamon, drizzled with caramel sauce.</p></div>
         </div>
       </div>
     </div>
