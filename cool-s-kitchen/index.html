@@ -4,446 +4,763 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Cool's Kitchen — South London</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{
-      --primary:   #32373c;
-      --accent:    #f78da7;
-      /* ヒーロー用（暗い背景向け） */
-      --hero-text:  #f5f2ec;
-      --hero-muted: rgba(245,242,236,0.65);
-      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
-      --c-text:   #1a1a1a;
-      --c-muted:  #6b6b6b;
-      --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #ffffff;
-    }
-    html{scroll-behavior:smooth;}
-    body{font-family:'Noto Sans JP',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{padding-top:52px;}
+  @media(min-width:700px){.float-cta{display:none!important;}}
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Zen+Old+Mincho:wght@400;700&display=swap');
 
-    /* PROTO BANNER */
-    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
-    .proto-banner strong{font-weight:700;}
-    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+:root {
+  --primary: #1a1208;
+  --accent: #c8922a;
+  --accent-light: #e8b84b;
+  --accent-dark: #9a6d18;
+  --bg: #faf8f3;
+  --bg-warm: #f5f0e8;
+  --bg-dark: #0f0c06;
+  --text: #2a2218;
+  --text-light: #6b5c3e;
+  --muted: #9e8e72;
+  --border: #d4c4a0;
+  --border-light: #e8dcc8;
+  --white: #ffffff;
+  --shadow-warm: rgba(200, 146, 42, 0.18);
+  --shadow-dark: rgba(15, 12, 6, 0.35);
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-slow: 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
-    /* ── HERO（暗い背景 → 白文字） ── */
-    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
-    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
-    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
-    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Noto Sans JP',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
-    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
-    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
-    .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Noto Sans JP',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
-    .hero-tagline span{color:var(--accent);}
-    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
-    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
-    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
-    .hero-nav a:hover{color:#fff;}
-    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
-    .btn-reserve:hover{opacity:0.85;}
-    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
-    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
-    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
-    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Noto Sans JP',serif;font-size:1.2rem;font-weight:300;color:#fff;}
-    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    /* ── SOCIAL BAR ── */
-    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
-    .social-icons{display:flex;gap:1.4rem;}
-    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
-    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
-    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
-    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
-    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
-    .call-link:hover{border-color:var(--accent);color:var(--accent);}
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-    /* ── SHARED CONTENT STYLES ── */
-    .section-wrap{max-width:1100px;margin:0 auto;}
-    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Noto Sans JP',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+body {
+  font-family: 'Noto Serif JP', 'Zen Old Mincho', serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+  letter-spacing: 0.04em;
+}
 
-    /* ── ABOUT（白背景 → 暗い文字） ── */
-    .about{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.about{padding:4rem 2rem;}}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
-    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
-    .about-values{display:flex;flex-direction:column;}
-    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
-    .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Noto Sans JP',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
-    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
-    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
-    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
-    .reviews{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
-    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
-    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
-    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
-    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
-    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
 
-    /* ── MENU（白背景 → 暗い文字） ── */
-    .menu{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.menu{padding:4rem 2rem;}}
-    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
-    .menu-note{font-size:0.78rem;color:var(--c-muted);}
-    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
-    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
-    .menu-category:last-child{border-bottom:none;}
-    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
-    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
-    .menu-item:last-child{border-bottom:none;}
-    .menu-item-left{flex:1;}
-    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
-    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Noto Sans JP',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
-    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
+ul {
+  list-style: none;
+}
 
-    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
-    .visit{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.visit{padding:4rem 2rem;}}
-    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
-    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
-    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
-    .visit-block a:hover{color:var(--accent);}
-    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
-    .hour-row:last-child{border-bottom:none;}
-    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
-    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
-    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
+/* ─── ORNAMENT UTILITY ─── */
+.ornament {
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin: 0 12px;
+}
 
-    /* FOOTER */
-    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
-    @media(min-width:700px){footer{padding-bottom:2rem;}}
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.5rem;
+}
 
-    /* ── STICKY HEADER ── */
-    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
-    .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Noto Sans JP',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
-    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
-    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
-    .sticky-open.closed{background:#fce4ec;color:#c62828;}
-    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
-    .sticky-cta:hover{opacity:0.85;}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--primary);
+  letter-spacing: 0.06em;
+}
 
-    /* ── OPEN NOW BADGE (hero) ── */
-    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
-    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
-    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
-    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+.section-title em {
+  font-style: italic;
+  color: var(--accent);
+}
 
-    /* ── COUNTER ── */
-    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
+.divider-line {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin: 1.5rem auto;
+}
 
-    /* ── PARALLAX ── */
-    .hero-bg{will-change:transform;}
+/* ─── PROTO BANNER ─── */
+.proto-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: linear-gradient(90deg, #1a1208 0%, #2d1f0a 40%, #1a1208 100%);
+  border-bottom: 1px solid var(--accent-dark);
+  padding: 0.55rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
 
-    /* ── IMAGE ZOOM ── */
-    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
-    .mockup:hover img{transform:scale(1.05);}
+.proto-banner::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
+}
 
-    /* ── RIPPLE ── */
-    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
-    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
-    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
+.proto-banner-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  color: var(--accent-light);
+  text-align: center;
+  flex: 1;
+}
 
-    /* ── FLOAT CALL ── */
-    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
-    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
-    @media(min-width:700px){.float-call{display:none;}}
+.proto-banner-text strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.proto-banner-cta {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-dark);
+  padding: 0.25rem 0.9rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: all var(--transition);
+}
+
+.proto-banner-cta:hover {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+}
+
+/* ─── STICKY NAV ─── */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 990;
+  background: rgba(15, 12, 6, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200, 146, 42, 0.2);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform var(--transition-slow), opacity var(--transition-slow);
+  padding: 0.8rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sticky-nav.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sticky-nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: var(--white);
+}
+
+.sticky-nav-logo span {
+  color: var(--accent);
+}
+
+.sticky-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.sticky-nav-links a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--transition);
+}
+
+.sticky-nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width var(--transition);
+}
+
+.sticky-nav-links a:hover {
+  color: var(--accent-light);
+}
+
+.sticky-nav-links a:hover::after {
+  width: 100%;
+}
+
+.sticky-nav-reserve {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: linear-gradient(135deg, var(--accent-light), var(--accent));
+  padding: 0.5rem 1.4rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  box-shadow: 0 2px 12px var(--shadow-warm);
+}
+
+.sticky-nav-reserve:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: var(--white);
+  box-shadow: 0 4px 20px var(--shadow-warm);
+  transform: translateY(-1px);
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 0;
+  background-color: var(--bg-dark);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transform: scale(1.05);
+  transition: transform 8s ease-out;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(10, 8, 3, 0.72) 0%,
+    rgba(15, 12, 6, 0.55) 40%,
+    rgba(20, 14, 4, 0.75) 100%
+  );
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(200, 146, 42, 0.03) 2px,
+    rgba(200, 146, 42, 0.03) 4px
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeInUp 0.9s 0.3s forwards;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent));
+}
+
+.hero-eyebrow::after {
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: fadeInUp 0.9s 0.5s forwards;
+}
+
+.hero-title .accent-word {
+  color: var(--accent-light);
+  font-style: italic;
+  display: block;
+}
+
+.hero-title .outline-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+  color: transparent;
+  display: block;
+}
+
+.hero-sub {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.18em;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  line-height: 2;
+  opacity: 0;
+  animation: fadeInUp 0.9s 0.7s forwards;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeInUp 0.9s 0.9s forwards;
+}
+
+.hero-cta {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 1rem
   </style>
 </head>
 <body>
+<body>
 
-  <!-- STICKY HEADER -->
-  <header class="sticky-header" id="stickyHeader">
-    <div style="display:flex;align-items:center;">
-      <span class="sticky-logo">Cool's Kitchen</span>
-      <span class="sticky-open" id="stickyBadge"></span>
-    </div>
-    <a href="tel:020 3621 6276" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
-  </header>
-
+  <!-- Proto Banner -->
   <div class="proto-banner">
-    <p><strong>🎨 Free demo for Cool's Kitchen</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    🎨 Free demo for Cool's Kitchen — All images, text &amp; colours are placeholders and fully customisable.
     <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-left">
-      <div>
-        <div class="logo">Cool's Kitchen</div>
-        <div class="hero-badges">
-          <span class="badge">Restaurant</span>
-          <span class="badge">South London</span>
-          <span class="badge badge-accent"></span>
-        </div>
+  <!-- Sticky Nav -->
+  <nav class="sticky-nav" id="stickyNav">
+    <a class="nav-logo" href="#">Cool's Kitchen</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="nav-reserve" href="tel:020 3621 6276">📞 Reserve a Table</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section
+    class="hero"
+    style="background-image: url('images/img_0.jpg');"
+  >
+    <div class="hero-content">
+      <span
+        class="open-badge"
+        id="openBadge"
+        data-open="true"
+      >● Open Now</span>
+
+      <h1 class="hero-title" data-aos="fade-up">Cool's Kitchen</h1>
+      <p class="hero-sub" data-aos="fade-up" data-aos-delay="100">
+        Soul food cooked with love in South London
+      </p>
+
+      <div
+        class="hero-rating"
+        data-aos="fade-up"
+        data-aos-delay="150"
+        id="ratingCounter"
+        data-rating="4.6"
+        data-count="108"
+      >
+        ⭐ 4.6 · 108 Google reviews
       </div>
-      <div>
-        <h1 class="hero-tagline">Soul-stirring flavours rooted in South London warmth</h1>
-        <p class="hero-desc">Cool's Kitchen is a South London gem where bold flavours meet heartfelt cooking. Every dish is crafted with care, drawing on rich culinary traditions to bring comfort and joy to your table. Whether dining in or ordering from home, we invite you to taste the love in every bite.</p>
-        <div class="rating-counter" id="ratingCounter" data-rating="4.6" data-count="108">⭐ 4.6 · 108 Google reviews</div>
-        <div class="open-badge" id="openBadge"></div>
+
+      <div class="hero-badges" data-aos="fade-up" data-aos-delay="180">
+        <span class="service-badge">🍽 Dine-In</span>
+        <span class="service-badge">🥡 Takeaway</span>
+        <span class="service-badge">🚴 Delivery</span>
       </div>
-      <nav class="hero-nav">
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#visit">Visit</a>
-        <a href="tel:020 3621 6276" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
-      </nav>
-    </div>
-    <div class="hero-right">
-      <div class="mockup">
-        <img src="images/img_1.jpg" alt="Cool's Kitchen"/>
-        <div class="mockup-overlay">
-          <div class="m-name">Cool's Kitchen</div>
-          <div class="m-sub">Restaurant · South London</div>
-        </div>
-      </div>
+
+      <a
+        class="hero-cta"
+        href="tel:020 3621 6276"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >📞 Call to Reserve</a>
     </div>
   </section>
 
+  <!-- Social Bar -->
   <div class="social-bar">
-    <span>Connect</span>
-    <div class="social-icons">
-      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/02036216276" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://maps.google.com/?cid=12608277402466647142" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
-    </div>
-    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Delivery</span></div>
-    <a href="tel:020 3621 6276" class="call-link"><i class="fa fa-phone"></i> 020 3621 6276</a>
+    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      Instagram
+    </a>
+    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+      Facebook
+    </a>
+    <a href="https://wa.me/02036216276" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+      </svg>
+      WhatsApp
+    </a>
+    <a href="https://maps.google.com/?cid=12608277402466647142" target="_blank" rel="noopener" aria-label="Google Maps">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+      Google Maps
+    </a>
   </div>
 
-  <section class="about" id="about">
-    <div class="section-wrap">
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <h2 data-aos="fade-up">About Cool's Kitchen</h2>
       <div class="about-grid">
-        <div data-aos="fade-right">
-          <p class="section-label">Our Philosophy</p>
-          <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Cool's Kitchen is a South London gem where bold flavours meet heartfelt cooking. Every dish is crafted with care, drawing on rich culinary traditions to bring comfort and joy to your table. Whether dining in or ordering from home, we invite you to taste the love in every bite.</p>
+        <div class="about-text" data-aos="fade-up" data-aos-delay="100">
+          <p>
+            Cool's Kitchen is a South London gem bringing bold, home-style cooking to your table — or your door.
+            Every dish is crafted with the warmth and care of a family kitchen, drawing on rich culinary traditions
+            that turn simple ingredients into something truly special.
+          </p>
+          <div class="about-meta">
+            <span>🍽 Restaurant</span>
+            <span>📍 South London</span>
+            <span>⭐ 4.6 · 108 Reviews</span>
+          </div>
         </div>
-        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Rooted in Tradition</h3><p>We honour time-tested recipes passed down through generations, letting heritage guide every dish we serve.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Community at Heart</h3><p>Cool's Kitchen was born from a love of bringing people together, and that spirit lives in every meal we prepare.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Flavour Without Compromise</h3><p>We believe great food demands patience and intention, so we never cut corners when it comes to seasoning, technique, or soul.</p></div></div>
+        <div class="about-image" data-aos="fade-up" data-aos-delay="200">
+          <img
+            src="images/img_1.jpg"
+            alt="Inside Cool's Kitchen"
+          />
+        </div>
+      </div>
+
+      <!-- Philosophy Cards -->
+      <div class="about-grid about-values" style="margin-top:3rem;">
+        <div class="value-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="value-icon">🌿</div>
+          <h3>Rooted in Tradition</h3>
+          <p>Every recipe we serve carries the soul of generations of home cooking, reimagined for the South London table.</p>
+        </div>
+        <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="value-icon">🥬</div>
+          <h3>Fresh Every Day</h3>
+          <p>We source and prepare our ingredients daily, because great food begins long before it reaches your plate.</p>
+        </div>
+        <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="value-icon">🏘</div>
+          <h3>Community First</h3>
+          <p>Cool's Kitchen exists to feed and uplift the neighbourhood we call home, one generous portion at a time.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="reviews">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">What guests say</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 4.6 · 108 Google reviews</h2>
+  <!-- Reviews Section -->
+  <section class="reviews-section" id="reviews">
+    <div class="reviews-inner">
+      <h2 data-aos="fade-up">What Our Guests Say</h2>
+      <p class="reviews-sub" data-aos="fade-up" data-aos-delay="50">⭐ 4.6 · 108 Google reviews</p>
       <div class="reviews-grid">
-        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐⭐</div><p class="review-text">"Today, I ordered from the JustEat App and decided to give Cool's Kitchen a try based on their reviews, which leaned more positive than negative. However, my experience has compelled me to express my dissatisfaction. The delivery was efficient, and the driver was kind and friendly"</p><span class="review-author">— Mishel tamayo · 9 months ago</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐</div><p class="review-text">"So sad to say, because I was looking forward to it. I got the salmon with plain rice…but how can you put the salmon upon plain rice, with no gravy? It hardly had taste & they put the “rice bottom” in my portion. It gets worse…I also ordered a salmon soup on the side….it was salty"</p><span class="review-author">— A · 6 months ago</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"I ordered via uber eats; I loved everything I ordered and got to try some of my friends order. Hers was soup, which was delicious, just on the slightly watery side - wished it was thicker. I ordered the oxtail meal with coleslaw, plantain, pasta salad and rum and raisin milkshake"</p><span class="review-author">— Phillipa Lettman · 6 months ago</span></div></div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="review-stars">⭐⭐</div>
+          <p class="review-text">
+            "Today, I ordered from the JustEat App and decided to give Cool's Kitchen a try based on their reviews,
+            which leaned more positive than negative. However, my experience has compelled me to express my d…"
+          </p>
+          <p class="review-author">— Mishel tamayo</p>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="review-stars">⭐</div>
+          <p class="review-text">
+            "So sad to say, because I was looking forward to it. I got the salmon with plain rice…but how can you put
+            the salmon upon plain rice, with no gravy? It hardly had taste &amp; they put the "rice bottom" in…"
+          </p>
+          <p class="review-author">— A</p>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">
+            "I ordered via uber eats; I loved everything I ordered and got to try some of my friend's order. Hers was
+            soup, which was delicious, just on the slightly watery side - wished it was thicker. I ordered t…"
+          </p>
+          <p class="review-author">— Phillipa Lettman</p>
+        </div>
+
+      </div>
+      <div class="reviews-cta" data-aos="fade-up" data-aos-delay="250">
+        <a href="https://maps.google.com/?cid=12608277402466647142" target="_blank" rel="noopener">
+          Read all reviews on Google →
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="menu" id="menu">
-    <div class="section-wrap">
-      <div class="menu-header" data-aos="fade-up">
-        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
-        <span class="menu-note">Seasonal · Prices incl. VAT</span>
+  <!-- Menu Section -->
+  <section class="menu-section" id="menu">
+    <div class="menu-inner">
+      <h2 data-aos="fade-up">Our Menu</h2>
+      <p class="menu-sub" data-aos="fade-up" data-aos-delay="50">
+        Bold flavours crafted fresh every day
+      </p>
+
+      <!-- Starters -->
+      <h3 class="menu-category" data-aos="fade-up">Starters</h3>
+      <div class="menu-grid">
+
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="menu-item-body">
+            <h4>Spiced Corn Fritters</h4>
+            <p>Golden, crispy fritters seasoned with smoky paprika and fresh herbs, served with a cool mango chutney dip.</p>
+          </div>
+          <span class="menu-price">£5</span>
+        </div>
+
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="80">
+          <div class="menu-item-body">
+            <h4>Peppersoup</h4>
+            <p>A deeply aromatic, slow-simmered broth infused with West African spices and tender pieces of seasoned fish.</p>
+          </div>
+          <span class="menu-price">£6</span>
+        </div>
+
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="160">
+          <div class="menu-item-body">
+            <h4>Jerk Chicken Wings</h4>
+            <p>Succulent wings marinated overnight in a fiery blend of scotch bonnet, allspice and thyme, charred to perfection.</p>
+          </div>
+          <span class="menu-price">£7</span>
+        </div>
+
       </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Peppersoup</div><div class="item-desc">A fragrant, spiced broth brimming with tender fish and aromatic herbs — warming and deeply satisfying.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Plantain Bites</div><div class="item-desc">Golden-fried sweet plantain slices, crisp on the outside and meltingly soft within, served with a tangy chilli dip.</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Suya Skewers</div><div class="item-desc">Tender strips of seasoned beef grilled over an open flame, dusted with spiced groundnut powder and served with sliced onion.</div></div><span class="item-price">£7</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jerk Salmon & Coconut Rice</div><div class="item-desc">Boldly seasoned salmon fillet marinated in aromatic jerk spices, served atop silky coconut-infused rice with a rich house gravy.</div></div><span class="item-price">£15</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Slow-Braised Oxtail</div><div class="item-desc">Meltingly tender oxtail simmered low and slow in a deep, herb-laden sauce, served with buttery mashed yam and sautéed greens.</div></div><span class="item-price">£18</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Egusi Stew & Pounded Yam</div><div class="item-desc">A hearty West African classic — ground melon seed stew rich with leafy greens and smoked fish, paired with perfectly smooth pounded yam.</div></div><span class="item-price">£14</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Chin Chin Sundae</div><div class="item-desc">Creamy vanilla ice cream layered with crunchy house-made chin chin, drizzled with a warm salted caramel sauce.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Spiced Pineapple Cake</div><div class="item-desc">A moist, warmly spiced pineapple sponge cake served with a scoop of coconut cream and a dusting of toasted desiccated coconut.</div></div><span class="item-price">£5</span></div></div></div>
-      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
+
+      <!-- Mains -->
+      <h3 class="menu-category" data-aos="fade-up">Mains</h3>
+      <div class="menu-grid">
+
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="menu-item-body">
+            <h4>Herb-Crusted Salmon</h4>
+            <p>Pan-seared Atlantic salmon rested on a rich, silky tomato and butter sauce with seasoned rice and steamed greens.</p>
+          </div>
+          <span class="menu-price">£14</span>
+        </div>
+
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="80">
+          <div class="menu-item-body">
+            <h4>Oxtail Stew</h4>
+            <p>Slow-braised oxtail in a deep, velvety gravy of butter beans, thyme and allspice, served with fluffy white rice.</p>
+          </div>
+          <span class="menu-price">£16</span>
+        </div>
+
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="160">
+          <div class="menu-item-body">
+            <h4>Jerk Chicken Platter</h4>
+            <p>A generous half-chicken marinated in Cool's signature jerk blend, served with festival dumplings and coleslaw.</p>
+          </div>
+          <span class="menu-price">£13</span>
+        </div>
+
+      </div>
+
+      <!-- Desserts -->
+      <h3 class="menu-category" data-aos="fade-up">Desserts</h3>
+      <div class="menu-grid">
+
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="menu-item-body">
+            <h4>Rum &amp; Coconut Bread Pudding</h4>
+            <p>A warmly spiced, golden pudding soaked in coconut cream and a hint of dark rum, served with vanilla custard.</p>
+          </div>
+          <span class="menu-price">£6</span>
+        </div>
+
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="80">
+          <div class="menu-item-body">
+            <h4>Mango Cheesecake</h4>
+            <p>A velvety, no-bake cheesecake crowned with fresh mango coulis on a buttery biscuit base.</p>
+          </div>
+          <span class="menu-price">£5</span>
+        </div>
+
+      </div>
+
+      <p class="menu-disclaimer" data-aos="fade-up">* Sample menu for reference. Menu items and prices may vary. Please contact the restaurant for the latest offerings.</p>
     </div>
   </section>
 
-  <section class="visit" id="visit">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">Find Us</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
+  <!-- Visit Section -->
+  <section class="visit-section" id="visit">
+    <div class="visit-inner">
+      <h2 data-aos="fade-up">Find Us</h2>
+
       <div class="visit-grid">
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
-          <p class="vb-label">Address</p>
-          <p>21 Portland Rd, London SE25 4UF, UK</p>
-          <a href="https://maps.google.com/?cid=12608277402466647142" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
-        </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
-          <p class="vb-label">Opening Hours</p>
-          <div class="hour-row"><span>Mon</span><span>11:00 AM – 11:00 PM</span></div>
-<div class="hour-row"><span>Tue</span><span>11:00 AM – 11:00 PM</span></div>
-<div class="hour-row"><span>Wed</span><span>11:00 AM – 11:00 PM</span></div>
-<div class="hour-row"><span>Thu</span><span>11:00 AM – 11:00 PM</span></div>
-<div class="hour-row"><span>Fri</span><span>11:00 AM – 11:00 PM</span></div>
-<div class="hour-row"><span>Sat</span><span>11:00 AM – 11:00 PM</span></div>
-<div class="hour-row"><span>Sun</span><span>11:00 AM – 11:00 PM</span></div>
-        </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
-          <p class="vb-label">Reservations</p>
-          <a href="tel:020 3621 6276"><i class="fa fa-phone" style="font-size:0.75rem"></i> 020 3621 6276</a>
-          <a href="https://wa.me/02036216276" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
-        </div>
-      </div>
-      <a href="https://maps.google.com/?cid=12608277402466647142" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
-    </div>
-  </section>
 
-  <footer>
-    <span>© 2025 Cool's Kitchen</span>
-    <span>21 Portland Rd, London SE25 4UF, UK</span>
-  </footer>
+        <!-- Address & Map -->
+        <div class="visit-address" data-aos="fade-up" data-aos-delay="50">
+          <h3>📍 Address</h3>
+          <address>
+            Cool's Kitchen<br>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:700,once:true,offset:60});
 
-  <a href="tel:020 3621 6276" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
+// Sticky nav
+const stickyNav = document.getElementById('stickyNav');
+const heroEl = document.querySelector('.hero,[class*=hero]');
+if(stickyNav && heroEl){
+  new IntersectionObserver(([e])=>stickyNav.classList.toggle('visible',!e.isIntersecting),{threshold:0.1}).observe(heroEl);
+}
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-  // ── AOS（スクロールアニメーション）──────────────────
-  AOS.init({ duration: 750, once: true, offset: 80, easing: 'ease-out-cubic' });
+// Open/Closed badge
+const HOURS={"Monday": "11:00 AM – 11:00 PM", "Tuesday": "11:00 AM – 11:00 PM", "Wednesday": "11:00 AM – 11:00 PM", "Thursday": "11:00 AM – 11:00 PM", "Friday": "11:00 AM – 11:00 PM", "Saturday": "11:00 AM – 11:00 PM", "Sunday": "11:00 AM – 11:00 PM"};
+(function(){
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()]; const raw=HOURS[day]||'';
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  if(!m){badge.textContent='See hours below';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+ +mn;
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const isOpen=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=isOpen?'● Open now':'● Closed';
+  badge.style.color=isOpen?'#22c55e':'#ef4444';
+})();
 
-  // ── Parallax（ヒーロー背景）──────────────────────────
-  const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      heroBg.style.transform = `translateY(${y * 0.38}px)`;
-    }, { passive: true });
-  }
-
-  // ── Sticky Header ────────────────────────────────────
-  const stickyHeader = document.getElementById('stickyHeader');
-  const hero = document.querySelector('.hero');
-  if (stickyHeader && hero) {
-    const observer = new IntersectionObserver(
-      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(hero);
-  }
-
-  // ── 営業中バッジ ──────────────────────────────────────
-  const HOURS = {"Monday": "11:00 AM – 11:00 PM", "Tuesday": "11:00 AM – 11:00 PM", "Wednesday": "11:00 AM – 11:00 PM", "Thursday": "11:00 AM – 11:00 PM", "Friday": "11:00 AM – 11:00 PM", "Saturday": "11:00 AM – 11:00 PM", "Sunday": "11:00 AM – 11:00 PM"};
-  function computeOpenStatus() {
-    const now  = new Date();
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const day  = days[now.getDay()];
-    const raw  = HOURS[day] || '';
-    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
-    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-    if (!m) return { open: false, text: raw };
-    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
-    const openMin  = toMin(m[1], m[2], m[3]);
-    const closeMin = toMin(m[4], m[5], m[6]);
-    const nowMin   = now.getHours() * 60 + now.getMinutes();
-    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
-    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
-    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
-    return {
-      open: isOpen,
-      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
+// Rating counter
+const rc=document.getElementById('ratingCounter');
+if(rc){
+  const rating=4.6,cnt=108;
+  new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    rc.textContent='';
+    const animate=(from,to,dec,cb)=>{
+      let start=null;
+      (function step(ts){
+        if(!start)start=ts;
+        const p=Math.min((ts-start)/1500,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
+        if(p<1)requestAnimationFrame(step);
+      })(performance.now());
     };
-  }
-  function renderBadge(el, status) {
-    if (!el) return;
-    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
-    el.innerHTML = `<span class="dot"></span> ${status.text}`;
-  }
-  const status = computeOpenStatus();
-  renderBadge(document.getElementById('openBadge'), status);
-  const stickyBadge = document.getElementById('stickyBadge');
-  if (stickyBadge) {
-    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
-    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
-  }
+    const rs=document.createElement('span'),cs=document.createElement('span');
+    rc.append('⭐ ');rc.append(rs);rc.append(' · ');rc.append(cs);rc.append(' Google reviews');
+    animate(0,rating,true,v=>rs.textContent=v);
+    animate(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.5}).observe(rc);
+}
 
-  // ── カウンターアニメーション ──────────────────────────
-  function animateCounter(el, target, isDecimal) {
-    let start = 0, duration = 1800, startTime = null;
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const val = start + (target - start) * ease;
-      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  const ratingEl = document.getElementById('ratingCounter');
-  if (ratingEl && 4.6) {
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        io.disconnect();
-        const rating = 4.6, count = 108;
-        const rSpan = document.createElement('span');
-        const cSpan = document.createElement('span');
-        ratingEl.innerHTML = '';
-        ratingEl.appendChild(document.createTextNode('⭐ '));
-        rSpan.textContent = '0.0';
-        ratingEl.appendChild(rSpan);
-        ratingEl.appendChild(document.createTextNode(' · '));
-        cSpan.textContent = '0';
-        ratingEl.appendChild(cSpan);
-        ratingEl.appendChild(document.createTextNode(' Google reviews'));
-        animateCounter(rSpan, rating, true);
-        animateCounter(cSpan, count, false);
-      }
-    }, { threshold: 0.5 });
-    io.observe(ratingEl);
-  }
-
-  // ── リップルエフェクト ────────────────────────────────
-  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const r = document.createElement('span');
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      r.className = 'ripple';
-      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
-      this.appendChild(r);
-      setTimeout(() => r.remove(), 700);
-    });
+// Ripple
+document.querySelectorAll('.hero-cta,.float-cta,.sticky-cta').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span');
+    const rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
+      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
+      background:'rgba(255,255,255,0.35)',transform:'scale(0)',animation:'ripple 0.6s linear',pointerEvents:'none'});
+    this.style.position='relative';this.style.overflow='hidden';
+    this.append(r);setTimeout(()=>r.remove(),700);
   });
-
-  // ── タイプライター（タグライン）────────────────────────
-  const tagline = document.querySelector('.hero-tagline');
-  if (tagline) {
-    const full = tagline.innerHTML;
-    tagline.innerHTML = '';
-    tagline.style.visibility = 'visible';
-    let i = 0;
-    const chars = [...full];
-    let inTag = false;
-    function typeNext() {
-      if (i >= chars.length) return;
-      if (chars[i] === '<') inTag = true;
-      if (!inTag) {
-        tagline.innerHTML += chars[i];
-      } else {
-        let tag = '';
-        while (i < chars.length && (inTag || chars[i] !== '>')) {
-          tag += chars[i];
-          if (chars[i] === '>') inTag = false;
-          i++;
-        }
-        tagline.innerHTML += tag;
-        setTimeout(typeNext, 18);
-        return;
-      }
-      if (chars[i] === '>') inTag = false;
-      i++;
-      setTimeout(typeNext, 28);
-    }
-    setTimeout(typeNext, 600);
-  }
-  </script>
-
+});
+</script>
+<style>@keyframes ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
