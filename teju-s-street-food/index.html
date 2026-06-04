@@ -10,7 +10,7 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     :root{
-      --primary:   #0066CC;
+      --primary:   #000000;
       --accent:    #FF0000;
       /* ヒーロー用（暗い背景向け） */
       --hero-text:  #f5f2ec;
@@ -19,10 +19,10 @@
       --c-text:   #1a1a1a;
       --c-muted:  #6b6b6b;
       --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #FFFF00;
+      --sec-bg:   #FFFFFF;
     }
     html{scroll-behavior:smooth;}
-    body{font-family:'Noto Sans JP',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+    body{font-family:'Suisse Int'l',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
 
     /* PROTO BANNER */
     .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
@@ -35,11 +35,11 @@
     @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
     .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
     .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Noto Sans JP',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
+    .logo{font-family:'Suisse Int'l',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
     .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
     .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
     .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Noto Sans JP',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
+    .hero-tagline{font-family:'Suisse Int'l',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
     .hero-tagline span{color:var(--accent);}
     .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
     .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
@@ -52,7 +52,7 @@
     .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
     .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
     .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Noto Sans JP',serif;font-size:1.2rem;font-weight:300;color:#fff;}
+    .mockup-overlay .m-name{font-family:'Suisse Int'l',serif;font-size:1.2rem;font-weight:300;color:#fff;}
     .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
 
     /* ── SOCIAL BAR ── */
@@ -69,7 +69,7 @@
     /* ── SHARED CONTENT STYLES ── */
     .section-wrap{max-width:1100px;margin:0 auto;}
     .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Noto Sans JP',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+    .section-title{font-family:'Suisse Int'l',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
 
     /* ── ABOUT（白背景 → 暗い文字） ── */
     .about{padding:6rem 4rem;background:#fff;}
@@ -80,7 +80,7 @@
     .about-values{display:flex;flex-direction:column;}
     .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
     .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Noto Sans JP',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
+    .value-num{font-family:'Suisse Int'l',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
     .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
     .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
 
@@ -107,7 +107,7 @@
     .menu-item-left{flex:1;}
     .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
     .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Noto Sans JP',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
+    .item-price{font-family:'Suisse Int'l',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
     .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
 
     /* ── VISIT（薄グレー背景 → 暗い文字） ── */
@@ -130,7 +130,7 @@
     /* ── STICKY HEADER ── */
     .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
     .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Noto Sans JP',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
+    .sticky-logo{font-family:'Suisse Int'l',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
     .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
     .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
     .sticky-open.closed{background:#fce4ec;color:#c62828;}
@@ -193,8 +193,8 @@
         </div>
       </div>
       <div>
-        <h1 class="hero-tagline">West African street flavours, alive in Peckham</h1>
-        <p class="hero-desc">Teju's Street Food brings the bold, smoky soul of West African street cooking to the heart of Peckham. From sizzling suya to golden puff-puffs, every dish is rooted in the vibrant roadside food culture that has fed and delighted generations. Come hungry, leave restored.</p>
+        <h1 class="hero-tagline">Authentic street food energy in the heart of Peckham</h1>
+        <p class="hero-desc">Teju's Street Food brings the vibrant flavors of West African cuisine straight to your plate in Peckham. We're passionate about serving bold, honest food that fuels your day and satisfies your soul. Whether you're grabbing a quick bite or settling in for a feast, we've got the street food magic you're craving.</p>
         <div class="rating-counter" id="ratingCounter" data-rating="3.8" data-count="23">⭐ 3.8 · 23 Google reviews</div>
         <div class="open-badge" id="openBadge"></div>
       </div>
@@ -234,12 +234,12 @@
         <div data-aos="fade-right">
           <p class="section-label">Our Philosophy</p>
           <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Teju's Street Food brings the bold, smoky soul of West African street cooking to the heart of Peckham. From sizzling suya to golden puff-puffs, every dish is rooted in the vibrant roadside food culture that has fed and delighted generations. Come hungry, leave restored.</p>
+          <p class="about-body">Teju's Street Food brings the vibrant flavors of West African cuisine straight to your plate in Peckham. We're passionate about serving bold, honest food that fuels your day and satisfies your soul. Whether you're grabbing a quick bite or settling in for a feast, we've got the street food magic you're craving.</p>
         </div>
         <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Rooted in Tradition</h3><p>Every recipe draws from the rich street food heritage of West Africa, honouring the flavours passed down through markets and family kitchens alike.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Fired with Character</h3><p>Our charcoal grill is the heart of the kitchen, lending each dish the deep, smoky intensity that only live fire can deliver.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Made for the Moment</h3><p>Street food is food that meets you where you are — quick, generous, and guaranteed to send you back out into the world energised.</p></div></div>
+          <div class="value-item"><span class="value-num">01</span><div><h3>Fresh & Flavorful</h3><p>Every dish is prepared with quality ingredients and authentic recipes that celebrate the richness of West African street food culture.</p></div></div>
+          <div class="value-item"><span class="value-num">02</span><div><h3>Energy in Every Bite</h3><p>We serve food designed to revive you—whether it's mid-cycle or mid-day, our meals deliver real nourishment and taste.</p></div></div>
+          <div class="value-item"><span class="value-num">03</span><div><h3>Community First</h3><p>Teju's is more than a restaurant; it's a gathering place where neighbors become friends over shared plates and good vibes.</p></div></div>
         </div>
       </div>
     </div>
@@ -269,7 +269,7 @@ Please save your money and "</p><span class="review-author">— Water Tornado ·
         <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
         <span class="menu-note">Seasonal · Prices incl. VAT</span>
       </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Puff-Puff</div><div class="item-desc">Light, pillowy West African doughnuts with a golden crust and a soft, yielding centre — dusted with spiced sugar and served warm.</div></div><span class="item-price">£4</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Peppered Gizzards</div><div class="item-desc">Slow-cooked chicken gizzards tossed in a bold Scotch bonnet and tomato sauce, scattered with fresh coriander.</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Akara</div><div class="item-desc">Crispy black-eyed bean fritters, seasoned with onion and chilli and fried to a satisfying crunch — a beloved West African classic.</div></div><span class="item-price">£5</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Charcoal Suya</div><div class="item-desc">Skewers of lean beef marinated overnight in house-blended yaji spice, grilled over hot charcoal and served with sliced onion and tomato.</div></div><span class="item-price">£10</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jollof Rice & Fried Plantain</div><div class="item-desc">Smoky party-style jollof rice simmered low and slow with tomatoes and spices, paired with caramelised ripe plantain.</div></div><span class="item-price">£9</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Grilled Chicken & Egusi Sauce</div><div class="item-desc">Spatchcocked chicken charred on the grill, served alongside a rich, nutty egusi and leaf sauce that demands to be mopped up.</div></div><span class="item-price">£12</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Chin Chin</div><div class="item-desc">A generous handful of crunchy, lightly sweetened fried dough bites — the irresistible West African snack that doubles as the perfect finish.</div></div><span class="item-price">£3</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Caramelised Plantain & Coconut Cream</div><div class="item-desc">Ripe plantain pan-fried in brown sugar until deeply golden, served with a cool, lightly sweetened coconut cream.</div></div><span class="item-price">£5</span></div></div></div>
+      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Puff-Puffs</div><div class="item-desc">Golden, fluffy fried dough balls served warm with spicy dipping sauce</div></div><span class="item-price">£4.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Plantain Chips</div><div class="item-desc">Crispy fried plantain slices with a hint of sea salt</div></div><span class="item-price">£4</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Chin Chin</div><div class="item-desc">Crunchy spiced snack mix perfect for sharing</div></div><span class="item-price">£3.50</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Spicy Charcoal Grill</div><div class="item-desc">Smoky grilled meat with bold spices and fresh herbs</div></div><span class="item-price">£9.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jollof Rice & Chicken</div><div class="item-desc">Aromatic rice cooked in tomato sauce with tender grilled chicken</div></div><span class="item-price">£8.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Street Food Combo</div><div class="item-desc">Plantain, puff-puffs, and grilled meat with our signature sauce</div></div><span class="item-price">£10</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Fried Plantain with Honey</div><div class="item-desc">Caramelized plantain drizzled with warm honey</div></div><span class="item-price">£3.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Coconut Balls</div><div class="item-desc">Sweet coconut confection with a delicate, chewy center</div></div><span class="item-price">£2.50</span></div></div></div>
       <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
     </div>
   </section>
