@@ -10,8 +10,8 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     :root{
-      --primary:   #ffffff;
-      --accent:    #ff0000;
+      --primary:   #000000;
+      --accent:    #FF0000;
       /* ヒーロー用（暗い背景向け） */
       --hero-text:  #f5f2ec;
       --hero-muted: rgba(245,242,236,0.65);
@@ -19,10 +19,10 @@
       --c-text:   #1a1a1a;
       --c-muted:  #6b6b6b;
       --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #000000;
+      --sec-bg:   #FFFFFF;
     }
     html{scroll-behavior:smooth;}
-    body{font-family:'Suisse',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+    body{font-family:'Suisse BP',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
 
     /* PROTO BANNER */
     .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
@@ -35,11 +35,11 @@
     @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
     .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
     .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Suisse',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
+    .logo{font-family:'Suisse BP',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
     .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
     .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
     .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Suisse',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
+    .hero-tagline{font-family:'Suisse BP',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
     .hero-tagline span{color:var(--accent);}
     .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
     .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
@@ -52,7 +52,7 @@
     .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
     .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
     .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Suisse',serif;font-size:1.2rem;font-weight:300;color:#fff;}
+    .mockup-overlay .m-name{font-family:'Suisse BP',serif;font-size:1.2rem;font-weight:300;color:#fff;}
     .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
 
     /* ── SOCIAL BAR ── */
@@ -69,7 +69,7 @@
     /* ── SHARED CONTENT STYLES ── */
     .section-wrap{max-width:1100px;margin:0 auto;}
     .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Suisse',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+    .section-title{font-family:'Suisse BP',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
 
     /* ── ABOUT（白背景 → 暗い文字） ── */
     .about{padding:6rem 4rem;background:#fff;}
@@ -80,7 +80,7 @@
     .about-values{display:flex;flex-direction:column;}
     .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
     .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Suisse',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
+    .value-num{font-family:'Suisse BP',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
     .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
     .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
 
@@ -107,7 +107,7 @@
     .menu-item-left{flex:1;}
     .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
     .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Suisse',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
+    .item-price{font-family:'Suisse BP',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
     .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
 
     /* ── VISIT（薄グレー背景 → 暗い文字） ── */
@@ -130,7 +130,7 @@
     /* ── STICKY HEADER ── */
     .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
     .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Suisse',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
+    .sticky-logo{font-family:'Suisse BP',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
     .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
     .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
     .sticky-open.closed{background:#fce4ec;color:#c62828;}
@@ -193,8 +193,8 @@
         </div>
       </div>
       <div>
-        <h1 class="hero-tagline">Authentic Jamaican soul food, served with genuine warmth</h1>
-        <p class="hero-desc">Little Deli God Bless is a cherished Jamaican kitchen in the heart of Peckham, where every dish is prepared with care and passion. Our team takes pride in sharing the vibrant flavours of Jamaica with our community, offering honest food, honest service, and genuine hospitality that keeps guests coming back.</p>
+        <h1 class="hero-tagline">Authentic Jamaican flavours, genuine Peckham warmth</h1>
+        <p class="hero-desc">Little Deli God Bless is a beloved Jamaican spot in Peckham serving up vibrant, authentic Caribbean cuisine with heart. Just ring the bell and step into a friendly neighbourhood haven where every plate tells a story and every guest feels like family.</p>
         <div class="rating-counter" id="ratingCounter" data-rating="4.3" data-count="28">⭐ 4.3 · 28 Google reviews</div>
         <div class="open-badge" id="openBadge"></div>
       </div>
@@ -234,12 +234,12 @@
         <div data-aos="fade-right">
           <p class="section-label">Our Philosophy</p>
           <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Little Deli God Bless is a cherished Jamaican kitchen in the heart of Peckham, where every dish is prepared with care and passion. Our team takes pride in sharing the vibrant flavours of Jamaica with our community, offering honest food, honest service, and genuine hospitality that keeps guests coming back.</p>
+          <p class="about-body">Little Deli God Bless is a beloved Jamaican spot in Peckham serving up vibrant, authentic Caribbean cuisine with heart. Just ring the bell and step into a friendly neighbourhood haven where every plate tells a story and every guest feels like family.</p>
         </div>
         <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Authentic Craft</h3><p>We honour traditional Jamaican recipes, prepared fresh daily with ingredients selected for quality and flavour.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Genuine Care</h3><p>Our team treats every guest as family, taking time to share knowledge about our dishes and ensure your complete satisfaction.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Community Spirit</h3><p>We're a neighbourhood favourite that celebrates the warmth and character of Peckham's diverse culture.</p></div></div>
+          <div class="value-item"><span class="value-num">01</span><div><h3>Authentic Flavour</h3><p>We bring the true taste of Jamaica to your table, honouring traditional recipes and bold spice.</p></div></div>
+          <div class="value-item"><span class="value-num">02</span><div><h3>Genuine Hospitality</h3><p>Our team treats every customer like family, serving with warmth, knowledge, and a smile.</p></div></div>
+          <div class="value-item"><span class="value-num">03</span><div><h3>Community Spirit</h3><p>We're more than a restaurant—we're a gathering place where Peckham comes together over great food.</p></div></div>
         </div>
       </div>
     </div>
@@ -262,7 +262,7 @@ service, was funny, kind & very knowledgeable about the food dishes & went the e
         <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
         <span class="menu-note">Seasonal · Prices incl. VAT</span>
       </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jamaican Patties</div><div class="item-desc">Golden-baked pastry parcels filled with spiced beef or vegetables</div></div><span class="item-price">£4.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Ackee & Saltfish Fritters</div><div class="item-desc">Crispy fritters featuring Jamaica's national dish, served with lime aioli</div></div><span class="item-price">£5.00</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Festival & Dip</div><div class="item-desc">Sweet fried cornmeal dumplings served with signature Jamaican dipping sauce</div></div><span class="item-price">£3.50</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jerk Chicken</div><div class="item-desc">Succulent chicken marinated in aromatic spices and grilled to perfection, served with rice and peas</div></div><span class="item-price">£10.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jamaican Mutton Curry</div><div class="item-desc">Tender mutton slow-cooked in Caribbean spices with potatoes and fresh herbs</div></div><span class="item-price">£11.00</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Escovitch Fish</div><div class="item-desc">Whole fish fried until crispy, topped with pickled vegetables and served with festival bread</div></div><span class="item-price">£12.00</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Rum Cake</div><div class="item-desc">Traditional moist sponge infused with Caribbean rum and warming spices</div></div><span class="item-price">£4.00</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Mango Sorbet</div><div class="item-desc">Refreshing island-inspired frozen treat made from fresh Caribbean mangoes</div></div><span class="item-price">£3.50</span></div></div></div>
+      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jamaican Patties</div><div class="item-desc">Golden, flaky pastry filled with spiced beef or vegetables</div></div><span class="item-price">£4.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Ackee & Saltfish Fritters</div><div class="item-desc">Crispy bites of Caribbean tradition with a squeeze of lime</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Plantain Chips</div><div class="item-desc">Sweet and savoury fried plantain with jerk spice dusting</div></div><span class="item-price">£3.50</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Jerk Chicken</div><div class="item-desc">Fiery, succulent chicken marinated in house jerk spices, grilled to perfection</div></div><span class="item-price">£9.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Curried Mutton</div><div class="item-desc">Tender mutton slow-cooked in aromatic Caribbean curry with potatoes and peas</div></div><span class="item-price">£10</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Ackee & Saltfish</div><div class="item-desc">Classic Caribbean breakfast for dinner with fresh ackee, saltfish, and provisions</div></div><span class="item-price">£8.50</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Coconut Bread Pudding</div><div class="item-desc">Warm, moist coconut bread with a hint of rum and brown sugar glaze</div></div><span class="item-price">£3.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Mango Sorbet</div><div class="item-desc">Refreshing tropical mango ice served with fresh lime</div></div><span class="item-price">£2.50</span></div></div></div>
       <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
     </div>
   </section>
