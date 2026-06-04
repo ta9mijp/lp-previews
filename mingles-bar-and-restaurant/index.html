@@ -4,456 +4,560 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Mingles Bar and Restaurant — Peckham, London</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{
-      --primary:   #2c7039;
-      --accent:    #c88c0e;
-      /* ヒーロー用（暗い背景向け） */
-      --hero-text:  #f5f2ec;
-      --hero-muted: rgba(245,242,236,0.65);
-      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
-      --c-text:   #1a1a1a;
-      --c-muted:  #6b6b6b;
-      --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #ffffff;
-    }
-    html{scroll-behavior:smooth;}
-    body{font-family:'Helvetica',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
+  @media(min-width:700px){.float-cta{display:none!important;}}
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap');
 
-    /* PROTO BANNER */
-    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
-    .proto-banner strong{font-weight:700;}
-    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+:root {
+--c-bg:#0a0806;
+--c-surface:#110e0a;
+--c-surface2:#1a1510;
+--c-gold:#c9a84c;
+--c-gold-light:#e8c97a;
+--c-cream:#f5f0e8;
+--c-muted:#8a7e6e;
+--c-white:#fff;
+--c-overlay:rgba(5,3,2,.72);
+--c-overlay2:rgba(10,8,6,.85);
+--c-card:#161209;
+--f-display:'Cormorant Garamond',Georgia,serif;
+--f-head:'Playfair Display',Georgia,serif;
+--f-body:'Montserrat',sans-serif;
+--r:4px;
+--trans:.35s cubic-bezier(.4,0,.2,1);
+--max:1280px;
+--nav-h:80px;
+}
 
-    /* ── HERO（暗い背景 → 白文字） ── */
-    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
-    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
-    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
-    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Fontdiner Swanky',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
-    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
-    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
-    .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Fontdiner Swanky',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
-    .hero-tagline span{color:var(--accent);}
-    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
-    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
-    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
-    .hero-nav a:hover{color:#fff;}
-    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
-    .btn-reserve:hover{opacity:0.85;}
-    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
-    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
-    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
-    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Fontdiner Swanky',serif;font-size:1.2rem;font-weight:300;color:#fff;}
-    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--c-bg);color:var(--c-cream);font-family:var(--f-body);font-weight:300;line-height:1.7;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+::selection{background:var(--c-gold);color:var(--c-bg)}
 
-    /* ── SOCIAL BAR ── */
-    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
-    .social-icons{display:flex;gap:1.4rem;}
-    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
-    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
-    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
-    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
-    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
-    .call-link:hover{border-color:var(--accent);color:var(--accent);}
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4{font-family:var(--f-head);font-weight:700;line-height:1.15;letter-spacing:.02em}
+h1{font-family:var(--f-display);font-size:clamp(3rem,8vw,7rem);font-weight:300;font-style:italic;letter-spacing:.04em}
+h2{font-size:clamp(1.8rem,4vw,3.2rem)}
+h3{font-size:clamp(1.1rem,2vw,1.5rem)}
+.label{font-family:var(--f-body);font-size:.7rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--c-gold)}
+.display-italic{font-family:var(--f-display);font-style:italic;font-weight:300}
 
-    /* ── SHARED CONTENT STYLES ── */
-    .section-wrap{max-width:1100px;margin:0 auto;}
-    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Fontdiner Swanky',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+/* ── UTILITIES ── */
+.container{width:min(var(--max),100%);margin-inline:auto;padding-inline:clamp(1.25rem,4vw,3rem)}
+.text-center{text-align:center}
+.text-gold{color:var(--c-gold)}
+.divider{width:60px;height:1px;background:var(--c-gold);margin:1.25rem auto}
+.divider--left{margin-left:0}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2.25rem;border:1px solid var(--c-gold);color:var(--c-gold);font-family:var(--f-body);font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;transition:var(--trans);cursor:pointer;background:transparent}
+.btn:hover{background:var(--c-gold);color:var(--c-bg)}
+.btn--solid{background:var(--c-gold);color:var(--c-bg)}
+.btn--solid:hover{background:var(--c-gold-light)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+@media(max-width:900px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
 
-    /* ── ABOUT（白背景 → 暗い文字） ── */
-    .about{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.about{padding:4rem 2rem;}}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
-    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
-    .about-values{display:flex;flex-direction:column;}
-    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
-    .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Fontdiner Swanky',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
-    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
-    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
+/* ── FIXED REQUIRED CLASSES ── */
+.proto-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--c-gold);color:var(--c-bg);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-align:center;padding:.6rem 1rem;transform:translateY(100%);transition:var(--trans)}
+.proto-banner.is-visible{transform:translateY(0)}
+#openBadge{position:fixed;top:calc(var(--nav-h) + 1rem);right:1.5rem;z-index:800;display:flex;align-items:center;gap:.4rem;padding:.4rem .9rem;border-radius:2rem;background:var(--c-surface2);border:1px solid var(--c-gold);font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--c-gold)}
+#openBadge::before{content:'';width:7px;height:7px;border-radius:50%;background:#4caf50;flex-shrink:0;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+#ratingCounter{display:inline-flex;align-items:center;gap:.35rem;font-size:.8rem;color:var(--c-muted)}
+#ratingCounter .stars{color:var(--c-gold);letter-spacing:.05em;font-size:.9rem}
+#ratingCounter .count{font-weight:600;color:var(--c-cream)}
+#stickyNav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav-h);display:flex;align-items:center;padding-inline:clamp(1.25rem,4vw,3rem);transition:background var(--trans),backdrop-filter var(--trans),box-shadow var(--trans)}
+#stickyNav.scrolled{background:rgba(10,8,6,.96);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(201,168,76,.15)}
+#stickyNav .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+#stickyNav .nav-logo{font-family:var(--f-display);font-size:1.6rem;font-style:italic;font-weight:300;color:var(--c-gold);letter-spacing:.06em}
+#stickyNav .nav-links{display:flex;gap:2.5rem;align-items:center}
+#stickyNav .nav-links a{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-cream);transition:color var(--trans)}
+#stickyNav .nav-links a:hover{color:var(--c-gold)}
+#stickyNav .nav-links .nav-res{border:1px solid var(--c-gold);padding:.4rem 1.1rem;color:var(--c-gold)}
+#stickyNav .nav-links .nav-res:hover{background:var(--c-gold);color:var(--c-bg)}
+#stickyNav .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.25rem}
+#stickyNav .nav-toggle span{display:block;width:26px;height:1px;background:var(--c-cream);transition:var(--trans)}
+@media(max-width:768px){#stickyNav .nav-links{display:none}#stickyNav .nav-toggle{display:flex}}
+.float-cta{position:fixed;bottom:2rem;right:2rem;z-index:850;display:flex;flex-direction:column;gap:.75rem;align-items:flex-end}
+.float-cta a{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;background:var(--c-gold);color:var(--c-bg);font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;border-radius:2rem;box-shadow:0 4px 20px rgba(201,168,76,.3);transition:var(--trans)}
+.float-cta a:hover{background:var(--c-gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.45)}
+.float-cta a svg{width:16px;height:16px;fill:currentColor;flex-shrink:0}
 
-    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
-    .reviews{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
-    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
-    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
-    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
-    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
-    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
+/* ── NAV MOBILE DRAWER ── */
+.nav-drawer{position:fixed;inset:0;z-index:950;background:var(--c-overlay2);backdrop-filter:blur(16px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;transform:translateX(100%);transition:transform .45s cubic-bezier(.77,0,.175,1)}
+.nav-drawer.is-open{transform:translateX(0)}
+.nav-drawer a{font-family:var(--f-head);font-size:2rem;color:var(--c-cream);letter-spacing:.05em;transition:color var(--trans)}
+.nav-drawer a:hover{color:var(--c-gold)}
 
-    /* ── MENU（白背景 → 暗い文字） ── */
-    .menu{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.menu{padding:4rem 2rem;}}
-    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
-    .menu-note{font-size:0.78rem;color:var(--c-muted);}
-    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
-    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
-    .menu-category:last-child{border-bottom:none;}
-    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
-    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
-    .menu-item:last-child{border-bottom:none;}
-    .menu-item-left{flex:1;}
-    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
-    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Fontdiner Swanky',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
-    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
-
-    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
-    .visit{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.visit{padding:4rem 2rem;}}
-    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
-    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
-    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
-    .visit-block a:hover{color:var(--accent);}
-    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
-    .hour-row:last-child{border-bottom:none;}
-    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
-    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
-    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
-
-    /* FOOTER */
-    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
-    @media(min-width:700px){footer{padding-bottom:2rem;}}
-
-    /* ── STICKY HEADER ── */
-    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
-    .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Fontdiner Swanky',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
-    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
-    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
-    .sticky-open.closed{background:#fce4ec;color:#c62828;}
-    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
-    .sticky-cta:hover{opacity:0.85;}
-
-    /* ── OPEN NOW BADGE (hero) ── */
-    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
-    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
-    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
-    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
-
-    /* ── COUNTER ── */
-    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
-
-    /* ── PARALLAX ── */
-    .hero-bg{will-change:transform;}
-
-    /* ── IMAGE ZOOM ── */
-    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
-    .mockup:hover img{transform:scale(1.05);}
-
-    /* ── RIPPLE ── */
-    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
-    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
-    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
-
-    /* ── FLOAT CALL ── */
-    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
-    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
-    @media(min-width:700px){.float-call{display:none;}}
+/* ── HERO (full-bleed-center + parallax-hero + hero-overlay-gradient) ── */
+.hero{position:relative;height:100svh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero__bg{position:absolute;inset:0;background-attachment:fixed;background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1.08);transition:transform 12s ease-out;will-change:transform}
+.hero__bg.loaded{transform:scale(1)}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,3,2,.3) 0%,rgba(5,3,2,.55) 40%,rgba(5,3,2,.9) 100%)}
+.hero__content{position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.5rem;padding-inline:1.5rem;max-width:900px}
+.hero__eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--c-gold)}
+.hero__title{color:var(--c-white);text-shadow:0 2px 40px rgba(0,0,0,.6)}
+.hero__sub{font-size:clamp(.9rem,2vw,1.1rem);color:rgba(245,240,232,.75);max-width:520px;font-weight:300;letter-spacing:.04em}
+.hero__actions{display:flex;gap
   </style>
 </head>
 <body>
+<body>
 
-  <!-- STICKY HEADER -->
-  <header class="sticky-header" id="stickyHeader">
-    <div style="display:flex;align-items:center;">
-      <span class="sticky-logo">Mingles Bar and Restaurant</span>
-      <span class="sticky-open" id="stickyBadge"></span>
+  <!-- PROTO BANNER -->
+  <div class="proto-banner"><p><strong>🎨 Free demo for Mingles Bar and Restaurant</strong> — All images, text &amp; colours are placeholders and fully customisable.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+
+  <!-- STICKY NAV -->
+  <nav id="stickyNav">
+    <div class="nav-inner container">
+      <a class="nav-logo" href="#">Mingles</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <a class="nav-res btn btn--solid" href="tel:020 7732 1444">Reserve</a>
+      <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
     </div>
-    <a href="tel:020 7732 1444" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
-  </header>
-
-  <div class="proto-banner">
-    <p><strong>🎨 Free demo for Mingles Bar and Restaurant</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
-    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
-  </div>
-
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-left">
-      <div>
-        <div class="logo">Mingles Bar and Restaurant</div>
-        <div class="hero-badges">
-          <span class="badge">Restaurant</span>
-          <span class="badge">Peckham, London</span>
-          
-        </div>
-      </div>
-      <div>
-        <h1 class="hero-tagline">Authentic flavours, unforgettable moments in Peckham</h1>
-        <p class="hero-desc">Mingles Bar and Restaurant brings the vibrant spirit of global cuisine to the heart of Peckham. Our carefully crafted dishes and expertly curated wine selection celebrate bold flavours and time-honoured recipes. Experience hospitality that feels like a conversation with friends who truly know their craft.</p>
-        <div class="rating-counter" id="ratingCounter" data-rating="4.4" data-count="128">⭐ 4.4 · 128 Google reviews</div>
-        <div class="open-badge" id="openBadge"></div>
-      </div>
-      <nav class="hero-nav">
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#visit">Visit</a>
-        <a href="tel:020 7732 1444" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
-      </nav>
+    <div class="nav-drawer">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="tel:020 7732 1444">Call Us</a></li>
+      </ul>
     </div>
-    <div class="hero-right">
-      <div class="mockup">
-        <img src="images/img_1.jpg" alt="Mingles Bar and Restaurant"/>
-        <div class="mockup-overlay">
-          <div class="m-name">Mingles Bar and Restaurant</div>
-          <div class="m-sub">Restaurant · Peckham, London</div>
-        </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" style="background-image:url('images/img_0.jpg');"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content text-center">
+      <p class="hero__eyebrow label text-gold">Peckham, London</p>
+      <h1 class="hero__title display-italic">Mingles Bar<br>&amp; Restaurant</h1>
+      <p class="hero__sub">Authentic West African flavours, warm Peckham welcome</p>
+      <div class="hero__meta" style="display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <span id="openBadge"></span>
+        <span id="ratingCounter" data-rating="4.4" data-count="128"></span>
+      </div>
+      <div class="hero__actions">
+        <a class="btn btn--solid" href="tel:020 7732 1444">Reserve a Table</a>
+        <a class="btn" href="#menu" style="border:2px solid #fff;color:#fff;padding:.75rem 2rem;border-radius:4px;text-decoration:none;font-weight:600;letter-spacing:.05em;">View Menu</a>
       </div>
     </div>
   </section>
 
-  <div class="social-bar">
-    <span>Connect</span>
-    <div class="social-icons">
-      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/02077321444" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://maps.google.com/?cid=6074631961236884472" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
-    </div>
-    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Delivery</span> <span class="tag">Wine</span> <span class="tag">Beer</span></div>
-    <a href="tel:020 7732 1444" class="call-link"><i class="fa fa-phone"></i> 020 7732 1444</a>
-  </div>
-
-  <section class="about" id="about">
-    <div class="section-wrap">
-      <div class="about-grid">
+  <!-- ABOUT -->
+  <section id="about" style="padding:6rem 0;background:#0e0c0c;">
+    <div class="container">
+      <div class="grid-2" style="align-items:center;gap:4rem;">
         <div data-aos="fade-right">
-          <p class="section-label">Our Philosophy</p>
-          <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Mingles Bar and Restaurant brings the vibrant spirit of global cuisine to the heart of Peckham. Our carefully crafted dishes and expertly curated wine selection celebrate bold flavours and time-honoured recipes. Experience hospitality that feels like a conversation with friends who truly know their craft.</p>
+          <p class="label text-gold" style="letter-spacing:.15em;margin-bottom:.75rem;">Our Story</p>
+          <h2 class="display-italic" style="font-size:clamp(2rem,4vw,3.2rem);color:#fff;margin-bottom:1.5rem;line-height:1.2;">Bold Flavours.<br>Real Hospitality.</h2>
+          <div class="divider--left" style="margin-bottom:1.5rem;"></div>
+          <p style="color:#b0a99a;line-height:1.8;margin-bottom:1.25rem;">Mingles Bar and Restaurant brings the vibrant tastes of West Africa to Peckham. From traditional Sierra Leonean classics to expertly crafted cocktails, we celebrate bold flavours and genuine hospitality in every dish and drink.</p>
+          <a class="btn btn--solid" href="tel:020 7732 1444" style="margin-top:.5rem;">Call Us: 020 7732 1444</a>
         </div>
-        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Authentic Ingredients</h3><p>We source the finest ingredients to honour each dish's cultural heritage and deliver flavours that transport you across continents.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Knowledgeable Hospitality</h3><p>Our team doesn't just serve—they guide, recommend, and share the stories behind every dish and drink.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Generous Portions</h3><p>We believe in satisfaction that's both flavourful and substantial, served with warmth and care.</p></div></div>
+        <div data-aos="fade-left" style="display:flex;flex-direction:column;gap:1.5rem;">
+          <div style="background:#1a1614;border-left:3px solid #c9a96e;padding:1.5rem 1.75rem;border-radius:2px;">
+            <p class="label text-gold" style="margin-bottom:.5rem;">Authentic Recipes</p>
+            <p style="color:#b0a99a;line-height:1.7;margin:0;">We honour traditional West African cooking methods and ingredients, staying true to the dishes that have been loved for generations.</p>
+          </div>
+          <div style="background:#1a1614;border-left:3px solid #c9a96e;padding:1.5rem 1.75rem;border-radius:2px;">
+            <p class="label text-gold" style="margin-bottom:.5rem;">Community First</p>
+            <p style="color:#b0a99a;line-height:1.7;margin:0;">Our team takes pride in knowing our guests and recommending dishes that speak to their tastes and curiosity.</p>
+          </div>
+          <div style="background:#1a1614;border-left:3px solid #c9a96e;padding:1.5rem 1.75rem;border-radius:2px;">
+            <p class="label text-gold" style="margin-bottom:.5rem;">Quality Ingredients</p>
+            <p style="color:#b0a99a;line-height:1.7;margin:0;">Every plate and drink is crafted with care, using the finest ingredients to deliver unforgettable flavour.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="reviews">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">What guests say</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 4.4 · 128 Google reviews</h2>
-      <div class="reviews-grid">
-        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Extremely impressed
+  <!-- SERVICE BADGES -->
+  <div style="background:#1a1614;padding:1.5rem 0;border-top:1px solid #2a2420;border-bottom:1px solid #2a2420;">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;">
+        <span style="color:#c9a96e;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;">🍽 Dine-In</span>
+        <span style="color:#3a3028;">|</span>
+        <span style="color:#c9a96e;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;">🥡 Takeaway</span>
+        <span style="color:#3a3028;">|</span>
+        <span style="color:#c9a96e;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;">🚴 Delivery</span>
+        <span style="color:#3a3028;">|</span>
+        <span style="color:#c9a96e;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;">📍 Peckham, London</span>
+      </div>
+    </div>
+  </div>
 
-I asked bro at the bar about something I couldn't order anywhere else. He reccomended me this - alcoholic coconut cola basically. Delicious
+  <!-- MENU -->
+  <section id="menu" style="padding:6rem 0;background:#0e0c0c;">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up" style="margin-bottom:3.5rem;">
+        <p class="label text-gold" style="letter-spacing:.15em;margin-bottom:.75rem;">What We Serve</p>
+        <h2 class="display-italic" style="font-size:clamp(2rem,4vw,3.2rem);color:#fff;margin-bottom:1rem;">Our Menu</h2>
+        <div class="divider" style="margin:0 auto 1rem;"></div>
+        <p style="color:#b0a99a;max-width:520px;margin:0 auto;">Rooted in West African tradition, every dish tells a story of heritage, warmth and bold flavour.</p>
+      </div>
 
-Then I asked him his favourite meal, some cassava dish with palm oil. I've never had anything quite like it before. Bu"</p><span class="review-author">— Nicholas B · 6 months ago</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐⭐</div><p class="review-text">"Been ordering from this rearurant since last year from uber eats. I’ve noticed their portions are getting smaller. Just ordered two different dishes. Disappointed to have received half a bowl of soup (small size take away). Prices have gone up slightly, i guess cost of living etc"</p><span class="review-author">— Sae Gb · 8 months ago</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"I'm Nigerian and had never tried Sierra Leonean food before until a friend told me about Mingles. I ordered their cassava soup with rice yesterday, and it was so tasty that I went back today and got two more portions. I’m now hooked on this dish! The staff were also really friend"</p><span class="review-author">— Joseph · 11 months ago</span></div></div>
+      <!-- STARTERS -->
+      <div style="margin-bottom:4rem;">
+        <h3 class="label text-gold" data-aos="fade-up" style="font-size:1rem;letter-spacing:.2em;text-align:center;margin-bottom:2rem;text-transform:uppercase;">— Starters —</h3>
+        <div class="grid-3" style="gap:1.5rem;">
+
+          <div data-aos="fade-up" style="background:#1a1614;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="height:200px;background:linear-gradient(135deg,#2a1f14 0%,#3d2b18 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍲</div>
+            <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;">
+                <h4 style="color:#fff;font-size:1.1rem;margin:0;font-weight:600;">Cassava Soup</h4>
+                <span class="text-gold" style="font-weight:700;white-space:nowrap;margin-left:.5rem;">£7.50</span>
+              </div>
+              <p style="color:#b0a99a;font-size:.9rem;line-height:1.6;margin:0;flex:1;">Creamy cassava with traditional West African spices and fresh herbs, served with fluffy rice.</p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100" style="background:#1a1614;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="height:200px;background:linear-gradient(135deg,#2a1f14 0%,#3d2b18 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🌿</div>
+            <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;">
+                <h4 style="color:#fff;font-size:1.1rem;margin:0;font-weight:600;">Plantain Fritters</h4>
+                <span class="text-gold" style="font-weight:700;white-space:nowrap;margin-left:.5rem;">£6.00</span>
+              </div>
+              <p style="color:#b0a99a;font-size:.9rem;line-height:1.6;margin:0;flex:1;">Golden-fried ripe plantains with a crispy exterior and soft centre, perfect for sharing.</p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200" style="background:#1a1614;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="height:200px;background:linear-gradient(135deg,#2a1f14 0%,#3d2b18 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🥣</div>
+            <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;">
+                <h4 style="color:#fff;font-size:1.1rem;margin:0;font-weight:600;">Pounded Yam with Egusi</h4>
+                <span class="text-gold" style="font-weight:700;white-space:nowrap;margin-left:.5rem;">£8.00</span>
+              </div>
+              <p style="color:#b0a99a;font-size:.9rem;line-height:1.6;margin:0;flex:1;">Smooth pounded yam paired with rich melon seed sauce and tender vegetables.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MAINS -->
+      <div style="margin-bottom:4rem;">
+        <h3 class="label text-gold" data-aos="fade-up" style="font-size:1rem;letter-spacing:.2em;text-align:center;margin-bottom:2rem;text-transform:uppercase;">— Mains —</h3>
+        <div class="grid-3" style="gap:1.5rem;">
+
+          <div data-aos="fade-up" style="background:#1a1614;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="height:200px;background:linear-gradient(135deg,#1f1a10 0%,#332611 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🐟</div>
+            <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;">
+                <h4 style="color:#fff;font-size:1.1rem;margin:0;font-weight:600;">Jollof Rice with Grilled Fish</h4>
+                <span class="text-gold" style="font-weight:700;white-space:nowrap;margin-left:.5rem;">£14.00</span>
+              </div>
+              <p style="color:#b0a99a;font-size:.9rem;line-height:1.6;margin:0;flex:1;">Fragrant one-pot rice with perfectly seasoned grilled fish and fresh lime.</p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100" style="background:#1a1614;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="height:200px;background:linear-gradient(135deg,#1f1a10 0%,#332611 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🥘</div>
+            <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;">
+                <h4 style="color:#fff;font-size:1.1rem;margin:0;font-weight:600;">Sierra Leonean Cassava Leaf Stew</h4>
+                <span class="text-gold" style="font-weight:700;white-space:nowrap;margin-left:.5rem;">£12.50</span>
+              </div>
+              <p style="color:#b0a99a;font-size:.9rem;line-height:1.6;margin:0;flex:1;">Slow-cooked cassava leaves with meat, palm oil and traditional spices, served with rice.</p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200" style="background:#1a1614;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="height:200px;background:linear-gradient(135deg,#1f1a10 0%,#332611 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍖</div>
+            <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;">
+                <h4 style="color:#fff;font-size:1.1rem;margin:0;font-weight:600;">Goat Pepper Soup</h4>
+                <span class="text-gold" style="font-weight:700;white-space:nowrap;margin-left:.5rem;">£13.00</span>
+              </div>
+              <p style="color:#b0a99a;font-size:.9rem;line-height:1.6;margin:0;flex:1;">Hearty broth with tender goat meat, bold spices and fresh peppers.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DESSERTS -->
+      <div style="margin-bottom:2.5rem;">
+        <h3 class="label text-gold" data-aos="fade-up" style="font-size:1rem;letter-spacing:.2em;text-align:center;margin-bottom:2rem;text-transform:uppercase;">— Desserts —</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:700px;margin:0 auto;">
+
+          <div data-aos="fade-up" style="background:#1a1614;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="height:200px;background:linear-gradient(135deg,#1a1820 0%,#22202a 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🥥</div>
+            <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;">
+                <h4 style="color:#fff;font-size:1.1rem;margin:0;font-weight:600;">Coconut Cake</h4>
+                <span class="text-gold" style="font-weight:700;white-space:nowrap;margin-left:.5rem;">£5.00</span>
+              </div>
+              <p style="color:#b0a99a;font-size:.9rem;line-height:1.6;margin:0;flex:1;">Light and fluffy cake infused with fresh coconut and a hint of vanilla.</p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100" style="background:#1a1614;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="height:200px;background:linear-gradient(135deg,#1a1820 0%,#22202a 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍹</div>
+            <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;">
+                <h4 style="color:#fff;font-size:1.1rem;margin:0;font-weight:600;">Coconut Cola Cocktail</h4>
+                <span class="text-gold" style="font-weight:700;white-space:nowrap;margin-left:.5rem;">£8.00</span>
+              </div>
+              <p style="color:#b0a99a;font-size:.9rem;line-height:1.6;margin:0;flex:1;">Our signature drink — a delightful blend of rum, coconut and cola with a tropical twist.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="text-center" style="color:#6b635a;font-size:.85rem;margin-top:2rem;">* Sample menu for reference. Please contact us for today's full menu.</p>
+
+    </div>
+  </section>
+
+  <!-- GALLERY — full-bleed photo strip -->
+  <section id="gallery" style="padding:0;overflow:hidden;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);height:420px;">
+      <div style="background-image:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80');background-size:cover;background-position:center;"></div>
+      <div style="background-image:url('images/img_1.jpg');background-size:cover;background-position:center;"></div>
+      <div style="background:#1a1614;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:3rem;">
+        <p class="label text-gold" style="letter-spacing:.15em;margin-bottom:1rem;">Dine With Us</p>
+        <h3 class="display-italic" style="color:#fff;font-size:2rem;margin-bottom:1.25rem;text-align:center;">An Experience<br>to Remember</h3>
+        <a class="btn btn--solid" href="tel:020 7732 1444">Book a Table</a>
       </div>
     </div>
   </section>
 
-  <section class="menu" id="menu">
-    <div class="section-wrap">
-      <div class="menu-header" data-aos="fade-up">
-        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
-        <span class="menu-note">Seasonal · Prices incl. VAT</span>
+  <!-- REVIEWS -->
+  <section style="padding:6rem 0;background:#0e0c0c;">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up" style="margin-bottom:3.5rem;">
+        <p class="label text-gold" style="letter-spacing:.15em;margin-bottom:.75rem;">What Guests Say</p>
+        <h2 class="display-italic" style="font-size:clamp(2rem,4vw,3.2rem);color:#fff;margin-bottom:1rem;">Guest Reviews</h2>
+        <div class="divider" style="margin:0 auto 1rem;"></div>
+        <p style="color:#b0a99a;">⭐ 4.4 · 128 Google reviews</p>
       </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Cassava Croquettes</div><div class="item-desc">Golden-fried cassava with palm oil dipping sauce and fresh herbs</div></div><span class="item-price">£7.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Coconut & Herb Broth</div><div class="item-desc">Delicate broth infused with fresh coconut, lime, and aromatic spices</div></div><span class="item-price">£6.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Plantain & Avocado</div><div class="item-desc">Pan-seared plantain served with creamy avocado and lime crema</div></div><span class="item-price">£8</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Cassava with Palm Oil</div><div class="item-desc">Chef's signature dish—tender cassava root with rich, authentic palm oil sauce and seasonal greens</div></div><span class="item-price">£16</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Spiced Seafood Medley</div><div class="item-desc">Fresh catch with warming spices, coconut milk, and fragrant jasmine rice</div></div><span class="item-price">£18</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Braised Heritage Meat</div><div class="item-desc">Slow-cooked with traditional spices, served with cassava purée and charred vegetables</div></div><span class="item-price">£17</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Coconut & Lime Panna Cotta</div><div class="item-desc">Silky panna cotta with toasted coconut and candied lime zest</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Plantain Tart</div><div class="item-desc">Caramelised plantain in a buttery pastry shell with vanilla cream</div></div><span class="item-price">£6.50</span></div></div></div>
-      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
+
+      <div style="display:flex;flex-direction:column;gap:1.5rem;max-width:780px;margin:0 auto;">
+
+        <div data-aos="fade-up" style="background:#1a1614;border-radius:6px;padding:2rem;border-top:2px solid #c9a96e;">
+          <div class="stars" style="color:#c9a96e;margin-bottom:.75rem;">★★★★★</div>
+          <p style="color:#d4cfc9;line-height:1.8;margin:0 0 1rem;font-style:italic;">"Extremely impressed. I asked bro at the bar about something I couldn't order anywhere else. He recommended me this — alcoholic coconut cola basically. Delicious. Then I asked him how it was made…"</p>
+          <p class="label text-gold" style="margin:0;font-size:.8rem;">— Nicholas B</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100" style="background:#1a1614;border-radius:6px;padding:2rem;border-top:2px solid #4a4040;">
+          <div class="stars" style="color:#c9a96e;margin-bottom:.75rem;">★★☆☆☆</div>
+          <p style="color:#d4cfc9;line-height:1.8;margin:0 0 1rem;font-style:italic;">"Been ordering from this restaurant since last year from Uber Eats. I've noticed their portions are getting smaller. Just ordered two different dishes. Disappointed to have received…"</p>
+          <p class="label text-gold" style="margin:0;font-size:.8rem;">— Sae Gb</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="200" style="background:#1a1614;border-radius:6px;padding:2rem;border-top:2px solid #c9a96e;">
+          <div class="stars" style="color:#c9a96e;margin-bottom:.75rem;">★★★★★</div>
+          <p style="color:#d4cfc9;line-height:1.8;margin:0 0 1rem;font-style:italic;">"I'm Nigerian and had never tried Sierra Leonean food before until a friend told me about Mingles. I ordered their cassava soup with rice yesterday, and it was so tasty that I went back…"</p>
+          <p class="label text-gold" style="margin:0;font-size:.8rem;">— Joseph</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <section class="visit" id="visit">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">Find Us</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
-      <div class="visit-grid">
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
-          <p class="vb-label">Address</p>
-          <p>1 Peckham Park Rd, London SE15 6TR, UK</p>
-          <a href="https://maps.google.com/?cid=6074631961236884472" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
-        </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
-          <p class="vb-label">Opening Hours</p>
-          <div class="hour-row"><span>Mon</span><span>12:00 PM – 12:00 AM</span></div>
-<div class="hour-row"><span>Tue</span><span>12:00 PM – 12:00 AM</span></div>
-<div class="hour-row"><span>Wed</span><span>12:00 PM – 12:00 AM</span></div>
-<div class="hour-row"><span>Thu</span><span>12:00 PM – 12:00 AM</span></div>
-<div class="hour-row"><span>Fri</span><span>12:00 PM – 12:00 AM</span></div>
-<div class="hour-row"><span>Sat</span><span>12:00 PM – 12:00 AM</span></div>
-<div class="hour-row"><span>Sun</span><span>12:00 PM – 12:00 AM</span></div>
-        </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
-          <p class="vb-label">Reservations</p>
-          <a href="tel:020 7732 1444"><i class="fa fa-phone" style="font-size:0.75rem"></i> 020 7732 1444</a>
-          <a href="https://wa.me/02077321444" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
-        </div>
+  <!-- VISIT -->
+  <section id="visit" style="padding:6rem 0;background:#140f0f;">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up" style="margin-bottom:3.5rem;">
+        <p class="label text-gold" style="letter-spacing:.15em;margin-bottom:.75rem;">Find Us</p>
+        <h2 class="display-italic" style="font-size:clamp(2rem,4vw,3.2rem);color:#fff;margin-bottom:1rem;">Visit Mingles</h2>
+        <div class="divider" style="margin:0 auto;"></div>
       </div>
-      <a href="https://maps.google.com/?cid=6074631961236884472" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
+
+      <div class="grid-2" style="gap:4rem;align-items:start;">
+
+        <div data-aos="fade-right">
+          <h3 style="color:#c9a96e;font-size:1rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem;">Opening Hours</h3>
+          <table style="width:100%;border-collapse:collapse;">
+            <tbody>
+              <tr style="border-bottom:1px solid #2a2420;">
+                <td style="color:#b0a99a;padding:.65rem 0;">Monday</td>
+                <td style="color:#fff;text-align:right;padding:.65rem 0;">12:00 PM – 12:00 AM</td>
+              </tr>
+              <tr style="border-bottom:1px solid #2a2420;">
+                <td style="color:#b0a99a;padding:.65rem 0;">Tuesday</td>
+                <td style="color:#fff;text-align:right;padding:.65rem 0;">12:00 PM – 12:00 AM</td>
+              </tr>
+              <tr style="border-bottom:1px solid #2a2420;">
+                <td style="color:#b0a99a;padding:.65rem 0;">Wednesday</td>
+                <td style="color:#fff;text-align:right;padding:.65rem 0;">12:00 PM – 12:00 AM</td>
+              </tr>
+              <tr style="border-bottom:1px solid #2a2420;">
+                <td style="color:#b0a99a;padding:.65rem 0;">Thursday</td>
+                <td style="color:#fff;text-align:right;padding:.65rem 0;">12:00 PM – 12:00 AM</td>
+              </tr>
+              <tr style="border-bottom:1px solid #2a2420;">
+                <td style="color:#b0a99a;padding:.65rem 0;">Friday</td>
+                <td style="color:#fff;text-align:right;padding:.65rem 0;">12:00 PM – 12:00 AM</td>
+              </tr>
+              <tr style="border-bottom:1px solid #2a2420;">
+                <td style="color:#b0a99a;padding:.65rem 0;">Saturday</td>
+                <td style="color:#fff;text-align:right;padding:.65rem 0;">12:00 PM – 12:00 AM</td>
+              </tr>
+              <tr>
+                <td style="color:#b0a99a;padding:.65rem 0;">Sunday</td>
+                <td style="color:#fff;text-align:right;padding:.65rem 0;">12:00 PM – 12:00 AM</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div data-aos="fade-left">
+          <h3 style="color:#c9a96e;font-size:1rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem;">Location &amp; Contact</h3>
+          <div style="background:#1a1614;border-radius:6px;padding:2rem;margin-bottom:1.5rem;">
+            <p style="color:#b0a99a;margin:0 0 .5rem;line-height:1.7;">
+              <strong style="color:#fff;">Address</strong><br>
+              1 Peckham Park Rd, London SE15 6TR, UK
+            </p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <a href="tel:020 7732 1444" style="display:flex;align-items:center;gap:.75rem;background:#1a1614;border-radius:6px;padding:1.1rem 1.5rem;color:#fff;text-decoration:none;font-weight:600;transition:background .2s;">
+              <i class="fa fa-phone" style="color:#c9a96e;"></i>
+              020 7732 1444
+            </a>
+            <a href="https://wa.me/02077321444" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.75rem;background:#1a1614;border-radius:6px;padding:1.1rem 1.5rem;color:#fff;text-decoration:none;font-weight:600;">
+              <i class="fab fa-whatsapp" style="color:#25D366;font-size:1.1rem;"></i>
+              WhatsApp Us
+            </a>
+            <a href="https://maps.google.com/?cid=6074631961236884472" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.75rem;background:#c9a96e;border-radius:6px;padding:1.1rem 1.5rem;color:#0e0c0c;text-decoration:none;font-weight:700;">
+              <i class="fa fa-map-marker" style="font-size:1.1rem;"></i>
+              Get Directions on Google Maps
+            </a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <footer>
-    <span>© 2025 Mingles Bar and Restaurant</span>
-    <span>1 Peckham Park Rd, London SE15 6TR, UK</span>
-  </footer>
+  <!-- FOOTER -->
+  <footer style="background:#080606;padding:3.5rem 0 1.5rem;border-top:1px solid #2a2420;">
+    <div class="container">
+      <div class="grid-3" style="gap:2.5rem;margin-bottom:2.5rem;">
 
-  <a href="tel:020 7732 1444" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
+        <div data-aos="fade-up">
+          <h4 class="display-italic" style="color:#fff;font-size:1.6rem;margin:0 0 .75rem;">Mingles</h4>
+          <p style="color:#b0a99a;line-height:1.7;font-size:.9rem;margin:0 0 1rem;">Authentic West African flavours, warm Peckham welcome.</p>
+          <div style="display:flex;gap:1rem;margin-top:.5rem;">
+            <a href="#" aria-label="Instagram" style="width:36px;height:36px;border-radius:50%;background:#1a1614;display:flex;align-items:center;justify-content:center;color:#c9a96e;text-decoration:none;">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" aria-label="Facebook" style="width:36px;height:36px;border-radius:50%;background:#1a1614;display:flex;align-items:center;justify-content:center;color:#c9a96e;text-decoration:none;">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/02077321444" aria-label="WhatsApp" style="width:36px;height:36px;border-radius:50%;background:#1a1614;display:flex;align-items:center;justify-content:center;color:#c9a96e;text-decoration:none;">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-  // ── AOS（スクロールアニメーション）──────────────────
-  AOS.init({ duration: 600, once: true, offset: 0, easing: 'ease-out-cubic' });
-  // AOS fallback: force all elements visible immediately
-  document.querySelectorAll('[data-aos]').forEach(function(el) {
-    el.classList.add('aos-animate');
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-  });
+        <div data-aos="fade-up" data-aos-delay="100">
+          <h5 style="color:#c9a96e;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;margin:0 0 1.25rem;">Quick Links</h5>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
+            <li><a href="#about" style="color:#b0a99a;text-decoration:none;font-size:.9rem;">About Us</a></li>
+            <li><a href="#menu" style="color:#b0a99a;text-decoration:none;font-size:.9rem;">Menu</a></li>
+            <li><a href="#gallery" style="color:#b0a99a;text-decoration:none;font-size:.9rem;">Gallery</a></li>
+            <li><a href="#visit" style="color:#b0a99a;text-decoration:none;font-size:.9rem;">Visit Us</a></li>
+            <li><a href="tel:020 7732 1444" style="color:#b0a99a;text-decoration:none;font-size:.9rem;">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
 
-  // ── Parallax（ヒーロー背景）──────────────────────────
-  const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      heroBg.style.transform = `translateY(${y * 0.38}px)`;
-    }, { passive: true });
-  }
+// AOS fallback: force all elements visible immediately (prevents blank sections on slow networks)
+document.querySelectorAll('[data-aos]').forEach(function(el){
+  el.classList.add('aos-animate');
+  el.style.opacity='1';
+  el.style.transform='none';
+});
 
-  // ── Sticky Header ────────────────────────────────────
-  const stickyHeader = document.getElementById('stickyHeader');
-  const hero = document.querySelector('.hero');
-  if (stickyHeader && hero) {
-    const observer = new IntersectionObserver(
-      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(hero);
-  }
+// Sticky nav on scroll past hero
+(function(){
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
+})();
 
-  // ── 営業中バッジ ──────────────────────────────────────
-  const HOURS = {"Monday": "12:00 PM – 12:00 AM", "Tuesday": "12:00 PM – 12:00 AM", "Wednesday": "12:00 PM – 12:00 AM", "Thursday": "12:00 PM – 12:00 AM", "Friday": "12:00 PM – 12:00 AM", "Saturday": "12:00 PM – 12:00 AM", "Sunday": "12:00 PM – 12:00 AM"};
-  function computeOpenStatus() {
-    const now  = new Date();
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const day  = days[now.getDay()];
-    const raw  = HOURS[day] || '';
-    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
-    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-    if (!m) return { open: false, text: raw };
-    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
-    const openMin  = toMin(m[1], m[2], m[3]);
-    const closeMin = toMin(m[4], m[5], m[6]);
-    const nowMin   = now.getHours() * 60 + now.getMinutes();
-    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
-    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
-    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
-    return {
-      open: isOpen,
-      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "12:00 PM – 12:00 AM", "Tuesday": "12:00 PM – 12:00 AM", "Wednesday": "12:00 PM – 12:00 AM", "Thursday": "12:00 PM – 12:00 AM", "Friday": "12:00 PM – 12:00 AM", "Saturday": "12:00 PM – 12:00 AM", "Sunday": "12:00 PM – 12:00 AM"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
+  const rating=4.4,cnt=128;
+  if(!rating)return;
+  new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
+        if(!start)start=ts;
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
+        if(p<1)requestAnimationFrame(tick);
+      })(performance.now());
     };
-  }
-  function renderBadge(el, status) {
-    if (!el) return;
-    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
-    el.innerHTML = `<span class="dot"></span> ${status.text}`;
-  }
-  const status = computeOpenStatus();
-  renderBadge(document.getElementById('openBadge'), status);
-  const stickyBadge = document.getElementById('stickyBadge');
-  if (stickyBadge) {
-    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
-    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
-  }
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
 
-  // ── カウンターアニメーション ──────────────────────────
-  function animateCounter(el, target, isDecimal) {
-    let start = 0, duration = 1800, startTime = null;
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const val = start + (target - start) * ease;
-      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  const ratingEl = document.getElementById('ratingCounter');
-  if (ratingEl && 4.4) {
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        io.disconnect();
-        const rating = 4.4, count = 128;
-        const rSpan = document.createElement('span');
-        const cSpan = document.createElement('span');
-        ratingEl.innerHTML = '';
-        ratingEl.appendChild(document.createTextNode('⭐ '));
-        rSpan.textContent = '0.0';
-        ratingEl.appendChild(rSpan);
-        ratingEl.appendChild(document.createTextNode(' · '));
-        cSpan.textContent = '0';
-        ratingEl.appendChild(cSpan);
-        ratingEl.appendChild(document.createTextNode(' Google reviews'));
-        animateCounter(rSpan, rating, true);
-        animateCounter(cSpan, count, false);
-      }
-    }, { threshold: 0.5 });
-    io.observe(ratingEl);
-  }
-
-  // ── リップルエフェクト ────────────────────────────────
-  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const r = document.createElement('span');
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      r.className = 'ripple';
-      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
-      this.appendChild(r);
-      setTimeout(() => r.remove(), 700);
-    });
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
+      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
+    this.append(r);setTimeout(()=>r.remove(),700);
   });
-
-  // ── タイプライター（タグライン）────────────────────────
-  const tagline = document.querySelector('.hero-tagline');
-  if (tagline) {
-    const full = tagline.innerHTML;
-    tagline.innerHTML = '';
-    tagline.style.visibility = 'visible';
-    let i = 0;
-    const chars = [...full];
-    let inTag = false;
-    function typeNext() {
-      if (i >= chars.length) return;
-      if (chars[i] === '<') inTag = true;
-      if (!inTag) {
-        tagline.innerHTML += chars[i];
-      } else {
-        let tag = '';
-        while (i < chars.length && (inTag || chars[i] !== '>')) {
-          tag += chars[i];
-          if (chars[i] === '>') inTag = false;
-          i++;
-        }
-        tagline.innerHTML += tag;
-        setTimeout(typeNext, 18);
-        return;
-      }
-      if (chars[i] === '>') inTag = false;
-      i++;
-      setTimeout(typeNext, 28);
-    }
-    setTimeout(typeNext, 600);
-  }
-  </script>
-
+});
+</script>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
