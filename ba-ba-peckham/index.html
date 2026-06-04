@@ -3,6 +3,42 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="description" content="4.5★ · 687 Google reviews · 46 Peckham Rye, London SE15 4JR · Southern Vietnamese cooking on Peckham Rye"/>
+  <meta property="og:type" content="restaurant"/>
+  <meta property="og:title" content="Bà Ba — Southern Vietnamese Restaurant, Peckham"/>
+  <meta property="og:description" content="4.5★ · 687 Google reviews · 46 Peckham Rye, London SE15 4JR"/>
+  <meta property="og:image" content="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80"/>
+  <meta property="og:url" content="https://ta9mijp.github.io/lp-previews/ba-ba-peckham/"/>
+  <meta property="og:locale" content="en_GB"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Bà Ba — Southern Vietnamese Restaurant, Peckham"/>
+  <meta name="twitter:description" content="4.5★ · 687 Google reviews · 46 Peckham Rye, London SE15 4JR"/>
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Bà Ba — Southern Vietnamese Restaurant, Peckham",
+    "image": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "46 Peckham Rye",
+      "addressLocality": "London",
+      "postalCode": "SE15 4JR",
+      "addressCountry": "GB"
+    },
+    "telephone": "+442072072935",
+    "url": "https://ta9mijp.github.io/lp-previews/ba-ba-peckham/",
+    "servesCuisine": "Vietnamese, Southern Vietnamese",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": "687"
+    },
+    "priceRange": "££"
+  }
+  </script>
   <title>Bà Ba — Southern Vietnamese Restaurant, Peckham</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -179,6 +215,26 @@ footer{background:var(--forest);padding:3rem 2rem 6rem;}
 .reveal-l.visible{opacity:1;transform:translateX(0);}
 .reveal-r{opacity:0;transform:translateX(24px);transition:opacity .7s ease,transform .7s ease;}
 .reveal-r.visible{opacity:1;transform:translateX(0);}
+  
+/* ── GRAIN TEXTURE ── */
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.038;pointer-events:none;z-index:3;mix-blend-mode:overlay;
+}
+/* ── SCROLL MARGIN (fixed nav offset) ── */
+section[id],div[id]{scroll-margin-top:60px;}
+/* ── FOCUS VISIBLE ── */
+a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:4px;}
+a:focus:not(:focus-visible){outline:none;}
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+  .hero-bg{will-change:auto;}
+}
+/* ── CONTENT VISIBILITY (below-fold perf) ── */
+.reviews,.visit,.reviews-sec,.visit-sec{content-visibility:auto;contain-intrinsic-size:0 600px;}
+
   </style>
 </head>
 <body>
