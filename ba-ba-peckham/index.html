@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Bà Ba — Southern Vietnamese Restaurant, Peckham</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --forest:#0d2018;
+  --moss:#1a3a28;
+  --leaf:#2d5a3d;
+  --terra:#c4622d;
+  --gold:#c9a84c;
+  --ivory:#f8f3e8;
+  --ivory2:#f0e8d8;
+  --ivory-dim:rgba(248,243,232,.6);
+  --ink:#1a1208;
+  --ink-light:#3d2f1c;
+  --border-dark:rgba(201,168,76,.15);
+  --border-light:rgba(26,32,24,.08);
+  --r:4px;
+  --trans:.3s ease;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--ivory);color:var(--ink);overflow-x:hidden;padding-top:44px;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+/* PROTO BANNER */
+.proto{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--forest);padding:.4rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.73rem;}
+.proto p{color:var(--ivory-dim);font-weight:300;}
+.proto strong{color:var(--ivory);font-weight:500;}
+.proto a{color:var(--gold);font-weight:500;letter-spacing:.06em;white-space:nowrap;transition:color var(--trans);}
+.proto a:hover{color:var(--ivory);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(13,32,24,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-dark);padding:.7rem 3rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1);}
+nav.show{transform:translateY(0);}
+.nav-logo{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.25rem;color:var(--ivory);letter-spacing:.03em;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(248,243,232,.5);transition:color var(--trans);}
+.nav-links a:hover{color:var(--ivory);}
+.nav-cta{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.4);padding:.45rem 1.25rem;border-radius:50px;transition:all var(--trans);}
+.nav-cta:hover{background:var(--gold);color:var(--forest);}
+@media(max-width:680px){.nav-links{display:none;}.nav-logo{font-size:1.1rem;}}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;background:var(--forest);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1400&q=80') center/cover no-repeat;opacity:.22;will-change:transform;}
+.hero-texture{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(45,90,61,.4) 0%,transparent 70%),radial-gradient(ellipse at 70% 80%,rgba(196,98,45,.15) 0%,transparent 60%);}
+.hero-content{position:relative;z-index:2;text-align:center;padding:2rem 2rem;max-width:820px;}
+.hero-kicker{font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem;display:flex;align-items:center;justify-content:center;gap:1rem;}
+.hero-kicker::before,.hero-kicker::after{content:'';width:40px;height:1px;background:var(--gold);opacity:.5;}
+.hero-title{font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(4rem,11vw,9.5rem);line-height:.88;color:var(--ivory);letter-spacing:-.01em;margin-bottom:.5rem;}
+.hero-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.6rem);color:rgba(248,243,232,.45);margin-bottom:3rem;font-weight:300;letter-spacing:.04em;}
+.hero-meta{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:3rem;}
+.hero-rating{display:flex;align-items:center;gap:.6rem;}
+.hero-stars{color:var(--gold);font-size:.85rem;letter-spacing:.1em;}
+.hero-rating-text{font-size:.82rem;color:rgba(248,243,232,.55);}
+.hero-rating-text strong{color:var(--ivory);font-weight:500;}
+.open-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:400;padding:.25rem .8rem;border-radius:50px;letter-spacing:.06em;}
+.open-badge.open{background:rgba(45,90,61,.4);color:#6ee7a0;border:1px solid rgba(45,90,61,.6);}
+.open-badge.closed{background:rgba(196,98,45,.15);color:#f4a480;border:1px solid rgba(196,98,45,.3);}
+.dot{width:5px;height:5px;border-radius:50%;background:currentColor;animation:pulse 2s infinite;display:inline-block;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.hero-sep{width:1px;height:18px;background:rgba(248,243,232,.15);}
+.hero-ctas{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+.btn-primary{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;background:var(--terra);color:#fff;padding:.85rem 2.25rem;border-radius:50px;font-weight:500;transition:all var(--trans);}
+.btn-primary:hover{background:#d97444;transform:translateY(-2px);}
+.btn-ghost{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(248,243,232,.2);color:rgba(248,243,232,.7);padding:.85rem 2.25rem;border-radius:50px;font-weight:400;transition:all var(--trans);}
+.btn-ghost:hover{border-color:var(--ivory);color:var(--ivory);}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(248,243,232,.3);z-index:2;}
+.hero-scroll::after{content:'';width:1px;height:40px;background:linear-gradient(var(--gold),transparent);opacity:.5;}
+
+/* INTRO STRIP */
+.intro-strip{background:var(--ivory2);padding:3rem 2rem;text-align:center;border-bottom:1px solid var(--border-light);}
+.intro-strip-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.8vw,1.7rem);color:var(--ink-light);font-weight:300;line-height:1.6;max-width:700px;margin:0 auto;}
+.intro-strip-text em{color:var(--terra);font-style:normal;}
+
+/* SECTION BASE */
+.section{padding:6rem 2rem;}
+.container{max-width:1080px;margin:0 auto;}
+.s-kicker{font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:var(--terra);margin-bottom:1rem;}
+.s-title{font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(2.2rem,4.5vw,3.8rem);color:var(--ink);line-height:1.05;margin-bottom:1.5rem;}
+.s-rule{width:36px;height:1px;background:var(--terra);margin-bottom:2.5rem;}
+
+/* ABOUT */
+.about{background:var(--ivory);}
+.about-inner{max-width:780px;margin:0 auto;text-align:center;}
+.about-body{font-size:.97rem;line-height:2;color:var(--ink-light);font-weight:300;margin-bottom:3rem;}
+.about-body em{font-style:italic;color:var(--terra);}
+.about-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem;padding-top:3.5rem;border-top:1px solid var(--border-light);}
+@media(max-width:600px){.about-pillars{grid-template-columns:1fr;gap:1.5rem;}}
+.pillar{text-align:center;}
+.pillar-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:3rem;color:var(--terra);line-height:1;margin-bottom:.5rem;}
+.pillar-label{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-light);}
+
+/* MENU */
+.menu-sec{background:var(--moss);}
+.menu-sec .s-kicker{color:var(--gold);}
+.menu-sec .s-title{color:var(--ivory);}
+.menu-sec .s-rule{background:var(--gold);}
+.menu-intro{font-size:.9rem;color:rgba(248,243,232,.55);line-height:1.85;max-width:540px;font-weight:300;margin-bottom:3.5rem;}
+.menu-body{display:grid;grid-template-columns:1fr 1fr;gap:0 4rem;}
+@media(max-width:768px){.menu-body{grid-template-columns:1fr;}}
+.menu-cat{margin-bottom:3.5rem;}
+.menu-cat-title{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.3rem;color:var(--gold);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid rgba(201,168,76,.2);}
+.menu-item{display:flex;align-items:baseline;gap:.5rem;padding:.85rem 0;border-bottom:1px solid rgba(248,243,232,.06);}
+.menu-item:last-child{border-bottom:none;}
+.mi-name{font-size:.9rem;font-weight:400;color:var(--ivory);flex-shrink:0;}
+.mi-dots{flex:1;border-bottom:1px dotted rgba(248,243,232,.15);margin:0 .5rem;transform:translateY(-.3rem);}
+.mi-price{font-size:.88rem;color:var(--gold);font-weight:500;flex-shrink:0;}
+.mi-desc{font-size:.77rem;color:rgba(248,243,232,.45);line-height:1.5;margin:.25rem 0 0;font-weight:300;}
+.menu-note{font-size:.75rem;color:rgba(248,243,232,.3);font-style:italic;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(248,243,232,.06);}
+.menu-cta-row{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;}
+
+/* REVIEWS */
+.reviews-sec{background:var(--ivory2);}
+.featured-quote{max-width:740px;margin:0 auto 4rem;text-align:center;}
+.quote-mark{font-family:'Cormorant Garamond',serif;font-size:6rem;color:var(--terra);line-height:.6;opacity:.3;margin-bottom:.5rem;}
+.quote-text{font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(1.2rem,2.5vw,1.65rem);color:var(--ink);line-height:1.55;margin-bottom:1.5rem;}
+.quote-attr{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-light);opacity:.6;}
+.rev-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+@media(max-width:680px){.rev-cards{grid-template-columns:1fr;}}
+.rev-card{background:var(--ivory);border:1px solid var(--border-light);border-radius:var(--r);padding:1.75rem;}
+.rev-head{display:flex;align-items:center;gap:1rem;margin-bottom:1.1rem;}
+.rev-av{width:40px;height:40px;border-radius:50%;background:var(--leaf);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:500;color:var(--ivory);flex-shrink:0;}
+.rev-name{font-size:.88rem;font-weight:500;color:var(--ink);}
+.rev-stars{color:var(--gold);font-size:.7rem;margin-top:.1rem;}
+.rev-text{font-size:.85rem;line-height:1.8;color:var(--ink-light);font-weight:300;}
+.rev-source{font-size:.68rem;letter-spacing:.08em;color:rgba(26,18,8,.3);margin-top:.9rem;display:flex;align-items:center;gap:.4rem;}
+.reviews-total{text-align:center;margin-top:3rem;padding-top:3rem;border-top:1px solid var(--border-light);}
+.reviews-total-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:3.5rem;color:var(--ink);line-height:1;}
+.reviews-total-label{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-light);opacity:.55;margin-top:.3rem;}
+
+/* VISIT */
+.visit-sec{background:var(--ivory);}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:3.5rem;align-items:start;}
+@media(max-width:768px){.visit-grid{grid-template-columns:1fr;gap:3rem;}}
+.vb-label{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--terra);margin-bottom:1.1rem;}
+.hours-wrap{margin-bottom:2.5rem;}
+.hr{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--border-light);font-size:.86rem;}
+.hr:last-child{border-bottom:none;}
+.hr-day{color:var(--ink-light);font-weight:300;}
+.hr-time{color:var(--ink);font-weight:400;}
+.hr-closed{color:var(--terra);font-weight:300;}
+.contact-list{display:flex;flex-direction:column;gap:1.1rem;}
+.contact-item{display:flex;align-items:center;gap:.9rem;font-size:.87rem;}
+.contact-icon{width:30px;height:30px;border-radius:50%;background:rgba(45,90,61,.08);border:1px solid rgba(45,90,61,.12);display:flex;align-items:center;justify-content:center;color:var(--leaf);font-size:.75rem;flex-shrink:0;}
+.contact-item a{color:var(--leaf);transition:color var(--trans);}
+.contact-item a:hover{color:var(--terra);}
+.contact-item span{color:var(--ink-light);}
+.map-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--border-light);box-shadow:0 8px 32px rgba(26,18,8,.06);}
+.map-wrap iframe{width:100%;height:360px;border:0;display:block;filter:saturate(.9);}
+.dir-btn{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.25rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid rgba(26,18,8,.2);padding-bottom:2px;transition:all var(--trans);}
+.dir-btn:hover{color:var(--terra);border-color:var(--terra);}
+
+/* FOOTER */
+footer{background:var(--forest);padding:3rem 2rem 6rem;}
+.foot-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+.foot-logo{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.4rem;color:var(--ivory);letter-spacing:.03em;}
+.foot-text{font-size:.73rem;color:rgba(248,243,232,.25);}
+@media(min-width:700px){footer{padding-bottom:3rem;}}
+
+/* FLOAT CTA */
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--forest);color:var(--ivory);padding:.82rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.8rem;letter-spacing:.06em;border:1px solid rgba(201,168,76,.3);box-shadow:0 8px 32px rgba(13,32,24,.5);white-space:nowrap;transition:all var(--trans);}
+.float-cta:hover{background:var(--moss);border-color:var(--gold);}
+@media(min-width:700px){.float-cta{display:none;}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-l{opacity:0;transform:translateX(-24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-l.visible{opacity:1;transform:translateX(0);}
+.reveal-r{opacity:0;transform:translateX(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-r.visible{opacity:1;transform:translateX(0);}
+  </style>
+</head>
+<body>
+
+<div class="proto">
+  <p><strong>🎨 Free demo for Bà Ba</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+  <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
+</div>
+
+<nav id="stickyNav">
+  <span class="nav-logo">Bà Ba</span>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="tel:02072072935" class="nav-cta">Reserve a Table</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-content">
+    <p class="hero-kicker">Southern Vietnamese · Peckham Rye</p>
+    <h1 class="hero-title">Bà Ba</h1>
+    <p class="hero-subtitle">The flavours of the South, reimagined in South London.</p>
+    <div class="hero-meta">
+      <div class="hero-rating">
+        <span class="hero-stars">★★★★★</span>
+        <span class="hero-rating-text"><strong id="ratingNum">4.5</strong> · <strong id="reviewNum">687</strong> Google reviews</span>
+      </div>
+      <div class="hero-sep"></div>
+      <span class="open-badge" id="openBadge"><span class="dot"></span>Checking…</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="tel:02072072935" class="btn-primary">Reserve a Table</a>
+      <a href="#menu" class="btn-ghost">Explore the Menu</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Discover</div>
+</section>
+
+<div class="intro-strip">
+  <p class="intro-strip-text">A quiet corner of Peckham Rye where <em>Southern Vietnamese</em> cooking meets an unhurried afternoon — or a long, warm evening with friends.</p>
+</div>
+
+<section class="about section" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <p class="s-kicker reveal">Our Story</p>
+      <h2 class="s-title reveal">Rooted in the South</h2>
+      <div class="s-rule reveal" style="margin-left:auto;margin-right:auto;"></div>
+      <p class="about-body reveal">
+        <em>Bà Ba</em> — Vietnamese for "grandmother" — is a love letter to the cooking of Southern Vietnam. Bold lemongrass, fragrant herbs, the slow heat of chilli, and the alchemy of a good broth. Every dish on our menu carries a memory from another table, another kitchen, another generation.
+        <br><br>
+        We opened on Peckham Rye because we believed this neighbourhood deserved something thoughtful. Not a facsimile, but the real thing — made with care, served with pride.
+      </p>
+      <div class="about-pillars reveal">
+        <div class="pillar">
+          <div class="pillar-num">687</div>
+          <div class="pillar-label">Google Reviews</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">4.5</div>
+          <div class="pillar-label">Average Rating</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">2×</div>
+          <div class="pillar-label">Lunch &amp; Dinner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-sec section" id="menu">
+  <div class="container">
+    <p class="s-kicker reveal">What We Serve</p>
+    <h2 class="s-title reveal">The Menu</h2>
+    <div class="s-rule reveal"></div>
+    <p class="menu-intro reveal">Southern Vietnamese cooking — punchy, herbal, and built for sharing. Sample menu below; please call us for today's full selection.</p>
+    <div class="menu-body">
+      <div>
+        <div class="menu-cat reveal">
+          <div class="menu-cat-title">Starters</div>
+          <div class="menu-item">
+            <span class="mi-name">Gỏi Cuốn</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£8</span>
+            <p class="mi-desc">Fresh rice paper rolls with prawns, vermicelli, mint &amp; peanut hoisin.</p>
+          </div>
+          <div class="menu-item">
+            <span class="mi-name">Chả Giò</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£7</span>
+            <p class="mi-desc">Crispy Vietnamese spring rolls with pork, mushroom &amp; nước chấm.</p>
+          </div>
+          <div class="menu-item">
+            <span class="mi-name">Bánh Xèo</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£10</span>
+            <p class="mi-desc">Sizzling Vietnamese crêpe with shrimp, bean sprouts &amp; fresh herbs.</p>
+          </div>
+        </div>
+        <div class="menu-cat reveal">
+          <div class="menu-cat-title">Mains</div>
+          <div class="menu-item">
+            <span class="mi-name">Phở Bò</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£14</span>
+            <p class="mi-desc">Slow-simmered beef bone broth, rice noodles, rare beef, fresh herbs.</p>
+          </div>
+          <div class="menu-item">
+            <span class="mi-name">Cơm Tấm</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£13</span>
+            <p class="mi-desc">Broken rice with grilled pork chop, fried egg &amp; shredded pork skin.</p>
+          </div>
+          <div class="menu-item">
+            <span class="mi-name">Cá Kho Tộ</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£15</span>
+            <p class="mi-desc">Caramelised clay pot fish with ginger, chilli &amp; steamed jasmine rice.</p>
+          </div>
+          <div class="menu-item">
+            <span class="mi-name">Bún Bò Huế</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£14</span>
+            <p class="mi-desc">Spicy lemongrass beef noodle soup — a Central Vietnamese speciality.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="menu-cat reveal">
+          <div class="menu-cat-title">Sharing Plates</div>
+          <div class="menu-item">
+            <span class="mi-name">Tofu Bún Salad</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£12</span>
+            <p class="mi-desc">Cold vermicelli with marinated tofu, pickled veg &amp; nuoc cham dressing.</p>
+          </div>
+          <div class="menu-item">
+            <span class="mi-name">Bò Lúc Lắc</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£16</span>
+            <p class="mi-desc">Shaking beef with watercress, onion &amp; a lime-pepper dipping sauce.</p>
+          </div>
+          <div class="menu-item">
+            <span class="mi-name">Rau Muống Xào Tỏi</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£8</span>
+            <p class="mi-desc">Stir-fried morning glory with garlic and oyster sauce.</p>
+          </div>
+        </div>
+        <div class="menu-cat reveal">
+          <div class="menu-cat-title">Desserts</div>
+          <div class="menu-item">
+            <span class="mi-name">Chè Ba Màu</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£6</span>
+            <p class="mi-desc">Three-colour dessert with coconut milk, jelly &amp; sweet mung bean.</p>
+          </div>
+          <div class="menu-item">
+            <span class="mi-name">Bánh Chuối</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£6</span>
+            <p class="mi-desc">Warm Vietnamese banana cake with salted coconut cream.</p>
+          </div>
+          <div class="menu-item">
+            <span class="mi-name">Vietnamese Coffee Ice Cream</span>
+            <span class="mi-dots"></span>
+            <span class="mi-price">£5</span>
+            <p class="mi-desc">House-made condensed milk ice cream with Cà Phê Trứng crumble.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="menu-note">* Sample menu for reference. Please call us for today's full selection and seasonal specials. We are happy to accommodate dietary requirements.</p>
+    <div class="menu-cta-row reveal">
+      <a href="tel:02072072935" class="btn-primary">Reserve a Table</a>
+      <a href="https://wa.me/02072072935" target="_blank" rel="noopener" class="btn-ghost" style="border-color:rgba(248,243,232,.2);color:rgba(248,243,232,.65);">
+        <i class="fab fa-whatsapp" style="margin-right:.35rem;"></i>WhatsApp Enquiry
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="reviews-sec section" id="reviews">
+  <div class="container">
+    <p class="s-kicker reveal">Guest Experiences</p>
+    <h2 class="s-title reveal">What People Say</h2>
+    <div class="s-rule reveal"></div>
+    <div class="featured-quote reveal">
+      <div class="quote-mark">&ldquo;</div>
+      <p class="quote-text">The service was fantastic from the moment I entered — I was advised on the wine selection, the notes of each were explained beautifully. The food was extraordinary. This is exactly what Peckham needs.</p>
+      <p class="quote-attr">— Yvonne Patrick, Google Review ★★★★★</p>
+    </div>
+    <div class="rev-cards">
+      <div class="rev-card reveal-l">
+        <div class="rev-head">
+          <div class="rev-av">TH</div>
+          <div><div class="rev-name">Tuyen Hong-Jones</div><div class="rev-stars">★★★★★</div></div>
+        </div>
+        <p class="rev-text">I went back for dinner tonight with a friend and I am SO glad I did. The food quality has returned and it's better than ever. The phở broth was deep and complex — I could taste hours of slow cooking in every mouthful.</p>
+        <div class="rev-source"><i class="fab fa-google"></i>Google Review</div>
+      </div>
+      <div class="rev-card reveal-r">
+        <div class="rev-head">
+          <div class="rev-av" style="background:#c4622d;">YP</div>
+          <div><div class="rev-name">Yvonne Patrick</div><div class="rev-stars">★★★★★</div></div>
+        </div>
+        <p class="rev-text">Stopped over for a quick bite and ended up staying two hours. Every dish was beautifully considered — the kind of Vietnamese cooking that reminds you why this cuisine is one of the world's great ones.</p>
+        <div class="rev-source"><i class="fab fa-google"></i>Google Review</div>
+      </div>
+    </div>
+    <div class="reviews-total reveal">
+      <div class="reviews-total-num">687</div>
+      <div class="reviews-total-label">Verified Google Reviews · 4.5 Average</div>
+    </div>
+  </div>
+</section>
+
+<section class="visit-sec section" id="visit">
+  <div class="container">
+    <p class="s-kicker reveal">Find Us</p>
+    <h2 class="s-title reveal">Visit Bà Ba</h2>
+    <div class="s-rule reveal"></div>
+    <div class="visit-grid">
+      <div>
+        <div class="hours-wrap reveal">
+          <div class="vb-label">Opening Hours</div>
+          <div class="hr"><span class="hr-day">Monday</span><span class="hr-time">12:00–3:00pm · 6:00–10:00pm</span></div>
+          <div class="hr"><span class="hr-day">Tuesday</span><span class="hr-closed">Closed</span></div>
+          <div class="hr"><span class="hr-day">Wednesday</span><span class="hr-time">12:00–3:00pm · 6:00–10:00pm</span></div>
+          <div class="hr"><span class="hr-day">Thursday</span><span class="hr-time">12:00–3:00pm · 6:00–10:00pm</span></div>
+          <div class="hr"><span class="hr-day">Friday</span><span class="hr-time">12:00–3:00pm · 6:00–10:30pm</span></div>
+          <div class="hr"><span class="hr-day">Saturday</span><span class="hr-time">12:00–10:30pm</span></div>
+          <div class="hr"><span class="hr-day">Sunday</span><span class="hr-time">12:00–9:00pm</span></div>
+        </div>
+        <div class="reveal">
+          <div class="vb-label">Contact &amp; Address</div>
+          <div class="contact-list">
+            <div class="contact-item"><div class="contact-icon"><i class="fa fa-map-pin"></i></div><span>46 Peckham Rye, London SE15 4JR</span></div>
+            <div class="contact-item"><div class="contact-icon"><i class="fa fa-phone"></i></div><a href="tel:02072072935">020 7207 2935</a></div>
+            <div class="contact-item"><div class="contact-icon"><i class="fab fa-whatsapp"></i></div><a href="https://wa.me/02072072935" target="_blank" rel="noopener">WhatsApp Enquiry</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-r">
+        <div class="map-wrap">
+          <iframe src="https://maps.google.com/maps?q=46+Peckham+Rye,+London+SE15+4JR&output=embed" allowfullscreen loading="lazy" title="Bà Ba location"></iframe>
+        </div>
+        <a href="https://maps.google.com/?cid=13677632140146227073" target="_blank" rel="noopener" class="dir-btn">
+          Get Directions on Google Maps <i class="fa fa-arrow-right" style="font-size:.65rem;margin-left:.3rem;"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="foot-logo">Bà Ba</span>
+    <span class="foot-text">© 2025 Bà Ba Southern Vietnamese · 46 Peckham Rye, London SE15 4JR</span>
+  </div>
+</footer>
+
+<a href="tel:02072072935" class="float-cta"><i class="fa fa-phone" style="font-size:.75rem;"></i>Reserve a Table</a>
+
+<script>
+// Reveal
+(function(){
+  var els=document.querySelectorAll('.reveal,.reveal-l,.reveal-r');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+  },{threshold:0.1});
+  els.forEach(function(el){io.observe(el);});
+})();
+
+// Sticky nav
+(function(){
+  var nav=document.getElementById('stickyNav');
+  var hero=document.querySelector('.hero');
+  if(!nav||!hero)return;
+  new IntersectionObserver(function(e){nav.classList.toggle('show',!e[0].isIntersecting);},{threshold:0.05}).observe(hero);
+})();
+
+// Parallax
+(function(){
+  var bg=document.getElementById('heroBg');
+  if(!bg)return;
+  window.addEventListener('scroll',function(){bg.style.transform='translateY('+(window.scrollY*0.3)+'px)';},{passive:true});
+})();
+
+// Open/Closed
+(function(){
+  var HOURS={
+    "Monday":["12:00 PM","3:00 PM","6:00 PM","10:00 PM"],
+    "Tuesday":null,
+    "Wednesday":["12:00 PM","3:00 PM","6:00 PM","10:00 PM"],
+    "Thursday":["12:00 PM","3:00 PM","6:00 PM","10:00 PM"],
+    "Friday":["12:00 PM","3:00 PM","6:00 PM","10:30 PM"],
+    "Saturday":["12:00 PM","10:30 PM"],
+    "Sunday":["12:00 PM","9:00 PM"]
+  };
+  var badge=document.getElementById('openBadge');
+  if(!badge)return;
+  var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var day=days[new Date().getDay()];
+  var slots=HOURS[day];
+  if(!slots){badge.className='open-badge closed';badge.innerHTML='<span class="dot"></span>Closed today';return;}
+  function toMin(s){var m=s.match(/(\d+):(\d+)\s*(AM|PM)/i);if(!m)return 0;return((+m[1]%12)+(m[3].toUpperCase()==='PM'?12:0))*60+(+m[2]);}
+  var now=new Date().getHours()*60+new Date().getMinutes();
+  var open=false;
+  for(var i=0;i<slots.length;i+=2){
+    var o=toMin(slots[i]),c=toMin(slots[i+1]);
+    if(now>=o&&now<c){open=true;break;}
+  }
+  badge.className='open-badge '+(open?'open':'closed');
+  badge.innerHTML='<span class="dot"></span>'+(open?'Open Now':'Closed Now');
+})();
+
+// Counter
+(function(){
+  var rEl=document.getElementById('ratingNum'),cEl=document.getElementById('reviewNum');
+  if(!rEl||!cEl)return;
+  function anim(el,target,dec){
+    var dur=1800,start=null;
+    (function tick(ts){
+      if(!start)start=ts;
+      var p=Math.min((ts-start)/dur,1),v=target*(1-Math.pow(1-p,3));
+      el.textContent=dec?v.toFixed(1):Math.floor(v);
+      if(p<1)requestAnimationFrame(tick);
+    })(performance.now());
+  }
+  new IntersectionObserver(function(e){
+    if(!e[0].isIntersecting)return;
+    anim(rEl,4.5,true);anim(cEl,687,false);
+  },{threshold:0.5}).observe(rEl);
+})();
+</script>
+</body>
+</html>
