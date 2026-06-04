@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>El Sabor de Ramona (Monaco Sport Bar) — Brixton, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#0c0c0c;--A:#c9a96e;--bg:#f5f3ef;--txt:#1a1a1a;--mut:#777}
+html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:#fff;color:var(--txt);padding-top:52px}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:#111;font-weight:500}.proto-banner strong{font-weight:700}
+.proto-banner a{color:#111;font-weight:600;border:1.5px solid #111;padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(12,12,12,.97);border-bottom:1px solid rgba(201,169,110,.15);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:#fff;font-style:italic}
+.snav-b{font-size:.68rem;font-weight:600;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.15);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.15);color:#ef4444}
+.snav-cta{background:var(--A);color:#fff;padding:.4rem 1.1rem;border-radius:50px;font-size:.76rem;font-weight:500;text-decoration:none}
+/* HERO SPLIT */
+.hero{min-height:100svh;display:grid;grid-template-columns:45% 55%;background:var(--P)}
+@media(max-width:720px){.hero{grid-template-columns:1fr}.hero-r{display:none}}
+.hero-l{display:flex;flex-direction:column;justify-content:space-between;padding:4rem 3.5rem 4rem 4rem}
+.hero-l-top{}
+.hero-line{width:40px;height:2px;background:var(--A);margin-bottom:1.5rem}
+.hero-cuisine{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.6rem}
+.hero-name{font-family:'DM Serif Display',serif;font-size:.95rem;letter-spacing:.15em;text-transform:uppercase;color:var(--A);margin-bottom:2rem}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4vw,3.8rem);line-height:1.1;font-style:italic;color:#fff;margin-bottom:1.4rem}
+.hero-sub{font-size:.88rem;line-height:1.9;color:rgba(255,255,255,.6);max-width:340px;font-weight:300}
+.hero-l-bot{}
+.hero-rating{font-size:.85rem;color:var(--A);margin-bottom:.6rem;font-weight:400}
+#openBadge{display:inline-block;font-size:.76rem;font-weight:500;margin-bottom:1.4rem}
+.hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-solid{background:var(--A);color:#fff;padding:.65rem 1.5rem;border-radius:0;font-size:.78rem;font-weight:500;text-decoration:none;letter-spacing:.06em;transition:opacity .2s}
+.btn-solid:hover{opacity:.85}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.6);padding:.65rem 1.5rem;border:1px solid rgba(255,255,255,.2);font-size:.78rem;font-weight:300;text-decoration:none;letter-spacing:.06em;transition:border-color .2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.hero-r{position:relative;overflow:hidden}
+.hero-r img{width:100%;height:100%;object-fit:cover;opacity:.8}
+.hero-r-overlay{position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.hero-area{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+/* ABOUT */
+.about{padding:7rem 4rem;background:var(--bg)}
+@media(max-width:700px){.about{padding:4.5rem 1.5rem}}
+.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:6rem;align-items:start}
+@media(max-width:700px){.about-wrap{grid-template-columns:1fr;gap:3rem}}
+.sec-label{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--A);margin-bottom:.8rem}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-style:italic;line-height:1.2;color:var(--txt);margin-bottom:1.2rem}
+.about-text{font-size:.92rem;line-height:2;color:var(--mut);font-weight:300}
+.ph{display:flex;gap:1.2rem;padding:1.4rem 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.ph:last-child{border-bottom:none}
+.ph-n{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--A);opacity:.4;line-height:1;flex-shrink:0;font-style:italic}
+.ph-t{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--txt);font-weight:500;margin-bottom:.3rem}
+.ph-b{font-size:.85rem;color:var(--mut);line-height:1.75;font-weight:300}
+/* MENU */
+.menu-sec{padding:7rem 4rem;background:#fff}
+@media(max-width:700px){.menu-sec{padding:4.5rem 1.5rem}}
+.menu-wrap{max-width:1100px;margin:0 auto}
+.menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:1rem}
+.menu-note{font-size:.75rem;color:var(--mut);font-weight:300}
+.menu-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem}
+@media(max-width:900px){.menu-cols{grid-template-columns:1fr}}
+.menu-cat{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--A)}
+.mi{display:flex;justify-content:space-between;gap:.5rem;padding:.85rem 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.mi:last-child{border-bottom:none}.mi-l{flex:1}
+.mi-n{display:block;font-size:.92rem;font-weight:400;color:var(--txt)}
+.mi-d{display:block;font-size:.75rem;color:var(--mut);margin-top:.15rem;line-height:1.5;font-weight:300}
+.mi-p{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--A);flex-shrink:0;font-style:italic}
+.menu-disc{font-size:.72rem;color:var(--mut);margin-top:2.5rem;font-style:italic;border-top:1px solid rgba(0,0,0,.06);padding-top:1rem}
+/* REVIEWS */
+.rev-sec{padding:7rem 4rem;background:var(--P)}
+@media(max-width:700px){.rev-sec{padding:4.5rem 1.5rem}}
+.rev-wrap{max-width:1100px;margin:0 auto}
+.rev-wrap .sec-title{color:#fff}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;margin-top:3rem;border:1px solid rgba(201,169,110,.2)}
+.rc{padding:2rem;border-right:1px solid rgba(201,169,110,.1)}
+.rc:last-child{border-right:none}
+@media(max-width:700px){.rev-grid{grid-template-columns:1fr;border:none}.rc{border-right:none;border-bottom:1px solid rgba(201,169,110,.1);padding:1.5rem 0}}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem}
+.rc-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.8rem;font-weight:500;color:rgba(255,255,255,.8)}.rc-st{font-size:.85rem;color:var(--A)}
+.rc-tx{font-size:.88rem;line-height:1.85;color:rgba(255,255,255,.6);font-style:italic;font-weight:300;margin-bottom:.8rem}
+.rc-src{font-size:.66rem;color:rgba(255,255,255,.3)}
+/* VISIT */
+.visit{padding:7rem 4rem;background:var(--bg)}
+@media(max-width:700px){.visit{padding:4.5rem 1.5rem}}
+.visit-wrap{max-width:1100px;margin:0 auto}
+.visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:3rem}
+.vb-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:1rem}
+.hr{display:flex;justify-content:space-between;font-size:.83rem;padding:.22rem 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.hr:last-child{border-bottom:none}.hr-d{font-weight:500;color:var(--txt);min-width:32px}
+.vb-link{display:block;font-size:.88rem;color:var(--mut);text-decoration:none;line-height:2;font-weight:300}
+.vb-link:hover{color:var(--A)}
+.dir-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.5rem;padding:.65rem 1.5rem;border:1px solid rgba(0,0,0,.15);font-size:.8rem;color:var(--txt);text-decoration:none;transition:border-color .2s,color .2s;letter-spacing:.04em}
+.dir-btn:hover{border-color:var(--A);color:var(--A)}
+footer{background:var(--P);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.72rem;color:rgba(255,255,255,.25);border-top:1px solid rgba(201,169,110,.1)}
+@media(max-width:680px){footer{padding:1.5rem;padding-bottom:5.5rem}}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--A);color:#fff;padding:.8rem 1.8rem;border-radius:0;display:flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:500;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.4);white-space:nowrap;letter-spacing:.04em}
+@media(min-width:700px){.float-cta{display:none!important}}
+.stag{font-size:.68rem;padding:.15rem .6rem;border-radius:2px;border:1px solid rgba(201,169,110,.4);color:rgba(255,255,255,.6);margin-right:.4rem}
+.fu{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}.fu.in{opacity:1;transform:none}
+</style></head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for El Sabor de Ramona (Monaco Sport Bar)</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">El Sabor de Ramona (Monaco Sport Bar)</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447888620182" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-l">
+    <div class="hero-l-top">
+      <div class="hero-line"></div>
+      <div class="hero-cuisine">Restaurant</div>
+      <div class="hero-name">El Sabor de Ramona (Monaco Sport Bar)</div>
+      <h1 class="hero-title">Authentic Dominican flavors in the heart of Brixton</h1>
+      <p class="hero-sub">…</p>
+    </div>
+    <div class="hero-l-bot">
+      <div class="hero-rating" id="ratingCounter" data-rating="4.9" data-count="35">⭐ 4.9 · 35 Google reviews</div>
+      <span id="openBadge"></span>
+      <div class="hero-ctas">
+        <a href="tel:+447888620182" class="btn-solid"><i class="fa fa-phone"></i> &nbsp;Reserve</a>
+        <a href="#menu" class="btn-ghost">View Menu</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <img src="images/img_0.jpg" alt="El Sabor de Ramona (Monaco Sport Bar)"/>
+    <div class="hero-r-overlay"><div class="hero-area">Brixton, London &nbsp;·&nbsp; Restaurant</div></div>
+  </div>
+</section>
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="fu"><p class="sec-label">The Story</p><h2 class="sec-title">Authentic Dominican flavors in the heart of Brixton</h2><p class="about-text"></p></div>
+    <div class="fu" style="transition-delay:.1s"><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">Authentic Heritage</h3><p class="ph-b">We honor generations of Dominican culinary tradition by using time-honored recipes and the finest ingredients sourced with care.</p></div></div>
+<div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">Warmth & Hospitality</h3><p class="ph-b">Every dish is served with genuine kindness, creating an atmosphere where guests feel like family from the moment they walk through our doors.</p></div></div>
+<div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">Bold, Honest Flavors</h3><p class="ph-b">We celebrate the vibrant character of Dominican cuisine, letting authentic taste speak louder than trends.</p></div></div></div>
+  </div>
+</section>
+<section class="menu-sec" id="menu">
+  <div class="menu-wrap">
+    <div class="menu-header fu"><div><p class="sec-label">The Menu</p><h2 class="sec-title">A taste of what awaits</h2></div><span class="menu-note">Seasonal · Prices incl. VAT</span></div>
+    <div class="menu-cols fu" style="transition-delay:.1s">
+      <div><div class="menu-cat">Starters</div><div class="mi"><div class="mi-l"><span class="mi-n">Tostones con Guacamole</span><span class="mi-d">Crispy green plantain rounds served with creamy avocado dip and lime</span></div><span class="mi-p">£6.50</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Ceviche Dominicano</span><span class="mi-d">Fresh fish marinated in citrus with cilantro, red onion, and coconut milk</span></div><span class="mi-p">£8.50</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Queso de Freír</span><span class="mi-d">Golden-fried Dominican cheese with mojo sauce and crispy malanga chips</span></div><span class="mi-p">£7</span></div></div>
+      <div><div class="menu-cat">Mains</div><div class="mi"><div class="mi-l"><span class="mi-n">Pollo Guisado</span><span class="mi-d">Tender chicken braised in savory Dominican sauce with root vegetables and jasmine rice</span></div><span class="mi-p">£14.99</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Sancocho de Res</span><span class="mi-d">Rich beef stew with plantains, yuca, pumpkin, and Caribbean spices served with rice</span></div><span class="mi-p">£15.99</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Pescado Frito Entero</span><span class="mi-d">Whole fish fried until crispy, topped with sautéed onions and served with tostones and rice</span></div><span class="mi-p">£16.50</span></div></div>
+      <div><div class="menu-cat">Desserts</div><div class="mi"><div class="mi-l"><span class="mi-n">Flan Dominicano</span><span class="mi-d">Silky custard with caramel sauce and hint of vanilla</span></div><span class="mi-p">£5</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Habichuelas Dulces</span><span class="mi-d">Sweet red bean paste with coconut milk and cinnamon</span></div><span class="mi-p">£4.50</span></div></div>
+    </div>
+    <p class="menu-disc">* Sample menu for reference. Please contact us for today's full menu.</p>
+  </div>
+</section>
+<section class="rev-sec" id="reviews">
+  <div class="rev-wrap">
+    <div class="fu"><p class="sec-label" style="color:rgba(201,169,110,.7)">Guest Voices</p><h2 class="sec-title">⭐ 4.9 · 35 Google reviews</h2></div>
+    <div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#4a3520">AB</div><div><div class="rc-nm">Angel Bonifacio</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"⭐️⭐️⭐️⭐️⭐️
+I visited El Sabor de Ramona for the first time last weekend and honestly, I was very impressed.
+
+The idea of mixing Mediterranean food with Dominican and Caribbean flavours is brilliant, a"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#1a3a2a">MC</div><div><div class="rc-nm">Maria Chiara Trastullo</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"If you’re looking for authentic Dominican flavors I would 100% recommend this place. We were completely transported to DR through flavors and hospitality. I found my fav Dominican spot in London."</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#2a2a4a">A</div><div><div class="rc-nm">alett88</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"I was really positively surprised by this place as it doesn’t have a “restaurants”vibe but the food is legit. I had la bandera , typical Dominican rice and beans with meat and it was delicious. We als"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div>
+  </div>
+</section>
+<section class="visit" id="visit">
+  <div class="visit-wrap">
+    <div class="fu"><p class="sec-label">Find Us</p><h2 class="sec-title">Visit us in Brixton, London</h2></div>
+    <div class="visit-grid">
+      <div class="fu"><p class="vb-label">Address</p><p style="font-size:.88rem;color:var(--mut);line-height:1.9;font-weight:300">30 Brixton Station Rd, London SW9 8PE, UK</p><a href="https://maps.google.com/?cid=15830036110514340282" target="_blank" class="vb-link" style="color:var(--A);margin-top:.5rem"><i class="fab fa-google"></i> Google Maps</a></div>
+      <div class="fu" style="transition-delay:.05s"><p class="vb-label">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:var(--txt)">1:00 – 8:30 PM</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:#bbb">Closed</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:#bbb">Closed</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">1:00 – 8:30 PM</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">1:00 – 8:30 PM</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">1:00 – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--txt)">1:00 – 10:00 PM</span></div></div>
+      <div class="fu" style="transition-delay:.1s"><p class="vb-label">Reservations</p><a href="tel:+447888620182" class="vb-link"><i class="fa fa-phone"></i> 07888 620182</a><a href="https://wa.me/447888620182" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+    </div>
+    <a href="https://maps.google.com/?cid=15830036110514340282" target="_blank" class="dir-btn fu"><i class="fab fa-google"></i> Get Directions</a>
+  </div>
+</section>
+<footer><span>© 2025 El Sabor de Ramona (Monaco Sport Bar)</span><span>30 Brixton Station Rd, London SW9 8PE, UK</span></footer>
+<a class="float-cta" href="tel:+447888620182"><i class="fa fa-phone"></i> Call to Reserve</a>
+<script>document.querySelectorAll('.fu').forEach(el=>{el.classList.add('in');});
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+(function(){const H={"Monday": "1:00 – 8:30 PM", "Tuesday": "Closed", "Wednesday": "Closed", "Thursday": "1:00 – 8:30 PM", "Friday": "1:00 – 8:30 PM", "Saturday": "1:00 – 10:00 PM", "Sunday": "1:00 – 10:00 PM"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+(function(){const el=document.getElementById('ratingCounter');if(!el||!4.9)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,4.9,true,v=>rs.textContent=v);an(0,35,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();</script>
+</body></html>
