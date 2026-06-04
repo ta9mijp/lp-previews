@@ -1,455 +1,194 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Suuyar — Peckham, London</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{
-      --primary:   #000000;
-      --accent:    #FF0000;
-      /* ヒーロー用（暗い背景向け） */
-      --hero-text:  #f5f2ec;
-      --hero-muted: rgba(245,242,236,0.65);
-      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
-      --c-text:   #1a1a1a;
-      --c-muted:  #6b6b6b;
-      --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #FFFFFF;
-    }
-    html{scroll-behavior:smooth;}
-    body{font-family:'Suisse',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
-
-    /* PROTO BANNER */
-    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
-    .proto-banner strong{font-weight:700;}
-    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
-
-    /* ── HERO（暗い背景 → 白文字） ── */
-    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
-    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
-    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
-    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Suisse',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
-    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
-    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
-    .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Suisse',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
-    .hero-tagline span{color:var(--accent);}
-    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
-    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
-    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
-    .hero-nav a:hover{color:#fff;}
-    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
-    .btn-reserve:hover{opacity:0.85;}
-    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
-    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
-    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
-    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Suisse',serif;font-size:1.2rem;font-weight:300;color:#fff;}
-    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
-
-    /* ── SOCIAL BAR ── */
-    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
-    .social-icons{display:flex;gap:1.4rem;}
-    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
-    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
-    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
-    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
-    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
-    .call-link:hover{border-color:var(--accent);color:var(--accent);}
-
-    /* ── SHARED CONTENT STYLES ── */
-    .section-wrap{max-width:1100px;margin:0 auto;}
-    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Suisse',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
-
-    /* ── ABOUT（白背景 → 暗い文字） ── */
-    .about{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.about{padding:4rem 2rem;}}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
-    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
-    .about-values{display:flex;flex-direction:column;}
-    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
-    .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Suisse',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
-    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
-    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
-
-    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
-    .reviews{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
-    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
-    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
-    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
-    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
-    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
-
-    /* ── MENU（白背景 → 暗い文字） ── */
-    .menu{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.menu{padding:4rem 2rem;}}
-    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
-    .menu-note{font-size:0.78rem;color:var(--c-muted);}
-    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
-    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
-    .menu-category:last-child{border-bottom:none;}
-    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
-    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
-    .menu-item:last-child{border-bottom:none;}
-    .menu-item-left{flex:1;}
-    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
-    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Suisse',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
-    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
-
-    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
-    .visit{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.visit{padding:4rem 2rem;}}
-    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
-    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
-    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
-    .visit-block a:hover{color:var(--accent);}
-    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
-    .hour-row:last-child{border-bottom:none;}
-    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
-    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
-    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
-
-    /* FOOTER */
-    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
-    @media(min-width:700px){footer{padding-bottom:2rem;}}
-
-    /* ── STICKY HEADER ── */
-    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
-    .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Suisse',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
-    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
-    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
-    .sticky-open.closed{background:#fce4ec;color:#c62828;}
-    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
-    .sticky-cta:hover{opacity:0.85;}
-
-    /* ── OPEN NOW BADGE (hero) ── */
-    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
-    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
-    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
-    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
-
-    /* ── COUNTER ── */
-    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
-
-    /* ── PARALLAX ── */
-    .hero-bg{will-change:transform;}
-
-    /* ── IMAGE ZOOM ── */
-    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
-    .mockup:hover img{transform:scale(1.05);}
-
-    /* ── RIPPLE ── */
-    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
-    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
-    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
-
-    /* ── FLOAT CALL ── */
-    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
-    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
-    @media(min-width:700px){.float-call{display:none;}}
-  </style>
-</head>
-<body>
-
-  <!-- STICKY HEADER -->
-  <header class="sticky-header" id="stickyHeader">
-    <div style="display:flex;align-items:center;">
-      <span class="sticky-logo">Suuyar</span>
-      <span class="sticky-open" id="stickyBadge"></span>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Suuyar — Peckham, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#0d2a18;--A:#f0a500;--bg:#f7f3ec;--txt:#1a1a1a;--mut:#666}
+html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--txt);padding-top:52px}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,165,0,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:#1a1a1a;font-weight:500}.proto-banner strong{font-weight:700}
+.proto-banner a{color:#1a1a1a;font-weight:600;border:1.5px solid #1a1a1a;padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(13,42,24,.97);backdrop-filter:blur(10px);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#fff;font-style:italic}
+.snav-b{font-size:.68rem;font-weight:600;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.2);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.2);color:#ef4444}
+.snav-cta{background:var(--A);color:#fff;padding:.42rem 1.1rem;border-radius:50px;font-size:.76rem;font-weight:600;text-decoration:none}
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--P)}
+.hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(.28);will-change:transform}
+.hero-stripe{position:absolute;bottom:0;left:0;right:0;height:6px;background:var(--A)}
+.hero-content{position:relative;z-index:2;padding:5rem 4rem 4rem;max-width:900px}
+@media(max-width:680px){.hero-content{padding:3rem 1.5rem 3rem}}
+.hero-label{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--A);margin-bottom:1.2rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6.5rem);line-height:1.02;font-weight:300;font-style:italic;color:#fff;margin-bottom:1.5rem}
+.hero-sub{font-size:.92rem;line-height:1.9;color:rgba(255,255,255,.68);max-width:480px;margin-bottom:1.2rem}
+.hero-rating{font-size:.88rem;color:var(--A);font-weight:500;margin-bottom:.7rem}
+#openBadge{display:inline-block;font-size:.78rem;font-weight:600;margin-bottom:1.4rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-g{display:inline-flex;align-items:center;gap:.45rem;background:var(--A);color:#fff;padding:.68rem 1.6rem;border-radius:50px;font-size:.82rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.btn-g:hover{opacity:.86}
+.btn-o{display:inline-flex;align-items:center;gap:.45rem;background:transparent;color:#fff;padding:.68rem 1.6rem;border-radius:50px;border:1.5px solid rgba(255,255,255,.45);font-size:.82rem;font-weight:500;text-decoration:none;transition:border-color .2s}
+.btn-o:hover{border-color:#fff}
+/* STRIP */
+.strip{background:var(--P);padding:1.6rem 4rem;display:flex;gap:2.5rem;flex-wrap:wrap;align-items:center}
+@media(max-width:680px){.strip{padding:1.5rem;gap:1.2rem}}
+.strip-item{display:flex;align-items:center;gap:.6rem;color:rgba(255,255,255,.75);font-size:.82rem}
+.strip-icon{color:var(--A);font-size:1rem}
+/* ABOUT */
+.about{padding:6rem 4rem;background:#fff}
+@media(max-width:700px){.about{padding:4rem 1.5rem}}
+.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+@media(max-width:700px){.about-wrap{grid-template-columns:1fr;gap:3rem}}
+.sec-label{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--A);margin-bottom:.8rem}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:300;font-style:italic;line-height:1.2;color:var(--txt);margin-bottom:1.2rem}
+.about-text{font-size:.93rem;line-height:1.95;color:var(--mut)}
+.ph{display:flex;gap:1rem;padding:1.2rem 0;border-bottom:1px solid rgba(0,0,0,.07)}
+.ph:last-child{border-bottom:none}
+.ph-n{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--A);opacity:.5;line-height:1;flex-shrink:0}
+.ph-t{font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--txt);font-weight:600;margin-bottom:.3rem}
+.ph-b{font-size:.85rem;color:var(--mut);line-height:1.7}
+/* MENU */
+.menu-sec{padding:6rem 4rem;background:var(--bg)}
+@media(max-width:700px){.menu-sec{padding:4rem 1.5rem}}
+.menu-wrap{max-width:1100px;margin:0 auto}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:2.5rem}
+@media(max-width:900px){.menu-grid{grid-template-columns:1fr}}
+.menu-cat{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:700;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1.5px solid var(--A)}
+.mi{display:flex;justify-content:space-between;gap:.6rem;padding:.8rem 0;border-bottom:1px solid rgba(0,0,0,.07)}
+.mi:last-child{border-bottom:none}
+.mi-l{flex:1}.mi-n{display:block;font-size:.93rem;font-weight:500;color:var(--txt)}
+.mi-d{display:block;font-size:.76rem;color:var(--mut);margin-top:.15rem;line-height:1.5}
+.mi-p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--A);flex-shrink:0}
+.menu-disc{font-size:.72rem;color:var(--mut);margin-top:2rem;font-style:italic;border-top:1px solid rgba(0,0,0,.08);padding-top:1rem;max-width:1100px;margin-left:auto;margin-right:auto}
+/* REVIEWS */
+.rev-sec{padding:6rem 4rem;background:var(--P)}
+@media(max-width:700px){.rev-sec{padding:4rem 1.5rem}}
+.rev-wrap{max-width:1100px;margin:0 auto}
+.rev-wrap .sec-title{color:#fff}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin-top:2.5rem}
+.rc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.6rem}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.rc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.82rem;font-weight:600;color:#fff}.rc-st{font-size:.88rem;color:var(--A)}
+.rc-tx{font-size:.88rem;line-height:1.8;color:rgba(255,255,255,.75);font-style:italic;margin-bottom:.8rem}
+.rc-src{font-size:.68rem;color:rgba(255,255,255,.4)}
+/* VISIT */
+.visit{padding:6rem 4rem;background:#fff}
+@media(max-width:700px){.visit{padding:4rem 1.5rem}}
+.visit-wrap{max-width:1100px;margin:0 auto}
+.visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2.5rem;margin-top:2.5rem}
+.vb-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);font-weight:700;margin-bottom:.9rem}
+.hr{display:flex;justify-content:space-between;font-size:.85rem;padding:.2rem 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.hr:last-child{border-bottom:none}.hr-d{font-weight:600;color:var(--txt);min-width:34px}
+.vb-link{display:block;font-size:.9rem;color:var(--mut);text-decoration:none;line-height:2}
+.vb-link:hover{color:var(--A)}
+.dir-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:2rem;padding:.65rem 1.5rem;border:1.5px solid rgba(0,0,0,.18);border-radius:50px;color:var(--txt);text-decoration:none;font-size:.82rem;transition:border-color .2s,color .2s}
+.dir-btn:hover{border-color:var(--A);color:var(--A)}
+footer{background:var(--P);padding:1.8rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.73rem;color:rgba(255,255,255,.35)}
+@media(max-width:680px){footer{padding:1.5rem;padding-bottom:5.5rem}}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--A);color:#fff;padding:.82rem 1.8rem;border-radius:50px;display:flex;align-items:center;gap:.45rem;font-size:.84rem;font-weight:600;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.35);white-space:nowrap}
+@media(min-width:700px){.float-cta{display:none!important}}
+.stag{font-size:.7rem;padding:.18rem .65rem;border-radius:50px;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.7);margin-right:.4rem}
+.fu{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}.fu.in{opacity:1;transform:none}
+</style></head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for Suuyar</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">Suuyar</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447476667767" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-bg"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <p class="hero-label">Restaurant · Peckham, London</p>
+    <h1 class="hero-title">Authentic African flavours, neighbourhood warmth, pure satisfaction</h1>
+    <p class="hero-sub">…</p>
+    <div class="hero-rating" id="ratingCounter" data-rating="4.7" data-count="155">⭐ 4.7 · 155 Google reviews</div>
+    <span id="openBadge"></span>
+    <div class="hero-ctas">
+      <a href="tel:+447476667767" class="btn-g"><i class="fa fa-phone"></i> Reserve a Table</a>
+      <a href="#menu" class="btn-o">View Menu</a>
     </div>
-    <a href="tel:07476 667767" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
-  </header>
-
-  <div class="proto-banner">
-    <p><strong>🎨 Free demo for Suuyar</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
-    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
-
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-left">
-      <div>
-        <div class="logo">Suuyar</div>
-        <div class="hero-badges">
-          <span class="badge">Restaurant</span>
-          <span class="badge">Peckham, London</span>
-          
-        </div>
-      </div>
-      <div>
-        <h1 class="hero-tagline">Authentic African flavours, affordable satisfaction, pure joy</h1>
-        <p class="hero-desc">Suuyar brings the vibrant heart of African cuisine to Peckham with dishes that celebrate tradition and quality. From our signature suya to perfectly grilled meats, every plate is crafted with care and served with genuine warmth. Experience authentic flavour and exceptional value that keeps our guests coming back.</p>
-        <div class="rating-counter" id="ratingCounter" data-rating="4.7" data-count="155">⭐ 4.7 · 155 Google reviews</div>
-        <div class="open-badge" id="openBadge"></div>
-      </div>
-      <nav class="hero-nav">
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#visit">Visit</a>
-        <a href="tel:07476 667767" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
-      </nav>
+</section>
+<div class="strip">
+  <span class="stag">Dine In</span><span class="stag">Takeaway</span><span class="stag">Delivery</span>
+  <span class="strip-item"><i class="fab fa-whatsapp strip-icon"></i><a href="https://wa.me/447476667767" style="color:rgba(255,255,255,.75);text-decoration:none">07476 667767</a></span>
+  <span class="strip-item"><i class="fab fa-google strip-icon"></i><a href="https://maps.google.com/?cid=11937455338836656373" target="_blank" style="color:rgba(255,255,255,.75);text-decoration:none">View on Google Maps</a></span>
+</div>
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="fu">
+      <p class="sec-label">Our Story</p>
+      <h2 class="sec-title">More than a meal — a gathering place</h2>
+      <p class="about-text"></p>
     </div>
-    <div class="hero-right">
-      <div class="mockup">
-        <img src="images/img_1.jpg" alt="Suuyar"/>
-        <div class="mockup-overlay">
-          <div class="m-name">Suuyar</div>
-          <div class="m-sub">Restaurant · Peckham, London</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="social-bar">
-    <span>Connect</span>
-    <div class="social-icons">
-      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/07476667767" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://maps.google.com/?cid=11937455338836656373" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
-    </div>
-    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Delivery</span></div>
-    <a href="tel:07476 667767" class="call-link"><i class="fa fa-phone"></i> 07476 667767</a>
+    <div class="fu" style="transition-delay:.1s"><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">Authentic Craft</h3><p class="ph-b">We honour traditional African cooking methods and recipes, ensuring every dish delivers genuine flavour and cultural integrity.</p></div></div>
+<div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">Accessible Excellence</h3><p class="ph-b">Outstanding food shouldn't come with an eye-watering bill—we believe in serving restaurant-quality African cuisine at prices that celebrate our community.</p></div></div>
+<div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">Hospitality First</h3><p class="ph-b">From your first visit to your fiftieth, we treat you like family with attentive service and the warmth that makes Peckham home.</p></div></div></div>
   </div>
-
-  <section class="about" id="about">
-    <div class="section-wrap">
-      <div class="about-grid">
-        <div data-aos="fade-right">
-          <p class="section-label">Our Philosophy</p>
-          <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Suuyar brings the vibrant heart of African cuisine to Peckham with dishes that celebrate tradition and quality. From our signature suya to perfectly grilled meats, every plate is crafted with care and served with genuine warmth. Experience authentic flavour and exceptional value that keeps our guests coming back.</p>
-        </div>
-        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Authentic Flavour</h3><p>We honour traditional African recipes, bringing genuine taste and time-honoured cooking methods to every dish.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Affordable Excellence</h3><p>Great food shouldn't break the bank—we believe in delivering satisfaction at prices that respect your wallet.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Heartfelt Service</h3><p>Your experience matters; we serve with the warmth and attention that makes dining feel like coming home.</p></div></div>
-        </div>
-      </div>
+</section>
+<section class="menu-sec" id="menu">
+  <div class="menu-wrap">
+    <div class="fu"><p class="sec-label">What We Serve</p><h2 class="sec-title">A taste of the menu</h2></div>
+    <div class="menu-grid fu" style="transition-delay:.1s">
+      <div><div class="menu-cat">Starters</div><div class="mi"><div class="mi-l"><span class="mi-n">Classic Suya</span><span class="mi-d">Tender marinated meat with aromatic spice blend and roasted peanuts</span></div><span class="mi-p">£6</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Beef & Wings Plate</span><span class="mi-d">Flame-grilled beef and chicken wings with fresh tomatoes and onions</span></div><span class="mi-p">£7</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Grilled Chicken Skewers</span><span class="mi-d">Succulent chicken with traditional spice rub and fresh herbs</span></div><span class="mi-p">£6.50</span></div></div>
+      <div><div class="menu-cat">Mains</div><div class="mi"><div class="mi-l"><span class="mi-n">Suya Mixed Grill</span><span class="mi-d">Premium selection of beef, chicken and lamb with peanut sauce and fresh salad</span></div><span class="mi-p">£13</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Jollof Rice & Grilled Meat</span><span class="mi-d">Aromatic West African rice paired with your choice of perfectly charred meat</span></div><span class="mi-p">£11</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Weekend Buffet</span><span class="mi-d">Feast on rotating selection of grilled meats, rice dishes and traditional sides (booking recommended)</span></div><span class="mi-p">£15</span></div></div>
+      <div><div class="menu-cat">Desserts</div><div class="mi"><div class="mi-l"><span class="mi-n">Puff Puff with Condensed Milk</span><span class="mi-d">Golden fried dough balls dusted with sugar and drizzled with sweetened milk</span></div><span class="mi-p">£4</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Fresh Fruit Plate</span><span class="mi-d">Seasonal African fruits with lime and mint</span></div><span class="mi-p">£5</span></div></div>
     </div>
-  </section>
-
-  <section class="reviews">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">What guests say</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 4.7 · 155 Google reviews</h2>
-      <div class="reviews-grid">
-        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"It was the best African restaurant I had ever visited. With such an affordable price, I ate ti my satisfaction and the customer service was top notch. I'll definitely go back there. Just make sure you book before going there on weekends for buffet"</p><span class="review-author">— esther tosin · 4 months ago</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"We enjoyed his beef, sun and wings with fresh onions and tomatoes, and the classic suya. This place, this food is SATISFACTION in itself. If you enjoy street food you can just buy from the stall, but the restaurant is literally 2 mins down the road where you can dive into a wide "</p><span class="review-author">— Piroska Amoah · 4 months ago</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐</div><p class="review-text">"Nice atmosphere and great customer service by Chibuke. He was very friendly and attentive and made the experience enjoyable. Best customer service I have had in a Nigerian restaurant. An asset to the business. The food is an acquired taste, but a great place to gather and invite "</p><span class="review-author">— Tomilayo Ejedenawe · 5 months ago</span></div></div>
-      </div>
+    <p class="menu-disc">* Sample menu for reference. Please contact us for today's full menu.</p>
+  </div>
+</section>
+<section class="rev-sec" id="reviews">
+  <div class="rev-wrap">
+    <div class="fu"><p class="sec-label" style="color:rgba(240,165,0,.8)">What Guests Say</p><h2 class="sec-title">⭐ 4.7 · 155 Google reviews</h2></div>
+    <div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#0d6b32">ET</div><div><div class="rc-nm">esther tosin</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"It was the best African restaurant I had ever visited. With such an affordable price, I ate ti my satisfaction and the customer service was top notch. I'll definitely go back there. Just make sure you"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#8b6914">PA</div><div><div class="rc-nm">Piroska Amoah</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"We enjoyed his beef, sun and wings with fresh onions and tomatoes, and the classic suya. This place, this food is SATISFACTION in itself. If you enjoy street food you can just buy from the stall, but "</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#1a4a2e">TE</div><div><div class="rc-nm">Tomilayo Ejedenawe</div><div class="rc-st">★★★</div></div></div><p class="rc-tx">"Nice atmosphere and great customer service by Chibuke. He was very friendly and attentive and made the experience enjoyable. Best customer service I have had in a Nigerian restaurant. An asset to the "</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div>
+  </div>
+</section>
+<section class="visit" id="visit">
+  <div class="visit-wrap">
+    <div class="fu"><p class="sec-label">Find Us</p><h2 class="sec-title">Come visit us</h2></div>
+    <div class="visit-grid">
+      <div class="fu"><p class="vb-label">Address</p><p style="font-size:.9rem;color:var(--mut);line-height:1.85">152B Rye Ln, London SE15 4NB, UK</p><a href="https://maps.google.com/?cid=11937455338836656373" target="_blank" class="vb-link" style="color:var(--A);margin-top:.4rem"><i class="fab fa-google"></i> Google Maps</a></div>
+      <div class="fu" style="transition-delay:.05s"><p class="vb-label">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:var(--txt)">1:00 – 6:00 PM</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--txt)">1:00 – 6:00 PM</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--txt)">1:00 – 6:00 PM</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">1:00 – 6:00 PM</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">1:00 – 6:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">1:00 – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--txt)">12:00 – 5:00 PM</span></div></div>
+      <div class="fu" style="transition-delay:.1s"><p class="vb-label">Reservations</p><a href="tel:+447476667767" class="vb-link"><i class="fa fa-phone"></i> 07476 667767</a><a href="https://wa.me/447476667767" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp us</a></div>
     </div>
-  </section>
-
-  <section class="menu" id="menu">
-    <div class="section-wrap">
-      <div class="menu-header" data-aos="fade-up">
-        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
-        <span class="menu-note">Seasonal · Prices incl. VAT</span>
-      </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Classic Suya</div><div class="item-desc">Grilled meat skewers seasoned with our signature peanut spice blend</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Fresh Onions & Tomatoes</div><div class="item-desc">Crisp seasonal vegetables with zesty lime dressing</div></div><span class="item-price">£4</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Plantain Chips</div><div class="item-desc">Golden fried plantain served with spicy dipping sauce</div></div><span class="item-price">£5</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Beef Suya</div><div class="item-desc">Tender grilled beef with aromatic peanut coating and fresh accompaniments</div></div><span class="item-price">£12</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Chicken & Wings</div><div class="item-desc">Succulent grilled chicken and crispy wings with fresh onions and tomatoes</div></div><span class="item-price">£11</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Mixed Grill Supreme</div><div class="item-desc">A celebration of beef, chicken and traditional meats with seasonal vegetables</div></div><span class="item-price">£14</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Tropical Fruit Medley</div><div class="item-desc">Fresh seasonal fruits with honey drizzle</div></div><span class="item-price">£4</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Sweet Plantain</div><div class="item-desc">Caramelised plantain with cinnamon and condensed milk</div></div><span class="item-price">£5</span></div></div></div>
-      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
-    </div>
-  </section>
-
-  <section class="visit" id="visit">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">Find Us</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
-      <div class="visit-grid">
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
-          <p class="vb-label">Address</p>
-          <p>152B Rye Ln, London SE15 4NB, UK</p>
-          <a href="https://maps.google.com/?cid=11937455338836656373" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
-        </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
-          <p class="vb-label">Opening Hours</p>
-          <div class="hour-row"><span>Mon</span><span>1:00 – 6:00 PM</span></div>
-<div class="hour-row"><span>Tue</span><span>1:00 – 6:00 PM</span></div>
-<div class="hour-row"><span>Wed</span><span>1:00 – 6:00 PM</span></div>
-<div class="hour-row"><span>Thu</span><span>1:00 – 6:00 PM</span></div>
-<div class="hour-row"><span>Fri</span><span>1:00 – 6:00 PM</span></div>
-<div class="hour-row"><span>Sat</span><span>1:00 – 7:00 PM</span></div>
-<div class="hour-row"><span>Sun</span><span>12:00 – 5:00 PM</span></div>
-        </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
-          <p class="vb-label">Reservations</p>
-          <a href="tel:07476 667767"><i class="fa fa-phone" style="font-size:0.75rem"></i> 07476 667767</a>
-          <a href="https://wa.me/07476667767" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
-        </div>
-      </div>
-      <a href="https://maps.google.com/?cid=11937455338836656373" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
-    </div>
-  </section>
-
-  <footer>
-    <span>© 2025 Suuyar</span>
-    <span>152B Rye Ln, London SE15 4NB, UK</span>
-  </footer>
-
-  <a href="tel:07476 667767" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
-
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-  // ── AOS（スクロールアニメーション）──────────────────
-  AOS.init({ duration: 600, once: true, offset: 0, easing: 'ease-out-cubic' });
-  // AOS fallback: force all elements visible immediately
-  document.querySelectorAll('[data-aos]').forEach(function(el) {
-    el.classList.add('aos-animate');
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-  });
-
-  // ── Parallax（ヒーロー背景）──────────────────────────
-  const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      heroBg.style.transform = `translateY(${y * 0.38}px)`;
-    }, { passive: true });
-  }
-
-  // ── Sticky Header ────────────────────────────────────
-  const stickyHeader = document.getElementById('stickyHeader');
-  const hero = document.querySelector('.hero');
-  if (stickyHeader && hero) {
-    const observer = new IntersectionObserver(
-      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(hero);
-  }
-
-  // ── 営業中バッジ ──────────────────────────────────────
-  const HOURS = {"Monday": "1:00 – 6:00 PM", "Tuesday": "1:00 – 6:00 PM", "Wednesday": "1:00 – 6:00 PM", "Thursday": "1:00 – 6:00 PM", "Friday": "1:00 – 6:00 PM", "Saturday": "1:00 – 7:00 PM", "Sunday": "12:00 – 5:00 PM"};
-  function computeOpenStatus() {
-    const now  = new Date();
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const day  = days[now.getDay()];
-    const raw  = HOURS[day] || '';
-    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
-    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-    if (!m) return { open: false, text: raw };
-    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
-    const openMin  = toMin(m[1], m[2], m[3]);
-    const closeMin = toMin(m[4], m[5], m[6]);
-    const nowMin   = now.getHours() * 60 + now.getMinutes();
-    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
-    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
-    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
-    return {
-      open: isOpen,
-      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
-    };
-  }
-  function renderBadge(el, status) {
-    if (!el) return;
-    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
-    el.innerHTML = `<span class="dot"></span> ${status.text}`;
-  }
-  const status = computeOpenStatus();
-  renderBadge(document.getElementById('openBadge'), status);
-  const stickyBadge = document.getElementById('stickyBadge');
-  if (stickyBadge) {
-    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
-    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
-  }
-
-  // ── カウンターアニメーション ──────────────────────────
-  function animateCounter(el, target, isDecimal) {
-    let start = 0, duration = 1800, startTime = null;
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const val = start + (target - start) * ease;
-      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  const ratingEl = document.getElementById('ratingCounter');
-  if (ratingEl && 4.7) {
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        io.disconnect();
-        const rating = 4.7, count = 155;
-        const rSpan = document.createElement('span');
-        const cSpan = document.createElement('span');
-        ratingEl.innerHTML = '';
-        ratingEl.appendChild(document.createTextNode('⭐ '));
-        rSpan.textContent = '0.0';
-        ratingEl.appendChild(rSpan);
-        ratingEl.appendChild(document.createTextNode(' · '));
-        cSpan.textContent = '0';
-        ratingEl.appendChild(cSpan);
-        ratingEl.appendChild(document.createTextNode(' Google reviews'));
-        animateCounter(rSpan, rating, true);
-        animateCounter(cSpan, count, false);
-      }
-    }, { threshold: 0.5 });
-    io.observe(ratingEl);
-  }
-
-  // ── リップルエフェクト ────────────────────────────────
-  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const r = document.createElement('span');
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      r.className = 'ripple';
-      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
-      this.appendChild(r);
-      setTimeout(() => r.remove(), 700);
-    });
-  });
-
-  // ── タイプライター（タグライン）────────────────────────
-  const tagline = document.querySelector('.hero-tagline');
-  if (tagline) {
-    const full = tagline.innerHTML;
-    tagline.innerHTML = '';
-    tagline.style.visibility = 'visible';
-    let i = 0;
-    const chars = [...full];
-    let inTag = false;
-    function typeNext() {
-      if (i >= chars.length) return;
-      if (chars[i] === '<') inTag = true;
-      if (!inTag) {
-        tagline.innerHTML += chars[i];
-      } else {
-        let tag = '';
-        while (i < chars.length && (inTag || chars[i] !== '>')) {
-          tag += chars[i];
-          if (chars[i] === '>') inTag = false;
-          i++;
-        }
-        tagline.innerHTML += tag;
-        setTimeout(typeNext, 18);
-        return;
-      }
-      if (chars[i] === '>') inTag = false;
-      i++;
-      setTimeout(typeNext, 28);
-    }
-    setTimeout(typeNext, 600);
-  }
-  </script>
-
-</body>
-</html>
+    <a href="https://maps.google.com/?cid=11937455338836656373" target="_blank" class="dir-btn fu"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
+  </div>
+</section>
+<footer><span>© 2025 Suuyar</span><span>152B Rye Ln, London SE15 4NB, UK</span></footer>
+<a class="float-cta" href="tel:+447476667767"><i class="fa fa-phone"></i> Call to Reserve</a>
+<script>document.querySelectorAll('.fu').forEach(el=>{el.classList.add('in');});
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+(function(){const H={"Monday": "1:00 – 6:00 PM", "Tuesday": "1:00 – 6:00 PM", "Wednesday": "1:00 – 6:00 PM", "Thursday": "1:00 – 6:00 PM", "Friday": "1:00 – 6:00 PM", "Saturday": "1:00 – 7:00 PM", "Sunday": "12:00 – 5:00 PM"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+(function(){const el=document.getElementById('ratingCounter');if(!el||!4.7)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,4.7,true,v=>rs.textContent=v);an(0,155,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();</script>
+</body></html>
