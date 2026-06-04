@@ -3,6 +3,42 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="description" content="4.7★ · 77 Google reviews · 170 Bellenden Rd, London SE15 4BW · Slow-marinated, fire-kissed Caribbean soul in Peckham"/>
+  <meta property="og:type" content="restaurant"/>
+  <meta property="og:title" content="Jerk Shepherd — Authentic Caribbean Jerk, Peckham"/>
+  <meta property="og:description" content="4.7★ · 77 Google reviews · 170 Bellenden Rd, London SE15 4BW"/>
+  <meta property="og:image" content="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80"/>
+  <meta property="og:url" content="https://ta9mijp.github.io/lp-previews/jerk-shepherd/"/>
+  <meta property="og:locale" content="en_GB"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Jerk Shepherd — Authentic Caribbean Jerk, Peckham"/>
+  <meta name="twitter:description" content="4.7★ · 77 Google reviews · 170 Bellenden Rd, London SE15 4BW"/>
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Jerk Shepherd — Authentic Caribbean Jerk, Peckham",
+    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "170 Bellenden Rd",
+      "addressLocality": "London",
+      "postalCode": "SE15 4BW",
+      "addressCountry": "GB"
+    },
+    "telephone": "+447946135427",
+    "url": "https://ta9mijp.github.io/lp-previews/jerk-shepherd/",
+    "servesCuisine": "Caribbean, Jerk",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "reviewCount": "77"
+    },
+    "priceRange": "££"
+  }
+  </script>
   <title>Jerk Shepherd — Authentic Caribbean Jerk, Peckham</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -176,6 +212,26 @@ footer{background:var(--dark2);border-top:1px solid var(--border);padding:2.5rem
 .reveal-l.visible{opacity:1;transform:translateX(0);}
 .reveal-r{opacity:0;transform:translateX(28px);transition:opacity .65s ease,transform .65s ease;}
 .reveal-r.visible{opacity:1;transform:translateX(0);}
+  
+/* ── GRAIN TEXTURE ── */
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.038;pointer-events:none;z-index:3;mix-blend-mode:overlay;
+}
+/* ── SCROLL MARGIN (fixed nav offset) ── */
+section[id],div[id]{scroll-margin-top:60px;}
+/* ── FOCUS VISIBLE ── */
+a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:4px;}
+a:focus:not(:focus-visible){outline:none;}
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+  .hero-bg{will-change:auto;}
+}
+/* ── CONTENT VISIBILITY (below-fold perf) ── */
+.reviews,.visit,.reviews-sec,.visit-sec{content-visibility:auto;contain-intrinsic-size:0 600px;}
+
   </style>
 </head>
 <body>
