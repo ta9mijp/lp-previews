@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Vera Cruz Lebanese Grill and Cafe — Brixton, London</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --primary:   #0066CC;
+      --accent:    #FF0000;
+      /* ヒーロー用（暗い背景向け） */
+      --hero-text:  #f5f2ec;
+      --hero-muted: rgba(245,242,236,0.65);
+      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
+      --c-text:   #1a1a1a;
+      --c-muted:  #6b6b6b;
+      --c-border: rgba(0,0,0,0.08);
+      --sec-bg:   #FFFF00;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'Hiragino Sans',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+
+    /* PROTO BANNER */
+    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
+    .proto-banner strong{font-weight:700;}
+    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+
+    /* ── HERO（暗い背景 → 白文字） ── */
+    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
+    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
+    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
+    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
+    .logo{font-family:'Georgia',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
+    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
+    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
+    .badge-accent{border-color:var(--accent);color:var(--accent);}
+    .hero-tagline{font-family:'Georgia',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
+    .hero-tagline span{color:var(--accent);}
+    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
+    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
+    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
+    .hero-nav a:hover{color:#fff;}
+    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
+    .btn-reserve:hover{opacity:0.85;}
+    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
+    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
+    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
+    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
+    .mockup-overlay .m-name{font-family:'Georgia',serif;font-size:1.2rem;font-weight:300;color:#fff;}
+    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
+
+    /* ── SOCIAL BAR ── */
+    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
+    .social-icons{display:flex;gap:1.4rem;}
+    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
+    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
+    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
+    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
+    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
+    .call-link:hover{border-color:var(--accent);color:var(--accent);}
+
+    /* ── SHARED CONTENT STYLES ── */
+    .section-wrap{max-width:1100px;margin:0 auto;}
+    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
+    .section-title{font-family:'Georgia',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+
+    /* ── ABOUT（白背景 → 暗い文字） ── */
+    .about{padding:6rem 4rem;background:#fff;}
+    @media(max-width:700px){.about{padding:4rem 2rem;}}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
+    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
+    .about-values{display:flex;flex-direction:column;}
+    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
+    .value-item:last-child{border-bottom:none;}
+    .value-num{font-family:'Georgia',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
+    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
+    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
+
+    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
+    .reviews{padding:5rem 4rem;background:#f7f7f5;}
+    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
+    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
+    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
+    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
+    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
+    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
+
+    /* ── MENU（白背景 → 暗い文字） ── */
+    .menu{padding:6rem 4rem;background:#fff;}
+    @media(max-width:700px){.menu{padding:4rem 2rem;}}
+    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+    .menu-note{font-size:0.78rem;color:var(--c-muted);}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
+    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
+    .menu-category:last-child{border-bottom:none;}
+    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
+    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
+    .menu-item:last-child{border-bottom:none;}
+    .menu-item-left{flex:1;}
+    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
+    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
+    .item-price{font-family:'Georgia',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
+    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
+
+    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
+    .visit{padding:5rem 4rem;background:#f7f7f5;}
+    @media(max-width:700px){.visit{padding:4rem 2rem;}}
+    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
+    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
+    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
+    .visit-block a:hover{color:var(--accent);}
+    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
+    .hour-row:last-child{border-bottom:none;}
+    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
+    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
+    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+    /* FOOTER */
+    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
+    @media(min-width:700px){footer{padding-bottom:2rem;}}
+
+    /* ── STICKY HEADER ── */
+    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
+    .sticky-header.visible{transform:translateY(0);}
+    .sticky-logo{font-family:'Georgia',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
+    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
+    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
+    .sticky-open.closed{background:#fce4ec;color:#c62828;}
+    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
+    .sticky-cta:hover{opacity:0.85;}
+
+    /* ── OPEN NOW BADGE (hero) ── */
+    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
+    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
+    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
+    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+
+    /* ── COUNTER ── */
+    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
+
+    /* ── PARALLAX ── */
+    .hero-bg{will-change:transform;}
+
+    /* ── IMAGE ZOOM ── */
+    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
+    .mockup:hover img{transform:scale(1.05);}
+
+    /* ── RIPPLE ── */
+    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
+    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
+    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
+
+    /* ── FLOAT CALL ── */
+    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
+    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
+    @media(min-width:700px){.float-call{display:none;}}
+  </style>
+</head>
+<body>
+
+  <!-- STICKY HEADER -->
+  <header class="sticky-header" id="stickyHeader">
+    <div style="display:flex;align-items:center;">
+      <span class="sticky-logo">Vera Cruz Lebanese Grill and Cafe</span>
+      <span class="sticky-open" id="stickyBadge"></span>
+    </div>
+    <a href="tel:020 7733 4810" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
+  </header>
+
+  <div class="proto-banner">
+    <p><strong>🎨 Free demo for Vera Cruz Lebanese Grill and Cafe</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
+  </div>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-left">
+      <div>
+        <div class="logo">Vera Cruz Lebanese Grill and Cafe</div>
+        <div class="hero-badges">
+          <span class="badge">Café</span>
+          <span class="badge">Brixton, London</span>
+          <span class="badge badge-accent">£</span>
+        </div>
+      </div>
+      <div>
+        <h1 class="hero-tagline">Authentic Lebanese flavours, honest portions, pure heart</h1>
+        <p class="hero-desc">Vera Cruz Lebanese Grill and Cafe brings the vibrant tastes of Lebanon to the heart of Brixton. We serve authentic, generously portioned dishes made with care and passion, creating a welcoming space where food speaks louder than fancy decor.</p>
+        <div class="rating-counter" id="ratingCounter" data-rating="4.8" data-count="576">⭐ 4.8 · 576 Google reviews</div>
+        <div class="open-badge" id="openBadge"></div>
+      </div>
+      <nav class="hero-nav">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#visit">Visit</a>
+        <a href="tel:020 7733 4810" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
+      </nav>
+    </div>
+    <div class="hero-right">
+      <div class="mockup">
+        <img src="images/img_1.jpg" alt="Vera Cruz Lebanese Grill and Cafe"/>
+        <div class="mockup-overlay">
+          <div class="m-name">Vera Cruz Lebanese Grill and Cafe</div>
+          <div class="m-sub">Café · Brixton, London</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="social-bar">
+    <span>Connect</span>
+    <div class="social-icons">
+      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/02077334810" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://maps.google.com/?cid=2589354522476576188" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
+    </div>
+    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Delivery</span></div>
+    <a href="tel:020 7733 4810" class="call-link"><i class="fa fa-phone"></i> 020 7733 4810</a>
+  </div>
+
+  <section class="about" id="about">
+    <div class="section-wrap">
+      <div class="about-grid">
+        <div data-aos="fade-right">
+          <p class="section-label">Our Philosophy</p>
+          <h2 class="section-title">Food that brings people to the same table</h2>
+          <p class="about-body">Vera Cruz Lebanese Grill and Cafe brings the vibrant tastes of Lebanon to the heart of Brixton. We serve authentic, generously portioned dishes made with care and passion, creating a welcoming space where food speaks louder than fancy decor.</p>
+        </div>
+        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
+          <div class="value-item"><span class="value-num">01</span><div><h3>Authentic Flavours</h3><p>We honour traditional Lebanese recipes, bringing genuine taste and warmth to every dish we serve.</p></div></div>
+          <div class="value-item"><span class="value-num">02</span><div><h3>Generous Portions</h3><p>We believe in feeding our community well, serving honest portions that reflect our respect for good food and our guests.</p></div></div>
+          <div class="value-item"><span class="value-num">03</span><div><h3>Community First</h3><p>Brixton is our home, and we're proud to be your neighbourhood spot for quality Lebanese cuisine.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews">
+    <div class="section-wrap">
+      <p class="section-label" data-aos="fade-up">What guests say</p>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 4.8 · 576 Google reviews</h2>
+      <div class="reviews-grid">
+        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"I’m writing this review after my second visit.just sad about the fact that they are in our neighbourhood and yet we found them so late,The baby chicken was the best!! The shawarma was flavourful and mutable chefs kiss. Less space to sit in so takeaway would be the best.I’m defini"</p><span class="review-author">— Af Ban · 3 months ago</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"This is must visit place when in Brixton. I doesn't look welcoming but in my books that means food is good and with honest portions.
+
+I've had the best lamb shawarma wrap in recent memory, just filled with meat. For 7 quid it's a steal, you won't get hungry for good few hours aft"</p><span class="review-author">— Damian Lubanski · 4 months ago</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Tried this place, loved the chicken the crip of it and very juicy. Really well cooked, loved it how it was done. Highly recommended!!"</p><span class="review-author">— Fahd Khan · 3 months ago</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="section-wrap">
+      <div class="menu-header" data-aos="fade-up">
+        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
+        <span class="menu-note">Seasonal · Prices incl. VAT</span>
+      </div>
+      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Hummus</div><div class="item-desc">Creamy chickpea dip with tahini, lemon and olive oil</div></div><span class="item-price">£4.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Fattoush Salad</div><div class="item-desc">Fresh mixed greens with tomatoes, cucumbers, radish and crispy pita chips</div></div><span class="item-price">£6.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Kibbeh</div><div class="item-desc">Spiced minced meat and bulgur wheat, fried until golden</div></div><span class="item-price">£5.50</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Baby Chicken Shawarma</div><div class="item-desc">Tender marinated chicken, slow-roasted and served with rice and salad</div></div><span class="item-price">£12.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Lamb Kofta</div><div class="item-desc">Grilled minced lamb with spices, served with tahini sauce and grilled vegetables</div></div><span class="item-price">£14.00</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Grilled Sea Bass</div><div class="item-desc">Fresh Mediterranean sea bass, charred to perfection with lemon and herbs</div></div><span class="item-price">£15.50</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Baklava</div><div class="item-desc">Crispy pastry layered with pistachios, honey and aromatic spices</div></div><span class="item-price">£4.00</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Knafeh</div><div class="item-desc">Warm shredded pastry with melted cheese, topped with pistachios and orange blossom syrup</div></div><span class="item-price">£4.50</span></div></div></div>
+      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="section-wrap">
+      <p class="section-label" data-aos="fade-up">Find Us</p>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
+      <div class="visit-grid">
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
+          <p class="vb-label">Address</p>
+          <p>2, Arlington Parade, Brixton Hill, London SW2 1RH, UK</p>
+          <a href="https://maps.google.com/?cid=2589354522476576188" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
+        </div>
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
+          <p class="vb-label">Opening Hours</p>
+          <div class="hour-row"><span>Mon</span><span>7:30 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Tue</span><span>7:30 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Wed</span><span>7:30 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Thu</span><span>7:30 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Fri</span><span>7:30 AM – 1:00 AM</span></div>
+<div class="hour-row"><span>Sat</span><span>9:00 AM – 1:00 AM</span></div>
+<div class="hour-row"><span>Sun</span><span>11:00 AM – 11:00 PM</span></div>
+        </div>
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
+          <p class="vb-label">Reservations</p>
+          <a href="tel:020 7733 4810"><i class="fa fa-phone" style="font-size:0.75rem"></i> 020 7733 4810</a>
+          <a href="https://wa.me/02077334810" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?cid=2589354522476576188" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2025 Vera Cruz Lebanese Grill and Cafe</span>
+    <span>2, Arlington Parade, Brixton Hill, London SW2 1RH, UK</span>
+  </footer>
+
+  <a href="tel:020 7733 4810" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+  // ── AOS（スクロールアニメーション）──────────────────
+  AOS.init({ duration: 600, once: true, offset: 0, easing: 'ease-out-cubic' });
+  // AOS fallback: force all elements visible immediately
+  document.querySelectorAll('[data-aos]').forEach(function(el) {
+    el.classList.add('aos-animate');
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+
+  // ── Parallax（ヒーロー背景）──────────────────────────
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      heroBg.style.transform = `translateY(${y * 0.38}px)`;
+    }, { passive: true });
+  }
+
+  // ── Sticky Header ────────────────────────────────────
+  const stickyHeader = document.getElementById('stickyHeader');
+  const hero = document.querySelector('.hero');
+  if (stickyHeader && hero) {
+    const observer = new IntersectionObserver(
+      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(hero);
+  }
+
+  // ── 営業中バッジ ──────────────────────────────────────
+  const HOURS = {"Monday": "7:30 AM – 11:00 PM", "Tuesday": "7:30 AM – 11:00 PM", "Wednesday": "7:30 AM – 11:00 PM", "Thursday": "7:30 AM – 11:00 PM", "Friday": "7:30 AM – 1:00 AM", "Saturday": "9:00 AM – 1:00 AM", "Sunday": "11:00 AM – 11:00 PM"};
+  function computeOpenStatus() {
+    const now  = new Date();
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const day  = days[now.getDay()];
+    const raw  = HOURS[day] || '';
+    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
+    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (!m) return { open: false, text: raw };
+    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
+    const openMin  = toMin(m[1], m[2], m[3]);
+    const closeMin = toMin(m[4], m[5], m[6]);
+    const nowMin   = now.getHours() * 60 + now.getMinutes();
+    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
+    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
+    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
+    return {
+      open: isOpen,
+      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
+    };
+  }
+  function renderBadge(el, status) {
+    if (!el) return;
+    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
+    el.innerHTML = `<span class="dot"></span> ${status.text}`;
+  }
+  const status = computeOpenStatus();
+  renderBadge(document.getElementById('openBadge'), status);
+  const stickyBadge = document.getElementById('stickyBadge');
+  if (stickyBadge) {
+    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
+    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
+  }
+
+  // ── カウンターアニメーション ──────────────────────────
+  function animateCounter(el, target, isDecimal) {
+    let start = 0, duration = 1800, startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const val = start + (target - start) * ease;
+      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const ratingEl = document.getElementById('ratingCounter');
+  if (ratingEl && 4.8) {
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        io.disconnect();
+        const rating = 4.8, count = 576;
+        const rSpan = document.createElement('span');
+        const cSpan = document.createElement('span');
+        ratingEl.innerHTML = '';
+        ratingEl.appendChild(document.createTextNode('⭐ '));
+        rSpan.textContent = '0.0';
+        ratingEl.appendChild(rSpan);
+        ratingEl.appendChild(document.createTextNode(' · '));
+        cSpan.textContent = '0';
+        ratingEl.appendChild(cSpan);
+        ratingEl.appendChild(document.createTextNode(' Google reviews'));
+        animateCounter(rSpan, rating, true);
+        animateCounter(cSpan, count, false);
+      }
+    }, { threshold: 0.5 });
+    io.observe(ratingEl);
+  }
+
+  // ── リップルエフェクト ────────────────────────────────
+  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const r = document.createElement('span');
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      r.className = 'ripple';
+      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
+      this.appendChild(r);
+      setTimeout(() => r.remove(), 700);
+    });
+  });
+
+  // ── タイプライター（タグライン）────────────────────────
+  const tagline = document.querySelector('.hero-tagline');
+  if (tagline) {
+    const full = tagline.innerHTML;
+    tagline.innerHTML = '';
+    tagline.style.visibility = 'visible';
+    let i = 0;
+    const chars = [...full];
+    let inTag = false;
+    function typeNext() {
+      if (i >= chars.length) return;
+      if (chars[i] === '<') inTag = true;
+      if (!inTag) {
+        tagline.innerHTML += chars[i];
+      } else {
+        let tag = '';
+        while (i < chars.length && (inTag || chars[i] !== '>')) {
+          tag += chars[i];
+          if (chars[i] === '>') inTag = false;
+          i++;
+        }
+        tagline.innerHTML += tag;
+        setTimeout(typeNext, 18);
+        return;
+      }
+      if (chars[i] === '>') inTag = false;
+      i++;
+      setTimeout(typeNext, 28);
+    }
+    setTimeout(typeNext, 600);
+  }
+  </script>
+
+</body>
+</html>
