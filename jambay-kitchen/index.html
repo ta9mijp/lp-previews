@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Jambay Kitchen — Dalston, London</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
+  @media(min-width:700px){.float-cta{display:none!important;}}
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap');
+
+:root {
+--c-earth1:#2c1a0e;
+--c-earth2:#6b3a2a;
+--c-earth3:#a0522d;
+--c-warm1:#d4956a;
+--c-warm2:#e8c9a0;
+--c-warm3:#f5ede0;
+--c-cream:#faf6f0;
+--c-white:#fff;
+--c-dark:#1a1008;
+--c-text:#3d2314;
+--c-muted:#8a6a50;
+--ff-head:'Playfair Display',serif;
+--ff-body:'Inter',sans-serif;
+--radius:8px;
+--trans:.35s ease;
+--max:1200px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--ff-body);color:var(--c-text);background:var(--c-cream);line-height:1.6;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* ── PROTO BANNER ── */
+.proto-banner{position:fixed;top:0;left:0;width:100%;z-index:9999;background:var(--c-earth2);color:var(--c-warm3);text-align:center;font-size:.75rem;letter-spacing:.08em;padding:.45rem 1rem}
+
+/* ── STICKY NAV ── */
+#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:900;padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background var(--trans),padding var(--trans)}
+#stickyNav.scrolled{background:rgba(44,26,14,.92);backdrop-filter:blur(8px);padding:.75rem 2rem}
+.nav-logo{font-family:var(--ff-head);font-size:1.4rem;color:var(--c-white);letter-spacing:.06em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--c-warm2);transition:color var(--trans)}
+.nav-links a:hover{color:var(--c-warm1)}
+.nav-cta{background:var(--c-warm1);color:var(--c-white);padding:.5rem 1.2rem;border-radius:var(--radius);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:background var(--trans)}
+.nav-cta:hover{background:var(--c-earth3)}
+
+/* ── HERO ── */
+.hero-section{position:relative;width:100%;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-overlay-gradient{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,16,8,.55) 0%,rgba(44,26,14,.75) 60%,rgba(26,16,8,.92) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;text-align:center;padding:2rem;max-width:720px}
+.hero-eyebrow{font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--c-warm1);margin-bottom:1rem;font-weight:500}
+.hero-title{font-family:var(--ff-head);font-size:clamp(2.4rem,6vw,4.2rem);color:var(--c-white);line-height:1.15;margin-bottom:1.2rem}
+.hero-title span{color:var(--c-warm1)}
+.hero-sub{font-size:1rem;color:var(--c-warm2);max-width:480px;margin:0 auto 2rem;font-weight:300}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--c-warm1);color:var(--c-white);padding:.85rem 2.2rem;border-radius:var(--radius);font-size:.85rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:background var(--trans),transform var(--trans)}
+.btn-primary:hover{background:var(--c-earth3);transform:translateY(-2px)}
+.btn-outline{border:2px solid var(--c-warm2);color:var(--c-warm2);padding:.85rem 2.2rem;border-radius:var(--radius);font-size:.85rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all var(--trans)}
+.btn-outline:hover{background:var(--c-warm2);color:var(--c-earth1)}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--c-warm2);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--c-warm1),transparent);animation:scrollPulse 1.8s ease infinite}
+@keyframes scrollPulse{0%,100%{opacity:.4;transform:scaleY(.8)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ── OPEN BADGE ── */
+#openBadge{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);z-index:800;background:var(--c-warm1);color:var(--c-white);padding:.6rem 1rem;border-radius:var(--radius);font-size:.7rem;font-weight:600;letter-spacing:.08em;text-align:center;box-shadow:0 4px 16px rgba(160,82,45,.4);line-height:1.3}
+#openBadge .badge-dot{width:8px;height:8px;background:#4caf50;border-radius:50%;margin:.4rem auto 0;animation:blink 1.4s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── RATING COUNTER ── */
+#ratingCounter{display:flex;align-items:center;gap:.5rem;background:var(--c-white);border:1px solid var(--c-warm2);border-radius:var(--radius);padding:.5rem 1rem;font-size:.82rem;color:var(--c-text)}
+#ratingCounter .stars{color:#d4956a;font-size:.9rem;letter-spacing:2px}
+#ratingCounter .score{font-weight:700;font-size:1rem;color:var(--c-earth2)}
+
+/* ── FLOAT CTA ── */
+.float-cta{position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;background:var(--c-earth2);color:var(--c-white);padding:.9rem 1.6rem;border-radius:50px;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 6px 24px rgba(107,58,42,.45);transition:all var(--trans);display:flex;align-items:center;gap:.5rem}
+.float-cta:hover{background:var(--c-earth3);transform:translateY(-3px);box-shadow:0 10px 30px rgba(107,58,42,.55)}
+.float-cta-icon{font-size:1rem}
+
+/* ── SECTION COMMONS ── */
+.section{padding:100px 2rem}
+.section-inner{max-width:var(--max);margin:0 auto}
+.section-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--c-warm1);font-weight:600;margin-bottom:.6rem}
+.section-title{font-family:var(--ff-head);font-size:clamp(1.8rem,4vw,2.8rem);color:var(--c-earth1);line-height:1.2;margin-bottom:1rem}
+.section-divider{width:48px;height:3px;background:var(--c-warm1);border-radius:2px;margin:0 auto 1.5rem}
+.section-divider.left{margin:0 0 1.5rem}
+.section-body{font-size:.95rem;color:var(--c-muted);max-width:560px;line-height:1.8}
+
+/* ── FEATURES ── */
+.features-section{background:var(--c-white)}
+.features-header{text-align:center;margin-bottom:4rem}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem}
+.feature-card{background:var(--c-cream);border-radius:12px;padding:2.2rem 1.8rem;text-align:center;transition:transform var(--trans),box-shadow var(--trans)}
+.feature-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(44,26,14,.1)}
+.feature-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--c-warm1),var(--c-earth3));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.5rem}
+.feature-name{font-family:var(--ff-head);font-size:1.1rem;color:var(--c-earth1);margin-bottom:.6rem}
+.feature-desc{font-size:.85rem;color:var(--c-muted);line-height:1.7}
+
+/* ── MENU ── */
+.menu-section{background:var(--c-cream)}
+.menu-header{text-align:center;margin-bottom:1rem}
+.menu-tabs{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-bottom:3rem}
+.menu-tab{padding:.5rem 1.4rem;border-radius:50px;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:2px solid var(--c-warm2);color:var(--c-muted);transition:all var(--trans)}
+.menu-tab.active,.menu-tab:hover{background:var(--c-warm1);border-color:var(--c-warm1);color:var(--c-white)}
+.menu-grid{display:grid;grid-template
+  </style>
+</head>
+<body>
+<body>
+
+<!-- Proto Banner -->
+<div class="proto-banner"><p><strong>🎨 Free demo for Jambay Kitchen</strong> — All images, text &amp; colours are placeholders and fully customisable.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+
+<!-- Sticky Nav -->
+<nav id="stickyNav">
+  <div class="nav-logo">Jambay Kitchen</div>
+  <ul class="nav-links">
+    <li><a href="#features">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a class="nav-cta" href="tel:020 3376 9616">Reserve a Table</a>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-bg" style="background-image: url('images/img_0.jpg');"></div>
+  <div class="hero-overlay-gradient"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Dalston, London</p>
+    <h1 class="hero-title">Jambay Kitchen</h1>
+    <p class="hero-sub">Authentic Caribbean flavours, Dalston soul</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="tel:020 3376 9616">Reserve a Table</a>
+      <a class="btn-outline" href="#menu">Explore Menu</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;">
+      <span id="openBadge"><span class="badge-dot"></span> Open Now</span>
+      <span class="stars">⭐⭐⭐⭐⭐</span>
+      <span id="ratingCounter" data-rating="4.9" data-count="112" class="score">4.9 · 112 Google Reviews</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- Features / About Section -->
+<section class="features-section section" id="features">
+  <div class="section-inner">
+    <div class="features-header">
+      <p class="section-label" data-aos="fade-up">Our Story</p>
+      <h2 class="section-title" data-aos="fade-up">A Taste of the Caribbean<br>in the Heart of Dalston</h2>
+      <div class="section-divider"></div>
+      <p class="section-body" data-aos="fade-up">Jambay Kitchen brings the vibrant spirit of Caribbean cuisine to the heart of Dalston. From our cozy, greenery-filled space to every finger-licking bite, we craft an experience that's warm, welcoming, and unforgettably delicious.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-icon">🌶️</div>
+        <h3 class="feature-name">Authentic Flavour</h3>
+        <p class="feature-desc">We honour traditional Caribbean recipes with genuine spices and time-honoured cooking techniques passed down through generations.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-icon">🏡</div>
+        <h3 class="feature-name">Welcoming Warmth</h3>
+        <p class="feature-desc">Every guest is family — we create spaces where people feel at home the moment they walk through our doors.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-icon">🎶</div>
+        <h3 class="feature-name">Joyful Dining</h3>
+        <p class="feature-desc">Great food, stunning service, and vibrant music combine to make every meal a celebration worth remembering.</p>
+      </div>
+    </div>
+    <!-- Services Row -->
+    <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:40px;" data-aos="fade-up">
+      <span style="display:flex;align-items:center;gap:8px;font-weight:600;"><span style="color:#c8702a;">✓</span> Dine-In</span>
+      <span style="display:flex;align-items:center;gap:8px;font-weight:600;"><span style="color:#c8702a;">✓</span> Takeaway</span>
+      <span style="display:flex;align-items:center;gap:8px;font-weight:600;"><span style="color:#c8702a;">✓</span> Delivery</span>
+    </div>
+  </div>
+</section>
+
+<!-- Image-Text Alternating Strip -->
+<div style="display:flex;flex-wrap:wrap;width:100%;overflow:hidden;" id="about-alternating">
+  <!-- Left: text, Right: image -->
+  <div style="flex:1 1 400px;min-width:280px;background:#2b1a0e;color:#f5ede3;display:flex;align-items:center;padding:64px 48px;" data-aos="fade-right">
+    <div>
+      <p style="text-transform:uppercase;letter-spacing:3px;font-size:0.75rem;color:#c8702a;margin-bottom:12px;">Why We're Different</p>
+      <h2 style="font-size:2rem;font-weight:700;line-height:1.25;margin-bottom:20px;">More Than a Meal —<br>A Caribbean Journey</h2>
+      <p style="opacity:0.85;line-height:1.8;margin-bottom:28px;">Step into Jambay Kitchen and feel the island breeze. Our chefs bring decades of heritage to every plate — from smoky jerk marinades to slow-cooked stews bursting with depth and colour. We believe the best dining happens when food tells a story.</p>
+      <a href="tel:020 3376 9616" style="display:inline-block;padding:14px 32px;background:#c8702a;color:#fff;text-decoration:none;font-weight:700;border-radius:4px;letter-spacing:0.5px;">Book Your Table</a>
+    </div>
+  </div>
+  <div style="flex:1 1 400px;min-width:280px;min-height:420px;background-image:url('images/img_1.jpg');background-size:cover;background-position:center;" data-aos="fade-left">
+  </div>
+</div>
+
+<!-- Menu Section -->
+<section class="menu-section section" id="menu">
+  <div class="section-inner">
+    <div class="menu-header">
+      <p class="section-label" data-aos="fade-up">Our Menu</p>
+      <h2 class="section-title" data-aos="fade-up">Caribbean Flavours<br>Crafted with Love</h2>
+      <div class="section-divider"></div>
+      <p class="section-body" data-aos="fade-up">From golden starters to hearty mains and sweet island desserts — every dish is made with authentic spices and a whole lot of heart.</p>
+    </div>
+
+    <!-- Starters -->
+    <div style="margin-top:56px;">
+      <h3 style="text-align:center;font-size:1.5rem;font-weight:700;margin-bottom:8px;color:#2b1a0e;text-transform:uppercase;letter-spacing:2px;" data-aos="fade-up">Starters</h3>
+      <div style="width:48px;height:3px;background:#c8702a;margin:0 auto 36px;"></div>
+      <div class="menu-grid">
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="0" style="padding:0;overflow:hidden;border-radius:12px;">
+          <div style="height:200px;background:linear-gradient(135deg,#f5ede3 0%,#e8d5c0 100%);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🥖</div>
+          <div style="padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+              <h4 style="font-size:1.1rem;font-weight:700;color:#2b1a0e;margin:0;">Festival Bread</h4>
+              <span style="font-weight:700;color:#c8702a;white-space:nowrap;margin-left:12px;">£4.50</span>
+            </div>
+            <p style="color:#6b5c4e;font-size:0.9rem;line-height:1.6;margin:0;">Golden-fried cornmeal dumplings, light and fluffy with a perfect crisp exterior.</p>
+          </div>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100" style="padding:0;overflow:hidden;border-radius:12px;">
+          <div style="height:200px;background:linear-gradient(135deg,#f5ede3 0%,#e8d5c0 100%);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍗</div>
+          <div style="padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+              <h4 style="font-size:1.1rem;font-weight:700;color:#2b1a0e;margin:0;">Caribbean Wings</h4>
+              <span style="font-weight:700;color:#c8702a;white-space:nowrap;margin-left:12px;">£6.50</span>
+            </div>
+            <p style="color:#6b5c4e;font-size:0.9rem;line-height:1.6;margin:0;">Tender chicken wings marinated in bold spices and grilled to smoky perfection.</p>
+          </div>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200" style="padding:0;overflow:hidden;border-radius:12px;">
+          <div style="height:200px;background:linear-gradient(135deg,#f5ede3 0%,#e8d5c0 100%);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍌</div>
+          <div style="padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+              <h4 style="font-size:1.1rem;font-weight:700;color:#2b1a0e;margin:0;">Plantain Chips</h4>
+              <span style="font-weight:700;color:#c8702a;white-space:nowrap;margin-left:12px;">£5.00</span>
+            </div>
+            <p style="color:#6b5c4e;font-size:0.9rem;line-height:1.6;margin:0;">Crispy fried plantain slices served with a zesty lime and scotch bonnet dip.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mains -->
+    <div style="margin-top:64px;">
+      <h3 style="text-align:center;font-size:1.5rem;font-weight:700;margin-bottom:8px;color:#2b1a0e;text-transform:uppercase;letter-spacing:2px;" data-aos="fade-up">Mains</h3>
+      <div style="width:48px;height:3px;background:#c8702a;margin:0 auto 36px;"></div>
+      <div class="menu-grid">
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="0" style="padding:0;overflow:hidden;border-radius:12px;">
+          <div style="height:200px;background:linear-gradient(135deg,#e8d5c0 0%,#d4b896 100%);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🔥</div>
+          <div style="padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+              <h4 style="font-size:1.1rem;font-weight:700;color:#2b1a0e;margin:0;">Jerk Chicken</h4>
+              <span style="font-weight:700;color:#c8702a;white-space:nowrap;margin-left:12px;">£13.50</span>
+            </div>
+            <p style="color:#6b5c4e;font-size:0.9rem;line-height:1.6;margin:0;">Succulent chicken infused with fiery jerk spices, grilled until charred and juicy.</p>
+          </div>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100" style="padding:0;overflow:hidden;border-radius:12px;">
+          <div style="height:200px;background:linear-gradient(135deg,#e8d5c0 0%,#d4b896 100%);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🐟</div>
+          <div style="padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+              <h4 style="font-size:1.1rem;font-weight:700;color:#2b1a0e;margin:0;">Caribbean Fish Stew</h4>
+              <span style="font-weight:700;color:#c8702a;white-space:nowrap;margin-left:12px;">£14.00</span>
+            </div>
+            <p style="color:#6b5c4e;font-size:0.9rem;line-height:1.6;margin:0;">Fresh catch simmered in coconut broth with peppers, okra, and authentic island spices.</p>
+          </div>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200" style="padding:0;overflow:hidden;border-radius:12px;">
+          <div style="height:200px;background:linear-gradient(135deg,#e8d5c0 0%,#d4b896 100%);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍚</div>
+          <div style="padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+              <h4 style="font-size:1.1rem;font-weight:700;color:#2b1a0e;margin:0;">Rice &amp; Peas with Stewed Beef</h4>
+              <span style="font-weight:700;color:#c8702a;white-space:nowrap;margin-left:12px;">£12.50</span>
+            </div>
+            <p style="color:#6b5c4e;font-size:0.9rem;line-height:1.6;margin:0;">Tender beef slow-cooked with kidney beans and aromatic seasonings, served with fluffy rice.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Desserts -->
+    <div style="margin-top:64px;">
+      <h3 style="text-align:center;font-size:1.5rem;font-weight:700;margin-bottom:8px;color:#2b1a0e;text-transform:uppercase;letter-spacing:2px;" data-aos="fade-up">Desserts</h3>
+      <div style="width:48px;height:3px;background:#c8702a;margin:0 auto 36px;"></div>
+      <div class="menu-grid" style="max-width:840px;margin-left:auto;margin-right:auto;">
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="0" style="padding:0;overflow:hidden;border-radius:12px;">
+          <div style="height:200px;background:linear-gradient(135deg,#f5ede3 0%,#eddfc8 100%);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍮</div>
+          <div style="padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+              <h4 style="font-size:1.1rem;font-weight:700;color:#2b1a0e;margin:0;">Coconut Bread Pudding</h4>
+              <span style="font-weight:700;color:#c8702a;white-space:nowrap;margin-left:12px;">£5.00</span>
+            </div>
+            <p style="color:#6b5c4e;font-size:0.9rem;line-height:1.6;margin:0;">Warm, comforting pudding with toasted coconut and a drizzle of rum caramel sauce.</p>
+          </div>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100" style="padding:0;overflow:hidden;border-radius:12px;">
+          <div style="height:200px;background:linear-gradient(135deg,#f5ede3 0%,#eddfc8 100%);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🥭</div>
+          <div style="padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+              <h4 style="font-size:1.1rem;font-weight:700;color:#2b1a0e;margin:0;">Mango Sorbet</h4>
+              <span style="font-weight:700;color:#c8702a;white-space:nowrap;margin-left:12px;">£4.50</span>
+            </div>
+            <p style="color:#6b5c4e;font-size:0.9rem;line-height:1.6;margin:0;">Refreshing tropical mango ice served in its natural sweetness with lime zest.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:40px;font-size:0.85rem;color:#8a7060;font-style:italic;" data-aos="fade-up">* Sample menu for reference. Please contact us for today's full menu.</p>
+  </div>
+</section>
+
+<!-- Gallery / Full-Bleed Photo Strip -->
+<section id="gallery" style="width:100%;overflow:hidden;">
+  <div style="display:flex;height:520px;flex-wrap:nowrap;">
+    <div style="flex:1.4;min-width:0;background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80');background-size:cover;background-position:center;" data-aos="fade-right"></div>
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;">
+      <div style="flex:1;background-image:url('https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80');background-size:cover;background-position:center;" data-aos="fade-down"></div>
+      <div style="flex:1;background:#2b1a0e;display:flex;align-items:center;justify-content:center;padding:32px;" data-aos="fade-up">
+        <div style="text-align:center;color:#f5ede3;">
+          <p style="font-size:2.5rem;font-weight:800;color:#c8702a;margin:0 0 4px;">4.9★</p>
+          <p style="font-size:0.9rem;opacity:0.8;margin:0;">Based on 112 Google Reviews</p>
+          <p style="margin-top:12px;font-size:1rem;font-weight:600;">"Food finger-licking good"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="section" id="reviews" style="background:#f9f4ef;">
+  <div class="section-inner">
+    <p class="section-label" data-aos="fade-up">What Guests Say</p>
+    <h2 class="section-title" data-aos="fade-up">Loved by Dalston &amp;<br>Beyond</h2>
+    <div class="section-divider"></div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:48px;">
+
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="0" style="border-left:4px solid #c8702a;">
+        <div class="stars" style="margin-bottom:12px;">⭐⭐⭐⭐⭐</div>
+        <p style="font-style:italic;line-height:1.8;color:#4a3728;margin-bottom:20px;">"From the moment we walked in, the atmosphere was wonderful — cozy, inviting, and topped with beautiful, light greenery. It was the perfect setting for a relaxed and memorable meal."</p>
+        <p style="font-weight:700;color:#2b1a0e;margin:0;">— Moses Makon</p>
+      </div>
+
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="100" style="border-left:4px solid #c8702a;">
+        <div class="stars" style="margin-bottom:12px;">⭐⭐⭐⭐⭐</div>
+        <p style="font-style:italic;line-height:1.8;color:#4a3728;margin-bottom:20px;">"We had some lovely jerk chicken, wings and festival bread! The service was spectacular, food finger-licking good and music stupendous. Will deffo pay another visit!"</p>
+        <p style="font-weight:700;color:#2b1a0e;margin:0;">— Maria Mushtaq</p>
+      </div>
+
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="200" style="border-left:4px solid #c8702a;">
+        <div class="stars" style="margin-bottom:12px;">⭐⭐⭐⭐⭐</div>
+        <p style="font-style:italic;line-height:1.8;color:#4a3728;margin-bottom:20px;">"I had an amazing time there, the staff is very welcoming and makes you feel at home, and the food was incredible! I had a goat meat sandwich &amp; plantains on the side — both were really delicious."</p>
+        <p style="font-weight:700;color:#2b1a0e;margin:0;">— Itslunaphillips</p>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:40px;" data-aos="fade-up">
+      <a href="https://maps.google.com/?cid=10939685396284341055" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border:2px solid #c8702a;color:#c8702a;text-decoration:none;font-weight:700;border-radius:4px;transition:all 0.3s;">
+        Read All 112 Reviews on Google →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Visit / Location Section -->
+<section class="section" id="visit" style="background:#fff;">
+  <div class="section-inner">
+    <p class="section-label" data-aos="fade-up">Find Us</p>
+    <h2 class="section-title" data-aos="fade-up">Come Visit<br>Jambay Kitchen</h2>
+    <div class="section-divider"></div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;margin-top:56px;align-items:start;">
+
+      <!-- Hours -->
+      <div data-aos="fade-right">
+        <h3 style="font-size:1.2rem;font-weight:700;color:#2b1a0e;text-transform:uppercase;letter-spacing:2px;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid #c8702a;">Opening Hours</h3>
+        <table style="width:100%;border-collapse:collapse;">
+          <tbody>
+            <tr style="opacity:0.5;">
+              <td style="padding:10px 0;font-weight:600;color:#2b1a0e;">Monday</td>
+              <td style="padding:10px 0;text-align:right;color:#8a7060;">Closed</td>
+            </tr>
+            <tr style="opacity:0.5;">
+              <td style="padding:10px 0;font-weight:600;color:#2b1a0e;border-top:1px solid #f0e8df;">Tuesday</td>
+              <td style="padding:10px 0;text-align:right;color:#8a7060;border-top:1px solid #f0e8df;">Closed</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;font-weight:600;color:#2b1a0e;border-top:1px solid #f0e8df;">Wednesday</td>
+              <td style="padding:10px 0;text-align:right;color:#4a3728;border-top:1px solid #f0e8df;">12:00 – 10:00 PM</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;font-weight:600;color:#2b1a0e;border-top:1px solid #f0e8df;">Thursday</td>
+              <td style="padding:10px 0;text-align:right;color:#4a3728;border-top:1px solid #f0e8df;">12:00 – 11:00 PM</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;font-weight:600;color:#2b1a0e;border-top:1px solid #f0e8df;">Friday</td>
+              <td style="padding:10px 0;text-align:right;color:#4a3728;border-top:1px solid #f0e8df;">12:00 – 11:00 PM</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;font-weight:600;color:#2b1a0e;border-top:1px solid #f0e8df;">Saturday</td>
+              <td style="padding:10px 0;text-align:right;color:#4a3728;border-top:1px solid #f0e8df;">12:00 – 11:00 PM</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;font-weight:600;color:#2b1a0e;border-top:1px solid #f0e8df;">Sunday</td>
+              <td style="padding:10px 0;text-align:right;color:#4a3728;border-top:1px solid #f0e8df;">1:00 – 10:00 PM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Contact & Map -->
+      <div data-aos="fade-left">
+        <h3 style="font-size:1.2rem;font-weight:700;color:#2b1a0e;text-transform:uppercase;letter-spacing:2px;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid #c8702a;">Get In Touch</h3>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="color:#c8702a;font-size:1.2rem;margin-top:2px;">📍</span>
+            <div>
+              <p style="font-weight:700;color:#2b1a0e;margin:0 0 4px;">Address</p>
+              <p style="color:#6b5c4e;margin:0;line-height:1.6;">171 Stoke Newington Rd,<br>London N16 8BP, UK</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="color:#c8702a;font-size:1.2rem;margin-top:2px;">📞</span>
+            <div>
+              <p style="font-weight:700;color:#2b1a0e;margin:0 0 4px;">Phone</p>
+              <a href="tel:020 3376 9616" style="color:#6b5c4e;text-decoration:none;">020 3376 9616</a>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="color:#c8702a;font-size:1.2rem;margin-top:2px;">💬</span>
+            <div>
+              <p style="font-weight:700;color:#2b1a0e;margin:0 0 4px;">WhatsApp</p>
+              <a href="https://wa.me/02033769616" target="_blank" rel="noopener" style="color:#6b5c4e;text-decoration:none;">Message us on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:32px;display:flex;flex-direction:column;gap:12px;">
+          <a href="https://maps.google.com/?cid=10939685396284341055" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;background:#c8702a;color:#fff;text-decoration:none;font-weight:700;border-radius:4px;">
+            📍 Get Directions on Google Maps
+          </a>
+          <a href="tel:020 3376 9616" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border:2px solid #2b1a0e;color:#2b1a0e;text-decoration:none;font-weight:700;border-radius:4px;">
+            📞 Call to Reserve
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Map Embed -->
+    <div style="margin-top:56px;border-radius:12px;overflow:hidden;box-shadow:0 8px 32px
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
+
+// AOS fallback: force all elements visible immediately (prevents blank sections on slow networks)
+document.querySelectorAll('[data-aos]').forEach(function(el){
+  el.classList.add('aos-animate');
+  el.style.opacity='1';
+  el.style.transform='none';
+});
+
+// Sticky nav on scroll past hero
+(function(){
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
+})();
+
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "Closed", "Tuesday": "Closed", "Wednesday": "12:00 – 10:00 PM", "Thursday": "12:00 – 11:00 PM", "Friday": "12:00 – 11:00 PM", "Saturday": "12:00 – 11:00 PM", "Sunday": "1:00 – 10:00 PM"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
+  const rating=4.9,cnt=112;
+  if(!rating)return;
+  new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
+        if(!start)start=ts;
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
+        if(p<1)requestAnimationFrame(tick);
+      })(performance.now());
+    };
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
+
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
+      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
+    this.append(r);setTimeout(()=>r.remove(),700);
+  });
+});
+</script>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+</body>
+</html>
