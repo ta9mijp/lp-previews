@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Somine — Dalston, London</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
+  @media(min-width:700px){.float-cta{display:none!important;}}
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap');
+
+:root{
+--c-bg:#f5f0e8;
+--c-bg2:#ede6d6;
+--c-dark:#2a1f14;
+--c-mid:#5c4a32;
+--c-accent:#9b6a3c;
+--c-accent2:#c4956a;
+--c-cream:#faf7f2;
+--c-warm:#d4a574;
+--c-text:#3d2b1a;
+--c-muted:#8a7560;
+--c-white:#fffdf9;
+--ff-serif:'Playfair Display',Georgia,serif;
+--ff-editorial:'Cormorant Garamond',serif;
+--ff-sans:'Inter',system-ui,sans-serif;
+--fw-light:300;
+--fw-reg:400;
+--fw-med:500;
+--fw-bold:700;
+--sp-xs:.5rem;
+--sp-sm:1rem;
+--sp-md:2rem;
+--sp-lg:4rem;
+--sp-xl:8rem;
+--sp-xxl:12rem;
+--nav-h:72px;
+--transition:all .4s cubic-bezier(.25,.46,.45,.94);
+--shadow:0 8px 32px rgba(42,31,20,.15);
+--shadow-lg:0 24px 64px rgba(42,31,20,.2);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--c-bg);color:var(--c-text);font-family:var(--ff-sans);font-weight:var(--fw-light);line-height:1.7;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto;object-fit:cover}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* ── AOS OVERRIDES ── */
+[data-aos]{opacity:0;transition-property:opacity,transform}
+[data-aos].aos-animate{opacity:1}
+.fade-up{transform:translateY(40px)}
+.fade-up.aos-animate{transform:translateY(0)}
+.slide-in{transform:translateX(-60px)}
+.slide-in.aos-animate{transform:translateX(0)}
+.slide-in-right{transform:translateX(60px)}
+.slide-in-right.aos-animate{transform:translateX(0)}
+.scale-in{transform:scale(.92)}
+.scale-in.aos-animate{transform:scale(1)}
+.fade-up,.slide-in,.slide-in-right,.scale-in{transition:opacity .8s cubic-bezier(.25,.46,.45,.94),transform .8s cubic-bezier(.25,.46,.45,.94)}
+
+/* ── PROTO BANNER (FIXED) ── */
+.proto-banner{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--c-dark);color:var(--c-warm);text-align:center;padding:.5rem var(--sp-md);font-family:var(--ff-sans);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+
+/* ── STICKY NAV (FIXED) ── */
+#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:900;padding:0 var(--sp-md);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;transition:var(--transition)}
+#stickyNav.nav--transparent{background:transparent}
+#stickyNav.nav--scrolled{background:rgba(245,240,232,.96);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(42,31,20,.1)}
+#stickyNav .nav-logo{font-family:var(--ff-serif);font-size:1.4rem;font-weight:var(--fw-bold);color:var(--c-white);letter-spacing:.05em;transition:var(--transition)}
+#stickyNav.nav--scrolled .nav-logo{color:var(--c-dark)}
+#stickyNav .nav-links{display:flex;gap:var(--sp-md);align-items:center}
+#stickyNav .nav-links a{font-family:var(--ff-sans);font-size:.78rem;font-weight:var(--fw-med);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,253,249,.85);transition:var(--transition);position:relative}
+#stickyNav .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--c-warm);transition:width .3s ease}
+#stickyNav .nav-links a:hover::after{width:100%}
+#stickyNav.nav--scrolled .nav-links a{color:var(--c-mid)}
+#stickyNav .nav-reserve{background:var(--c-accent);color:var(--c-white);padding:.55rem 1.4rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:var(--transition)}
+#stickyNav .nav-reserve:hover{background:var(--c-dark)}
+#stickyNav .nav-hamburger{display:none;flex-direction:column;gap:5px;width:26px}
+#stickyNav .nav-hamburger span{display:block;height:1px;background:var(--c-white);transition:var(--transition)}
+#stickyNav.nav--scrolled .nav-hamburger span{background:var(--c-dark)}
+
+/* ── OPEN BADGE (FIXED) ── */
+#openBadge{position:fixed;bottom:var(--sp-md);left:var(--sp-md);z-index:800;background:var(--c-bg);border:1px solid var(--c-accent2);border-radius:50px;padding:.5rem 1.1rem;display:flex;align-items:center;gap:.5rem;font-family:var(--ff-sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c-mid);box-shadow:var(--shadow)}
+#openBadge .badge-dot{width:8px;height:8px;border-radius:50%;background:#5a9e5a;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.2)}}
+
+/* ── RATING COUNTER (FIXED) ── */
+#ratingCounter{position:fixed;bottom:var(--sp-md);right:var(--sp-md);z-index:800;background:var(--c-dark);color:var(--c-cream);border-radius:8px;padding:.7rem 1.1rem;text-align:center;box-shadow:var(--shadow)}
+#ratingCounter .rating-score{font-family:var(--ff-serif);font-size:1.5rem;font-weight:var(--fw-bold);color:var(--c-warm);display:block;line-height:1}
+#ratingCounter .rating-stars{color:var(--c-accent2);font-size:.7rem;letter-spacing:2px;display:block;margin:.25rem 0}
+#ratingCounter .rating-count{font-size:.65rem;letter-spacing:.08em;color:var(--c-muted);text-transform:uppercase}
+
+/* ── FLOAT CTA (FIXED) ── */
+.float-cta{position:fixed;bottom:50%;right:0;transform:translateY(50%);z-index:800;writing-mode:vertical-rl;background:var(--c-accent);color:var(--c-white);padding:1.2rem .6rem;font-family:var(--ff-sans);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;border-radius:4px 0 0 4px;box-shadow:var(--shadow);transition:var(--transition)}
+.float-cta:hover{background:var(--c-dark);padding-right:1rem}
+
+/* ── HERO ── */
+.hero{position:relative;width:100%;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--c-dark)}
+.hero__bg{position:absolute;inset:0;width:100%;height:120%;object-fit:cover;transform:translateY(0);will-change:transform}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(42,31,20,.55) 0%,rgba(42,31,20,.3) 50%,rgba(42,31,20,.6) 100%)}
+.hero__content{position:relative;z-index:2;text-align:center;color:var(--c-white);padding:0 var(--sp-md);max-width:800px}
+.hero__eyebrow{font-family:var(--ff-sans);font-size:.72rem;font-weight:var(--fw-med);letter-spacing:.3em;text-transform:uppercase;color:var(--c-warm);margin-bottom:1.5rem;display:block}
+.hero__title{font-family:var(--ff-serif);font-size:clamp(3rem,7vw,6rem);font-weight:var(--fw-bold);line-height:1.05;letter-spacing:-.01em;margin-bottom:1rem}
+.hero__title em{font-style:italic;color:var(--c-warm);display:block;font-size:clamp(2rem,4vw,3.5rem);font-weight:var(--fw-reg)}
+.hero__subtitle{font-family:var(--ff-editorial);font-size:clamp(1rem,2vw,1.3rem);font-weight:300;font-style:italic;color:rgba(255,253,249,.8);margin-bottom:2.5rem;letter-spacing:.04em}
+.hero__cta-group{display:flex;gap:var(--sp-sm);justify-content:center;flex-wrap:wrap}
+.hero__cta{display:inline-block;padding:.85rem 2.2rem;font-family:var(--ff-sans);font-size:.78rem;font-weight:var(--fw-med);letter-spacing:.15em;text-transform:uppercase;border-radius:2px;transition:var(--transition)}
+.hero__cta--primary{background:var(--c-accent);color:var(--c-white)}
+.hero__cta--primary:hover{background:var(--c-warm);color:var(--c-dark)}
+.hero__cta--outline{border:1px solid rgba(255,253,249,.6);color:var(--c-white)}
+.hero__cta--outline:hover{background:rgba(255,253,249,.1);border-color:var(--c-white)}
+.hero__scroll{position:absolute;bottom:var(--sp-md);left:50%;transform:translate
+  </style>
+</head>
+<body>
+<body>
+
+  <!-- Proto Banner -->
+  <div class="proto-banner" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#2c1810;color:#f5e6d3;display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:0.6rem 1.5rem;font-size:0.8rem;flex-wrap:wrap;text-align:center;">
+    <p style="margin:0;"><strong>🎨 Free demo for Somine</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    <a href="https://wa.me/447761256742" style="color:#d4a855;font-weight:700;white-space:nowrap;text-decoration:none;">Let's talk → WhatsApp</a>
+  </div>
+
+  <!-- Sticky Nav -->
+  <nav id="stickyNav" style="position:fixed;top:0;left:0;right:0;z-index:9990;background:rgba(28,16,8,0.97);backdrop-filter:blur(12px);padding:0.85rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.4s ease;box-shadow:0 2px 24px rgba(0,0,0,0.35);">
+    <a class="nav-logo" href="#hero" style="color:#f5e6d3;font-size:1.35rem;font-weight:800;letter-spacing:0.08em;text-decoration:none;font-family:'Playfair Display',Georgia,serif;">SOMINE</a>
+    <ul class="nav-links" style="list-style:none;display:flex;gap:2rem;margin:0;padding:0;">
+      <li><a href="#about" style="color:#c9b89a;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:color 0.3s;">About</a></li>
+      <li><a href="#menu" style="color:#c9b89a;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:color 0.3s;">Menu</a></li>
+      <li><a href="#gallery" style="color:#c9b89a;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:color 0.3s;">Gallery</a></li>
+      <li><a href="#visit" style="color:#c9b89a;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:color 0.3s;">Visit</a></li>
+    </ul>
+    <a class="nav-reserve" href="tel:020 7254 7384" style="background:#d4a855;color:#1c1008;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.55rem 1.25rem;border-radius:2px;text-decoration:none;transition:background 0.3s;">Reserve</a>
+  </nav>
+
+  <script>
+    (function(){
+      var nav = document.getElementById('stickyNav');
+      var banner = document.querySelector('.proto-banner');
+      function onScroll(){
+        var bh = banner ? banner.offsetHeight : 0;
+        if(window.scrollY > 80){
+          nav.style.transform = 'translateY(' + bh + 'px)';
+        } else {
+          nav.style.transform = 'translateY(-100%)';
+        }
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+    })();
+  </script>
+
+  <!-- HERO -->
+  <section class="hero" id="hero" style="position:relative;height:100vh;min-height:620px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:0;">
+    <div class="hero__bg" style="position:absolute;inset:0;background-image:url('images/img_0.jpg');background-size:cover;background-position:center;background-attachment:fixed;transform:scale(1.04);transition:transform 0.1s linear;"></div>
+    <div class="hero__overlay" style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(28,16,8,0.72) 0%,rgba(60,32,12,0.55) 60%,rgba(28,16,8,0.8) 100%);"></div>
+    <div class="hero__content" style="position:relative;z-index:2;text-align:center;padding:2rem 1.5rem;max-width:760px;">
+      <span class="hero__eyebrow" style="display:inline-block;color:#d4a855;font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem;border:1px solid rgba(212,168,85,0.4);padding:0.35rem 1rem;border-radius:2px;">Dalston, London</span>
+      <h1 class="hero__title" style="color:#f5e6d3;font-family:'Playfair Display',Georgia,serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:900;line-height:1.05;letter-spacing:-0.01em;margin:0 0 1.2rem;">SOMINE</h1>
+      <p class="hero__subtitle" style="color:#e0cdb5;font-size:clamp(1rem,2.2vw,1.3rem);line-height:1.6;margin:0 0 2rem;font-weight:300;letter-spacing:0.02em;">Authentic flavours, modern warmth in Dalston</p>
+
+      <!-- Ratings -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-bottom:2.2rem;flex-wrap:wrap;">
+        <span id="openBadge" style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#a8e6a3;font-size:0.78rem;letter-spacing:0.1em;padding:0.3rem 0.75rem;border-radius:20px;font-weight:600;">
+          <span class="badge-dot" style="width:7px;height:7px;background:#4caf50;border-radius:50%;display:inline-block;animation:pulse 2s infinite;"></span>Open Now
+        </span>
+        <div style="display:flex;align-items:center;gap:0.45rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:0.3rem 0.85rem;border-radius:20px;">
+          <span class="rating-stars" style="color:#f5c842;font-size:0.95rem;letter-spacing:1px;">★★★★★</span>
+          <span id="ratingCounter" data-rating="4.4" data-count="710" class="rating-score" style="color:#f5e6d3;font-weight:700;font-size:0.88rem;">4.4</span>
+          <span class="rating-count" style="color:#c9b89a;font-size:0.78rem;">· 710 reviews</span>
+        </div>
+      </div>
+
+      <div class="hero__cta-group" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a class="hero__cta hero__cta--primary" href="tel:020 7254 7384" style="background:#d4a855;color:#1c1008;font-size:0.82rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.95rem 2.2rem;border-radius:2px;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 20px rgba(212,168,85,0.35);">Reserve a Table</a>
+        <a class="hero__cta hero__cta--outline" href="#menu" style="background:transparent;color:#f5e6d3;font-size:0.82rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:0.95rem 2.2rem;border-radius:2px;text-decoration:none;border:1.5px solid rgba(245,230,211,0.55);transition:all 0.3s;">Explore Menu</a>
+      </div>
+    </div>
+    <a class="hero__scroll" href="#about" style="position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);color:rgba(245,230,211,0.55);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:0.5rem;animation:bounce 2s infinite;">
+      <span>Scroll</span>
+      <svg width="16" height="22" viewBox="0 0 16 22" fill="none" style="opacity:0.7;"><path d="M8 0v18M1 11l7 8 7-8" stroke="#f5e6d3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <style>
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(6px);} }
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+    *, *::before, *::after { box-sizing:border-box; }
+    body { margin:0; padding:0; background:#faf6f0; color:#2c1810; font-family:'Inter',sans-serif; padding-top:0; }
+    .proto-banner ~ * { scroll-margin-top: 48px; }
+    img { max-width:100%; display:block; }
+    section { scroll-margin-top: 72px; }
+    a { transition: opacity 0.2s; }
+    a:hover { opacity: 0.82; }
+    @media(max-width:768px){
+      #stickyNav ul { display:none; }
+    }
+  </style>
+
+  <!-- ABOUT -->
+  <section id="about" style="background:#faf6f0;padding:7rem 1.5rem;">
+    <div style="max-width:1160px;margin:0 auto;">
+
+      <!-- Image-text alternating block 1 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:7rem;" data-aos="fade-up">
+        <div data-aos="fade-right">
+          <span style="display:inline-block;color:#d4a855;font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;margin-bottom:1rem;">Our Story</span>
+          <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;color:#2c1810;line-height:1.12;margin:0 0 1.5rem;">A warm corner<br><em style="font-style:italic;color:#8b5e3c;">of Dalston</em></h2>
+          <p style="color:#5a3e2b;line-height:1.85;font-size:1.05rem;margin:0 0 1.25rem;font-weight:300;">Somine brings genuine hospitality and vibrant cuisine to the heart of Dalston. We craft each dish with care, from our celebrated lentil soup to crispy falafel, in a clean, welcoming space where every guest feels at home.</p>
+          <p style="color:#5a3e2b;line-height:1.85;font-size:1.05rem;margin:0 0 2rem;font-weight:300;">From the first sip of fragrant Turkish tea to the last bite of warm baklava, every visit is designed to feel unhurried, generous and full of flavour.</p>
+          <a href="tel:020 7254 7384" style="display:inline-block;background:#2c1810;color:#f5e6d3;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.9rem 2rem;border-radius:2px;text-decoration:none;">Book a Table</a>
+        </div>
+        <div data-aos="fade-left" style="position:relative;">
+          <div style="border-radius:4px;overflow:hidden;aspect-ratio:4/5;">
+            <img src="images/img_1.jpg" alt="Somine restaurant interior" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div style="position:absolute;bottom:-2rem;left:-2rem;background:#d4a855;color:#1c1008;padding:1.4rem 1.6rem;border-radius:3px;font-family:'Playfair Display',Georgia,serif;">
+            <div style="font-size:2.2rem;font-weight:900;line-height:1;">4.4</div>
+            <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;margin-top:0.2rem;">Google Rating</div>
+            <div style="color:#8b5e3c;font-size:0.7rem;margin-top:0.15rem;">710 reviews</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Philosophy pillars -->
+      <div data-aos="fade-up" style="margin-bottom:0;">
+        <div style="text-align:center;margin-bottom:3.5rem;">
+          <span style="color:#d4a855;font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;">Our Philosophy</span>
+          <h3 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3vw,2.5rem);color:#2c1810;margin:0.75rem 0 0;font-weight:800;">What drives us every day</h3>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;">
+          <div data-aos="fade-up" data-aos-delay="0" style="padding:2.5rem;background:#fff;border-radius:4px;border-left:3px solid #d4a855;box-shadow:0 2px 24px rgba(44,24,16,0.06);">
+            <div style="font-size:1.8rem;margin-bottom:1rem;">🌿</div>
+            <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:1.2rem;color:#2c1810;margin:0 0 0.75rem;font-weight:700;">Authentic Quality</h4>
+            <p style="color:#5a3e2b;line-height:1.75;font-size:0.93rem;margin:0;font-weight:300;">We honour traditional recipes while maintaining uncompromising standards in every ingredient and preparation.</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="100" style="padding:2.5rem;background:#fff;border-radius:4px;border-left:3px solid #d4a855;box-shadow:0 2px 24px rgba(44,24,16,0.06);">
+            <div style="font-size:1.8rem;margin-bottom:1rem;">🤝</div>
+            <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:1.2rem;color:#2c1810;margin:0 0 0.75rem;font-weight:700;">Genuine Hospitality</h4>
+            <p style="color:#5a3e2b;line-height:1.75;font-size:0.93rem;margin:0;font-weight:300;">Our team treats every guest like family, ensuring attentive service and a seamless dining experience.</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200" style="padding:2.5rem;background:#fff;border-radius:4px;border-left:3px solid #d4a855;box-shadow:0 2px 24px rgba(44,24,16,0.06);">
+            <div style="font-size:1.8rem;margin-bottom:1rem;">💛</div>
+            <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:1.2rem;color:#2c1810;margin:0 0 0.75rem;font-weight:700;">Good Value</h4>
+            <p style="color:#5a3e2b;line-height:1.75;font-size:0.93rem;margin:0;font-weight:300;">Generous portions and honest prices mean you enjoy exceptional food without compromise.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" style="background:#2c1810;padding:7rem 1.5rem;">
+    <div style="max-width:1160px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:4.5rem;" data-aos="fade-up">
+        <span style="color:#d4a855;font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;">What We Serve</span>
+        <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,3rem);color:#f5e6d3;margin:0.75rem 0 1rem;font-weight:900;">Our Menu</h2>
+        <p style="color:#a08060;max-width:480px;margin:0 auto;line-height:1.7;font-size:0.95rem;">From timeless starters to comforting mains and sweet endings — every dish crafted with care.</p>
+      </div>
+
+      <!-- STARTERS -->
+      <div style="margin-bottom:4.5rem;">
+        <h3 data-aos="fade-up" style="font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;color:#d4a855;margin:0 0 2rem;font-weight:700;letter-spacing:0.03em;border-bottom:1px solid rgba(212,168,85,0.2);padding-bottom:0.85rem;">Starters</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
+
+          <div data-aos="fade-up" data-aos-delay="0" style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+            <div style="height:180px;background:linear-gradient(135deg,#5a3e2b,#3d2516);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍲</div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem;">
+                <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;color:#f5e6d3;margin:0;font-weight:700;">Lentil Soup</h4>
+                <span style="color:#d4a855;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:1rem;">£5</span>
+              </div>
+              <p style="color:#a08060;font-size:0.87rem;line-height:1.65;margin:0;">Warm, comforting and expertly spiced with aromatic herbs</p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100" style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+            <div style="height:180px;background:linear-gradient(135deg,#6b4c1e,#4a3010);display:flex;align-items:center;justify-content:center;font-size:3rem;">🧆</div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem;">
+                <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;color:#f5e6d3;margin:0;font-weight:700;">Falafel</h4>
+                <span style="color:#d4a855;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:1rem;">£6</span>
+              </div>
+              <p style="color:#a08060;font-size:0.87rem;line-height:1.65;margin:0;">Golden, crispy chickpea fritters with tahini dipping sauce</p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200" style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+            <div style="height:180px;background:linear-gradient(135deg,#7a5230,#5a3820);display:flex;align-items:center;justify-content:center;font-size:3rem;">🫙</div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem;">
+                <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;color:#f5e6d3;margin:0;font-weight:700;">Mixed Meze</h4>
+                <span style="color:#d4a855;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:1rem;">£8</span>
+              </div>
+              <p style="color:#a08060;font-size:0.87rem;line-height:1.65;margin:0;">Selection of hummus, baba ganoush, dolmas and fresh flatbread</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MAINS -->
+      <div style="margin-bottom:4.5rem;">
+        <h3 data-aos="fade-up" style="font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;color:#d4a855;margin:0 0 2rem;font-weight:700;letter-spacing:0.03em;border-bottom:1px solid rgba(212,168,85,0.2);padding-bottom:0.85rem;">Mains</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
+
+          <div data-aos="fade-up" data-aos-delay="0" style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+            <div style="height:180px;background:linear-gradient(135deg,#6b2c12,#4a1c0a);display:flex;align-items:center;justify-content:center;font-size:3rem;">🥩</div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem;">
+                <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;color:#f5e6d3;margin:0;font-weight:700;">Grilled Lamb Kebab</h4>
+                <span style="color:#d4a855;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:1rem;">£14</span>
+              </div>
+              <p style="color:#a08060;font-size:0.87rem;line-height:1.65;margin:0;">Tender marinated lamb with rice, salad and warm pita</p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100" style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+            <div style="height:180px;background:linear-gradient(135deg,#7a4a18,#5a3210);display:flex;align-items:center;justify-content:center;font-size:3rem;">🌯</div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem;">
+                <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;color:#f5e6d3;margin:0;font-weight:700;">Chicken Shawarma</h4>
+                <span style="color:#d4a855;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:1rem;">£12</span>
+              </div>
+              <p style="color:#a08060;font-size:0.87rem;line-height:1.65;margin:0;">Slow-roasted spiced chicken with pickled vegetables and sauce</p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200" style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+            <div style="height:180px;background:linear-gradient(135deg,#4a6b30,#304a20);display:flex;align-items:center;justify-content:center;font-size:3rem;">🥗</div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem;">
+                <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;color:#f5e6d3;margin:0;font-weight:700;">Vegetable Platter</h4>
+                <span style="color:#d4a855;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:1rem;">£11</span>
+              </div>
+              <p style="color:#a08060;font-size:0.87rem;line-height:1.65;margin:0;">Seasonal roasted vegetables, grains and fresh herbs</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DESSERTS -->
+      <div style="margin-bottom:3rem;">
+        <h3 data-aos="fade-up" style="font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;color:#d4a855;margin:0 0 2rem;font-weight:700;letter-spacing:0.03em;border-bottom:1px solid rgba(212,168,85,0.2);padding-bottom:0.85rem;">Desserts</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
+
+          <div data-aos="fade-up" data-aos-delay="0" style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+            <div style="height:180px;background:linear-gradient(135deg,#8b6914,#6b5010);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍯</div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem;">
+                <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;color:#f5e6d3;margin:0;font-weight:700;">Baklava</h4>
+                <span style="color:#d4a855;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:1rem;">£5</span>
+              </div>
+              <p style="color:#a08060;font-size:0.87rem;line-height:1.65;margin:0;">Layers of filo, pistachios and honey, served warm</p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="100" style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+            <div style="height:180px;background:linear-gradient(135deg,#5a3e2b,#3d2516);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍵</div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem;">
+                <h4 style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;color:#f5e6d3;margin:0;font-weight:700;">Turkish Tea &amp; Pastry</h4>
+                <span style="color:#d4a855;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:1rem;">£4</span>
+              </div>
+              <p style="color:#a08060;font-size:0.87rem;line-height:1.65;margin:0;">Fragrant traditional tea paired with a fresh pastry</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Menu disclaimer -->
+      <p style="color:#6b5040;font-size:0.8rem;text-align:center;margin:2rem 0 0;font-style:italic;">* Sample menu for reference. Please contact us for today's full menu.</p>
+
+    </div>
+  </section>
+
+  <!-- GALLERY (full-bleed photo strip + editorial grid) -->
+  <section id="gallery" style="background:#f5ede2;padding:7rem 0;">
+    <div style="max-width:1160px;margin:0 auto;padding:0 1.5rem;text-align:center;margin-bottom:3.5rem;" data-
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
+
+// AOS fallback: force all elements visible immediately (prevents blank sections on slow networks)
+document.querySelectorAll('[data-aos]').forEach(function(el){
+  el.classList.add('aos-animate');
+  el.style.opacity='1';
+  el.style.transform='none';
+});
+
+// Sticky nav on scroll past hero
+(function(){
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
+})();
+
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "9:00 AM – 12:30 AM", "Tuesday": "9:00 AM – 12:30 AM", "Wednesday": "9:00 AM – 12:30 AM", "Thursday": "9:00 AM – 12:30 AM", "Friday": "9:00 AM – 1:30 AM", "Saturday": "9:00 AM – 1:30 AM", "Sunday": "9:00 AM – 12:30 AM"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
+  const rating=4.4,cnt=710;
+  if(!rating)return;
+  new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
+        if(!start)start=ts;
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
+        if(p<1)requestAnimationFrame(tick);
+      })(performance.now());
+    };
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
+
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
+      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
+    this.append(r);setTimeout(()=>r.remove(),700);
+  });
+});
+</script>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+</body>
+</html>
