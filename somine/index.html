@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Somine — Dalston, London</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/><style>[data-aos]{opacity:1!important;transform:none!important}</style>
   <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
@@ -395,7 +395,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
     <div style="max-width:1160px;margin:0 auto;padding:0 1.5rem;text-align:center;margin-bottom:3.5rem;" data-
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
+try{AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});}catch(e){}
 
 // AOS fallback: force all elements visible immediately (prevents blank sections on slow networks)
 document.querySelectorAll('[data-aos]').forEach(function(el){
