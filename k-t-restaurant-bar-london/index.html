@@ -549,6 +549,52 @@ document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(bt
   });
 });
 </script>
-<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}
+/* Mobile responsive fix for 3-column grids */
+@media(max-width:700px){
+  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+}
+</style>
+
+<!-- VISIT / HOURS SECTION -->
+<section id="visit" style="background:#111111;padding:6rem 1.5rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:3.5rem;">
+      <p style="text-transform:uppercase;letter-spacing:0.18em;font-size:0.72rem;color:#c9a84c;font-weight:600;margin-bottom:0.75rem;">Find Us</p>
+      <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,3rem);color:#f5f0e8;font-weight:700;margin-bottom:1rem;">Visit K T Restaurant</h2>
+      <p style="color:#a89070;font-size:1rem;max-width:560px;margin:0 auto;">206 Ridley Rd, Dalston, London E8 2NH</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:2rem;">
+        <h3 style="font-family:'Playfair Display',serif;color:#c9a84c;font-size:1.2rem;margin-bottom:1.5rem;">Opening Hours</h3>
+        <table style="width:100%;border-collapse:collapse;">
+          <tr><td style="color:#a89070;padding:0.4rem 0;font-size:0.9rem;">Monday – Sunday</td><td style="color:#f5f0e8;text-align:right;font-size:0.9rem;">11:00 AM – 11:00 PM</td></tr>
+        </table>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:2rem;">
+        <h3 style="font-family:'Playfair Display',serif;color:#c9a84c;font-size:1.2rem;margin-bottom:1.5rem;">Contact &amp; Services</h3>
+        <p style="color:#a89070;font-size:0.9rem;margin-bottom:0.75rem;">📞 <a href="tel:02072414423" style="color:#f5f0e8;text-decoration:none;">020 7241 4423</a></p>
+        <p style="color:#a89070;font-size:0.9rem;margin-bottom:1.5rem;">📍 <a href="https://maps.google.com/?cid=14042094429283394034" target="_blank" style="color:#c9a84c;text-decoration:none;">View on Google Maps ↗</a></p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">
+          <span style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:#c9a84c;padding:0.3rem 0.85rem;border-radius:20px;font-size:0.8rem;">✓ Dine In</span>
+          <span style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:#c9a84c;padding:0.3rem 0.85rem;border-radius:20px;font-size:0.8rem;">✓ Takeaway</span>
+          <span style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:#c9a84c;padding:0.3rem 0.85rem;border-radius:20px;font-size:0.8rem;">✓ Delivery</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="tel:02072414423" style="display:inline-block;background:#c9a84c;color:#0d0d0d;font-size:0.88rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:1rem 2.8rem;border-radius:3px;text-decoration:none;margin-right:1rem;margin-bottom:0.75rem;">📞 Reserve a Table</a>
+      <a href="https://wa.me/02072414423" target="_blank" style="display:inline-block;background:transparent;color:#c9a84c;font-size:0.88rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:1rem 2.8rem;border-radius:3px;text-decoration:none;border:2px solid rgba(201,168,76,0.5);">WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#080808;padding:2.5rem 1.5rem;text-align:center;border-top:1px solid rgba(201,168,76,0.12);">
+  <p style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#c9a84c;margin-bottom:0.5rem;">K T Restaurant &amp; Bar London</p>
+  <p style="color:#6a5a40;font-size:0.82rem;margin-bottom:0.25rem;">206 Ridley Rd, London E8 2NH &nbsp;|&nbsp; 020 7241 4423</p>
+  <p style="color:#3a2e20;font-size:0.75rem;margin-top:1rem;">© 2025 K T Restaurant &amp; Bar London. All rights reserved.</p>
+</footer>
 </body>
 </html>
