@@ -4,452 +4,643 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Mangal 1 — Dalston, London</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{
-      --primary:   #32373c;
-      --accent:    #cf2e2e;
-      /* ヒーロー用（暗い背景向け） */
-      --hero-text:  #f5f2ec;
-      --hero-muted: rgba(245,242,236,0.65);
-      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
-      --c-text:   #1a1a1a;
-      --c-muted:  #6b6b6b;
-      --c-border: rgba(0,0,0,0.08);
-      --sec-bg:   #ffffff;
-    }
-    html{scroll-behavior:smooth;}
-    body{font-family:'Arial',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
+  @media(min-width:700px){.float-cta{display:none!important;}}
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
 
-    /* PROTO BANNER */
-    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
-    .proto-banner strong{font-weight:700;}
-    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+:root{
+--c-bg:#0a0a0a;
+--c-bg2:#111111;
+--c-bg3:#1a1510;
+--c-surface:#161410;
+--c-gold:#c9a84c;
+--c-gold-light:#e8c97a;
+--c-gold-dim:#8a6f32;
+--c-text:#f0ead8;
+--c-text-muted:#9a8f7a;
+--c-text-dim:#5a5245;
+--c-accent:#8b1a1a;
+--c-border:#2a2318;
+--c-border-light:#3a3020;
+--ff-serif:'Playfair Display',Georgia,serif;
+--ff-body:'Cormorant Garamond',serif;
+--fw-light:300;
+--fw-reg:400;
+--fw-semi:600;
+--fw-bold:700;
+--radius-sm:6px;
+--radius-md:12px;
+--radius-lg:20px;
+--shadow-gold:0 0 40px rgba(201,168,76,.12);
+--shadow-card:0 8px 40px rgba(0,0,0,.6);
+--shadow-deep:0 20px 60px rgba(0,0,0,.8);
+--trans:all .35s cubic-bezier(.4,0,.2,1);
+--max-w:1280px;
+--section-pad:100px 0;
+}
 
-    /* ── HERO（暗い背景 → 白文字） ── */
-    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
-    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
-    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
-    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-    .logo{font-family:'Arial',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
-    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
-    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
-    .badge-accent{border-color:var(--accent);color:var(--accent);}
-    .hero-tagline{font-family:'Arial',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
-    .hero-tagline span{color:var(--accent);}
-    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
-    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
-    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
-    .hero-nav a:hover{color:#fff;}
-    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
-    .btn-reserve:hover{opacity:0.85;}
-    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
-    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
-    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
-    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
-    .mockup-overlay .m-name{font-family:'Arial',serif;font-size:1.2rem;font-weight:300;color:#fff;}
-    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--c-bg);color:var(--c-text);font-family:var(--ff-body);font-weight:var(--fw-reg);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--c-gold);text-decoration:none;transition:var(--trans)}
+a:hover{color:var(--c-gold-light)}
+ul{list-style:none}
 
-    /* ── SOCIAL BAR ── */
-    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
-    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
-    .social-icons{display:flex;gap:1.4rem;}
-    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
-    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
-    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
-    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
-    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
-    .call-link:hover{border-color:var(--accent);color:var(--accent);}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 40px}
+.section-label{font-family:var(--ff-body);font-size:.75rem;font-weight:var(--fw-semi);letter-spacing:.25em;text-transform:uppercase;color:var(--c-gold);display:block;margin-bottom:16px}
+.section-title{font-family:var(--ff-serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:var(--fw-bold);line-height:1.15;color:var(--c-text);margin-bottom:24px}
+.section-divider{width:60px;height:2px;background:linear-gradient(90deg,var(--c-gold),transparent);margin:0 auto 48px;display:block}
+.section-divider--left{margin:0 0 48px}
+.gold-accent{color:var(--c-gold)}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 36px;background:linear-gradient(135deg,var(--c-gold),var(--c-gold-dim));color:#0a0a0a;font-family:var(--ff-serif);font-size:1rem;font-weight:var(--fw-semi);letter-spacing:.08em;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:var(--trans);text-transform:uppercase}
+.btn-primary:hover{background:linear-gradient(135deg,var(--c-gold-light),var(--c-gold));color:#0a0a0a;transform:translateY(-2px);box-shadow:0 12px 30px rgba(201,168,76,.35)}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;padding:13px 35px;background:transparent;color:var(--c-gold);font-family:var(--ff-serif);font-size:1rem;font-weight:var(--fw-semi);letter-spacing:.08em;border:1px solid var(--c-gold);border-radius:var(--radius-sm);cursor:pointer;transition:var(--trans);text-transform:uppercase}
+.btn-outline:hover{background:var(--c-gold);color:#0a0a0a;transform:translateY(-2px)}
 
-    /* ── SHARED CONTENT STYLES ── */
-    .section-wrap{max-width:1100px;margin:0 auto;}
-    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
-    .section-title{font-family:'Arial',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
+/* STICKY NAV */
+#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--c-border);transition:var(--trans)}
+#stickyNav.scrolled{background:rgba(10,10,10,.98);box-shadow:0 4px 30px rgba(0,0,0,.5)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:var(--max-w);margin:0 auto;padding:0 40px}
+.nav-logo{font-family:var(--ff-serif);font-size:1.5rem;font-weight:var(--fw-bold);color:var(--c-text);letter-spacing:.05em}
+.nav-logo span{color:var(--c-gold)}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{font-family:var(--ff-body);font-size:.9rem;font-weight:var(--fw-semi);letter-spacing:.12em;text-transform:uppercase;color:var(--c-text-muted);transition:var(--trans);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--c-gold);transition:var(--trans)}
+.nav-links a:hover{color:var(--c-gold)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{padding:10px 24px;background:var(--c-gold);color:#0a0a0a;font-family:var(--ff-serif);font-size:.85rem;font-weight:var(--fw-semi);letter-spacing:.1em;text-transform:uppercase;border-radius:var(--radius-sm);transition:var(--trans)}
+.nav-cta:hover{background:var(--c-gold-light);color:#0a0a0a;transform:translateY(-1px)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-hamburger span{width:24px;height:2px;background:var(--c-text);border-radius:2px;transition:var(--trans)}
 
-    /* ── ABOUT（白背景 → 暗い文字） ── */
-    .about{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.about{padding:4rem 2rem;}}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
-    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
-    .about-values{display:flex;flex-direction:column;}
-    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
-    .value-item:last-child{border-bottom:none;}
-    .value-num{font-family:'Arial',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
-    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
-    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
+/* PROTO BANNER */
+.proto-banner{width:100%;padding:10px 40px;background:linear-gradient(135deg,var(--c-accent),#6b1212);text-align:center;font-family:var(--ff-body);font-size:.88rem;letter-spacing:.08em;color:var(--c-text);position:relative;z-index:999}
+.proto-banner a{color:var(--c-gold-light);font-weight:var(--fw-semi)}
 
-    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
-    .reviews{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
-    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
-    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
-    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
-    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
-    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
+/* OPEN BADGE */
+#openBadge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;font-family:var(--ff-body);font-size:.8rem;font-weight:var(--fw-semi);letter-spacing:.1em;text-transform:uppercase;transition:var(--trans)}
+#openBadge.open{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.3)}
+#openBadge.closed{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.3)}
+#openBadge::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse-badge 2s infinite}
+@keyframes pulse-badge{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
 
-    /* ── MENU（白背景 → 暗い文字） ── */
-    .menu{padding:6rem 4rem;background:#fff;}
-    @media(max-width:700px){.menu{padding:4rem 2rem;}}
-    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
-    .menu-note{font-size:0.78rem;color:var(--c-muted);}
-    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
-    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
-    .menu-category:last-child{border-bottom:none;}
-    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
-    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
-    .menu-item:last-child{border-bottom:none;}
-    .menu-item-left{flex:1;}
-    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
-    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
-    .item-price{font-family:'Arial',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
-    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
+/* RATING COUNTER */
+#ratingCounter{display:flex;align-items:center;gap:10px;font-family:var(--ff-body)}
+#ratingCounter .rating-stars{color:var(--c-gold);font-size:1rem;letter-spacing:2px}
+#ratingCounter .rating-score{font-family:var(--ff-serif);font-size:1.8rem;font-weight:var(--fw-bold);color:var(--c-text)}
+#ratingCounter .rating-count{font-size:.8rem;color:var(--c-text-muted);line-height:1.3}
 
-    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
-    .visit{padding:5rem 4rem;background:#f7f7f5;}
-    @media(max-width:700px){.visit{padding:4rem 2rem;}}
-    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
-    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
-    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
-    .visit-block a:hover{color:var(--accent);}
-    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
-    .hour-row:last-child{border-bottom:none;}
-    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
-    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
-    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
+/* FLOAT CTA */
+.float-cta{position:fixed;bottom:32px;right:32px;z-index:900;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.float-cta__btn{display:flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-family:var(--ff-serif);font-size:.9rem;font-weight:var(--fw-semi);letter-spacing:.05em;box-shadow:var(--shadow-card);transition:var(--trans);cursor:pointer;border:none;white-space:nowrap}
+.float-cta__btn--primary{background:linear-gradient(135deg,var(--c-gold),var(--c-gold-dim));color:#0a0a0a}
+.float-cta__btn--primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 16px 40px rgba(201,168,76,.4)}
+.float-cta__btn--secondary{background:rgba(10,10,10,.9);color:var(--c-gold);border:1px solid var(--c-gold)}
+.float-cta__btn--secondary:hover{background:var(--c-gold);color:#0a0a0a;transform:translateY(-3px)}
+.float-cta__icon{font-size:1.1rem}
+.float-cta__label{display:inline}
 
-    /* FOOTER */
-    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
-    @media(min-width:700px){footer{padding-bottom:2rem;}}
-
-    /* ── STICKY HEADER ── */
-    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
-    .sticky-header.visible{transform:translateY(0);}
-    .sticky-logo{font-family:'Arial',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
-    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
-    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
-    .sticky-open.closed{background:#fce4ec;color:#c62828;}
-    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
-    .sticky-cta:hover{opacity:0.85;}
-
-    /* ── OPEN NOW BADGE (hero) ── */
-    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
-    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
-    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
-    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
-
-    /* ── COUNTER ── */
-    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
-
-    /* ── PARALLAX ── */
-    .hero-bg{will-change:transform;}
-
-    /* ── IMAGE ZOOM ── */
-    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
-    .mockup:hover img{transform:scale(1.05);}
-
-    /* ── RIPPLE ── */
-    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
-    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
-    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
-
-    /* ── FLOAT CALL ── */
-    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
-    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
-    @media(min-width:700px){.float-call{display:none;}}
+/* HERO */
+.hero-section{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;padding-top:72px}
+.hero-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(201,168,76,.06) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 80% 80%,rgba(139,26,26,.08) 0%,transparent 50%);pointer-events:none;z-index:1}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 0;position:relative;z-index:2}
+.hero-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.hero-eyebrow
+  
+/* auto-inject: reviews grid */
+.reviews-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem;}
+.review-card{border:1px solid rgba(0,0,0,.1);border-radius:.75rem;padding:1.75rem;}
+.review-card-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
+.review-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0;}
+.review-meta{display:flex;flex-direction:column;gap:.2rem;}
+.review-name{font-weight:600;font-size:.9rem;}
+.review-text{font-size:.9rem;line-height:1.7;font-style:italic;margin-bottom:1rem;}
   </style>
 </head>
 <body>
+<!-- Proto Banner -->
+  <div class="proto-banner"><p><strong>🎨 Free demo for Mangal 1</strong> — All images, text &amp; colours are placeholders and fully customisable.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
 
-  <!-- STICKY HEADER -->
-  <header class="sticky-header" id="stickyHeader">
-    <div style="display:flex;align-items:center;">
-      <span class="sticky-logo">Mangal 1</span>
-      <span class="sticky-open" id="stickyBadge"></span>
+  <!-- Sticky Nav -->
+  <nav id="stickyNav">
+    <div class="nav-inner container">
+      <div class="nav-logo">Mangal 1</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <a href="tel:020 7275 8981" class="nav-cta btn-primary">Reserve a Table</a>
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <a href="tel:020 7275 8981" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
-  </header>
+  </nav>
 
-  <div class="proto-banner">
-    <p><strong>🎨 Free demo for Mangal 1</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
-    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
-  </div>
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-parallax-bg" style="background-image:url('images/img_0.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-container">
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-left">
-      <div>
-        <div class="logo">Mangal 1</div>
+      <!-- Left Text -->
+      <div class="hero-left" data-aos="fade-right">
+        <span class="hero-eyebrow gold-accent">Turkish Restaurant · Dalston, London</span>
+        <h1 class="hero-title">Mangal&nbsp;1</h1>
+        <p class="hero-tagline">Authentic flavours, vibrant atmosphere, unforgettable dining</p>
+
         <div class="hero-badges">
-          <span class="badge">Restaurant</span>
-          <span class="badge">Dalston, London</span>
-          <span class="badge badge-accent">£</span>
+          <span id="openBadge" class="open"></span>
+          <span id="ratingCounter" data-rating="4.5" data-count="1866">
+            <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+            <span class="rating-score">4.5</span>
+            <span class="rating-count">· 1,866 Google reviews</span>
+          </span>
+        </div>
+
+        <div class="hero-services">
+          <span class="service-pill">🍽 Dine-In</span>
+          <span class="service-pill">🥡 Takeaway</span>
+          <span class="service-pill">🚴 Delivery</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="tel:020 7275 8981" class="btn-primary">📞 Reserve a Table</a>
+          <a href="https://wa.me/02072758981" class="btn-outline" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> WhatsApp Us
+          </a>
         </div>
       </div>
-      <div>
-        <h1 class="hero-tagline">Authentic flavours, quick service, unforgettable dining</h1>
-        <p class="hero-desc">Mangal 1 is a beloved Dalston institution serving consistently delicious, flavour-packed cuisine in a vibrant atmosphere. Whether you're a walk-in or a regular, you'll experience exceptional food and attentive service that keeps guests coming back.</p>
-        <div class="rating-counter" id="ratingCounter" data-rating="4.5" data-count="1864">⭐ 4.5 · 1,864 Google reviews</div>
-        <div class="open-badge" id="openBadge"></div>
-      </div>
-      <nav class="hero-nav">
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#visit">Visit</a>
-        <a href="tel:020 7275 8981" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
-      </nav>
-    </div>
-    <div class="hero-right">
-      <div class="mockup">
-        <img src="images/img_1.jpg" alt="Mangal 1"/>
-        <div class="mockup-overlay">
-          <div class="m-name">Mangal 1</div>
-          <div class="m-sub">Restaurant · Dalston, London</div>
+
+      <!-- Right Image -->
+      <div class="hero-right" data-aos="fade-left">
+        <div class="hero-image-card rounded-card">
+          <img
+            src="images/img_1.jpg"
+            alt="Mangal 1 Restaurant — Dalston, London"
+            loading="eager"
+          />
+          <div class="hero-image-caption">
+            <i class="fab fa-instagram"></i> Find us on Instagram
+          </div>
         </div>
       </div>
+
+    </div><!-- /container -->
+
+    <div class="hero-scroll-hint">
+      <span>Scroll to explore</span>
+      <i class="fa fa-chevron-down"></i>
     </div>
   </section>
 
-  <div class="social-bar">
-    <span>Connect</span>
-    <div class="social-icons">
-      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/02072758981" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://maps.google.com/?cid=17819133597339120670" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
-    </div>
-    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Delivery</span> <span class="tag">Wine</span> <span class="tag">Beer</span></div>
-    <a href="tel:020 7275 8981" class="call-link"><i class="fa fa-phone"></i> 020 7275 8981</a>
-  </div>
+  <!-- ======================== ABOUT ======================== -->
+  <section id="about" class="about-section">
+    <div class="container about-container">
 
-  <section class="about" id="about">
-    <div class="section-wrap">
-      <div class="about-grid">
-        <div data-aos="fade-right">
-          <p class="section-label">Our Philosophy</p>
-          <h2 class="section-title">Food that brings people to the same table</h2>
-          <p class="about-body">Mangal 1 is a beloved Dalston institution serving consistently delicious, flavour-packed cuisine in a vibrant atmosphere. Whether you're a walk-in or a regular, you'll experience exceptional food and attentive service that keeps guests coming back.</p>
+      <div class="about-text" data-aos="fade-right">
+        <span class="section-label gold-accent">Our Story</span>
+        <h2 class="section-title">The Heart of Turkish<br>Cuisine in Dalston</h2>
+        <div class="section-divider section-divider--left"></div>
+        <p class="about-description">
+          Mangal 1 brings the heart of Turkish cuisine to Dalston with consistently delicious, flavour-packed dishes that keep guests coming back. Our warm hospitality and lively atmosphere create the perfect setting for memorable meals, whether you're grabbing a quick bite or settling in for the evening.
+        </p>
+
+        <div class="about-pillars">
+          <div class="pillar" data-aos="fade-up" data-aos-delay="100">
+            <div class="pillar-icon gold-accent">🥇</div>
+            <div class="pillar-body">
+              <h4>Quality First</h4>
+              <p>We source the finest ingredients to ensure every dish is bursting with authentic flavour and satisfaction.</p>
+            </div>
+          </div>
+          <div class="pillar" data-aos="fade-up" data-aos-delay="200">
+            <div class="pillar-icon gold-accent">⚡</div>
+            <div class="pillar-body">
+              <h4>Swift Service</h4>
+              <p>We believe exceptional food should be matched by attentive, efficient service that respects your time.</p>
+            </div>
+          </div>
+          <div class="pillar" data-aos="fade-up" data-aos-delay="300">
+            <div class="pillar-icon gold-accent">🤝</div>
+            <div class="pillar-body">
+              <h4>Community Spirit</h4>
+              <p>Mangal 1 is more than a restaurant — it's a gathering place where every guest feels welcomed and valued.</p>
+            </div>
+          </div>
         </div>
-        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
-          <div class="value-item"><span class="value-num">01</span><div><h3>Quality First</h3><p>We craft every dish with premium ingredients and authentic techniques to deliver consistently delicious meals.</p></div></div>
-          <div class="value-item"><span class="value-num">02</span><div><h3>Warm Welcome</h3><p>From walk-ins to reservations, we treat every guest with genuine hospitality and attentive care.</p></div></div>
-          <div class="value-item"><span class="value-num">03</span><div><h3>Flavour Over Fuss</h3><p>Our menu celebrates bold, satisfying flavours that speak for themselves without unnecessary complexity.</p></div></div>
+
+        <div class="about-ctas">
+          <a href="tel:020 7275 8981" class="btn-primary">Book a Table</a>
+          <a href="https://maps.google.com/?cid=17819133597339120670" class="btn-outline" target="_blank" rel="noopener">Get Directions</a>
         </div>
       </div>
+
+      <div class="about-image rounded-card" data-aos="fade-left">
+        <img
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80"
+          alt="Mangal 1 interior — warm and vibrant Turkish dining"
+          loading="lazy"
+        />
+        <div class="about-image-tag">
+          <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+          <span>4.5 · 1,866 reviews</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <section class="reviews">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">What guests say</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 4.5 · 1,864 Google reviews</h2>
-      <div class="reviews-grid">
-        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"I visited Mangal 1 yesterday and absolutely loved it. The food is consistently delicious, full of flavour, and very satisfying, especially considering how reasonably priced everything is. One of the best things is that you can bring your own wine and they don’t charge any corkage"</p><span class="review-author">— Megumi Takeyama · 3 months ago</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Got a walk in table for 2 Friday night, loved how quick the service was, the quality of the food and the atmosphere. I have no issue with tables being close together when there’s such a good loud atmosphere as you can’t hear other people’s conversations. BYOB is fantastic too, a "</p><span class="review-author">— xmattx · 5 months ago</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"We got the Mangal Plater (for 2) and it was absolutely delicious! All of the meats- chicken and lamb were all juicy and tender. It’s definitely my favorite Turkish grill in London!"</p><span class="review-author">— Michael H · 4 months ago</span></div></div>
-      </div>
-    </div>
-  </section>
+  <!-- ======================== MENU ======================== -->
+  <section id="menu" class="menu-section">
+    <div class="container">
 
-  <section class="menu" id="menu">
-    <div class="section-wrap">
       <div class="menu-header" data-aos="fade-up">
-        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
-        <span class="menu-note">Seasonal · Prices incl. VAT</span>
+        <span class="section-label gold-accent">Our Menu</span>
+        <h2 class="section-title">Crafted with Tradition &amp; Passion</h2>
+        <div class="section-divider"></div>
+        <p class="menu-intro">From chargrilled kebabs to silky desserts — every dish tells a story of authentic Turkish flavour.</p>
       </div>
-      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Grilled Halloumi</div><div class="item-desc">Golden cheese with lemon and herbs</div></div><span class="item-price">£6</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Charred Vegetables</div><div class="item-desc">Seasonal vegetables with garlic aioli</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Lamb Meatballs</div><div class="item-desc">Spiced and grilled, served with yoghurt</div></div><span class="item-price">£7</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Mangal Mixed Grill</div><div class="item-desc">Selection of chargrilled meats and seafood</div></div><span class="item-price">£18</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Lamb Shish</div><div class="item-desc">Tender marinated lamb skewers with rice</div></div><span class="item-price">£14</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Grilled Sea Bass</div><div class="item-desc">Fresh whole fish with lemon and herbs</div></div><span class="item-price">£16</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Baklava</div><div class="item-desc">Crispy pastry with pistachio and honey</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Pomegranate Sorbet</div><div class="item-desc">Refreshing seasonal fruit sorbet</div></div><span class="item-price">£4</span></div></div></div>
-      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
+
+      <div class="menu-grid">
+
+        <!-- Starters -->
+        <div class="menu-category" data-aos="fade-up" data-aos-delay="100">
+          <div class="menu-category-header">
+            <span class="menu-category-icon gold-accent">✦</span>
+            <h3 class="menu-category-title">Starters</h3>
+          </div>
+          <ul class="menu-list">
+            <li class="menu-item">
+              <div class="menu-item-info">
+                <span class="menu-item-name">Hummus</span>
+                <span class="menu-item-desc">Creamy chickpea dip with tahini, lemon, and garlic</span>
+              </div>
+              <span class="menu-item-price gold-accent">£4.50</span>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item-info">
+                <span class="menu-item-name">Saganaki</span>
+                <span class="menu-item-desc">Fried halloumi cheese with honey drizzle</span>
+              </div>
+              <span class="menu-item-price gold-accent">£6.50</span>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item-info">
+                <span class="menu-item-name">Meze Platter</span>
+                <span class="menu-item-desc">Mixed selection of Turkish dips and breads</span>
+              </div>
+              <span class="menu-item-price gold-accent">£12.95</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mains -->
+        <div class="menu-category" data-aos="fade-up" data-aos-delay="200">
+          <div class="menu-category-header">
+            <span class="menu-category-icon gold-accent">✦</span>
+            <h3 class="menu-category-title">Mains</h3>
+          </div>
+          <ul class="menu-list">
+            <li class="menu-item">
+              <div class="menu-item-info">
+                <span class="menu-item-name">Adana Kebab</span>
+                <span class="menu-item-desc">Spiced minced lamb kebab with chargrilled vegetables</span>
+              </div>
+              <span class="menu-item-price gold-accent">£14.95</span>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item-info">
+                <span class="menu-item-name">Lamb Shish</span>
+                <span class="menu-item-desc">Tender marinated lamb skewers with rice and salad</span>
+              </div>
+              <span class="menu-item-price gold-accent">£16.50</span>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item-info">
+                <span class="menu-item-name">Sea Bass Grilled</span>
+                <span class="menu-item-desc">Whole fish marinated in herbs, served with lemon and vegetables</span>
+              </div>
+              <span class="menu-item-price gold-accent">£18.95</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Desserts -->
+        <div class="menu-category" data-aos="fade-up" data-aos-delay="300">
+          <div class="menu-category-header">
+            <span class="menu-category-icon gold-accent">✦</span>
+            <h3 class="menu-category-title">Desserts</h3>
+          </div>
+          <ul class="menu-list">
+            <li class="menu-item">
+              <div class="menu-item-info">
+                <span class="menu-item-name">Baklava</span>
+                <span class="menu-item-desc">Crispy filo with pistachios and honey syrup</span>
+              </div>
+              <span class="menu-item-price gold-accent">£5.50</span>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item-info">
+                <span class="menu-item-name">Panna Cotta</span>
+                <span class="menu-item-desc">Silky vanilla cream with berry compote</span>
+              </div>
+              <span class="menu-item-price gold-accent">£5.95</span>
+            </li>
+          </ul>
+        </div>
+
+      </div><!-- /menu-grid -->
+
+      <div class="menu-footer" data-aos="fade-up">
+        <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
+        <a href="tel:020 7275 8981" class="btn-primary">📞 Call to Order</a>
+      </div>
+
     </div>
   </section>
 
-  <section class="visit" id="visit">
-    <div class="section-wrap">
-      <p class="section-label" data-aos="fade-up">Find Us</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
-      <div class="visit-grid">
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
-          <p class="vb-label">Address</p>
+  <!-- ======================== REVIEWS ======================== -->
+  <section id="reviews" class="reviews-section">
+    <div class="container">
+
+      <div class="reviews-header" data-aos="fade-up">
+        <span class="section-label gold-accent">Guest Reviews</span>
+        <h2 class="section-title">What Our Guests Are Saying</h2>
+        <div class="section-divider"></div>
+        <div class="reviews-aggregate">
+          <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+          <span class="rating-score">4.5</span>
+          <span class="rating-count">· 1,866 Google reviews</span>
+        </div>
+      </div>
+
+      <div class="reviews-card-grid">
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="review-card-header">
+            <div class="review-avatar">MT</div>
+            <div class="review-meta">
+              <span class="review-author">Megumi Takeyama</span>
+              <span class="review-stars">⭐⭐⭐⭐⭐</span>
+            </div>
+          </div>
+          <p class="review-text">"I visited Mangal 1 yesterday and absolutely loved it. The food is consistently delicious, full of flavour, and very satisfying, especially considering how reasonably priced everything is. A real gem in Dalston."</p>
+          <span class="review-source">via Google</span>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="review-card-header">
+            <div class="review-avatar">XM</div>
+            <div class="review-meta">
+              <span class="review-author">xmattx</span>
+              <span class="review-stars">⭐⭐⭐⭐⭐</span>
+            </div>
+          </div>
+          <p class="review-text">"Got a walk-in table for 2 Friday night, loved how quick the service was, the quality of the food and the atmosphere. I have no issue with tables being close together when there's such great energy in the room!"</p>
+          <span class="review-source">via Google</span>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="review-card-header">
+            <div class="review-avatar">MH</div>
+            <div class="review-meta">
+              <span class="review-author">Michael H</span>
+              <span class="review-stars">⭐⭐⭐⭐⭐</span>
+            </div>
+          </div>
+          <p class="review-text">"We got the Mangal Platter (for 2) and it was absolutely delicious! All of the meats — chicken and lamb — were juicy and tender. It's definitely my favourite Turkish grill in London!"</p>
+          <span class="review-source">via Google</span>
+        </div>
+
+      </div><!-- /reviews-card-grid -->
+
+      <div class="reviews-cta" data-aos="fade-up">
+        <a href="tel:020 7275 8981" class="btn-primary">Reserve Your Table</a>
+        <a href="https://maps.google.com/?cid=17819133597339120670" class="btn-outline" target="_blank" rel="noopener">Read All Reviews</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================== VISIT ======================== -->
+  <section id="visit" class="visit-section">
+    <div class="container visit-container">
+
+      <div class="visit-info" data-aos="fade-right">
+        <span class="section-label gold-accent">Find Us</span>
+        <h2 class="section-title">Visit Mangal 1</h2>
+        <div class="section-divider section-divider--left"></div>
+
+        <div class="visit-detail">
+          <span class="visit-icon gold-accent"><i class="fa fa-map-marker-alt"></i></span>
+          <div>
+            <strong>Address</strong>
+            <p>10 Arcola St, London E8 2DN, UK</p>
+            <a href="https://maps.google.com/?cid=17819133597339120670" class="visit-link" target="_blank" rel="noopener">Get Directions on Google Maps →</a>
+          </div>
+        </div>
+
+        <div class="visit-detail">
+          <span class="visit-icon gold-accent"><i class="fa fa-phone"></i></span>
+          <div>
+            <strong>Phone</strong>
+            <p><a href="tel:020 7275 8981">020 7275 8981</a></p>
+          </div>
+        </div>
+
+        <div class="visit-detail">
+          <span class="visit-icon gold-accent"><i class="fab fa-whatsapp"></i></span>
+          <div>
+            <strong>WhatsApp</strong>
+            <p><a href="https://wa.me/02072758981" target="_blank" rel="noopener">Message us on WhatsApp</a></p>
+          </div>
+        </div>
+
+        <div class="visit-services">
+          <span class="service-pill">🍽 Dine-In</span>
+          <span class="service-pill">🥡 Takeaway</span>
+          <span class="service-pill">🚴 Delivery</span>
+        </div>
+      </div>
+
+      <div class="visit-hours" data-aos="fade-left">
+        <h3 class="hours-title">Opening Hours</h3>
+        <ul class="hours-list">
+          <li class="hours-row">
+            <span class="hours-day">Monday</span>
+            <span class="hours-time">12:00 PM – 12:00 AM</span>
+          </li>
+          <li class="hours-row">
+            <span class="hours-day">Tuesday</span>
+            <span class="hours-time">12:00 PM – 12:00 AM</span>
+          </li>
+          <li class="hours-row">
+            <span class="hours-day">Wednesday</span>
+            <span class="hours-time">12:00 PM – 12:00 AM</span>
+          </li>
+          <li class="hours-row">
+            <span class="hours-day">Thursday</span>
+            <span class="hours-time">12:00 PM – 12:00 AM</span>
+          </li>
+          <li class="hours-row highlight">
+            <span class="hours-day">Friday</span>
+            <span class="hours-time gold-accent">12:00 PM – 1:00 AM</span>
+          </li>
+          <li class="hours-row highlight">
+            <span class="hours-day">Saturday</span>
+            <span class="hours-time gold-accent">12:00 PM – 1:00 AM</span>
+          </li>
+          <li class="hours-row">
+            <span class="hours-day">Sunday</span>
+            <span class="hours-time">12:00 PM – 12:00 AM</span>
+          </li>
+        </ul>
+        <a href="tel:020 7275 8981" class="btn-primary visit-book-btn">📞 Book a Table Now</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+
+      <div class="footer-brand" data-aos="fade-up">
+        <div class="footer-logo">Mangal 1</div>
+        <p class="footer-tagline">Authentic flavours, vibrant atmosphere, unforgettable dining.</p>
+        <div class="footer-socials">
+          <a href="https://wa.me/02072758981" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-nav" data-aos="fade-up" data-aos-delay="100">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#menu">Our Menu</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#visit">Visit Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact" data-aos="fade-up" data-aos-delay="200">
+        <h4 class="footer-heading">Contact</h4>
+        <address>
           <p>10 Arcola St, London E8 2DN, UK</p>
-          <a href="https://maps.google.com/?cid=17819133597339120670" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
-        </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
-          <p class="vb-label">Opening Hours</p>
-          <div class="hour-row"><span>Mon</span><span>12:00 PM – 12:00 AM</span></div>
-<div class="hour-row"><span>Tue</span><span>12:00 PM – 12:00 AM</span></div>
-<div class="hour-row"><span>Wed</span><span>12:00 PM – 12:00 AM</span></div>
-<div class="hour-row"><span>Thu</span><span>12:00 PM – 12:00 AM</span></div>
-<div class="hour-row"><span>Fri</span><span>12:00 PM – 1:00 AM</span></div>
-<div class="hour-row"><span>Sat</span><span>12:00 PM – 1:00 AM</span></div>
-<div class="hour-row"><span>Sun</span><span>12:00 PM – 12:00 AM</span></div>
-        </div>
-        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
-          <p class="vb-label">Reservations</p>
-          <a href="tel:020 7275 8981"><i class="fa fa-phone" style="font-size:0.75rem"></i> 020 7275 8981</a>
-          <a href="https://wa.me/02072758981" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
-        </div>
+          <p><a href="tel:020 7275 8981">020 7275 8981</a></p>
+          <p><a href="https://wa.me/02072758981" target="_blank" rel="noopener">WhatsApp Us</a></p>
+          <p><a href="https://maps.google.com/?cid=17819133597339120670" target="_blank" rel="noopener">Get Directions on Google Maps</a></p>
+        </address>
       </div>
-      <a href="https://maps.google.com/?cid=17819133597339120670" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
-    </div>
-  </section>
 
-  <footer>
-    <span>© 2025 Mangal 1</span>
-    <span>10 Arcola St, London E8 2DN, UK</span>
+      <div class="footer-hours" data-aos="fade-up" data-aos-delay="300">
+        <h4 class="footer-heading">Hours</h4>
+        <p>Mon–Thu &amp; Sun: 12:00 PM – 12:00 AM</p>
+        <p>Fri–Sat: 12:00 PM – 1:00 AM</p>
+        <a href="tel:020 7275 8981" class="btn-primary footer-cta-btn">Reserve a Table</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2024 Mangal 1 · 10 Arcola St, London E8 2DN · All rights reserved.</p>
+        <p class="footer-credit">Demo page — <a href="https://wa.me/447761256742">Customise yours →</a></p>
+      </div>
+    </div>
   </footer>
 
-  <a href="tel:020 7275 8981" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
+  <!-- Floating CTA -->
+  <a class="float-cta" href="tel:020 7275 8981">
+    <i class="fa fa-phone"></i> Call to Reserve
+  </a>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-  // ── AOS（スクロールアニメーション）──────────────────
-  AOS.init({ duration: 600, once: true, offset: 0, easing: 'ease-out-cubic' });
-  // AOS fallback: force all elements visible immediately
-  document.querySelectorAll('[data-aos]').forEach(function(el) {
-    el.classList.add('aos-animate');
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-  });
+// AOS fallback: force all elements visible immediately (prevents blank sections on slow networks)
+document.querySelectorAll('[data-aos]').forEach(function(el){
+  el.classList.add('aos-animate');
+  el.style.opacity='1';
+  el.style.transform='none';
+});
 
-  // ── Parallax（ヒーロー背景）──────────────────────────
-  const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      heroBg.style.transform = `translateY(${y * 0.38}px)`;
-    }, { passive: true });
-  }
+// Sticky nav on scroll past hero
+(function(){
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
+})();
 
-  // ── Sticky Header ────────────────────────────────────
-  const stickyHeader = document.getElementById('stickyHeader');
-  const hero = document.querySelector('.hero');
-  if (stickyHeader && hero) {
-    const observer = new IntersectionObserver(
-      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(hero);
-  }
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "12:00 PM – 12:00 AM", "Tuesday": "12:00 PM – 12:00 AM", "Wednesday": "12:00 PM – 12:00 AM", "Thursday": "12:00 PM – 12:00 AM", "Friday": "12:00 PM – 1:00 AM", "Saturday": "12:00 PM – 1:00 AM", "Sunday": "12:00 PM – 12:00 AM"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
 
-  // ── 営業中バッジ ──────────────────────────────────────
-  const HOURS = {"Monday": "12:00 PM – 12:00 AM", "Tuesday": "12:00 PM – 12:00 AM", "Wednesday": "12:00 PM – 12:00 AM", "Thursday": "12:00 PM – 12:00 AM", "Friday": "12:00 PM – 1:00 AM", "Saturday": "12:00 PM – 1:00 AM", "Sunday": "12:00 PM – 12:00 AM"};
-  function computeOpenStatus() {
-    const now  = new Date();
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const day  = days[now.getDay()];
-    const raw  = HOURS[day] || '';
-    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
-    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-    if (!m) return { open: false, text: raw };
-    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
-    const openMin  = toMin(m[1], m[2], m[3]);
-    const closeMin = toMin(m[4], m[5], m[6]);
-    const nowMin   = now.getHours() * 60 + now.getMinutes();
-    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
-    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
-    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
-    return {
-      open: isOpen,
-      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
+  const rating=4.5,cnt=1866;
+  if(!rating)return;
+  new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
+        if(!start)start=ts;
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
+        if(p<1)requestAnimationFrame(tick);
+      })(performance.now());
     };
-  }
-  function renderBadge(el, status) {
-    if (!el) return;
-    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
-    el.innerHTML = `<span class="dot"></span> ${status.text}`;
-  }
-  const status = computeOpenStatus();
-  renderBadge(document.getElementById('openBadge'), status);
-  const stickyBadge = document.getElementById('stickyBadge');
-  if (stickyBadge) {
-    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
-    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
-  }
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
 
-  // ── カウンターアニメーション ──────────────────────────
-  function animateCounter(el, target, isDecimal) {
-    let start = 0, duration = 1800, startTime = null;
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const val = start + (target - start) * ease;
-      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  const ratingEl = document.getElementById('ratingCounter');
-  if (ratingEl && 4.5) {
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        io.disconnect();
-        const rating = 4.5, count = 1864;
-        const rSpan = document.createElement('span');
-        const cSpan = document.createElement('span');
-        ratingEl.innerHTML = '';
-        ratingEl.appendChild(document.createTextNode('⭐ '));
-        rSpan.textContent = '0.0';
-        ratingEl.appendChild(rSpan);
-        ratingEl.appendChild(document.createTextNode(' · '));
-        cSpan.textContent = '0';
-        ratingEl.appendChild(cSpan);
-        ratingEl.appendChild(document.createTextNode(' Google reviews'));
-        animateCounter(rSpan, rating, true);
-        animateCounter(cSpan, count, false);
-      }
-    }, { threshold: 0.5 });
-    io.observe(ratingEl);
-  }
-
-  // ── リップルエフェクト ────────────────────────────────
-  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const r = document.createElement('span');
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      r.className = 'ripple';
-      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
-      this.appendChild(r);
-      setTimeout(() => r.remove(), 700);
-    });
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
+      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
+    this.append(r);setTimeout(()=>r.remove(),700);
   });
-
-  // ── タイプライター（タグライン）────────────────────────
-  const tagline = document.querySelector('.hero-tagline');
-  if (tagline) {
-    const full = tagline.innerHTML;
-    tagline.innerHTML = '';
-    tagline.style.visibility = 'visible';
-    let i = 0;
-    const chars = [...full];
-    let inTag = false;
-    function typeNext() {
-      if (i >= chars.length) return;
-      if (chars[i] === '<') inTag = true;
-      if (!inTag) {
-        tagline.innerHTML += chars[i];
-      } else {
-        let tag = '';
-        while (i < chars.length && (inTag || chars[i] !== '>')) {
-          tag += chars[i];
-          if (chars[i] === '>') inTag = false;
-          i++;
-        }
-        tagline.innerHTML += tag;
-        setTimeout(typeNext, 18);
-        return;
-      }
-      if (chars[i] === '>') inTag = false;
-      i++;
-      setTimeout(typeNext, 28);
-    }
-    setTimeout(typeNext, 600);
-  }
-  </script>
-
+});
+</script>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
 </body>
 </html>
