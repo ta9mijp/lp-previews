@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>K T Restaurant & Bar London — Dalston, London</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
+  @media(min-width:700px){.float-cta{display:none!important;}}
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+:root {
+--c-bg:#0a0a0a;
+--c-surface:#111111;
+--c-surface2:#1a1a1a;
+--c-gold:#c9a84c;
+--c-gold-light:#e8c97a;
+--c-gold-dim:rgba(201,168,76,.15);
+--c-white:#f5f0e8;
+--c-white-dim:rgba(245,240,232,.7);
+--c-white-faint:rgba(245,240,232,.12);
+--c-overlay:rgba(10,10,10,.65);
+--c-overlay-hero:linear-gradient(to bottom,rgba(0,0,0,.3) 0%,rgba(0,0,0,.55) 50%,rgba(0,0,0,.85) 100%);
+--ff-display:'Playfair Display',Georgia,serif;
+--ff-body:'Montserrat',sans-serif;
+--ff-accent:'Cormorant Garamond',serif;
+--fw-light:300;
+--fw-regular:400;
+--fw-medium:500;
+--fw-bold:700;
+--fw-black:900;
+--fs-xs:.75rem;
+--fs-sm:.875rem;
+--fs-base:1rem;
+--fs-md:1.125rem;
+--fs-lg:1.5rem;
+--fs-xl:2rem;
+--fs-2xl:3rem;
+--fs-3xl:4.5rem;
+--fs-4xl:6rem;
+--sp-xs:.25rem;
+--sp-sm:.5rem;
+--sp-md:1rem;
+--sp-lg:1.5rem;
+--sp-xl:2rem;
+--sp-2xl:3rem;
+--sp-3xl:4rem;
+--sp-4xl:6rem;
+--sp-5xl:8rem;
+--radius-sm:2px;
+--radius-md:4px;
+--radius-lg:8px;
+--trans-fast:.2s ease;
+--trans-base:.35s ease;
+--trans-slow:.6s cubic-bezier(.25,.46,.45,.94);
+--border-gold:1px solid rgba(201,168,76,.35);
+--shadow-gold:0 0 30px rgba(201,168,76,.12);
+--shadow-card:0 8px 40px rgba(0,0,0,.6);
+--nav-h:80px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--c-bg);color:var(--c-white);font-family:var(--ff-body);font-weight:var(--fw-light);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* ─── TYPOGRAPHY ─── */
+.kt-h1{font-family:var(--ff-display);font-weight:var(--fw-black);font-size:clamp(2.8rem,8vw,var(--fs-4xl));line-height:1.05;letter-spacing:-.02em}
+.kt-h2{font-family:var(--ff-display);font-weight:var(--fw-bold);font-size:clamp(1.8rem,4vw,var(--fs-3xl));line-height:1.1;letter-spacing:-.01em}
+.kt-h3{font-family:var(--ff-display);font-weight:var(--fw-regular);font-size:clamp(1.2rem,2.5vw,var(--fs-xl));line-height:1.2}
+.kt-eyebrow{font-family:var(--ff-body);font-size:var(--fs-xs);font-weight:var(--fw-medium);letter-spacing:.25em;text-transform:uppercase;color:var(--c-gold)}
+.kt-lead{font-family:var(--ff-accent);font-size:clamp(1rem,1.5vw,var(--fs-lg));font-weight:var(--fw-light);font-style:italic;color:var(--c-white-dim);line-height:1.8}
+.kt-body{font-size:var(--fs-sm);font-weight:var(--fw-light);color:var(--c-white-dim);line-height:1.8}
+.kt-gold{color:var(--c-gold)}
+.kt-italic{font-style:italic}
+
+/* ─── UTILITY ─── */
+.u-container{width:90%;max-width:1200px;margin-inline:auto}
+.u-container--wide{width:92%;max-width:1400px;margin-inline:auto}
+.u-flex{display:flex}
+.u-flex-center{display:flex;align-items:center;justify-content:center}
+.u-grid{display:grid}
+.u-gap-md{gap:var(--sp-md)}
+.u-gap-lg{gap:var(--sp-lg)}
+.u-gap-xl{gap:var(--sp-xl)}
+.u-gap-2xl{gap:var(--sp-2xl)}
+.u-text-center{text-align:center}
+.u-mb-sm{margin-bottom:var(--sp-sm)}
+.u-mb-md{margin-bottom:var(--sp-md)}
+.u-mb-lg{margin-bottom:var(--sp-lg)}
+.u-mb-xl{margin-bottom:var(--sp-xl)}
+.u-mb-2xl{margin-bottom:var(--sp-2xl)}
+.u-mb-3xl{margin-bottom:var(--sp-3xl)}
+.u-pt-5xl{padding-top:var(--sp-5xl)}
+.u-pb-5xl{padding-bottom:var(--sp-5xl)}
+.u-divider{width:60px;height:1px;background:var(--c-gold);margin:var(--sp-lg) auto}
+.u-divider--left{margin-left:0}
+.u-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+/* ─── BUTTONS ─── */
+.kt-btn{display:inline-flex;align-items:center;gap:var(--sp-sm);padding:.85rem 2.2rem;font-family:var(--ff-body);font-size:var(--fs-xs);font-weight:var(--fw-medium);letter-spacing:.18em;text-transform:uppercase;transition:var(--trans-base);border-radius:var(--radius-sm)}
+.kt-btn--primary{background:var(--c-gold);color:var(--c-bg);border:1px solid var(--c-gold)}
+.kt-btn--primary:hover{background:var(--c-gold-light);border-color:var(--c-gold-light);transform:translateY(-2px);box-shadow:0 12px 30px rgba(201,168,76,.3)}
+.kt-btn--outline{background:transparent;color:var(--c-white);border:1px solid rgba(245,240,232,.5)}
+.kt-btn--outline:hover{border-color:var(--c-gold);color:var(--c-gold);transform:translateY(-2px)}
+.kt-btn--ghost{background:var(--c-white-faint);color:var(--c-white);border:var(--border-gold);backdrop-filter:blur(8px)}
+.kt-btn--ghost:hover{background:var(--c-gold-dim);border-color:var(--c-gold);color:var(--c-gold)}
+.kt-btn__icon{width:16px;height:16px;transition:transform var(--trans-fast)}
+.kt-btn:hover .kt-btn__icon{transform:translateX(3px)}
+
+/* ─── PROTO BANNER (FIXED) ─── */
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--c-gold);color:var(--c-bg);padding:.45rem var(--sp-lg);text-align:center;font-family:var(--ff-body);font-size:var(--fs-xs);font-weight:var(--fw-medium);letter-spacing:.15em;text-transform:uppercase}
+.proto-banner a{color:var(--c-bg);text-decoration:underline;text-underline-offset:3px}
+
+/* ─── STICKY NAV (FIXED) ─── */
+#stickyNav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;transition:background var(--trans-slow),box-shadow var(--trans-slow),backdrop-filter var(--trans-slow)}
+#stickyNav.is-scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 2px 30px rgba(0,0,0,.5)}
+#stickyNav .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+.nav-logo{font-family:var(--ff-display);font-weight:var(--fw-black);font-size:1.4rem;letter-spacing:.06em;color:var(--c-white);line-height:1}
+.nav-logo span{color:var(--c-gold)}
+.nav-links{display:flex;align-items:center;gap:var(--sp-xl)}
+.nav-links a{font-family:var(--ff-body);font-size:var(--fs-xs);font-weight:var(--fw-medium);letter-spacing:.15em;text-transform:uppercase;color:var(--c-white-dim);transition:color var(--trans-fast);position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--c-gold);transition:width var(--trans-base)}
+.nav-links a:hover,.nav-links a.is-active{color:var(--c-gold)}
+.nav-links a:hover::after,.nav-links a.is-active::after{width:100%}
+.nav-cta{margin-left:var(--sp-lg)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;padding:var(--sp-sm);cursor:pointer}
+.nav-hamburger span{display:block;width:24px;height:1px;background:var(--c-white);transition:var(--trans-base)}
+
+/* ─── OPEN BADGE (FIXED) ─── */
+#openBadge{position:fixed;bottom:var(--sp-xl);left:var(--sp-xl);z-index:900;display:flex;align-items:center;gap:var(--sp-sm
+  </style>
+</head>
+<body>
+<body>
+
+  <!-- Proto Banner -->
+  <div class="proto-banner" style="position:fixed;top:0;left:0;width:100%;z-index:9999;background:#1a1a1a;color:#c9a84c;padding:10px 20px;display:flex;align-items:center;justify-content:center;gap:20px;font-size:0.85rem;flex-wrap:wrap;text-align:center;">
+    <p style="margin:0;"><strong>🎨 Free demo for K T Restaurant &amp; Bar London</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    <a href="https://wa.me/447761256742" style="color:#c9a84c;font-weight:700;white-space:nowrap;border:1px solid #c9a84c;padding:4px 12px;border-radius:20px;text-decoration:none;">Let's talk → WhatsApp</a>
+  </div>
+
+  <!-- Sticky Nav -->
+  <nav id="stickyNav" style="position:fixed;top:0;left:0;width:100%;z-index:9000;background:rgba(10,10,10,0.96);backdrop-filter:blur(8px);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.4s ease,box-shadow 0.4s ease;box-shadow:0 2px 20px rgba(0,0,0,0.5);">
+    <div class="nav-logo" style="font-family:Georgia,serif;font-size:1.2rem;font-weight:700;color:#c9a84c;letter-spacing:0.08em;">KT Restaurant &amp; Bar</div>
+    <ul class="nav-links" style="list-style:none;display:flex;gap:28px;margin:0;padding:0;">
+      <li><a href="#about" style="color:#e8e0d0;text-decoration:none;font-size:0.88rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;">About</a></li>
+      <li><a href="#menu" style="color:#e8e0d0;text-decoration:none;font-size:0.88rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;">Menu</a></li>
+      <li><a href="#gallery" style="color:#e8e0d0;text-decoration:none;font-size:0.88rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;">Gallery</a></li>
+      <li><a href="#visit" style="color:#e8e0d0;text-decoration:none;font-size:0.88rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;">Visit</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:020 7241 4423" class="kt-btn kt-btn--primary" style="padding:8px 22px;font-size:0.85rem;background:#c9a84c;color:#0a0a0a;border:none;border-radius:2px;font-weight:700;letter-spacing:0.06em;text-decoration:none;display:inline-block;">Reserve a Table</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu" style="display:none;background:none;border:none;cursor:pointer;padding:4px;">
+      <span style="display:block;width:22px;height:2px;background:#c9a84c;margin:5px 0;"></span>
+      <span style="display:block;width:22px;height:2px;background:#c9a84c;margin:5px 0;"></span>
+      <span style="display:block;width:22px;height:2px;background:#c9a84c;margin:5px 0;"></span>
+    </button>
+  </nav>
+
+  <script>
+    (function(){
+      var nav = document.getElementById('stickyNav');
+      var banner = document.querySelector('.proto-banner');
+      var bannerH = banner ? banner.offsetHeight : 40;
+      window.addEventListener('scroll', function(){
+        if(window.scrollY > 80){
+          nav.style.transform = 'translateY(' + bannerH + 'px)';
+          nav.classList.add('is-scrolled');
+        } else {
+          nav.style.transform = 'translateY(-100%)';
+          nav.classList.remove('is-scrolled');
+        }
+      });
+    })();
+  </script>
+
+  <!-- HERO SECTION -->
+  <section id="hero" style="position:relative;width:100%;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+    <!-- Parallax background -->
+    <div style="position:absolute;inset:0;z-index:0;" id="heroParallax">
+      <img
+        src="images/img_0.jpg"
+        alt="KT Restaurant & Bar London interior"
+        style="width:100%;height:120%;object-fit:cover;object-position:center;display:block;transform:translateY(0);transition:transform 0.1s linear;"
+        id="heroImg"
+      />
+    </div>
+    <!-- Hero overlay gradient -->
+    <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.88) 100%);"></div>
+    <!-- Hero content -->
+    <div class="u-container u-text-center" style="position:relative;z-index:2;padding:0 24px;max-width:860px;margin:0 auto;">
+      <p class="kt-eyebrow" style="color:#c9a84c;letter-spacing:0.22em;font-size:0.78rem;text-transform:uppercase;margin-bottom:18px;" data-aos="fade-up">Dalston, London</p>
+      <h1 class="kt-h1" style="font-family:Georgia,serif;font-size:clamp(2.8rem,6vw,5.2rem);font-weight:400;color:#ffffff;line-height:1.1;margin:0 0 20px;" data-aos="fade-up" data-aos-delay="100">
+        K T Restaurant<br><em class="kt-italic" style="color:#c9a84c;">&amp; Bar London</em>
+      </h1>
+      <p class="kt-lead" style="font-size:clamp(1rem,2vw,1.25rem);color:#e8e0d0;margin:0 0 32px;font-weight:300;letter-spacing:0.03em;" data-aos="fade-up" data-aos-delay="200">Contemporary dining meets warm hospitality in Dalston</p>
+      <!-- Badges row -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:40px;" data-aos="fade-up" data-aos-delay="300">
+        <span id="openBadge" style="display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.15);border:1px solid #c9a84c;color:#c9a84c;padding:6px 16px;border-radius:20px;font-size:0.82rem;font-weight:600;letter-spacing:0.05em;">
+          <span style="width:8px;height:8px;background:#4caf50;border-radius:50%;display:inline-block;"></span>
+          Open Now
+        </span>
+        <span id="ratingCounter" data-rating="3.9" data-count="56" style="display:inline-flex;align-items:center;gap:6px;color:#e8e0d0;font-size:0.88rem;">
+          ⭐ <strong style="color:#c9a84c;">3.9</strong>&nbsp;·&nbsp;56 Google reviews
+        </span>
+        <span style="color:#e8e0d0;font-size:0.82rem;letter-spacing:0.04em;">🍽 Dine-in · Takeaway · Delivery</span>
+      </div>
+      <!-- CTA Buttons -->
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" data-aos="fade-up" data-aos-delay="400">
+        <a href="tel:020 7241 4423" class="kt-btn kt-btn--primary" style="display:inline-flex;align-items:center;gap:8px;background:#c9a84c;color:#0a0a0a;padding:14px 32px;font-weight:700;font-size:0.9rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background 0.2s;">
+          <i class="fa fa-phone"></i> Reserve a Table
+        </a>
+        <a href="#menu" class="kt-btn kt-btn--outline" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#ffffff;border:1px solid rgba(255,255,255,0.55);padding:14px 32px;font-weight:600;font-size:0.9rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all 0.2s;">
+          View Menu
+        </a>
+      </div>
+    </div>
+    <!-- Scroll indicator -->
+    <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.7;">
+      <span style="color:#c9a84c;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;">Scroll</span>
+      <div style="width:1px;height:40px;background:linear-gradient(to bottom,#c9a84c,transparent);"></div>
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      var img = document.getElementById('heroImg');
+      window.addEventListener('scroll', function(){
+        var sy = window.scrollY;
+        img.style.transform = 'translateY(' + (sy * 0.35) + 'px)';
+      }, {passive:true});
+    })();
+  </script>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" style="background:#0a0a0a;padding:100px 0;">
+    <div class="u-container" style="max-width:1100px;margin:0 auto;padding:0 32px;">
+
+      <!-- Top divider line -->
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:56px;" data-aos="fade-right">
+        <div style="width:48px;height:1px;background:#c9a84c;"></div>
+        <p class="kt-eyebrow" style="color:#c9a84c;letter-spacing:0.2em;font-size:0.75rem;text-transform:uppercase;margin:0;">Our Story</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;" class="about-grid">
+        <!-- Left: text -->
+        <div>
+          <h2 class="kt-h2" style="font-family:Georgia,serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:400;color:#ffffff;line-height:1.2;margin:0 0 28px;" data-aos="fade-up">
+            A Neighbourhood Gem<br><em class="kt-italic" style="color:#c9a84c;">in the Heart of Dalston</em>
+          </h2>
+          <p class="kt-body" style="color:#b0a898;line-height:1.85;font-size:1.02rem;margin:0 0 32px;" data-aos="fade-up" data-aos-delay="100">
+            K T Restaurant &amp; Bar London is a vibrant neighbourhood spot in the heart of Dalston, serving expertly crafted dishes in a relaxed, welcoming atmosphere. Whether you're stopping by for an intimate dinner or celebrating with friends, we're dedicated to delivering exceptional food and attentive service every time.
+          </p>
+          <a href="tel:020 7241 4423" class="kt-btn kt-btn--outline" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#c9a84c;border:1px solid #c9a84c;padding:12px 28px;font-weight:600;font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;" data-aos="fade-up" data-aos-delay="150">
+            <i class="fa fa-phone"></i> Call Us: 020 7241 4423
+          </a>
+        </div>
+        <!-- Right: image -->
+        <div style="position:relative;" data-aos="fade-left" data-aos-delay="200">
+          <img
+            src="images/img_1.jpg"
+            alt="KT Restaurant ambiance"
+            style="width:100%;height:420px;object-fit:cover;border-radius:2px;display:block;"
+          />
+          <!-- Gold accent border -->
+          <div style="position:absolute;bottom:-16px;right:-16px;width:80%;height:80%;border:1px solid rgba(201,168,76,0.3);border-radius:2px;pointer-events:none;z-index:-1;"></div>
+        </div>
+      </div>
+
+      <!-- Philosophy pillars -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:80px;padding-top:60px;border-top:1px solid rgba(255,255,255,0.07);">
+        <div data-aos="fade-up" data-aos-delay="0">
+          <div style="width:40px;height:2px;background:#c9a84c;margin-bottom:20px;"></div>
+          <h3 class="kt-h3" style="font-family:Georgia,serif;font-size:1.15rem;font-weight:400;color:#ffffff;margin:0 0 12px;">Fresh Ingredients</h3>
+          <p class="kt-body" style="color:#7a7060;font-size:0.92rem;line-height:1.75;margin:0;">We source the finest seasonal produce to ensure every plate bursts with flavour and authenticity.</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div style="width:40px;height:2px;background:#c9a84c;margin-bottom:20px;"></div>
+          <h3 class="kt-h3" style="font-family:Georgia,serif;font-size:1.15rem;font-weight:400;color:#ffffff;margin:0 0 12px;">Hospitality First</h3>
+          <p class="kt-body" style="color:#7a7060;font-size:0.92rem;line-height:1.75;margin:0;">Your comfort and satisfaction are at the heart of everything we do, from first greeting to final goodbye.</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <div style="width:40px;height:2px;background:#c9a84c;margin-bottom:20px;"></div>
+          <h3 class="kt-h3" style="font-family:Georgia,serif;font-size:1.15rem;font-weight:400;color:#ffffff;margin:0 0 12px;">Community Spirit</h3>
+          <p class="kt-body" style="color:#7a7060;font-size:0.92rem;line-height:1.75;margin:0;">We celebrate Dalston's diverse character by creating a welcoming space for everyone in our neighbourhood.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MENU SECTION -->
+  <section id="menu" style="background:#0d0d0d;padding:100px 0;">
+    <div class="u-container" style="max-width:1180px;margin:0 auto;padding:0 32px;">
+
+      <!-- Section header -->
+      <div class="u-text-center" style="margin-bottom:64px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;" data-aos="fade-up">
+          <div style="width:40px;height:1px;background:#c9a84c;"></div>
+          <p class="kt-eyebrow" style="color:#c9a84c;letter-spacing:0.2em;font-size:0.75rem;text-transform:uppercase;margin:0;">Our Menu</p>
+          <div style="width:40px;height:1px;background:#c9a84c;"></div>
+        </div>
+        <h2 class="kt-h2" style="font-family:Georgia,serif;font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:400;color:#ffffff;margin:0 0 16px;" data-aos="fade-up" data-aos-delay="100">
+          Crafted with Passion,<br><em class="kt-italic" style="color:#c9a84c;">Served with Pride</em>
+        </h2>
+        <p class="kt-lead" style="color:#7a7060;font-size:0.95rem;margin:0;" data-aos="fade-up" data-aos-delay="150">A curated selection of our favourite dishes</p>
+      </div>
+
+      <!-- ── STARTERS ── -->
+      <div style="margin-bottom:64px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:36px;" data-aos="fade-right">
+          <h3 class="kt-h3" style="font-family:Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a84c;margin:0;letter-spacing:0.05em;">Starters</h3>
+          <div style="flex:1;height:1px;background:rgba(201,168,76,0.2);"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+
+          <!-- Starter Card 1 -->
+          <div data-aos="fade-up" data-aos-delay="0" style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;">
+            <div style="width:100%;height:180px;background:linear-gradient(135deg,#1a1610 0%,#2a2018 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🥗</div>
+            <div style="padding:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <h4 style="font-family:Georgia,serif;font-size:1.05rem;font-weight:400;color:#ffffff;margin:0;line-height:1.3;">Pan-Seared Scallops</h4>
+                <span class="kt-gold" style="color:#c9a84c;font-weight:700;font-size:0.95rem;white-space:nowrap;margin-left:12px;">£9</span>
+              </div>
+              <p style="color:#6a6256;font-size:0.84rem;line-height:1.65;margin:0;">Delicate scallops with seasonal vegetables and citrus beurre blanc</p>
+            </div>
+          </div>
+
+          <!-- Starter Card 2 -->
+          <div data-aos="fade-up" data-aos-delay="80" style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;">
+            <div style="width:100%;height:180px;background:linear-gradient(135deg,#1a1610 0%,#2a2018 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🦑</div>
+            <div style="padding:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <h4 style="font-family:Georgia,serif;font-size:1.05rem;font-weight:400;color:#ffffff;margin:0;line-height:1.3;">Crispy Calamari</h4>
+                <span class="kt-gold" style="color:#c9a84c;font-weight:700;font-size:0.95rem;white-space:nowrap;margin-left:12px;">£8</span>
+              </div>
+              <p style="color:#6a6256;font-size:0.84rem;line-height:1.65;margin:0;">Tender squid with garlic aioli and fresh lemon</p>
+            </div>
+          </div>
+
+          <!-- Starter Card 3 -->
+          <div data-aos="fade-up" data-aos-delay="160" style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;">
+            <div style="width:100%;height:180px;background:linear-gradient(135deg,#1a1610 0%,#2a2018 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🧀</div>
+            <div style="padding:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <h4 style="font-family:Georgia,serif;font-size:1.05rem;font-weight:400;color:#ffffff;margin:0;line-height:1.3;">Burrata &amp; Heritage Tomatoes</h4>
+                <span class="kt-gold" style="color:#c9a84c;font-weight:700;font-size:0.95rem;white-space:nowrap;margin-left:12px;">£8.50</span>
+              </div>
+              <p style="color:#6a6256;font-size:0.84rem;line-height:1.65;margin:0;">Creamy burrata with heirloom tomatoes, basil, and aged balsamic</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── MAINS ── -->
+      <div style="margin-bottom:64px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:36px;" data-aos="fade-right">
+          <h3 class="kt-h3" style="font-family:Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a84c;margin:0;letter-spacing:0.05em;">Mains</h3>
+          <div style="flex:1;height:1px;background:rgba(201,168,76,0.2);"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+
+          <!-- Main Card 1 -->
+          <div data-aos="fade-up" data-aos-delay="0" style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;">
+            <div style="width:100%;height:180px;background:linear-gradient(135deg,#0f1a10 0%,#182818 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🐟</div>
+            <div style="padding:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <h4 style="font-family:Georgia,serif;font-size:1.05rem;font-weight:400;color:#ffffff;margin:0;line-height:1.3;">Pan-Roasted Salmon</h4>
+                <span class="kt-gold" style="color:#c9a84c;font-weight:700;font-size:0.95rem;white-space:nowrap;margin-left:12px;">£16</span>
+              </div>
+              <p style="color:#6a6256;font-size:0.84rem;line-height:1.65;margin:0;">Scottish salmon fillet with new potatoes and seasonal greens</p>
+            </div>
+          </div>
+
+          <!-- Main Card 2 -->
+          <div data-aos="fade-up" data-aos-delay="80" style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;">
+            <div style="width:100%;height:180px;background:linear-gradient(135deg,#1a0f0f 0%,#2a1818 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🥩</div>
+            <div style="padding:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <h4 style="font-family:Georgia,serif;font-size:1.05rem;font-weight:400;color:#ffffff;margin:0;line-height:1.3;">Slow-Braised Beef Cheeks</h4>
+                <span class="kt-gold" style="color:#c9a84c;font-weight:700;font-size:0.95rem;white-space:nowrap;margin-left:12px;">£18</span>
+              </div>
+              <p style="color:#6a6256;font-size:0.84rem;line-height:1.65;margin:0;">Tender beef in rich red wine reduction with creamed parsnips</p>
+            </div>
+          </div>
+
+          <!-- Main Card 3 -->
+          <div data-aos="fade-up" data-aos-delay="160" style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;">
+            <div style="width:100%;height:180px;background:linear-gradient(135deg,#151a10 0%,#222818 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍗</div>
+            <div style="padding:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <h4 style="font-family:Georgia,serif;font-size:1.05rem;font-weight:400;color:#ffffff;margin:0;line-height:1.3;">Herb-Brined Chicken Supreme</h4>
+                <span class="kt-gold" style="color:#c9a84c;font-weight:700;font-size:0.95rem;white-space:nowrap;margin-left:12px;">£15</span>
+              </div>
+              <p style="color:#6a6256;font-size:0.84rem;line-height:1.65;margin:0;">Succulent chicken breast with wild mushrooms and thyme jus</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── DESSERTS ── -->
+      <div style="margin-bottom:40px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:36px;" data-aos="fade-right">
+          <h3 class="kt-h3" style="font-family:Georgia,serif;font-size:1.5rem;font-weight:400;color:#c9a84c;margin:0;letter-spacing:0.05em;">Desserts</h3>
+          <div style="flex:1;height:1px;background:rgba(201,168,76,0.2);"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+
+          <!-- Dessert Card 1 -->
+          <div data-aos="fade-up" data-aos-delay="0" style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;">
+            <div style="width:100%;height:180px;background:linear-gradient(135deg,#100a12 0%,#1e1020 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍫</div>
+            <div style="padding:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <h4 style="font-family:Georgia,serif;font-size:1.05rem;font-weight:400;color:#ffffff;margin:0;line-height:1.3;">Dark Chocolate Torte</h4>
+                <span class="kt-gold" style="color:#c9a84c;font-weight:700;font-size:0.95rem;white-space:nowrap;margin-left:12px;">£6.50</span>
+              </div>
+              <p style="color:#6a6256;font-size:0.84rem;line-height:1.65;margin:0;">Decadent chocolate cake with raspberry coulis and cream</p>
+            </div>
+          </div>
+
+          <!-- Dessert Card 2 -->
+          <div data-aos="fade-up" data-aos-delay="80" style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;">
+            <div style="width:100%;height:180px;background:linear-gradient(135deg,#1a1810 0%,#2a2612 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;">🍋</div>
+            <div style="padding:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <h4 style="font-family:Georgia,serif;font-size:1.05rem;font-weight:400;color:#ffffff;margin:0;line-height:1.3;">Lemon Posset</h4>
+                <span class="kt-gold" style="color:#c9a84c;font-weight:700;font-size:0.95rem;white-space:nowrap;margin-left:12px;">£6</span>
+              </div>
+              <p style="color:#6a6256;font-size:0.84rem;line-height:1.65;margin:0;">Classic creamy posset with shortbread biscuit</p>
+            </div>
+          </div>
+
+          <!-- Spacer card — call CTA -->
+          <div data-aos="fade-up" data-aos-delay="160" style="background:linear-gradient(135deg,#1a1408 0%,#241c0c 100%);border:1px solid rgba(201,168,76,0.25);border-radius:2px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;text-align:center;min-height:260px;">
+            <div style="font-size:2rem;margin-bottom:16px;">🍽</div>
+            <p style="color:#c9a84c;font-family:Georgia,serif;font-size:1rem;font-style:italic;margin:0 0 8px;">Fancy something special?</p>
+            <p style="color:#6a6256;font-size:0.82rem;margin:0 0 20px;line-height:1.6;">Ask our team about today's specials and seasonal additions.</p>
+            <a href="tel:020 7241 4423" style="display:inline-flex;align-items:center;gap:6px;color:#c9a84c;border:1px solid #c9a84c;padding:8px 20px;border-radius:2px;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-decoration:none;text-transform:uppercase;">
+              <i class="fa fa-phone"></i> Call Us
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Menu disclaimer -->
+      <div class="u-text-center" style="padding-top:32px;border-top:1px solid rgba(255,255,255,0.05);" data-aos="fade-up">
+        <p style="color:#4a4238;font-size:0.82rem;font-style:italic;margin:0;">* Sample menu for reference. Please contact us for today's full menu.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALLERY SECTION — full-bleed-photo-strip -->
+  <section id="gallery" style="background:#080808;padding:100px 0;">
+    <div class="u-container" style="max-width:1180px;margin:0 auto;padding:0 32px;">
+      <div class="u-text-center" style="margin-bottom:56px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;" data-aos="fade-up">
+          <div style="width:40px;height:1px;background:#c9a84c;"></div>
+          <p class="kt-eyebrow" style="color:#c9a84c;letter-spacing:0.2em;font-size:0.75rem;text-transform:uppercase;margin:0;">Gallery</p>
+          <div style="width:40px;height:1px;background:#c9a84c;"></div>
+        </div>
+        <h2 class="kt-h2" style="font-family:Georgia,serif;font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:400;color:#ffffff;margin:0;" data-aos="fade
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
+
+// AOS fallback: force all elements visible immediately (prevents blank sections on slow networks)
+document.querySelectorAll('[data-aos]').forEach(function(el){
+  el.classList.add('aos-animate');
+  el.style.opacity='1';
+  el.style.transform='none';
+});
+
+// Sticky nav on scroll past hero
+(function(){
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
+})();
+
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "11:00 AM – 11:00 PM", "Tuesday": "11:00 AM – 11:00 PM", "Wednesday": "11:00 AM – 11:00 PM", "Thursday": "11:00 AM – 11:00 PM", "Friday": "11:00 AM – 11:00 PM", "Saturday": "11:00 AM – 11:00 PM", "Sunday": "11:00 AM – 11:00 PM"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
+  const rating=3.9,cnt=56;
+  if(!rating)return;
+  new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
+        if(!start)start=ts;
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
+        if(p<1)requestAnimationFrame(tick);
+      })(performance.now());
+    };
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
+
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
+      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
+    this.append(r);setTimeout(()=>r.remove(),700);
+  });
+});
+</script>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+</body>
+</html>
