@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Fortune star mart 福星 超市 — Dalston, London</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{padding-top:52px;}
+  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
+  .proto-banner strong{font-weight:700;}
+  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
+  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
+  @media(min-width:700px){.float-cta{display:none!important;}}
+  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
+  #stickyNav.visible{transform:translateY(0);}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+:root {
+--c-bg:#f5f0e8;
+--c-dark:#1a1209;
+--c-primary:#8b4513;
+--c-accent:#c4872a;
+--c-gold:#d4a843;
+--c-warm:#e8d5b0;
+--c-text:#2c1a0e;
+--c-muted:#6b5a47;
+--c-white:#faf8f4;
+--c-overlay:rgba(15,8,2,.55);
+--c-nav:rgba(15,8,2,.92);
+--ff-base:'Inter','Noto Sans JP',sans-serif;
+--fs-xs:.75rem;
+--fs-sm:.875rem;
+--fs-md:1rem;
+--fs-lg:1.25rem;
+--fs-xl:1.5rem;
+--fs-2xl:2rem;
+--fs-3xl:2.75rem;
+--fs-4xl:3.75rem;
+--fs-hero:clamp(2.5rem,6vw,5.5rem);
+--radius-sm:4px;
+--radius-md:8px;
+--radius-lg:16px;
+--shadow-sm:0 2px 8px rgba(0,0,0,.12);
+--shadow-md:0 4px 20px rgba(0,0,0,.18);
+--shadow-lg:0 8px 40px rgba(0,0,0,.25);
+--transition:.3s ease;
+--max-w:1200px;
+--section-py:5rem;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--ff-base);background:var(--c-bg);color:var(--c-text);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* ── STICKY NAV ── */
+#stickyNav{
+position:fixed;top:0;left:0;width:100%;z-index:1000;
+background:var(--c-nav);
+backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+padding:.9rem 2rem;
+display:flex;align-items:center;justify-content:space-between;
+border-bottom:1px solid rgba(212,168,67,.2);
+transition:var(--transition)
+}
+#stickyNav .nav-logo{
+font-size:var(--fs-lg);font-weight:700;
+color:var(--c-gold);letter-spacing:.04em
+}
+#stickyNav .nav-logo span{color:var(--c-white);font-weight:300}
+#stickyNav nav{display:flex;gap:2rem;align-items:center}
+#stickyNav nav a{
+font-size:var(--fs-sm);font-weight:500;color:rgba(250,248,244,.8);
+letter-spacing:.06em;text-transform:uppercase;
+transition:color var(--transition);position:relative
+}
+#stickyNav nav a::after{
+content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+background:var(--c-gold);transition:width var(--transition)
+}
+#stickyNav nav a:hover{color:var(--c-gold)}
+#stickyNav nav a:hover::after{width:100%}
+#stickyNav .nav-cta{
+background:var(--c-primary);color:var(--c-white);
+padding:.45rem 1.25rem;border-radius:var(--radius-sm);
+font-size:var(--fs-sm);font-weight:600;letter-spacing:.04em;
+transition:background var(--transition),transform var(--transition)
+}
+#stickyNav .nav-cta:hover{background:var(--c-accent);transform:translateY(-1px)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;padding:.25rem}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--c-white);border-radius:2px;transition:var(--transition)}
+
+/* ── PROTO BANNER ── */
+.proto-banner{
+width:100%;background:var(--c-gold);color:var(--c-dark);
+text-align:center;padding:.5rem 1rem;
+font-size:var(--fs-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+position:relative;z-index:1001
+}
+.proto-banner a{text-decoration:underline;color:var(--c-dark);margin-left:.5rem}
+
+/* ── OPEN BADGE ── */
+#openBadge{
+display:inline-flex;align-items:center;gap:.4rem;
+background:rgba(34,139,34,.15);border:1px solid rgba(34,139,34,.4);
+color:#2d7a2d;border-radius:999px;
+padding:.25rem .75rem;font-size:var(--fs-xs);font-weight:600;letter-spacing:.04em
+}
+#openBadge::before{
+content:'';width:8px;height:8px;border-radius:50%;
+background:#2d7a2d;animation:pulse 2s infinite
+}
+#openBadge.closed{background:rgba(180,40,40,.12);border-color:rgba(180,40,40,.35);color:#b42828}
+#openBadge.closed::before{background:#b42828;animation:none}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ── RATING COUNTER ── */
+#ratingCounter{
+display:inline-flex;align-items:center;gap:.5rem;
+font-size:var(--fs-sm);font-weight:600;color:var(--c-accent)
+}
+#ratingCounter .stars{color:var(--c-gold);letter-spacing:.1em}
+#ratingCounter .count{color:var(--c-muted);font-weight:400;font-size:var(--fs-xs)}
+
+/* ── FLOAT CTA ── */
+.float-cta{
+position:fixed;bottom:2rem;right:2rem;z-index:999;
+background:var(--c-primary);color:var(--c-white);
+border-radius:999px;padding:.9rem 1.75rem;
+font-size:var(--fs-sm);font-weight:700;letter-spacing:.06em;
+box-shadow:var(--shadow-lg);
+transition:background var(--transition),transform var(--transition),box-shadow var(--transition)
+}
+.float-cta:hover{background:var(--c-accent);transform:translateY(-3px);box-shadow:0 12px 48px rgba(0,0,0,.3)}
+.float-cta::before{content:'🍽 ';font-size:1em}
+
+/* ── HERO ── */
+.hero-section{
+position:relative;width:100%;height:100vh;min-height:600px;
+display:flex;align-items:center;justify-content:center;
+overflow:hidden;text-align:center
+}
+.hero-bg{
+position:absolute;inset:0;
+background:url('../img/hero.jpg') center/cover no-repeat;
+will-change:transform;transform:scale(1.08);
+transition:transform 8s ease-out
+}
+.hero-bg.loaded{transform:scale(1)}
+.hero-overlay{
+position:absolute;inset:0;
+background:linear-gradient(
+180deg,
+rgba(15,8,2,.35) 0%,
+rgba(15,8,2,.6) 55%,
+rgba(15,8,2,.82) 100%
+)
+}
+.hero-content{
+position:relative;z-index:2;
+max-width:860px;padding:0 1.5rem;
+display:flex;flex-direction:column;align-items:center;gap:1.5rem
+}
+.hero-eyebrow{
+font-size:var(--fs-xs);font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+color:var(--c-gold);border:1px solid rgba(212,168,67,.4);
+padding:.35rem 1rem;border-radius:999px;
+background:rgba(212,168,67,.08)
+}
+.hero-title{
+font-size:var(--fs-hero);font-weight:700;line-height:1.1;
+color:var(--c-white);letter-spacing:-.01em
+}
+.hero-title em{color:var(--c-gold);font-style:normal}
+.hero-sub{
+font-size:var(--fs-lg);color:rgba(250,248,244,.75);
+font-weight:300;max-width:560px;line-height:1.7
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn-primary{
+background:var(--c-primary);color:var(--c-white);
+padding:.85rem 2.25rem;border-radius:var(--radius-sm);
+font-size:var(--fs-md);font-weight:700;letter-spacing:.04em;
+transition:background var(--transition),transform var(--transition),box-shadow var(--transition);
+box-shadow:0 4px 20px rgba(139,69,19,.4)
+}
+.btn-primary:hover{background:var(--c-accent);transform:translateY(-2px);box-shadow:0 8px 32px rgba(139,69,19,.5)}
+.btn-outline{
+background:transparent;color:var(--c-white);
+padding:.85rem 2.25rem;border-radius:var(--radius-sm);
+border:1.5px solid rgba(250,248,244,.5);
+font-size:var(--fs-md);font-weight:500;letter-spacing:.04em;
+transition:border-color var(--transition),background var(--transition),transform var(--transition)
+}
+.btn-outline:hover{border-color:var(--c-gold);background:rgba(212,168,67,.1);transform:translateY(-2px)}
+.hero-scroll-hint{
+position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+display:flex;flex-direction:column;align-items:center;gap:.5rem;
+color:rgba(250,248,244,.5);font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase
+}
+.hero-scroll-hint .scroll-line{
+width:1px;height:40px;background:linear-gradient(to bottom,rgba(250,248,244,.5),transparent);
+animation:scrollDown 1.8s ease-in-out infinite
+}
+@keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ── SHARED SECTION STYLES ── */
+.section-wrap{padding:var(--section-py) 2rem;max-width:var(--max-w
+  </style>
+</head>
+<body>
+<body>
+
+<!-- PROTO BANNER -->
+<div class="proto-banner"><p><strong>🎨 Free demo for Fortune star mart 福星 超市</strong> — All images, text &amp; colours are placeholders and fully customisable.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+
+<!-- STICKY NAV -->
+<nav id="stickyNav" style="position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(30,20,10,0.97);backdrop-filter:blur(8px);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;transform:translateY(-100%);transition:transform 0.35s ease;box-shadow:0 2px 20px rgba(0,0,0,0.4);">
+  <a class="nav-logo" href="#" style="color:#e8c97e;font-size:1.2rem;font-weight:700;text-decoration:none;letter-spacing:0.03em;">Fortune Star Mart <span style="font-weight:300;opacity:0.7;">福星 超市</span></a>
+  <div style="display:flex;align-items:center;gap:1.5rem;">
+    <a href="#features" style="color:#ccc;text-decoration:none;font-size:0.9rem;transition:color 0.2s;" onmouseover="this.style.color='#e8c97e'" onmouseout="this.style.color='#ccc'">About</a>
+    <a href="#menu" style="color:#ccc;text-decoration:none;font-size:0.9rem;transition:color 0.2s;" onmouseover="this.style.color='#e8c97e'" onmouseout="this.style.color='#ccc'">Menu</a>
+    <a href="#visit" style="color:#ccc;text-decoration:none;font-size:0.9rem;transition:color 0.2s;" onmouseover="this.style.color='#e8c97e'" onmouseout="this.style.color='#ccc'">Visit</a>
+    <a class="nav-cta" href="tel:07958 013077" style="background:#e8c97e;color:#1a1008;padding:0.45rem 1.1rem;border-radius:4px;text-decoration:none;font-size:0.85rem;font-weight:700;letter-spacing:0.04em;transition:background 0.2s;" onmouseover="this.style.background='#d4b060'" onmouseout="this.style.background='#e8c97e'">📞 Call Now</a>
+  </div>
+</nav>
+
+<script>
+(function(){
+  var nav = document.getElementById('stickyNav');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 80){
+      nav.style.transform = 'translateY(0)';
+    } else {
+      nav.style.transform = 'translateY(-100%)';
+    }
+  });
+  // Open badge logic
+  var badge = document.getElementById('openBadge');
+  if(badge){
+    var now = new Date();
+    var day = now.getDay(); // 0=Sun
+    var hour = now.getHours();
+    var min = now.getMinutes();
+    var time = hour + min/60;
+    var isOpen = false;
+    if(day >= 1 && day <= 6){ isOpen = time >= 10 && time < 20; }
+    else if(day === 0){ isOpen = time >= 12 && time < 17; }
+    badge.innerHTML = isOpen
+      ? '<span style="display:inline-flex;align-items:center;gap:6px;background:rgba(60,180,60,0.18);border:1px solid #4caf50;color:#7ddf7d;font-size:0.8rem;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:0.06em;"><span style="width:7px;height:7px;background:#4caf50;border-radius:50%;display:inline-block;animation:pulse 1.5s infinite;"></span> OPEN NOW</span>'
+      : '<span style="display:inline-flex;align-items:center;gap:6px;background:rgba(220,60,60,0.18);border:1px solid #e53935;color:#ef9a9a;font-size:0.8rem;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:0.06em;"><span style="width:7px;height:7px;background:#e53935;border-radius:50%;display:inline-block;"></span> CLOSED</span>';
+  }
+  // Rating counter
+  var rc = document.getElementById('ratingCounter');
+  if(rc){
+    var rating = parseFloat(rc.getAttribute('data-rating'));
+    var count = parseInt(rc.getAttribute('data-count'));
+    var stars = '';
+    for(var i=0;i<5;i++){
+      stars += i < Math.round(rating) ? '★' : '☆';
+    }
+    rc.innerHTML = '<span style="color:#e8c97e;font-size:1.1rem;letter-spacing:2px;">'+stars+'</span> <span style="color:#fff;font-weight:700;font-size:1rem;">'+rating+'</span> <span style="color:rgba(255,255,255,0.6);font-size:0.85rem;">('+count+' Google reviews)</span>';
+  }
+})();
+</script>
+
+<style>
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+@keyframes scrollBounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(8px);} }
+@keyframes fadeInUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif; background:#faf6f0; color:#2c1f0e; }
+.proto-banner { position:fixed; top:0; left:0; right:0; z-index:1100; background:#1a1008; color:#e8c97e; display:flex; align-items:center; justify-content:center; gap:1rem; padding:10px 1rem; font-size:0.82rem; flex-wrap:wrap; }
+.proto-banner p { margin:0; color:#e8c97e; }
+.proto-banner a { color:#fff; font-weight:700; text-decoration:none; background:#e8c97e; color:#1a1008; padding:4px 12px; border-radius:4px; white-space:nowrap; }
+</style>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section class="hero-section" id="hero" style="position:relative;width:100%;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:0;padding-top:36px;">
+
+  <!-- Parallax Hero Background -->
+  <div class="hero-bg" id="heroBg" style="position:absolute;inset:0;background-image:url('images/img_0.jpg');background-size:cover;background-position:center;background-attachment:fixed;transition:transform 0.1s linear;"></div>
+
+  <!-- Hero Overlay Gradient -->
+  <div class="hero-overlay" style="position:absolute;inset:0;background:linear-gradient(160deg, rgba(20,10,0,0.72) 0%, rgba(40,20,5,0.58) 50%, rgba(20,10,0,0.82) 100%);"></div>
+
+  <!-- Hero Content -->
+  <div class="hero-content" style="position:relative;z-index:2;text-align:center;max-width:780px;padding:2rem 1.5rem;animation:fadeInUp 1s ease both;">
+
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:1.2rem;flex-wrap:wrap;">
+      <span id="openBadge"></span>
+      <span id="ratingCounter" data-rating="4.8" data-count="21"></span>
+    </div>
+
+    <p class="hero-eyebrow" style="color:#e8c97e;font-size:0.85rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:0.8rem;">Dalston, London · Asian Grocery &amp; Restaurant</p>
+
+    <h1 class="hero-title" style="color:#fff;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:800;line-height:1.1;margin-bottom:1rem;text-shadow:0 3px 20px rgba(0,0,0,0.5);">
+      Fortune Star Mart<br>
+      <span style="color:#e8c97e;font-size:0.6em;font-weight:400;letter-spacing:0.1em;">福星 超市</span>
+    </h1>
+
+    <p class="hero-sub" style="color:rgba(255,255,255,0.85);font-size:clamp(1rem,2.5vw,1.2rem);line-height:1.6;margin-bottom:2rem;max-width:540px;margin-left:auto;margin-right:auto;">Your gateway to authentic Asian flavors and fresh ingredients</p>
+
+    <div class="hero-actions" style="display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;">
+      <a class="btn-primary" href="tel:07958 013077" style="display:inline-flex;align-items:center;gap:8px;background:#e8c97e;color:#1a1008;padding:0.85rem 2rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:1rem;letter-spacing:0.04em;transition:all 0.25s;box-shadow:0 4px 20px rgba(232,201,126,0.35);" onmouseover="this.style.background='#d4b060';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#e8c97e';this.style.transform='translateY(0)'">
+        <i class="fa fa-phone"></i> Call Us Now
+      </a>
+      <a class="btn-outline" href="#menu" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;padding:0.85rem 2rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:1rem;border:2px solid rgba(255,255,255,0.6);transition:all 0.25s;" onmouseover="this.style.borderColor='#e8c97e';this.style.color='#e8c97e'" onmouseout="this.style.borderColor='rgba(255,255,255,0.6)';this.style.color='#fff'">
+        View Menu
+      </a>
+      <a href="https://maps.google.com/?cid=9710987738836898521" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;padding:0.85rem 2rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:1rem;border:2px solid rgba(255,255,255,0.6);transition:all 0.25s;" onmouseover="this.style.borderColor='#e8c97e';this.style.color='#e8c97e'" onmouseout="this.style.borderColor='rgba(255,255,255,0.6)';this.style.color='#fff'">
+        <i class="fa fa-map-marker"></i> Directions
+      </a>
+    </div>
+
+    <!-- Services badges -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:0.7rem;margin-top:1.8rem;flex-wrap:wrap;">
+      <span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:0.78rem;padding:5px 14px;border-radius:20px;letter-spacing:0.06em;">✓ Dine-In</span>
+      <span style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45);font-size:0.78rem;padding:5px 14px;border-radius:20px;letter-spacing:0.06em;text-decoration:line-through;">✗ Takeaway</span>
+      <span style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45);font-size:0.78rem;padding:5px 14px;border-radius:20px;letter-spacing:0.06em;text-decoration:line-through;">✗ Delivery</span>
+    </div>
+  </div>
+
+  <!-- Scroll Hint -->
+  <div class="hero-scroll-hint" style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;text-align:center;animation:scrollBounce 2s ease-in-out infinite;">
+    <div class="scroll-line" style="width:1px;height:50px;background:linear-gradient(to bottom, rgba(232,201,126,0.9), transparent);margin:0 auto 8px;"></div>
+    <span style="color:rgba(255,255,255,0.5);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;">Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FEATURES / ABOUT SECTION
+═══════════════════════════════════════════ -->
+<section id="features" class="section-wrap" style="background:#faf6f0;padding:6rem 1.5rem;">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <!-- Section heading -->
+    <div style="text-align:center;margin-bottom:3.5rem;" data-aos="fade-up">
+      <p style="color:#a0683a;font-size:0.82rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.6rem;">Our Story</p>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;color:#2c1f0e;line-height:1.2;margin-bottom:1rem;">Welcome to Fortune Star Mart</h2>
+      <div style="width:60px;height:3px;background:#e8c97e;margin:0 auto 1.5rem;border-radius:2px;"></div>
+      <p style="color:#6b5340;font-size:1.05rem;line-height:1.75;max-width:680px;margin:0 auto;">
+        Fortune Star Mart is Dalston's premier destination for premium Asian groceries and pantry essentials. We pride ourselves on curating an exceptional selection of fresh vegetables, frozen ingredients, and authentic products from across Asia. Whether you're seeking everyday staples or hard-to-find specialty items, our upgraded shop welcomes you home.
+      </p>
+    </div>
+
+    <!-- Philosophy cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;">
+
+      <div data-aos="fade-up" data-aos-delay="0" style="background:#fff;border-radius:12px;padding:2.2rem 1.8rem;box-shadow:0 4px 24px rgba(60,30,10,0.08);border-top:4px solid #e8c97e;transition:transform 0.25s,box-shadow 0.25s;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 40px rgba(60,30,10,0.14)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(60,30,10,0.08)'">
+        <div style="width:52px;height:52px;background:#fef3d8;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-size:1.6rem;">🌿</div>
+        <h3 style="font-size:1.15rem;font-weight:700;color:#2c1f0e;margin-bottom:0.7rem;">Uncompromising Quality</h3>
+        <p style="color:#6b5340;line-height:1.7;font-size:0.95rem;">We source only the freshest produce and finest ingredients to honor traditional Asian cuisines.</p>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="100" style="background:#fff;border-radius:12px;padding:2.2rem 1.8rem;box-shadow:0 4px 24px rgba(60,30,10,0.08);border-top:4px solid #e8c97e;transition:transform 0.25s,box-shadow 0.25s;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 40px rgba(60,30,10,0.14)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(60,30,10,0.08)'">
+        <div style="width:52px;height:52px;background:#fef3d8;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-size:1.6rem;">🛒</div>
+        <h3 style="font-size:1.15rem;font-weight:700;color:#2c1f0e;margin-bottom:0.7rem;">Comprehensive Selection</h3>
+        <p style="color:#6b5340;line-height:1.7;font-size:0.95rem;">From everyday pantry staples to specialty finds, we ensure you'll always discover what you need.</p>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="200" style="background:#fff;border-radius:12px;padding:2.2rem 1.8rem;box-shadow:0 4px 24px rgba(60,30,10,0.08);border-top:4px solid #e8c97e;transition:transform 0.25s,box-shadow 0.25s;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 40px rgba(60,30,10,0.14)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(60,30,10,0.08)'">
+        <div style="width:52px;height:52px;background:#fef3d8;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-size:1.6rem;">🏮</div>
+        <h3 style="font-size:1.15rem;font-weight:700;color:#2c1f0e;margin-bottom:0.7rem;">Community Welcome</h3>
+        <p style="color:#6b5340;line-height:1.7;font-size:0.95rem;">We're more than a shop — we're a gathering place for those who cherish authentic Asian food and culture.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FULL-BLEED PHOTO STRIP
+═══════════════════════════════════════════ -->
+<div style="width:100%;height:320px;overflow:hidden;position:relative;" data-aos="fade-up">
+  <img src="images/img_1.jpg" alt="Fortune Star Mart interior" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
+  <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(30,15,0,0.55) 0%, transparent 40%, transparent 60%, rgba(30,15,0,0.55) 100%);display:flex;align-items:center;justify-content:center;">
+    <p style="color:#fff;font-size:clamp(1.4rem,3.5vw,2.4rem);font-weight:700;letter-spacing:0.08em;text-shadow:0 2px 12px rgba(0,0,0,0.6);text-align:center;padding:0 1rem;">Dalston's Favourite Asian Grocery</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MENU SECTION (photo-cards)
+═══════════════════════════════════════════ -->
+<section id="menu" class="section-wrap" style="background:#1a1008;padding:6rem 1.5rem;">
+  <div style="max-width:1160px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:3.5rem;" data-aos="fade-up">
+      <p style="color:#e8c97e;font-size:0.82rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.6rem;">What We Serve</p>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.2;margin-bottom:1rem;">Our Menu</h2>
+      <div style="width:60px;height:3px;background:#e8c97e;margin:0 auto 1.2rem;border-radius:2px;"></div>
+      <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">* Sample menu for reference. Please contact us for today's full menu.</p>
+    </div>
+
+    <!-- ── STARTERS ── -->
+    <div style="margin-bottom:3.5rem;">
+      <h3 data-aos="fade-right" style="color:#e8c97e;font-size:1.3rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem;">
+        <span style="display:inline-block;width:32px;height:2px;background:#e8c97e;"></span>
+        Starters
+        <span style="display:inline-block;flex:1;height:1px;background:rgba(232,201,126,0.2);"></span>
+      </h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
+
+        <div data-aos="fade-up" data-aos-delay="0" style="background:#2c1f0e;border-radius:12px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;box-shadow:0 4px 20px rgba(0,0,0,0.4);" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 36px rgba(0,0,0,0.55)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.4)'">
+          <div style="width:100%;height:160px;background:linear-gradient(135deg,#3d2a12,#5c3d1a);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🥟</div>
+          <div style="padding:1.4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+              <h4 style="color:#fff;font-size:1.05rem;font-weight:700;">Spring Rolls</h4>
+              <span style="color:#e8c97e;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:0.5rem;">£4.50</span>
+            </div>
+            <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;line-height:1.6;">Crispy golden rolls filled with vegetables and choice of shrimp or pork</p>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100" style="background:#2c1f0e;border-radius:12px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;box-shadow:0 4px 20px rgba(0,0,0,0.4);" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 36px rgba(0,0,0,0.55)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.4)'">
+          <div style="width:100%;height:160px;background:linear-gradient(135deg,#2a3d1a,#3d5a28);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🫘</div>
+          <div style="padding:1.4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+              <h4 style="color:#fff;font-size:1.05rem;font-weight:700;">Edamame</h4>
+              <span style="color:#e8c97e;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:0.5rem;">£3.50</span>
+            </div>
+            <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;line-height:1.6;">Steamed soybeans lightly salted, a perfect light bite</p>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="200" style="background:#2c1f0e;border-radius:12px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;box-shadow:0 4px 20px rgba(0,0,0,0.4);" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 36px rgba(0,0,0,0.55)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.4)'">
+          <div style="width:100%;height:160px;background:linear-gradient(135deg,#3d2a12,#5a3a0e);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍘</div>
+          <div style="padding:1.4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+              <h4 style="color:#fff;font-size:1.05rem;font-weight:700;">Prawn Crackers</h4>
+              <span style="color:#e8c97e;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:0.5rem;">£2.50</span>
+            </div>
+            <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;line-height:1.6;">Light and airy shrimp-flavored crackers, addictively crunchy</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── MAINS ── -->
+    <div style="margin-bottom:3.5rem;">
+      <h3 data-aos="fade-right" style="color:#e8c97e;font-size:1.3rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem;">
+        <span style="display:inline-block;width:32px;height:2px;background:#e8c97e;"></span>
+        Mains
+        <span style="display:inline-block;flex:1;height:1px;background:rgba(232,201,126,0.2);"></span>
+      </h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
+
+        <div data-aos="fade-up" data-aos-delay="0" style="background:#2c1f0e;border-radius:12px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;box-shadow:0 4px 20px rgba(0,0,0,0.4);" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 36px rgba(0,0,0,0.55)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.4)'">
+          <div style="width:100%;height:160px;background:linear-gradient(135deg,#3d1a0e,#5c2a12);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍜</div>
+          <div style="padding:1.4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+              <h4 style="color:#fff;font-size:1.05rem;font-weight:700;">Beef Chow Mein</h4>
+              <span style="color:#e8c97e;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:0.5rem;">£9.50</span>
+            </div>
+            <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;line-height:1.6;">Stir-fried noodles with tender beef, vegetables and aromatic sauce</p>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100" style="background:#2c1f0e;border-radius:12px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;box-shadow:0 4px 20px rgba(0,0,0,0.4);" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 36px rgba(0,0,0,0.55)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.4)'">
+          <div style="width:100%;height:160px;background:linear-gradient(135deg,#3d1a0e,#5c1e08);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍗</div>
+          <div style="padding:1.4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+              <h4 style="color:#fff;font-size:1.05rem;font-weight:700;">Kung Pao Chicken</h4>
+              <span style="color:#e8c97e;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:0.5rem;">£9.00</span>
+            </div>
+            <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;line-height:1.6;">Diced chicken with roasted peanuts, chilies and traditional spices</p>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="200" style="background:#2c1f0e;border-radius:12px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;box-shadow:0 4px 20px rgba(0,0,0,0.4);" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 36px rgba(0,0,0,0.55)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.4)'">
+          <div style="width:100%;height:160px;background:linear-gradient(135deg,#1a3d1a,#2a5a2a);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🥦</div>
+          <div style="padding:1.4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+              <h4 style="color:#fff;font-size:1.05rem;font-weight:700;">Mixed Vegetable Stir-fry</h4>
+              <span style="color:#e8c97e;font-weight:700;font-size:1rem;white-space:nowrap;margin-left:0.5rem;">£7.50</span>
+            </div>
+            <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;line-height:1.6;">Seasonal fresh vegetables in light garlic and ginger sauce</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
+
+// AOS fallback: force all elements visible immediately (prevents blank sections on slow networks)
+document.querySelectorAll('[data-aos]').forEach(function(el){
+  el.classList.add('aos-animate');
+  el.style.opacity='1';
+  el.style.transform='none';
+});
+
+// Sticky nav on scroll past hero
+(function(){
+  const nav=document.getElementById('stickyNav');
+  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
+  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
+})();
+
+// Open/Closed badge
+(function(){
+  const HOURS={"Monday": "10:00 AM – 8:00 PM", "Tuesday": "10:00 AM – 8:00 PM", "Wednesday": "10:00 AM – 8:00 PM", "Thursday": "10:00 AM – 8:00 PM", "Friday": "10:00 AM – 8:00 PM", "Saturday": "10:00 AM – 8:00 PM", "Sunday": "12:00 – 5:00 PM"};
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day=days[new Date().getDay()],raw=HOURS[day]||'';
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!m){badge.textContent='See hours';return;}
+  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
+  const open=n>=o&&n<(c<o?c+1440:c);
+  badge.textContent=open?'● Open now':'● Closed';
+  badge.style.color=open?'#22c55e':'#ef4444';
+})();
+
+// Rating counter animation
+(function(){
+  const el=document.getElementById('ratingCounter');
+  if(!el)return;
+  const rating=4.8,cnt=21;
+  if(!rating)return;
+  new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    const anim=(from,to,dec,cb)=>{
+      const dur=1600;let start=null;
+      (function tick(ts){
+        if(!start)start=ts;
+        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
+        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
+        if(p<1)requestAnimationFrame(tick);
+      })(performance.now());
+    };
+    const rs=document.createElement('b'),cs=document.createElement('b');
+    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
+    anim(0,rating,true,v=>rs.textContent=v);
+    anim(0,cnt,false,v=>cs.textContent=v);
+  },{threshold:0.4}).observe(el);
+})();
+
+// Ripple on CTA buttons
+document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
+      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
+      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
+    this.style.cssText+='position:relative;overflow:hidden;';
+    this.append(r);setTimeout(()=>r.remove(),700);
+  });
+});
+</script>
+<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+</body>
+</html>
