@@ -4,551 +4,452 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Malali Foods Nigerian Restaurant — Dalston, London</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{padding-top:52px;}
-  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
-  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
-  .proto-banner strong{font-weight:700;}
-  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
-  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
-  @media(min-width:700px){.float-cta{display:none!important;}}
-  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
-  #stickyNav.visible{transform:translateY(0);}
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;600&family=Bebas+Neue&display=swap');
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --primary:   #0066CC;
+      --accent:    #FFD700;
+      /* ヒーロー用（暗い背景向け） */
+      --hero-text:  #f5f2ec;
+      --hero-muted: rgba(245,242,236,0.65);
+      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
+      --c-text:   #1a1a1a;
+      --c-muted:  #6b6b6b;
+      --c-border: rgba(0,0,0,0.08);
+      --sec-bg:   #FFFFFF;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'Noto Sans JP',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
 
-:root {
---c-primary:#E8421A;
---c-secondary:#F5A623;
---c-accent:#1A6B3A;
---c-dark:#0F0D0B;
---c-light:#FDF8F2;
---c-white:#FFFFFF;
---c-muted:#6B5E52;
---c-card:#FFFAF4;
---ff-display:'Playfair Display',serif;
---ff-body:'Inter',sans-serif;
---ff-hero:'Bebas Neue',cursive;
---radius:16px;
---radius-sm:8px;
---shadow:0 8px 32px rgba(15,13,11,.15);
---shadow-lg:0 20px 60px rgba(15,13,11,.25);
---trans:.35s cubic-bezier(.4,0,.2,1);
-}
+    /* PROTO BANNER */
+    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
+    .proto-banner strong{font-weight:700;}
+    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--ff-body);background:var(--c-light);color:var(--c-dark);overflow-x:hidden;line-height:1.6}
-img{display:block;max-width:100%;height:auto}
-a{text-decoration:none;color:inherit}
-ul{list-style:none}
+    /* ── HERO（暗い背景 → 白文字） ── */
+    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
+    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
+    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
+    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
+    .logo{font-family:'Noto Sans JP',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
+    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
+    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
+    .badge-accent{border-color:var(--accent);color:var(--accent);}
+    .hero-tagline{font-family:'Noto Sans JP',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
+    .hero-tagline span{color:var(--accent);}
+    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
+    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
+    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
+    .hero-nav a:hover{color:#fff;}
+    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
+    .btn-reserve:hover{opacity:0.85;}
+    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
+    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
+    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
+    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
+    .mockup-overlay .m-name{font-family:'Noto Sans JP',serif;font-size:1.2rem;font-weight:300;color:#fff;}
+    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
 
-/* STICKY NAV */
-#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:900;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;transition:background var(--trans),box-shadow var(--trans)}
-#stickyNav.scrolled{background:rgba(15,13,11,.92);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.3)}
-.nav-logo{font-family:var(--ff-display);font-weight:900;font-size:1.25rem;color:var(--c-white);letter-spacing:.02em}
-.nav-logo span{color:var(--c-secondary)}
-.nav-links{display:flex;gap:2rem;align-items:center}
-.nav-links a{font-family:var(--ff-body);font-size:.85rem;font-weight:600;color:var(--c-white);letter-spacing:.1em;text-transform:uppercase;transition:color var(--trans)}
-.nav-links a:hover{color:var(--c-secondary)}
-.nav-cta{background:var(--c-primary);color:var(--c-white)!important;padding:.5rem 1.25rem;border-radius:50px;transition:background var(--trans)!important}
-.nav-cta:hover{background:var(--c-secondary)!important;color:var(--c-dark)!important}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.nav-hamburger span{display:block;width:24px;height:2px;background:var(--c-white);border-radius:2px;transition:var(--trans)}
+    /* ── SOCIAL BAR ── */
+    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
+    .social-icons{display:flex;gap:1.4rem;}
+    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
+    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
+    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
+    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
+    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
+    .call-link:hover{border-color:var(--accent);color:var(--accent);}
 
-/* HERO - full-bleed-center */
-.hero-section{position:relative;width:100%;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--c-dark)}
-.hero-bg{position:absolute;inset:0;background:url('hero-bg.jpg') center/cover no-repeat;transform:scale(1.1);transition:transform 8s ease-out;will-change:transform}
-.hero-section.parallax-active .hero-bg{transform:scale(1.0) translateY(var(--parallax-y,0px))}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(15,13,11,.7) 0%,rgba(232,66,26,.3) 50%,rgba(15,13,11,.8) 100%)}
-.hero-content{position:relative;z-index:2;text-align:center;padding:0 1.5rem;max-width:900px}
-.hero-eyebrow{font-family:var(--ff-body);font-size:.8rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--c-secondary);margin-bottom:1rem;display:block}
-.hero-title{font-family:var(--ff-hero);font-size:clamp(4rem,12vw,10rem);color:var(--c-white);line-height:.95;letter-spacing:.03em;text-transform:uppercase;margin-bottom:.5rem}
-.hero-title em{color:var(--c-secondary);font-style:normal;display:block}
-.hero-subtitle{font-family:var(--ff-display);font-style:italic;font-size:clamp(1rem,2.5vw,1.5rem);color:rgba(255,255,255,.85);margin-bottom:2.5rem}
-.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--c-primary);color:var(--c-white);font-family:var(--ff-body);font-weight:600;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;padding:.875rem 2rem;border-radius:50px;transition:transform var(--trans),box-shadow var(--trans),background var(--trans);box-shadow:0 4px 20px rgba(232,66,26,.4)}
-.btn-primary:hover{background:var(--c-secondary);color:var(--c-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,166,35,.5)}
-.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--c-white);font-family:var(--ff-body);font-weight:600;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;padding:.875rem 2rem;border-radius:50px;border:2px solid rgba(255,255,255,.5);transition:border-color var(--trans),background var(--trans)}
-.btn-secondary:hover{border-color:var(--c-white);background:rgba(255,255,255,.1)}
-.hero-scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.6);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent);animation:scrollPulse 2s ease-in-out infinite}
-@keyframes scrollPulse{0%,100%{opacity:.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.2)}}
-.hero-badge{position:absolute;bottom:3rem;right:5%;z-index:2;width:90px;height:90px;background:var(--c-secondary);border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;animation:rotateBadge 12s linear infinite}
-.hero-badge span{font-family:var(--ff-body);font-size:.55rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c-dark);line-height:1.3}
-@keyframes rotateBadge{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    /* ── SHARED CONTENT STYLES ── */
+    .section-wrap{max-width:1100px;margin:0 auto;}
+    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
+    .section-title{font-family:'Noto Sans JP',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
 
-/* PROTO BANNER */
-.proto-banner{background:var(--c-primary);color:var(--c-white);text-align:center;padding:.6rem 1rem;font-family:var(--ff-body);font-size:.8rem;font-weight:600;letter-spacing:.08em;position:relative;z-index:950}
-.proto-banner a{color:var(--c-secondary);text-decoration:underline}
+    /* ── ABOUT（白背景 → 暗い文字） ── */
+    .about{padding:6rem 4rem;background:#fff;}
+    @media(max-width:700px){.about{padding:4rem 2rem;}}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
+    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
+    .about-values{display:flex;flex-direction:column;}
+    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
+    .value-item:last-child{border-bottom:none;}
+    .value-num{font-family:'Noto Sans JP',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
+    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
+    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
 
-/* OPEN BADGE */
-#openBadge{display:inline-flex;align-items:center;gap:.5rem;background:var(--c-accent);color:var(--c-white);padding:.35rem .9rem;border-radius:50px;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
-#openBadge::before{content:'';width:8px;height:8px;background:#5EE87A;border-radius:50%;animation:pulse 1.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
+    .reviews{padding:5rem 4rem;background:#f7f7f5;}
+    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
+    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
+    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
+    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
+    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
+    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
 
-/* RATING COUNTER */
-#ratingCounter{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--ff-body);font-weight:600;font-size:.85rem;color:var(--c-dark)}
-#ratingCounter .stars{color:var(--c-secondary);letter-spacing:-.05em}
-#ratingCounter .count{color:var(--c-muted);font-weight:400}
+    /* ── MENU（白背景 → 暗い文字） ── */
+    .menu{padding:6rem 4rem;background:#fff;}
+    @media(max-width:700px){.menu{padding:4rem 2rem;}}
+    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+    .menu-note{font-size:0.78rem;color:var(--c-muted);}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
+    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
+    .menu-category:last-child{border-bottom:none;}
+    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
+    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
+    .menu-item:last-child{border-bottom:none;}
+    .menu-item-left{flex:1;}
+    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
+    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
+    .item-price{font-family:'Noto Sans JP',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
+    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
 
-/* FLOAT CTA */
-.float-cta{position:fixed;bottom:2rem;right:2rem;z-index:800;display:flex;flex-direction:column;gap:.75rem;align-items:flex-end}
-.float-cta a{display:flex;align-items:center;gap:.5rem;background:var(--c-primary);color:var(--c-white);font-family:var(--ff-body);font-weight:600;font-size:.8rem;letter-spacing:.06em;padding:.65rem 1.25rem;border-radius:50px;box-shadow:var(--shadow);transition:transform var(--trans),background var(--trans)}
-.float-cta a:hover{transform:translateY(-3px) scale(1.03);background:var(--c-secondary);color:var(--c-dark)}
-.float-cta a:last-child{background:var(--c-accent)}
-.float-cta a:last-child:hover{background:var(--c-secondary);color:var(--c-dark)}
+    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
+    .visit{padding:5rem 4rem;background:#f7f7f5;}
+    @media(max-width:700px){.visit{padding:4rem 2rem;}}
+    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
+    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
+    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
+    .visit-block a:hover{color:var(--accent);}
+    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
+    .hour-row:last-child{border-bottom:none;}
+    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
+    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
+    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
 
-/* SECTION COMMON */
-section{padding:7rem 5%;position:relative}
-.section-label{font-family:var(--ff-body);font-size:.75rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--c-primary);display:block;margin-bottom:.75rem}
-.section-title{font-family:var(--ff-display);font-weight:900;font-size:clamp(2rem,5vw,3.5rem);line-height:1.1;color:var(--c-dark);margin-bottom:1rem}
-.section-title em{font-style:italic;color:var(--c-primary)}
-.section-lead{font-family:var(--ff-body);font-size:1rem;color:var(--c-muted);max-width:540px;line-height:1.75}
-.section-divider{width:60px;height:4px;background
+    /* FOOTER */
+    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
+    @media(min-width:700px){footer{padding-bottom:2rem;}}
+
+    /* ── STICKY HEADER ── */
+    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
+    .sticky-header.visible{transform:translateY(0);}
+    .sticky-logo{font-family:'Noto Sans JP',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
+    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
+    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
+    .sticky-open.closed{background:#fce4ec;color:#c62828;}
+    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
+    .sticky-cta:hover{opacity:0.85;}
+
+    /* ── OPEN NOW BADGE (hero) ── */
+    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
+    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
+    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
+    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+
+    /* ── COUNTER ── */
+    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
+
+    /* ── PARALLAX ── */
+    .hero-bg{will-change:transform;}
+
+    /* ── IMAGE ZOOM ── */
+    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
+    .mockup:hover img{transform:scale(1.05);}
+
+    /* ── RIPPLE ── */
+    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
+    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
+    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
+
+    /* ── FLOAT CALL ── */
+    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
+    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
+    @media(min-width:700px){.float-call{display:none;}}
   </style>
 </head>
 <body>
-<body>
 
-  <!-- PROTO BANNER -->
-  <div class="proto-banner"><p><strong>🎨 Free demo for Malali Foods Nigerian Restaurant</strong> — All images, text &amp; colours are placeholders and fully customisable.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
-
-  <!-- STICKY NAV -->
-  <nav id="stickyNav">
-    <div class="nav-logo">
-      <span>Malali Foods</span>
+  <!-- STICKY HEADER -->
+  <header class="sticky-header" id="stickyHeader">
+    <div style="display:flex;align-items:center;">
+      <span class="sticky-logo">Malali Foods Nigerian Restaurant</span>
+      <span class="sticky-open" id="stickyBadge"></span>
     </div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#visit">Visit</a></li>
-    </ul>
-    <a href="tel:07958501049" class="nav-cta">Reserve a Table</a>
-    <button class="nav-hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+    <a href="tel:07958 501049" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
+  </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero-section" id="hero">
-    <div class="hero-bg" style="background-image: url('images/img_0.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow" data-aos="fade-down">Nigerian Restaurant · Dalston, London</p>
-      <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">Malali Foods<br><em>Nigerian Restaurant</em></h1>
-      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Authentic Nigerian flavours, freshly prepared in Dalston</p>
-      <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
-        <a href="tel:07958501049" class="btn-primary"><i class="fa fa-phone"></i> Reserve a Table</a>
-        <a href="https://wa.me/07958501049" class="btn-secondary" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-      </div>
-      <div class="hero-badge" data-aos="fade-up" data-aos-delay="400">
-        <span id="openBadge"></span>
-        <span class="stars">⭐⭐⭐⭐⭐</span>
-        <span id="ratingCounter" data-rating="5" data-count="16">5 · 16 Google Reviews</span>
-      </div>
-    </div>
-    <div class="hero-scroll-indicator">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section id="about" style="padding: 100px 0; background: #0d0d0d; overflow: hidden;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
-
-      <!-- Section Header -->
-      <div style="text-align: center; margin-bottom: 72px;" data-aos="fade-up">
-        <p class="section-label">Our Story</p>
-        <h2 class="section-title" style="color: #fff;">The Soul of Nigeria,<br><em style="color: #e8a020;">Heart of Dalston</em></h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <!-- Image-Text Alternating Row 1 -->
-      <div style="display: flex; align-items: center; gap: 64px; margin-bottom: 80px; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 280px;" data-aos="fade-right">
-          <img
-            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80"
-            alt="Malali Foods Restaurant Interior"
-            style="width: 100%; border-radius: 20px; object-fit: cover; height: 420px; display: block;"
-          />
-        </div>
-        <div style="flex: 1; min-width: 280px;" data-aos="fade-left">
-          <p class="section-label">Who We Are</p>
-          <h3 style="font-size: clamp(1.8rem, 3vw, 2.6rem); color: #fff; margin: 0 0 20px; line-height: 1.25;">Generations of Flavour<br><em style="color: #e8a020;">On Every Plate</em></h3>
-          <p class="section-lead" style="color: #bbb; line-height: 1.8; margin-bottom: 24px;">
-            Malali Foods brings the vibrant soul of Nigeria to the heart of Dalston. We serve expertly crafted traditional dishes using the finest ingredients, honouring generations of family recipes. Every plate is a celebration of warmth, authenticity, and culinary excellence.
-          </p>
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="width: 36px; height: 36px; background: #e8a020; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa fa-check" style="color: #fff; font-size: 14px;"></i></span>
-              <span style="color: #ccc;">Dine-In &nbsp;|&nbsp; Takeaway &nbsp;|&nbsp; Delivery</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="width: 36px; height: 36px; background: #e8a020; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa fa-star" style="color: #fff; font-size: 14px;"></i></span>
-              <span style="color: #ccc;">⭐ 5.0 Rating · 16 Glowing Google Reviews</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="width: 36px; height: 36px; background: #e8a020; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa fa-map-marker" style="color: #fff; font-size: 14px;"></i></span>
-              <span style="color: #ccc;">70 Ridley Rd, London E8 2NR — Dalston</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Philosophy Cards Row -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-bottom: 80px;">
-        <div data-aos="fade-up" data-aos-delay="0" style="background: #1a1a1a; border-radius: 16px; padding: 36px 28px; border-left: 4px solid #e8a020;">
-          <div style="font-size: 2rem; margin-bottom: 16px;">🌿</div>
-          <h4 style="color: #e8a020; font-size: 1.15rem; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 1px;">Fresh Ingredients</h4>
-          <p style="color: #aaa; line-height: 1.7; margin: 0; font-size: 0.95rem;">We source premium fresh fish, herbs, and spices to deliver authentic Nigerian flavour in every bite.</p>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="120" style="background: #1a1a1a; border-radius: 16px; padding: 36px 28px; border-left: 4px solid #e8a020;">
-          <div style="font-size: 2rem; margin-bottom: 16px;">🍲</div>
-          <h4 style="color: #e8a020; font-size: 1.15rem; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 1px;">Culinary Integrity</h4>
-          <p style="color: #aaa; line-height: 1.7; margin: 0; font-size: 0.95rem;">Our dishes honour traditional Nigerian cooking methods while ensuring meticulous preparation and attention to detail.</p>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="240" style="background: #1a1a1a; border-radius: 16px; padding: 36px 28px; border-left: 4px solid #e8a020;">
-          <div style="font-size: 2rem; margin-bottom: 16px;">🤝</div>
-          <h4 style="color: #e8a020; font-size: 1.15rem; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 1px;">Warm Hospitality</h4>
-          <p style="color: #aaa; line-height: 1.7; margin: 0; font-size: 0.95rem;">We believe great food is best shared with genuine warmth, making every guest feel like family.</p>
-        </div>
-      </div>
-
-      <!-- Image-Text Alternating Row 2 (reversed) -->
-      <div style="display: flex; align-items: center; gap: 64px; flex-wrap: wrap; flex-direction: row-reverse;">
-        <div style="flex: 1; min-width: 280px;" data-aos="fade-left">
-          <img
-            src="images/img_1.jpg"
-            alt="Malali Foods Dishes"
-            style="width: 100%; border-radius: 20px; object-fit: cover; height: 420px; display: block;"
-          />
-        </div>
-        <div style="flex: 1; min-width: 280px;" data-aos="fade-right">
-          <p class="section-label">The Experience</p>
-          <h3 style="font-size: clamp(1.8rem, 3vw, 2.6rem); color: #fff; margin: 0 0 20px; line-height: 1.25;">Cultural Vibes &amp;<br><em style="color: #e8a020;">Authentic Cuisine</em></h3>
-          <p style="color: #bbb; line-height: 1.8; font-size: 1.05rem; margin-bottom: 28px;">
-            Step into a space where Nigerian culture comes alive — from the music and the décor to the bold, soulful flavours on your plate. Owner Edward and his team welcome every guest with open arms and unforgettable food.
-          </p>
-          <a href="tel:07958501049" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;"><i class="fa fa-phone"></i> Book Your Table Today</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FULL-BLEED PHOTO STRIP -->
-  <div style="width: 100%; height: 320px; position: relative; overflow: hidden;">
-    <img
-      src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80"
-      alt="Malali Foods full bleed"
-      style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: brightness(0.55);"
-    />
-    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 24px;">
-      <div>
-        <p style="color: #e8a020; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; margin: 0 0 12px; font-weight: 700;">Taste the Tradition</p>
-        <h2 style="color: #fff; font-size: clamp(2rem, 5vw, 3.5rem); margin: 0; line-height: 1.15; font-style: italic;">"Every plate is a celebration of warmth,<br>authenticity, and culinary excellence."</h2>
-      </div>
-    </div>
+  <div class="proto-banner">
+    <p><strong>🎨 Free demo for Malali Foods Nigerian Restaurant</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
   </div>
 
-  <!-- MENU SECTION -->
-  <section id="menu" style="padding: 100px 0; background: #111;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
-
-      <!-- Section Header -->
-      <div style="text-align: center; margin-bottom: 72px;" data-aos="fade-up">
-        <p class="section-label">What We Serve</p>
-        <h2 class="section-title" style="color: #fff;">Our Menu</h2>
-        <p class="section-lead" style="color: #aaa; max-width: 560px; margin: 16px auto 0;">Bold Nigerian flavours crafted with care — from vibrant starters to soul-warming mains.</p>
-        <div class="section-divider"></div>
-      </div>
-
-      <!-- STARTERS -->
-      <div style="margin-bottom: 72px;">
-        <h3 data-aos="fade-up" style="color: #e8a020; font-size: clamp(1.4rem, 2.5vw, 1.9rem); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 36px; padding-bottom: 12px; border-bottom: 1px solid #2a2a2a;">
-          Starters
-        </h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;">
-
-          <!-- Akara -->
-          <div data-aos="fade-up" data-aos-delay="0" style="background: #1a1a1a; border-radius: 20px; overflow: hidden; transition: transform 0.3s;">
-            <div style="height: 200px; background: linear-gradient(135deg, #3a2000 0%, #e8a020 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">
-              🫘
-            </div>
-            <div style="padding: 24px;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                <h4 style="color: #fff; font-size: 1.15rem; margin: 0;">Akara</h4>
-                <span style="color: #e8a020; font-weight: 700; font-size: 1.05rem; white-space: nowrap;">£4.50</span>
-              </div>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin: 0;">Golden-fried bean fritters with a light, fluffy interior and perfectly seasoned exterior.</p>
-            </div>
-          </div>
-
-          <!-- Plantain Fufu -->
-          <div data-aos="fade-up" data-aos-delay="100" style="background: #1a1a1a; border-radius: 20px; overflow: hidden; transition: transform 0.3s;">
-            <div style="height: 200px; background: linear-gradient(135deg, #2a1800 0%, #c47c00 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">
-              🍌
-            </div>
-            <div style="padding: 24px;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                <h4 style="color: #fff; font-size: 1.15rem; margin: 0;">Plantain Fufu</h4>
-                <span style="color: #e8a020; font-weight: 700; font-size: 1.05rem; white-space: nowrap;">£5.00</span>
-              </div>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin: 0;">Smooth, creamy mashed plantains with a subtle sweetness, perfect for dipping.</p>
-            </div>
-          </div>
-
-          <!-- Nigerian Spring Rolls -->
-          <div data-aos="fade-up" data-aos-delay="200" style="background: #1a1a1a; border-radius: 20px; overflow: hidden; transition: transform 0.3s;">
-            <div style="height: 200px; background: linear-gradient(135deg, #1a2800 0%, #6aaa00 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">
-              🥢
-            </div>
-            <div style="padding: 24px;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                <h4 style="color: #fff; font-size: 1.15rem; margin: 0;">Nigerian Spring Rolls</h4>
-                <span style="color: #e8a020; font-weight: 700; font-size: 1.05rem; white-space: nowrap;">£5.50</span>
-              </div>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin: 0;">Crispy rolls filled with spiced vegetables and seasoned meat.</p>
-            </div>
-          </div>
-
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-left">
+      <div>
+        <div class="logo">Malali Foods Nigerian Restaurant</div>
+        <div class="hero-badges">
+          <span class="badge">Restaurant</span>
+          <span class="badge">Dalston, London</span>
+          
         </div>
       </div>
-
-      <!-- MAINS -->
-      <div style="margin-bottom: 72px;">
-        <h3 data-aos="fade-up" style="color: #e8a020; font-size: clamp(1.4rem, 2.5vw, 1.9rem); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 36px; padding-bottom: 12px; border-bottom: 1px solid #2a2a2a;">
-          Mains
-        </h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;">
-
-          <!-- Fisherman's Soup -->
-          <div data-aos="fade-up" data-aos-delay="0" style="background: #1a1a1a; border-radius: 20px; overflow: hidden;">
-            <div style="height: 200px; background: linear-gradient(135deg, #1a0a00 0%, #c43000 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">
-              🐟
-            </div>
-            <div style="padding: 24px;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                <h4 style="color: #fff; font-size: 1.15rem; margin: 0; padding-right: 12px;">Fisherman's Soup with Plantain Fufu</h4>
-                <span style="color: #e8a020; font-weight: 700; font-size: 1.05rem; white-space: nowrap;">£14.99</span>
-              </div>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin: 0;">Rich, aromatic broth loaded with fresh fish, seafood, and authentic spices.</p>
-            </div>
-          </div>
-
-          <!-- Isi-Ewu -->
-          <div data-aos="fade-up" data-aos-delay="100" style="background: #1a1a1a; border-radius: 20px; overflow: hidden;">
-            <div style="height: 200px; background: linear-gradient(135deg, #1a0800 0%, #a04000 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">
-              🍖
-            </div>
-            <div style="padding: 24px;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                <h4 style="color: #fff; font-size: 1.15rem; margin: 0; padding-right: 12px;">Isi-Ewu with African Salad</h4>
-                <span style="color: #e8a020; font-weight: 700; font-size: 1.05rem; white-space: nowrap;">£13.99</span>
-              </div>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin: 0;">Tender goat head meat in a perfectly balanced spiced sauce, served with vibrant mixed greens.</p>
-            </div>
-          </div>
-
-          <!-- Jollof Rice -->
-          <div data-aos="fade-up" data-aos-delay="200" style="background: #1a1a1a; border-radius: 20px; overflow: hidden;">
-            <div style="height: 200px; background: linear-gradient(135deg, #1a0500 0%, #d44000 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">
-              🍛
-            </div>
-            <div style="padding: 24px;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                <h4 style="color: #fff; font-size: 1.15rem; margin: 0; padding-right: 12px;">Jollof Rice and Stew</h4>
-                <span style="color: #e8a020; font-weight: 700; font-size: 1.05rem; white-space: nowrap;">£12.99</span>
-              </div>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin: 0;">Fragrant tomato-infused rice paired with slow-cooked meat stew.</p>
-            </div>
-          </div>
-
+      <div>
+        <h1 class="hero-tagline">Authentic Nigerian flavours, freshly crafted in Dalston</h1>
+        <p class="hero-desc">Malali Foods brings the vibrant tastes of Nigeria to the heart of Dalston, London. Our kitchen honours traditional recipes with the freshest ingredients, creating dishes that transport you to West Africa with every bite. We're passionate about sharing genuine Nigerian hospitality and exceptional food.</p>
+        <div class="rating-counter" id="ratingCounter" data-rating="5" data-count="16">⭐ 5 · 16 Google reviews</div>
+        <div class="open-badge" id="openBadge"></div>
+      </div>
+      <nav class="hero-nav">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#visit">Visit</a>
+        <a href="tel:07958 501049" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
+      </nav>
+    </div>
+    <div class="hero-right">
+      <div class="mockup">
+        <img src="images/img_1.jpg" alt="Malali Foods Nigerian Restaurant"/>
+        <div class="mockup-overlay">
+          <div class="m-name">Malali Foods Nigerian Restaurant</div>
+          <div class="m-sub">Restaurant · Dalston, London</div>
         </div>
       </div>
-
-      <!-- DESSERTS -->
-      <div style="margin-bottom: 48px;">
-        <h3 data-aos="fade-up" style="color: #e8a020; font-size: clamp(1.4rem, 2.5vw, 1.9rem); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 36px; padding-bottom: 12px; border-bottom: 1px solid #2a2a2a;">
-          Desserts
-        </h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;">
-
-          <!-- Puff Puff -->
-          <div data-aos="fade-up" data-aos-delay="0" style="background: #1a1a1a; border-radius: 20px; overflow: hidden;">
-            <div style="height: 200px; background: linear-gradient(135deg, #2a1500 0%, #d48000 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">
-              🍩
-            </div>
-            <div style="padding: 24px;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                <h4 style="color: #fff; font-size: 1.15rem; margin: 0;">Puff Puff</h4>
-                <span style="color: #e8a020; font-weight: 700; font-size: 1.05rem; white-space: nowrap;">£3.50</span>
-              </div>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin: 0;">Soft, fluffy fried dough balls dusted with cinnamon sugar.</p>
-            </div>
-          </div>
-
-          <!-- Mango Sorbet -->
-          <div data-aos="fade-up" data-aos-delay="100" style="background: #1a1a1a; border-radius: 20px; overflow: hidden;">
-            <div style="height: 200px; background: linear-gradient(135deg, #001a10 0%, #00a860 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">
-              🥭
-            </div>
-            <div style="padding: 24px;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                <h4 style="color: #fff; font-size: 1.15rem; margin: 0;">Mango Sorbet</h4>
-                <span style="color: #e8a020; font-weight: 700; font-size: 1.05rem; white-space: nowrap;">£4.00</span>
-              </div>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin: 0;">Light, refreshing West African mango ice served chilled.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Menu Disclaimer -->
-      <p style="color: #555; font-size: 0.85rem; text-align: center; font-style: italic; border-top: 1px solid #222; padding-top: 28px;">* Sample menu for reference. Please contact us for today's full menu.</p>
-
     </div>
   </section>
 
-  <!-- REVIEWS SECTION -->
-  <section style="padding: 90px 0; background: #0d0d0d;">
-    <div style="max-width: 860px; margin: 0 auto; padding: 0 32px;">
+  <div class="social-bar">
+    <span>Connect</span>
+    <div class="social-icons">
+      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/07958501049" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://maps.google.com/?cid=14051053891572069420" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
+    </div>
+    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Delivery</span> <span class="tag">Beer</span></div>
+    <a href="tel:07958 501049" class="call-link"><i class="fa fa-phone"></i> 07958 501049</a>
+  </div>
 
-      <div style="text-align: center; margin-bottom: 60px;" data-aos="fade-up">
-        <p class="section-label">What Guests Say</p>
-        <h2 class="section-title" style="color: #fff;">5-Star Reviews</h2>
-        <div style="display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;">
-          <span class="stars" style="color: #e8a020; font-size: 1.3rem;">⭐⭐⭐⭐⭐</span>
-          <span style="color: #888; font-size: 0.95rem;">5.0 · 16 Google Reviews</span>
+  <section class="about" id="about">
+    <div class="section-wrap">
+      <div class="about-grid">
+        <div data-aos="fade-right">
+          <p class="section-label">Our Philosophy</p>
+          <h2 class="section-title">Food that brings people to the same table</h2>
+          <p class="about-body">Malali Foods brings the vibrant tastes of Nigeria to the heart of Dalston, London. Our kitchen honours traditional recipes with the freshest ingredients, creating dishes that transport you to West Africa with every bite. We're passionate about sharing genuine Nigerian hospitality and exceptional food.</p>
         </div>
-        <div class="section-divider"></div>
+        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
+          <div class="value-item"><span class="value-num">01</span><div><h3>Fresh Ingredients</h3><p>We source the finest fresh fish and quality meats to ensure every dish delivers authentic, delicious flavour.</p></div></div>
+          <div class="value-item"><span class="value-num">02</span><div><h3>Traditional Recipes</h3><p>Our dishes are crafted using time-honoured Nigerian cooking methods passed down through generations.</p></div></div>
+          <div class="value-item"><span class="value-num">03</span><div><h3>Warm Hospitality</h3><p>We treat every guest like family, sharing our heritage and ensuring an unforgettable dining experience.</p></div></div>
+        </div>
       </div>
-
-      <!-- Minimal-list Reviews -->
-      <div style="display: flex; flex-direction: column; gap: 0;">
-
-        <div data-aos="fade-up" data-aos-delay="0" style="padding: 36px 0; border-bottom: 1px solid #222;">
-          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
-            <div style="width: 44px; height: 44px; border-radius: 50%; background: #e8a020; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #000; font-size: 1rem; flex-shrink: 0;">K</div>
-            <div>
-              <p style="color: #fff; font-weight: 600; margin: 0; font-size: 0.95rem;">Kingsley KayKay</p>
-              <span style="color: #e8a020; font-size: 0.85rem;">⭐⭐⭐⭐⭐</span>
-            </div>
-          </div>
-          <p style="color: #aaa; line-height: 1.75; font-size: 1rem; margin: 0; font-style: italic;">"I bought Fisherman soup with plantain fufu and Akara. The staff introduced the fisherman soup for me and it was delicious as it had fresh fish and sea food which I love. Akara ❤️."</p>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="100" style="padding: 36px 0; border-bottom: 1px solid #222;">
-          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
-            <div style="width: 44px; height: 44px; border-radius: 50%; background: #e8a020; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #000; font-size: 1rem; flex-shrink: 0;">J</div>
-            <div>
-              <p style="color: #fff; font-weight: 600; margin: 0; font-size: 0.95rem;">Joan Nollah</p>
-              <span style="color: #e8a020; font-size: 0.85rem;">⭐⭐⭐⭐⭐</span>
-            </div>
-          </div>
-          <p style="color: #aaa; line-height: 1.75; font-size: 1rem; margin: 0; font-style: italic;">"I had Isi-Ewu and African Salad. And they were all delicious. There were no bones in the Isi-ewu. Which made it perfect for me. I'll tell my friends about this hidden Gem inside th…"</p>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="200" style="padding: 36px 0;">
-          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
-            <div style="width: 44px; height: 44px; border-radius: 50%; background: #e8a020; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #000; font-size: 1rem; flex-shrink: 0;">I</div>
-            <div>
-              <p style="color: #fff; font-weight: 600; margin: 0; font-size: 0.95rem;">Irmak Kayik</p>
-              <span style="color: #e8a020; font-size: 0.85rem;">⭐⭐⭐⭐⭐</span>
-            </div>
-          </div>
-          <p style="color: #aaa; line-height: 1.75; font-size: 1rem; margin: 0; font-style: italic;">"I ordered Okra soup and Egusi soup and it was the best I've ever eaten. I also loved the cultural vibe and music. The owner Edward was very welcoming and kind. If you're looking fo…"</p>
-        </div>
-
-      </div>
-
     </div>
   </section>
 
-  <!-- VISIT SECTION -->
-  <section id="visit" style="padding: 100px 0; background: #111;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px;">
+  <section class="reviews">
+    <div class="section-wrap">
+      <p class="section-label" data-aos="fade-up">What guests say</p>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 5 · 16 Google reviews</h2>
+      <div class="reviews-grid">
+        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"I bought Fisherman soup with plantain fufu and Akara. The staff introduced the fisherman soup for me and it was delicious as it had fresh fish and sea food which I love. Akara ❤️. I will be back anytime I am in London."</p><span class="review-author">— Kingsley KayKay · in the last week</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"I had Isi-Ewu and African Salad. And they were all delicious. There were no bones in the Isi-ewu. Which made it perfect for me. I'll tell my friends about this hidden Gem inside the Ridley Road Market.  I'll come again for take away."</p><span class="review-author">— Joan Nollah · in the last week</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"I ordered Okra soup and Egusi soup and it was the best I’ve ever eaten. I also loved the cultural vibe and music. The owner Edward was very welcoming and kind. If you’re looking for authentic Nigerian cuisine with great service and generous portions, this place is definitely wort"</p><span class="review-author">— Irmak Kayik · 2 weeks ago</span></div></div>
+      </div>
+    </div>
+  </section>
 
-      <div style="text-align: center; margin-bottom: 72px;" data-aos="fade-up">
-        <p class="section-label">Find Us</p>
-        <h2 class="section-title" style="color: #fff;">Visit Mal
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});
+  <section class="menu" id="menu">
+    <div class="section-wrap">
+      <div class="menu-header" data-aos="fade-up">
+        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
+        <span class="menu-note">Seasonal · Prices incl. VAT</span>
+      </div>
+      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Akara</div><div class="item-desc">Golden-fried bean fritters, crispy outside and fluffy within, served with pepper sauce</div></div><span class="item-price">£5</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Plantain Fufu</div><div class="item-desc">Smooth, creamy mashed plantains with a subtle sweetness, perfect alongside soups</div></div><span class="item-price">£4</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Nigerian Spring Rolls</div><div class="item-desc">Crispy pastry filled with spiced meat and vegetables, served with dipping sauce</div></div><span class="item-price">£6</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Fisherman's Soup with Plantain Fufu</div><div class="item-desc">Aromatic broth brimming with fresh fish and seafood, served with pillowy plantain fufu</div></div><span class="item-price">£14</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Isi-Ewu (Goat Head Soup)</div><div class="item-desc">Tender, bone-free goat meat in a rich, savoury traditional broth, expertly prepared</div></div><span class="item-price">£13</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">African Salad</div><div class="item-desc">Fresh vegetables with tomato, onions, and traditional spices, a vibrant side or light meal</div></div><span class="item-price">£7</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Puff Puff</div><div class="item-desc">Sweet, pillowy fried dough balls dusted with cinnamon sugar</div></div><span class="item-price">£4</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Banana Bread</div><div class="item-desc">Moist, traditional Nigerian-style banana cake with warm spices</div></div><span class="item-price">£5</span></div></div></div>
+      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
+    </div>
+  </section>
 
-// AOS fallback: force all elements visible immediately (prevents blank sections on slow networks)
-document.querySelectorAll('[data-aos]').forEach(function(el){
-  el.classList.add('aos-animate');
-  el.style.opacity='1';
-  el.style.transform='none';
-});
+  <section class="visit" id="visit">
+    <div class="section-wrap">
+      <p class="section-label" data-aos="fade-up">Find Us</p>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
+      <div class="visit-grid">
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
+          <p class="vb-label">Address</p>
+          <p>70 Ridley Rd, London E8 2NR, UK</p>
+          <a href="https://maps.google.com/?cid=14051053891572069420" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
+        </div>
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
+          <p class="vb-label">Opening Hours</p>
+          <div class="hour-row"><span>Mon</span><span>4:00 – 10:00 PM</span></div>
+<div class="hour-row"><span>Tue</span><span>12:00 – 10:30 PM</span></div>
+<div class="hour-row"><span>Wed</span><span>2:00 – 10:30 PM</span></div>
+<div class="hour-row"><span>Thu</span><span>4:00 – 10:30 PM</span></div>
+<div class="hour-row"><span>Fri</span><span>2:00 – 11:00 PM</span></div>
+<div class="hour-row"><span>Sat</span><span>2:30 – 11:30 PM</span></div>
+<div class="hour-row"><span>Sun</span><span>Closed</span></div>
+        </div>
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
+          <p class="vb-label">Reservations</p>
+          <a href="tel:07958 501049"><i class="fa fa-phone" style="font-size:0.75rem"></i> 07958 501049</a>
+          <a href="https://wa.me/07958501049" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?cid=14051053891572069420" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
+    </div>
+  </section>
 
-// Sticky nav on scroll past hero
-(function(){
-  const nav=document.getElementById('stickyNav');
-  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
-  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
-})();
+  <footer>
+    <span>© 2025 Malali Foods Nigerian Restaurant</span>
+    <span>70 Ridley Rd, London E8 2NR, UK</span>
+  </footer>
 
-// Open/Closed badge
-(function(){
-  const HOURS={"Monday": "4:00 – 10:00 PM", "Tuesday": "12:00 – 10:30 PM", "Wednesday": "2:00 – 10:30 PM", "Thursday": "4:00 – 10:30 PM", "Friday": "2:00 – 11:00 PM", "Saturday": "2:30 – 11:30 PM", "Sunday": "Closed"};
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const day=days[new Date().getDay()],raw=HOURS[day]||'';
-  const badge=document.getElementById('openBadge');
-  if(!badge)return;
-  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-  if(!m){badge.textContent='See hours';return;}
-  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
-  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
-  const open=n>=o&&n<(c<o?c+1440:c);
-  badge.textContent=open?'● Open now':'● Closed';
-  badge.style.color=open?'#22c55e':'#ef4444';
-})();
+  <a href="tel:07958 501049" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
 
-// Rating counter animation
-(function(){
-  const el=document.getElementById('ratingCounter');
-  if(!el)return;
-  const rating=5,cnt=16;
-  if(!rating)return;
-  new IntersectionObserver(([e])=>{
-    if(!e.isIntersecting)return;
-    const anim=(from,to,dec,cb)=>{
-      const dur=1600;let start=null;
-      (function tick(ts){
-        if(!start)start=ts;
-        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
-        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
-        if(p<1)requestAnimationFrame(tick);
-      })(performance.now());
-    };
-    const rs=document.createElement('b'),cs=document.createElement('b');
-    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
-    anim(0,rating,true,v=>rs.textContent=v);
-    anim(0,cnt,false,v=>cs.textContent=v);
-  },{threshold:0.4}).observe(el);
-})();
-
-// Ripple on CTA buttons
-document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
-  btn.addEventListener('click',function(e){
-    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
-    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
-      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
-      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
-    this.style.cssText+='position:relative;overflow:hidden;';
-    this.append(r);setTimeout(()=>r.remove(),700);
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+  // ── AOS（スクロールアニメーション）──────────────────
+  AOS.init({ duration: 600, once: true, offset: 0, easing: 'ease-out-cubic' });
+  // AOS fallback: force all elements visible immediately
+  document.querySelectorAll('[data-aos]').forEach(function(el) {
+    el.classList.add('aos-animate');
+    el.style.opacity = '1';
+    el.style.transform = 'none';
   });
-});
-</script>
-<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+
+  // ── Parallax（ヒーロー背景）──────────────────────────
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      heroBg.style.transform = `translateY(${y * 0.38}px)`;
+    }, { passive: true });
+  }
+
+  // ── Sticky Header ────────────────────────────────────
+  const stickyHeader = document.getElementById('stickyHeader');
+  const hero = document.querySelector('.hero');
+  if (stickyHeader && hero) {
+    const observer = new IntersectionObserver(
+      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(hero);
+  }
+
+  // ── 営業中バッジ ──────────────────────────────────────
+  const HOURS = {"Monday": "4:00 – 10:00 PM", "Tuesday": "12:00 – 10:30 PM", "Wednesday": "2:00 – 10:30 PM", "Thursday": "4:00 – 10:30 PM", "Friday": "2:00 – 11:00 PM", "Saturday": "2:30 – 11:30 PM", "Sunday": "Closed"};
+  function computeOpenStatus() {
+    const now  = new Date();
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const day  = days[now.getDay()];
+    const raw  = HOURS[day] || '';
+    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
+    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (!m) return { open: false, text: raw };
+    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
+    const openMin  = toMin(m[1], m[2], m[3]);
+    const closeMin = toMin(m[4], m[5], m[6]);
+    const nowMin   = now.getHours() * 60 + now.getMinutes();
+    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
+    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
+    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
+    return {
+      open: isOpen,
+      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
+    };
+  }
+  function renderBadge(el, status) {
+    if (!el) return;
+    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
+    el.innerHTML = `<span class="dot"></span> ${status.text}`;
+  }
+  const status = computeOpenStatus();
+  renderBadge(document.getElementById('openBadge'), status);
+  const stickyBadge = document.getElementById('stickyBadge');
+  if (stickyBadge) {
+    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
+    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
+  }
+
+  // ── カウンターアニメーション ──────────────────────────
+  function animateCounter(el, target, isDecimal) {
+    let start = 0, duration = 1800, startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const val = start + (target - start) * ease;
+      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const ratingEl = document.getElementById('ratingCounter');
+  if (ratingEl && 5) {
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        io.disconnect();
+        const rating = 5, count = 16;
+        const rSpan = document.createElement('span');
+        const cSpan = document.createElement('span');
+        ratingEl.innerHTML = '';
+        ratingEl.appendChild(document.createTextNode('⭐ '));
+        rSpan.textContent = '0.0';
+        ratingEl.appendChild(rSpan);
+        ratingEl.appendChild(document.createTextNode(' · '));
+        cSpan.textContent = '0';
+        ratingEl.appendChild(cSpan);
+        ratingEl.appendChild(document.createTextNode(' Google reviews'));
+        animateCounter(rSpan, rating, true);
+        animateCounter(cSpan, count, false);
+      }
+    }, { threshold: 0.5 });
+    io.observe(ratingEl);
+  }
+
+  // ── リップルエフェクト ────────────────────────────────
+  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const r = document.createElement('span');
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      r.className = 'ripple';
+      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
+      this.appendChild(r);
+      setTimeout(() => r.remove(), 700);
+    });
+  });
+
+  // ── タイプライター（タグライン）────────────────────────
+  const tagline = document.querySelector('.hero-tagline');
+  if (tagline) {
+    const full = tagline.innerHTML;
+    tagline.innerHTML = '';
+    tagline.style.visibility = 'visible';
+    let i = 0;
+    const chars = [...full];
+    let inTag = false;
+    function typeNext() {
+      if (i >= chars.length) return;
+      if (chars[i] === '<') inTag = true;
+      if (!inTag) {
+        tagline.innerHTML += chars[i];
+      } else {
+        let tag = '';
+        while (i < chars.length && (inTag || chars[i] !== '>')) {
+          tag += chars[i];
+          if (chars[i] === '>') inTag = false;
+          i++;
+        }
+        tagline.innerHTML += tag;
+        setTimeout(typeNext, 18);
+        return;
+      }
+      if (chars[i] === '>') inTag = false;
+      i++;
+      setTimeout(typeNext, 28);
+    }
+    setTimeout(typeNext, 600);
+  }
+  </script>
+
 </body>
 </html>
