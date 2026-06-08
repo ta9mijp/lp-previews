@@ -4,494 +4,452 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Mama’s Kitchen — Dalston, London</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/><style>[data-aos]{opacity:1!important;transform:none!important}</style>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{padding-top:52px;}
-  .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
-  .proto-banner p{color:#1e1e1e;font-weight:500;line-height:1.4;}
-  .proto-banner strong{font-weight:700;}
-  .proto-banner a{color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:.28rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
-  .float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap;}
-  @media(min-width:700px){.float-cta{display:none!important;}}
-  #stickyNav{position:fixed;top:0;left:0;right:0;z-index:500;transform:translateY(-100%);transition:transform .35s ease;}
-  #stickyNav.visible{transform:translateY(0);}
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap');
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --primary:   #ffffff;
+      --accent:    #da532c;
+      /* ヒーロー用（暗い背景向け） */
+      --hero-text:  #f5f2ec;
+      --hero-muted: rgba(245,242,236,0.65);
+      /* コンテンツセクション用（明るい背景向け・常に暗い文字） */
+      --c-text:   #1a1a1a;
+      --c-muted:  #6b6b6b;
+      --c-border: rgba(0,0,0,0.08);
+      --sec-bg:   #f78da7;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'Noto Sans JP',sans-serif;background:var(--primary);color:var(--text);padding-top:52px;}
 
-:root {
---c-bg:#faf6f1;
---c-surface:#f2ebe0;
---c-primary:#8b4513;
---c-primary-light:#c4722a;
---c-accent:#d4956a;
---c-dark:#2c1810;
---c-text:#4a3728;
---c-text-light:#7a6358;
---c-white:#fff;
---c-overlay:rgba(44,24,16,.55);
---c-overlay-grad:linear-gradient(to bottom,rgba(44,24,16,.15) 0%,rgba(44,24,16,.72) 100%);
---ff-head:'Playfair Display',Georgia,serif;
---ff-body:'Inter',system-ui,sans-serif;
---r-sm:6px;
---r-md:12px;
---r-lg:20px;
---shadow-sm:0 2px 8px rgba(44,24,16,.12);
---shadow-md:0 6px 24px rgba(44,24,16,.18);
---shadow-lg:0 16px 48px rgba(44,24,16,.22);
---trans:all .3s ease;
---max-w:1200px;
-}
+    /* PROTO BANNER */
+    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(200,169,110,0.97);backdrop-filter:blur(8px);padding:0.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+    .proto-banner p{font-size:0.78rem;color:#1e1e1e;font-weight:500;line-height:1.4;}
+    .proto-banner strong{font-weight:700;}
+    .proto-banner a{font-size:0.76rem;color:#1e1e1e;font-weight:600;border:1.5px solid #1e1e1e;padding:0.3rem 0.9rem;border-radius:50px;text-decoration:none;white-space:nowrap;}
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--ff-body);background:var(--c-bg);color:var(--c-text);line-height:1.6;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-ul{list-style:none}
+    /* ── HERO（暗い背景 → 白文字） ── */
+    .hero{position:relative;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:var(--primary);}
+    @media(max-width:680px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:3rem 2rem;}}
+    .hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat;filter:brightness(0.35);}
+    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:space-between;height:100%;}
+    .logo{font-family:'Noto Serif JP',serif;font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;}
+    .hero-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;}
+    .badge{font-size:0.7rem;padding:0.22rem 0.7rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);}
+    .badge-accent{border-color:var(--accent);color:var(--accent);}
+    .hero-tagline{font-family:'Noto Serif JP',serif;font-size:clamp(2.4rem,5.5vw,5rem);line-height:1.05;font-weight:300;font-style:italic;color:#fff;}
+    .hero-tagline span{color:var(--accent);}
+    .hero-desc{font-size:0.9rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:360px;margin-top:1.2rem;}
+    .rating-line{font-size:0.88rem;color:var(--accent);margin-top:0.8rem;font-weight:500;}
+    .hero-nav{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .hero-nav a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
+    .hero-nav a:hover{color:#fff;}
+    .btn-reserve{margin-left:auto;background:var(--accent);color:#fff;padding:0.6rem 1.5rem;border-radius:50px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap;transition:opacity 0.2s;}
+    .btn-reserve:hover{opacity:0.85;}
+    .hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;padding:3rem 4rem 3rem 1rem;}
+    .mockup{width:min(270px,40vw);aspect-ratio:9/19;border-radius:36px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.6);position:relative;background:#000;}
+    .mockup img{width:100%;height:100%;object-fit:cover;opacity:0.85;}
+    .mockup-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
+    .mockup-overlay .m-name{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:300;color:#fff;}
+    .mockup-overlay .m-sub{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-top:0.2rem;}
 
-/* ── STICKY NAV ── */
-#stickyNav{position:fixed;top:0;left:0;width:100%;z-index:900;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;transition:var(--trans);background:transparent}
-#stickyNav.scrolled{background:rgba(250,246,241,.96);backdrop-filter:blur(8px);box-shadow:var(--shadow-sm)}
-#stickyNav .nav-logo{font-family:var(--ff-head);font-size:1.5rem;font-weight:600;color:var(--c-white);transition:var(--trans)}
-#stickyNav.scrolled .nav-logo{color:var(--c-dark)}
-#stickyNav .nav-links{display:flex;gap:32px;font-size:.875rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
-#stickyNav .nav-links a{color:var(--c-white);transition:var(--trans);position:relative}
-#stickyNav .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--c-accent);transition:width .3s ease}
-#stickyNav .nav-links a:hover::after{width:100%}
-#stickyNav.scrolled .nav-links a{color:var(--c-text)}
-#stickyNav .nav-reserve{background:var(--c-primary);color:var(--c-white);padding:10px 22px;border-radius:var(--r-sm);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:var(--trans)}
-#stickyNav .nav-reserve:hover{background:var(--c-primary-light)}
+    /* ── SOCIAL BAR ── */
+    .social-bar{background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .social-bar span{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-muted);}
+    .social-icons{display:flex;gap:1.4rem;}
+    .social-link{color:var(--c-muted);font-size:1.2rem;text-decoration:none;transition:color 0.2s,transform 0.2s;}
+    .social-link:hover{color:var(--accent);transform:translateY(-2px);}
+    .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-left:1rem;}
+    .tag{font-size:0.65rem;padding:0.18rem 0.65rem;border-radius:50px;background:rgba(0,0,0,0.06);color:var(--c-muted);}
+    .call-link{margin-left:auto;display:flex;align-items:center;gap:0.5rem;color:var(--c-text);text-decoration:none;font-size:0.82rem;border:1.5px solid rgba(0,0,0,0.2);padding:0.45rem 1.1rem;border-radius:50px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
+    .call-link:hover{border-color:var(--accent);color:var(--accent);}
 
-/* ── PROTO BANNER ── */
-.proto-banner{width:100%;background:var(--c-primary);color:var(--c-white);text-align:center;padding:10px 20px;font-size:.8rem;font-weight:500;letter-spacing:.05em;position:relative;z-index:950}
-.proto-banner a{color:var(--c-accent);text-decoration:underline}
+    /* ── SHARED CONTENT STYLES ── */
+    .section-wrap{max-width:1100px;margin:0 auto;}
+    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
+    .section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--c-text);}
 
-/* ── HERO ── */
-.hero-section{position:relative;width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('hero-bg.jpg') center/cover no-repeat;transform:scale(1.04);transition:transform 8s ease}
-.hero-section:hover .hero-bg{transform:scale(1)}
-.hero-overlay{position:absolute;inset:0;background:var(--c-overlay-grad)}
-.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:760px}
-.hero-eyebrow{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-accent);margin-bottom:20px;padding:6px 18px;border:1px solid rgba(212,149,106,.5);border-radius:999px}
-.hero-title{font-family:var(--ff-head);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:600;color:var(--c-white);line-height:1.12;margin-bottom:24px}
-.hero-title span{color:var(--c-accent)}
-.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,.82);font-weight:300;margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto}
-.hero-cta-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn-primary{background:var(--c-primary);color:var(--c-white);padding:15px 36px;border-radius:var(--r-sm);font-weight:600;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;transition:var(--trans);border:2px solid var(--c-primary)}
-.btn-primary:hover{background:var(--c-primary-light);border-color:var(--c-primary-light)}
-.btn-outline{background:transparent;color:var(--c-white);padding:15px 36px;border-radius:var(--r-sm);font-weight:600;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;transition:var(--trans);border:2px solid rgba(255,255,255,.6)}
-.btn-outline:hover{background:rgba(255,255,255,.12);border-color:var(--c-white)}
-.hero-scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.6);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase}
-.hero-scroll-hint span{width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent);animation:scrollPulse 2s ease infinite}
-@keyframes scrollPulse{0%,100%{opacity:.4;transform:scaleY(.8)}50%{opacity:1;transform:scaleY(1)}}
+    /* ── ABOUT（白背景 → 暗い文字） ── */
+    .about{padding:6rem 4rem;background:#fff;}
+    @media(max-width:700px){.about{padding:4rem 2rem;}}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+    @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
+    .about-body{font-size:0.95rem;line-height:1.9;color:var(--c-muted);font-weight:400;margin-top:1.2rem;}
+    .about-values{display:flex;flex-direction:column;}
+    .value-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--c-border);}
+    .value-item:last-child{border-bottom:none;}
+    .value-num{font-family:'Noto Serif JP',serif;font-size:2rem;color:var(--accent);opacity:0.6;line-height:1;flex-shrink:0;}
+    .value-item h3{font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;color:var(--c-text);}
+    .value-item p{font-size:0.88rem;color:var(--c-muted);line-height:1.7;font-weight:400;}
 
-/* ── OPEN BADGE ── */
-#openBadge{position:fixed;bottom:100px;right:28px;z-index:800;background:var(--c-primary);color:var(--c-white);padding:12px 20px;border-radius:var(--r-md);box-shadow:var(--shadow-md);font-size:.78rem;font-weight:600;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;transition:var(--trans)}
-#openBadge .badge-dot{width:9px;height:9px;border-radius:50%;background:#4caf50;animation:blink 1.5s ease infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-#openBadge:hover{background:var(--c-primary-light);transform:translateY(-2px)}
+    /* ── REVIEWS（薄グレー背景 → 暗い文字） ── */
+    .reviews{padding:5rem 4rem;background:#f7f7f5;}
+    @media(max-width:700px){.reviews{padding:4rem 2rem;}}
+    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
+    .review-card{background:#fff;border:1px solid var(--c-border);border-radius:16px;padding:1.8rem;}
+    .review-stars{font-size:1rem;margin-bottom:0.9rem;}
+    .review-text{font-size:0.93rem;line-height:1.8;color:var(--c-text);font-style:italic;font-weight:400;margin-bottom:1rem;}
+    .review-author{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:500;}
 
-/* ── RATING COUNTER ── */
-#ratingCounter{display:flex;align-items:center;gap:10px;background:var(--c-white);border:1px solid var(--c-surface);border-radius:var(--r-md);padding:14px 22px;box-shadow:var(--shadow-sm)}
-#ratingCounter .stars{color:#f4a435;font-size:1rem;letter-spacing:2px}
-#ratingCounter .rating-val{font-family:var(--ff-head);font-size:1.5rem;font-weight:600;color:var(--c-dark)}
-#ratingCounter .rating-count{font-size:.78rem;color:var(--c-text-light)}
+    /* ── MENU（白背景 → 暗い文字） ── */
+    .menu{padding:6rem 4rem;background:#fff;}
+    @media(max-width:700px){.menu{padding:4rem 2rem;}}
+    .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+    .menu-note{font-size:0.78rem;color:var(--c-muted);}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;}
+    .menu-category{padding:2rem 0;border-bottom:1px solid var(--c-border);}
+    .menu-category:last-child{border-bottom:none;}
+    .cat-name{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:600;}
+    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--c-border);gap:1rem;}
+    .menu-item:last-child{border-bottom:none;}
+    .menu-item-left{flex:1;}
+    .item-name{font-size:0.95rem;color:var(--c-text);font-weight:500;}
+    .item-desc{font-size:0.78rem;color:var(--c-muted);margin-top:0.2rem;font-weight:400;line-height:1.5;}
+    .item-price{font-family:'Noto Serif JP',serif;font-size:1.05rem;color:var(--accent);flex-shrink:0;font-weight:400;}
+    .menu-disclaimer{font-size:0.72rem;color:var(--c-muted);margin-top:2rem;font-style:italic;border-top:1px solid var(--c-border);padding-top:1rem;}
 
-/* ── FLOAT CTA ── */
-.float-cta{position:fixed;bottom:28px;right:28px;z-index:800;background:var(--c-primary);color:var(--c-white);padding:14px 28px;border-radius:999px;font-weight:600;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;box-shadow:var(--shadow-lg);transition:var(--trans);display:flex;align-items:center;gap:8px}
-.float-cta::before{content:'🍽';font-size:1rem}
-.float-cta:hover{background:var(--c-primary-light);transform:translateY(-3px);box-shadow:0 20px 56px rgba(139,69,19,.35)}
+    /* ── VISIT（薄グレー背景 → 暗い文字） ── */
+    .visit{padding:5rem 4rem;background:#f7f7f5;}
+    @media(max-width:700px){.visit{padding:4rem 2rem;}}
+    .visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem;}
+    .vb-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;font-weight:600;}
+    .visit-block p,.visit-block a{font-size:0.92rem;color:var(--c-muted);line-height:1.9;text-decoration:none;font-weight:400;display:block;}
+    .visit-block a:hover{color:var(--accent);}
+    .hour-row{display:flex;justify-content:space-between;font-size:0.88rem;color:var(--c-muted);padding:0.25rem 0;border-bottom:1px solid var(--c-border);}
+    .hour-row:last-child{border-bottom:none;}
+    .hour-row span:first-child{font-weight:500;color:var(--c-text);min-width:36px;}
+    .directions-btn{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2.5rem;padding:0.75rem 1.8rem;border:1.5px solid rgba(0,0,0,0.2);border-radius:50px;color:var(--c-text);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s,color 0.2s;}
+    .directions-btn:hover{border-color:var(--accent);color:var(--accent);}
 
-/* ── SECTION SHARED ── */
-.section-wrap{max-width:var(--max-w);margin:0 auto;padding:0 40px}
-.section-head{text-align:center;margin-bottom:64px}
-.section-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--c-accent);margin-bottom:12px;display:block}
-.section-title{font-family:var(--ff-head);font-size:clamp(2rem,4vw,3rem);color:var(--c-dark);line-height:1.2;margin-bottom:16px}
-.section-desc{color:var(--c-text-light);font-size:1rem;font-weight:300;max-width:520px;margin:0 auto}
-.divider{width:56px;height:3px;background:linear-gradient(to right,var(--c-primary),var(--c-accent));border-radius:2px;margin:20px auto 0}
+    /* FOOTER */
+    footer{background:var(--primary);border-top:1px solid rgba(255,255,255,0.1);padding:2rem 4rem 7rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.76rem;color:rgba(255,255,255,0.4);}
+    @media(min-width:700px){footer{padding-bottom:2rem;}}
 
-/* ── FEATURES ── */
-.features-section{padding:100px 0;background:var(--c-bg)}
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.feature-card{background:var(--c-white);border-radius:var(--r-lg);padding:40px 32px;text-align:center;border:1px solid rgba(196,114,42,.1);box-shadow:var(--shadow-sm);transition:var(--trans)}
-.feature-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
-.feature-icon{width:64px;height:64px;border-radius:50
+    /* ── STICKY HEADER ── */
+    .sticky-header{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);}
+    .sticky-header.visible{transform:translateY(0);}
+    .sticky-logo{font-family:'Noto Serif JP',serif;font-size:1rem;color:var(--c-text);font-style:italic;}
+    .sticky-open{font-size:0.72rem;font-weight:600;padding:0.25rem 0.65rem;border-radius:50px;margin-left:0.75rem;}
+    .sticky-open.open{background:#e8f5e9;color:#2e7d32;}
+    .sticky-open.closed{background:#fce4ec;color:#c62828;}
+    .sticky-cta{background:var(--accent);color:#fff;padding:0.5rem 1.3rem;border-radius:50px;font-size:0.8rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;}
+    .sticky-cta:hover{opacity:0.85;}
+
+    /* ── OPEN NOW BADGE (hero) ── */
+    .open-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:50px;margin-top:0.8rem;}
+    .open-badge.open{background:rgba(46,125,50,0.85);color:#fff;}
+    .open-badge.closed{background:rgba(198,40,40,0.75);color:#fff;}
+    .open-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+
+    /* ── COUNTER ── */
+    .rating-counter{font-size:0.95rem;font-weight:600;color:var(--accent);margin-top:1rem;}
+
+    /* ── PARALLAX ── */
+    .hero-bg{will-change:transform;}
+
+    /* ── IMAGE ZOOM ── */
+    .mockup img{transition:transform 0.6s cubic-bezier(.4,0,.2,1);}
+    .mockup:hover img{transform:scale(1.05);}
+
+    /* ── RIPPLE ── */
+    .btn-reserve,.float-call,.sticky-cta{position:relative;overflow:hidden;}
+    .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple-anim 0.6s linear;background:rgba(255,255,255,0.35);pointer-events:none;}
+    @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
+
+    /* ── FLOAT CALL ── */
+    .float-call{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:50px;display:flex;align-items:center;gap:0.55rem;font-size:0.88rem;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.4);white-space:nowrap;transition:transform 0.2s,opacity 0.2s;}
+    .float-call:hover{transform:translateX(-50%) translateY(-2px);opacity:0.92;}
+    @media(min-width:700px){.float-call{display:none;}}
   </style>
 </head>
 <body>
-<body>
 
-  <!-- Proto Banner -->
-  <div class="proto-banner"><p><strong>🎨 Free demo for Mama's Kitchen</strong> — All images, text &amp; colours are placeholders and fully customisable.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+  <!-- STICKY HEADER -->
+  <header class="sticky-header" id="stickyHeader">
+    <div style="display:flex;align-items:center;">
+      <span class="sticky-logo">Mama’s Kitchen</span>
+      <span class="sticky-open" id="stickyBadge"></span>
+    </div>
+    <a href="tel:07506 166871" class="sticky-cta"><i class="fa fa-phone" style="font-size:0.72rem;margin-right:0.4rem"></i>Reserve</a>
+  </header>
 
-  <!-- Sticky Nav -->
-  <nav id="stickyNav">
-    <a class="nav-logo" href="#">Mama's Kitchen</a>
-    <ul class="nav-links">
-      <li><a href="#features">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#visit">Visit</a></li>
-    </ul>
-    <a class="nav-reserve btn-primary" href="tel:07506 166871">Reserve a Table</a>
-  </nav>
+  <div class="proto-banner">
+    <p><strong>🎨 Free demo for Mama’s Kitchen</strong> — All images, text &amp; colours are placeholders and fully customisable.</p>
+    <a href="https://wa.me/447761256742">Let's talk → WhatsApp</a>
+  </div>
 
-  <!-- ═══════════════════════════════════════════
-       HERO SECTION — full-bleed-center
-  ═══════════════════════════════════════════ -->
-  <section class="hero-section">
-    <div class="hero-bg" style="background-image: url('images/img_0.jpg');"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Dalston, London &nbsp;·&nbsp; Home Cooking With Heart</p>
-      <h1 class="hero-title">Mama's Kitchen</h1>
-      <p class="hero-sub">Home-cooked comfort that brings families together</p>
-
-      <!-- Rating Badge -->
-      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:2rem;flex-wrap:wrap;">
-        <span id="openBadge" style="background:#4caf50;color:#fff;font-size:0.78rem;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.05em;display:inline-flex;align-items:center;gap:5px;">
-          <span class="badge-dot" style="width:7px;height:7px;border-radius:50%;background:#fff;display:inline-block;"></span> Open Now
-        </span>
-        <span class="stars" style="color:#f5c518;font-size:1rem;">★★★★☆</span>
-        <span class="rating-val" style="color:#fff;font-weight:700;font-size:0.95rem;">3.8</span>
-        <span id="ratingCounter" data-rating="3.8" data-count="58" style="color:rgba(255,255,255,0.75);font-size:0.85rem;">58 Google reviews</span>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-left">
+      <div>
+        <div class="logo">Mama’s Kitchen</div>
+        <div class="hero-badges">
+          <span class="badge">Restaurant</span>
+          <span class="badge">Dalston, London</span>
+          
+        </div>
       </div>
-
-      <div class="hero-cta-group">
-        <a class="btn-primary" href="tel:07506 166871">📞 Reserve a Table</a>
-        <a class="btn-outline" href="#menu">View Our Menu</a>
+      <div>
+        <h1 class="hero-tagline">Home-cooked comfort that surprises <span>and</span> delights</h1>
+        <p class="hero-desc">Mama's Kitchen brings authentic, heartfelt cooking to the heart of Dalston. We believe in simple ingredients prepared with care, creating dishes that feel like coming home. Every plate tells a story of passion, warmth, and genuine hospitality.</p>
+        <div class="rating-counter" id="ratingCounter" data-rating="3.8" data-count="58">⭐ 3.8 · 58 Google reviews</div>
+        <div class="open-badge" id="openBadge"></div>
       </div>
-
-      <div class="hero-scroll-hint" style="margin-top:3rem;color:rgba(255,255,255,0.6);font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;">
-        Scroll to explore ↓
+      <nav class="hero-nav">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#visit">Visit</a>
+        <a href="tel:07506 166871" class="btn-reserve"><i class="fa fa-phone" style="font-size:0.72rem"></i>&nbsp; Reserve</a>
+      </nav>
+    </div>
+    <div class="hero-right">
+      <div class="mockup">
+        <img src="images/img_1.jpg" alt="Mama’s Kitchen"/>
+        <div class="mockup-overlay">
+          <div class="m-name">Mama’s Kitchen</div>
+          <div class="m-sub">Restaurant · Dalston, London</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       FEATURES / ABOUT SECTION
-  ═══════════════════════════════════════════ -->
-  <section class="features-section section-wrap" id="features">
-    <div class="section-head" data-aos="fade-up">
-      <p class="section-eyebrow">Our Story</p>
-      <h2 class="section-title">Cooked with love, served with soul</h2>
-      <div class="divider"></div>
-      <p class="section-desc">Mama's Kitchen is a warm, welcoming restaurant in the heart of Dalston serving heartfelt dishes made with genuine care. We believe in simple, honest food that tastes like it was prepared by someone who loves feeding people. Every plate that leaves our kitchen carries the same devotion you'd find in a home-cooked meal.</p>
+  <div class="social-bar">
+    <span>Connect</span>
+    <div class="social-icons">
+      <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/07506166871" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://maps.google.com/?cid=11548967677829249499" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
     </div>
+    <div class="tags-row"><span class="tag">Dine In</span> <span class="tag">Takeaway</span> <span class="tag">Delivery</span></div>
+    <a href="tel:07506 166871" class="call-link"><i class="fa fa-phone"></i> 07506 166871</a>
+  </div>
 
-    <div class="features-grid">
-      <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="feature-icon">🏡</div>
-        <h3>Family First</h3>
-        <p>We cook for everyone—from curious first-timers to loyal regulars—because great food brings people closer together.</p>
-      </div>
-      <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-icon">🌿</div>
-        <h3>Quality Ingredients</h3>
-        <p>We source the finest fresh ingredients to ensure every dish reflects our commitment to authentic, flavourful cooking.</p>
-      </div>
-      <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="feature-icon">💛</div>
-        <h3>Hospitality with Heart</h3>
-        <p>Your comfort and satisfaction are what matter most; we treat every guest like family.</p>
-      </div>
-    </div>
-
-    <!-- Service badges -->
-    <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2.5rem;" data-aos="fade-up">
-      <span style="background:#f5efe8;color:#8b5e3c;font-size:0.82rem;font-weight:600;padding:6px 16px;border-radius:30px;border:1px solid #d4a97a;">🍽️ Dine-In</span>
-      <span style="background:#f5efe8;color:#8b5e3c;font-size:0.82rem;font-weight:600;padding:6px 16px;border-radius:30px;border:1px solid #d4a97a;">🥡 Takeaway</span>
-      <span style="background:#f5efe8;color:#8b5e3c;font-size:0.82rem;font-weight:600;padding:6px 16px;border-radius:30px;border:1px solid #d4a97a;">🚴 Delivery</span>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════
-       MENU SECTION — photo-cards style
-  ═══════════════════════════════════════════ -->
-  <section class="section-wrap" id="menu" style="background:#fdf8f4;">
-    <div class="section-head" data-aos="fade-up">
-      <p class="section-eyebrow">What We Serve</p>
-      <h2 class="section-title">Our Menu</h2>
-      <div class="divider"></div>
-      <p class="section-desc">Simple, honest dishes made with love — just like home.</p>
-    </div>
-
-    <!-- STARTERS -->
-    <div style="max-width:1100px;margin:0 auto 3rem;">
-      <h3 data-aos="fade-up" style="font-size:1.4rem;font-weight:700;color:#5a3e2b;margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:2px solid #d4a97a;display:inline-block;">Starters</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
-
-        <div data-aos="fade-up" data-aos-delay="0" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:transform 0.3s;">
-          <div style="height:180px;background:linear-gradient(135deg,#c8956c,#e8c49a);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🥙</div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
-              <h4 style="font-size:1.05rem;font-weight:700;color:#3b2a1a;margin:0;flex:1;">Mama's Homemade Hummus</h4>
-              <span style="color:#8b5e3c;font-weight:700;font-size:1rem;margin-left:1rem;white-space:nowrap;">£5.50</span>
-            </div>
-            <p style="color:#7a6558;font-size:0.88rem;margin:0;line-height:1.5;">Creamy chickpea dip served with warm flatbread and fresh vegetables</p>
-          </div>
+  <section class="about" id="about">
+    <div class="section-wrap">
+      <div class="about-grid">
+        <div data-aos="fade-right">
+          <p class="section-label">Our Philosophy</p>
+          <h2 class="section-title">Food that brings people to the same table</h2>
+          <p class="about-body">Mama's Kitchen brings authentic, heartfelt cooking to the heart of Dalston. We believe in simple ingredients prepared with care, creating dishes that feel like coming home. Every plate tells a story of passion, warmth, and genuine hospitality.</p>
         </div>
-
-        <div data-aos="fade-up" data-aos-delay="100" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:transform 0.3s;">
-          <div style="height:180px;background:linear-gradient(135deg,#c9824e,#f0c090);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🦑</div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
-              <h4 style="font-size:1.05rem;font-weight:700;color:#3b2a1a;margin:0;flex:1;">Crispy Calamari</h4>
-              <span style="color:#8b5e3c;font-weight:700;font-size:1rem;margin-left:1rem;white-space:nowrap;">£6.50</span>
-            </div>
-            <p style="color:#7a6558;font-size:0.88rem;margin:0;line-height:1.5;">Golden-fried squid rings with lemon aioli and a squeeze of fresh lemon</p>
-          </div>
+        <div class="about-values" data-aos="fade-left" data-aos-delay="100">
+          <div class="value-item"><span class="value-num">01</span><div><h3>Quality Ingredients</h3><p>We source the finest fresh produce to ensure every dish tastes as good as it should.</p></div></div>
+          <div class="value-item"><span class="value-num">02</span><div><h3>Family First</h3><p>Our kitchen is built on the belief that great food brings people together and creates lasting memories.</p></div></div>
+          <div class="value-item"><span class="value-num">03</span><div><h3>Authentic Flavours</h3><p>We honour traditional recipes while adding our own touch of warmth and creativity.</p></div></div>
         </div>
-
-        <div data-aos="fade-up" data-aos-delay="200" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:transform 0.3s;">
-          <div style="height:180px;background:linear-gradient(135deg,#9b4f5a,#e8a0a8);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🥗</div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
-              <h4 style="font-size:1.05rem;font-weight:700;color:#3b2a1a;margin:0;flex:1;">Roasted Beet &amp; Goat Cheese Salad</h4>
-              <span style="color:#8b5e3c;font-weight:700;font-size:1rem;margin-left:1rem;white-space:nowrap;">£5.95</span>
-            </div>
-            <p style="color:#7a6558;font-size:0.88rem;margin:0;line-height:1.5;">Sweet roasted beets, tangy goat cheese, candied walnuts, and house vinaigrette</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- MAINS -->
-    <div style="max-width:1100px;margin:0 auto 3rem;">
-      <h3 data-aos="fade-up" style="font-size:1.4rem;font-weight:700;color:#5a3e2b;margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:2px solid #d4a97a;display:inline-block;">Mains</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
-
-        <div data-aos="fade-up" data-aos-delay="0" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-          <div style="height:180px;background:linear-gradient(135deg,#6b3a2a,#c07850);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍲</div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
-              <h4 style="font-size:1.05rem;font-weight:700;color:#3b2a1a;margin:0;flex:1;">Slow-Cooked Beef Stew</h4>
-              <span style="color:#8b5e3c;font-weight:700;font-size:1rem;margin-left:1rem;white-space:nowrap;">£14.95</span>
-            </div>
-            <p style="color:#7a6558;font-size:0.88rem;margin:0;line-height:1.5;">Tender beef in rich gravy with root vegetables, served with creamy mashed potato</p>
-          </div>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="100" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-          <div style="height:180px;background:linear-gradient(135deg,#2e6b6e,#6ab8be);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🐟</div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
-              <h4 style="font-size:1.05rem;font-weight:700;color:#3b2a1a;margin:0;flex:1;">Pan-Seared Salmon</h4>
-              <span style="color:#8b5e3c;font-weight:700;font-size:1rem;margin-left:1rem;white-space:nowrap;">£15.50</span>
-            </div>
-            <p style="color:#7a6558;font-size:0.88rem;margin:0;line-height:1.5;">Fresh Atlantic salmon with seasonal vegetables and a light dill cream sauce</p>
-          </div>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="200" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-          <div style="height:180px;background:linear-gradient(135deg,#8b4513,#d4915c);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍝</div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
-              <h4 style="font-size:1.05rem;font-weight:700;color:#3b2a1a;margin:0;flex:1;">Mama's Signature Pasta Bolognese</h4>
-              <span style="color:#8b5e3c;font-weight:700;font-size:1rem;margin-left:1rem;white-space:nowrap;">£12.95</span>
-            </div>
-            <p style="color:#7a6558;font-size:0.88rem;margin:0;line-height:1.5;">Handmade tagliatelle with slow-simmered meat sauce and aged Parmesan</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DESSERTS -->
-    <div style="max-width:1100px;margin:0 auto 2rem;">
-      <h3 data-aos="fade-up" style="font-size:1.4rem;font-weight:700;color:#5a3e2b;margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:2px solid #d4a97a;display:inline-block;">Desserts</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
-
-        <div data-aos="fade-up" data-aos-delay="0" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-          <div style="height:180px;background:linear-gradient(135deg,#3b1a0d,#8b4513);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍫</div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
-              <h4 style="font-size:1.05rem;font-weight:700;color:#3b2a1a;margin:0;flex:1;">Warm Chocolate Torte</h4>
-              <span style="color:#8b5e3c;font-weight:700;font-size:1rem;margin-left:1rem;white-space:nowrap;">£6.50</span>
-            </div>
-            <p style="color:#7a6558;font-size:0.88rem;margin:0;line-height:1.5;">Decadent chocolate cake with molten centre, served with vanilla ice cream</p>
-          </div>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="100" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-          <div style="height:180px;background:linear-gradient(135deg,#b8a400,#f0e070);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍋</div>
-          <div style="padding:1.25rem;">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
-              <h4 style="font-size:1.05rem;font-weight:700;color:#3b2a1a;margin:0;flex:1;">Lemon Posset</h4>
-              <span style="color:#8b5e3c;font-weight:700;font-size:1rem;margin-left:1rem;white-space:nowrap;">£5.95</span>
-            </div>
-            <p style="color:#7a6558;font-size:0.88rem;margin:0;line-height:1.5;">Classic creamy lemon dessert with shortbread biscuits</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <p style="text-align:center;color:#9e8878;font-size:0.82rem;margin-top:1.5rem;font-style:italic;">* Sample menu for reference. Please contact us for today's full menu.</p>
-    <div style="text-align:center;margin-top:2rem;" data-aos="fade-up">
-      <a class="btn-primary" href="tel:07506 166871" style="display:inline-block;padding:0.85rem 2.2rem;background:#8b5e3c;color:#fff;border-radius:30px;font-weight:700;text-decoration:none;font-size:0.95rem;">📞 Call to Order — 07506 166871</a>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════
-       GALLERY SECTION — full-bleed-photo-strip
-  ═══════════════════════════════════════════ -->
-  <section class="section-wrap" id="gallery" style="padding-top:4rem;padding-bottom:0;overflow:hidden;">
-    <div class="section-head" data-aos="fade-up" style="margin-bottom:2rem;">
-      <p class="section-eyebrow">Our Space</p>
-      <h2 class="section-title">A Taste of the Atmosphere</h2>
-      <div class="divider"></div>
-    </div>
-
-    <!-- image-text-alternating block 1 -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;min-height:420px;max-width:100%;" data-aos="fade-right">
-      <div style="background-image:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80');background-size:cover;background-position:center;"></div>
-      <div style="background:#5a3e2b;display:flex;align-items:center;justify-content:center;padding:3rem;">
-        <div style="color:#fff;max-width:380px;">
-          <p style="color:#d4a97a;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:1rem;">Our Kitchen</p>
-          <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;line-height:1.3;">Every dish tells a story</h3>
-          <p style="color:rgba(255,255,255,0.8);line-height:1.7;font-size:0.95rem;">From the first chop to the final garnish, we pour our hearts into every plate — because food made with love tastes completely different.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- image-text-alternating block 2 (reversed) -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;min-height:420px;max-width:100%;" data-aos="fade-left">
-      <div style="background:#f5efe8;display:flex;align-items:center;justify-content:center;padding:3rem;">
-        <div style="max-width:380px;">
-          <p style="color:#8b5e3c;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:1rem;">The Experience</p>
-          <h3 style="font-size:1.8rem;font-weight:700;color:#3b2a1a;margin-bottom:1rem;line-height:1.3;">Warmth in every corner</h3>
-          <p style="color:#7a6558;line-height:1.7;font-size:0.95rem;">Step inside and feel at home. Our welcoming space in Dalston is designed for lingering over good food and even better conversation.</p>
-          <a href="tel:07506 166871" style="display:inline-block;margin-top:1.5rem;padding:0.75rem 1.8rem;background:#8b5e3c;color:#fff;border-radius:30px;font-weight:700;text-decoration:none;font-size:0.9rem;">Book a Table</a>
-        </div>
-      </div>
-      <div style="background-image:url('images/img_1.jpg');background-size:cover;background-position:center;"></div>
-    </div>
-
-    <!-- full-bleed-photo-strip -->
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);height:220px;margin-top:4px;" data-aos="fade-up">
-      <div style="background-image:url('images/img_2.jpg');background-size:cover;background-position:center;filter:brightness(0.88);transition:filter 0.3s;"></div>
-      <div style="background-image:url('images/img_3.jpg');background-size:cover;background-position:center;filter:brightness(0.88);"></div>
-      <div style="background:#c07850;display:flex;align-items:center;justify-content:center;"><span style="font-size:4rem;">🍽️</span></div>
-      <div style="background:#8b5e3c;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:1rem;text-align:center;">
-        <p style="color:#fff;font-size:1rem;font-weight:700;margin:0 0 0.5rem;">Visit Us Today</p>
-        <p style="color:rgba(255,255,255,0.8);font-size:0.8rem;margin:0;">Dalston, London</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       REVIEWS SECTION — card-grid style
-  ═══════════════════════════════════════════ -->
-  <section class="section-wrap" style="background:#fdf8f4;padding-top:5rem;padding-bottom:5rem;">
-    <div class="section-head" data-aos="fade-up">
-      <p class="section-eyebrow">What Guests Say</p>
-      <h2 class="section-title">Google Reviews</h2>
-      <div class="divider"></div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-top:0.5rem;">
-        <span style="color:#f5c518;font-size:1.3rem;">★★★★☆</span>
-        <span style="font-size:1.2rem;font-weight:700;color:#3b2a1a;">3.8</span>
-        <span style="color:#9e8878;font-size:0.9rem;">· 58 Google reviews</span>
+  <section class="reviews">
+    <div class="section-wrap">
+      <p class="section-label" data-aos="fade-up">What guests say</p>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">⭐ 3.8 · 58 Google reviews</h2>
+      <div class="reviews-grid">
+        <div data-aos="fade-up" data-aos-delay="0"><div class="review-card"><div class="review-stars">⭐</div><p class="review-text">"Worst Jamaican food I have ever had, I was really looking forward to trying some Jerk Chicken and Rice & Peas for my diner and so I ordered it through uber. I couldn't cut my knife through the chicken meat as it was tough, burnt and definitely not fresh. I was absolutely disguste"</p><span class="review-author">— Amid Rahman · 3 years ago</span></div><div data-aos="fade-up" data-aos-delay="100"><div class="review-card"><div class="review-stars">⭐</div><p class="review-text">"Absolutely 💯  starving I ate the 2 spinners 2 pice of carrot and a small mouthful of yam!!!! This was a large soup wow!!! This was not soup it was juice wid da bottom of the pot ,I rang and just got rudnesss £5 .50 for juce,oh they guy had the cheek to say you need to request mor"</p><span class="review-author">— Yvonne Golding · 2 years ago</span></div><div data-aos="fade-up" data-aos-delay="200"><div class="review-card"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"I don’t often write reviews but this was a must! I’m always skeptical on trying new places but me & my daughter gave this a go. We were overly, pleasantly & very happy with trying your delicious food! The flavours were on point! There were no spillages, wrapped nicely, arrived ho"</p><span class="review-author">— susan charman · a year ago</span></div></div>
       </div>
     </div>
+  </section>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;">
+  <section class="menu" id="menu">
+    <div class="section-wrap">
+      <div class="menu-header" data-aos="fade-up">
+        <div><p class="section-label">What we serve</p><h2 class="section-title">A taste of the menu</h2></div>
+        <span class="menu-note">Seasonal · Prices incl. VAT</span>
+      </div>
+      <div class="menu-grid" data-aos="fade-up" data-aos-delay="100"><div class="menu-category"><p class="cat-name">To Start</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Homemade Soup of the Day</div><div class="item-desc">Seasonal vegetables simmered to comfort</div></div><span class="item-price">£5.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Crispy Arancini</div><div class="item-desc">Golden risotto balls with melting centre</div></div><span class="item-price">£6.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Fresh Bruschetta</div><div class="item-desc">Toasted bread with tomato, basil and garlic</div></div><span class="item-price">£5.00</span></div></div><div class="menu-category"><p class="cat-name">Main Plates</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Mama's Signature Stew</div><div class="item-desc">Slow-cooked beef with root vegetables and herbs</div></div><span class="item-price">£14.00</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Pan-Seared Fish</div><div class="item-desc">Fresh catch with lemon butter and seasonal greens</div></div><span class="item-price">£15.50</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Rustic Pasta Bake</div><div class="item-desc">Layered pasta with rich tomato sauce and mozzarella</div></div><span class="item-price">£13.00</span></div></div><div class="menu-category"><p class="cat-name">Desserts</p><div class="menu-item"><div class="menu-item-left"><div class="item-name">Chocolate Comfort Pudding</div><div class="item-desc">Warm chocolate sponge with custard</div></div><span class="item-price">£6.00</span></div><div class="menu-item"><div class="menu-item-left"><div class="item-name">Homemade Apple Crumble</div><div class="item-desc">Baked apples with buttery oat topping and cream</div></div><span class="item-price">£5.50</span></div></div></div>
+      <p class="menu-disclaimer">* Sample menu for reference. Please contact us for today's full menu.</p>
+    </div>
+  </section>
 
-      <div data-aos="fade-up" data-aos-delay="0" style="background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.07);position:relative;">
-        <div style="color:#f5c518;font-size:0.9rem;margin-bottom:0.75rem;">★☆☆☆☆</div>
-        <p style="color:#5a4a3a;font-size:0.9rem;line-height:1.7;font-style:italic;margin-bottom:1rem;">"Worst Jamaican food I have ever had, I was really looking forward to trying some Jerk Chicken and Rice &amp; Peas for my diner and so I ordered it through uber. I couldn't cut my knife..."</p>
-        <div style="display:flex;align-items:center;gap:0.75rem;border-top:1px solid #f0e8de;padding-top:1rem;">
-          <div style="width:36px;height:36px;border-radius:50%;background:#c07850;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;">AR</div>
-          <span style="font-weight:600;color:#3b2a1a;font-size:0.88rem;">Amid Rahman</span>
+  <section class="visit" id="visit">
+    <div class="section-wrap">
+      <p class="section-label" data-aos="fade-up">Find Us</p>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Come visit</h2>
+      <div class="visit-grid">
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="0">
+          <p class="vb-label">Address</p>
+          <p>1 Winchester Pl, London E8 2PJ, UK</p>
+          <a href="https://maps.google.com/?cid=11548967677829249499" target="_blank" style="margin-top:0.5rem;color:var(--accent)"><i class="fab fa-google" style="font-size:0.75rem"></i> View on Google Maps</a>
+        </div>
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="100">
+          <p class="vb-label">Opening Hours</p>
+          <div class="hour-row"><span>Mon</span><span>Closed</span></div>
+<div class="hour-row"><span>Tue</span><span>11:00 AM – 11:30 PM</span></div>
+<div class="hour-row"><span>Wed</span><span>11:00 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Thu</span><span>11:00 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Fri</span><span>11:00 AM – 11:00 PM</span></div>
+<div class="hour-row"><span>Sat</span><span>11:00 AM – 12:00 AM</span></div>
+<div class="hour-row"><span>Sun</span><span>11:00 AM – 11:00 PM</span></div>
+        </div>
+        <div class="visit-block" data-aos="fade-up" data-aos-delay="200">
+          <p class="vb-label">Reservations</p>
+          <a href="tel:07506 166871"><i class="fa fa-phone" style="font-size:0.75rem"></i> 07506 166871</a>
+          <a href="https://wa.me/07506166871" target="_blank" style="margin-top:0.3rem"><i class="fab fa-whatsapp" style="font-size:0.75rem"></i> WhatsApp us</a>
         </div>
       </div>
+      <a href="https://maps.google.com/?cid=11548967677829249499" target="_blank" class="directions-btn" data-aos="fade-up" data-aos-delay="150"><i class="fab fa-google"></i> Get Directions on Google Maps</a>
+    </div>
+  </section>
 
-      <div data-aos="fade-up" data-aos-delay="100" style="background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.07);position:relative;">
-        <div style="color:#f5c518;font-size:0.9rem;margin-bottom:0.75rem;">★☆☆☆☆</div>
-        <p style="color:#5a4a3a;font-size:0.9rem;line-height:1.7;font-style:italic;margin-bottom:1rem;">"Absolutely 💯 starving I ate the 2 spinners 2 pice of carrot and a small mouthful of yam!!!! This was a large soup wow!!! This was not soup it was juice wid da bottom of the pot..."</p>
-        <div style="display:flex;align-items:center;gap:0.75rem;border-top:1px solid #f0e8de;padding-top:1rem;">
-          <div style="width:36px;height:36px;border-radius:50%;background:#8b5e3c;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;">YG</div>
-          <span style="font-weight:600;color:#3b2a1a;font-size:0.88rem;">Yvonne Golding</span>
-        </div>
-      </div>
+  <footer>
+    <span>© 2025 Mama’s Kitchen</span>
+    <span>1 Winchester Pl, London E8 2PJ, UK</span>
+  </footer>
 
-      <div data-aos="fade-up" data-aos-delay="200" style="background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.07);position:relative;border:2px solid #d4a97a;">
-        <div style="position:absolute;top:-10px;left:1.5rem;background:#8b5e3c;color:#fff;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:0.05em;">⭐ FEATURED</div>
-        <div style="color:#f5c518;font-size:0.9rem;margin-bottom:0.75rem;">★★★★★</div>
-        <p style="color:#5a4a3a;font-size:0.9rem;line-height:1.7;font-style:italic;margin-bottom:1
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-try{AOS.init({duration:600,once:true,offset:0,easing:'ease-out-cubic'});}catch(e){}
+  <a href="tel:07506 166871" class="float-call" id="floatCall"><i class="fa fa-phone"></i> Call to Reserve</a>
 
-// AOS fallback: force all elements visible immediately (prevents blank sections on slow networks)
-document.querySelectorAll('[data-aos]').forEach(function(el){
-  el.classList.add('aos-animate');
-  el.style.opacity='1';
-  el.style.transform='none';
-});
-
-// Sticky nav on scroll past hero
-(function(){
-  const nav=document.getElementById('stickyNav');
-  const hero=document.querySelector('section,header,.hero,[class*="hero"]');
-  if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(hero);
-})();
-
-// Open/Closed badge
-(function(){
-  const HOURS={"Monday": "Closed", "Tuesday": "11:00 AM – 11:30 PM", "Wednesday": "11:00 AM – 11:00 PM", "Thursday": "11:00 AM – 11:00 PM", "Friday": "11:00 AM – 11:00 PM", "Saturday": "11:00 AM – 12:00 AM", "Sunday": "11:00 AM – 11:00 PM"};
-  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const day=days[new Date().getDay()],raw=HOURS[day]||'';
-  const badge=document.getElementById('openBadge');
-  if(!badge)return;
-  const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-  if(!m){badge.textContent='See hours';return;}
-  const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
-  const o=toM(m[1],m[2],m[3]),c=toM(m[4],m[5],m[6]),n=new Date().getHours()*60+new Date().getMinutes();
-  const open=n>=o&&n<(c<o?c+1440:c);
-  badge.textContent=open?'● Open now':'● Closed';
-  badge.style.color=open?'#22c55e':'#ef4444';
-})();
-
-// Rating counter animation
-(function(){
-  const el=document.getElementById('ratingCounter');
-  if(!el)return;
-  const rating=3.8,cnt=58;
-  if(!rating)return;
-  new IntersectionObserver(([e])=>{
-    if(!e.isIntersecting)return;
-    const anim=(from,to,dec,cb)=>{
-      const dur=1600;let start=null;
-      (function tick(ts){
-        if(!start)start=ts;
-        const p=Math.min((ts-start)/dur,1),v=from+(to-from)*(1-Math.pow(1-p,3));
-        cb(dec?v.toFixed(1):Math.floor(v).toLocaleString());
-        if(p<1)requestAnimationFrame(tick);
-      })(performance.now());
-    };
-    const rs=document.createElement('b'),cs=document.createElement('b');
-    el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');
-    anim(0,rating,true,v=>rs.textContent=v);
-    anim(0,cnt,false,v=>cs.textContent=v);
-  },{threshold:0.4}).observe(el);
-})();
-
-// Ripple on CTA buttons
-document.querySelectorAll('a[href^="tel:"],a[href^="https://wa.me"]').forEach(btn=>{
-  btn.addEventListener('click',function(e){
-    const r=document.createElement('span'),rect=this.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
-    Object.assign(r.style,{position:'absolute',borderRadius:'50%',width:sz+'px',height:sz+'px',
-      left:(e.clientX-rect.left-sz/2)+'px',top:(e.clientY-rect.top-sz/2)+'px',
-      background:'rgba(255,255,255,.3)',transform:'scale(0)',animation:'_ripple .6s linear',pointerEvents:'none'});
-    this.style.cssText+='position:relative;overflow:hidden;';
-    this.append(r);setTimeout(()=>r.remove(),700);
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+  // ── AOS（スクロールアニメーション）──────────────────
+  AOS.init({ duration: 600, once: true, offset: 0, easing: 'ease-out-cubic' });
+  // AOS fallback: force all elements visible immediately
+  document.querySelectorAll('[data-aos]').forEach(function(el) {
+    el.classList.add('aos-animate');
+    el.style.opacity = '1';
+    el.style.transform = 'none';
   });
-});
-</script>
-<style>@keyframes _ripple{to{transform:scale(4);opacity:0;}}</style>
+
+  // ── Parallax（ヒーロー背景）──────────────────────────
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      heroBg.style.transform = `translateY(${y * 0.38}px)`;
+    }, { passive: true });
+  }
+
+  // ── Sticky Header ────────────────────────────────────
+  const stickyHeader = document.getElementById('stickyHeader');
+  const hero = document.querySelector('.hero');
+  if (stickyHeader && hero) {
+    const observer = new IntersectionObserver(
+      ([entry]) => stickyHeader.classList.toggle('visible', !entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(hero);
+  }
+
+  // ── 営業中バッジ ──────────────────────────────────────
+  const HOURS = {"Monday": "Closed", "Tuesday": "11:00 AM – 11:30 PM", "Wednesday": "11:00 AM – 11:00 PM", "Thursday": "11:00 AM – 11:00 PM", "Friday": "11:00 AM – 11:00 PM", "Saturday": "11:00 AM – 12:00 AM", "Sunday": "11:00 AM – 11:00 PM"};
+  function computeOpenStatus() {
+    const now  = new Date();
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const day  = days[now.getDay()];
+    const raw  = HOURS[day] || '';
+    if (!raw || raw.toLowerCase() === 'closed') return { open: false, text: 'Closed today' };
+    const m = raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (!m) return { open: false, text: raw };
+    const toMin = (h, mn, ap) => ((parseInt(h) % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) * 60 + parseInt(mn);
+    const openMin  = toMin(m[1], m[2], m[3]);
+    const closeMin = toMin(m[4], m[5], m[6]);
+    const nowMin   = now.getHours() * 60 + now.getMinutes();
+    const effectiveClose = closeMin < openMin ? closeMin + 1440 : closeMin;
+    const isOpen   = nowMin >= openMin && nowMin < effectiveClose;
+    const closeH   = parseInt(m[4]), closeMn = m[5], closeAP = m[6];
+    return {
+      open: isOpen,
+      text: isOpen ? `Open now · Closes ${closeH}:${closeMn} ${closeAP}` : `Closed · Opens ${m[1]}:${m[2]} ${m[3]}`
+    };
+  }
+  function renderBadge(el, status) {
+    if (!el) return;
+    el.className = 'open-badge ' + (status.open ? 'open' : 'closed');
+    el.innerHTML = `<span class="dot"></span> ${status.text}`;
+  }
+  const status = computeOpenStatus();
+  renderBadge(document.getElementById('openBadge'), status);
+  const stickyBadge = document.getElementById('stickyBadge');
+  if (stickyBadge) {
+    stickyBadge.className = 'sticky-open ' + (status.open ? 'open' : 'closed');
+    stickyBadge.textContent = status.open ? '● Open' : '● Closed';
+  }
+
+  // ── カウンターアニメーション ──────────────────────────
+  function animateCounter(el, target, isDecimal) {
+    let start = 0, duration = 1800, startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const val = start + (target - start) * ease;
+      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val).toLocaleString();
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const ratingEl = document.getElementById('ratingCounter');
+  if (ratingEl && 3.8) {
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        io.disconnect();
+        const rating = 3.8, count = 58;
+        const rSpan = document.createElement('span');
+        const cSpan = document.createElement('span');
+        ratingEl.innerHTML = '';
+        ratingEl.appendChild(document.createTextNode('⭐ '));
+        rSpan.textContent = '0.0';
+        ratingEl.appendChild(rSpan);
+        ratingEl.appendChild(document.createTextNode(' · '));
+        cSpan.textContent = '0';
+        ratingEl.appendChild(cSpan);
+        ratingEl.appendChild(document.createTextNode(' Google reviews'));
+        animateCounter(rSpan, rating, true);
+        animateCounter(cSpan, count, false);
+      }
+    }, { threshold: 0.5 });
+    io.observe(ratingEl);
+  }
+
+  // ── リップルエフェクト ────────────────────────────────
+  document.querySelectorAll('.btn-reserve, .float-call, .sticky-cta').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const r = document.createElement('span');
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      r.className = 'ripple';
+      r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
+      this.appendChild(r);
+      setTimeout(() => r.remove(), 700);
+    });
+  });
+
+  // ── タイプライター（タグライン）────────────────────────
+  const tagline = document.querySelector('.hero-tagline');
+  if (tagline) {
+    const full = tagline.innerHTML;
+    tagline.innerHTML = '';
+    tagline.style.visibility = 'visible';
+    let i = 0;
+    const chars = [...full];
+    let inTag = false;
+    function typeNext() {
+      if (i >= chars.length) return;
+      if (chars[i] === '<') inTag = true;
+      if (!inTag) {
+        tagline.innerHTML += chars[i];
+      } else {
+        let tag = '';
+        while (i < chars.length && (inTag || chars[i] !== '>')) {
+          tag += chars[i];
+          if (chars[i] === '>') inTag = false;
+          i++;
+        }
+        tagline.innerHTML += tag;
+        setTimeout(typeNext, 18);
+        return;
+      }
+      if (chars[i] === '>') inTag = false;
+      i++;
+      setTimeout(typeNext, 28);
+    }
+    setTimeout(typeNext, 600);
+  }
+  </script>
+
 </body>
 </html>
