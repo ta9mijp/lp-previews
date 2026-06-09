@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Palacess Spicy Suya Garden (Suya, Jollof Rice) - Upton Park — Stratford, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#2C1A0E;--A:#F5621E;--bg:#FFFBF7;--txt:#2C1A0E;--mut:#7A5A48;--peach:#FFE8D9;--sand:#EDD9CC}
+html{scroll-behavior:smooth}body{font-family:'Nunito',sans-serif;background:#fff;color:var(--txt);padding-top:52px;overflow-x:hidden}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(245,98,30,.97);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:#fff;font-weight:400}.proto-banner strong{font-weight:700}
+.proto-banner a{color:#fff;font-weight:700;border:1.5px solid rgba(255,255,255,.75);padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(44,26,14,.97);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#fff;font-style:italic}
+.snav-b{font-size:.67rem;font-weight:600;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.2);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.2);color:#ef4444}
+.snav-cta{background:var(--A);color:#fff;padding:.4rem 1.1rem;border-radius:50px;font-size:.76rem;font-weight:600;text-decoration:none}
+/* HERO split */
+.hero{min-height:100svh;display:grid;grid-template-columns:1fr 1fr;background:var(--peach);overflow:hidden}
+@media(max-width:700px){.hero{grid-template-columns:1fr}}
+.hero-l{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 5%;position:relative}
+@media(max-width:700px){.hero-l{padding:3rem 1.5rem 2rem;order:2}}
+.hero-tag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);margin-bottom:1.2rem;font-weight:700}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5.5vw,5rem);line-height:1.05;font-style:italic;color:var(--txt);margin-bottom:1.2rem}
+.hero-sub{font-size:.92rem;line-height:2;color:var(--mut);font-weight:300;max-width:400px;margin-bottom:1.4rem}
+.hero-rating{font-size:.82rem;color:var(--A);font-weight:600;margin-bottom:.5rem}
+#openBadge{display:inline-block;font-size:.75rem;font-weight:600;margin-bottom:1.4rem}
+.hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-or{background:var(--A);color:#fff;padding:.72rem 1.8rem;border-radius:50px;font-size:.84rem;font-weight:700;text-decoration:none;transition:background .2s;display:inline-flex;align-items:center;gap:.4rem}
+.btn-or:hover{background:#d94d10}
+.btn-outline-or{background:transparent;color:var(--txt);padding:.72rem 1.8rem;border-radius:50px;border:1.5px solid var(--txt);font-size:.84rem;font-weight:600;text-decoration:none}
+.hero-r{position:relative;display:flex;align-items:center;justify-content:center;background:var(--peach);overflow:hidden}
+@media(max-width:700px){.hero-r{height:70vw;order:1}}
+.hero-float-img{width:min(85%,380px);aspect-ratio:3/4;object-fit:cover;border-radius:12px;transform:rotate(-3deg);box-shadow:0 25px 60px rgba(44,26,14,.2);transition:transform .4s}
+.hero-float-img:hover{transform:rotate(0deg) scale(1.02)}
+.hero-r-deco{position:absolute;bottom:-30px;right:-30px;width:180px;height:180px;border-radius:50%;background:rgba(245,98,30,.12)}
+/* ABOUT */
+.about{padding:7rem 5%;background:var(--bg)}
+@media(max-width:700px){.about{padding:4rem 1.5rem}}
+.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+@media(max-width:700px){.about-wrap{grid-template-columns:1fr;gap:3rem}}
+.sec-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);margin-bottom:.9rem;font-weight:700}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.8vw,3rem);font-style:italic;font-weight:400;line-height:1.2;color:var(--txt);margin-bottom:1.2rem}
+.about-text{font-size:.93rem;line-height:2;color:var(--mut);font-weight:300}
+.ph{display:flex;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--sand)}
+.ph:last-child{border-bottom:none}
+.ph-n{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--A);opacity:.5;line-height:1;flex-shrink:0;font-style:italic}
+.ph-t{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--txt);font-weight:700;margin-bottom:.25rem}
+.ph-b{font-size:.85rem;color:var(--mut);line-height:1.7;font-weight:300}
+/* MENU */
+.menu-sec{padding:7rem 5%;background:#fff}
+@media(max-width:700px){.menu-sec{padding:4rem 1.5rem}}
+.menu-wrap{max-width:1100px;margin:0 auto}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:2.5rem}
+@media(max-width:900px){.menu-grid{grid-template-columns:1fr}}
+.menu-cat{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:700;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--peach)}
+.mi{display:flex;justify-content:space-between;gap:.5rem;padding:.85rem 0;border-bottom:1px solid var(--sand)}
+.mi:last-child{border-bottom:none}.mi-l{flex:1}
+.mi-n{display:block;font-family:'Cormorant Garamond',serif;font-size:.98rem;font-weight:700;color:var(--txt)}
+.mi-d{display:block;font-size:.76rem;color:var(--mut);margin-top:.15rem;line-height:1.5;font-weight:300}
+.mi-p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--A);flex-shrink:0;font-style:italic}
+.menu-disc{font-size:.72rem;color:var(--sand);margin-top:2rem;font-style:italic}
+/* DARK CTA — Are You Ready */
+.ready-sec{padding:5rem 5%;background:var(--P);text-align:center}
+.ready-eyebrow{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,98,30,.7);margin-bottom:1rem}
+.ready-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,4rem);font-style:italic;color:#fff;margin-bottom:1.4rem;line-height:1.15}
+.ready-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-ready-wa{background:#25D366;color:#fff;padding:.8rem 2rem;border-radius:50px;font-size:.86rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+.btn-ready-ph{background:transparent;color:rgba(255,255,255,.7);padding:.8rem 2rem;border-radius:50px;border:1px solid rgba(255,255,255,.3);font-size:.86rem;font-weight:400;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+/* REVIEWS */
+.rev-sec{padding:7rem 5%;background:var(--bg)}
+@media(max-width:700px){.rev-sec{padding:4rem 1.5rem}}
+.rev-wrap{max-width:1100px;margin:0 auto}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+.rc{background:#fff;border-radius:16px;padding:1.8rem;border:1.5px solid var(--sand)}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.rc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.82rem;font-weight:600;color:var(--txt)}.rc-st{font-size:.88rem;color:var(--A)}
+.rc-tx{font-family:'Cormorant Garamond',serif;font-size:.95rem;line-height:1.85;color:var(--mut);font-style:italic;margin-bottom:.8rem}
+.rc-src{font-size:.66rem;color:#ccc}
+/* VISIT */
+.visit{padding:7rem 5%;background:#fff}
+@media(max-width:700px){.visit{padding:4rem 1.5rem}}
+.visit-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:4rem}
+@media(max-width:780px){.visit-inner{grid-template-columns:1fr;gap:2.5rem}}
+.vb-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);font-weight:700;margin-bottom:.9rem}
+.vb-addr{font-size:.9rem;color:var(--mut);line-height:1.9;font-weight:300}
+.hr-row{display:flex;justify-content:space-between;font-size:.84rem;padding:.25rem 0;border-bottom:1px solid var(--sand)}
+.hr-row:last-child{border-bottom:none}.hr-d{font-weight:600;color:var(--txt)}
+.hr-t{color:var(--mut);font-weight:300}
+.vb-link{display:block;font-size:.88rem;color:var(--mut);text-decoration:none;line-height:2.2;font-weight:300}
+.vb-link:hover{color:var(--A)}
+.dir-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.5rem;padding:.7rem 1.8rem;border:1.5px solid var(--A);color:var(--A);border-radius:50px;font-size:.82rem;font-weight:700;text-decoration:none;transition:background .2s,color .2s}
+.dir-btn:hover{background:var(--A);color:#fff}
+footer{background:var(--P);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+@media(max-width:680px){footer{padding:1.5rem;padding-bottom:5.5rem;flex-direction:column;align-items:flex-start}}
+.foot-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--A);font-style:italic}
+.foot-copy{font-size:.7rem;color:rgba(255,255,255,.25)}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.82rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.84rem;font-weight:700;text-decoration:none;box-shadow:0 6px 30px rgba(0,0,0,.22);white-space:nowrap}
+@media(min-width:700px){.float-cta{display:none!important}}
+.fu{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.fu.in{opacity:1;transform:none}
+</style><style>:root{--fu-dy:14px}.about-sec,.about{background:var(--bg)!important}.rc{border-radius:20px!important}.tab-btn,.mtab{border-radius:50px!important}</style></head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for Palacess Spicy Suya Garden (Suya, Jollof Rice) - Upton Park</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">Palacess Spicy Suya Garden (Suya, Jollof Rice) - Upton Park</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447940030930" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-l">
+    <div class="hero-tag">Restaurant · Stratford, London</div>
+    <h1 class="hero-title">Where suya smoke meets celebration table.</h1>
+    <p class="hero-sub">Palacess Spicy Suya Garden brings the bold, fire-kissed flavours of West African street grills and home kitchens to the heart of E…</p>
+    <div class="hero-rating" id="ratingCounter" data-rating="5" data-count="15">⭐ 5 · 15 Google reviews</div>
+    <span id="openBadge"></span>
+    <div class="hero-ctas">
+      <a href="https://wa.me/447940030930" class="btn-or"><i class="fab fa-whatsapp"></i> Book a Table</a>
+      <a href="#menu" class="btn-outline-or">Our Menu</a>
+    </div>
+  </div>
+  <div class="hero-r">
+    <img src="images/img_0.jpg" alt="Palacess Spicy Suya Garden (Suya, Jollof Rice) - Upton Park" class="hero-float-img" loading="eager"/>
+    <div class="hero-r-deco"></div>
+  </div>
+</section>
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="fu">
+      <p class="sec-label">Our Story</p>
+      <h2 class="sec-title">Where suya smoke meets celebration table.</h2>
+      <p class="about-text">Palacess Spicy Suya Garden brings the bold, fire-kissed flavours of West African street grills and home kitchens to the heart of East London. From wedding feasts to weeknight cravings, every order is built with the kind of care that makes guests lean across the table and ask who cooked this. Suya that bites back, jollof that lingers — this is food that earns its reputation plate by plate.</p>
+    </div>
+    <div class="fu" style="transition-delay:.1s"><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">The Suya Standard</h3><p class="ph-b">Every skewer is marinated in our house spice blend and grilled to order — never rushed, never reheated.</p></div></div>
+<div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">Jollof Without Compromise</h3><p class="ph-b">Our jollof rice is cooked low and slow over open heat, chasing that coveted smoky bottom layer every single time.</p></div></div>
+<div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">Made for Occasions</h3><p class="ph-b">Whether it's a wedding reception or a quiet Tuesday, we treat every order as the centrepiece of someone's table.</p></div></div></div>
+  </div>
+</section>
+<section class="menu-sec" id="menu">
+  <div class="menu-wrap">
+    <div class="fu"><p class="sec-label">From Our Kitchen</p><h2 class="sec-title">A taste of the menu</h2></div>
+    <div class="menu-grid fu" style="transition-delay:.1s">
+      <div><div class="menu-cat">Starters</div><div class="mi"><div class="mi-l"><span class="mi-n">Suya Skewers</span><span class="mi-d">Tender beef threaded on sticks, dusted in our signature yaji spice blend and charred over open flame. Served with sliced onion and fresh tomato.</span></div><span class="mi-p">£7</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Peppered Gizzards</span><span class="mi-d">Slow-cooked gizzards tossed in a hot, fragrant pepper sauce with scotch bonnet and bay leaf — chewy, fiery, deeply savoury.</span></div><span class="mi-p">£6</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Moi Moi</span><span class="mi-d">Steamed black-eyed pea pudding blended with peppers and onion, finished with a ribbon of egg and smoked fish through the centre.</span></div><span class="mi-p">£5</span></div></div>
+      <div><div class="menu-cat">Mains</div><div class="mi"><div class="mi-l"><span class="mi-n">Signature Jollof Rice</span><span class="mi-d">Party-style jollof cooked in seasoned tomato base with a deliberate smoky crust, served with your choice of grilled chicken or beef.</span></div><span class="mi-p">£13</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Egusi Soup & Eba</span><span class="mi-d">Ground melon seed soup cooked with leafy greens, stockfish, and assorted meat in a rich palm oil base — served with smooth, firm eba.</span></div><span class="mi-p">£14</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Ofada Rice & Ayamase Stew</span><span class="mi-d">Unpolished local rice paired with a potent green pepper stew loaded with assorted offal and wrapped in banana leaf for serving.</span></div><span class="mi-p">£15</span></div></div>
+      <div><div class="menu-cat">Desserts</div><div class="mi"><div class="mi-l"><span class="mi-n">Chin Chin Crumble</span><span class="mi-d">Crunchy fried dough bites served warm with a honey and condensed milk drizzle — nostalgic, simple, and deeply satisfying.</span></div><span class="mi-p">£5</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Puff Puff & Dipping Sauce</span><span class="mi-d">Pillowy deep-fried dough balls with a hint of nutmeg, served alongside a spiced mango and ginger dipping sauce.</span></div><span class="mi-p">£5</span></div></div>
+    </div>
+    <p class="menu-disc">Sample menu for reference · full menu available on request</p>
+  </div>
+</section>
+<section class="ready-sec fu">
+  <p class="ready-eyebrow">What are you waiting for?</p>
+  <h2 class="ready-title">Are You Ready To Order?</h2>
+  <div class="ready-btns">
+    <a href="https://wa.me/447940030930" target="_blank" class="btn-ready-wa"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a>
+    <a href="tel:+447940030930" class="btn-ready-ph"><i class="fa fa-phone"></i> Call Us</a>
+  </div>
+</section>
+<section class="rev-sec" id="reviews"><div class="rev-wrap"><div class="fu"><p class="sec-label">What Guests Say</p><h2 class="sec-title">⭐ 5 · 15 Google reviews</h2></div><div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#F5621E">HA</div><div><div class="rc-nm">Herve Alonge</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"I ordered Jellof rice and Suya for my wedding reception. The quality was great, many of my guests wondered as to who made this Jellof and hot spicy suya! The food was dropped off as arranged and was c"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#2C1A0E">JO</div><div><div class="rc-nm">Jocelyn Okonkwo</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"I absolutely love the set menus and general services here and also appreciate the option to make requests for special orders. The egusi soup I ordered was so tasty and my friends thoroughly enjoyed. O"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#B84A18">TI</div><div><div class="rc-nm">Tony Inegbedion</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Had an outdoor barbecue and all guests raved about how good the food was. The suya catered to the meat lovers and there was a choice of options for vegetarians. In addition, the staff were lovely and "</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div></div></section>
+<section class="visit" id="visit">
+  <div class="visit-inner">
+    <div class="fu"><p class="vb-label">Address</p><p class="vb-addr">Unit D3, Rani Bazaar, Queen's Rd, London E13 9BA, UK</p><a href="https://maps.google.com/?cid=11315313280940546517" target="_blank" class="dir-btn"><i class="fab fa-google"></i> Get Directions</a></div>
+    <div class="fu" style="transition-delay:.05s"><p class="vb-label">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:var(--sand)">Closed</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--sand)">Closed</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--sand)">Closed</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--sand)">Closed</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--sand)">Closed</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">2:00 – 8:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--sand)">Closed</span></div></div>
+    <div class="fu" style="transition-delay:.1s"><p class="vb-label">Contact</p><a href="tel:+447940030930" class="vb-link"><i class="fa fa-phone"></i> 07940 030930</a><a href="https://wa.me/447940030930" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+  </div>
+</section>
+<footer>
+  <span class="foot-name">Palacess Spicy Suya Garden (Suya, Jollof Rice) - Upton Park</span>
+  <span class="foot-copy">© 2025 Palacess Spicy Suya Garden (Suya, Jollof Rice) - Upton Park · Unit D3, Rani Bazaar, Queen's Rd, London E13 9BA, UK</span>
+</footer>
+<a class="float-cta" href="https://wa.me/447940030930" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+<script>
+/* ── IntersectionObserver reveal ── */
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+/* ── Sticky nav ── */
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+/* ── Hero stagger entrance ── */
+(function(){
+  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
+              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
+              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
+  const seen=new Set(); let i=0;
+  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
+    if(seen.has(el))return; seen.add(el);
+    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
+    i++;
+  }));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+  }));
+})();
+/* ── Parallax hero ── */
+(function(){
+  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
+  if(!bg||window.innerWidth<700)return;
+  let tk=false;
+  window.addEventListener('scroll',()=>{
+    if(!tk){requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      bg.style.transform='translateY('+(y*0.32)+'px)';
+      tk=false;
+    });tk=true;}
+  },{passive:true});
+})();
+/* ── Open/close badge ── */
+(function(){const H={"Monday": "Closed", "Tuesday": "Closed", "Wednesday": "Closed", "Thursday": "Closed", "Friday": "Closed", "Saturday": "2:00 – 8:00 PM", "Sunday": "Closed"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+/* ── Hero tone line ── */
+(function(){
+  const ht="Smoke, spice, celebration.";if(!ht)return;
+  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
+  const el=document.createElement('p');
+  el.className='hero-tone-line';
+  el.textContent=ht;
+  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
+  title.after(el);
+})();
+/* ── Rating counter ── */
+(function(){const el=document.getElementById('ratingCounter');if(!el||!5)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,5,true,v=>rs.textContent=v);an(0,15,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();</script>
+</body></html>
