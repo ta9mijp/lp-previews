@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Real Flavour Caribbean Takeaway — Croydon, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#1A3C2E;--A:#D4A017;--bg:#FAF5EF;--txt:#1a1a1a;--mut:#6B5B4E}
+html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);padding-top:52px}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(212,160,23,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:#1a1a1a;font-weight:500}.proto-banner strong{font-weight:700}
+.proto-banner a{color:#1a1a1a;font-weight:600;border:1.5px solid #1a1a1a;padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(26,60,46,.97);backdrop-filter:blur(10px);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#fff;font-style:italic}
+.snav-b{font-size:.68rem;font-weight:600;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.2);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.2);color:#ef4444}
+.snav-cta{background:var(--A);color:#fff;padding:.42rem 1.1rem;border-radius:50px;font-size:.76rem;font-weight:600;text-decoration:none}
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,25,18,.88) 0%,rgba(10,25,18,.45) 50%,rgba(10,25,18,.15) 100%)}
+.hero-content{position:relative;z-index:2;padding:6rem 5vw 4.5rem;width:100%}
+.hero-eyebrow{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--A);margin-bottom:1rem;font-weight:500}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,7.5vw,7rem);line-height:1;font-weight:300;font-style:italic;color:#fff;margin-bottom:1.2rem}
+.hero-sub{font-size:.95rem;line-height:1.85;color:rgba(255,255,255,.7);max-width:520px;margin-bottom:.9rem}
+#openBadge{display:inline-block;font-size:.78rem;font-weight:600;margin-bottom:1.5rem}
+.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--A);color:#fff;padding:.78rem 1.8rem;border-radius:50px;font-size:.86rem;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,160,23,.4)}
+.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);color:#fff;padding:.78rem 1.8rem;border-radius:50px;border:1.5px solid rgba(255,255,255,.4);font-size:.86rem;font-weight:400;text-decoration:none;transition:background .2s}
+.btn-secondary:hover{background:rgba(255,255,255,.2)}
+.info-bar{background:var(--P);padding:1.2rem 5vw;display:flex;gap:2rem;flex-wrap:wrap;align-items:center}
+.ib{display:flex;align-items:center;gap:.55rem;font-size:.82rem;color:rgba(255,255,255,.72)}
+.ib i{color:var(--A)}
+.ib a{color:rgba(255,255,255,.72);text-decoration:none}
+.stag{font-size:.72rem;padding:.2rem .7rem;border-radius:50px;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.65);margin-right:.35rem}
+.about-sec{padding:6rem 5vw;background:#fff}
+.about-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+@media(max-width:760px){.about-inner{grid-template-columns:1fr;gap:3rem}}
+.lbl{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
+.hdg{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;font-style:italic;line-height:1.18;color:var(--txt);margin-bottom:1.2rem}
+.body-txt{font-size:.94rem;line-height:2;color:var(--mut)}
+.ph{display:flex;gap:1.1rem;padding:1.3rem 0;border-bottom:1px solid rgba(0,0,0,.07)}
+.ph:last-child{border-bottom:none}
+.ph-n{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--A);opacity:.45;line-height:1;flex-shrink:0;min-width:2.5rem}
+.ph-t{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:.3rem}
+.ph-b{font-size:.85rem;color:var(--mut);line-height:1.75}
+.menu-sec{padding:6rem 5vw;background:var(--bg)}
+.menu-inner{max-width:1140px;margin:0 auto}
+.menu-tabs{display:flex;gap:.7rem;flex-wrap:wrap;margin:2rem 0 2.5rem}
+.tab-btn{padding:.5rem 1.3rem;border-radius:50px;border:1.5px solid rgba(0,0,0,.15);background:#fff;font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s;color:var(--mut)}
+.tab-btn.active{background:var(--P);color:#fff;border-color:var(--P)}
+.tab-panel{display:none;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.tab-panel.active{display:grid}
+@media(max-width:760px){.tab-panel.active{grid-template-columns:1fr}}
+.mc{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .25s,box-shadow .25s}
+.mc:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.1)}
+.mc-img{width:100%;height:160px;object-fit:cover;background:var(--bg)}
+.mc-body{padding:1.1rem 1.2rem 1.3rem}
+.mc-name{font-size:.95rem;font-weight:600;color:var(--txt);margin-bottom:.3rem}
+.mc-desc{font-size:.8rem;color:var(--mut);line-height:1.6;margin-bottom:.9rem}
+.mc-foot{display:flex;align-items:center;justify-content:space-between}
+.mc-price{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--A);font-weight:500}
+.mc-cta{font-size:.74rem;font-weight:600;color:var(--P);text-decoration:none;border-bottom:1.5px solid var(--P)}
+.rev-sec{padding:6rem 5vw;background:var(--P)}
+.rev-inner{max-width:1140px;margin:0 auto}
+.rev-hdg{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:#fff;margin-bottom:2.2rem}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem}
+.rc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:1.7rem}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.rc-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.82rem;font-weight:600;color:#fff}.rc-st{font-size:.9rem;color:var(--A)}
+.rc-tx{font-size:.88rem;line-height:1.8;color:rgba(255,255,255,.72);font-style:italic;margin-bottom:.8rem}
+.rc-src{font-size:.68rem;color:rgba(255,255,255,.38)}
+.visit-sec{padding:6rem 5vw;background:#fff}
+.visit-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:3rem;margin-top:2.5rem}
+.vb-lbl{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
+.hr{display:flex;justify-content:space-between;font-size:.84rem;padding:.25rem 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.hr:last-child{border-bottom:none}.hr-d{font-weight:600;color:var(--txt)}
+.vb-link{display:block;font-size:.9rem;color:var(--mut);text-decoration:none;line-height:2.1}
+.vb-link:hover{color:var(--A)}
+footer{background:var(--P);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.74rem;color:rgba(255,255,255,.35)}
+@media(max-width:680px){footer{padding-bottom:6rem}}
+@media(max-width:700px){
+  .hero-content{padding:4rem 1.4rem 5.5rem}
+  .hero-title{font-size:clamp(2.5rem,11vw,4rem)}
+  .info-bar{display:none}
+  .btn-secondary{display:none}
+  .btn-primary{width:100%;justify-content:center;padding:.85rem 1rem}
+  .about-sec{padding:3.5rem 1.4rem}
+  .menu-sec{padding:3.5rem 1.4rem}
+  .rev-sec{padding:3.5rem 1.4rem}
+  .visit-sec{padding:3.5rem 1.4rem}
+  .menu-tabs{gap:.4rem}
+  .tab-btn{font-size:.75rem;padding:.4rem 1rem}
+}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.85rem 1.9rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.86rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.3);white-space:nowrap}
+@media(min-width:700px){.float-cta{display:none!important}}
+.fu{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.fu.in{opacity:1;transform:none}
+</style>
+<style>:root{--fu-dy:14px}.about-sec,.about,.menu-sec{background:var(--bg)!important}.rc{border-radius:20px!important}.tab-btn,.mtab{border-radius:50px!important}</style>
+</head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for Real Flavour Caribbean Takeaway</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">Real Flavour Caribbean Takeaway</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447375562898" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-bg" style="will-change:transform"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Restaurant · Croydon, London</p>
+    <h1 class="hero-title">Caribbean heat, rooted deep in Croydon.</h1>
+    <p class="hero-sub">Real Flavour brings the warmth of the Caribbean straight to South London — no shortcuts, no compromise. From slow-cooked curry goat to ackee</p>
+    <div id="ratingCounter" style="color:var(--A);font-size:.88rem;font-weight:500;margin-bottom:.7rem"></div>
+    <span id="openBadge"></span>
+    <div class="hero-ctas">
+      <a href="https://wa.me/447375562898" target="_blank" class="btn-primary"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <a href="#menu" class="btn-secondary">View Menu</a>
+    </div>
+  </div>
+</section>
+<div class="info-bar">
+  <span class="stag">Dine In</span><span class="stag">Takeaway</span><span class="stag">Delivery</span>
+  <span class="ib"><i class="fab fa-whatsapp"></i><a href="https://wa.me/447375562898" target="_blank">07375 562898</a></span>
+  <span class="ib"><i class="fab fa-google"></i><a href="https://maps.google.com/?cid=17042495138067483854" target="_blank">Google Maps</a></span>
+</div>
+<section class="about-sec fu" id="about">
+  <div class="about-inner">
+    <div>
+      <p class="lbl">Our Story</p>
+      <h2 class="hdg">More than a meal — a gathering place</h2>
+      <p class="body-txt">Real Flavour brings the warmth of the Caribbean straight to South London — no shortcuts, no compromise. From slow-cooked curry goat to ackee and saltfish that tastes like Sunday morning, every dish carries the weight of tradition and the punch of proper seasoning. This is the kind of food that makes you stop mid-bite and just nod.</p>
+      <a href="https://wa.me/447375562898" target="_blank" class="btn-primary" style="margin-top:2rem;display:inline-flex"><i class="fab fa-whatsapp"></i> Reserve via WhatsApp</a>
+    </div>
+    <div><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">Seasoned Properly</h3><p class="ph-b">Every dish is built on spice blends and techniques passed down through generations, never approximated.</p></div></div>
+<div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">No Half Measures</h3><p class="ph-b">From the jerk marinade to the plantain caramelisation, patience and heat are non-negotiable here.</p></div></div>
+<div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">Croydon's Caribbean</h3><p class="ph-b">We cook the food we grew up eating — and we're proud to bring that flavour to every corner of South London.</p></div></div></div>
+  </div>
+</section>
+<section class="menu-sec" id="menu">
+  <div class="menu-inner">
+    <div class="fu"><p class="lbl">What We Serve</p><h2 class="hdg">A taste of the menu</h2></div>
+    <div class="menu-tabs fu" style="transition-delay:.1s">
+      <button class="tab-btn active" onclick="showTab('st',this)">Starters</button>
+      <button class="tab-btn" onclick="showTab('mn',this)">Mains</button>
+      <button class="tab-btn" onclick="showTab('ds',this)">Desserts</button>
+    </div>
+    <div id="tab-st" class="tab-panel active"><div class="mc"><img class="mc-img" src="images/img_1.jpg" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Ackee & Saltfish</p><p class="mc-desc">Flaked saltfish sautéed with ackee, scotch bonnet, tomato and thyme — a Caribbean morning classic, any time of day.</p><div class="mc-foot"><span class="mc-price">£7</span><a href="https://wa.me/447375562898" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Festival Dumplings</p><p class="mc-desc">Lightly sweetened fried dough, golden and crisp outside, pillowy within — made to be torn and shared.</p><div class="mc-foot"><span class="mc-price">£3</span><a href="https://wa.me/447375562898" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Pepper Prawn Bites</p><p class="mc-desc">Juicy prawns tossed in a scotch bonnet and garlic butter glaze with a slow, satisfying heat.</p><div class="mc-foot"><span class="mc-price">£8</span><a href="https://wa.me/447375562898" class="mc-cta" target="_blank">Order →</a></div></div></div></div>
+    <div id="tab-mn" class="tab-panel"><div class="mc"><img class="mc-img" src="images/img_2.jpg" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Jerk Chicken</p><p class="mc-desc">Marinated overnight in a fierce scotch bonnet and allspice rub, grilled over high heat until charred and deeply smoky.</p><div class="mc-foot"><span class="mc-price">£11</span><a href="https://wa.me/447375562898" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Curry Goat</p><p class="mc-desc">Slow-braised goat in a rich, golden curry fragrant with thyme, bay and warming spice — served with fluffy white rice.</p><div class="mc-foot"><span class="mc-price">£13</span><a href="https://wa.me/447375562898" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Oxtail Stew</p><p class="mc-desc">Fall-off-the-bone oxtail cooked low and slow in a dark, glossy sauce with butter beans and a hint of browning.</p><div class="mc-foot"><span class="mc-price">£14</span><a href="https://wa.me/447375562898" class="mc-cta" target="_blank">Order →</a></div></div></div></div>
+    <div id="tab-ds" class="tab-panel"><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Fried Sweet Plantain</p><p class="mc-desc">Caramelised ripe plantain, crisp-edged and soft-centred — sweet, simple, and impossible to leave on the plate.</p><div class="mc-foot"><span class="mc-price">£4</span><a href="https://wa.me/447375562898" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Rum Cake</p><p class="mc-desc">Dense, moist sponge soaked in dark Caribbean rum with warming notes of vanilla and mixed spice.</p><div class="mc-foot"><span class="mc-price">£5</span><a href="https://wa.me/447375562898" class="mc-cta" target="_blank">Order →</a></div></div></div></div>
+    <p style="font-size:.72rem;color:var(--mut);margin-top:2rem;font-style:italic">* Sample menu — contact us for today's specials.</p>
+  </div>
+</section>
+<section class="rev-sec" id="reviews"><div class="rev-inner"><div class="fu"><p class="lbl" style="color:rgba(212,160,23,.8)">Guest Reviews</p><h2 class="rev-hdg" id="ratingCounter2"></h2></div><div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#0d6b32">SK</div><div><div class="rc-nm">Sheena King</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"I opted to give them a chance and began with their ackee and salt fish dish, which turned out to be quite delightful. Meanwhile, inside the shop, a cluster of boys were enthusiastically discussing the"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#8b6914">SS</div><div><div class="rc-nm">SSTIXX S</div><div class="rc-st">★</div></div></div><p class="rc-tx">"Got a curry goat meal, and suffered the craziest food poisoning, constant throwing up all night, absolutely hell. You can look at the shop and tell they do not store the food correctly. Stay away for "</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#1a4a2e">L</div><div><div class="rc-nm">LR</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Best jerk chicken I’ve had! Curry goat and plantain also amazing."</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div></div></section>
+<section class="visit-sec" id="visit">
+  <div style="max-width:1140px;margin:0 auto">
+    <div class="fu"><p class="lbl">Find Us</p><h2 class="hdg">Come visit us</h2></div>
+    <div class="visit-inner">
+      <div class="fu"><p class="vb-lbl">Address</p><p style="font-size:.9rem;color:var(--mut);line-height:1.9">38 Surrey St, Croydon CR0 1RJ, UK</p><a href="https://maps.google.com/?cid=17042495138067483854" target="_blank" class="vb-link" style="color:var(--A)"><i class="fab fa-google"></i> Get Directions</a></div>
+      <div class="fu" style="transition-delay:.07s"><p class="vb-lbl">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:var(--txt)">9:30 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--txt)">9:30 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--txt)">9:30 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">9:30 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">9:30 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">9:30 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--txt)">10:00 AM – 5:00 PM</span></div></div>
+      <div class="fu" style="transition-delay:.14s"><p class="vb-lbl">Contact Us</p><a href="tel:+447375562898" class="vb-link"><i class="fa fa-phone"></i> 07375 562898</a><a href="https://wa.me/447375562898" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+    </div>
+  </div>
+</section>
+<footer><span>© 2025 Real Flavour Caribbean Takeaway</span><span style="opacity:.5">38 Surrey St, Croydon CR0 1RJ, UK</span></footer>
+<a class="float-cta" href="https://wa.me/447375562898" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+<script>
+function showTab(id,btn){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');}
+
+/* ── IntersectionObserver reveal ── */
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+/* ── Sticky nav ── */
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+/* ── Hero stagger entrance ── */
+(function(){
+  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
+              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
+              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
+  const seen=new Set(); let i=0;
+  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
+    if(seen.has(el))return; seen.add(el);
+    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
+    i++;
+  }));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+  }));
+})();
+/* ── Parallax hero ── */
+(function(){
+  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
+  if(!bg||window.innerWidth<700)return;
+  let tk=false;
+  window.addEventListener('scroll',()=>{
+    if(!tk){requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      bg.style.transform='translateY('+(y*0.32)+'px)';
+      tk=false;
+    });tk=true;}
+  },{passive:true});
+})();
+/* ── Open/close badge ── */
+(function(){const H={"Monday": "9:30 AM – 7:00 PM", "Tuesday": "9:30 AM – 7:00 PM", "Wednesday": "9:30 AM – 7:00 PM", "Thursday": "9:30 AM – 7:00 PM", "Friday": "9:30 AM – 7:00 PM", "Saturday": "9:30 AM – 7:00 PM", "Sunday": "10:00 AM – 5:00 PM"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+/* ── Hero tone line ── */
+(function(){
+  const ht="Bold spice. Real roots.";if(!ht)return;
+  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
+  const el=document.createElement('p');
+  el.className='hero-tone-line';
+  el.textContent=ht;
+  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
+  title.after(el);
+})();
+/* ── Rating counter ── */
+(function(){const el=document.getElementById('ratingCounter');if(!el||!4.7)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,4.7,true,v=>rs.textContent=v);an(0,63,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();
+</script>
+</body></html>
