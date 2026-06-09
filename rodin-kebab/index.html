@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>RODIN KEBAB — Shoreditch, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#3d2314;--A:#c4621e;--bg:#faf6f0;--txt:#2c1810;--mut:#7a5c48;--sand:#e8ddd0}
+html{scroll-behavior:smooth}body{font-family:'Nunito',sans-serif;background:#fff;color:var(--txt);padding-top:52px}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(196,98,30,.95);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:#fff;font-weight:500}.proto-banner strong{font-weight:700}
+.proto-banner a{color:#fff;font-weight:600;border:1.5px solid rgba(255,255,255,.7);padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(61,35,20,.97);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'Libre Baskerville',serif;font-size:.95rem;color:#fff;font-style:italic}
+.snav-b{font-size:.67rem;font-weight:700;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.2);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.2);color:#ef4444}
+.snav-cta{background:var(--A);color:#fff;padding:.42rem 1.1rem;border-radius:50px;font-size:.76rem;font-weight:600;text-decoration:none}
+/* HERO ARCH */
+.hero{position:relative;min-height:100svh;background:var(--bg);display:flex;flex-direction:column;align-items:center;padding-top:3rem;overflow:hidden}
+.hero-arch{width:min(520px,85vw);aspect-ratio:3/4;border-radius:260px 260px 0 0;overflow:hidden;position:relative;margin:0 auto}
+.hero-arch img{width:100%;height:100%;object-fit:cover}
+.hero-arch-overlay{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(61,35,20,.7))}
+.hero-text{position:absolute;bottom:2rem;left:0;right:0;text-align:center;padding:0 2rem}
+.hero-name-badge{display:inline-block;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);background:rgba(250,246,240,.9);padding:.3rem .9rem;border-radius:50px;margin-bottom:1.2rem}
+.hero-title{font-family:'Libre Baskerville',serif;font-size:clamp(2rem,5vw,4rem);line-height:1.1;font-style:italic;color:#fff;margin-bottom:.8rem;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+.hero-below{padding:2.5rem 2rem 3rem;text-align:center;max-width:600px;margin:0 auto}
+.hero-sub{font-size:.92rem;line-height:1.9;color:var(--mut);margin-bottom:1.2rem;font-weight:300}
+.hero-rating{font-size:.88rem;color:var(--A);font-weight:600;margin-bottom:.6rem}
+#openBadge{display:inline-block;font-size:.78rem;font-weight:600;margin-bottom:1.2rem}
+.hero-ctas{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.btn-terra{background:var(--A);color:#fff;padding:.68rem 1.6rem;border-radius:50px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
+.btn-terra:hover{background:#a84f18}
+.btn-outline-terra{background:transparent;color:var(--A);padding:.68rem 1.6rem;border-radius:50px;border:2px solid var(--A);font-size:.82rem;font-weight:600;text-decoration:none}
+/* ABOUT */
+.about{padding:6rem 4rem;background:#fff}
+@media(max-width:700px){.about{padding:4rem 1.5rem}}
+.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+@media(max-width:700px){.about-wrap{grid-template-columns:1fr;gap:2.5rem}}
+.sec-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);margin-bottom:.8rem}
+.sec-title{font-family:'Libre Baskerville',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-style:italic;line-height:1.2;color:var(--txt);margin-bottom:1.2rem}
+.about-text{font-size:.93rem;line-height:2;color:var(--mut);font-weight:300}
+.ph{display:flex;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--sand)}
+.ph:last-child{border-bottom:none}
+.ph-n{font-family:'Libre Baskerville',serif;font-size:1.8rem;color:var(--A);opacity:.45;line-height:1;flex-shrink:0;font-style:italic}
+.ph-t{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--txt);font-weight:700;margin-bottom:.28rem}
+.ph-b{font-size:.85rem;color:var(--mut);line-height:1.7;font-weight:300}
+/* VALUES BAR */
+.values-bar{padding:2.5rem 4rem;background:var(--A);display:flex;justify-content:space-around;gap:2rem;flex-wrap:wrap}
+@media(max-width:680px){.values-bar{padding:2rem 1.5rem;gap:1.5rem}}
+.val-item{text-align:center;color:#fff}
+.val-icon{font-size:1.4rem;margin-bottom:.5rem}
+.val-label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+/* MENU */
+.menu-sec{padding:6rem 4rem;background:var(--bg)}
+@media(max-width:700px){.menu-sec{padding:4rem 1.5rem}}
+.menu-wrap{max-width:1100px;margin:0 auto}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:2.5rem}
+@media(max-width:900px){.menu-grid{grid-template-columns:1fr}}
+.menu-cat{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:700;margin-bottom:1rem;padding-bottom:.55rem;border-bottom:2px solid var(--A)}
+.mi{display:flex;justify-content:space-between;gap:.6rem;padding:.8rem 0;border-bottom:1px solid var(--sand)}
+.mi:last-child{border-bottom:none}.mi-l{flex:1}
+.mi-n{display:block;font-size:.93rem;font-weight:600;color:var(--txt)}
+.mi-d{display:block;font-size:.77rem;color:var(--mut);margin-top:.15rem;line-height:1.5}
+.mi-p{font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--A);flex-shrink:0;font-style:italic}
+.menu-disc{font-size:.72rem;color:var(--mut);margin-top:2rem;font-style:italic;padding-top:1rem;border-top:1px solid var(--sand)}
+/* REVIEWS */
+.rev-sec{padding:6rem 4rem;background:#fff}
+@media(max-width:700px){.rev-sec{padding:4rem 1.5rem}}
+.rev-wrap{max-width:1100px;margin:0 auto}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+.rc{background:var(--bg);border-left:4px solid var(--A);border-radius:0 12px 12px 0;padding:1.6rem}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.rc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.82rem;font-weight:600;color:var(--txt)}.rc-st{font-size:.88rem;color:var(--A)}
+.rc-tx{font-size:.88rem;line-height:1.8;color:var(--mut);font-style:italic;margin-bottom:.8rem}
+.rc-src{font-size:.68rem;color:#bbb}
+/* VISIT */
+.visit{padding:6rem 4rem;background:var(--bg)}
+@media(max-width:700px){.visit{padding:4rem 1.5rem}}
+.visit-wrap{max-width:1100px;margin:0 auto}
+.visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2.5rem;margin-top:2.5rem}
+.vb-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);font-weight:700;margin-bottom:.9rem}
+.hr{display:flex;justify-content:space-between;font-size:.84rem;padding:.22rem 0;border-bottom:1px solid var(--sand)}
+.hr:last-child{border-bottom:none}.hr-d{font-weight:600;color:var(--txt);min-width:32px}
+.vb-link{display:block;font-size:.9rem;color:var(--mut);text-decoration:none;line-height:2;font-weight:300}
+.vb-link:hover{color:var(--A)}
+.dir-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:2rem;padding:.68rem 1.6rem;background:var(--A);color:#fff;border-radius:50px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
+.dir-btn:hover{background:#a84f18}
+footer{background:var(--P);padding:1.8rem 4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.72rem;color:rgba(255,255,255,.3)}
+@media(max-width:680px){footer{padding:1.5rem;padding-bottom:5.5rem}}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--A);color:#fff;padding:.82rem 1.8rem;border-radius:50px;display:flex;align-items:center;gap:.45rem;font-size:.84rem;font-weight:600;text-decoration:none;box-shadow:0 6px 28px rgba(196,98,30,.4);white-space:nowrap}
+@media(min-width:700px){.float-cta{display:none!important}}
+.stag{font-size:.7rem;padding:.18rem .65rem;border-radius:50px;background:rgba(255,255,255,.2);color:#fff;margin-right:.4rem}
+.fu{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}.fu.in{opacity:1;transform:none}
+</style></head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for RODIN KEBAB</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">RODIN KEBAB</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447348218468" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-arch">
+    <img src="images/img_0.jpg" alt="RODIN KEBAB"/>
+    <div class="hero-arch-overlay"></div>
+    <div class="hero-text">
+      <div class="hero-name-badge">Restaurant · Shoreditch, London</div>
+      <h1 class="hero-title">Fresh fire flavour in the heart of Shoreditch</h1>
+    </div>
+  </div>
+  <div class="hero-below">
+    <p class="hero-sub">Rodin Kebab is Shoreditch's go-to destination for bold, flame-grilled kebabs made with the freshest ingredients and served with genuine warm…</p>
+    <div class="hero-rating" id="ratingCounter" data-rating="5" data-count="108">⭐ 5 · 108 Google reviews</div>
+    <span id="openBadge"></span>
+    <div class="hero-ctas">
+      <a href="tel:+447348218468" class="btn-terra"><i class="fa fa-phone"></i> Reserve a Table</a>
+      <a href="#menu" class="btn-outline-terra">View Menu</a>
+    </div>
+  </div>
+</section>
+<div class="values-bar">
+  <div class="val-item"><div class="val-icon">🌿</div><div class="val-label">Fresh Daily</div></div>
+  <div class="val-item"><div class="val-icon">🫒</div><div class="val-label">Authentic Recipes</div></div>
+  <div class="val-item"><div class="val-icon">🏡</div><div class="val-label">Warm Welcome</div></div>
+  <div class="val-item"><span class="stag">Dine In</span><span class="stag">Takeaway</span><span class="stag">Delivery</span></div>
+</div>
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="fu"><p class="sec-label">Our Story</p><h2 class="sec-title">A taste of the coast</h2><p class="about-text">Rodin Kebab is Shoreditch's go-to destination for bold, flame-grilled kebabs made with the freshest ingredients and served with genuine warmth. Every wrap, every bite, every sauce is crafted with care by a team that truly loves what they do. Come hungry, leave obsessed.</p></div>
+    <div class="fu" style="transition-delay:.1s"><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">Fresh Every Time</h3><p class="ph-b">We source quality cuts daily and prepare everything in-house so every kebab tastes like it was made just for you.</p></div></div>
+<div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">Flavour First</h3><p class="ph-b">From our perfectly spiced meats to our top-tier sauces, bold and balanced flavour is at the heart of everything we serve.</p></div></div>
+<div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">Genuine Hospitality</h3><p class="ph-b">Our team, led by Zaki, believes great food tastes even better when it's served with a smile and a personal touch.</p></div></div></div>
+  </div>
+</section>
+<section class="menu-sec" id="menu">
+  <div class="menu-wrap">
+    <div class="fu"><p class="sec-label">The Menu</p><h2 class="sec-title">Fresh from our kitchen</h2></div>
+    <div class="menu-grid fu" style="transition-delay:.1s">
+      <div><div class="menu-cat">Starters</div><div class="mi"><div class="mi-l"><span class="mi-n">Hummus & Warm Flatbread</span><span class="mi-d">Silky house-made hummus drizzled with olive oil and paprika, served with freshly baked flatbread.</span></div><span class="mi-p">£5</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Spiced Lamb Kofta Bites</span><span class="mi-d">Mini hand-rolled koftas seasoned with cumin and herbs, served with a cooling garlic yoghurt dip.</span></div><span class="mi-p">£6</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Crispy Falafel Platter</span><span class="mi-d">Golden-fried chickpea falafel with pickled chillies, fresh parsley and a tahini drizzle.</span></div><span class="mi-p">£5</span></div></div>
+      <div><div class="menu-cat">Mains</div><div class="mi"><div class="mi-l"><span class="mi-n">Signature Doner Wrap</span><span class="mi-d">Slow-roasted seasoned doner meat, fresh salad, pickles and our legendary house sauces wrapped in warm flatbread.</span></div><span class="mi-p">£9</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Adana Kebab Plate</span><span class="mi-d">Hand-pressed spiced minced lamb skewers served over fluffy rice with grilled peppers and sumac onions.</span></div><span class="mi-p">£13</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Mixed Grill Platter</span><span class="mi-d">A generous spread of shish, kofta and chicken skewers with warm bread, salad and a trio of sauces.</span></div><span class="mi-p">£18</span></div></div>
+      <div><div class="menu-cat">Desserts</div><div class="mi"><div class="mi-l"><span class="mi-n">Warm Baklava</span><span class="mi-d">Flaky layers of filo pastry filled with crushed pistachios and soaked in fragrant rose-water syrup.</span></div><span class="mi-p">£5</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Turkish Rice Pudding</span><span class="mi-d">Creamy slow-cooked sütlaç dusted with cinnamon and served chilled in a traditional clay pot.</span></div><span class="mi-p">£4</span></div></div>
+    </div>
+    <p class="menu-disc">* Sample menu for reference. Please contact us for today's full menu.</p>
+  </div>
+</section>
+<section class="rev-sec" id="reviews">
+  <div class="rev-wrap">
+    <div class="fu"><p class="sec-label">Guest Stories</p><h2 class="sec-title">⭐ 5 · 108 Google reviews</h2></div>
+    <div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#c4621e">KL</div><div><div class="rc-nm">Kia Loco</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Honestly one of the best kebabs I’ve had 😮‍💨🔥
+Meat was fresh and juicy the flavour was amazing. bread was warm and the sauces were top tier
+Staff were really friendly and welcoming felt comfortable st"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#3d6b3a">YI</div><div><div class="rc-nm">Yas I</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Very tasty kebab / delicious
+Generous sized portions and all tasted freshly prepared - very nice spot!!
+Great customer service from Zaki and team
+Highly recommend ✨"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#5a3520">A</div><div><div class="rc-nm">Aso</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Great customer service and the quality of food here is amazing."</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div>
+  </div>
+</section>
+<section class="visit" id="visit">
+  <div class="visit-wrap">
+    <div class="fu"><p class="sec-label">Visit Us</p><h2 class="sec-title">Find us in Shoreditch, London</h2></div>
+    <div class="visit-grid">
+      <div class="fu"><p class="vb-label">Address</p><p style="font-size:.9rem;color:var(--mut);line-height:1.85">151 Hoxton St, London N1 6PJ, UK</p></div>
+      <div class="fu" style="transition-delay:.05s"><p class="vb-label">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:var(--txt)">11:00 AM – 12:00 AM</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--txt)">11:00 AM – 12:00 AM</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--txt)">11:00 AM – 12:00 AM</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">11:00 AM – 12:00 AM</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">11:00 AM – 2:00 AM</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">11:00 AM – 2:00 AM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--txt)">11:00 AM – 12:00 AM</span></div></div>
+      <div class="fu" style="transition-delay:.1s"><p class="vb-label">Contact</p><a href="tel:+447348218468" class="vb-link"><i class="fa fa-phone"></i> 07348 218468</a><a href="https://wa.me/447348218468" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+    </div>
+    <a href="https://maps.google.com/?cid=17265575511301632697" target="_blank" class="dir-btn fu"><i class="fab fa-google"></i> Get Directions</a>
+  </div>
+</section>
+<footer><span>© 2025 RODIN KEBAB</span><span>151 Hoxton St, London N1 6PJ, UK</span></footer>
+<a class="float-cta" href="tel:+447348218468"><i class="fa fa-phone"></i> Call to Reserve</a>
+<script>document.querySelectorAll('.fu').forEach(el=>{el.classList.add('in');});
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+(function(){const H={"Monday": "11:00 AM – 12:00 AM", "Tuesday": "11:00 AM – 12:00 AM", "Wednesday": "11:00 AM – 12:00 AM", "Thursday": "11:00 AM – 12:00 AM", "Friday": "11:00 AM – 2:00 AM", "Saturday": "11:00 AM – 2:00 AM", "Sunday": "11:00 AM – 12:00 AM"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+(function(){const el=document.getElementById('ratingCounter');if(!el||!5)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,5,true,v=>rs.textContent=v);an(0,108,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();</script>
+</body></html>
