@@ -2,185 +2,208 @@
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Plaza 809 La caribeña — Camberwell, London</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--P:#0c0c0c;--A:#c9a96e;--bg:#f5f3ef;--txt:#1a1a1a;--mut:#777}
-html{scroll-behavior:smooth}body{font-family:'Raleway',sans-serif;background:#fff;color:var(--txt);padding-top:52px}
-.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(200,169,110,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
-.proto-banner p{color:#111;font-weight:500}.proto-banner strong{font-weight:700}
-.proto-banner a{color:#111;font-weight:600;border:1.5px solid #111;padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
-#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(12,12,12,.97);border-bottom:1px solid rgba(201,169,110,.15);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+:root{--P:#0a0a0a;--A:#E5222C;--bg:#111;--txt:#f5f5f5;--mut:#999;--gold:#c9a96e}
+html{scroll-behavior:smooth}body{font-family:'Raleway',sans-serif;background:var(--P);color:var(--txt);padding-top:52px}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(229,34,44,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:#fff;font-weight:500}.proto-banner strong{font-weight:700}
+.proto-banner a{color:#fff;font-weight:600;border:1.5px solid rgba(255,255,255,.7);padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(10,10,10,.98);border-bottom:1px solid rgba(229,34,44,.25);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
 #stickyNav.visible{transform:translateY(0)}
 .snav-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:#fff;font-style:italic}
 .snav-b{font-size:.68rem;font-weight:600;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
 .snav-b.open{background:rgba(34,197,94,.15);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.15);color:#ef4444}
-.snav-cta{background:var(--A);color:#fff;padding:.4rem 1.1rem;border-radius:50px;font-size:.76rem;font-weight:500;text-decoration:none}
-/* HERO SPLIT */
-.hero{min-height:100svh;display:grid;grid-template-columns:45% 55%;background:var(--P)}
-@media(max-width:720px){.hero{grid-template-columns:1fr}.hero-r{display:none}}
-.hero-l{display:flex;flex-direction:column;justify-content:space-between;padding:4rem 3.5rem 4rem 4rem}
-.hero-l-top{}
-.hero-line{width:40px;height:2px;background:var(--A);margin-bottom:1.5rem}
-.hero-cuisine{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.6rem}
-.hero-name{font-family:'DM Serif Display',serif;font-size:.95rem;letter-spacing:.15em;text-transform:uppercase;color:var(--A);margin-bottom:2rem}
-.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4vw,3.8rem);line-height:1.1;font-style:italic;color:#fff;margin-bottom:1.4rem}
-.hero-sub{font-size:.88rem;line-height:1.9;color:rgba(255,255,255,.6);max-width:340px;font-weight:300}
-.hero-l-bot{}
-.hero-rating{font-size:.85rem;color:var(--A);margin-bottom:.6rem;font-weight:400}
-#openBadge{display:inline-block;font-size:.76rem;font-weight:500;margin-bottom:1.4rem}
-.hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap}
-.btn-solid{background:var(--A);color:#fff;padding:.65rem 1.5rem;border-radius:0;font-size:.78rem;font-weight:500;text-decoration:none;letter-spacing:.06em;transition:opacity .2s}
-.btn-solid:hover{opacity:.85}
-.btn-ghost{background:transparent;color:rgba(255,255,255,.6);padding:.65rem 1.5rem;border:1px solid rgba(255,255,255,.2);font-size:.78rem;font-weight:300;text-decoration:none;letter-spacing:.06em;transition:border-color .2s}
-.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
-.hero-r{position:relative;overflow:hidden}
-.hero-r img{width:100%;height:100%;object-fit:cover;opacity:.8}
-.hero-r-overlay{position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(transparent,rgba(0,0,0,.6))}
-.hero-area{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-/* ABOUT */
-.about{padding:7rem 4rem;background:var(--bg)}
-@media(max-width:700px){.about{padding:4.5rem 1.5rem}}
-.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:6rem;align-items:start}
-@media(max-width:700px){.about-wrap{grid-template-columns:1fr;gap:3rem}}
-.sec-label{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--A);margin-bottom:.8rem}
-.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-style:italic;line-height:1.2;color:var(--txt);margin-bottom:1.2rem}
-.about-text{font-size:.92rem;line-height:2;color:var(--mut);font-weight:300}
-.ph{display:flex;gap:1.2rem;padding:1.4rem 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.snav-cta{background:var(--A);color:#fff;padding:.4rem 1.1rem;border-radius:4px;font-size:.76rem;font-weight:600;text-decoration:none}
+.hero{min-height:100svh;display:grid;grid-template-columns:50% 50%;background:var(--P);position:relative;overflow:hidden}
+@media(max-width:768px){.hero{grid-template-columns:1fr}.hero-r{display:none!important}}
+.hero-dots{position:absolute;top:1.2rem;left:1.5rem;z-index:10;display:flex;gap:.45rem}
+.hero-dot{width:12px;height:12px;border-radius:50%}
+.hero-l{display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 4rem 4.5rem;position:relative;z-index:2}
+.hero-line{width:36px;height:2px;background:var(--A);margin-bottom:1.8rem}
+.hero-lbl{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.6rem}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,4.5vw,4.8rem);line-height:1.05;font-style:italic;color:#fff;margin-bottom:1.4rem}
+.hero-title span{color:var(--A)}
+.hero-sub{font-size:.9rem;line-height:1.9;color:rgba(255,255,255,.55);max-width:380px;font-weight:300;margin-bottom:1rem}
+#openBadge{display:inline-block;font-size:.76rem;font-weight:500;margin-bottom:1.8rem}
+.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-red{background:var(--A);color:#fff;padding:.72rem 1.7rem;border-radius:6px;font-size:.83rem;font-weight:600;text-decoration:none;transition:filter .2s}
+.btn-red:hover{filter:brightness(1.1)}
+.btn-outline{background:transparent;color:rgba(255,255,255,.7);padding:.72rem 1.7rem;border:1.5px solid rgba(255,255,255,.25);border-radius:6px;font-size:.83rem;font-weight:400;text-decoration:none;transition:border-color .2s}
+.btn-outline:hover{border-color:rgba(255,255,255,.6);color:#fff}
+.hero-r{position:relative;display:flex;align-items:center;justify-content:center;background:#111;padding:3rem}
+.hero-circle{width:clamp(280px,38vw,480px);height:clamp(280px,38vw,480px);border-radius:50%;overflow:hidden;border:3px solid rgba(229,34,44,.4);box-shadow:0 0 80px rgba(229,34,44,.15)}
+.hero-circle img{width:100%;height:100%;object-fit:cover}
+.hero-r-badge{position:absolute;bottom:3rem;right:3rem;background:rgba(229,34,44,.9);color:#fff;padding:.5rem 1.1rem;font-size:.72rem;font-weight:600;border-radius:4px;letter-spacing:.06em;text-transform:uppercase}
+.stag{font-size:.7rem;padding:.2rem .7rem;border-radius:3px;border:1px solid rgba(229,34,44,.4);color:rgba(255,255,255,.6);margin-right:.4rem}
+.info-bar{background:#111;padding:1rem 5vw;display:flex;gap:1.8rem;flex-wrap:wrap;align-items:center;border-top:1px solid rgba(255,255,255,.07)}
+.ib{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:rgba(255,255,255,.55)}
+.ib i{color:var(--A)}.ib a{color:rgba(255,255,255,.55);text-decoration:none}
+.about-sec{padding:7rem 5vw;background:#0f0f0f}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+@media(max-width:760px){.about-inner{grid-template-columns:1fr;gap:3rem}}
+.lbl{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
+.hdg{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-style:italic;line-height:1.18;color:#fff;margin-bottom:1.2rem}
+.body-txt{font-size:.92rem;line-height:2;color:rgba(255,255,255,.55);font-weight:300}
+.ph{display:flex;gap:1rem;padding:1.3rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
 .ph:last-child{border-bottom:none}
-.ph-n{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--A);opacity:.4;line-height:1;flex-shrink:0;font-style:italic}
-.ph-t{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--txt);font-weight:500;margin-bottom:.3rem}
-.ph-b{font-size:.85rem;color:var(--mut);line-height:1.75;font-weight:300}
-/* MENU */
-.menu-sec{padding:7rem 4rem;background:#fff}
-@media(max-width:700px){.menu-sec{padding:4.5rem 1.5rem}}
-.menu-wrap{max-width:1100px;margin:0 auto}
-.menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:1rem}
-.menu-note{font-size:.75rem;color:var(--mut);font-weight:300}
-.menu-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem}
-@media(max-width:900px){.menu-cols{grid-template-columns:1fr}}
-.menu-cat{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--A)}
-.mi{display:flex;justify-content:space-between;gap:.5rem;padding:.85rem 0;border-bottom:1px solid rgba(0,0,0,.05)}
-.mi:last-child{border-bottom:none}.mi-l{flex:1}
-.mi-n{display:block;font-size:.92rem;font-weight:400;color:var(--txt)}
-.mi-d{display:block;font-size:.75rem;color:var(--mut);margin-top:.15rem;line-height:1.5;font-weight:300}
-.mi-p{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--A);flex-shrink:0;font-style:italic}
-.menu-disc{font-size:.72rem;color:var(--mut);margin-top:2.5rem;font-style:italic;border-top:1px solid rgba(0,0,0,.06);padding-top:1rem}
-/* REVIEWS */
-.rev-sec{padding:7rem 4rem;background:var(--P)}
-@media(max-width:700px){.rev-sec{padding:4.5rem 1.5rem}}
-.rev-wrap{max-width:1100px;margin:0 auto}
-.rev-wrap .sec-title{color:#fff}
-.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;margin-top:3rem;border:1px solid rgba(201,169,110,.2)}
-.rc{padding:2rem;border-right:1px solid rgba(201,169,110,.1)}
+.ph-n{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--A);opacity:.45;line-height:1;flex-shrink:0;font-style:italic}
+.ph-t{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);font-weight:500;margin-bottom:.3rem}
+.ph-b{font-size:.84rem;color:rgba(255,255,255,.45);line-height:1.75;font-weight:300}
+.menu-sec{padding:7rem 5vw;background:#0a0a0a;overflow:hidden}
+.menu-inner{max-width:1100px;margin:0 auto}
+.menu-scroll{display:flex;gap:1.4rem;overflow-x:auto;padding-bottom:1.5rem;margin-top:2.5rem;scrollbar-width:thin;scrollbar-color:rgba(229,34,44,.4) transparent}
+.mc{background:#1a1a1a;border-radius:16px;padding:0;overflow:hidden;min-width:220px;border:1px solid rgba(255,255,255,.07);transition:transform .25s,border-color .25s;flex-shrink:0}
+.mc:hover{transform:translateY(-6px);border-color:rgba(229,34,44,.4)}
+.mc-img{width:100%;height:180px;object-fit:cover;background:#222}
+.mc-body{padding:1.2rem}
+.mc-cat{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);margin-bottom:.4rem}
+.mc-name{font-size:.95rem;font-weight:500;color:#fff;margin-bottom:.3rem}
+.mc-desc{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:.9rem;font-weight:300}
+.mc-foot{display:flex;align-items:center;justify-content:space-between}
+.mc-price{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--gold);font-style:italic}
+.mc-cta{font-size:.72rem;font-weight:600;background:var(--A);color:#fff;padding:.28rem .75rem;border-radius:4px;text-decoration:none}
+.rev-sec{padding:7rem 5vw;background:#0f0f0f}
+.rev-inner{max-width:1100px;margin:0 auto}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;margin-top:2.5rem;border:1px solid rgba(255,255,255,.07)}
+.rc{padding:2.2rem;border-right:1px solid rgba(255,255,255,.06)}
 .rc:last-child{border-right:none}
-@media(max-width:700px){.rev-grid{grid-template-columns:1fr;border:none}.rc{border-right:none;border-bottom:1px solid rgba(201,169,110,.1);padding:1.5rem 0}}
+@media(max-width:700px){.rev-grid{grid-template-columns:1fr;border:none}.rc{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);padding:1.6rem 0}}
 .rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem}
-.rc-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:700;flex-shrink:0}
-.rc-nm{font-size:.8rem;font-weight:500;color:rgba(255,255,255,.8)}.rc-st{font-size:.85rem;color:var(--A)}
-.rc-tx{font-size:.88rem;line-height:1.85;color:rgba(255,255,255,.6);font-style:italic;font-weight:300;margin-bottom:.8rem}
-.rc-src{font-size:.66rem;color:rgba(255,255,255,.3)}
-/* VISIT */
-.visit{padding:7rem 4rem;background:var(--bg)}
-@media(max-width:700px){.visit{padding:4.5rem 1.5rem}}
-.visit-wrap{max-width:1100px;margin:0 auto}
-.visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:3rem}
-.vb-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:1rem}
-.hr{display:flex;justify-content:space-between;font-size:.83rem;padding:.22rem 0;border-bottom:1px solid rgba(0,0,0,.05)}
-.hr:last-child{border-bottom:none}.hr-d{font-weight:500;color:var(--txt);min-width:32px}
-.vb-link{display:block;font-size:.88rem;color:var(--mut);text-decoration:none;line-height:2;font-weight:300}
+.rc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.8rem;font-weight:500;color:rgba(255,255,255,.75)}.rc-st{font-size:.88rem;color:var(--gold)}
+.rc-tx{font-size:.88rem;line-height:1.85;color:rgba(255,255,255,.5);font-style:italic;font-weight:300;margin-bottom:.7rem}
+.rc-src{font-size:.65rem;color:rgba(255,255,255,.25)}
+.visit-sec{padding:7rem 5vw;background:#111}
+.visit-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem}
+.vb-lbl{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
+.hr{display:flex;justify-content:space-between;font-size:.83rem;padding:.22rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.hr:last-child{border-bottom:none}.hr-d{font-weight:500;color:rgba(255,255,255,.8)}
+.vb-link{display:block;font-size:.88rem;color:rgba(255,255,255,.45);text-decoration:none;line-height:2.1;font-weight:300}
 .vb-link:hover{color:var(--A)}
-.dir-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.5rem;padding:.65rem 1.5rem;border:1px solid rgba(0,0,0,.15);font-size:.8rem;color:var(--txt);text-decoration:none;transition:border-color .2s,color .2s;letter-spacing:.04em}
-.dir-btn:hover{border-color:var(--A);color:var(--A)}
-footer{background:var(--P);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.72rem;color:rgba(255,255,255,.25);border-top:1px solid rgba(201,169,110,.1)}
-@media(max-width:680px){footer{padding:1.5rem;padding-bottom:5.5rem}}
-.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--A);color:#fff;padding:.8rem 1.8rem;border-radius:0;display:flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:500;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.4);white-space:nowrap;letter-spacing:.04em}
+footer{background:#000;padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.72rem;color:rgba(255,255,255,.2);border-top:1px solid rgba(229,34,44,.15)}
+@media(max-width:680px){footer{padding-bottom:6rem}}
+@media(max-width:700px){
+  .hero-l{padding:4.5rem 1.4rem 5.5rem}
+  .hero-title{font-size:clamp(2.4rem,10vw,3.5rem)}
+  .btn-outline{display:none}
+  .btn-red{width:100%;justify-content:center}
+  .info-bar{display:none}
+  .about-sec,.menu-sec,.rev-sec,.visit-sec{padding:3.5rem 1.4rem}
+}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.85rem 1.9rem;border-radius:6px;display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.35);white-space:nowrap}
 @media(min-width:700px){.float-cta{display:none!important}}
-.stag{font-size:.68rem;padding:.15rem .6rem;border-radius:2px;border:1px solid rgba(201,169,110,.4);color:rgba(255,255,255,.6);margin-right:.4rem}
-.fu{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}.fu.in{opacity:1;transform:none}
-</style></head><body>
+.fu{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}.fu.in{opacity:1;transform:none}
+</style><style></style></head><body>
 <div class="proto-banner"><p><strong>🎨 Free demo for Plaza 809 La caribeña</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
 <nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">Plaza 809 La caribeña</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447497451499" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
 <section class="hero" data-hero>
+  <div class="hero-dots"><div class="hero-dot" style="background:#ff5f57"></div><div class="hero-dot" style="background:#ffbd2e"></div><div class="hero-dot" style="background:#28c940"></div></div>
   <div class="hero-l">
-    <div class="hero-l-top">
-      <div class="hero-line"></div>
-      <div class="hero-cuisine">Restaurant</div>
-      <div class="hero-name">Plaza 809 La caribeña</div>
-      <h1 class="hero-title">Caribbean soul, London heart, every single bite</h1>
-      <p class="hero-sub">Nestled in the heart of Camberwell, Plaza 809 La Caribeña brings the warmth, colour, and bold flavours of the Caribbean straight to your table. From the moment …</p>
-    </div>
-    <div class="hero-l-bot">
-      <div class="hero-rating" id="ratingCounter" data-rating="4.9" data-count="59">⭐ 4.9 · 59 Google reviews</div>
-      <span id="openBadge"></span>
-      <div class="hero-ctas">
-        <a href="tel:+447497451499" class="btn-solid"><i class="fa fa-phone"></i> &nbsp;Reserve</a>
-        <a href="#menu" class="btn-ghost">View Menu</a>
-      </div>
+    <div class="hero-line"></div>
+    <p class="hero-lbl">Restaurant · Camberwell, London</p>
+    <h1 class="hero-title">it's not just<br>Food, It's <span>an</span><br>Experience.</h1>
+    <p class="hero-sub">Nestled in the heart of Camberwell, Plaza 809 La Caribeña brings the warmth, colour, and bold flavours of the Caribbean straight to your table. From the moment </p>
+    <span id="openBadge"></span>
+    <div class="hero-ctas">
+      <a href="https://wa.me/447497451499" target="_blank" class="btn-red"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <a href="#menu" class="btn-outline">View Menu</a>
     </div>
   </div>
   <div class="hero-r">
-    <img src="images/img_0.jpg" alt="Plaza 809 La caribeña"/>
-    <div class="hero-r-overlay"><div class="hero-area">Camberwell, London &nbsp;·&nbsp; Restaurant</div></div>
+    <div class="hero-circle"><img src="images/img_0.jpg" alt="Plaza 809 La caribeña"/></div>
+    <div class="hero-r-badge">Restaurant</div>
   </div>
 </section>
-<section class="about" id="about">
-  <div class="about-wrap">
-    <div class="fu"><p class="sec-label">The Story</p><h2 class="sec-title">Caribbean soul, London heart, every single bite</h2><p class="about-text">Nestled in the heart of Camberwell, Plaza 809 La Caribeña brings the warmth, colour, and bold flavours of the Caribbean straight to your table. From the moment you walk through our doors, you're greeted like family — because here, that's exactly what you are. With a 4.9-star reputation built on love and authenticity, this is your home away from home.</p></div>
-    <div class="fu" style="transition-delay:.1s"><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">Flavour First</h3><p class="ph-b">Every dish is crafted with bold, authentic Caribbean spices that tell a story rooted in tradition and passion.</p></div></div>
+<div class="info-bar">
+  <span class="stag">Dine In</span><span class="stag">Takeaway</span><span class="stag">Delivery</span>
+  <span class="ib"><i class="fab fa-whatsapp"></i><a href="https://wa.me/447497451499" target="_blank">07497 451499</a></span>
+  <span class="ib"><i class="fab fa-google"></i><a href="https://maps.google.com/?cid=5137853749256565940" target="_blank">Google Maps</a></span>
+  <span class="ib" id="ratingCounter"></span>
+</div>
+<section class="about-sec fu" id="about">
+  <div class="about-inner">
+    <div>
+      <p class="lbl">The Experience</p>
+      <h2 class="hdg">Caribbean soul, London heart, every single bite</h2>
+      <p class="body-txt">Nestled in the heart of Camberwell, Plaza 809 La Caribeña brings the warmth, colour, and bold flavours of the Caribbean straight to your table. From the moment you walk through our doors, you're greeted like family — because here, that's exactly what you are. With a 4.9-star reputation built on love and authenticity, this is your home away from home.</p>
+      <a href="https://wa.me/447497451499" target="_blank" class="btn-red" style="margin-top:2rem;display:inline-flex"><i class="fab fa-whatsapp"></i> Reserve via WhatsApp</a>
+    </div>
+    <div><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">Flavour First</h3><p class="ph-b">Every dish is crafted with bold, authentic Caribbean spices that tell a story rooted in tradition and passion.</p></div></div>
 <div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">Family Welcome</h3><p class="ph-b">We treat every guest as a cherished member of our family, ensuring warmth and kindness from the first smile to the last bite.</p></div></div>
 <div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">True Authenticity</h3><p class="ph-b">Our kitchen honours the real tastes of the Caribbean, using time-honoured recipes passed down through generations.</p></div></div></div>
   </div>
 </section>
 <section class="menu-sec" id="menu">
-  <div class="menu-wrap">
-    <div class="menu-header fu"><div><p class="sec-label">The Menu</p><h2 class="sec-title">A taste of what awaits</h2></div><span class="menu-note">Seasonal · Prices incl. VAT</span></div>
-    <div class="menu-cols fu" style="transition-delay:.1s">
-      <div><div class="menu-cat">Starters</div><div class="mi"><div class="mi-l"><span class="mi-n">Tostones con Mojo</span><span class="mi-d">Crispy twice-fried green plantains served with a zesty garlic and citrus dipping sauce.</span></div><span class="mi-p">£6</span></div>
-<div class="mi"><div class="mi-l"><span class="mi-n">Ceviche Caribeño</span><span class="mi-d">Fresh white fish marinated in lime juice with red onion, coriander, and a hint of scotch bonnet.</span></div><span class="mi-p">£8</span></div>
-<div class="mi"><div class="mi-l"><span class="mi-n">Empanadas de la Casa</span><span class="mi-d">Golden-fried pastry parcels filled with seasoned beef, olives, and soft-boiled egg.</span></div><span class="mi-p">£7</span></div></div>
-      <div><div class="menu-cat">Mains</div><div class="mi"><div class="mi-l"><span class="mi-n">Ropa Vieja</span><span class="mi-d">Slow-braised shredded beef in a rich tomato and pepper sofrito, served with white rice and sweet plantains.</span></div><span class="mi-p">£15</span></div>
-<div class="mi"><div class="mi-l"><span class="mi-n">Pollo a la Brasa</span><span class="mi-d">Marinated rotisserie chicken with Caribbean herbs, served alongside coconut rice and fried yuca.</span></div><span class="mi-p">£14</span></div>
-<div class="mi"><div class="mi-l"><span class="mi-n">Camarones al Coco</span><span class="mi-d">Juicy prawns sautéed in a creamy coconut and chilli sauce, served with fragrant rice and avocado salad.</span></div><span class="mi-p">£17</span></div></div>
-      <div><div class="menu-cat">Desserts</div><div class="mi"><div class="mi-l"><span class="mi-n">Tres Leches Cake</span><span class="mi-d">Soft sponge soaked in three sweet milks, topped with whipped cream and a dusting of cinnamon.</span></div><span class="mi-p">£6</span></div>
-<div class="mi"><div class="mi-l"><span class="mi-n">Flan de Coco</span><span class="mi-d">Silky coconut custard with a deep caramel glaze, finished with toasted coconut flakes.</span></div><span class="mi-p">£5</span></div></div>
+  <div class="menu-inner">
+    <div class="fu"><p class="lbl">The Menu</p><h2 class="hdg">A taste of what awaits</h2></div>
+    <div class="menu-scroll fu" style="transition-delay:.1s">
+      <div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Tostones con Mojo</p><p class="mc-desc">Crispy twice-fried green plantains served with a zesty garlic and citrus dipping sauce.</p><div class="mc-foot"><span class="mc-price">£6</span><a href="https://wa.me/447497451499" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Ceviche Caribeño</p><p class="mc-desc">Fresh white fish marinated in lime juice with red onion, coriander, and a hint of scotch bonnet.</p><div class="mc-foot"><span class="mc-price">£8</span><a href="https://wa.me/447497451499" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Empanadas de la Casa</p><p class="mc-desc">Golden-fried pastry parcels filled with seasoned beef, olives, and soft-boiled egg.</p><div class="mc-foot"><span class="mc-price">£7</span><a href="https://wa.me/447497451499" class="mc-cta" target="_blank">Order</a></div></div></div>
+      <div class="mc"><img class="mc-img" src="images/img_1.jpg" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">Ropa Vieja</p><p class="mc-desc">Slow-braised shredded beef in a rich tomato and pepper sofrito, served with white rice and sweet plantains.</p><div class="mc-foot"><span class="mc-price">£15</span><a href="https://wa.me/447497451499" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">Pollo a la Brasa</p><p class="mc-desc">Marinated rotisserie chicken with Caribbean herbs, served alongside coconut rice and fried yuca.</p><div class="mc-foot"><span class="mc-price">£14</span><a href="https://wa.me/447497451499" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">Camarones al Coco</p><p class="mc-desc">Juicy prawns sautéed in a creamy coconut and chilli sauce, served with fragrant rice and avocado salad.</p><div class="mc-foot"><span class="mc-price">£17</span><a href="https://wa.me/447497451499" class="mc-cta" target="_blank">Order</a></div></div></div>
+      <div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Dessert</p><p class="mc-name">Tres Leches Cake</p><p class="mc-desc">Soft sponge soaked in three sweet milks, topped with whipped cream and a dusting of cinnamon.</p><div class="mc-foot"><span class="mc-price">£6</span><a href="https://wa.me/447497451499" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Dessert</p><p class="mc-name">Flan de Coco</p><p class="mc-desc">Silky coconut custard with a deep caramel glaze, finished with toasted coconut flakes.</p><div class="mc-foot"><span class="mc-price">£5</span><a href="https://wa.me/447497451499" class="mc-cta" target="_blank">Order</a></div></div></div>
     </div>
-    <p class="menu-disc">* Sample menu for reference. Please contact us for today's full menu.</p>
+    <p style="font-size:.72rem;color:rgba(255,255,255,.3);margin-top:1rem;font-style:italic">* Sample menu — contact us for today's full menu.</p>
   </div>
 </section>
-<section class="rev-sec" id="reviews">
-  <div class="rev-wrap">
-    <div class="fu"><p class="sec-label" style="color:rgba(201,169,110,.7)">Guest Voices</p><h2 class="sec-title">⭐ 4.9 · 59 Google reviews</h2></div>
-    <div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#4a3520">R</div><div><div class="rc-nm">Roslynnn</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"I had a great experience at this restaurant. The food was absolutely amazing and full of flavour. The staff were incredibly kind and welcoming, and the whole place felt very authentic. The music was a"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
-<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#1a3a2a">WD</div><div><div class="rc-nm">Wilmer Duran</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Like my second home... Ones a month is necessary at least to come and eat. I feel like I'm really at home. The best service, El rinconcito"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
-<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#2a2a4a">RS</div><div><div class="rc-nm">Ridge Stanley Icart</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"It was very nice and amazing food, %100 recommended. The real Dominican flavour food."</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div>
-  </div>
-</section>
-<section class="visit" id="visit">
-  <div class="visit-wrap">
-    <div class="fu"><p class="sec-label">Find Us</p><h2 class="sec-title">Visit us in Camberwell, London</h2></div>
-    <div class="visit-grid">
-      <div class="fu"><p class="vb-label">Address</p><p style="font-size:.88rem;color:var(--mut);line-height:1.9;font-weight:300">57 Camberwell Church St, London SE5 8TR, UK</p><a href="https://maps.google.com/?cid=5137853749256565940" target="_blank" class="vb-link" style="color:var(--A);margin-top:.5rem"><i class="fab fa-google"></i> Google Maps</a></div>
-      <div class="fu" style="transition-delay:.05s"><p class="vb-label">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:var(--txt)">10:00 AM – 11:30 PM</span></div>
-<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--txt)">10:00 AM – 11:30 PM</span></div>
-<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--txt)">10:00 AM – 11:30 PM</span></div>
-<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">10:00 AM – 11:30 PM</span></div>
-<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">10:00 AM – 11:30 PM</span></div>
-<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">10:00 AM – 11:30 PM</span></div>
-<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--txt)">10:00 AM – 11:30 PM</span></div></div>
-      <div class="fu" style="transition-delay:.1s"><p class="vb-label">Reservations</p><a href="tel:+447497451499" class="vb-link"><i class="fa fa-phone"></i> 07497 451499</a><a href="https://wa.me/447497451499" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+<section class="rev-sec" id="reviews"><div class="rev-inner"><div class="fu"><p class="lbl">Guest Voices</p><h2 class="hdg" id="ratingCounter2"></h2></div><div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#4a1a1a">R</div><div><div class="rc-nm">Roslynnn</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"I had a great experience at this restaurant. The food was absolutely amazing and full of flavour. The staff were incredibly kind and welcoming, and the whole place felt very authentic. The music was a"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#1a1a4a">WD</div><div><div class="rc-nm">Wilmer Duran</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Like my second home... Ones a month is necessary at least to come and eat. I feel like I'm really at home. The best service, El rinconcito"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#1a3a2a">RS</div><div><div class="rc-nm">Ridge Stanley Icart</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"It was very nice and amazing food, %100 recommended. The real Dominican flavour food."</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div></div></section>
+<section class="visit-sec" id="visit">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="fu"><p class="lbl">Find Us</p><h2 class="hdg">Visit Plaza 809 La caribeña</h2></div>
+    <div class="visit-inner">
+      <div class="fu"><p class="vb-lbl">Address</p><p style="font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.9;font-weight:300">57 Camberwell Church St, London SE5 8TR, UK</p><a href="https://maps.google.com/?cid=5137853749256565940" target="_blank" class="vb-link" style="color:var(--A)"><i class="fab fa-google"></i> Get Directions</a></div>
+      <div class="fu" style="transition-delay:.07s"><p class="vb-lbl">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:rgba(255,255,255,.75)">10:00 AM – 11:30 PM</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:rgba(255,255,255,.75)">10:00 AM – 11:30 PM</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:rgba(255,255,255,.75)">10:00 AM – 11:30 PM</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:rgba(255,255,255,.75)">10:00 AM – 11:30 PM</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:rgba(255,255,255,.75)">10:00 AM – 11:30 PM</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:rgba(255,255,255,.75)">10:00 AM – 11:30 PM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:rgba(255,255,255,.75)">10:00 AM – 11:30 PM</span></div></div>
+      <div class="fu" style="transition-delay:.14s"><p class="vb-lbl">Contact</p><a href="tel:+447497451499" class="vb-link"><i class="fa fa-phone"></i> 07497 451499</a><a href="https://wa.me/447497451499" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
     </div>
-    <a href="https://maps.google.com/?cid=5137853749256565940" target="_blank" class="dir-btn fu"><i class="fab fa-google"></i> Get Directions</a>
   </div>
 </section>
-<footer><span>© 2025 Plaza 809 La caribeña</span><span>57 Camberwell Church St, London SE5 8TR, UK</span></footer>
-<a class="float-cta" href="tel:+447497451499"><i class="fa fa-phone"></i> Call to Reserve</a>
-<script>document.querySelectorAll('.fu').forEach(el=>{el.classList.add('in');});
+<footer><span>© 2025 Plaza 809 La caribeña</span><span style="opacity:.5">57 Camberwell Church St, London SE5 8TR, UK</span></footer>
+<a class="float-cta" href="https://wa.me/447497451499" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+<script>
+/* ── IntersectionObserver reveal ── */
 const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
 document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+/* ── Sticky nav ── */
 (function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
 if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+/* ── Hero stagger entrance ── */
+(function(){
+  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
+              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
+              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
+  const seen=new Set(); let i=0;
+  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
+    if(seen.has(el))return; seen.add(el);
+    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
+    i++;
+  }));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+  }));
+})();
+/* ── Parallax hero ── */
+(function(){
+  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
+  if(!bg||window.innerWidth<700)return;
+  let tk=false;
+  window.addEventListener('scroll',()=>{
+    if(!tk){requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      bg.style.transform='translateY('+(y*0.32)+'px)';
+      tk=false;
+    });tk=true;}
+  },{passive:true});
+})();
+/* ── Open/close badge ── */
 (function(){const H={"Monday": "10:00 AM – 11:30 PM", "Tuesday": "10:00 AM – 11:30 PM", "Wednesday": "10:00 AM – 11:30 PM", "Thursday": "10:00 AM – 11:30 PM", "Friday": "10:00 AM – 11:30 PM", "Saturday": "10:00 AM – 11:30 PM", "Sunday": "10:00 AM – 11:30 PM"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const day=days[new Date().getDay()],raw=H[day]||'';
 const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
@@ -191,6 +214,17 @@ const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+n
 const op=n2>=o&&n2<(c2<o?c2+1440:c2);
 set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
 const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+/* ── Hero tone line ── */
+(function(){
+  const ht="";if(!ht)return;
+  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
+  const el=document.createElement('p');
+  el.className='hero-tone-line';
+  el.textContent=ht;
+  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
+  title.after(el);
+})();
+/* ── Rating counter ── */
 (function(){const el=document.getElementById('ratingCounter');if(!el||!4.9)return;
 new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
 const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
