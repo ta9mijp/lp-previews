@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Flakey bs patties — Streatham, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#3d2d28;--A:#c17c74;--sage:#7a9e87;--bg:#fdf9f6;--txt:#2c1e1e;--mut:#8a7070;--sand:#ede5de}
+html{scroll-behavior:smooth}body{font-family:'Poppins',sans-serif;background:#fff;color:var(--txt);padding-top:52px}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(193,124,116,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:#fff;font-weight:400}.proto-banner strong{font-weight:600}
+.proto-banner a{color:#fff;font-weight:600;border:1.5px solid rgba(255,255,255,.65);padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(253,249,246,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--sand);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'Gilda Display',serif;font-size:1rem;color:var(--txt)}
+.snav-b{font-size:.67rem;font-weight:600;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.12);color:#2d8a50}.snav-b.closed{background:rgba(239,68,68,.1);color:#c0392b}
+.snav-cta{background:var(--A);color:#fff;padding:.42rem 1.1rem;border-radius:50px;font-size:.76rem;font-weight:500;text-decoration:none}
+/* HERO FROSTED */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat}
+.hero-bg-tint{position:absolute;inset:0;background:rgba(0,0,0,.22)}
+.hero-glass{position:relative;z-index:2;background:rgba(253,249,246,.88);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:3.5rem 4rem;max-width:580px;text-align:center;margin:1.5rem}
+@media(max-width:680px){.hero-glass{padding:2.5rem 2rem;margin:1rem}}
+.hero-badge{display:inline-block;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);background:rgba(193,124,116,.1);padding:.28rem .85rem;border-radius:50px;margin-bottom:1rem;font-weight:600}
+.hero-title{font-family:'Gilda Display',serif;font-size:clamp(2rem,5vw,3.5rem);line-height:1.15;color:var(--txt);margin-bottom:1rem}
+.hero-sub{font-size:.88rem;line-height:1.9;color:var(--mut);font-weight:300;margin-bottom:1.2rem}
+.hero-rating{font-size:.86rem;color:var(--A);font-weight:500;margin-bottom:.6rem}
+#openBadge{display:inline-block;font-size:.78rem;font-weight:500;margin-bottom:1.3rem}
+.hero-ctas{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.btn-rose{background:var(--A);color:#fff;padding:.65rem 1.5rem;border-radius:50px;font-size:.8rem;font-weight:500;text-decoration:none;transition:background .2s}
+.btn-rose:hover{background:#a8635c}
+.btn-outline-rose{background:transparent;color:var(--A);padding:.65rem 1.5rem;border-radius:50px;border:1.5px solid var(--A);font-size:.8rem;font-weight:500;text-decoration:none}
+/* SERVICE PILLS */
+.service-strip{padding:1.4rem 4rem;background:var(--bg);border-bottom:1px solid var(--sand);display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:center}
+@media(max-width:680px){.service-strip{padding:1.2rem 1.5rem}}
+.spill{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--mut);background:#fff;border:1px solid var(--sand);padding:.3rem .9rem;border-radius:50px}
+.spill i{color:var(--sage)}
+/* ABOUT */
+.about{padding:6rem 4rem;background:#fff}
+@media(max-width:700px){.about{padding:4rem 1.5rem}}
+.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+@media(max-width:700px){.about-wrap{grid-template-columns:1fr;gap:3rem}}
+.sec-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);margin-bottom:.8rem}
+.sec-title{font-family:'Gilda Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.2;color:var(--txt);margin-bottom:1.2rem}
+.about-text{font-size:.93rem;line-height:2;color:var(--mut);font-weight:300}
+.about-img{border-radius:16px;overflow:hidden;aspect-ratio:4/5}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.ph{display:flex;gap:.9rem;padding:1rem 0;border-bottom:1px solid var(--sand)}
+.ph:last-child{border-bottom:none}
+.ph-n{font-family:'Gilda Display',serif;font-size:1.6rem;color:var(--A);opacity:.45;line-height:1;flex-shrink:0}
+.ph-t{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--txt);font-weight:600;margin-bottom:.25rem}
+.ph-b{font-size:.83rem;color:var(--mut);line-height:1.7;font-weight:300}
+/* MENU */
+.menu-sec{padding:6rem 4rem;background:var(--bg)}
+@media(max-width:700px){.menu-sec{padding:4rem 1.5rem}}
+.menu-wrap{max-width:1100px;margin:0 auto}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:2.5rem}
+@media(max-width:900px){.menu-grid{grid-template-columns:1fr}}
+.menu-cat{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.menu-cat::after{content:'';flex:1;height:1px;background:var(--sand)}
+.mi{display:flex;justify-content:space-between;gap:.5rem;padding:.8rem 0;border-bottom:1px solid var(--sand)}
+.mi:last-child{border-bottom:none}.mi-l{flex:1}
+.mi-n{display:block;font-size:.92rem;font-weight:500;color:var(--txt)}
+.mi-d{display:block;font-size:.76rem;color:var(--mut);margin-top:.12rem;line-height:1.5;font-weight:300}
+.mi-p{font-family:'Gilda Display',serif;font-size:1rem;color:var(--A);flex-shrink:0}
+.menu-disc{font-size:.72rem;color:var(--mut);margin-top:2rem;font-style:italic}
+/* REVIEWS */
+.rev-sec{padding:6rem 4rem;background:#fff}
+@media(max-width:700px){.rev-sec{padding:4rem 1.5rem}}
+.rev-wrap{max-width:1100px;margin:0 auto}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin-top:2.5rem}
+.rc{background:var(--bg);border-radius:16px;padding:1.6rem;border:1px solid var(--sand)}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.rc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.82rem;font-weight:600;color:var(--txt)}.rc-st{font-size:.88rem;color:var(--A)}
+.rc-tx{font-size:.88rem;line-height:1.8;color:var(--mut);font-style:italic;margin-bottom:.8rem;font-weight:300}
+.rc-src{font-size:.68rem;color:#bbb}
+/* VISIT */
+.visit{padding:6rem 4rem;background:var(--bg)}
+@media(max-width:700px){.visit{padding:4rem 1.5rem}}
+.visit-wrap{max-width:1100px;margin:0 auto}
+.visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2.5rem;margin-top:2.5rem}
+.vb-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
+.hr{display:flex;justify-content:space-between;font-size:.84rem;padding:.22rem 0;border-bottom:1px solid var(--sand)}
+.hr:last-child{border-bottom:none}.hr-d{font-weight:600;color:var(--txt);min-width:32px}
+.vb-link{display:block;font-size:.88rem;color:var(--mut);text-decoration:none;line-height:2;font-weight:300}
+.vb-link:hover{color:var(--A)}
+.dir-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:2rem;padding:.65rem 1.5rem;background:var(--sage);color:#fff;border-radius:50px;font-size:.82rem;font-weight:500;text-decoration:none}
+footer{background:var(--P);padding:1.8rem 4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.72rem;color:rgba(255,255,255,.35)}
+@media(max-width:680px){footer{padding:1.5rem;padding-bottom:5.5rem}}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:var(--A);color:#fff;padding:.82rem 1.8rem;border-radius:50px;display:flex;align-items:center;gap:.45rem;font-size:.84rem;font-weight:500;text-decoration:none;box-shadow:0 6px 28px rgba(193,124,116,.45);white-space:nowrap}
+@media(min-width:700px){.float-cta{display:none!important}}
+.fu{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}.fu.in{opacity:1;transform:none}
+</style></head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for Flakey bs patties</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">Flakey bs patties</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447947855311" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-bg"></div><div class="hero-bg-tint"></div>
+  <div class="hero-glass">
+    <div class="hero-badge">Bakery · Streatham, London</div>
+    <h1 class="hero-title">Flaky, golden, filled with pure Streatham soul</h1>
+    <p class="hero-sub">Tucked away in the heart of Streatham, Flakey B's Patties is the neighbourhood gem you'll wish you'd discovered sooner. We craft e…</p>
+    <div class="hero-rating" id="ratingCounter" data-rating="4.8" data-count="96">⭐ 4.8 · 96 Google reviews</div>
+    <span id="openBadge"></span>
+    <div class="hero-ctas">
+      <a href="tel:+447947855311" class="btn-rose"><i class="fa fa-phone"></i> Reserve</a>
+      <a href="#menu" class="btn-outline-rose">See Menu</a>
+    </div>
+  </div>
+</section>
+<div class="service-strip">
+  <div class="spill"><i class="fa fa-utensils"></i> Flakey bs patties</div>
+  <div class="spill"><i class="fa fa-check"></i> Dine In</div><div class="spill"><i class="fa fa-check"></i> Takeaway</div>
+  <div class="spill"><i class="fab fa-google"></i> ⭐ 4.8 · 96 Google reviews</div>
+</div>
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="fu">
+      <div class="about-img"><img src="images/img_1.jpg" alt="Flakey bs patties"/></div>
+    </div>
+    <div class="fu" style="transition-delay:.1s">
+      <p class="sec-label">Our Story</p>
+      <h2 class="sec-title">Flaky, golden, filled with pure Streatham soul</h2>
+      <p class="about-text">Tucked away in the heart of Streatham, Flakey B's Patties is the neighbourhood gem you'll wish you'd discovered sooner. We craft every patty by hand, layering buttery, shatteringly flaky pastry around bold, slow-seasoned fillings inspired by Caribbean tradition. Come for one — leave already planning your next visit.</p>
+      <div style="margin-top:2rem"><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">Made With Hands, Not Shortcuts</h3><p class="ph-b">Every patty is shaped, filled and crimped by our team with the kind of care that machines simply can't replicate.</p></div></div>
+<div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">Flavour From the Heart</h3><p class="ph-b">Our recipes draw on generations of Caribbean cooking, bringing deep, authentic seasoning to every single bite.</p></div></div>
+<div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">Community First</h3><p class="ph-b">We're proud to be a Streatham staple — a small space with a big heart, feeding the neighbourhood one golden patty at a time.</p></div></div></div>
+    </div>
+  </div>
+</section>
+<section class="menu-sec" id="menu">
+  <div class="menu-wrap">
+    <div class="fu"><p class="sec-label">What We Serve</p><h2 class="sec-title">A taste of the menu</h2></div>
+    <div class="menu-grid fu" style="transition-delay:.1s">
+      <div><div class="menu-cat">Starters</div><div class="mi"><div class="mi-l"><span class="mi-n">Scotch Bonnet Slaw</span><span class="mi-d">Crisp cabbage and carrot dressed in a tangy, gently fiery scotch bonnet vinaigrette — the perfect opener.</span></div><span class="mi-p">£3</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Festival Dumplings</span><span class="mi-d">Lightly sweetened, deep-fried dough with a golden crust and pillowy centre, served with a mango dipping sauce.</span></div><span class="mi-p">£3.50</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Pepperpot Soup Shot</span><span class="mi-d">A rich, warming cup of slow-cooked pepperpot broth with herbs and a whisper of allspice.</span></div><span class="mi-p">£2.50</span></div></div>
+      <div><div class="menu-cat">Mains</div><div class="mi"><div class="mi-l"><span class="mi-n">Cheesy Beef Patty</span><span class="mi-d">Our signature — seasoned minced beef and molten cheddar wrapped in layers of flaky, turmeric-kissed pastry.</span></div><span class="mi-p">£4</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Ackee & Saltfish Patty</span><span class="mi-d">A true Jamaican classic filling: buttery ackee, flaked salted cod and sautéed peppers in our iconic golden crust.</span></div><span class="mi-p">£4</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Curried Chickpea Patty</span><span class="mi-d">Hearty spiced chickpeas with potato and scotch bonnet, slow-cooked and nestled in perfectly flaky pastry.</span></div><span class="mi-p">£3.50</span></div></div>
+      <div><div class="menu-cat">Desserts</div><div class="mi"><div class="mi-l"><span class="mi-n">Rum & Raisin Turnover</span><span class="mi-d">Plump rum-soaked raisins and brown sugar custard folded into a crisp, caramelised pastry parcel.</span></div><span class="mi-p">£3.50</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Coconut Sweet Bread</span><span class="mi-d">Dense, fragrant and warmly spiced — a slice of classic Caribbean sweet bread made fresh in-house daily.</span></div><span class="mi-p">£2.50</span></div></div>
+    </div>
+    <p class="menu-disc">* Sample menu for reference. Contact us for today's full menu.</p>
+  </div>
+</section>
+<section class="rev-sec" id="reviews">
+  <div class="rev-wrap">
+    <div class="fu"><p class="sec-label">Kind Words</p><h2 class="sec-title">⭐ 4.8 · 96 Google reviews</h2></div>
+    <div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#c17c74">QT</div><div><div class="rc-nm">Q T</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"I came to the shop based off an Instagram review and I wasn’t disappointed. The patty was filled and oozed out a cheesy beef filling. The pastry was baked to perfection and has a great spice to it. If"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#7a9e87">PD</div><div><div class="rc-nm">Phil D</div><div class="rc-st">★★★★</div></div></div><p class="rc-tx">"Had no idea this great place existed so close to me 😡. Watch the team prepare these bangers in the small space with passion.
+
+Got the ackee and salt fish patty fresh out the oven and the curry goat wi"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#b8896a">JF</div><div><div class="rc-nm">Jeff Fitzsimmons</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Ive had a few patties from here now and they are always so tasty and such good value for money. A nice spicy kick to them and full of flavour :)"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div>
+  </div>
+</section>
+<section class="visit" id="visit">
+  <div class="visit-wrap">
+    <div class="fu"><p class="sec-label">Find Us</p><h2 class="sec-title">Come say hello</h2></div>
+    <div class="visit-grid">
+      <div class="fu"><p class="vb-label">Address</p><p style="font-size:.9rem;color:var(--mut);line-height:1.85;font-weight:300">Unit 3 Station Approach, London SW16 5NR, UK</p></div>
+      <div class="fu" style="transition-delay:.05s"><p class="vb-label">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:var(--txt)">11:00 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--txt)">11:00 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--txt)">11:00 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">11:00 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">11:00 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">11:00 AM – 7:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:#bbb">Closed</span></div></div>
+      <div class="fu" style="transition-delay:.1s"><p class="vb-label">Get in Touch</p><a href="tel:+447947855311" class="vb-link"><i class="fa fa-phone"></i> 07947 855311</a><a href="https://wa.me/447947855311" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+    </div>
+    <a href="https://maps.google.com/?cid=17842270861416010420" target="_blank" class="dir-btn fu"><i class="fab fa-google"></i> Get Directions</a>
+  </div>
+</section>
+<footer><span>© 2025 Flakey bs patties</span><span>Unit 3 Station Approach, London SW16 5NR, UK</span></footer>
+<a class="float-cta" href="tel:+447947855311"><i class="fa fa-phone"></i> Call to Reserve</a>
+<script>document.querySelectorAll('.fu').forEach(el=>{el.classList.add('in');});
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+(function(){const H={"Monday": "11:00 AM – 7:00 PM", "Tuesday": "11:00 AM – 7:00 PM", "Wednesday": "11:00 AM – 7:00 PM", "Thursday": "11:00 AM – 7:00 PM", "Friday": "11:00 AM – 7:00 PM", "Saturday": "11:00 AM – 7:00 PM", "Sunday": "Closed"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+(function(){const el=document.getElementById('ratingCounter');if(!el||!4.8)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,4.8,true,v=>rs.textContent=v);an(0,96,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();</script>
+</body></html>
