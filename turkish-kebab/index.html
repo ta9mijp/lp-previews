@@ -1,0 +1,298 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Turkish Kebab — Romford, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#1C3A1A;--A:#C9A96E;--bg:#F2EDE4;--txt:#2C1A12;--mut:#6B6055;--sand:#DDD5C8}
+html{scroll-behavior:smooth}body{font-family:'Nunito',sans-serif;background:#fff;color:var(--txt);padding-top:52px;overflow-x:hidden}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(28,58,26,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:rgba(255,255,255,.85);font-weight:400}.proto-banner strong{font-weight:700;color:#fff}
+.proto-banner a{color:#fff;font-weight:600;border:1.5px solid var(--A);padding:.25rem .8rem;border-radius:2px;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(28,58,26,.97);border-bottom:1px solid rgba(201,169,110,.2);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'Libre Baskerville',serif;font-size:.95rem;color:#fff;font-style:italic;letter-spacing:.03em}
+.snav-b{font-size:.67rem;font-weight:700;padding:.18rem .55rem;border-radius:2px;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.2);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.2);color:#ef4444}
+.snav-cta{background:var(--A);color:#1C3A1A;padding:.42rem 1.1rem;border-radius:2px;font-size:.76rem;font-weight:700;text-decoration:none;letter-spacing:.04em}
+/* HERO — editorial split */
+.hero{min-height:100svh;background:var(--bg);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative}
+@media(max-width:700px){.hero{grid-template-columns:1fr;min-height:auto}}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 5%;position:relative;z-index:2}
+@media(max-width:700px){.hero-left{padding:3rem 1.5rem 2rem;order:2}}
+.hero-eyebrow{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--A);margin-bottom:1.6rem;display:flex;align-items:center;gap:.8rem}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--A)}
+.hero-title{font-family:'Libre Baskerville',serif;font-size:clamp(2.6rem,5.5vw,5rem);line-height:1.05;font-style:italic;color:var(--P);margin-bottom:1.8rem;letter-spacing:-.01em}
+.hero-sub{font-size:.94rem;line-height:2;color:var(--mut);font-weight:300;max-width:400px;margin-bottom:1.6rem}
+.hero-rating{font-size:.82rem;color:var(--A);font-weight:600;margin-bottom:.5rem;letter-spacing:.02em}
+#openBadge{display:inline-block;font-size:.75rem;font-weight:600;margin-bottom:1.6rem}
+.hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-green{background:var(--P);color:#fff;padding:.72rem 1.8rem;border-radius:2px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s;letter-spacing:.04em}
+.btn-green:hover{background:#0f2110}
+.btn-outline-g{background:transparent;color:var(--P);padding:.72rem 1.8rem;border-radius:2px;border:1.5px solid var(--P);font-size:.82rem;font-weight:600;text-decoration:none;letter-spacing:.04em}
+.hero-right{position:relative;overflow:hidden}
+@media(max-width:700px){.hero-right{height:65vw;order:1}}
+.hero-oval{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--P)}
+.hero-oval-img{width:72%;aspect-ratio:3/4;border-radius:200px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);flex-shrink:0}
+@media(max-width:700px){.hero-oval-img{width:55%;border-radius:120px}}
+.hero-oval-img img{width:100%;height:100%;object-fit:cover}
+.hero-oval-deco{position:absolute;inset:0;pointer-events:none}
+.oval-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78%;aspect-ratio:3/4;border-radius:200px;border:1px solid rgba(201,169,110,.25)}
+@media(max-width:700px){.oval-ring{width:60%;border-radius:120px}}
+/* MARQUEE BAND */
+.marquee-band{background:var(--P);padding:.75rem 0;overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-flex;animation:marquee 22s linear infinite;gap:0}
+.marquee-item{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,169,110,.7);padding:0 2.5rem}
+.marquee-dot{color:var(--A);padding:0 .5rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ABOUT — editorial two-column */
+.about{padding:7rem 0;background:#fff}
+.about-inner{max-width:1200px;margin:0 auto;padding:0 5%;display:grid;grid-template-columns:1fr 1.4fr;gap:6rem;align-items:start}
+@media(max-width:780px){.about-inner{grid-template-columns:1fr;gap:3rem;padding:0 1.5rem}}
+.sec-label{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--A);margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
+.sec-label::before{content:'';display:block;width:24px;height:1px;background:var(--A)}
+.sec-title{font-family:'Libre Baskerville',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-style:italic;line-height:1.15;color:var(--txt);margin-bottom:1.4rem}
+.about-text{font-size:.92rem;line-height:2.05;color:var(--mut);font-weight:300}
+/* Philosophy numbered */
+.ph-list{display:flex;flex-direction:column;gap:0}
+.ph{display:flex;gap:1.4rem;padding:1.6rem 0;border-bottom:1px solid var(--sand)}
+.ph:first-child{border-top:1px solid var(--sand)}
+.ph-num{font-family:'Libre Baskerville',serif;font-size:.72rem;color:var(--A);flex-shrink:0;padding-top:.15rem;letter-spacing:.04em;font-style:italic;min-width:28px}
+.ph-t{font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--txt);font-weight:700;margin-bottom:.3rem}
+.ph-b{font-size:.86rem;color:var(--mut);line-height:1.75;font-weight:300}
+/* GALLERY — masonry 3col */
+.gallery{padding:5rem 5%;background:var(--bg)}
+.gallery-wrap{max-width:1200px;margin:0 auto}
+.gallery-head{text-align:center;margin-bottom:2.5rem}
+.gallery-grid{columns:3;column-gap:1rem}
+@media(max-width:680px){.gallery-grid{columns:2}}
+.gallery-item{break-inside:avoid;margin-bottom:1rem;overflow:hidden;border-radius:4px}
+.gallery-item img{width:100%;display:block;transition:transform .5s ease}
+.gallery-item:hover img{transform:scale(1.04)}
+/* MENU — editorial typography list */
+.menu-sec{padding:7rem 0;background:#fff}
+.menu-inner{max-width:1200px;margin:0 auto;padding:0 5%}
+.menu-head{margin-bottom:3.5rem}
+.menu-tabs{display:flex;gap:2.5rem;margin-bottom:2.5rem;border-bottom:1px solid var(--sand);padding-bottom:.6rem}
+.mtab{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);font-weight:600;cursor:pointer;padding-bottom:.6rem;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;margin-bottom:-.7rem}
+.mtab.active{color:var(--P);border-color:var(--A)}
+.menu-panel{display:none}.menu-panel.active{display:grid;grid-template-columns:repeat(2,1fr);gap:0 4rem}
+@media(max-width:680px){.menu-panel.active{grid-template-columns:1fr}}
+.mi{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--sand)}
+.mi:last-child{border-bottom:none}.mi-l{flex:1}
+.mi-n{display:block;font-family:'Libre Baskerville',serif;font-size:.95rem;color:var(--txt);font-style:italic}
+.mi-d{display:block;font-size:.75rem;color:var(--mut);margin-top:.2rem;line-height:1.55;font-weight:300}
+.mi-p{font-size:.85rem;color:var(--A);flex-shrink:0;font-weight:600}
+.menu-disc{font-size:.7rem;color:var(--sand);margin-top:2.5rem;font-style:italic}
+/* REVIEWS */
+.rev-sec{padding:7rem 0;background:var(--bg)}
+.rev-inner{max-width:1200px;margin:0 auto;padding:0 5%}
+.rev-head{text-align:center;margin-bottom:3rem}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem}
+.rc{background:#fff;padding:2rem;border-top:3px solid var(--A)}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1.1rem}
+.rc-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.8rem;font-weight:600;color:var(--txt)}.rc-st{font-size:.82rem;color:var(--A)}
+.rc-tx{font-family:'Libre Baskerville',serif;font-size:.88rem;line-height:1.85;color:var(--mut);font-style:italic;margin-bottom:.8rem}
+.rc-src{font-size:.66rem;color:#ccc}
+/* VISIT */
+.visit{padding:7rem 0;background:#fff}
+.visit-inner{max-width:1200px;margin:0 auto;padding:0 5%;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:4rem}
+@media(max-width:780px){.visit-inner{grid-template-columns:1fr;gap:2.5rem;padding:0 1.5rem}}
+.vb-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.vb-label::before{content:'';display:block;width:18px;height:1px;background:var(--A)}
+.vb-addr{font-size:.9rem;color:var(--mut);line-height:1.9;font-weight:300}
+.hr-row{display:flex;justify-content:space-between;font-size:.84rem;padding:.25rem 0;border-bottom:1px solid var(--sand)}
+.hr-row:last-child{border-bottom:none}.hr-d{font-weight:600;color:var(--txt);min-width:36px}
+.hr-t{color:var(--mut);font-weight:300}
+.vb-link{display:block;font-size:.88rem;color:var(--mut);text-decoration:none;line-height:2.1;font-weight:300}
+.vb-link:hover{color:var(--P)}
+.dir-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.5rem;padding:.72rem 1.8rem;background:var(--P);color:#fff;border-radius:2px;font-size:.8rem;font-weight:600;text-decoration:none;letter-spacing:.04em;transition:background .2s}
+.dir-btn:hover{background:#0f2110}
+footer{background:var(--P);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+@media(max-width:680px){footer{padding:1.5rem;padding-bottom:5.5rem;flex-direction:column;align-items:flex-start}}
+.foot-name{font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--A);font-style:italic}
+.foot-copy{font-size:.7rem;color:rgba(255,255,255,.3)}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.82rem 2rem;border-radius:2px;display:flex;align-items:center;gap:.5rem;font-size:.84rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.25);white-space:nowrap;letter-spacing:.02em}
+@media(min-width:700px){.float-cta{display:none!important}}
+.fu{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.fu.in{opacity:1;transform:none}
+</style><style>.hero-title,.hero-name{font-style:normal!important;text-transform:uppercase;letter-spacing:-.02em}.sec-title,.hdg{text-transform:uppercase;letter-spacing:-.01em}</style></head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for Turkish Kebab</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">Turkish Kebab</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447958619147" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Restaurant · Romford, London</div>
+    <h1 class="hero-title">Romford's corner of the Bosphorus, done right.</h1>
+    <p class="hero-sub">Turkish Kebab brings the heat and honesty of Anatolian street cooking to the heart of Romford — charcoal-grilled, generously porti…</p>
+    <div class="hero-rating" id="ratingCounter" data-rating="3.8" data-count="47">⭐ 3.8 · 47 Google reviews</div>
+    <span id="openBadge"></span>
+    <div class="hero-ctas">
+      <a href="https://wa.me/447958619147" class="btn-green"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a>
+      <a href="#menu" class="btn-outline-g">Our Menu</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-oval">
+      <div class="hero-oval-deco"><div class="oval-ring"></div></div>
+      <div class="hero-oval-img"><img src="images/img_0.jpg" alt="Turkish Kebab" loading="eager"/></div>
+    </div>
+  </div>
+</section>
+<div class="marquee-band" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="marquee-item">Turkish Kebab<span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Restaurant<span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Romford, London<span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Fine Dining<span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Turkish Kebab<span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Restaurant<span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Romford, London<span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Fine Dining<span class="marquee-dot">✦</span></span>
+  </div>
+</div>
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="fu">
+      <p class="sec-label">Our Story</p>
+      <h2 class="sec-title">Roots, craft &amp; character</h2>
+      <p class="about-text">Turkish Kebab brings the heat and honesty of Anatolian street cooking to the heart of Romford — charcoal-grilled, generously portioned, and built for real hunger. Every skewer is seasoned the old way: patience, spice, and open flame. This is the kind of place you find once and keep coming back to.</p>
+    </div>
+    <div class="fu ph-list" style="transition-delay:.1s">
+      <div class="ph"><span class="ph-num">[01]</span><div><p class="ph-t">Live Fire Only</p><p class="ph-b">Every kebab is cooked over real charcoal — because shortcuts belong somewhere else.</p></div></div>
+      <div class="ph"><span class="ph-num">[02]</span><div><p class="ph-t">Generous by Nature</p><p class="ph-b">Portions here are sized for appetite, not aesthetics.</p></div></div>
+      <div class="ph"><span class="ph-num">[03]</span><div><p class="ph-t">Spice with Purpose</p><p class="ph-b">Our marinades aren't heat for heat's sake — they're built on Turkish spice tradition, layer by layer.</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="gallery fu">
+  <div class="gallery-wrap">
+    <div class="gallery-head"><p class="sec-label" style="justify-content:center">The Atmosphere</p></div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="Turkish Kebab" loading="lazy"/></div><div class="gallery-item"><img src="images/img_1.jpg" alt="Turkish Kebab" loading="lazy"/></div><div class="gallery-item"><img src="images/img_2.jpg" alt="Turkish Kebab" loading="lazy"/></div><div class="gallery-item"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1400&q=85&fit=crop&auto=format" alt="Turkish Kebab" loading="lazy"/></div><div class="gallery-item"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80" alt="Turkish Kebab" loading="lazy"/></div><div class="gallery-item"><img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="Turkish Kebab" loading="lazy"/></div>
+    </div>
+  </div>
+</section>
+<section class="menu-sec" id="menu">
+  <div class="menu-inner">
+    <div class="menu-head fu">
+      <p class="sec-label">The Menu</p>
+      <h2 class="sec-title">A seasonal selection</h2>
+    </div>
+    <div class="menu-tabs fu" style="transition-delay:.1s">
+      <span class="mtab active" onclick="showTab('starters',this)">Starters</span>
+      <span class="mtab" onclick="showTab('mains',this)">Mains</span>
+      <span class="mtab" onclick="showTab('desserts',this)">Desserts</span>
+    </div>
+    <div id="t-starters" class="menu-panel active"><div class="mi"><div class="mi-l"><span class="mi-n">Sigara Böreği</span><span class="mi-d">Crisp filo cigars packed with white cheese and parsley, fried golden and served with a sharp chilli dip.</span></div><span class="mi-p">£5</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Ezme Salad</span><span class="mi-d">Finely chopped tomato, walnut, pomegranate molasses and dried chilli — smoky, sharp, and built to be scooped with warm bread.</span></div><span class="mi-p">£4</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Hummus with Sucuk</span><span class="mi-d">Silky chickpea hummus topped with sliced spiced sausage, finished with a drizzle of chilli oil.</span></div><span class="mi-p">£6</span></div></div>
+    <div id="t-mains" class="menu-panel"><div class="mi"><div class="mi-l"><span class="mi-n">Adana Kebab</span><span class="mi-d">Hand-minced lamb and beef blended with red pepper and sumac, pressed onto wide skewers and grilled over charcoal, served with flatbread and dressed salad.</span></div><span class="mi-p">£13</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Shish Tawook</span><span class="mi-d">Chunks of marinated chicken thigh, charred at the edges and yielding at the centre, with roasted tomato and a yoghurt side.</span></div><span class="mi-p">£12</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Lamb Shish</span><span class="mi-d">Cubed leg of lamb marinated in garlic, olive oil and dried oregano — grilled hard, rested properly, plated simply.</span></div><span class="mi-p">£14</span></div></div>
+    <div id="t-desserts" class="menu-panel"><div class="mi"><div class="mi-l"><span class="mi-n">Künefe</span><span class="mi-d">Shredded wheat pastry filled with stretchy white cheese, soaked in rose-scented syrup and finished with crushed pistachio.</span></div><span class="mi-p">£6</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Sütlaç</span><span class="mi-d">Oven-baked Turkish rice pudding with a burnished top, lightly perfumed with vanilla — cold, creamy, and quietly addictive.</span></div><span class="mi-p">£4</span></div></div>
+    <p class="menu-disc">Sample menu · dishes and prices may vary · please enquire for today's selection</p>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="visit-inner">
+    <div class="fu">
+      <p class="vb-label">Address</p>
+      <p class="vb-addr">171 South St, Romford RM1 1PS, UK</p>
+      <a href="https://maps.google.com/?cid=3897953893147224049" target="_blank" class="dir-btn"><i class="fab fa-google"></i> Get Directions</a>
+    </div>
+    <div class="fu" style="transition-delay:.05s">
+      <p class="vb-label">Opening Hours</p>
+      <div class="hr"><span class="hr-d">Mon</span><span style="color:var(--txt)">11:00 AM – 4:00 AM</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--txt)">11:00 AM – 4:00 AM</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--txt)">11:00 AM – 4:00 AM</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">11:00 AM – 4:00 AM</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">11:00 AM – 4:00 AM</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">11:00 AM – 4:00 AM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--txt)">11:00 AM – 4:00 AM</span></div>
+    </div>
+    <div class="fu" style="transition-delay:.1s">
+      <p class="vb-label">Contact</p>
+      <a href="tel:+447958619147" class="vb-link"><i class="fa fa-phone"></i> 07958 619147</a>
+      <a href="https://wa.me/447958619147" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <span class="foot-name">Turkish Kebab</span>
+  <span class="foot-copy">© 2025 Turkish Kebab · 171 South St, Romford RM1 1PS, UK</span>
+</footer>
+<a class="float-cta" href="https://wa.me/447958619147" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('t-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ── IntersectionObserver reveal ── */
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+/* ── Sticky nav ── */
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+/* ── Hero stagger entrance ── */
+(function(){
+  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
+              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
+              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
+  const seen=new Set(); let i=0;
+  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
+    if(seen.has(el))return; seen.add(el);
+    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
+    i++;
+  }));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+  }));
+})();
+/* ── Parallax hero ── */
+(function(){
+  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
+  if(!bg||window.innerWidth<700)return;
+  let tk=false;
+  window.addEventListener('scroll',()=>{
+    if(!tk){requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      bg.style.transform='translateY('+(y*0.32)+'px)';
+      tk=false;
+    });tk=true;}
+  },{passive:true});
+})();
+/* ── Open/close badge ── */
+(function(){const H={"Monday": "11:00 AM – 4:00 AM", "Tuesday": "11:00 AM – 4:00 AM", "Wednesday": "11:00 AM – 4:00 AM", "Thursday": "11:00 AM – 4:00 AM", "Friday": "11:00 AM – 4:00 AM", "Saturday": "11:00 AM – 4:00 AM", "Sunday": "11:00 AM – 4:00 AM"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+/* ── Hero tone line ── */
+(function(){
+  const ht="Charcoal. Spice. No pretence.";if(!ht)return;
+  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
+  const el=document.createElement('p');
+  el.className='hero-tone-line';
+  el.textContent=ht;
+  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
+  title.after(el);
+})();
+/* ── Rating counter ── */
+(function(){const el=document.getElementById('ratingCounter');if(!el||!3.8)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,3.8,true,v=>rs.textContent=v);an(0,47,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();
+</script>
+</body></html>
