@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Good Meal restaurant Limited — Barking, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#0a0a0a;--A:#E5222C;--bg:#111;--txt:#f5f5f5;--mut:#999;--gold:#c9a96e}
+html{scroll-behavior:smooth}body{font-family:'Raleway',sans-serif;background:var(--P);color:var(--txt);padding-top:52px;overflow-x:hidden}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(229,34,44,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:#fff;font-weight:500}.proto-banner strong{font-weight:700}
+.proto-banner a{color:#fff;font-weight:600;border:1.5px solid rgba(255,255,255,.7);padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(10,10,10,.98);border-bottom:1px solid rgba(229,34,44,.25);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:#fff;font-style:italic}
+.snav-b{font-size:.68rem;font-weight:600;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.15);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.15);color:#ef4444}
+.snav-cta{background:var(--A);color:#fff;padding:.4rem 1.1rem;border-radius:4px;font-size:.76rem;font-weight:600;text-decoration:none}
+.hero{min-height:100svh;display:grid;grid-template-columns:50% 50%;background:var(--P);position:relative;overflow:hidden}
+@media(max-width:768px){.hero{grid-template-columns:1fr}.hero-r{display:none!important}}
+.hero-dots{position:absolute;top:1.2rem;left:1.5rem;z-index:10;display:flex;gap:.45rem}
+.hero-dot{width:12px;height:12px;border-radius:50%}
+.hero-l{display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 4rem 4.5rem;position:relative;z-index:2}
+.hero-line{width:36px;height:2px;background:var(--A);margin-bottom:1.8rem}
+.hero-lbl{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.6rem}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,4.5vw,4.8rem);line-height:1.05;font-style:italic;color:#fff;margin-bottom:1.4rem}
+.hero-title span{color:var(--A)}
+.hero-sub{font-size:.9rem;line-height:1.9;color:rgba(255,255,255,.55);max-width:380px;font-weight:300;margin-bottom:1rem}
+#openBadge{display:inline-block;font-size:.76rem;font-weight:500;margin-bottom:1.8rem}
+.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-red{background:var(--A);color:#fff;padding:.72rem 1.7rem;border-radius:6px;font-size:.83rem;font-weight:600;text-decoration:none;transition:filter .2s}
+.btn-red:hover{filter:brightness(1.1)}
+.btn-outline{background:transparent;color:rgba(255,255,255,.7);padding:.72rem 1.7rem;border:1.5px solid rgba(255,255,255,.25);border-radius:6px;font-size:.83rem;font-weight:400;text-decoration:none;transition:border-color .2s}
+.btn-outline:hover{border-color:rgba(255,255,255,.6);color:#fff}
+.hero-r{position:relative;display:flex;align-items:center;justify-content:center;background:#111;padding:3rem}
+.hero-circle{width:clamp(280px,38vw,480px);height:clamp(280px,38vw,480px);border-radius:50%;overflow:hidden;border:3px solid rgba(229,34,44,.4);box-shadow:0 0 80px rgba(229,34,44,.15)}
+.hero-circle img{width:100%;height:100%;object-fit:cover}
+.hero-r-badge{position:absolute;bottom:3rem;right:3rem;background:rgba(229,34,44,.9);color:#fff;padding:.5rem 1.1rem;font-size:.72rem;font-weight:600;border-radius:4px;letter-spacing:.06em;text-transform:uppercase}
+.stag{font-size:.7rem;padding:.2rem .7rem;border-radius:3px;border:1px solid rgba(229,34,44,.4);color:rgba(255,255,255,.6);margin-right:.4rem}
+.info-bar{background:#111;padding:1rem 5vw;display:flex;gap:1.8rem;flex-wrap:wrap;align-items:center;border-top:1px solid rgba(255,255,255,.07)}
+.ib{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:rgba(255,255,255,.55)}
+.ib i{color:var(--A)}.ib a{color:rgba(255,255,255,.55);text-decoration:none}
+.about-sec{padding:7rem 5vw;background:#0f0f0f}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+@media(max-width:760px){.about-inner{grid-template-columns:1fr;gap:3rem}}
+.lbl{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
+.hdg{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-style:italic;line-height:1.18;color:#fff;margin-bottom:1.2rem}
+.body-txt{font-size:.92rem;line-height:2;color:rgba(255,255,255,.55);font-weight:300}
+.ph{display:flex;gap:1rem;padding:1.3rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.ph:last-child{border-bottom:none}
+.ph-n{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--A);opacity:.45;line-height:1;flex-shrink:0;font-style:italic}
+.ph-t{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);font-weight:500;margin-bottom:.3rem}
+.ph-b{font-size:.84rem;color:rgba(255,255,255,.45);line-height:1.75;font-weight:300}
+.menu-sec{padding:7rem 5vw;background:#0a0a0a;overflow:hidden}
+.menu-inner{max-width:1100px;margin:0 auto}
+.menu-scroll{display:flex;gap:1.4rem;overflow-x:auto;padding-bottom:1.5rem;margin-top:2.5rem;scrollbar-width:thin;scrollbar-color:rgba(229,34,44,.4) transparent}
+.mc{background:#1a1a1a;border-radius:16px;padding:0;overflow:hidden;min-width:220px;border:1px solid rgba(255,255,255,.07);transition:transform .25s,border-color .25s;flex-shrink:0}
+.mc:hover{transform:translateY(-6px);border-color:rgba(229,34,44,.4)}
+.mc-img{width:100%;height:180px;object-fit:cover;background:#222}
+.mc-body{padding:1.2rem}
+.mc-cat{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);margin-bottom:.4rem}
+.mc-name{font-size:.95rem;font-weight:500;color:#fff;margin-bottom:.3rem}
+.mc-desc{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:.9rem;font-weight:300}
+.mc-foot{display:flex;align-items:center;justify-content:space-between}
+.mc-price{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--gold);font-style:italic}
+.mc-cta{font-size:.72rem;font-weight:600;background:var(--A);color:#fff;padding:.28rem .75rem;border-radius:4px;text-decoration:none}
+.rev-sec{padding:7rem 5vw;background:#0f0f0f}
+.rev-inner{max-width:1100px;margin:0 auto}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;margin-top:2.5rem;border:1px solid rgba(255,255,255,.07)}
+.rc{padding:2.2rem;border-right:1px solid rgba(255,255,255,.06)}
+.rc:last-child{border-right:none}
+@media(max-width:700px){.rev-grid{grid-template-columns:1fr;border:none}.rc{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);padding:1.6rem 0}}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem}
+.rc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.8rem;font-weight:500;color:rgba(255,255,255,.75)}.rc-st{font-size:.88rem;color:var(--gold)}
+.rc-tx{font-size:.88rem;line-height:1.85;color:rgba(255,255,255,.5);font-style:italic;font-weight:300;margin-bottom:.7rem}
+.rc-src{font-size:.65rem;color:rgba(255,255,255,.25)}
+.visit-sec{padding:7rem 5vw;background:#111}
+.visit-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem}
+.vb-lbl{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
+.hr{display:flex;justify-content:space-between;font-size:.83rem;padding:.22rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.hr:last-child{border-bottom:none}.hr-d{font-weight:500;color:rgba(255,255,255,.8)}
+.vb-link{display:block;font-size:.88rem;color:rgba(255,255,255,.45);text-decoration:none;line-height:2.1;font-weight:300}
+.vb-link:hover{color:var(--A)}
+footer{background:#000;padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.72rem;color:rgba(255,255,255,.2);border-top:1px solid rgba(229,34,44,.15)}
+@media(max-width:680px){footer{padding-bottom:6rem}}
+@media(max-width:700px){
+  .hero-l{padding:4.5rem 1.4rem 5.5rem}
+  .hero-title{font-size:clamp(2.4rem,10vw,3.5rem)}
+  .btn-outline{display:none}
+  .btn-red{width:100%;justify-content:center}
+  .info-bar{display:none}
+  .about-sec,.menu-sec,.rev-sec,.visit-sec{padding:3.5rem 1.4rem}
+}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.85rem 1.9rem;border-radius:6px;display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.35);white-space:nowrap}
+@media(min-width:700px){.float-cta{display:none!important}}
+.fu{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}.fu.in{opacity:1;transform:none}
+</style><style>.hero-title,.hero-name{font-style:normal!important;text-transform:uppercase;letter-spacing:-.02em}.sec-title,.hdg{text-transform:uppercase;letter-spacing:-.01em}</style></head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for Good Meal restaurant Limited</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">Good Meal restaurant Limited</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447470421407" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-dots"><div class="hero-dot" style="background:#ff5f57"></div><div class="hero-dot" style="background:#ffbd2e"></div><div class="hero-dot" style="background:#28c940"></div></div>
+  <div class="hero-l">
+    <div class="hero-line"></div>
+    <p class="hero-lbl">Restaurant · Barking, London</p>
+    <h1 class="hero-title">it's not just<br>Food, It's <span>an</span><br>Experience.</h1>
+    <p class="hero-sub">Good Meal started as a food cart parked at Barking Riverside, serving proper Jamaican cooking to anyone bold enough to stop. What looks like a simple setup deli</p>
+    <span id="openBadge"></span>
+    <div class="hero-ctas">
+      <a href="https://wa.me/447470421407" target="_blank" class="btn-red"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <a href="#menu" class="btn-outline">View Menu</a>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="hero-circle"><img src="images/img_0.jpg" alt="Good Meal restaurant Limited"/></div>
+    <div class="hero-r-badge">Restaurant</div>
+  </div>
+</section>
+<div class="info-bar">
+  <span class="stag">Dine In</span><span class="stag">Takeaway</span><span class="stag">Delivery</span>
+  <span class="ib"><i class="fab fa-whatsapp"></i><a href="https://wa.me/447470421407" target="_blank">07470 421407</a></span>
+  <span class="ib"><i class="fab fa-google"></i><a href="https://maps.google.com/?cid=13201961762677136241" target="_blank">Google Maps</a></span>
+  <span class="ib" id="ratingCounter"></span>
+</div>
+<section class="about-sec fu" id="about">
+  <div class="about-inner">
+    <div>
+      <p class="lbl">The Experience</p>
+      <h2 class="hdg">Jamaican soul food, rolling through Barking Riverside.</h2>
+      <p class="body-txt">Good Meal started as a food cart parked at Barking Riverside, serving proper Jamaican cooking to anyone bold enough to stop. What looks like a simple setup delivers the kind of food that makes you pull over, turn the engine off, and stay a while. Every plate is cooked with the confidence of a kitchen that knows exactly what it's doing.</p>
+      <a href="https://wa.me/447470421407" target="_blank" class="btn-red" style="margin-top:2rem;display:inline-flex"><i class="fab fa-whatsapp"></i> Reserve via WhatsApp</a>
+    </div>
+    <div><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">No Shortcuts</h3><p class="ph-b">Every dish is built from scratch using spices and techniques rooted in Jamaican tradition, not convenience.</p></div></div>
+<div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">Street-Level Honesty</h3><p class="ph-b">There's no theatre here — just real food, cooked hot, served direct, and priced so you can come back tomorrow.</p></div></div>
+<div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">The Cart Is the Kitchen</h3><p class="ph-b">Our food cart isn't a stepping stone — it's the whole point, a rolling spot where great Jamaican cooking meets East London energy.</p></div></div></div>
+  </div>
+</section>
+<section class="menu-sec" id="menu">
+  <div class="menu-inner">
+    <div class="fu"><p class="lbl">The Menu</p><h2 class="hdg">A taste of what awaits</h2></div>
+    <div class="menu-scroll fu" style="transition-delay:.1s">
+      <div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Jerk Chicken Skewers</p><p class="mc-desc">Scotch bonnet-marinated chicken, charred over open flame, served with a sharp mango dipping sauce.</p><div class="mc-foot"><span class="mc-price">£5</span><a href="https://wa.me/447470421407" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Saltfish Fritters</p><p class="mc-desc">Crispy golden bites of flaked saltfish and spring onion batter, fried to order.</p><div class="mc-foot"><span class="mc-price">£4</span><a href="https://wa.me/447470421407" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Festival Bread</p><p class="mc-desc">Lightly sweet fried dough, golden outside, pillowy within — the classic Jamaican side, served warm.</p><div class="mc-foot"><span class="mc-price">£3</span><a href="https://wa.me/447470421407" class="mc-cta" target="_blank">Order</a></div></div></div>
+      <div class="mc"><img class="mc-img" src="images/img_1.jpg" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">Jerk Chicken Plate</p><p class="mc-desc">Half chicken marinated overnight in house jerk seasoning, grilled hard, served with rice and peas and fried plantain.</p><div class="mc-foot"><span class="mc-price">£12</span><a href="https://wa.me/447470421407" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">Curry Goat</p><p class="mc-desc">Slow-cooked Jamaican curry goat, falling off the bone, with white rice and a side of hard food.</p><div class="mc-foot"><span class="mc-price">£13</span><a href="https://wa.me/447470421407" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">Brown Stew Fish</p><p class="mc-desc">Whole snapper braised in a rich brown stew sauce with thyme, allspice, and sweet peppers.</p><div class="mc-foot"><span class="mc-price">£14</span><a href="https://wa.me/447470421407" class="mc-cta" target="_blank">Order</a></div></div></div>
+      <div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Dessert</p><p class="mc-name">Rum Cake</p><p class="mc-desc">Dense, dark, soaked in Jamaican rum — a proper slice that earns its reputation.</p><div class="mc-foot"><span class="mc-price">£4</span><a href="https://wa.me/447470421407" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Dessert</p><p class="mc-name">Gizzada</p><p class="mc-desc">Flaky pastry shell packed with spiced coconut filling, toasted at the edges and wickedly sweet.</p><div class="mc-foot"><span class="mc-price">£3</span><a href="https://wa.me/447470421407" class="mc-cta" target="_blank">Order</a></div></div></div>
+    </div>
+    <p style="font-size:.72rem;color:rgba(255,255,255,.3);margin-top:1rem;font-style:italic">* Sample menu — contact us for today's full menu.</p>
+  </div>
+</section>
+<section class="rev-sec" id="reviews"><div class="rev-inner"><div class="fu"><p class="lbl">Guest Voices</p><h2 class="hdg" id="ratingCounter2"></h2></div><div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#4a1a1a">S</div><div><div class="rc-nm">Steyve</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"🚀 New professional website available!
+
+I create modern, fast, and 100% mobile-friendly websites for:
+• Restaurants
+• Online stores
+• Businesses
+• Entrepreneurs
+
+✅ Premium Design"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#1a1a4a">IZ</div><div><div class="rc-nm">Imran Zm</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"If you’re around Barking Riverside and spot the Good Meal Jamaican food cart, it’s definitely worth stopping by. Don’t let the simple setup fool you—this place delivers big, authentic Caribbean flavou"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div></div></section>
+<section class="visit-sec" id="visit">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="fu"><p class="lbl">Find Us</p><h2 class="hdg">Visit Good Meal restaurant Limited</h2></div>
+    <div class="visit-inner">
+      <div class="fu"><p class="vb-lbl">Address</p><p style="font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.9;font-weight:300">Barkingriverside, london, Barking IG11 0BF, UK</p><a href="https://maps.google.com/?cid=13201961762677136241" target="_blank" class="vb-link" style="color:var(--A)"><i class="fab fa-google"></i> Get Directions</a></div>
+      <div class="fu" style="transition-delay:.07s"><p class="vb-lbl">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:rgba(255,255,255,.75)">12:00 – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:rgba(255,255,255,.75)">12:00 – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:rgba(255,255,255,.75)">12:00 – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:rgba(255,255,255,.75)">12:00 – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:rgba(255,255,255,.75)">12:00 – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:rgba(255,255,255,.75)">12:00 – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:rgba(255,255,255,.35)">Closed</span></div></div>
+      <div class="fu" style="transition-delay:.14s"><p class="vb-lbl">Contact</p><a href="tel:+447470421407" class="vb-link"><i class="fa fa-phone"></i> 07470 421407</a><a href="https://wa.me/447470421407" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+    </div>
+  </div>
+</section>
+<footer><span>© 2025 Good Meal restaurant Limited</span><span style="opacity:.5">Barkingriverside, london, Barking IG11 0BF, UK</span></footer>
+<a class="float-cta" href="https://wa.me/447470421407" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+<script>
+/* ── IntersectionObserver reveal ── */
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+/* ── Sticky nav ── */
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+/* ── Hero stagger entrance ── */
+(function(){
+  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
+              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
+              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
+  const seen=new Set(); let i=0;
+  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
+    if(seen.has(el))return; seen.add(el);
+    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
+    i++;
+  }));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+  }));
+})();
+/* ── Parallax hero ── */
+(function(){
+  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
+  if(!bg||window.innerWidth<700)return;
+  let tk=false;
+  window.addEventListener('scroll',()=>{
+    if(!tk){requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      bg.style.transform='translateY('+(y*0.32)+'px)';
+      tk=false;
+    });tk=true;}
+  },{passive:true});
+})();
+/* ── Open/close badge ── */
+(function(){const H={"Monday": "12:00 – 10:00 PM", "Tuesday": "12:00 – 10:00 PM", "Wednesday": "12:00 – 10:00 PM", "Thursday": "12:00 – 10:00 PM", "Friday": "12:00 – 10:00 PM", "Saturday": "12:00 – 10:00 PM", "Sunday": "Closed"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+/* ── Hero tone line ── */
+(function(){
+  const ht="Bold island flavour, London streets.";if(!ht)return;
+  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
+  const el=document.createElement('p');
+  el.className='hero-tone-line';
+  el.textContent=ht;
+  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
+  title.after(el);
+})();
+/* ── Rating counter ── */
+(function(){const el=document.getElementById('ratingCounter');if(!el||!5)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,5,true,v=>rs.textContent=v);an(0,2,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();</script>
+</body></html>
