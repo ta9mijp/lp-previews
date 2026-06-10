@@ -1,0 +1,282 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Maandeeq Coffee & Restaurant — Seven Sisters, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#1E1206;--A:#F2902C;--bg:#FFFDF7;--txt:#1E1206;--mut:#6B5B48;--pale:#FFE4C4;--sand:#EDE0CC}
+html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);padding-top:52px;overflow-x:hidden}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(242,144,44,.97);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:#fff;font-weight:400}.proto-banner strong{font-weight:700}
+.proto-banner a{color:#fff;font-weight:700;border:1.5px solid rgba(255,255,255,.8);padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(30,18,6,.97);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'Playfair Display',serif;font-size:1rem;color:#fff}
+.snav-b{font-size:.67rem;font-weight:700;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.2);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.2);color:#ef4444}
+.snav-cta{background:var(--A);color:#fff;padding:.42rem 1.1rem;border-radius:50px;font-size:.76rem;font-weight:600;text-decoration:none}
+/* HERO */
+.hero{min-height:100svh;background:var(--bg);position:relative;display:flex;align-items:center;padding:5rem 5% 4rem;overflow:hidden}
+@media(max-width:700px){.hero{flex-direction:column;padding:3rem 1.5rem 3rem;min-height:auto;gap:2.5rem}}
+.hero-deco{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.deco-circle{position:absolute;border-radius:50%;background:var(--pale);opacity:.55}
+.deco-c1{width:420px;height:420px;top:-80px;right:-60px}
+.deco-c2{width:200px;height:200px;bottom:10%;left:-60px;opacity:.4}
+@media(max-width:700px){.deco-c1{width:260px;height:260px}.deco-c2{width:120px;height:120px}}
+.hero-text{position:relative;z-index:2;flex:1;max-width:520px}
+.hero-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:1.4rem}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5.5rem);line-height:1.05;color:var(--txt);margin-bottom:1.2rem;font-weight:900}
+.hero-title em{font-style:italic;color:var(--A)}
+.hero-sub{font-size:.93rem;line-height:2;color:var(--mut);font-weight:300;margin-bottom:1.4rem;max-width:420px}
+.hero-rating{font-size:.82rem;color:var(--A);font-weight:600;margin-bottom:.5rem}
+#openBadge{display:inline-block;font-size:.75rem;font-weight:600;margin-bottom:1.4rem}
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-orange{background:var(--A);color:#fff;padding:.75rem 2rem;border-radius:50px;font-size:.85rem;font-weight:600;text-decoration:none;transition:background .2s,transform .1s;display:inline-flex;align-items:center;gap:.4rem}
+.btn-orange:hover{background:#d97820;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--txt);padding:.75rem 2rem;border-radius:50px;border:1.5px solid var(--sand);font-size:.85rem;font-weight:500;text-decoration:none}
+.hero-photo{position:relative;z-index:2;flex-shrink:0;margin-left:3rem}
+@media(max-width:700px){.hero-photo{margin-left:0;align-self:center}}
+.hero-circle-wrap{width:min(380px,80vw);aspect-ratio:1;position:relative}
+.hero-circle-dash{position:absolute;inset:-10px;border-radius:50%;border:2.5px dashed var(--A);opacity:.5;animation:spin 30s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-circle-img{width:100%;height:100%;border-radius:50%;overflow:hidden;border:4px solid #fff;box-shadow:0 20px 60px rgba(242,144,44,.25)}
+.hero-circle-img img{width:100%;height:100%;object-fit:cover}
+.hero-badge-float{position:absolute;bottom:10%;right:-10%;background:#fff;border-radius:50px;padding:.55rem 1.1rem;box-shadow:0 8px 28px rgba(0,0,0,.12);display:flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;color:var(--txt);white-space:nowrap}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0}
+/* ABOUT */
+.about{padding:6rem 5%;background:#fff;position:relative}
+@media(max-width:700px){.about{padding:4rem 1.5rem}}
+.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+@media(max-width:700px){.about-wrap{grid-template-columns:1fr;gap:3rem}}
+.sec-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);margin-bottom:.9rem;font-weight:600}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.15;color:var(--txt);margin-bottom:1.2rem}
+.about-text{font-size:.92rem;line-height:2.05;color:var(--mut);font-weight:300}
+.about-img-wrap{position:relative}
+.about-img{aspect-ratio:4/5;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;overflow:hidden;border:5px solid var(--pale)}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-deco{position:absolute;bottom:-15px;right:-15px;width:80px;height:80px;border-radius:50%;background:var(--pale);z-index:-1}
+/* PHILOSOPHY */
+.phil-list{margin-top:2rem;display:flex;flex-direction:column;gap:.3rem}
+.ph{display:grid;grid-template-columns:28px 1fr;gap:.9rem;padding:1rem 0;border-bottom:1px solid var(--sand)}
+.ph:last-child{border-bottom:none}
+.ph-icon{width:28px;height:28px;border-radius:50%;background:var(--pale);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--A);flex-shrink:0;margin-top:.1rem}
+.ph-t{font-size:.79rem;letter-spacing:.05em;text-transform:uppercase;color:var(--txt);font-weight:600;margin-bottom:.22rem}
+.ph-b{font-size:.84rem;color:var(--mut);line-height:1.7;font-weight:300}
+/* MENU cards */
+.menu-sec{padding:6rem 5%;background:var(--bg)}
+@media(max-width:700px){.menu-sec{padding:4rem 1.5rem}}
+.menu-wrap{max-width:1100px;margin:0 auto}
+.menu-head{text-align:center;margin-bottom:3rem}
+.menu-tabs{display:flex;gap:.6rem;justify-content:center;margin-bottom:2.5rem;flex-wrap:wrap}
+.mtab{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);background:#fff;border:1.5px solid var(--sand);padding:.45rem 1.2rem;border-radius:50px;cursor:pointer;transition:all .2s;font-weight:600}
+.mtab.active{background:var(--A);color:#fff;border-color:var(--A)}
+.menu-panel{display:none}.menu-panel.active{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--sand)}
+@media(max-width:580px){.menu-panel.active{grid-template-columns:1fr}}
+.mc{background:var(--bg);padding:1.3rem 1.5rem;display:flex;align-items:baseline;justify-content:space-between;gap:1rem;transition:background .15s}
+.mc:hover{background:var(--pale)}
+.mc-l{flex:1}
+.mc-n{font-family:'Playfair Display',serif;font-size:.96rem;color:var(--txt);font-style:italic}
+.mc-d{font-size:.74rem;color:var(--mut);line-height:1.5;margin-top:.18rem;font-weight:300}
+.mc-p{font-size:.88rem;color:var(--A);font-weight:600;flex-shrink:0}
+.menu-disc{text-align:center;font-size:.7rem;color:var(--sand);margin-top:2rem;font-style:italic}
+/* REVIEWS */
+.rev-sec{padding:6rem 5%;background:#fff}
+@media(max-width:700px){.rev-sec{padding:4rem 1.5rem}}
+.rev-wrap{max-width:1100px;margin:0 auto}
+.rev-head{text-align:center;margin-bottom:3rem}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.rc{background:var(--bg);border-radius:20px;padding:1.8rem;border:1.5px solid var(--sand);position:relative;overflow:hidden}
+.rc::before{content:'"';position:absolute;top:.5rem;right:1.2rem;font-family:'Playfair Display',serif;font-size:5rem;color:var(--pale);line-height:1;pointer-events:none}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem;position:relative;z-index:1}
+.rc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.82rem;font-weight:600;color:var(--txt)}.rc-st{font-size:.9rem;color:var(--A)}
+.rc-tx{font-size:.88rem;line-height:1.85;color:var(--mut);margin-bottom:.8rem;font-weight:300;position:relative;z-index:1}
+.rc-src{font-size:.66rem;color:#ccc}
+/* VISIT */
+.visit{padding:6rem 5%;background:var(--bg)}
+@media(max-width:700px){.visit{padding:4rem 1.5rem}}
+.visit-wrap{max-width:1100px;margin:0 auto}
+.visit-head{text-align:center;margin-bottom:3rem}
+.visit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem}
+.vb-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);font-weight:700;margin-bottom:.9rem}
+.vb-addr{font-size:.9rem;color:var(--mut);line-height:1.9;font-weight:300}
+.hr-row{display:flex;justify-content:space-between;font-size:.83rem;padding:.25rem 0;border-bottom:1px solid var(--sand)}
+.hr-row:last-child{border-bottom:none}.hr-d{font-weight:600;color:var(--txt)}
+.hr-t{color:var(--mut);font-weight:300}
+.vb-link{display:block;font-size:.88rem;color:var(--mut);text-decoration:none;line-height:2.2;font-weight:300}
+.vb-link:hover{color:var(--A)}
+.dir-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.5rem;padding:.75rem 2rem;background:var(--A);color:#fff;border-radius:50px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
+.dir-btn:hover{background:#d97820}
+footer{background:var(--P);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+@media(max-width:680px){footer{padding:1.5rem;padding-bottom:5.5rem;flex-direction:column;align-items:flex-start}}
+.foot-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--A)}
+.foot-copy{font-size:.7rem;color:rgba(255,255,255,.3)}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.85rem 2rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.84rem;font-weight:700;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,.2);white-space:nowrap}
+@media(min-width:700px){.float-cta{display:none!important}}
+.fu{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.fu.in{opacity:1;transform:none}
+</style><style>:root{--fu-dy:14px}.about-sec,.about{background:var(--bg)!important}.rc{border-radius:20px!important}.tab-btn,.mtab{border-radius:50px!important}</style></head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for Maandeeq Coffee & Restaurant</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">Maandeeq Coffee & Restaurant</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447517412132" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-deco">
+    <div class="deco-circle deco-c1"></div>
+    <div class="deco-circle deco-c2"></div>
+  </div>
+  <div class="hero-text">
+    <div class="hero-tag">Restaurant · Seven Sisters, London</div>
+    <h1 class="hero-title"><em>One bite and Seven Sisters pulls you back.</em></h1>
+    <p class="hero-sub">Maandeeq Coffee & Restaurant is a neighbourhood anchor on Seven Sisters Road where Somali warmth meets bold, unfussy cooking. Ever…</p>
+    <div class="hero-rating" id="ratingCounter" data-rating="5" data-count="3">⭐ 5 · 3 Google reviews</div>
+    <span id="openBadge"></span>
+    <div class="hero-btns">
+      <a href="https://wa.me/447517412132" class="btn-orange"><i class="fab fa-whatsapp"></i> Book a Table</a>
+      <a href="#menu" class="btn-ghost">See Menu</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="hero-circle-wrap">
+      <div class="hero-circle-dash"></div>
+      <div class="hero-circle-img"><img src="images/img_0.jpg" alt="Maandeeq Coffee & Restaurant" loading="eager"/></div>
+      <div class="hero-badge-float"><div class="badge-dot"></div><span id="heroBadgeStatus">Open Now</span></div>
+    </div>
+  </div>
+</section>
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="about-img-wrap fu">
+      <div class="about-img"><img src="images/img_1.jpg" alt="Maandeeq Coffee & Restaurant"/></div>
+      <div class="about-deco"></div>
+    </div>
+    <div class="fu" style="transition-delay:.1s">
+      <p class="sec-label">Our Story</p>
+      <h2 class="sec-title">One bite and Seven Sisters pulls you back.</h2>
+      <p class="about-text">Maandeeq Coffee & Restaurant is a neighbourhood anchor on Seven Sisters Road where Somali warmth meets bold, unfussy cooking. Every plate arrives heavy with spice and care, the kind that makes strangers at neighbouring tables lean over to ask what you ordered. Come once — regulars will tell you that's never the whole story.</p>
+      <div class="phil-list">
+        <div class="ph"><div class="ph-icon">✦</div><div><p class="ph-t">Flavour First</p><p class="ph-b">Every dish is built around a single promise: you will remember the taste long after you leave the table.</p></div></div>
+        <div class="ph"><div class="ph-icon">✦</div><div><p class="ph-t">Honest Hospitality</p><p class="ph-b">We cook the way we welcome — generously, without pretence, with every detail directed at your comfort.</p></div></div>
+        <div class="ph"><div class="ph-icon">✦</div><div><p class="ph-t">Community Rooted</p><p class="ph-b">Seven Sisters is not just our address; it is the living, breathing ingredient that seasons everything we do.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="menu-sec" id="menu">
+  <div class="menu-wrap">
+    <div class="menu-head fu">
+      <p class="sec-label">The Menu</p>
+      <h2 class="sec-title">Good food, every day</h2>
+    </div>
+    <div class="menu-tabs fu" style="transition-delay:.1s">
+      <span class="mtab active" onclick="showTab('starters',this)">Starters</span>
+      <span class="mtab" onclick="showTab('mains',this)">Mains</span>
+      <span class="mtab" onclick="showTab('desserts',this)">Desserts</span>
+    </div>
+    <div id="t-starters" class="menu-panel active fu" style="transition-delay:.2s">
+      <div class="mc"><div class="mc-l"><span class="mc-n">Sambusa</span><span class="mc-d">Crisp handmade pastry parcels filled with spiced lamb mince, green chilli and fresh coriander, served with tamarind dipping sauce.</span></div><span class="mc-p">£5</span></div><div class="mc"><div class="mc-l"><span class="mc-n">Suqaar Bites</span><span class="mc-d">Tender cubes of flash-fried beef seasoned with xawaash, garlic and sweet pepper, plated on a smear of yoghurt.</span></div><span class="mc-p">£6</span></div><div class="mc"><div class="mc-l"><span class="mc-n">Laxoox Bread & Dip</span><span class="mc-d">Warm Somali sponge flatbread, fermented overnight for a gentle sourness, served alongside spiced honey butter and lemon-dressed salad.</span></div><span class="mc-p">£4</span></div>
+    </div>
+    <div id="t-mains" class="menu-panel">
+      <div class="mc"><div class="mc-l"><span class="mc-n">Baasto Suqaar</span><span class="mc-d">Somali-spiced pasta tossed with slow-cooked beef, caramelised onion, tomato and a whisper of cardamom — comfort at its most direct.</span></div><span class="mc-p">£11</span></div><div class="mc"><div class="mc-l"><span class="mc-n">Hilib Ari — Braised Goat</span><span class="mc-d">Bone-in goat simmered for hours with xawaash, whole spices and roasted tomato, served over fragrant basmati rice.</span></div><span class="mc-p">£14</span></div><div class="mc"><div class="mc-l"><span class="mc-n">Grilled Tilapia Plate</span><span class="mc-d">Whole tilapia marinated in garlic, lemon and chilli paste, chargrilled and brought to the table with spiced rice and pickled salad.</span></div><span class="mc-p">£13</span></div>
+    </div>
+    <div id="t-desserts" class="menu-panel">
+      <div class="mc"><div class="mc-l"><span class="mc-n">Halwo</span><span class="mc-d">Traditional Somali halva — dense, cardamom-scented and gently sweet — cut thick and served alongside a small pot of spiced tea.</span></div><span class="mc-p">£4</span></div><div class="mc"><div class="mc-l"><span class="mc-n">Canjeero Caano</span><span class="mc-d">Warm fermented flatbread drizzled with sweetened condensed milk and a dusting of cinnamon, a late-night staple done properly.</span></div><span class="mc-p">£4</span></div>
+    </div>
+    <p class="menu-disc">Sample menu · items and pricing subject to change</p>
+  </div>
+</section>
+<section class="rev-sec" id="reviews"><div class="rev-wrap"><div class="rev-head fu"><p class="sec-label">What People Say</p><h2 class="sec-title">⭐ 5 · 3 Google reviews</h2></div><div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#F2902C">AA</div><div><div class="rc-nm">Abdirahman Abukar</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Once ate from there, for sure you will revisit. Tastes very delicious"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div></div></section>
+<section class="visit" id="visit">
+  <div class="visit-wrap">
+    <div class="visit-head fu">
+      <p class="sec-label">Come Visit</p>
+      <h2 class="sec-title">Find us in Seven Sisters, London</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="fu"><p class="vb-label">Address</p><p class="vb-addr">Unit 7, The Junction Market, 95 Seven Sisters Rd, London N7 7QP, UK</p></div>
+      <div class="fu" style="transition-delay:.05s"><p class="vb-label">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:var(--sand)">Closed</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--sand)">Closed</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--sand)">Closed</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--sand)">Closed</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--sand)">Closed</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--sand)">Closed</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--sand)">Closed</span></div></div>
+      <div class="fu" style="transition-delay:.1s"><p class="vb-label">Contact</p><a href="tel:+447517412132" class="vb-link"><i class="fa fa-phone"></i> 07517 412132</a><a href="https://wa.me/447517412132" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+    </div>
+    <a href="https://maps.google.com/?cid=144829321285669123" target="_blank" class="dir-btn fu"><i class="fab fa-google"></i> Get Directions</a>
+  </div>
+</section>
+<footer>
+  <span class="foot-name">Maandeeq Coffee & Restaurant</span>
+  <span class="foot-copy">© 2025 Maandeeq Coffee & Restaurant · Unit 7, The Junction Market, 95 Seven Sisters Rd, London N7 7QP, UK</span>
+</footer>
+<a class="float-cta" href="https://wa.me/447517412132" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('t-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ── IntersectionObserver reveal ── */
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+/* ── Sticky nav ── */
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+/* ── Hero stagger entrance ── */
+(function(){
+  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
+              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
+              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
+  const seen=new Set(); let i=0;
+  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
+    if(seen.has(el))return; seen.add(el);
+    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
+    i++;
+  }));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+  }));
+})();
+/* ── Parallax hero ── */
+(function(){
+  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
+  if(!bg||window.innerWidth<700)return;
+  let tk=false;
+  window.addEventListener('scroll',()=>{
+    if(!tk){requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      bg.style.transform='translateY('+(y*0.32)+'px)';
+      tk=false;
+    });tk=true;}
+  },{passive:true});
+})();
+/* ── Open/close badge ── */
+(function(){const H={"Monday": "Closed", "Tuesday": "Closed", "Wednesday": "Closed", "Thursday": "Closed", "Friday": "Closed", "Saturday": "Closed", "Sunday": "Closed"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+/* ── Hero tone line ── */
+(function(){
+  const ht="Spice, warmth, come back.";if(!ht)return;
+  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
+  const el=document.createElement('p');
+  el.className='hero-tone-line';
+  el.textContent=ht;
+  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
+  title.after(el);
+})();
+/* ── Rating counter ── */
+(function(){const el=document.getElementById('ratingCounter');if(!el||!5)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,5,true,v=>rs.textContent=v);an(0,3,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();
+</script>
+</body></html>
