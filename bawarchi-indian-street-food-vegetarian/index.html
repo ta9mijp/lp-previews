@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Bawarchi Indian Street Food (Vegetarian) — Thornton Heath, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#2C1A06;--A:#E8922A;--bg:#FFF8F0;--txt:#2C1A06;--mut:#7A6045;--pale:#FDECD8;--sand:#E8D5BB}
+html{scroll-behavior:smooth}body{font-family:'Noto Sans',sans-serif;background:var(--bg);color:var(--txt);padding-top:52px;overflow-x:hidden}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(44,26,6,.96);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:rgba(255,255,255,.8);font-weight:400}.proto-banner strong{font-weight:700;color:#fff}
+.proto-banner a{color:var(--A);font-weight:600;border:1.5px solid var(--A);padding:.25rem .8rem;border-radius:2px;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(44,26,6,.97);border-bottom:1px solid rgba(232,146,42,.2);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'Noto Serif',serif;font-size:.95rem;color:#fff}
+.snav-b{font-size:.67rem;font-weight:700;padding:.18rem .55rem;border-radius:2px;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.2);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.2);color:#ef4444}
+.snav-cta{background:var(--A);color:#fff;padding:.4rem 1.1rem;font-size:.76rem;font-weight:600;text-decoration:none}
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(44,26,6,.55) 0%,rgba(44,26,6,.75) 100%)}
+.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:3rem 1.5rem}
+.hero-badge{position:relative;width:min(340px,80vw);margin:0 auto 2.5rem}
+.badge-ring-outer{width:100%;aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(232,146,42,.6);display:flex;align-items:center;justify-content:center}
+.badge-ring-inner{width:88%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(232,146,42,.35);display:flex;align-items:center;justify-content:center;background:rgba(44,26,6,.4);backdrop-filter:blur(4px)}
+.badge-inner{text-align:center;padding:1.5rem}
+.badge-cuisine{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--A);display:block;margin-bottom:.6rem}
+.badge-name{font-family:'Noto Serif',serif;font-size:clamp(1.2rem,3vw,1.9rem);color:#fff;line-height:1.2;margin-bottom:.5rem}
+.badge-area{font-size:.65rem;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase}
+.hero-tagline{font-family:'Noto Serif',serif;font-size:clamp(1.6rem,3.5vw,2.8rem);color:#fff;font-style:italic;font-weight:400;max-width:580px;line-height:1.3;margin-bottom:1.2rem}
+.hero-sub{font-size:.88rem;line-height:1.9;color:rgba(255,255,255,.65);max-width:480px;font-weight:300;margin-bottom:1.4rem}
+.hero-rating{font-size:.84rem;color:var(--A);margin-bottom:.5rem}
+#openBadge{display:inline-block;font-size:.76rem;font-weight:500;margin-bottom:1.4rem}
+.hero-ctas{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.btn-gold{background:var(--A);color:#fff;padding:.7rem 1.8rem;font-size:.82rem;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.04em;transition:background .2s}
+.btn-gold:hover{background:#c97820}
+.btn-ghost-w{background:transparent;color:rgba(255,255,255,.8);padding:.7rem 1.8rem;border:1px solid rgba(255,255,255,.35);font-size:.82rem;font-weight:300;text-decoration:none;border-radius:2px;letter-spacing:.04em}
+/* ABOUT */
+.about{padding:7rem 5%;background:#fff}
+@media(max-width:700px){.about{padding:4.5rem 1.5rem}}
+.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:6rem;align-items:center}
+@media(max-width:780px){.about-wrap{grid-template-columns:1fr;gap:3rem}}
+.sec-label{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--A);margin-bottom:.9rem;font-weight:600}
+.sec-title{font-family:'Noto Serif',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:400;font-style:italic;line-height:1.2;color:var(--txt);margin-bottom:1.3rem}
+.about-text{font-size:.93rem;line-height:2.05;color:var(--mut);font-weight:300}
+/* circular dish photos grid */
+.dish-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.dish-wrap{aspect-ratio:1;border-radius:50%;overflow:hidden;border:3px solid var(--pale);box-shadow:0 8px 24px rgba(44,26,6,.12)}
+.dish-wrap img{width:100%;height:100%;object-fit:cover}
+.dish-label{text-align:center;font-size:.65rem;color:var(--mut);margin-top:.5rem;font-weight:500;letter-spacing:.05em}
+/* PHILOSOPHY */
+.phil-sec{padding:5rem 5%;background:var(--bg)}
+.phil-inner{max-width:1100px;margin:0 auto}
+.phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+@media(max-width:700px){.phil-grid{grid-template-columns:1fr}}
+.phil-card{background:#fff;padding:2rem;border-top:3px solid var(--A);text-align:center}
+.phil-icon{font-size:1.8rem;margin-bottom:1rem}
+.phil-t{font-family:'Noto Serif',serif;font-size:.95rem;font-weight:700;color:var(--txt);margin-bottom:.6rem}
+.phil-b{font-size:.85rem;color:var(--mut);line-height:1.75;font-weight:300}
+/* MENU */
+.menu-sec{padding:7rem 5%;background:#fff}
+@media(max-width:700px){.menu-sec{padding:4.5rem 1.5rem}}
+.menu-wrap{max-width:1100px;margin:0 auto}
+.menu-head{margin-bottom:2.5rem}
+.menu-tabs{display:flex;gap:0;border-bottom:2px solid var(--sand);margin-bottom:0}
+.mtab{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);padding:.7rem 1.5rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;font-weight:600;transition:color .2s,border-color .2s}
+.mtab.active{color:var(--A);border-bottom-color:var(--A)}
+.menu-panel{display:none;margin-top:2rem}.menu-panel.active{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem 4rem}
+@media(max-width:680px){.menu-panel.active{grid-template-columns:1fr}}
+.mi{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;padding:1rem 0;border-bottom:1px solid var(--sand)}
+.mi:last-child{border-bottom:none}.mi-l{flex:1}
+.mi-n{display:block;font-family:'Noto Serif',serif;font-size:.93rem;font-weight:400;color:var(--txt)}
+.mi-d{display:block;font-size:.75rem;color:var(--mut);margin-top:.15rem;line-height:1.5;font-weight:300}
+.mi-p{font-size:.88rem;color:var(--A);flex-shrink:0;font-weight:600}
+.menu-disc{font-size:.7rem;color:var(--sand);margin-top:2rem;font-style:italic}
+/* REVIEWS */
+.rev-sec{padding:7rem 5%;background:var(--bg)}
+@media(max-width:700px){.rev-sec{padding:4.5rem 1.5rem}}
+.rev-wrap{max-width:1100px;margin:0 auto}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+.rc{background:#fff;padding:1.8rem;border:1px solid var(--sand)}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.rc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.8rem;font-weight:600;color:var(--txt)}.rc-st{font-size:.88rem;color:var(--A)}
+.rc-tx{font-family:'Noto Serif',serif;font-size:.88rem;line-height:1.85;color:var(--mut);font-style:italic;margin-bottom:.8rem;font-weight:400}
+.rc-src{font-size:.66rem;color:#ccc}
+/* VISIT */
+.visit{padding:7rem 5%;background:#fff}
+@media(max-width:700px){.visit{padding:4.5rem 1.5rem}}
+.visit-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:4rem}
+@media(max-width:780px){.visit-inner{grid-template-columns:1fr;gap:2.5rem}}
+.vb-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:700;margin-bottom:.9rem}
+.vb-addr{font-size:.9rem;color:var(--mut);line-height:1.9;font-weight:300}
+.hr-row{display:flex;justify-content:space-between;font-size:.83rem;padding:.25rem 0;border-bottom:1px solid var(--sand)}
+.hr-row:last-child{border-bottom:none}.hr-d{font-weight:600;color:var(--txt)}
+.hr-t{color:var(--mut);font-weight:300}
+.vb-link{display:block;font-size:.88rem;color:var(--mut);text-decoration:none;line-height:2.2;font-weight:300}
+.vb-link:hover{color:var(--A)}
+.dir-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.5rem;padding:.7rem 1.8rem;background:var(--A);color:#fff;font-size:.8rem;font-weight:600;text-decoration:none;letter-spacing:.04em;transition:background .2s}
+.dir-btn:hover{background:#c97820}
+footer{background:var(--P);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+@media(max-width:680px){footer{padding:1.5rem;padding-bottom:5.5rem;flex-direction:column;align-items:flex-start}}
+.foot-name{font-family:'Noto Serif',serif;font-size:1rem;color:var(--A);font-style:italic}
+.foot-copy{font-size:.7rem;color:rgba(255,255,255,.25)}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.82rem 2rem;display:flex;align-items:center;gap:.5rem;font-size:.84rem;font-weight:700;text-decoration:none;box-shadow:0 6px 30px rgba(0,0,0,.22);white-space:nowrap;border-radius:2px}
+@media(min-width:700px){.float-cta{display:none!important}}
+.fu{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.fu.in{opacity:1;transform:none}
+</style><style>.hero-title,.hero-name{font-style:normal!important;text-transform:uppercase;letter-spacing:-.02em}.sec-title,.hdg{text-transform:uppercase;letter-spacing:-.01em}</style></head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for Bawarchi Indian Street Food (Vegetarian)</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">Bawarchi Indian Street Food (Vegetarian)</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447882268843" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-bg" style="will-change:transform"><img src="images/img_0.jpg" alt="Bawarchi Indian Street Food (Vegetarian)" loading="eager"/></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-ring-outer">
+        <div class="badge-ring-inner">
+          <div class="badge-inner">
+            <span class="badge-cuisine">Restaurant</span>
+            <div class="badge-name">Bawarchi Indian Street Food (Vegetarian)</div>
+            <span class="badge-area">Thornton Heath, London</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1 class="hero-tagline">Street spices, pure vegetarian, zero compromise.</h1>
+    <p class="hero-sub">Bawarchi brings the chaotic joy of Indian street food to Thornton Heath — every dish rooted in the bold, unapologetic flavours you'd find si…</p>
+    <div class="hero-rating" id="ratingCounter" data-rating="4.7" data-count="280">⭐ 4.7 · 280 Google reviews</div>
+    <span id="openBadge"></span>
+    <div class="hero-ctas">
+      <a href="https://wa.me/447882268843" class="btn-gold"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a>
+      <a href="#menu" class="btn-ghost-w">Our Menu</a>
+    </div>
+  </div>
+</section>
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="fu">
+      <p class="sec-label">Our Story</p>
+      <h2 class="sec-title">Street spices, pure vegetarian, zero compromise.</h2>
+      <p class="about-text">Bawarchi brings the chaotic joy of Indian street food to Thornton Heath — every dish rooted in the bold, unapologetic flavours you'd find sizzling on a Mumbai roadside. It's entirely vegetarian, which here means nothing is missing and everything pops. Regulars keep coming back not just for the food, but because the staff make you feel like you were expected.</p>
+    </div>
+    <div class="dish-grid fu" style="transition-delay:.1s">
+      <div><div class="dish-wrap"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="Bawarchi Indian Street Food (Vegetarian)" loading="lazy"/></div></div><div><div class="dish-wrap"><img src="images/img_1.jpg" alt="Bawarchi Indian Street Food (Vegetarian)" loading="lazy"/></div></div><div><div class="dish-wrap"><img src="images/img_2.jpg" alt="Bawarchi Indian Street Food (Vegetarian)" loading="lazy"/></div></div><div><div class="dish-wrap"><img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=1400&q=85&fit=crop&auto=format" alt="Bawarchi Indian Street Food (Vegetarian)" loading="lazy"/></div></div>
+    </div>
+  </div>
+</section>
+<section class="phil-sec">
+  <div class="phil-inner">
+    <div class="fu"><p class="sec-label">Our Values</p></div>
+    <div class="phil-grid">
+      <div class="phil-card fu"><div class="phil-icon">✦</div><p class="phil-t">Vegetarian, Not Vanilla</p><p class="phil-b">Every dish proves that plants, spice, and heat can carry more flavour than anything else on the plate.</p></div>
+      <div class="phil-card fu" style="transition-delay:.1s"><div class="phil-icon">✦</div><p class="phil-t">Street Food Honesty</p><p class="phil-b">No white tablecloth pretension — just the kind of cooking that earns its reputation one returning customer at a time.</p></div>
+      <div class="phil-card fu" style="transition-delay:.2s"><div class="phil-icon">✦</div><p class="phil-t">Spice With Purpose</p><p class="phil-b">Each blend is built to do something specific: lift, warm, linger, or hit hard — never just to fill a gap.</p></div>
+    </div>
+  </div>
+</section>
+<section class="menu-sec" id="menu">
+  <div class="menu-wrap">
+    <div class="menu-head fu">
+      <p class="sec-label">The Menu</p>
+      <h2 class="sec-title">Carefully crafted, every day</h2>
+    </div>
+    <div class="menu-tabs fu" style="transition-delay:.1s">
+      <span class="mtab active" onclick="showTab('starters',this)">Starters</span>
+      <span class="mtab" onclick="showTab('mains',this)">Mains</span>
+      <span class="mtab" onclick="showTab('desserts',this)">Desserts</span>
+    </div>
+    <div id="t-starters" class="menu-panel active fu" style="transition-delay:.2s"><div class="mi"><div class="mi-l"><span class="mi-n">Pani Puri</span><span class="mi-d">Crisp semolina shells filled with spiced potato and chickpea, dunked in tangy tamarind and mint water.</span></div><span class="mi-p">£5</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Samosa Chaat</span><span class="mi-d">Crushed golden samosas layered with whipped yoghurt, green chutney, and a sharp pomegranate finish.</span></div><span class="mi-p">£6</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Hara Bhara Kebab</span><span class="mi-d">Spinach, pea, and paneer patties with a smoky crust and cool mint dip on the side.</span></div><span class="mi-p">£6</span></div></div>
+    <div id="t-mains" class="menu-panel"><div class="mi"><div class="mi-l"><span class="mi-n">Paneer Kadai</span><span class="mi-d">Firm paneer and charred peppers tossed in a wok-fired tomato masala with whole coriander seeds.</span></div><span class="mi-p">£11</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Chole Bhature</span><span class="mi-d">Slow-cooked black chickpeas in a deep, dark gravy served with two pillowy fried breads.</span></div><span class="mi-p">£10</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Dal Makhani</span><span class="mi-d">Black lentils simmered overnight with butter and cream until they collapse into something quietly extraordinary.</span></div><span class="mi-p">£9</span></div></div>
+    <div id="t-desserts" class="menu-panel"><div class="mi"><div class="mi-l"><span class="mi-n">Gulab Jamun</span><span class="mi-d">Soft milk-solid dumplings soaked in rose and cardamom syrup, served warm.</span></div><span class="mi-p">£4</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Kulfi Falooda</span><span class="mi-d">Dense pistachio ice cream over chilled rose milk, basil seeds, and vermicelli noodles.</span></div><span class="mi-p">£5</span></div></div>
+    <p class="menu-disc">Sample menu · prices and availability may vary</p>
+  </div>
+</section>
+<section class="rev-sec" id="reviews"><div class="rev-wrap"><div class="fu"><p class="sec-label">Testimonials</p><h2 class="sec-title">⭐ 4.7 · 280 Google reviews</h2></div><div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#E8922A">BJ</div><div><div class="rc-nm">belinda jagroop</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Food was great, staff are so friendly. Will definitely return."</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#2C1A06">JM</div><div><div class="rc-nm">Jennie May</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Thoroughly enjoyed the meal. Read great reviews on here so thought why not go and try and it did not disappoint. Friendly staff, super tasty food, and very affordable. Pani puri casing is nice and cru"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div></div></section>
+<section class="visit" id="visit">
+  <div class="visit-inner">
+    <div class="fu">
+      <p class="vb-label">Find Us</p>
+      <p class="vb-addr">1-2 Brigstock Rd, Thornton Heath CR7 7HW, UK</p>
+      <a href="https://maps.google.com/?cid=7101032520857508944" target="_blank" class="dir-btn"><i class="fab fa-google"></i> Get Directions</a>
+    </div>
+    <div class="fu" style="transition-delay:.05s">
+      <p class="vb-label">Opening Hours</p>
+      <div class="hr"><span class="hr-d">Mon</span><span style="color:var(--txt)">10:00 AM – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--txt)">10:00 AM – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--txt)">10:00 AM – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">10:00 AM – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">10:00 AM – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">11:00 AM – 10:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--txt)">11:00 AM – 6:00 PM</span></div>
+    </div>
+    <div class="fu" style="transition-delay:.1s">
+      <p class="vb-label">Contact</p>
+      <a href="tel:+447882268843" class="vb-link"><i class="fa fa-phone"></i> 07882 268843</a>
+      <a href="https://wa.me/447882268843" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <span class="foot-name">Bawarchi Indian Street Food (Vegetarian)</span>
+  <span class="foot-copy">© 2025 Bawarchi Indian Street Food (Vegetarian) · 1-2 Brigstock Rd, Thornton Heath CR7 7HW, UK</span>
+</footer>
+<a class="float-cta" href="https://wa.me/447882268843" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('t-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ── IntersectionObserver reveal ── */
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+/* ── Sticky nav ── */
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+/* ── Hero stagger entrance ── */
+(function(){
+  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
+              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
+              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
+  const seen=new Set(); let i=0;
+  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
+    if(seen.has(el))return; seen.add(el);
+    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
+    i++;
+  }));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+  }));
+})();
+/* ── Parallax hero ── */
+(function(){
+  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
+  if(!bg||window.innerWidth<700)return;
+  let tk=false;
+  window.addEventListener('scroll',()=>{
+    if(!tk){requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      bg.style.transform='translateY('+(y*0.32)+'px)';
+      tk=false;
+    });tk=true;}
+  },{passive:true});
+})();
+/* ── Open/close badge ── */
+(function(){const H={"Monday": "10:00 AM – 10:00 PM", "Tuesday": "10:00 AM – 10:00 PM", "Wednesday": "10:00 AM – 10:00 PM", "Thursday": "10:00 AM – 10:00 PM", "Friday": "10:00 AM – 10:00 PM", "Saturday": "11:00 AM – 10:00 PM", "Sunday": "11:00 AM – 6:00 PM"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+/* ── Hero tone line ── */
+(function(){
+  const ht="Loud spices. Warm hands.";if(!ht)return;
+  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
+  const el=document.createElement('p');
+  el.className='hero-tone-line';
+  el.textContent=ht;
+  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
+  title.after(el);
+})();
+/* ── Rating counter ── */
+(function(){const el=document.getElementById('ratingCounter');if(!el||!4.7)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,4.7,true,v=>rs.textContent=v);an(0,280,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();
+</script>
+</body></html>
