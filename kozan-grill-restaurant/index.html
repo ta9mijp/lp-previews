@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>KOZAN GRILL RESTAURANT — Stoke Newington, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#111;--A:#E5222C;--bg:#f7f7f7;--txt:#111;--mut:#555}
+html{scroll-behavior:smooth}body{font-family:'Barlow',sans-serif;background:#fff;color:var(--txt);padding-top:52px;overflow-x:hidden}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--A);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:#fff;font-weight:500}.proto-banner strong{font-weight:700}
+.proto-banner a{color:#fff;font-weight:700;border:2px solid #fff;padding:.25rem .8rem;text-decoration:none;white-space:nowrap;text-transform:uppercase;font-size:.7rem;letter-spacing:.08em}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:#fff;border-bottom:3px solid var(--A);padding:.65rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'Oswald',sans-serif;font-size:1.1rem;color:var(--P);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.snav-b{font-size:.67rem;font-weight:700;padding:.18rem .55rem;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.12);color:#186d35}.snav-b.closed{background:rgba(239,68,68,.1);color:#b91c1c}
+.snav-cta{background:var(--A);color:#fff;padding:.4rem 1.1rem;font-size:.76rem;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.06em}
+/* HERO — full-bleed photo + massive name bar */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden}
+.hero-img{flex:1;background:url('images/img_0.jpg') center/cover no-repeat;min-height:70svh}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(17,17,17,.85))}
+.hero-name-bar{position:relative;z-index:2;background:var(--A);padding:1rem 5%;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.hero-name{font-family:'Oswald',sans-serif;font-size:clamp(2rem,6vw,4.5rem);font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#fff;line-height:1}
+.hero-tag-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.hero-tag{font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.hero-info-bar{background:var(--P);padding:1.2rem 5%;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;position:relative;z-index:2}
+.hero-tagline{font-size:.9rem;color:rgba(255,255,255,.75);font-weight:300;font-style:italic;max-width:480px}
+.hero-rating{font-size:.84rem;color:var(--A);font-weight:700}
+#openBadge{font-size:.75rem;font-weight:700;color:#22c55e;display:inline-block}
+.hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-r{background:var(--A);color:#fff;padding:.68rem 1.6rem;font-size:.82rem;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.06em;transition:opacity .2s}
+.btn-r:hover{opacity:.88}
+.btn-ghost-r{background:transparent;color:rgba(255,255,255,.7);padding:.68rem 1.6rem;border:1.5px solid rgba(255,255,255,.3);font-size:.82rem;font-weight:400;text-decoration:none;text-transform:uppercase;letter-spacing:.06em}
+/* CHECKER DIVIDER */
+.checker{height:24px;background:repeating-linear-gradient(90deg,var(--P) 0 24px,#fff 24px 48px)}
+/* ABOUT */
+.about{padding:6rem 5%;background:#fff}
+@media(max-width:700px){.about{padding:4rem 1.5rem}}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+@media(max-width:700px){.about-inner{grid-template-columns:1fr;gap:2.5rem}}
+.sec-label{font-family:'Oswald',sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--A);margin-bottom:.8rem;font-weight:600}
+.sec-title{font-family:'Oswald',sans-serif;font-size:clamp(2rem,4vw,3rem);text-transform:uppercase;line-height:1.05;color:var(--txt);margin-bottom:1.2rem;letter-spacing:.01em}
+.about-text{font-size:.93rem;line-height:2;color:var(--mut);font-weight:300}
+.ph{display:grid;grid-template-columns:3rem 1fr;gap:.8rem;padding:1.2rem 0;border-bottom:2px solid var(--bg)}
+.ph:first-child{border-top:2px solid var(--bg)}
+.ph-n{font-family:'Oswald',sans-serif;font-size:1.6rem;color:var(--A);line-height:1;font-weight:700}
+.ph-t{font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--txt);font-weight:700;margin-bottom:.25rem}
+.ph-b{font-size:.85rem;color:var(--mut);line-height:1.7;font-weight:300}
+/* MENU dark */
+.menu-sec{padding:6rem 5%;background:var(--P)}
+@media(max-width:700px){.menu-sec{padding:4rem 1.5rem}}
+.menu-inner{max-width:1100px;margin:0 auto}
+.menu-sec .sec-label{color:rgba(229,34,44,.8)}.menu-sec .sec-title{color:#fff}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:2.5rem}
+@media(max-width:900px){.menu-grid{grid-template-columns:1fr}}
+.menu-cat{font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:1rem;border-bottom:2px solid var(--A);padding-bottom:.5rem}
+.mi{display:flex;justify-content:space-between;gap:.5rem;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.mi:last-child{border-bottom:none}.mi-l{flex:1}
+.mi-n{display:block;font-family:'Oswald',sans-serif;font-size:1rem;font-weight:500;color:#fff;letter-spacing:.03em}
+.mi-d{display:block;font-size:.76rem;color:rgba(255,255,255,.4);margin-top:.12rem;line-height:1.5;font-weight:300}
+.mi-p{font-family:'Oswald',sans-serif;font-size:.98rem;color:var(--A);flex-shrink:0;font-weight:700}
+.menu-disc{font-size:.7rem;color:rgba(255,255,255,.25);margin-top:2rem;font-style:italic}
+/* POLAROID REVIEWS */
+.rev-sec{padding:6rem 5%;background:var(--bg)}
+@media(max-width:700px){.rev-sec{padding:4rem 1.5rem}}
+.rev-inner{max-width:1100px;margin:0 auto}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.5rem;margin-top:3rem}
+.rc{background:#fff;padding:1.5rem 1.5rem 2.5rem;border:1px solid #e0e0e0;box-shadow:4px 6px 18px rgba(0,0,0,.1);transform:rotate(-1.5deg);transition:transform .25s}
+.rc:nth-child(2n){transform:rotate(1deg)}
+.rc:hover{transform:rotate(0) scale(1.02)}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.rc-av{width:38px;height:38px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-family:'Oswald',sans-serif;font-size:.88rem;font-weight:600;color:var(--txt);letter-spacing:.04em}.rc-st{font-size:.88rem;color:var(--A)}
+.rc-tx{font-size:.87rem;line-height:1.8;color:var(--mut);font-style:italic;margin-bottom:.8rem;font-weight:300}
+.rc-src{font-size:.66rem;color:#bbb}
+/* VISIT */
+.visit{padding:6rem 5%;background:#fff}
+@media(max-width:700px){.visit{padding:4rem 1.5rem}}
+.visit-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:4rem}
+@media(max-width:780px){.visit-inner{grid-template-columns:1fr;gap:2.5rem}}
+.vb-label{font-family:'Oswald',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--txt);font-weight:700;margin-bottom:.9rem;padding-bottom:.4rem;border-bottom:2px solid var(--A)}
+.hr-row{display:flex;justify-content:space-between;font-size:.84rem;padding:.22rem 0;border-bottom:1px solid var(--bg)}
+.hr-row:last-child{border-bottom:none}.hr-d{font-weight:700;color:var(--txt)}
+.hr-t{color:var(--mut);font-weight:300}
+.vb-addr{font-size:.9rem;color:var(--mut);line-height:1.9;font-weight:300}
+.vb-link{display:block;font-size:.9rem;color:var(--mut);text-decoration:none;line-height:2.2;font-weight:300}
+.vb-link:hover{color:var(--A)}
+.dir-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:2rem;padding:.68rem 1.6rem;background:var(--A);color:#fff;font-size:.82rem;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.06em;transition:opacity .2s}
+.dir-btn:hover{opacity:.88}
+/* FOOTER with ghost name */
+footer{background:var(--P);padding:3rem 5% 2rem;position:relative;overflow:hidden}
+@media(max-width:680px){footer{padding:2rem 1.5rem 5.5rem}}
+.foot-ghost{position:absolute;bottom:-1rem;left:0;right:0;font-family:'Oswald',sans-serif;font-size:clamp(4rem,15vw,12rem);font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.04);letter-spacing:.04em;white-space:nowrap;pointer-events:none;line-height:1}
+.foot-content{position:relative;z-index:1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-name{font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.08em}
+.foot-copy{font-size:.72rem;color:rgba(255,255,255,.3)}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.82rem 2rem;display:flex;align-items:center;gap:.5rem;font-size:.84rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.3);white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
+@media(min-width:700px){.float-cta{display:none!important}}
+.fu{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}.fu.in{opacity:1;transform:none}
+</style><style>:root{--fu-dy:14px}.about-sec,.about{background:var(--bg)!important}.rc{border-radius:20px!important}.tab-btn,.mtab{border-radius:50px!important}</style></head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for KOZAN GRILL RESTAURANT</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">KOZAN GRILL RESTAURANT</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447846803696" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-name-bar">
+    <span class="hero-name">KOZAN GRILL RESTAURANT</span>
+    <div class="hero-tag-row">
+      <span class="hero-tag">Restaurant</span>
+      <span class="hero-tag">·</span>
+      <span class="hero-tag">Stoke Newington, London</span>
+    </div>
+  </div>
+  <div class="hero-info-bar">
+    <p class="hero-tagline">Grilled over fire, alive with flavour.</p>
+    <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
+      <div class="hero-rating" id="ratingCounter" data-rating="4.6" data-count="152">⭐ 4.6 · 152 Google reviews</div>
+      <span id="openBadge"></span>
+    </div>
+    <div class="hero-ctas">
+      <a href="https://wa.me/447846803696" class="btn-r"><i class="fab fa-whatsapp"></i> Book Now</a>
+      <a href="#menu" class="btn-ghost-r">Menu</a>
+    </div>
+  </div>
+</section>
+<div class="checker" aria-hidden="true"></div>
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="fu">
+      <p class="sec-label">The Story</p>
+      <h2 class="sec-title">Grilled over fire, alive with flavour.</h2>
+      <p class="about-text">Kozan Grill has arrived in Stoke Newington with the kind of cooking that earns its reputation fast — charcoal-kissed meats, soft warm bread, and a welcome that feels genuinely meant. Every plate comes off the grill with exactly the right amount of char, juice, and care. This is the neighbourhood table you didn't know you were missing.</p>
+    </div>
+    <div class="fu" style="transition-delay:.1s">
+      <div class="ph"><span class="ph-n">01</span><div><p class="ph-t">The Grill is Sacred</p><p class="ph-b">We cook over real heat because fire does things to meat that no oven ever could.</p></div></div>
+      <div class="ph"><span class="ph-n">02</span><div><p class="ph-t">Fresh Every Day</p><p class="ph-b">Ingredients are sourced daily so nothing on your plate has waited longer than it should.</p></div></div>
+      <div class="ph"><span class="ph-n">03</span><div><p class="ph-t">Come as You Are</p><p class="ph-b">Kozan is a place for long dinners, loud laughter, and going back for seconds without a second thought.</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="menu-sec" id="menu">
+  <div class="menu-inner">
+    <div class="fu"><p class="sec-label">The Menu</p><h2 class="sec-title">What We Serve</h2></div>
+    <div class="menu-grid fu" style="transition-delay:.1s">
+      <div><div class="menu-cat">Starters</div><div class="mi"><div class="mi-l"><span class="mi-n">Ezme</span><span class="mi-d">Finely crushed tomato, chilli and walnut salad with pomegranate molasses and warm flatbread.</span></div><span class="mi-p">£7</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Sigara Böreği</span><span class="mi-d">Crisp filo cigars filled with aged white cheese and fresh herbs, fried golden.</span></div><span class="mi-p">£8</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Hummus Kavurma</span><span class="mi-d">Silky hummus topped with slow-cooked spiced lamb and toasted pine nuts.</span></div><span class="mi-p">£9</span></div></div>
+      <div><div class="menu-cat">Mains</div><div class="mi"><div class="mi-l"><span class="mi-n">Kozan Mixed Grill</span><span class="mi-d">A generous spread of lamb chops, chicken thigh skewers and hand-rolled köfte over charcoal embers, served with grilled peppers and saffron rice.</span></div><span class="mi-p">£24</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Adana Skewer</span><span class="mi-d">Seasoned minced lamb packed onto the skewer with red chilli and sumac, charred to order, served with shepherd's salad and pilaf.</span></div><span class="mi-p">£17</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Beyti Sarma</span><span class="mi-d">Grilled spiced lamb wrapped in thin lavash, sliced and finished with a warm tomato sauce and cooling yoghurt.</span></div><span class="mi-p">£19</span></div></div>
+      <div><div class="menu-cat">Desserts</div><div class="mi"><div class="mi-l"><span class="mi-n">Künefe</span><span class="mi-d">Hot shredded wheat pastry with molten cheese, drenched in rose-scented syrup and crushed pistachio.</span></div><span class="mi-p">£8</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Sütlaç</span><span class="mi-d">Oven-baked Ottoman rice pudding with a caramel crust and a dusting of cinnamon.</span></div><span class="mi-p">£6</span></div></div>
+    </div>
+    <p class="menu-disc">Sample menu · contact us for today's full offering</p>
+  </div>
+</section>
+<section class="rev-sec" id="reviews"><div class="rev-inner"><div class="fu"><p class="sec-label">Real Talk</p><h2 class="sec-title">⭐ 4.6 · 152 Google reviews</h2></div><div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#E5222C">AJ</div><div><div class="rc-nm">Amit Jethwa</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Recently opened as I’ve only noticed it recently. Today I popped in for a sit in meal and high was delicious. The service was lovely also and the restaurant has lots of space and table to eat in if on"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#111">D</div><div><div class="rc-nm">devkan</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Had an amazing evening here! The food was absolutely delicious — the grilled meat was perfectly cooked, juicy, and full of flavour, served with soft rice and fresh salad on the side. The dips and brea"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#888">DO</div><div><div class="rc-nm">Desriam Osioh</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Came here to celebrate an early birthday and was so glad I did. Beri our waitress was so lovely and food was delicious and came quick! My favourite part was the starter and bread omg but the chicken a"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div></div></section>
+<section class="visit" id="visit">
+  <div class="visit-inner">
+    <div class="fu"><p class="vb-label">Location</p><p class="vb-addr">137 Newington Green Rd, London N1 4RA, UK</p><a href="https://maps.google.com/?cid=17884387787859716278" target="_blank" class="dir-btn"><i class="fab fa-google"></i> Directions</a></div>
+    <div class="fu" style="transition-delay:.05s"><p class="vb-label">Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:var(--txt)">10:00 AM – 11:00 PM</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--txt)">10:00 AM – 11:00 PM</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--txt)">10:00 AM – 11:00 PM</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">10:00 AM – 11:30 PM</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">10:00 AM – 12:00 AM</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">10:00 AM – 12:00 AM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--txt)">10:30 AM – 11:00 PM</span></div></div>
+    <div class="fu" style="transition-delay:.1s"><p class="vb-label">Contact</p><a href="tel:+447846803696" class="vb-link"><i class="fa fa-phone"></i> 07846 803696</a><a href="https://wa.me/447846803696" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+  </div>
+</section>
+<footer>
+  <div class="foot-ghost">KOZAN GRILL RESTAURANT</div>
+  <div class="foot-content">
+    <span class="foot-name">KOZAN GRILL RESTAURANT</span>
+    <span class="foot-copy">© 2025 KOZAN GRILL RESTAURANT · 137 Newington Green Rd, London N1 4RA, UK</span>
+  </div>
+</footer>
+<a class="float-cta" href="https://wa.me/447846803696" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+<script>
+/* ── IntersectionObserver reveal ── */
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+/* ── Sticky nav ── */
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+/* ── Hero stagger entrance ── */
+(function(){
+  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
+              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
+              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
+  const seen=new Set(); let i=0;
+  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
+    if(seen.has(el))return; seen.add(el);
+    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
+    i++;
+  }));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+  }));
+})();
+/* ── Parallax hero ── */
+(function(){
+  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
+  if(!bg||window.innerWidth<700)return;
+  let tk=false;
+  window.addEventListener('scroll',()=>{
+    if(!tk){requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      bg.style.transform='translateY('+(y*0.32)+'px)';
+      tk=false;
+    });tk=true;}
+  },{passive:true});
+})();
+/* ── Open/close badge ── */
+(function(){const H={"Monday": "10:00 AM – 11:00 PM", "Tuesday": "10:00 AM – 11:00 PM", "Wednesday": "10:00 AM – 11:00 PM", "Thursday": "10:00 AM – 11:30 PM", "Friday": "10:00 AM – 12:00 AM", "Saturday": "10:00 AM – 12:00 AM", "Sunday": "10:30 AM – 11:00 PM"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+/* ── Hero tone line ── */
+(function(){
+  const ht="Smoke rising. Dinner calling.";if(!ht)return;
+  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
+  const el=document.createElement('p');
+  el.className='hero-tone-line';
+  el.textContent=ht;
+  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
+  title.after(el);
+})();
+/* ── Rating counter ── */
+(function(){const el=document.getElementById('ratingCounter');if(!el||!4.6)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,4.6,true,v=>rs.textContent=v);an(0,152,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();</script>
+</body></html>
