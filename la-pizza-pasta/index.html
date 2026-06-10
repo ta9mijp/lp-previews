@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>La pizza & pasta — Plaistow, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#2A1810;--A:#8C2D2D;--bg:#FAF6F0;--txt:#2A1810;--mut:#7A6055;--stone:#C4B5A6;--sand:#E8DDD0}
+html{scroll-behavior:smooth}body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--txt);padding-top:52px;overflow-x:hidden}
+.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(140,45,45,.96);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
+.proto-banner p{color:#fff;font-weight:400}.proto-banner strong{font-weight:700}
+.proto-banner a{color:#fff;font-weight:700;border:1.5px solid rgba(255,255,255,.7);padding:.25rem .8rem;text-decoration:none;white-space:nowrap}
+#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(42,24,16,.97);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
+#stickyNav.visible{transform:translateY(0)}
+.snav-logo{font-family:'Playfair Display',serif;font-size:.95rem;color:#fff;font-style:italic}
+.snav-b{font-size:.67rem;font-weight:700;padding:.18rem .55rem;margin-left:.4rem}
+.snav-b.open{background:rgba(34,197,94,.2);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.2);color:#ef4444}
+.snav-cta{background:var(--A);color:#fff;padding:.4rem 1.1rem;font-size:.76rem;font-weight:700;text-decoration:none}
+/* HERO — cream page, oversized name */
+.hero{background:var(--bg);padding:4rem 5% 0;min-height:100svh;display:flex;flex-direction:column}
+@media(max-width:700px){.hero{padding:3rem 1.5rem 0}}
+.hero-meta-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:.8rem}
+.hero-eyebrow{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:700}
+.hero-rating-top{font-size:.82rem;color:var(--A);font-weight:700}
+.hero-name-block{text-align:center;margin-bottom:.5rem}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,12vw,10rem);font-weight:900;line-height:.92;text-transform:uppercase;letter-spacing:-.02em;color:var(--txt);display:block}
+.hero-divider{display:flex;align-items:center;justify-content:center;gap:2rem;margin:1.5rem 0}
+.hero-div-line{flex:1;max-width:120px;height:1px;background:var(--stone)}
+.hero-tagline{font-family:'Playfair Display',serif;font-size:clamp(.9rem,2vw,1.2rem);font-style:italic;color:var(--mut)}
+.hero-sub-row{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+@media(max-width:680px){.hero-sub-row{grid-template-columns:1fr;gap:1rem}}
+.hero-about-short{font-size:.9rem;line-height:1.9;color:var(--mut);font-weight:300}
+.hero-cta-block{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:.8rem}
+@media(max-width:680px){.hero-cta-block{align-items:flex-start}}
+#openBadge{font-size:.75rem;font-weight:700;text-align:right}
+.btn-burg{background:var(--A);color:#fff;padding:.72rem 2rem;font-size:.84rem;font-weight:700;text-decoration:none;letter-spacing:.04em;transition:background .2s}
+.btn-burg:hover{background:#6e2020}
+.btn-outline-burg{background:transparent;color:var(--A);padding:.72rem 2rem;border:1.5px solid var(--A);font-size:.84rem;font-weight:700;text-decoration:none}
+.hero-photo{flex:1;min-height:300px;background:url('images/img_0.jpg') center/cover no-repeat;margin:0 -5%}
+@media(max-width:700px){.hero-photo{margin:0 -1.5rem;min-height:55vw}}
+/* RESERVATION WIDGET */
+.reservation{padding:3.5rem 5%;background:var(--P)}
+.res-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.res-text h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;color:#fff;margin-bottom:.4rem}
+.res-text p{font-size:.85rem;color:rgba(255,255,255,.5);font-weight:300}
+.res-actions{display:flex;gap:.8rem;flex-wrap:wrap}
+.res-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.72rem 1.6rem;font-size:.82rem;font-weight:700;text-decoration:none;letter-spacing:.03em}
+.res-btn-wa{background:#25D366;color:#fff}
+.res-btn-ph{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.25)}
+/* ABOUT */
+.about{padding:6.5rem 5%;background:var(--bg)}
+@media(max-width:700px){.about{padding:4rem 1.5rem}}
+.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+@media(max-width:780px){.about-wrap{grid-template-columns:1fr;gap:3rem}}
+.sec-label{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--A);margin-bottom:.9rem;font-weight:700}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-style:italic;line-height:1.2;color:var(--txt);margin-bottom:1.3rem}
+.about-text{font-size:.92rem;line-height:2;color:var(--mut);font-weight:300}
+.ph-list{border-top:1px solid var(--sand)}
+.ph{display:flex;gap:1.2rem;padding:1.2rem 0;border-bottom:1px solid var(--sand)}
+.ph-n{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--stone);line-height:1;flex-shrink:0;font-style:italic}
+.ph-t{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--txt);font-weight:700;margin-bottom:.25rem}
+.ph-b{font-size:.84rem;color:var(--mut);line-height:1.7;font-weight:300}
+/* INTERIOR PHOTO BAND */
+.photo-band{height:min(50vw,500px);background:url('images/img_1.jpg') center/cover no-repeat}
+/* MENU — minimalist list */
+.menu-sec{padding:6.5rem 5%;background:#fff}
+@media(max-width:700px){.menu-sec{padding:4rem 1.5rem}}
+.menu-inner{max-width:900px;margin:0 auto}
+.menu-head{margin-bottom:3rem}
+.menu-block{margin-bottom:3rem}
+.menu-cat-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--A);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--sand)}
+.mi{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--sand)}
+.mi:last-child{border-bottom:none}.mi-l{flex:1}
+.mi-n{display:block;font-size:.95rem;font-weight:700;color:var(--txt);letter-spacing:.01em}
+.mi-d{display:block;font-size:.76rem;color:var(--stone);margin-top:.15rem;line-height:1.5;font-weight:300}
+.mi-p{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--A);flex-shrink:0;font-style:italic}
+.menu-disc{font-size:.7rem;color:var(--stone);margin-top:2rem;font-style:italic}
+/* REVIEWS */
+.rev-sec{padding:6.5rem 5%;background:var(--bg)}
+@media(max-width:700px){.rev-sec{padding:4rem 1.5rem}}
+.rev-wrap{max-width:1100px;margin:0 auto}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+.rc{background:#fff;padding:1.8rem;border-top:3px solid var(--stone)}
+.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.rc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0}
+.rc-nm{font-size:.82rem;font-weight:700;color:var(--txt)}.rc-st{font-size:.88rem;color:var(--A)}
+.rc-tx{font-family:'Playfair Display',serif;font-size:.9rem;line-height:1.85;color:var(--mut);font-style:italic;margin-bottom:.8rem}
+.rc-src{font-size:.66rem;color:#ccc}
+/* VISIT */
+.visit{padding:6.5rem 5%;background:#fff}
+@media(max-width:700px){.visit{padding:4rem 1.5rem}}
+.visit-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:4rem}
+@media(max-width:780px){.visit-inner{grid-template-columns:1fr;gap:2.5rem}}
+.vb-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:700;margin-bottom:.9rem}
+.vb-addr{font-size:.9rem;color:var(--mut);line-height:1.9;font-weight:300}
+.hr-row{display:flex;justify-content:space-between;font-size:.83rem;padding:.25rem 0;border-bottom:1px solid var(--sand)}
+.hr-row:last-child{border-bottom:none}.hr-d{font-weight:700;color:var(--txt)}
+.hr-t{color:var(--mut);font-weight:300}
+.vb-link{display:block;font-size:.9rem;color:var(--mut);text-decoration:none;line-height:2.2;font-weight:300}
+.vb-link:hover{color:var(--A)}
+.dir-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.5rem;padding:.72rem 1.8rem;border:1.5px solid var(--A);color:var(--A);font-size:.8rem;font-weight:700;text-decoration:none;transition:background .2s,color .2s}
+.dir-btn:hover{background:var(--A);color:#fff}
+footer{background:var(--P);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+@media(max-width:680px){footer{padding:1.5rem;padding-bottom:5.5rem;flex-direction:column;align-items:flex-start}}
+.foot-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--stone);font-style:italic}
+.foot-copy{font-size:.7rem;color:rgba(255,255,255,.2)}
+.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.82rem 2rem;display:flex;align-items:center;gap:.5rem;font-size:.84rem;font-weight:700;text-decoration:none;box-shadow:0 6px 30px rgba(0,0,0,.22);white-space:nowrap}
+@media(min-width:700px){.float-cta{display:none!important}}
+.fu{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}.fu.in{opacity:1;transform:none}
+</style><style></style></head><body>
+<div class="proto-banner"><p><strong>🎨 Free demo for La pizza & pasta</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
+<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">La pizza & pasta</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447917450869" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
+<section class="hero" data-hero>
+  <div class="hero-meta-row">
+    <span class="hero-eyebrow">Restaurant · Plaistow, London</span>
+    <span class="hero-rating-top" id="ratingCounter" data-rating="4.5" data-count="59">⭐ 4.5 · 59 Google reviews</span>
+  </div>
+  <div class="hero-name-block">
+    <span class="hero-name">La pizza & pasta</span>
+  </div>
+  <div class="hero-divider">
+    <div class="hero-div-line"></div>
+    <span class="hero-tagline">Plaistow's corner of honest Italian comfort.</span>
+    <div class="hero-div-line"></div>
+  </div>
+  <div class="hero-sub-row">
+    <p class="hero-about-short">La Pizza & Pasta is the kind of place that stops you in your tracks before you even walk through the door — the smell alone has been known to end journeys early…</p>
+    <div class="hero-cta-block">
+      <span id="openBadge"></span>
+      <a href="https://wa.me/447917450869" class="btn-burg"><i class="fab fa-whatsapp"></i> Book a Table</a>
+      <a href="#menu" class="btn-outline-burg">View Menu</a>
+    </div>
+  </div>
+  <div class="hero-photo"></div>
+</section>
+<div class="reservation">
+  <div class="res-inner">
+    <div class="res-text">
+      <h2>Reserve your table</h2>
+      <p>Same-day bookings welcome via WhatsApp</p>
+    </div>
+    <div class="res-actions">
+      <a href="https://wa.me/447917450869" target="_blank" class="res-btn res-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="tel:+447917450869" class="res-btn res-btn-ph"><i class="fa fa-phone"></i> Call</a>
+    </div>
+  </div>
+</div>
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="fu">
+      <p class="sec-label">Our Story</p>
+      <h2 class="sec-title">Plaistow's corner of honest Italian comfort.</h2>
+      <p class="about-text">La Pizza & Pasta is the kind of place that stops you in your tracks before you even walk through the door — the smell alone has been known to end journeys early. Rooted in the heart of Plaistow, we cook straightforward Italian food that earns its keep: proper dough, real sauces, no shortcuts. Every plate is made to be finished, not photographed.</p>
+    </div>
+    <div class="ph-list fu" style="transition-delay:.1s">
+      <div class="ph"><span class="ph-n">I.</span><div><p class="ph-t">Smell First</p><p class="ph-b">If the aroma doesn't pull you in from the street, we haven't done our job.</p></div></div>
+      <div class="ph"><span class="ph-n">II.</span><div><p class="ph-t">No Fuss, No Fillers</p><p class="ph-b">Every ingredient on the plate is there because it earns its place — nothing decorative, everything delicious.</p></div></div>
+      <div class="ph"><span class="ph-n">III.</span><div><p class="ph-t">Your Local, Forever</p><p class="ph-b">We cook the kind of food that turns first-timers into regulars by the time the bill arrives.</p></div></div>
+    </div>
+  </div>
+</section>
+<div class="photo-band fu" style="background:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80') center/cover no-repeat"></div>
+<section class="menu-sec" id="menu">
+  <div class="menu-inner">
+    <div class="menu-head fu">
+      <p class="sec-label">The Menu</p>
+      <h2 class="sec-title">Handcrafted with care</h2>
+    </div>
+    <div class="fu" style="transition-delay:.1s">
+      <div class="menu-block">
+        <div class="menu-cat-title">Starters</div>
+        <div class="mi"><div class="mi-l"><span class="mi-n">Bruschetta al Pomodoro</span><span class="mi-d">Toasted sourdough rubbed with garlic, crushed San Marzano tomatoes, torn basil, cold-pressed olive oil.</span></div><span class="mi-p">£5</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Arancini al Funghi</span><span class="mi-d">Crisp risotto balls stuffed with wild mushroom and melted fior di latte, served with a smoky tomato dip.</span></div><span class="mi-p">£6</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Zuppa del Giorno</span><span class="mi-d">A rotating daily soup made from whatever is best at the market, served with a thick slice of warm focaccia.</span></div><span class="mi-p">£5</span></div>
+      </div>
+      <div class="menu-block">
+        <div class="menu-cat-title">Mains</div>
+        <div class="mi"><div class="mi-l"><span class="mi-n">Pizza Pollo e Funghi</span><span class="mi-d">Thin-crust base, tomato sugo, mozzarella, free-range chicken, sautéed chestnut mushrooms, fresh thyme.</span></div><span class="mi-p">£13</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Pappardelle al Ragù</span><span class="mi-d">Wide egg pasta ribbons slow-cooked in a beef and pork ragù, finished with aged Parmigiano and a drizzle of chilli oil.</span></div><span class="mi-p">£12</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Pizza Margherita Classica</span><span class="mi-d">San Marzano tomato, buffalo mozzarella, fresh basil — the one that started everything, done properly.</span></div><span class="mi-p">£10</span></div>
+      </div>
+      <div class="menu-block">
+        <div class="menu-cat-title">Desserts</div>
+        <div class="mi"><div class="mi-l"><span class="mi-n">Tiramisù della Casa</span><span class="mi-d">The house recipe: espresso-soaked savoiardi, mascarpone cream, a generous dusting of dark cocoa.</span></div><span class="mi-p">£6</span></div>
+<div class="mi"><div class="mi-l"><span class="mi-n">Panna Cotta al Limone</span><span class="mi-d">Silky vanilla cream set just firm enough, topped with a sharp Amalfi lemon curd and candied zest.</span></div><span class="mi-p">£5</span></div>
+      </div>
+    </div>
+    <p class="menu-disc">Sample menu · subject to change · please enquire for today's dishes</p>
+  </div>
+</section>
+<section class="rev-sec" id="reviews"><div class="rev-wrap"><div class="fu"><p class="sec-label">What Guests Say</p><h2 class="sec-title">⭐ 4.5 · 59 Google reviews</h2></div><div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#8C2D2D">SD</div><div><div class="rc-nm">Shivani Dannina</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"We ordered a chicken mushroom pizza and a pasta, and honestly, we couldn’t even wait until we got home the smell was so tempting that we ended up finishing the whole pizza on the bus itself! 😅 The chi"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#5A1C1C">ML</div><div><div class="rc-nm">M LUBIKAR</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Fantastic service and delicious food ever .
+Recommend it. Thanks"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
+<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#C4B5A6">PB</div><div><div class="rc-nm">peter burke</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"So pleased to find you today, me and my girlfriend loved your thin crust vegetarian pizza.
+I will be back. Great service and Italian theme. So much effort gone into this restaurant."</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div></div></section>
+<section class="visit" id="visit">
+  <div class="visit-inner">
+    <div class="fu">
+      <p class="vb-label">Find Us</p>
+      <p class="vb-addr">Barking Rd, London E13 8QE, UK</p>
+      <a href="https://maps.google.com/?cid=14949283809919482269" target="_blank" class="dir-btn"><i class="fab fa-google"></i> Get Directions</a>
+    </div>
+    <div class="fu" style="transition-delay:.05s">
+      <p class="vb-label">Opening Hours</p>
+      <div class="hr"><span class="hr-d">Mon</span><span style="color:var(--txt)">11:00 AM – 11:00 PM</span></div>
+<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--txt)">11:00 AM – 11:00 PM</span></div>
+<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--txt)">11:00 AM – 11:00 PM</span></div>
+<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">11:00 AM – 11:00 PM</span></div>
+<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">11:00 AM – 11:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">11:00 AM – 11:00 PM</span></div>
+<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--txt)">11:00 AM – 11:00 PM</span></div>
+    </div>
+    <div class="fu" style="transition-delay:.1s">
+      <p class="vb-label">Reservations</p>
+      <a href="tel:+447917450869" class="vb-link"><i class="fa fa-phone"></i> 07917 450869</a>
+      <a href="https://wa.me/447917450869" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <span class="foot-name">La pizza & pasta</span>
+  <span class="foot-copy">© 2025 La pizza & pasta · Barking Rd, London E13 8QE, UK</span>
+</footer>
+<a class="float-cta" href="https://wa.me/447917450869" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+<script>
+/* ── IntersectionObserver reveal ── */
+const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
+document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
+/* ── Sticky nav ── */
+(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
+if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
+/* ── Hero stagger entrance ── */
+(function(){
+  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
+              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
+              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
+  const seen=new Set(); let i=0;
+  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
+    if(seen.has(el))return; seen.add(el);
+    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
+    i++;
+  }));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+  }));
+})();
+/* ── Parallax hero ── */
+(function(){
+  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
+  if(!bg||window.innerWidth<700)return;
+  let tk=false;
+  window.addEventListener('scroll',()=>{
+    if(!tk){requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      bg.style.transform='translateY('+(y*0.32)+'px)';
+      tk=false;
+    });tk=true;}
+  },{passive:true});
+})();
+/* ── Open/close badge ── */
+(function(){const H={"Monday": "11:00 AM – 11:00 PM", "Tuesday": "11:00 AM – 11:00 PM", "Wednesday": "11:00 AM – 11:00 PM", "Thursday": "11:00 AM – 11:00 PM", "Friday": "11:00 AM – 11:00 PM", "Saturday": "11:00 AM – 11:00 PM", "Sunday": "11:00 AM – 11:00 PM"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const day=days[new Date().getDay()],raw=H[day]||'';
+const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
+if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
+const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
+const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
+const op=n2>=o&&n2<(c2<o?c2+1440:c2);
+set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
+const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
+/* ── Hero tone line ── */
+(function(){
+  const ht="Too good to wait.";if(!ht)return;
+  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
+  const el=document.createElement('p');
+  el.className='hero-tone-line';
+  el.textContent=ht;
+  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
+  title.after(el);
+})();
+/* ── Rating counter ── */
+(function(){const el=document.getElementById('ratingCounter');if(!el||!4.5)return;
+new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
+const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
+const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,4.5,true,v=>rs.textContent=v);an(0,59,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();</script>
+</body></html>
