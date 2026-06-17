@@ -3,314 +3,307 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demo-Vesuvio — Family Italian Trattoria, London (Concept Design)</title>
+<title>Demo-Vesuvio — No. 07, La Famiglia (Concept Design)</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,700&family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,800;1,500;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#fbf3e5;
-  --paper:#f3e6cd;
-  --terracotta:#c1502e;
-  --olive:#5b6b41;
-  --ink:#2b2118;
+  --paper:#f6f1e4;
+  --ink:#1f1b16;
+  --tomato:#b23a2e;
+  --denim:#3f5870;
+  --gold:#c79a4b;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--cream);color:var(--ink);font-family:'Archivo',sans-serif;overflow-x:hidden;width:100%;}
+body{background:var(--paper);color:var(--ink);font-family:'Space Mono',monospace;overflow-x:hidden;width:100%;}
 img{max-width:100%;display:block;}
-h1,h2,h3,.disp{font-family:'Fraunces',serif;}
+h1,h2,h3,.disp{font-family:'Bodoni Moda',serif;}
 a{color:inherit;text-decoration:none;}
 
-.demo-badge{
-  position:fixed;top:14px;right:14px;z-index:9998;
-  background:var(--ink);color:var(--paper);font-size:.62rem;letter-spacing:.1em;
-  padding:6px 12px;border-radius:999px;text-transform:uppercase;
+.demo-badge{position:fixed;top:14px;right:14px;z-index:9998;background:var(--ink);color:var(--paper);font-size:.6rem;letter-spacing:.1em;padding:6px 12px;text-transform:uppercase;}
+
+/* vertical index nav — replaces a normal navbar entirely */
+.index-nav{
+  position:fixed;left:18px;top:0;bottom:0;z-index:500;display:none;
+  flex-direction:column;align-items:center;justify-content:center;gap:26px;
 }
-
-/* texture */
-.paper-texture{position:fixed;inset:0;z-index:-1;opacity:.5;
-  background-image:radial-gradient(circle at 20% 30%,rgba(193,80,46,.05),transparent 40%),
-  radial-gradient(circle at 80% 70%,rgba(91,107,65,.06),transparent 40%);
+@media(min-width:980px){.index-nav{display:flex;}}
+.index-nav a{
+  writing-mode:vertical-rl;font-family:'Space Mono',monospace;font-size:.68rem;
+  letter-spacing:.15em;color:var(--ink);opacity:.4;transition:.3s;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;
 }
+.index-nav a .n{font-weight:700;color:var(--tomato);}
+.index-nav a:hover,.index-nav a.active{opacity:1;}
+.index-nav .rule{width:1px;height:60px;background:var(--ink);opacity:.15;}
 
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;display:flex;
-  align-items:center;justify-content:space-between;padding:24px 5%;transition:.4s;
+/* floating reserve button — different from a full nav/CTA bar */
+.fab{
+  position:fixed;bottom:22px;right:22px;z-index:600;background:var(--tomato);color:var(--paper);
+  border-radius:40px;padding:14px 22px;font-family:'Space Mono',monospace;font-weight:700;
+  font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 14px 30px -12px rgba(31,27,22,.5);
+  transition:.3s;display:flex;align-items:center;gap:8px;
 }
-nav.scrolled{background:rgba(251,243,229,.92);backdrop-filter:blur(8px);padding:14px 5%;box-shadow:0 2px 20px -10px rgba(43,33,24,.2);}
-.logo{font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;font-style:italic;color:var(--terracotta);}
-.navlinks{display:none;gap:32px;font-size:.85rem;font-weight:500;}
-@media(min-width:860px){.navlinks{display:flex;}}
-.navlinks a{position:relative;}
-.navlinks a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--terracotta);transition:.3s;}
-.navlinks a:hover::after{width:100%;}
-.nav-cta{background:var(--terracotta);color:var(--cream);padding:10px 22px;border-radius:30px;font-size:.82rem;font-weight:600;transition:.3s;}
-.nav-cta:hover{background:var(--ink);transform:translateY(-2px);}
+.fab:hover{transform:translateY(-3px) scale(1.03);}
+.fab .dot{width:6px;height:6px;border-radius:50%;background:#8fbf7a;animation:pulse 1.6s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
 
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;overflow:hidden;}
-.hero-grid{display:grid;grid-template-columns:1fr;gap:50px;align-items:center;width:100%;position:relative;z-index:2;}
-@media(min-width:920px){.hero-grid{grid-template-columns:1.05fr .95fr;}}
-.eyebrow{display:flex;align-items:center;gap:10px;color:var(--olive);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;opacity:0;animation:rise .8s .1s forwards;}
-.eyebrow::before{content:'';width:30px;height:2px;background:var(--olive);}
-.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.06;font-weight:600;margin-bottom:20px;opacity:0;animation:rise .8s .25s forwards;}
-.hero h1 i{color:var(--terracotta);font-style:italic;font-weight:500;}
-.hero p{font-size:1.08rem;color:#5c4f3f;line-height:1.75;max-width:480px;margin-bottom:34px;opacity:0;animation:rise .8s .4s forwards;}
-@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:rise .8s .55s forwards;}
-.btn{display:inline-block;padding:15px 28px;font-size:.85rem;font-weight:600;border-radius:40px;transition:.3s;}
-.btn-primary{background:var(--terracotta);color:#fff;}
-.btn-primary:hover{background:var(--ink);transform:translateY(-3px);box-shadow:0 16px 30px -12px rgba(43,33,24,.4);}
-.btn-ghost{border:2px solid var(--ink);color:var(--ink);}
-.btn-ghost:hover{background:var(--ink);color:var(--cream);}
-
-.hero-visual{position:relative;}
-.hero-img{border-radius:14px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 60px -20px rgba(43,33,24,.4);position:relative;}
-.hero-img img{width:100%;height:100%;object-fit:cover;}
-.float-card{
-  position:absolute;bottom:-26px;left:-26px;background:var(--cream);border-radius:12px;
-  padding:18px 22px;box-shadow:0 20px 40px -18px rgba(43,33,24,.35);
-  display:flex;align-items:center;gap:12px;animation:floaty 4s ease-in-out infinite;
-}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.float-card .num{font-family:'Fraunces',serif;font-size:1.8rem;color:var(--terracotta);font-weight:600;}
-.float-card .lbl{font-size:.72rem;color:#5c4f3f;line-height:1.3;}
-
-/* drifting leaves/lemons */
-.deco{position:absolute;opacity:.85;pointer-events:none;z-index:1;}
-.deco.basil{width:46px;top:8%;left:3%;animation:spin1 9s ease-in-out infinite;}
-.deco.lemon{width:38px;top:64%;right:2%;animation:spin2 11s ease-in-out infinite;}
-@keyframes spin1{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-18px)}}
-@keyframes spin2{0%,100%{transform:rotate(10deg) translateY(0)}50%{transform:rotate(-6deg) translateY(16px)}}
-
-.fu{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease;}
+.fu{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease;}
 .fu.show{opacity:1;transform:translateY(0);}
-.fu2{transition-delay:.12s;} .fu3{transition-delay:.24s;} .fu4{transition-delay:.36s;}
+.fu2{transition-delay:.12s;} .fu3{transition-delay:.24s;}
 
-section{padding:110px 5%;position:relative;}
-.sec-label{display:flex;align-items:center;gap:12px;color:var(--olive);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px;}
-.sec-label::before{content:'';width:26px;height:2px;background:var(--olive);}
-.sec-title{font-size:clamp(1.9rem,3.4vw,2.9rem);font-weight:600;max-width:680px;line-height:1.25;}
+/* ===== COVER ===== */
+.cover{
+  min-height:100vh;position:relative;display:flex;flex-direction:column;
+  justify-content:space-between;padding:7vh 6% 5vh;overflow:hidden;
+}
+.cover-bg{position:absolute;inset:0;z-index:0;
+  background:url('https://images.unsplash.com/photo-1432139509613-5c4255815697?w=1920&q=80') center/cover;
+  filter:saturate(.5) contrast(1.05);
+}
+.cover-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(178,58,46,.78),rgba(31,27,22,.93));mix-blend-mode:multiply;background-color:var(--paper);}
+.cover-bg::before{content:'';position:absolute;inset:0;background:rgba(246,241,228,.55);}
+.cover-top{position:relative;z-index:2;display:flex;justify-content:space-between;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;}
+.cover-top .issue{color:var(--tomato);font-weight:700;}
+.cover-main{position:relative;z-index:2;}
+.cover-main .kicker{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--denim);font-weight:700;margin-bottom:14px;}
+.cover-main h1{
+  font-size:clamp(3.4rem,15vw,11rem);line-height:.86;font-weight:800;letter-spacing:-.01em;
+  color:var(--ink);
+}
+.cover-main h1 i{color:var(--tomato);font-style:italic;font-weight:500;}
+.cover-bottom{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;}
+.cover-bottom .deck{max-width:380px;font-size:.92rem;line-height:1.7;font-family:'Bodoni Moda',serif;font-style:italic;}
+.cover-bottom .credit{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;opacity:.55;text-align:right;}
+.scroll-cue{position:absolute;bottom:6vh;left:50%;transform:translateX(-50%);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;opacity:.5;z-index:2;}
 
-.story{display:grid;grid-template-columns:1fr;gap:50px;}
-@media(min-width:900px){.story{grid-template-columns:1fr 1fr;align-items:center;}}
-.story-img{border-radius:14px;overflow:hidden;position:relative;}
-.story-img img{width:100%;display:block;transition:transform .8s;}
-.story-img:hover img{transform:scale(1.06);}
-.story p{color:#5c4f3f;line-height:1.85;margin-top:20px;font-size:1.02rem;}
-.divider-line{width:100%;height:10px;margin:30px 0;background-image:repeating-linear-gradient(90deg,var(--terracotta) 0 14px,var(--olive) 14px 28px);opacity:.18;border-radius:6px;}
+/* ===== STICKY EDITORIAL SPLIT ===== */
+.editorial{display:grid;grid-template-columns:1fr;padding:0 6%;}
+@media(min-width:980px){.editorial{grid-template-columns:38% 62%;column-gap:6%;}}
+.ed-sticky{
+  position:static;padding:90px 0 40px;
+}
+@media(min-width:980px){.ed-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0;}}
+.ed-num{font-size:.72rem;color:var(--tomato);font-weight:700;letter-spacing:.15em;margin-bottom:18px;}
+.ed-sticky h2{font-size:clamp(1.9rem,4vw,3rem);font-style:italic;line-height:1.18;margin-bottom:22px;}
+.ed-sticky p{font-size:.86rem;line-height:1.9;max-width:380px;opacity:.85;}
+.ed-sticky .sign{margin-top:30px;font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.1rem;color:var(--denim);}
 
-/* menu */
-.menu-tabs{display:flex;gap:10px;margin:40px 0 10px;flex-wrap:wrap;}
-.menu-tab{padding:10px 20px;border-radius:30px;border:2px solid var(--ink);font-weight:600;font-size:.84rem;cursor:pointer;transition:.25s;}
-.menu-tab.active{background:var(--ink);color:var(--cream);}
-.menu-grid{display:grid;grid-template-columns:1fr;gap:0;}
-@media(min-width:760px){.menu-grid{grid-template-columns:1fr 1fr;column-gap:60px;}}
-.menu-item{display:flex;justify-content:space-between;gap:18px;padding:22px 0;border-bottom:2px dotted rgba(43,33,24,.25);}
-.menu-item h4{font-family:'Fraunces',serif;font-size:1.12rem;font-weight:600;margin-bottom:6px;}
-.menu-item p{color:#73654f;font-size:.86rem;line-height:1.5;max-width:300px;}
-.menu-item .price{font-family:'Fraunces',serif;font-weight:600;color:var(--terracotta);font-size:1.1rem;white-space:nowrap;}
+.ed-scroll{display:flex;flex-direction:column;gap:14vh;padding:60px 0 120px;}
+.ed-block{}
+.ed-block .fig-img{border-radius:2px;overflow:hidden;aspect-ratio:5/4;}
+.ed-block .fig-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease;}
+.ed-block:hover .fig-img img{transform:scale(1.04);}
+.ed-block .cap{display:flex;justify-content:space-between;margin-top:14px;font-size:.7rem;letter-spacing:.05em;opacity:.65;}
+.ed-block .cap b{color:var(--tomato);}
 
-/* gallery masonry */
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:50px;}
-@media(min-width:760px){.gallery{grid-template-columns:repeat(4,1fr);}}
-.gallery a{position:relative;overflow:hidden;border-radius:12px;aspect-ratio:3/4;}
-.gallery a:nth-child(2){aspect-ratio:3/5;}
-@media(min-width:760px){.gallery a:nth-child(2){grid-row:span 2;aspect-ratio:auto;}}
-.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s,rotate .6s;}
-.gallery a:hover img{transform:scale(1.1) rotate(-1deg);}
+/* ===== RECIPE CARD DECK (scattered, not a clean grid) ===== */
+.deck-wrap{padding:130px 6%;position:relative;}
+.deck-head{max-width:560px;margin-bottom:70px;}
+.deck-head .ed-num{margin-bottom:14px;}
+.deck-head h2{font-size:clamp(1.9rem,4vw,3rem);font-style:italic;line-height:1.2;}
+.card-deck{display:grid;grid-template-columns:repeat(2,1fr);gap:36px 24px;}
+@media(min-width:760px){.card-deck{grid-template-columns:repeat(4,1fr);}}
+.recipe-card{
+  background:#fffdf7;border:1px solid rgba(31,27,22,.12);border-radius:3px;padding:22px 18px 18px;
+  box-shadow:0 16px 30px -16px rgba(31,27,22,.25);transition:.4s ease;cursor:default;
+  position:relative;
+}
+.recipe-card:nth-child(odd){transform:rotate(-2.4deg);}
+.recipe-card:nth-child(even){transform:rotate(2deg);}
+.recipe-card:nth-child(3n){transform:rotate(-1.2deg) translateY(10px);}
+.recipe-card:hover{transform:rotate(0) translateY(-6px) scale(1.03);box-shadow:0 24px 40px -16px rgba(31,27,22,.35);z-index:5;}
+.recipe-card .hole{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--paper);box-shadow:inset 0 1px 3px rgba(0,0,0,.25);}
+.recipe-card .rc-no{font-size:.62rem;color:var(--gold);font-weight:700;letter-spacing:.1em;margin-bottom:8px;margin-top:6px;}
+.recipe-card h4{font-family:'Bodoni Moda',serif;font-weight:700;font-size:1.02rem;line-height:1.25;margin-bottom:8px;}
+.recipe-card p{font-size:.72rem;line-height:1.55;opacity:.7;margin-bottom:14px;min-height:48px;}
+.recipe-card .rc-price{display:flex;justify-content:space-between;align-items:center;border-top:1px dashed rgba(31,27,22,.2);padding-top:10px;font-weight:700;color:var(--tomato);font-family:'Bodoni Moda',serif;}
 
-/* testimonial carousel (auto marquee) */
-.reviews-wrap{overflow:hidden;margin-top:50px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
-.marquee{display:flex;gap:24px;width:max-content;animation:scrollx 30s linear infinite;}
-.marquee:hover{animation-play-state:paused;}
-@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.review-card{background:var(--paper);border-radius:14px;padding:26px;width:310px;flex:0 0 auto;}
-.review-card .stars{color:var(--terracotta);margin-bottom:10px;}
-.review-card p{color:#5c4f3f;font-size:.92rem;line-height:1.7;margin-bottom:14px;}
-.review-card .who{font-size:.78rem;font-weight:700;}
+/* ===== PHOTO ESSAY — full width alternating ===== */
+.essay{padding:60px 0 100px;}
+.essay-row{display:flex;flex-direction:column;gap:18px;padding:0 6%;margin-bottom:90px;}
+@media(min-width:860px){
+  .essay-row{flex-direction:row;align-items:flex-end;gap:46px;}
+  .essay-row.rev{flex-direction:row-reverse;}
+}
+.essay-row .ph{flex:1 1 62%;}
+.essay-row .ph img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:2px;}
+.essay-row .tx{flex:1 1 30%;}
+.essay-row .tx .fig{font-size:.66rem;letter-spacing:.1em;color:var(--tomato);font-weight:700;margin-bottom:10px;}
+.essay-row .tx p{font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.15rem;line-height:1.5;}
 
-.hours-cta{display:grid;grid-template-columns:1fr;gap:40px;background:var(--ink);color:var(--cream);border-radius:18px;padding:54px 6%;}
-@media(min-width:860px){.hours-cta{grid-template-columns:1.2fr 1fr;align-items:center;}}
-.hours-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(251,243,229,.15);font-size:.9rem;color:#cfc3ab;}
-.hours-row b{color:var(--cream);font-weight:600;}
-.status-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:99px;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px;}
-.status-badge.open{background:rgba(120,170,90,.25);color:#a9e08f;}
-.status-badge.closed{background:rgba(193,80,46,.25);color:#f0a98a;}
-.dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.6s ease-in-out infinite;}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.cta-box p{color:#cfc3ab;margin:14px 0 26px;line-height:1.7;}
+/* ===== reviews — printed as a vertical column list, not a marquee ===== */
+.press{padding:60px 6% 120px;border-top:1px solid rgba(31,27,22,.12);}
+.press-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px;flex-wrap:wrap;gap:16px;}
+.press-list{display:grid;grid-template-columns:1fr;gap:0;}
+@media(min-width:860px){.press-list{grid-template-columns:1fr 1fr;}}
+.press-item{padding:26px 0;border-bottom:1px solid rgba(31,27,22,.12);display:flex;gap:18px;}
+.press-item .q{font-family:'Bodoni Moda',serif;font-size:1.6rem;color:rgba(31,27,22,.18);line-height:1;}
+.press-item p{font-size:.84rem;line-height:1.7;margin-bottom:8px;}
+.press-item .who{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;opacity:.55;}
 
-footer{padding:60px 5% 110px;font-size:.85rem;color:#73654f;}
-.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;font-weight:600;color:var(--ink);}
-.foot-disclosure{margin-top:30px;padding-top:24px;border-top:1px solid rgba(43,33,24,.15);font-size:.72rem;line-height:1.8;color:#8a7c64;max-width:760px;}
+/* ===== closing ticket ===== */
+.finale{position:relative;min-height:88vh;display:flex;align-items:center;padding:0 6%;overflow:hidden;}
+.finale-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80') center/cover;filter:brightness(.5) saturate(.7);}
+.finale h2{position:relative;z-index:2;color:var(--paper);font-size:clamp(2.6rem,8vw,6rem);font-style:italic;line-height:1;max-width:760px;}
+.ticket{
+  position:absolute;z-index:3;right:6%;bottom:8%;background:#fffdf7;color:var(--ink);width:280px;
+  border-radius:4px;padding:22px 22px 18px;box-shadow:0 24px 50px -16px rgba(0,0,0,.5);
+  transform:rotate(3deg);
+}
+.ticket::before{content:'';position:absolute;top:-7px;left:0;right:0;height:14px;
+  background-image:radial-gradient(circle 5px,var(--paper) 96%,transparent 100%);
+  background-size:20px 14px;background-position:0 0;background-repeat:repeat-x;}
+.ticket .tt-label{font-size:.62rem;letter-spacing:.1em;color:var(--tomato);font-weight:700;text-transform:uppercase;margin-bottom:10px;}
+.ticket h4{font-family:'Bodoni Moda',serif;font-size:1.2rem;margin-bottom:10px;}
+.ticket .trow{display:flex;justify-content:space-between;font-size:.74rem;padding:6px 0;border-bottom:1px dashed rgba(31,27,22,.2);}
+.ticket .trow b{font-weight:700;}
+.ticket .tcall{display:block;margin-top:14px;background:var(--tomato);color:var(--paper);text-align:center;padding:10px;border-radius:3px;font-weight:700;font-size:.78rem;}
 
-.float-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:600;background:rgba(251,243,229,.97);backdrop-filter:blur(8px);padding:12px 16px;border-top:1px solid rgba(43,33,24,.1);gap:12px;}
-@media(min-width:860px){.float-cta{display:none;}}
-.float-cta a{flex:1;text-align:center;}
+footer{padding:50px 6% 90px;font-size:.68rem;letter-spacing:.03em;opacity:.6;line-height:1.8;max-width:760px;}
 </style>
 </head>
 <body>
-<div class="paper-texture"></div>
 <div class="demo-badge">Concept Demo</div>
 
-<nav id="nav">
-  <div class="logo">Demo-Vesuvio</div>
-  <div class="navlinks">
-    <a href="#story">Our Story</a>
-    <a href="#menu">Menu</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#visit">Visit</a>
-  </div>
-  <a href="#visit" class="nav-cta">Book a Table</a>
+<nav class="index-nav">
+  <a href="#cover" class="active"><span class="n">01</span> Cover</a>
+  <div class="rule"></div>
+  <a href="#note"><span class="n">02</span> Note</a>
+  <div class="rule"></div>
+  <a href="#menu"><span class="n">03</span> Menu</a>
+  <div class="rule"></div>
+  <a href="#essay"><span class="n">04</span> Essay</a>
+  <div class="rule"></div>
+  <a href="#visit"><span class="n">05</span> Visit</a>
 </nav>
 
-<section class="hero">
-  <svg class="deco basil" viewBox="0 0 100 100"><path d="M50 10 C70 20 80 50 50 90 C20 50 30 20 50 10Z" fill="#5b6b41" opacity=".5"/></svg>
-  <svg class="deco lemon" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="#e8a93a" opacity=".55"/></svg>
-  <div class="hero-grid">
-    <div>
-      <div class="eyebrow">Family Trattoria · Clerkenwell, London</div>
-      <h1>Pasta made <i>by hand</i>,<br>every single day.</h1>
-      <p>Three generations of a Neapolitan recipe book, a wood-fired oven older than the building next door, and a dining room that feels like Sunday lunch at someone's nonna's house.</p>
-      <div class="hero-ctas">
-        <a href="#visit" class="btn btn-primary">Book a Table</a>
-        <a href="#menu" class="btn btn-ghost">See the Menu</a>
-      </div>
+<section class="cover" id="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-top">
+    <span>Demo-Vesuvio — Trattoria Quarterly</span>
+    <span class="issue">No. 07 — Estate</span>
+  </div>
+  <div class="cover-main">
+    <div class="kicker">Clerkenwell, London · Est. (fictional) 1987</div>
+    <h1>VESU<i>VIO</i></h1>
+  </div>
+  <div class="cover-bottom">
+    <p class="deck">A family trattoria built around one notebook of Neapolitan recipes, a wood oven, and the belief that lunch should never be rushed.</p>
+    <div class="credit">Photography, Demo Set<br>Recipes, La Famiglia</div>
+  </div>
+  <div class="scroll-cue">↓ Scroll the issue</div>
+</section>
+
+<section class="editorial" id="note">
+  <div class="ed-sticky fu">
+    <div class="ed-num">02 — Editor's Note</div>
+    <h2>"We never wanted to be fast. Just honest."</h2>
+    <p>Three generations of one family's cooking, written into a single battered notebook that still sits by the pass. Nothing here is plated for a photograph — it's plated for the table next to you.</p>
+    <div class="sign">— La Famiglia</div>
+  </div>
+  <div class="ed-scroll">
+    <div class="ed-block fu">
+      <div class="fig-img"><img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=900&q=80" alt="Hand-rolled pasta"></div>
+      <div class="cap"><span><b>Fig. 01</b> — Hand-rolled, every morning</span><span>40kg daily</span></div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-img"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=900&q=80" alt="Fresh pasta at Demo-Vesuvio"></div>
-      <div class="float-card"><span class="num">1987</span><span class="lbl">Recipe book<br>started</span></div>
+    <div class="ed-block fu">
+      <div class="fig-img"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80" alt="Wood-fired pizza oven"></div>
+      <div class="cap"><span><b>Fig. 02</b> — The oven, shipped piece by piece</span><span>430°C</span></div>
+    </div>
+    <div class="ed-block fu">
+      <div class="fig-img"><img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?w=900&q=80" alt="Italian table spread"></div>
+      <div class="cap"><span><b>Fig. 03</b> — Sunday, before service</span><span>12:00 sharp</span></div>
     </div>
   </div>
 </section>
 
-<section id="story">
-  <div class="story">
-    <div class="story-img fu"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=900&q=80" alt="Wood-fired pizza"></div>
-    <div class="fu fu2">
-      <div class="sec-label">Our Story</div>
-      <h2 class="sec-title">From Naples to a back street in Clerkenwell.</h2>
-      <p>Demo-Vesuvio began as a single notebook of recipes carried over from Naples — sauces that take six hours, dough that rests overnight, and a wood oven we had shipped over piece by piece. Nothing here is rushed, and nothing is off a delivery van.</p>
-      <div class="divider-line"></div>
-      <p>We still make 40kg of fresh pasta by hand, every morning, before the doors open.</p>
-    </div>
+<section class="deck-wrap" id="menu">
+  <div class="deck-head fu">
+    <div class="ed-num">03 — From The Kitchen Notebook</div>
+    <h2>Six recipes, copied straight from the book.</h2>
+  </div>
+  <div class="card-deck">
+    <div class="recipe-card fu"><div class="hole"></div><div class="rc-no">No. 14</div><h4>Tagliatelle al Tartufo</h4><p>Hand-cut ribbons, black truffle, brown butter, parmigiano.</p><div class="rc-price"><span>Primi</span><span>£16</span></div></div>
+    <div class="recipe-card fu fu2"><div class="hole"></div><div class="rc-no">No. 02</div><h4>Pizza Margherita DOP</h4><p>San Marzano, fior di latte, basil, 90-second fire.</p><div class="rc-price"><span>Forno</span><span>£13</span></div></div>
+    <div class="recipe-card fu fu3"><div class="hole"></div><div class="rc-no">No. 21</div><h4>Ossobuco alla Milanese</h4><p>Slow-braised veal shank, saffron risotto, gremolata.</p><div class="rc-price"><span>Secondi</span><span>£24</span></div></div>
+    <div class="recipe-card fu"><div class="hole"></div><div class="rc-no">No. 09</div><h4>Burrata e Alici</h4><p>Pugliese burrata, Cantabrian anchovy, charred sourdough.</p><div class="rc-price"><span>Antipasti</span><span>£11</span></div></div>
+    <div class="recipe-card fu fu2"><div class="hole"></div><div class="rc-no">No. 17</div><h4>Cacio e Pepe</h4><p>Tonnarelli, pecorino romano, cracked pepper.</p><div class="rc-price"><span>Primi</span><span>£14</span></div></div>
+    <div class="recipe-card fu fu3"><div class="hole"></div><div class="rc-no">No. 30</div><h4>Tiramisù della Nonna</h4><p>Espresso-soaked savoiardi, mascarpone, cocoa.</p><div class="rc-price"><span>Dolci</span><span>£7</span></div></div>
   </div>
 </section>
 
-<section id="menu">
-  <div class="sec-label fu">Menu</div>
-  <h2 class="sec-title fu">Simple plates. Serious ingredients.</h2>
-  <div class="menu-tabs fu">
-    <div class="menu-tab active">Pasta</div>
-    <div class="menu-tab">Forno</div>
-    <div class="menu-tab">Dolci</div>
+<section class="essay" id="essay">
+  <div class="essay-row fu">
+    <div class="ph"><img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=1100&q=80" alt="Pizza detail"></div>
+    <div class="tx"><div class="fig">Behind The Pass — I</div><p>"The dough rests overnight. We don't rush it, even when the queue is out the door."</p></div>
   </div>
-  <div class="menu-grid">
-    <div class="menu-item fu"><div><h4>Tagliatelle al Tartufo</h4><p>Hand-cut ribbons, black truffle, brown butter, parmigiano.</p></div><div class="price">£16</div></div>
-    <div class="menu-item fu fu2"><div><h4>Pizza Margherita DOP</h4><p>San Marzano tomato, fior di latte, basil, wood-fired 90 seconds.</p></div><div class="price">£13</div></div>
-    <div class="menu-item fu fu3"><div><h4>Ossobuco alla Milanese</h4><p>Slow-braised veal shank, saffron risotto, gremolata.</p></div><div class="price">£24</div></div>
-    <div class="menu-item fu fu4"><div><h4>Burrata e Alici</h4><p>Pugliese burrata, Cantabrian anchovy, charred sourdough.</p></div><div class="price">£11</div></div>
-    <div class="menu-item fu"><div><h4>Cacio e Pepe</h4><p>Tonnarelli, pecorino romano, cracked black pepper.</p></div><div class="price">£14</div></div>
-    <div class="menu-item fu fu2"><div><h4>Tiramisù della Nonna</h4><p>Espresso-soaked savoiardi, mascarpone, cocoa.</p></div><div class="price">£7</div></div>
+  <div class="essay-row rev fu">
+    <div class="ph"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=1100&q=80" alt="Pasta hands"></div>
+    <div class="tx"><div class="fig">Behind The Pass — II</div><p>"Every tagliatelle is cut by hand. You can tell — the edges are never quite the same."</p></div>
+  </div>
+  <div class="essay-row fu">
+    <div class="ph"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=1100&q=80" alt="Pizza overhead"></div>
+    <div class="tx"><div class="fig">Behind The Pass — III</div><p>"Ninety seconds in the oven. Any longer and you've lost the point of San Marzano."</p></div>
   </div>
 </section>
 
-<section id="gallery">
-  <div class="sec-label fu">Inside Demo-Vesuvio</div>
-  <h2 class="sec-title fu">Wood smoke, linen tablecloths, Sunday volume.</h2>
-  <div class="gallery">
-    <a class="fu"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Pizza"></a>
-    <a class="fu fu2"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&q=80" alt="Pasta plate"></a>
-    <a class="fu fu3"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&q=80" alt="Pizza oven"></a>
-    <a class="fu fu4"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80" alt="Fresh pasta hands"></a>
+<section class="press">
+  <div class="press-head fu">
+    <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem);font-style:italic;">What the room is saying.</h2>
+    <span style="font-size:.7rem;letter-spacing:.1em;opacity:.55;text-transform:uppercase;">Demo reviews — illustrative</span>
+  </div>
+  <div class="press-list">
+    <div class="press-item fu"><div class="q">"</div><div><p>The tagliatelle al tartufo might be the best pasta dish in London right now.</p><div class="who">— Claire B.</div></div></div>
+    <div class="press-item fu fu2"><div class="q">"</div><div><p>Margherita is the real thing — 90 second char, proper San Marzano sweetness.</p><div class="who">— Federico A.</div></div></div>
+    <div class="press-item fu fu3"><div class="q">"</div><div><p>Booked for two, stayed for three hours. Exactly that kind of place.</p><div class="who">— Naomi T.</div></div></div>
+    <div class="press-item fu"><div class="q">"</div><div><p>Tiramisù alone is worth the trip to Clerkenwell.</p><div class="who">— Daniel K.</div></div></div>
   </div>
 </section>
 
-<section id="reviews">
-  <div class="sec-label fu">Guests Say</div>
-  <h2 class="sec-title fu">"Felt like being cooked for, not served."</h2>
-  <div class="reviews-wrap">
-    <div class="marquee">
-      <div class="review-card"><div class="stars">★★★★★</div><p>"The tagliatelle al tartufo might be the best pasta dish in London right now."</p><div class="who">Demo review — Claire B.</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>"Margherita is the real thing — 90 second char, proper San Marzano sweetness."</p><div class="who">Demo review — Federico A.</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>"Booked for two, ended up staying three hours. Exactly that kind of place."</p><div class="who">Demo review — Naomi T.</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>"Tiramisù alone is worth the trip to Clerkenwell."</p><div class="who">Demo review — Daniel K.</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>"The tagliatelle al tartufo might be the best pasta dish in London right now."</p><div class="who">Demo review — Claire B.</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>"Margherita is the real thing — 90 second char, proper San Marzano sweetness."</p><div class="who">Demo review — Federico A.</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="visit">
-  <div class="hours-cta fu">
-    <div>
-      <div class="sec-label" style="color:#a9e08f;">Visit Us</div>
-      <h3 style="font-size:1.7rem;margin-bottom:6px;font-family:'Fraunces',serif;">Demo-Vesuvio</h3>
-      <p style="color:#cfc3ab;">18 Exmouth Market, Clerkenwell, London EC1R 4QE</p>
-      <div style="margin-top:18px;">
-        <div class="hours-row"><span>Mon – Thu</span><b>12:00 – 22:00</b></div>
-        <div class="hours-row"><span>Fri – Sat</span><b>12:00 – 23:00</b></div>
-        <div class="hours-row"><span>Sunday</span><b>12:00 – 18:00</b></div>
-      </div>
-    </div>
-    <div class="cta-box">
-      <span class="status-badge" id="statusBadge"><span class="dot"></span><span id="statusText">Checking hours…</span></span>
-      <h3 style="font-family:'Fraunces',serif;font-size:1.6rem;">Sundays go fast.</h3>
-      <p>Walk-ins welcome at the bar — tables book out especially on weekends.</p>
-      <a href="tel:+442079460002" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Call 020 7946 0002</a>
-    </div>
+<section class="finale" id="visit">
+  <div class="finale-bg"></div>
+  <h2 class="fu">Buona<br>forchetta.</h2>
+  <div class="ticket fu">
+    <div class="tt-label">Admit One — Tonight's Table</div>
+    <h4>Demo-Vesuvio</h4>
+    <div class="trow"><span>Address</span><b>18 Exmouth Mkt, EC1R</b></div>
+    <div class="trow"><span>Mon–Thu</span><b>12:00–22:00</b></div>
+    <div class="trow"><span>Fri–Sat</span><b>12:00–23:00</b></div>
+    <div class="trow"><span>Sunday</span><b>12:00–18:00</b></div>
+    <a href="tel:+442079460002" class="tcall">Call 020 7946 0002</a>
   </div>
 </section>
 
 <footer>
-  <div class="foot-grid">
-    <div>Demo-Vesuvio</div>
-    <div>18 Exmouth Market, Clerkenwell, London EC1R 4QE</div>
-    <div>020 7946 0002</div>
-  </div>
-  <div class="foot-disclosure">
-    This is a concept / portfolio demo website created to showcase web design work for independent restaurants. "Demo-Vesuvio" is a fictional business — it is not a real restaurant and is not affiliated with any existing establishment of this or a similar name. All reviews shown are illustrative placeholders.
-  </div>
+  This is a concept / portfolio demo website created to showcase web design work for independent restaurants. "Demo-Vesuvio" is a fictional business — it is not a real restaurant and is not affiliated with any existing establishment of this or a similar name. All reviews shown are illustrative placeholders.
 </footer>
 
-<div class="float-cta">
-  <a href="tel:+442079460002" class="btn btn-ghost">Call</a>
-  <a href="#visit" class="btn btn-primary">Book</a>
-</div>
+<a href="tel:+442079460002" class="fab"><span class="dot"></span> Reserve a Table</a>
 
 <script>
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);});
-
+const fu=document.querySelectorAll('.fu');
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');}});
-},{threshold:.15});
-document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+},{threshold:.12});
+fu.forEach(el=>obs.observe(el));
 
-document.querySelectorAll('.menu-tab').forEach(t=>{
-  t.addEventListener('click',()=>{
-    document.querySelectorAll('.menu-tab').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
+// scroll-spy for vertical index
+const navLinks=document.querySelectorAll('.index-nav a');
+const sections=['cover','note','menu','essay','visit'].map(id=>document.getElementById(id));
+const spy=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const idx=sections.indexOf(e.target);
+      if(navLinks[idx]) navLinks[idx].classList.add('active');
+    }
   });
-});
-
-function updateStatus(){
-  const now=new Date();
-  const day=now.getDay();
-  const hour=now.getHours()+now.getMinutes()/60;
-  let open=false;
-  if(day>=1&&day<=4){open=hour>=12&&hour<22;}
-  else if(day===5||day===6){open=hour>=12&&hour<23;}
-  else if(day===0){open=hour>=12&&hour<18;}
-  const badge=document.getElementById('statusBadge');
-  const text=document.getElementById('statusText');
-  if(open){badge.classList.add('open');badge.classList.remove('closed');text.textContent='Open now';}
-  else{badge.classList.add('closed');badge.classList.remove('open');text.textContent='Closed now';}
-}
-updateStatus();
+},{threshold:.4});
+sections.forEach(s=>{if(s) spy.observe(s);});
 </script>
 </body>
 </html>
