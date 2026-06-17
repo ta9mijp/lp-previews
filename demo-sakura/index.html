@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo-Sakura — Modern Japanese Kitchen, London (Concept Design)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;800&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0c0b;
+  --bg-alt:#171411;
+  --ink:#f3ece1;
+  --ink-dim:#a99e8e;
+  --accent:#d6452c;
+  --gold:#b89456;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Zen Maru Gothic',sans-serif;
+  overflow-x:hidden;
+  width:100%;
+}
+img{max-width:100%;display:block;}
+h1,h2,h3,.disp{font-family:'Shippori Mincho',serif;}
+a{color:inherit;text-decoration:none;}
+
+/* grain overlay */
+.grain{
+  position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+
+/* demo badge */
+.demo-badge{
+  position:fixed;top:14px;right:14px;z-index:9998;
+  background:rgba(13,12,11,.85);border:1px solid var(--gold);
+  color:var(--gold);font-size:.62rem;letter-spacing:.12em;
+  padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px);
+  text-transform:uppercase;
+}
+
+/* nav */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 5%;transition:.4s ease;
+}
+nav.scrolled{
+  background:rgba(13,12,11,.88);backdrop-filter:blur(10px);
+  padding:14px 5%;border-bottom:1px solid rgba(184,148,86,.2);
+}
+.logo{font-size:1.3rem;letter-spacing:.04em;display:flex;align-items:center;gap:8px;}
+.logo b{color:var(--accent);font-weight:600;}
+.navlinks{display:none;gap:34px;font-size:.85rem;letter-spacing:.05em;}
+.navlinks a{position:relative;padding:4px 0;opacity:.85;}
+.navlinks a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:.3s;}
+.navlinks a:hover::after{width:100%;}
+.navlinks a:hover{opacity:1;}
+@media(min-width:860px){.navlinks{display:flex;}}
+.nav-cta{
+  background:var(--accent);color:#fff;padding:10px 20px;border-radius:2px;
+  font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
+  transition:.3s;border:1px solid var(--accent);
+}
+.nav-cta:hover{background:transparent;color:var(--accent);}
+
+/* hero */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  overflow:hidden;padding:0 5%;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=1920&q=80') center/cover;
+  filter:brightness(.32) saturate(1.05);
+  transform:scale(1.1);
+  animation:slowzoom 18s ease-in-out infinite alternate;
+}
+@keyframes slowzoom{from{transform:scale(1.1)}to{transform:scale(1.22)}}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(13,12,11,.2),rgba(13,12,11,.95) 92%);
+}
+.kanji-watermark{
+  position:absolute;right:2%;top:8%;font-size:min(38vw,420px);
+  color:rgba(184,148,86,.08);font-family:'Shippori Mincho',serif;
+  line-height:1;z-index:1;user-select:none;pointer-events:none;
+  animation:drift 14s ease-in-out infinite alternate;
+}
+@keyframes drift{from{transform:translateY(0)}to{transform:translateY(-22px)}}
+.hero-content{position:relative;z-index:2;max-width:680px;}
+.eyebrow{
+  display:flex;align-items:center;gap:12px;color:var(--gold);
+  font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:22px;
+  opacity:0;animation:rise .9s .2s forwards ease;
+}
+.eyebrow span.line{width:34px;height:1px;background:var(--gold);}
+.hero h1{
+  font-size:clamp(2.6rem,6.5vw,5rem);line-height:1.05;font-weight:600;
+  margin-bottom:22px;opacity:0;animation:rise .9s .4s forwards ease;
+}
+.hero h1 em{color:var(--accent);font-style:normal;}
+.hero p{
+  font-size:1.05rem;color:var(--ink-dim);max-width:480px;line-height:1.75;margin-bottom:36px;
+  opacity:0;animation:rise .9s .6s forwards ease;
+}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:rise .9s .8s forwards ease;}
+.btn{
+  display:inline-block;padding:15px 30px;font-size:.82rem;letter-spacing:.1em;
+  text-transform:uppercase;border-radius:2px;transition:.35s;
+}
+.btn-primary{background:var(--accent);color:#fff;border:1px solid var(--accent);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px -10px rgba(214,69,44,.6);}
+.btn-ghost{border:1px solid rgba(243,236,225,.35);color:var(--ink);}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.scrolldown{
+  position:absolute;bottom:34px;left:5%;display:flex;align-items:center;gap:10px;
+  font-size:.7rem;letter-spacing:.15em;color:var(--ink-dim);z-index:2;text-transform:uppercase;
+}
+.scrolldown .dash{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:dashmove 1.6s ease-in-out infinite;}
+@keyframes dashmove{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* fade up util */
+.fu{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease;}
+.fu.show{opacity:1;transform:translateY(0);}
+.fu2{transition-delay:.12s;}
+.fu3{transition-delay:.24s;}
+.fu4{transition-delay:.36s;}
+
+section{padding:110px 5%;position:relative;}
+.sec-label{
+  display:flex;align-items:center;gap:14px;color:var(--gold);
+  font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px;
+}
+.sec-label span.line{width:28px;height:1px;background:var(--gold);}
+.sec-title{font-size:clamp(1.9rem,3.6vw,3rem);font-weight:600;max-width:680px;line-height:1.25;}
+
+/* philosophy */
+.philosophy{display:grid;grid-template-columns:1fr;gap:60px;align-items:center;}
+@media(min-width:900px){.philosophy{grid-template-columns:1fr 1fr;}}
+.vert-strip{
+  display:none;font-family:'Shippori Mincho',serif;writing-mode:vertical-rl;
+  font-size:1.1rem;letter-spacing:.5em;color:var(--gold);opacity:.5;height:280px;
+}
+@media(min-width:900px){.vert-strip{display:block;}}
+.phil-text p{color:var(--ink-dim);line-height:1.9;margin-top:22px;font-size:1rem;max-width:520px;}
+.phil-img{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:4/5;}
+.phil-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;}
+.phil-img:hover img{transform:scale(1.08);}
+.stats{display:flex;gap:50px;margin-top:46px;flex-wrap:wrap;}
+.stat b{display:block;font-family:'Shippori Mincho',serif;font-size:2.4rem;color:var(--accent);}
+.stat span{font-size:.78rem;color:var(--ink-dim);letter-spacing:.05em;}
+
+/* menu */
+.menu-grid{display:grid;grid-template-columns:1fr;gap:0;margin-top:50px;}
+@media(min-width:760px){.menu-grid{grid-template-columns:1fr 1fr;column-gap:60px;}}
+.menu-item{
+  display:flex;justify-content:space-between;gap:18px;padding:22px 0;
+  border-bottom:1px solid rgba(184,148,86,.18);
+}
+.menu-item h4{font-family:'Shippori Mincho',serif;font-size:1.08rem;font-weight:500;margin-bottom:6px;}
+.menu-item p{color:var(--ink-dim);font-size:.85rem;line-height:1.5;max-width:320px;}
+.menu-item .price{font-family:'Shippori Mincho',serif;color:var(--gold);font-size:1.1rem;white-space:nowrap;}
+.tag-new{background:var(--accent);color:#fff;font-size:.6rem;padding:2px 7px;border-radius:99px;margin-left:8px;letter-spacing:.05em;}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:50px;}
+@media(min-width:760px){.gallery{grid-template-columns:repeat(4,1fr);}}
+.gallery a{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:3/4;}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease,filter .7s ease;filter:saturate(.85);}
+.gallery a:hover img{transform:scale(1.12);filter:saturate(1.1);}
+
+/* reviews marquee */
+.reviews-wrap{overflow:hidden;margin-top:50px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.marquee{display:flex;gap:26px;width:max-content;animation:scrollx 32s linear infinite;}
+.marquee:hover{animation-play-state:paused;}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.review-card{
+  background:var(--bg-alt);border:1px solid rgba(184,148,86,.15);border-radius:6px;
+  padding:26px;width:320px;flex:0 0 auto;
+}
+.review-card .stars{color:var(--gold);margin-bottom:12px;letter-spacing:2px;}
+.review-card p{color:var(--ink-dim);font-size:.92rem;line-height:1.7;margin-bottom:16px;}
+.review-card .who{font-size:.78rem;color:var(--ink);letter-spacing:.04em;}
+
+/* hours / cta */
+.hours-cta{
+  display:grid;grid-template-columns:1fr;gap:40px;background:var(--bg-alt);
+  border-radius:10px;padding:50px 6%;border:1px solid rgba(184,148,86,.15);
+}
+@media(min-width:860px){.hours-cta{grid-template-columns:1.2fr 1fr;align-items:center;}}
+.hours-list{margin-top:18px;}
+.hours-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(184,148,86,.18);font-size:.9rem;color:var(--ink-dim);}
+.hours-row b{color:var(--ink);font-weight:400;}
+.status-badge{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;
+  font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px;
+}
+.status-badge.open{background:rgba(91,140,90,.15);color:#7fcf7a;}
+.status-badge.closed{background:rgba(214,69,44,.15);color:var(--accent);}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.6s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.cta-box h3{font-size:1.6rem;margin-bottom:14px;}
+.cta-box p{color:var(--ink-dim);margin-bottom:26px;line-height:1.7;}
+
+footer{padding:60px 5% 110px;border-top:1px solid rgba(184,148,86,.15);font-size:.8rem;color:var(--ink-dim);}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:34px;}
+.foot-disclosure{
+  margin-top:30px;padding-top:24px;border-top:1px solid rgba(184,148,86,.1);
+  font-size:.72rem;line-height:1.8;color:rgba(169,158,142,.7);max-width:760px;
+}
+
+/* mobile float cta */
+.float-cta{
+  display:flex;position:fixed;left:0;right:0;bottom:0;z-index:600;
+  background:rgba(13,12,11,.96);backdrop-filter:blur(8px);
+  padding:12px 16px;border-top:1px solid rgba(184,148,86,.25);
+  align-items:center;justify-content:space-between;gap:12px;
+}
+@media(min-width:860px){.float-cta{display:none;}}
+.float-cta a{flex:1;text-align:center;}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="demo-badge">Concept Demo</div>
+
+<nav id="nav">
+  <div class="logo">雅 <b>Demo-Sakura</b></div>
+  <div class="navlinks">
+    <a href="#philosophy">Philosophy</a>
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#visit">Visit</a>
+  </div>
+  <a href="#visit" class="nav-cta">Reserve</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="kanji-watermark">旬</div>
+  <div class="hero-content">
+    <div class="eyebrow"><span class="line"></span> Modern Japanese Kitchen · Shoreditch, London</div>
+    <h1>Quiet craft,<br><em>seasonal</em> fire.</h1>
+    <p>Hand-pressed nigiri, binchotan-grilled skewers and a sake list built around small Japanese producers — in a room designed to slow you down.</p>
+    <div class="hero-ctas">
+      <a href="#visit" class="btn btn-primary">Reserve a Table</a>
+      <a href="#menu" class="btn btn-ghost">View Menu</a>
+    </div>
+  </div>
+  <div class="scrolldown"><span class="dash"></span> Scroll</div>
+</section>
+
+<section id="philosophy">
+  <div class="philosophy">
+    <div class="vert-strip">一期一会 · 旬 · 匠</div>
+    <div class="phil-text fu">
+      <div class="sec-label"><span class="line"></span>Our Philosophy</div>
+      <h2 class="sec-title">One season, one chance — <em>ichigo ichie</em>.</h2>
+      <p>Demo-Sakura was imagined around a single idea: that a meal should belong entirely to the moment it's served in. Our fish arrives daily from Billingsgate, our vegetables shift with the UK growing calendar, and our charcoal grill never cools before service ends.</p>
+      <p>Every plate is built by hand, in small batches, by a kitchen that would rather sell out of something good than serve something average.</p>
+      <div class="stats">
+        <div class="stat"><b class="counter" data-target="14">0</b><span>Seats at the counter</span></div>
+        <div class="stat"><b class="counter" data-target="38">0</b><span>Sake labels</span></div>
+        <div class="stat"><b class="counter" data-target="4" data-suffix=".8">0</b><span>Average rating</span></div>
+      </div>
+    </div>
+    <div class="phil-img fu fu2">
+      <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=900&q=80" alt="Sushi craft at Demo-Sakura">
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="sec-label fu"><span class="line"></span>Tasting Menu</div>
+  <h2 class="sec-title fu">A short, honest list — changed with the seasons.</h2>
+  <div class="menu-grid">
+    <div class="menu-item fu">
+      <div><h4>Otoro Nigiri <span class="tag-new">Today</span></h4><p>Fatty bluefin, aged 5 days, hand-pressed rice, wasabi from Shimane.</p></div>
+      <div class="price">£14</div>
+    </div>
+    <div class="menu-item fu fu2">
+      <div><h4>Binchotan Yakitori</h4><p>Free-range thigh, charcoal-grilled, citrus-shio finish.</p></div>
+      <div class="price">£9</div>
+    </div>
+    <div class="menu-item fu fu3">
+      <div><h4>Miso-Cured Sea Bass</h4><p>72-hour cure, brown butter dashi, charred spring onion.</p></div>
+      <div class="price">£18</div>
+    </div>
+    <div class="menu-item fu fu4">
+      <div><h4>Uni Chawanmushi</h4><p>Silken egg custard, sea urchin, yuzu kosho.</p></div>
+      <div class="price">£12</div>
+    </div>
+    <div class="menu-item fu">
+      <div><h4>Wagyu Tataki</h4><p>A5 striploin, ponzu, crisp garlic chips.</p></div>
+      <div class="price">£22</div>
+    </div>
+    <div class="menu-item fu fu2">
+      <div><h4>Hojicha Crème</h4><p>Roasted green tea custard, black sesame brittle.</p></div>
+      <div class="price">£8</div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="sec-label fu"><span class="line"></span>Inside the Room</div>
+  <h2 class="sec-title fu">Counter seats, low light, open kitchen.</h2>
+  <div class="gallery">
+    <a class="fu"><img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&q=80" alt="Sushi plate"></a>
+    <a class="fu fu2"><img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=80" alt="Ramen bowl"></a>
+    <a class="fu fu3"><img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=600&q=80" alt="Sushi spread"></a>
+    <a class="fu fu4"><img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=80" alt="Close-up nigiri"></a>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="sec-label fu"><span class="line"></span>Guests Say</div>
+  <h2 class="sec-title fu">Quietly one of London's best counters.</h2>
+  <div class="reviews-wrap">
+    <div class="marquee" id="marquee">
+      <div class="review-card"><div class="stars">★★★★★</div><p>"The otoro nigiri alone is worth the trip across town. Tiny room, huge precision."</p><div class="who">— Demo review, Hana K.</div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"Best yakitori I've had outside Tokyo. The charcoal smell hits you at the door."</p><div class="who">— Demo review, Tom R.</div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"Counter seats are the move — watching the chefs work is half the meal."</p><div class="who">— Demo review, Priya S.</div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"Sake pairing menu changed how I think about rice wine entirely."</p><div class="who">— Demo review, Marcus L.</div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"The otoro nigiri alone is worth the trip across town. Tiny room, huge precision."</p><div class="who">— Demo review, Hana K.</div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"Best yakitori I've had outside Tokyo. The charcoal smell hits you at the door."</p><div class="who">— Demo review, Tom R.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="hours-cta fu">
+    <div>
+      <div class="sec-label"><span class="line"></span>Visit Us</div>
+      <h3 style="font-size:1.7rem;margin-bottom:6px;">Demo-Sakura</h3>
+      <p style="color:var(--ink-dim);">42 Redchurch Lane, Shoreditch, London E2 7DJ</p>
+      <div class="hours-list">
+        <div class="hours-row"><span>Tue – Thu</span><b>17:30 – 22:30</b></div>
+        <div class="hours-row"><span>Fri – Sat</span><b>17:30 – 23:30</b></div>
+        <div class="hours-row"><span>Sun – Mon</span><b>Closed</b></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <span class="status-badge" id="statusBadge"><span class="dot"></span><span id="statusText">Checking hours…</span></span>
+      <h3>Tables move fast.</h3>
+      <p>We hold the counter for walk-ins, but the dining room books out 1–2 weeks ahead.</p>
+      <a href="tel:+442079460001" class="btn btn-primary" style="width:100%;text-align:center;">Call 020 7946 0001</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="logo">雅 <b>Demo-Sakura</b></div>
+    <div>42 Redchurch Lane, Shoreditch, London E2 7DJ</div>
+    <div>020 7946 0001</div>
+  </div>
+  <div class="foot-disclosure">
+    This is a concept / portfolio demo website created to showcase web design work for independent restaurants. "Demo-Sakura" is a fictional business — it is not a real restaurant and is not affiliated with any existing establishment of this or a similar name. All reviews shown are illustrative placeholders.
+  </div>
+</footer>
+
+<div class="float-cta">
+  <a href="tel:+442079460001" class="btn btn-ghost">Call</a>
+  <a href="#visit" class="btn btn-primary">Reserve</a>
+</div>
+
+<script>
+// nav scroll state
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);});
+
+// fade-up on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');}});
+},{threshold:.15});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+
+// counters
+const counters=document.querySelectorAll('.counter');
+const cObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target, target=+el.dataset.target, suffix=el.dataset.suffix||'';
+      let cur=0; const step=Math.max(1,Math.ceil(target/40));
+      const t=setInterval(()=>{
+        cur+=step;
+        if(cur>=target){cur=target;clearInterval(t);}
+        el.textContent=cur+suffix;
+      },30);
+      cObs.unobserve(el);
+    }
+  });
+},{threshold:.6});
+counters.forEach(el=>cObs.observe(el));
+
+// open/closed badge (Asia/Tokyo-style fictional schedule, London time)
+function updateStatus(){
+  const now=new Date();
+  const day=now.getDay(); // 0 Sun .. 6 Sat
+  const hour=now.getHours()+now.getMinutes()/60;
+  let open=false;
+  if(day>=2&&day<=4){open = hour>=17.5 && hour<22.5;}
+  else if(day===5||day===6){open = hour>=17.5 && hour<23.5;}
+  const badge=document.getElementById('statusBadge');
+  const text=document.getElementById('statusText');
+  if(open){badge.classList.add('open');badge.classList.remove('closed');text.textContent='Open now';}
+  else{badge.classList.add('closed');badge.classList.remove('open');text.textContent='Closed now';}
+}
+updateStatus();
+</script>
+</body>
+</html>
