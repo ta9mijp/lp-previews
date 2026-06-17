@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo-Anatolia — Late-Night Turkish Grill, London (Concept Design)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0f0d0c;
+  --char:#1b1816;
+  --red:#e3342f;
+  --mustard:#f2b134;
+  --cream:#f5efe6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--cream);font-family:'Manrope',sans-serif;overflow-x:hidden;width:100%;}
+img{max-width:100%;display:block;}
+h1,h2,h3,.disp{font-family:'Unbounded',sans-serif;}
+a{color:inherit;text-decoration:none;}
+
+.demo-badge{position:fixed;top:14px;right:14px;z-index:9998;background:var(--red);color:#fff;font-size:.62rem;letter-spacing:.1em;padding:6px 12px;border-radius:4px;text-transform:uppercase;font-weight:700;}
+
+.charcoal-bg{position:fixed;inset:0;z-index:-1;
+  background:radial-gradient(circle at 15% 20%,rgba(227,52,47,.12),transparent 45%),
+  radial-gradient(circle at 85% 75%,rgba(242,177,52,.08),transparent 45%),var(--black);
+}
+
+/* ticker */
+.ticker{background:var(--red);color:#fff;overflow:hidden;white-space:nowrap;padding:9px 0;position:relative;z-index:400;font-weight:700;font-size:.78rem;letter-spacing:.06em;}
+.ticker-inner{display:inline-block;animation:tick 18s linear infinite;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-inner span{margin:0 28px;}
+
+nav{position:fixed;top:34px;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:20px 5%;transition:.4s;}
+nav.scrolled{top:0;background:rgba(15,13,12,.92);backdrop-filter:blur(10px);padding:14px 5%;border-bottom:1px solid rgba(242,177,52,.2);}
+.logo{font-weight:800;font-size:1.3rem;letter-spacing:-.01em;}
+.logo span{color:var(--red);}
+.navlinks{display:none;gap:30px;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
+@media(min-width:860px){.navlinks{display:flex;}}
+.navlinks a{position:relative;}
+.navlinks a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:3px;background:var(--mustard);transition:.3s;}
+.navlinks a:hover::after{width:100%;}
+.nav-cta{background:var(--mustard);color:var(--black);padding:11px 22px;font-weight:800;font-size:.8rem;text-transform:uppercase;border-radius:3px;transition:.25s;}
+.nav-cta:hover{background:var(--red);color:#fff;transform:translateY(-2px);}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:170px 5% 80px;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1561651823-34feb02250e4?w=1920&q=80') center/cover;filter:brightness(.28) contrast(1.15) saturate(1.1);transform:scale(1.1);animation:slowzoom 16s ease-in-out infinite alternate;}
+@keyframes slowzoom{from{transform:scale(1.1)}to{transform:scale(1.2)}}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,13,12,.3),rgba(15,13,12,.97) 90%);}
+.flame-glow{position:absolute;bottom:-10%;left:50%;width:140%;height:60%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(227,52,47,.25),transparent 65%);animation:flicker 3s ease-in-out infinite;z-index:1;}
+@keyframes flicker{0%,100%{opacity:.7}50%{opacity:1}}
+.hero-content{position:relative;z-index:2;max-width:760px;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(242,177,52,.12);border:1px solid rgba(242,177,52,.4);color:var(--mustard);font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;border-radius:30px;margin-bottom:26px;opacity:0;animation:rise .8s .1s forwards;}
+.hero h1{font-size:clamp(2.6rem,8vw,5.4rem);line-height:.98;font-weight:900;margin-bottom:24px;text-transform:uppercase;opacity:0;animation:rise .8s .25s forwards;}
+.hero h1 span{color:var(--red);-webkit-text-stroke:2px var(--mustard);}
+.hero p{font-size:1.08rem;color:#d8cdbc;line-height:1.7;max-width:540px;margin-bottom:36px;opacity:0;animation:rise .8s .4s forwards;}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:rise .8s .55s forwards;}
+.btn{display:inline-block;padding:16px 30px;font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;border-radius:4px;transition:.3s;}
+.btn-primary{background:var(--red);color:#fff;border:2px solid var(--red);}
+.btn-primary:hover{background:transparent;color:var(--red);transform:translateY(-3px);}
+.btn-ghost{border:2px solid var(--mustard);color:var(--mustard);}
+.btn-ghost:hover{background:var(--mustard);color:var(--black);}
+
+.fu{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease;}
+.fu.show{opacity:1;transform:translateY(0);}
+.fu2{transition-delay:.12s;} .fu3{transition-delay:.24s;} .fu4{transition-delay:.36s;}
+
+section{padding:110px 5%;position:relative;}
+.sec-label{display:inline-flex;align-items:center;gap:10px;color:var(--mustard);font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
+.sec-label::before{content:'';width:10px;height:10px;background:var(--red);border-radius:2px;transform:rotate(45deg);}
+.sec-title{font-size:clamp(1.9rem,4vw,3.1rem);font-weight:800;max-width:720px;line-height:1.1;text-transform:uppercase;}
+
+/* stats counters */
+.stats-bar{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;margin-top:50px;}
+@media(min-width:760px){.stats-bar{grid-template-columns:repeat(4,1fr);}}
+.stat{border-left:3px solid var(--red);padding-left:16px;}
+.stat b{display:block;font-family:'Unbounded',sans-serif;font-size:2.6rem;font-weight:800;color:var(--mustard);}
+.stat span{font-size:.78rem;color:#bdb1a0;letter-spacing:.03em;text-transform:uppercase;}
+
+/* menu */
+.menu-grid{display:grid;grid-template-columns:1fr;gap:0;margin-top:50px;}
+@media(min-width:760px){.menu-grid{grid-template-columns:1fr 1fr;column-gap:60px;}}
+.menu-item{display:flex;justify-content:space-between;gap:18px;padding:24px 0;border-bottom:2px solid var(--char);transition:.25s;}
+.menu-item:hover{border-bottom-color:var(--red);}
+.menu-item h4{font-family:'Unbounded',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:6px;text-transform:uppercase;}
+.menu-item p{color:#a89c89;font-size:.86rem;line-height:1.5;max-width:300px;}
+.menu-item .price{font-family:'Unbounded',sans-serif;font-weight:800;color:var(--red);font-size:1.15rem;white-space:nowrap;background:rgba(227,52,47,.1);padding:6px 12px;border-radius:4px;height:fit-content;}
+.spice{color:var(--mustard);font-size:.7rem;}
+
+/* gallery diagonal */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:50px;}
+@media(min-width:760px){.gallery{grid-template-columns:repeat(4,1fr);}}
+.gallery a{position:relative;overflow:hidden;aspect-ratio:3/4;clip-path:polygon(0 4%,100% 0,100% 96%,0 100%);}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .6s;filter:contrast(1.05) saturate(1.05);}
+.gallery a:hover img{transform:scale(1.15) rotate(1deg);}
+.gallery a::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(15,13,12,.7));}
+
+/* reviews marquee */
+.reviews-wrap{overflow:hidden;margin-top:50px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.marquee{display:flex;gap:22px;width:max-content;animation:scrollx 28s linear infinite;}
+.marquee:hover{animation-play-state:paused;}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.review-card{background:var(--char);border-radius:8px;padding:24px;width:300px;flex:0 0 auto;border-top:3px solid var(--mustard);}
+.review-card .stars{color:var(--mustard);margin-bottom:10px;letter-spacing:2px;}
+.review-card p{color:#cfc3b0;font-size:.9rem;line-height:1.65;margin-bottom:14px;}
+.review-card .who{font-size:.76rem;font-weight:700;color:var(--cream);}
+
+.hours-cta{display:grid;grid-template-columns:1fr;gap:40px;background:var(--char);border-radius:10px;padding:54px 6%;border:1px solid rgba(242,177,52,.15);position:relative;overflow:hidden;}
+@media(min-width:860px){.hours-cta{grid-template-columns:1.2fr 1fr;align-items:center;}}
+.hours-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px dashed rgba(242,177,52,.2);font-size:.9rem;color:#bdb1a0;}
+.hours-row b{color:var(--cream);}
+.status-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:4px;font-size:.74rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px;}
+.status-badge.open{background:rgba(120,200,90,.18);color:#9fe08a;}
+.status-badge.closed{background:rgba(227,52,47,.18);color:#f0958f;}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.6s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.cta-box p{color:#bdb1a0;margin:14px 0 26px;line-height:1.7;}
+
+footer{padding:60px 5% 110px;font-size:.85rem;color:#a89c89;}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;font-weight:700;color:var(--cream);}
+.foot-disclosure{margin-top:30px;padding-top:24px;border-top:1px solid rgba(242,177,52,.12);font-size:.72rem;line-height:1.8;color:#7d7363;max-width:760px;}
+
+.float-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:600;background:rgba(15,13,12,.97);backdrop-filter:blur(8px);padding:12px 16px;border-top:1px solid rgba(242,177,52,.2);gap:12px;}
+@media(min-width:860px){.float-cta{display:none;}}
+.float-cta a{flex:1;text-align:center;}
+</style>
+</head>
+<body>
+<div class="charcoal-bg"></div>
+<div class="demo-badge">Concept Demo</div>
+
+<div class="ticker"><div class="ticker-inner">
+  <span>🔥 FRESH OFF THE CHARCOAL GRILL</span><span>🌙 OPEN TILL 3AM FRI &amp; SAT</span><span>🥙 VOTED #1 LATE-NIGHT GRILL ON THE STRIP</span><span>🔥 FRESH OFF THE CHARCOAL GRILL</span><span>🌙 OPEN TILL 3AM FRI &amp; SAT</span><span>🥙 VOTED #1 LATE-NIGHT GRILL ON THE STRIP</span>
+</div></div>
+
+<nav id="nav">
+  <div class="logo">DEMO-<span>ANATOLIA</span></div>
+  <div class="navlinks">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#visit">Visit</a>
+  </div>
+  <a href="#visit" class="nav-cta">Order / Visit</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="flame-glow"></div>
+  <div class="hero-content">
+    <div class="eyebrow">⚡ Late-Night Turkish Grill · Peckham, London</div>
+    <h1>CHARCOAL.<br><span>SMOKE.</span> NO SHORTCUTS.</h1>
+    <p>Hand-skewered, slow-marinated, grilled over real charcoal — not a heat lamp in sight. Open till 3am because the best kebabs don't care what time it is.</p>
+    <div class="hero-ctas">
+      <a href="tel:+442079460003" class="btn btn-primary">Call to Order</a>
+      <a href="#menu" class="btn btn-ghost">See the Menu</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="sec-label fu">Why We're Different</div>
+  <h2 class="sec-title fu">Real charcoal. Real marinade. Real late nights.</h2>
+  <p class="fu fu2" style="color:#bdb1a0;max-width:620px;margin-top:18px;line-height:1.8;">Demo-Anatolia grills everything over binchotan charcoal, marinates meat for a minimum of 18 hours, and bakes its own flatbread to order. No microwave. No pre-cooked trays under a lamp.</p>
+  <div class="stats-bar">
+    <div class="stat fu"><b class="counter" data-target="18">0</b><span>Hours marinated</span></div>
+    <div class="stat fu fu2"><b class="counter" data-target="3">0</b><span>AM weekend close</span></div>
+    <div class="stat fu fu3"><b class="counter" data-target="4" data-suffix=".7">0</b><span>Star rating</span></div>
+    <div class="stat fu fu4"><b class="counter" data-target="100">0</b><span>% Halal grill</span></div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="sec-label fu">The Grill</div>
+  <h2 class="sec-title fu">Big flavour. Bigger portions.</h2>
+  <div class="menu-grid">
+    <div class="menu-item fu"><div><h4>Adana Mix Skewer <span class="spice">🌶️🌶️</span></h4><p>Hand-minced lamb, smoked chilli, charcoal-grilled, served sizzling.</p></div><div class="price">£11.50</div></div>
+    <div class="menu-item fu fu2"><div><h4>Iskender Special</h4><p>Sliced döner over fresh pide, tomato sauce, garlic yoghurt, brown butter.</p></div><div class="price">£10.90</div></div>
+    <div class="menu-item fu fu3"><div><h4>Lahmacun</h4><p>Wood-fired flatbread, minced lamb, herbs, lemon, rolled fresh.</p></div><div class="price">£6.50</div></div>
+    <div class="menu-item fu fu4"><div><h4>Mixed Grill Platter</h4><p>Chicken shish, lamb chops, adana, rice, charred peppers. Built for two.</p></div><div class="price">£24.90</div></div>
+    <div class="menu-item fu"><div><h4>Halloumi &amp; Veg Skewer</h4><p>Charcoal halloumi, courgette, pepper, pomegranate molasses glaze.</p></div><div class="price">£9.20</div></div>
+    <div class="menu-item fu fu2"><div><h4>Baklava (3pc)</h4><p>Pistachio, honey syrup, filo, made fresh weekly.</p></div><div class="price">£5.00</div></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="sec-label fu">Off The Grill</div>
+  <h2 class="sec-title fu">Smoke. Char. Repeat.</h2>
+  <div class="gallery">
+    <a class="fu"><img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=80" alt="Shawarma grill"></a>
+    <a class="fu fu2"><img src="https://images.unsplash.com/photo-1561651823-34feb02250e4?w=600&q=80" alt="Kebab close up"></a>
+    <a class="fu fu3"><img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&q=80" alt="Turkish grill plate"></a>
+    <a class="fu fu4"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="Grilled skewers"></a>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="sec-label fu">The Word On The Street</div>
+  <h2 class="sec-title fu">"Better than anything near the station."</h2>
+  <div class="reviews-wrap">
+    <div class="marquee">
+      <div class="review-card"><div class="stars">★★★★★</div><p>"2am, starving, this place saved my night. Adana skewer hit different."</p><div class="who">Demo review — Jordan M.</div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"Mixed grill platter is genuinely built for two. Insane value."</p><div class="who">Demo review — Aisha N.</div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"You can actually taste the charcoal. Most places fake it."</p><div class="who">Demo review — Leo F.</div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"Iskender is unreal — the garlic yoghurt makes the whole dish."</p><div class="who">Demo review — Priya D.</div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"2am, starving, this place saved my night. Adana skewer hit different."</p><div class="who">Demo review — Jordan M.</div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p>"Mixed grill platter is genuinely built for two. Insane value."</p><div class="who">Demo review — Aisha N.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="hours-cta fu">
+    <div>
+      <div class="sec-label">Visit Us</div>
+      <h3 style="font-size:1.7rem;margin-bottom:6px;font-family:'Unbounded',sans-serif;font-weight:800;text-transform:uppercase;">Demo-Anatolia</h3>
+      <p style="color:#bdb1a0;">154 Rye Lane, Peckham, London SE15 4ST</p>
+      <div style="margin-top:18px;">
+        <div class="hours-row"><span>Sun – Thu</span><b>16:00 – 00:00</b></div>
+        <div class="hours-row"><span>Fri – Sat</span><b>16:00 – 03:00</b></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <span class="status-badge" id="statusBadge"><span class="dot"></span><span id="statusText">Checking hours…</span></span>
+      <h3 style="font-family:'Unbounded',sans-serif;font-size:1.5rem;font-weight:800;text-transform:uppercase;">Late night? We're open.</h3>
+      <p>Walk-ins and phone orders both welcome. Free delivery within 1.5 miles.</p>
+      <a href="tel:+442079460003" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Call 020 7946 0003</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>DEMO-ANATOLIA</div>
+    <div>154 Rye Lane, Peckham, London SE15 4ST</div>
+    <div>020 7946 0003</div>
+  </div>
+  <div class="foot-disclosure">
+    This is a concept / portfolio demo website created to showcase web design work for independent restaurants. "Demo-Anatolia" is a fictional business — it is not a real restaurant and is not affiliated with any existing establishment of this or a similar name. All reviews shown are illustrative placeholders.
+  </div>
+</footer>
+
+<div class="float-cta">
+  <a href="tel:+442079460003" class="btn btn-ghost">Call</a>
+  <a href="#menu" class="btn btn-primary">Menu</a>
+</div>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);});
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');}});
+},{threshold:.15});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+
+const counters=document.querySelectorAll('.counter');
+const cObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target, target=+el.dataset.target, suffix=el.dataset.suffix||'';
+      let cur=0; const step=Math.max(1,Math.ceil(target/40));
+      const t=setInterval(()=>{
+        cur+=step;
+        if(cur>=target){cur=target;clearInterval(t);}
+        el.textContent=cur+suffix;
+      },30);
+      cObs.unobserve(el);
+    }
+  });
+},{threshold:.6});
+counters.forEach(el=>cObs.observe(el));
+
+function updateStatus(){
+  const now=new Date();
+  const day=now.getDay();
+  const hour=now.getHours()+now.getMinutes()/60;
+  let open=false;
+  if(day>=0&&day<=4){open=hour>=16||hour<0;}
+  else{open=hour>=16||hour<3;}
+  const badge=document.getElementById('statusBadge');
+  const text=document.getElementById('statusText');
+  if(open){badge.classList.add('open');badge.classList.remove('closed');text.textContent='Open now';}
+  else{badge.classList.add('closed');badge.classList.remove('open');text.textContent='Closed now';}
+}
+updateStatus();
+</script>
+</body>
+</html>
