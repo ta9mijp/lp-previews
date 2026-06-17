@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept Web Design Samples — Takumi</title>
+<meta name="description" content="Six concept websites, six completely different design approaches — built to show what's possible for independent businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f4ee;--ink:#222019;--line:#dfd9c9;--accent:#b5563c;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Manrope',sans-serif;}
+img{max-width:100%;display:block;}
+h1,h2{font-family:'Fraunces',serif;}
+a{color:inherit;text-decoration:none;}
+
+header{padding:90px 6% 60px;max-width:880px;}
+header .kicker{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+header h1{font-size:clamp(2.1rem,5vw,3.4rem);font-style:italic;font-weight:500;line-height:1.15;margin-bottom:20px;}
+header p{font-size:1rem;color:#544f44;line-height:1.75;max-width:620px;}
+
+.grid{display:grid;grid-template-columns:1fr;gap:36px;padding:0 6% 110px;}
+@media(min-width:760px){.grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1180px){.grid{grid-template-columns:repeat(3,1fr);}}
+
+.card{background:#fffdf8;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.3s;}
+.card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -22px rgba(34,32,25,.25);}
+.thumb{position:relative;aspect-ratio:16/10;overflow:hidden;}
+.thumb iframe{width:166.66%;height:166.66%;transform:scale(.6);transform-origin:top left;border:none;pointer-events:none;}
+.card .body{padding:22px 22px 26px;}
+.tagrow{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.tagrow span{font-size:.65rem;letter-spacing:.05em;text-transform:uppercase;background:#f0ece1;padding:4px 9px;border-radius:20px;color:#6b6357;}
+.card h3{font-size:1.25rem;font-weight:500;margin-bottom:8px;}
+.card p{font-size:.86rem;color:#5c574c;line-height:1.6;margin-bottom:18px;min-height:62px;}
+.view-btn{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700;color:var(--accent);}
+.view-btn:hover{text-decoration:underline;}
+
+footer{padding:50px 6% 100px;font-size:.78rem;color:#8a8378;border-top:1px solid var(--line);max-width:760px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">Concept Portfolio · 6 Builds, 6 Different Approaches</div>
+  <h1>What I can build for a small business that doesn't have a website yet.</h1>
+  <p>Each of these is a fictional demo, built to show range rather than to sell one specific look. No two share the same layout, navigation style, or interaction pattern — on purpose.</p>
+</header>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="thumb"><iframe src="https://ta9mijp.github.io/lp-previews/demo-sakura/" loading="lazy"></iframe></div>
+    <div class="body">
+      <div class="tagrow"><span>Restaurant</span><span>Editorial Dark</span></div>
+      <h3>Demo-Sakura</h3>
+      <p>Modern Japanese kitchen. Quiet, dark, refined — built around a single idea: ichigo ichie.</p>
+      <a class="view-btn" href="https://ta9mijp.github.io/lp-previews/demo-sakura/" target="_blank">View live site →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="thumb"><iframe src="https://ta9mijp.github.io/lp-previews/demo-vesuvio/" loading="lazy"></iframe></div>
+    <div class="body">
+      <div class="tagrow"><span>Restaurant</span><span>Magazine / Editorial</span></div>
+      <h3>Demo-Vesuvio</h3>
+      <p>Family trattoria, presented as a printed cookbook quarterly — sticky scroll, scattered recipe cards.</p>
+      <a class="view-btn" href="https://ta9mijp.github.io/lp-previews/demo-vesuvio/" target="_blank">View live site →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="thumb"><iframe src="https://ta9mijp.github.io/lp-previews/demo-anatolia/" loading="lazy"></iframe></div>
+    <div class="body">
+      <div class="tagrow"><span>Restaurant</span><span>Neon Kiosk / App</span></div>
+      <h3>Demo-Anatolia</h3>
+      <p>Late-night grill, built like a swipeable app — full-screen sections, a live grill cam, a bottom tab bar.</p>
+      <a class="view-btn" href="https://ta9mijp.github.io/lp-previews/demo-anatolia/" target="_blank">View live site →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="thumb"><iframe src="https://ta9mijp.github.io/lp-previews/demo-anchor/" loading="lazy"></iframe></div>
+    <div class="body">
+      <div class="tagrow"><span>Trades</span><span>Conversion-Focused</span></div>
+      <h3>Demo-Anchor</h3>
+      <p>Plumbing &amp; electrical. Built to get the phone ringing — live quote form, before/after slider, trust signals.</p>
+      <a class="view-btn" href="https://ta9mijp.github.io/lp-previews/demo-anchor/" target="_blank">View live site →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="thumb"><iframe src="https://ta9mijp.github.io/lp-previews/demo-bloom/" loading="lazy"></iframe></div>
+    <div class="body">
+      <div class="tagrow"><span>Salon</span><span>Visual / Booking</span></div>
+      <h3>Demo-Bloom</h3>
+      <p>Hair &amp; beauty studio. Instagram-grid hero, a persistent booking widget, team profiles, transformations.</p>
+      <a class="view-btn" href="https://ta9mijp.github.io/lp-previews/demo-bloom/" target="_blank">View live site →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="thumb"><iframe src="https://ta9mijp.github.io/lp-previews/demo-komorebi/" loading="lazy"></iframe></div>
+    <div class="body">
+      <div class="tagrow"><span>Retail / Shop</span><span>Product Showcase</span></div>
+      <h3>Demo-Komorebi</h3>
+      <p>Japanese lifestyle goods shop. A quiet, paper-toned shelf you browse — filterable categories, a basket counter.</p>
+      <a class="view-btn" href="https://ta9mijp.github.io/lp-previews/demo-komorebi/" target="_blank">View live site →</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  All six sites are concept / portfolio demos built to showcase web design work. None of the businesses shown ("Demo-Sakura", "Demo-Vesuvio", "Demo-Anatolia", "Demo-Anchor", "Demo-Bloom", "Demo-Komorebi") are real — they are not affiliated with any existing business of these or similar names.
+</footer>
+</body>
+</html>
