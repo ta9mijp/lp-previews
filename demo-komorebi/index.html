@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo-Komorebi — Japanese Lifestyle Goods Shop, London (Concept Design)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f5f1ea;
+  --moss:#7c8a6e;
+  --rust:#b5563c;
+  --ink:#3a352c;
+  --honey:#d9b26a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'Manrope',sans-serif;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+h1,h2,h3,.disp{font-family:'Fraunces',serif;}
+.tag-font{font-family:'Caveat',cursive;}
+a{color:inherit;text-decoration:none;}
+
+.demo-badge{position:fixed;top:14px;right:14px;z-index:9998;background:var(--ink);color:var(--paper);font-size:.6rem;letter-spacing:.1em;padding:6px 12px;border-radius:30px;text-transform:uppercase;}
+
+.fu{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease;}
+.fu.show{opacity:1;transform:translateY(0);}
+.fu2{transition-delay:.12s;} .fu3{transition-delay:.24s;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:22px 5%;transition:.4s;}
+nav.scrolled{background:rgba(245,241,234,.92);backdrop-filter:blur(8px);padding:14px 5%;box-shadow:0 2px 20px -12px rgba(58,53,44,.2);}
+.logo{font-size:1.3rem;font-style:italic;font-weight:500;display:flex;align-items:center;gap:10px;}
+.navlinks{display:none;gap:28px;font-size:.85rem;}
+@media(min-width:860px){.navlinks{display:flex;}}
+.basket{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);padding:9px 16px;border-radius:30px;font-size:.82rem;}
+.basket .count{background:var(--rust);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;}
+
+/* hero — light, airy */
+.hero{padding:160px 5% 70px;text-align:center;}
+.hero .kicker{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--moss);margin-bottom:18px;}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);font-style:italic;font-weight:500;line-height:1.08;margin-bottom:18px;}
+.hero p{color:#6b6357;max-width:480px;margin:0 auto 30px;line-height:1.7;}
+.hero-photo{max-width:780px;margin:0 auto;border-radius:8px;overflow:hidden;aspect-ratio:16/8;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;}
+
+section{padding:90px 5%;}
+.sec-tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--moss);margin-bottom:14px;}
+.sec-title{font-size:clamp(1.8rem,3.4vw,2.6rem);font-style:italic;font-weight:500;max-width:600px;line-height:1.25;}
+
+/* weekly pick spotlight */
+.pick{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;}
+@media(min-width:900px){.pick{grid-template-columns:.9fr 1.1fr;}}
+.pick-img{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/5;}
+.pick-img img{width:100%;height:100%;object-fit:cover;}
+.swing-tag{
+  position:absolute;top:18px;right:-14px;background:#fffdf7;padding:14px 18px 10px;border-radius:4px;
+  box-shadow:0 14px 26px -12px rgba(0,0,0,.3);transform:rotate(8deg);text-align:center;
+}
+.swing-tag::before{content:'';position:absolute;top:-8px;left:50%;width:6px;height:6px;border-radius:50%;background:var(--paper);border:1px solid #ccc;}
+.swing-tag .pr{font-family:'Caveat',cursive;font-size:1.6rem;color:var(--rust);font-weight:700;line-height:1;}
+.swing-tag .lbl{font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:#8a8378;}
+.pick-text p{color:#5a554e;line-height:1.85;margin-top:18px;font-size:.96rem;}
+.pick-text .story{font-style:italic;font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);margin-top:16px;}
+
+/* category filter chips + product grid */
+.cat-chips{display:flex;gap:10px;margin:40px 0 0;flex-wrap:wrap;}
+.cat-chip{padding:9px 18px;border-radius:30px;border:1.5px solid var(--ink);font-size:.82rem;cursor:pointer;transition:.25s;}
+.cat-chip.active{background:var(--ink);color:var(--paper);}
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px;}
+@media(min-width:760px){.product-grid{grid-template-columns:repeat(4,1fr);}}
+.product-card{transition:opacity .3s,transform .3s;}
+.product-card.hidden{display:none;}
+.product-card .ph{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:1/1;margin-bottom:12px;}
+.product-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.product-card:hover .ph img{transform:scale(1.08);}
+.product-card .add-btn{
+  position:absolute;bottom:8px;right:8px;width:34px;height:34px;border-radius:50%;background:#fffdf7;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(0,0,0,.2);cursor:pointer;
+  font-size:1rem;transition:.2s;
+}
+.product-card .add-btn:hover{background:var(--rust);color:#fff;}
+.product-card h4{font-size:.92rem;font-weight:500;margin-bottom:4px;}
+.product-card .pr{font-family:'Caveat',cursive;font-size:1.15rem;color:var(--rust);font-weight:700;}
+
+/* shelf strip — horizontal drag scroll */
+.shelf-wrap{margin-top:60px;}
+.shelf-scroll{display:flex;gap:30px;overflow-x:auto;padding:10px 0 50px;scrollbar-width:none;}
+.shelf-scroll::-webkit-scrollbar{display:none;}
+.shelf-item{flex:0 0 150px;text-align:center;position:relative;}
+.shelf-item img{width:100%;aspect-ratio:1/1.1;object-fit:contain;filter:drop-shadow(0 14px 10px rgba(58,53,44,.18));}
+.shelf-item .name{font-size:.78rem;margin-top:10px;color:#6b6357;}
+.shelf-ledge{height:14px;background:linear-gradient(180deg,#cdbf9e,#a99a78);border-radius:3px;margin-top:-6px;box-shadow:0 10px 16px -6px rgba(58,53,44,.4);}
+
+/* visit */
+.visit-wrap{display:grid;grid-template-columns:1fr;gap:40px;}
+@media(min-width:900px){.visit-wrap{grid-template-columns:1fr 1fr;align-items:center;}}
+.shopfront-img{border-radius:10px;overflow:hidden;aspect-ratio:5/4;}
+.sign-board{display:inline-block;background:var(--ink);color:var(--paper);padding:18px 26px;border-radius:4px;position:relative;margin-top:18px;}
+.sign-board::before{content:'';position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:2px;height:22px;background:#8a8378;}
+.sign-row{display:flex;justify-content:space-between;gap:30px;font-size:.84rem;padding:5px 0;}
+
+footer{padding:50px 5% 100px;font-size:.78rem;color:#8a8378;}
+.foot-disclosure{margin-top:24px;padding-top:20px;border-top:1px solid #e2dccb;font-size:.7rem;line-height:1.8;max-width:760px;}
+</style>
+</head>
+<body>
+<div class="demo-badge">Concept Demo</div>
+
+<nav id="nav">
+  <div class="logo">木漏れ日 Demo-Komorebi</div>
+  <div class="navlinks">
+    <a href="#pick">This Week</a>
+    <a href="#shop">Shop</a>
+    <a href="#shelf">Shelves</a>
+    <a href="#visit">Visit</a>
+  </div>
+  <div class="basket">🧺 Basket <span class="count" id="basketCount">0</span></div>
+</nav>
+
+<section class="hero">
+  <div class="kicker fu">Japanese-Inspired Lifestyle Goods · Bermondsey, London</div>
+  <h1 class="fu fu2">Small good things,<br>found slowly.</h1>
+  <p class="fu fu3">Hand-thrown ceramics, paper goods and quiet little objects — sourced from small studios across Japan and the UK, one shelf at a time.</p>
+  <div class="hero-photo fu fu3"><img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=1300&q=80" alt="Shop shelf with ceramics"></div>
+</section>
+
+<section id="pick">
+  <div class="pick">
+    <div class="pick-img fu">
+      <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80" alt="Featured ceramic bowl">
+      <div class="swing-tag"><div class="pr">£28</div><div class="lbl">This week</div></div>
+    </div>
+    <div class="pick-text fu fu2">
+      <div class="sec-tag">This Week's Pick</div>
+      <h2 class="sec-title" style="margin-bottom:0;">The Mino-yaki bowl, glazed by hand in Gifu.</h2>
+      <p>Each bowl comes from a small family kiln that's worked the same clay seam for four generations. No two glazes land quite the same way — which is exactly the point.</p>
+      <div class="story">"We don't restock the same piece twice. Once a batch sells out, it's gone for good."</div>
+    </div>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="sec-tag fu">The Shop</div>
+  <h2 class="sec-title fu">A few things, chosen carefully.</h2>
+  <div class="cat-chips fu">
+    <div class="cat-chip active" data-cat="all">All</div>
+    <div class="cat-chip" data-cat="ceramics">Ceramics</div>
+    <div class="cat-chip" data-cat="stationery">Stationery</div>
+    <div class="cat-chip" data-cat="home">Home</div>
+    <div class="cat-chip" data-cat="gift">Gift</div>
+  </div>
+  <div class="product-grid">
+    <div class="product-card fu" data-cat="ceramics"><div class="ph"><img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&q=80" alt="Ceramic cup"><div class="add-btn" onclick="addBasket()">+</div></div><h4>Hand-Thrown Cup</h4><div class="pr">£18</div></div>
+    <div class="product-card fu fu2" data-cat="stationery"><div class="ph"><img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&q=80" alt="Washi notebook"><div class="add-btn" onclick="addBasket()">+</div></div><h4>Washi Notebook</h4><div class="pr">£12</div></div>
+    <div class="product-card fu fu3" data-cat="home"><div class="ph"><img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=400&q=80" alt="Incense holder"><div class="add-btn" onclick="addBasket()">+</div></div><h4>Incense Holder</h4><div class="pr">£15</div></div>
+    <div class="product-card fu" data-cat="gift"><div class="ph"><img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&q=80" alt="Gift wrapped box"><div class="add-btn" onclick="addBasket()">+</div></div><h4>Furoshiki Wrap Set</h4><div class="pr">£22</div></div>
+    <div class="product-card fu fu2" data-cat="ceramics"><div class="ph"><img src="https://images.unsplash.com/photo-1567016526105-22da7c13161a?w=400&q=80" alt="Ceramic plate"><div class="add-btn" onclick="addBasket()">+</div></div><h4>Glazed Side Plate</h4><div class="pr">£24</div></div>
+    <div class="product-card fu fu3" data-cat="home"><div class="ph"><img src="https://images.unsplash.com/photo-1602810318660-d2c46b750f88?w=400&q=80" alt="Candle"><div class="add-btn" onclick="addBasket()">+</div></div><h4>Hinoki Wood Candle</h4><div class="pr">£19</div></div>
+    <div class="product-card fu" data-cat="stationery"><div class="ph"><img src="https://images.unsplash.com/photo-1542728928-1413d1894ed1?w=400&q=80" alt="Pen set"><div class="add-btn" onclick="addBasket()">+</div></div><h4>Brush Pen Set</h4><div class="pr">£14</div></div>
+    <div class="product-card fu fu2" data-cat="gift"><div class="ph"><img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=400&q=80" alt="Gift basket"><div class="add-btn" onclick="addBasket()">+</div></div><h4>Tea &amp; Sweets Box</h4><div class="pr">£32</div></div>
+  </div>
+</section>
+
+<section id="shelf" class="shelf-wrap">
+  <div class="sec-tag fu">From Our Shelves</div>
+  <h2 class="sec-title fu">A quick look at what's sitting out today.</h2>
+  <div class="shelf-scroll fu">
+    <div class="shelf-item"><img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=200&q=80" alt="Shelf item 1"><div class="shelf-ledge"></div><div class="name">Glazed bowl</div></div>
+    <div class="shelf-item"><img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=200&q=80" alt="Shelf item 2"><div class="shelf-ledge"></div><div class="name">Notebook set</div></div>
+    <div class="shelf-item"><img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=200&q=80" alt="Shelf item 3"><div class="shelf-ledge"></div><div class="name">Incense holder</div></div>
+    <div class="shelf-item"><img src="https://images.unsplash.com/photo-1567016526105-22da7c13161a?w=200&q=80" alt="Shelf item 4"><div class="shelf-ledge"></div><div class="name">Side plate</div></div>
+    <div class="shelf-item"><img src="https://images.unsplash.com/photo-1602810318660-d2c46b750f88?w=200&q=80" alt="Shelf item 5"><div class="shelf-ledge"></div><div class="name">Wood candle</div></div>
+    <div class="shelf-item"><img src="https://images.unsplash.com/photo-1542728928-1413d1894ed1?w=200&q=80" alt="Shelf item 6"><div class="shelf-ledge"></div><div class="name">Brush pens</div></div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="visit-wrap">
+    <div class="shopfront-img fu"><img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=900&q=80" alt="Shopfront"></div>
+    <div class="fu fu2">
+      <div class="sec-tag">Come Say Hello</div>
+      <h2 class="sec-title" style="margin-bottom:0;">Tucked just off Bermondsey Street.</h2>
+      <p style="color:#5a554e;margin-top:14px;">14 Tanner's Yard, Bermondsey, London SE1 3UN</p>
+      <div class="sign-board">
+        <div class="sign-row"><span>Tue – Sat</span><b>10:00 – 18:00</b></div>
+        <div class="sign-row"><span>Sunday</span><b>11:00 – 16:00</b></div>
+        <div class="sign-row"><span>Monday</span><b>Closed</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-disclosure">
+    This is a concept / portfolio demo website created to showcase web design work for independent shops. "Demo-Komorebi" is a fictional business — it is not real and is not affiliated with any existing establishment of this or a similar name. All products and the basket counter shown are illustrative placeholders; no real purchase is made.
+  </div>
+</footer>
+
+<script>
+const fu=document.querySelectorAll('.fu');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');}});
+},{threshold:.15});
+fu.forEach(el=>obs.observe(el));
+
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);});
+
+document.querySelectorAll('.cat-chip').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.cat-chip').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+    const cat=c.dataset.cat;
+    document.querySelectorAll('.product-card').forEach(p=>{
+      p.classList.toggle('hidden', cat!=='all' && p.dataset.cat!==cat);
+    });
+  });
+});
+
+let basketCount=0;
+function addBasket(){
+  basketCount++;
+  document.getElementById('basketCount').textContent=basketCount;
+}
+</script>
+</body>
+</html>
