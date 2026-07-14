@@ -38,6 +38,14 @@ header p{font-size:1rem;color:#544f44;line-height:1.75;max-width:620px;}
 .view-btn:hover{text-decoration:underline;}
 
 footer{padding:50px 6% 100px;font-size:.78rem;color:#8a8378;border-top:1px solid var(--line);max-width:760px;}
+
+.about{padding:0 6% 80px;max-width:880px;}
+.about-inner{display:flex;gap:32px;align-items:flex-start;}
+.avatar{flex-shrink:0;width:84px;height:84px;border-radius:50%;background:var(--accent);color:#fdfbf6;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:2.1rem;font-style:italic;}
+.about-text h2{font-size:1.6rem;font-weight:500;font-style:italic;margin-bottom:14px;}
+.about-text p{font-size:.95rem;color:#544f44;line-height:1.75;margin-bottom:14px;max-width:600px;}
+.about-text p:last-child{margin-bottom:0;}
+@media(max-width:600px){.about-inner{flex-direction:column;}}
 </style>
 </head>
 <body>
@@ -46,6 +54,19 @@ footer{padding:50px 6% 100px;font-size:.78rem;color:#8a8378;border-top:1px solid
   <h1>What I can build for a small business that doesn't have a website yet.</h1>
   <p>Each of these is a fictional demo, built to show range rather than to sell one specific look. No two share the same layout, navigation style, or interaction pattern — on purpose.</p>
 </header>
+
+<section class="about">
+  <div class="about-inner">
+    <div class="avatar">T</div>
+    <div class="about-text">
+      <div class="kicker">Who's Behind This</div>
+      <h2>Hi, I'm Takumi.</h2>
+      <p>I grew up in Japan and spent five years running web services for companies back home — booking systems, internal tools, the kind of software that has to just work, every day, without drama.</p>
+      <p>A while ago I moved to the UK, mostly because I'd fallen for the culture — the pubs, the humour, the way everyone queues so patiently. I haven't looked back since.</p>
+      <p>These days I build simple, fast websites for independent businesses that don't have the time (or the budget) for an agency. If one of these demos looks like something your business could use, I'd genuinely love to build it for you.</p>
+    </div>
+  </div>
+</section>
 
 <div class="grid">
 
