@@ -1,236 +1,403 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Debbie's Caribbean Delights — Barking, London</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--P:#1A3C2E;--A:#D4A017;--bg:#FAF5EF;--txt:#1a1a1a;--mut:#6B5B4E}
-html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);padding-top:52px;overflow-x:hidden}
-.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(212,160,23,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
-.proto-banner p{color:#1a1a1a;font-weight:500}.proto-banner strong{font-weight:700}
-.proto-banner a{color:#1a1a1a;font-weight:600;border:1.5px solid #1a1a1a;padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
-#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(26,60,46,.97);backdrop-filter:blur(10px);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
-#stickyNav.visible{transform:translateY(0)}
-.snav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#fff;font-style:italic}
-.snav-b{font-size:.68rem;font-weight:600;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
-.snav-b.open{background:rgba(34,197,94,.2);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.2);color:#ef4444}
-.snav-cta{background:var(--A);color:#fff;padding:.42rem 1.1rem;border-radius:50px;font-size:.76rem;font-weight:600;text-decoration:none}
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('images/img_0.jpg') center/cover no-repeat}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,25,18,.88) 0%,rgba(10,25,18,.45) 50%,rgba(10,25,18,.15) 100%)}
-.hero-content{position:relative;z-index:2;padding:6rem 5vw 4.5rem;width:100%}
-.hero-eyebrow{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--A);margin-bottom:1rem;font-weight:500}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,7.5vw,7rem);line-height:1;font-weight:300;font-style:italic;color:#fff;margin-bottom:1.2rem}
-.hero-sub{font-size:.95rem;line-height:1.85;color:rgba(255,255,255,.7);max-width:520px;margin-bottom:.9rem}
-#openBadge{display:inline-block;font-size:.78rem;font-weight:600;margin-bottom:1.5rem}
-.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--A);color:#fff;padding:.78rem 1.8rem;border-radius:50px;font-size:.86rem;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,160,23,.4)}
-.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);color:#fff;padding:.78rem 1.8rem;border-radius:50px;border:1.5px solid rgba(255,255,255,.4);font-size:.86rem;font-weight:400;text-decoration:none;transition:background .2s}
-.btn-secondary:hover{background:rgba(255,255,255,.2)}
-.info-bar{background:var(--P);padding:1.2rem 5vw;display:flex;gap:2rem;flex-wrap:wrap;align-items:center}
-.ib{display:flex;align-items:center;gap:.55rem;font-size:.82rem;color:rgba(255,255,255,.72)}
-.ib i{color:var(--A)}
-.ib a{color:rgba(255,255,255,.72);text-decoration:none}
-.stag{font-size:.72rem;padding:.2rem .7rem;border-radius:50px;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.65);margin-right:.35rem}
-.about-sec{padding:6rem 5vw;background:#fff}
-.about-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-@media(max-width:760px){.about-inner{grid-template-columns:1fr;gap:3rem}}
-.lbl{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
-.hdg{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;font-style:italic;line-height:1.18;color:var(--txt);margin-bottom:1.2rem}
-.body-txt{font-size:.94rem;line-height:2;color:var(--mut)}
-.ph{display:flex;gap:1.1rem;padding:1.3rem 0;border-bottom:1px solid rgba(0,0,0,.07)}
-.ph:last-child{border-bottom:none}
-.ph-n{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--A);opacity:.45;line-height:1;flex-shrink:0;min-width:2.5rem}
-.ph-t{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:.3rem}
-.ph-b{font-size:.85rem;color:var(--mut);line-height:1.75}
-.menu-sec{padding:6rem 5vw;background:var(--bg)}
-.menu-inner{max-width:1140px;margin:0 auto}
-.menu-tabs{display:flex;gap:.7rem;flex-wrap:wrap;margin:2rem 0 2.5rem}
-.tab-btn{padding:.5rem 1.3rem;border-radius:50px;border:1.5px solid rgba(0,0,0,.15);background:#fff;font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s;color:var(--mut)}
-.tab-btn.active{background:var(--P);color:#fff;border-color:var(--P)}
-.tab-panel{display:none;grid-template-columns:repeat(3,1fr);gap:1.6rem}
-.tab-panel.active{display:grid}
-@media(max-width:760px){.tab-panel.active{grid-template-columns:1fr}}
-.mc{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .25s,box-shadow .25s}
-.mc:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.1)}
-.mc-img{width:100%;height:160px;object-fit:cover;background:var(--bg)}
-.mc-body{padding:1.1rem 1.2rem 1.3rem}
-.mc-name{font-size:.95rem;font-weight:600;color:var(--txt);margin-bottom:.3rem}
-.mc-desc{font-size:.8rem;color:var(--mut);line-height:1.6;margin-bottom:.9rem}
-.mc-foot{display:flex;align-items:center;justify-content:space-between}
-.mc-price{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--A);font-weight:500}
-.mc-cta{font-size:.74rem;font-weight:600;color:var(--P);text-decoration:none;border-bottom:1.5px solid var(--P)}
-.rev-sec{padding:6rem 5vw;background:var(--P)}
-.rev-inner{max-width:1140px;margin:0 auto}
-.rev-hdg{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:#fff;margin-bottom:2.2rem}
-.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem}
-.rc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:1.7rem}
-.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
-.rc-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0}
-.rc-nm{font-size:.82rem;font-weight:600;color:#fff}.rc-st{font-size:.9rem;color:var(--A)}
-.rc-tx{font-size:.88rem;line-height:1.8;color:rgba(255,255,255,.72);font-style:italic;margin-bottom:.8rem}
-.rc-src{font-size:.68rem;color:rgba(255,255,255,.38)}
-.visit-sec{padding:6rem 5vw;background:#fff}
-.visit-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:3rem;margin-top:2.5rem}
-.vb-lbl{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
-.hr{display:flex;justify-content:space-between;font-size:.84rem;padding:.25rem 0;border-bottom:1px solid rgba(0,0,0,.06)}
-.hr:last-child{border-bottom:none}.hr-d{font-weight:600;color:var(--txt)}
-.vb-link{display:block;font-size:.9rem;color:var(--mut);text-decoration:none;line-height:2.1}
-.vb-link:hover{color:var(--A)}
-footer{background:var(--P);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.74rem;color:rgba(255,255,255,.35)}
-@media(max-width:680px){footer{padding-bottom:6rem}}
-@media(max-width:700px){
-  .hero-content{padding:4rem 1.4rem 5.5rem}
-  .hero-title{font-size:clamp(2.5rem,11vw,4rem)}
-  .info-bar{display:none}
-  .btn-secondary{display:none}
-  .btn-primary{width:100%;justify-content:center;padding:.85rem 1rem}
-  .about-sec{padding:3.5rem 1.4rem}
-  .menu-sec{padding:3.5rem 1.4rem}
-  .rev-sec{padding:3.5rem 1.4rem}
-  .visit-sec{padding:3.5rem 1.4rem}
-  .menu-tabs{gap:.4rem}
-  .tab-btn{font-size:.75rem;padding:.4rem 1rem}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debbie's Caribbean Delights — Cakes &amp; Sweets, Barking</title>
+<meta name="description" content="Debbie's Caribbean Delights, Vicarage Fields Shopping Centre, Barking. Caribbean cakes by the slice, custom-order cakes, Jamaican patties, halal sweets and drinks.">
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:title" content="Debbie's Caribbean Delights — Barking">
+<meta property="og:description" content="Caribbean cakes by the slice, custom-order cakes and halal sweets at Vicarage Fields Shopping Centre, Barking.">
+<meta property="og:type" content="restaurant">
+<meta property="og:image" content="assets/photos/cake-birthday.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Debbie's Caribbean Delights",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1st Floor, Vicarage Fields Shopping Centre, Ripple Rd",
+    "addressLocality": "Barking",
+    "postalCode": "IG11 8QD",
+    "addressCountry": "UK"
+  },
+  "telephone": "+447828009987",
+  "url": "https://maps.google.com/?cid=5293423891483408426",
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Tuesday","opens":"10:00","closes":"17:30"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"18:30"}
+  ]
 }
-.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.85rem 1.9rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.86rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.3);white-space:nowrap}
-@media(min-width:700px){.float-cta{display:none!important}}
-.fu{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.fu.in{opacity:1;transform:none}
-</style>
-<style>:root{--fu-dy:14px}.about-sec,.about{background:var(--bg)!important}.rc{border-radius:20px!important}.tab-btn,.mtab{border-radius:50px!important}</style>
-</head><body>
-<div class="proto-banner"><p><strong>🎨 Free demo for Debbie's Caribbean Delights</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
-<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">Debbie's Caribbean Delights</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447828009987" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
-<section class="hero" data-hero>
-  <div class="hero-bg" style="will-change:transform"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Restaurant · Barking, London</p>
-    <h1 class="hero-title">Sun-soaked flavours find a Barking home.</h1>
-    <p class="hero-sub">Debbie's Caribbean Delights brings the warmth of the islands to East London, one boldly spiced plate at a time. Every dish carries the kind </p>
-    <div id="ratingCounter" style="color:var(--A);font-size:.88rem;font-weight:500;margin-bottom:.7rem"></div>
-    <span id="openBadge"></span>
-    <div class="hero-ctas">
-      <a href="https://wa.me/447828009987" target="_blank" class="btn-primary"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-      <a href="#menu" class="btn-secondary">View Menu</a>
-    </div>
-  </div>
-</section>
-<div class="info-bar">
-  <span class="stag">Dine In</span><span class="stag">Takeaway</span>
-  <span class="ib"><i class="fab fa-whatsapp"></i><a href="https://wa.me/447828009987" target="_blank">07828 009987</a></span>
-  <span class="ib"><i class="fab fa-google"></i><a href="https://maps.google.com/?cid=5293423891483408426" target="_blank">Google Maps</a></span>
-</div>
-<section class="about-sec fu" id="about">
-  <div class="about-inner">
-    <div>
-      <p class="lbl">Our Story</p>
-      <h2 class="hdg">More than a meal — a gathering place</h2>
-      <p class="body-txt">Debbie's Caribbean Delights brings the warmth of the islands to East London, one boldly spiced plate at a time. Every dish carries the kind of care that only comes from cooking what you genuinely love — fragrant, generous and unapologetically vibrant. Pull up a chair, let the music settle into you, and eat like you mean it.</p>
-      <a href="https://wa.me/447828009987" target="_blank" class="btn-primary" style="margin-top:2rem;display:inline-flex"><i class="fab fa-whatsapp"></i> Reserve via WhatsApp</a>
-    </div>
-    <div><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">Cook with Feeling</h3><p class="ph-b">Every recipe begins not with a timer but with the memory of a meal that made someone feel at home.</p></div></div>
-<div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">Spice is a Language</h3><p class="ph-b">We season with intention — each layer of heat, sweetness and smoke tells a story the islands have perfected over centuries.</p></div></div>
-<div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">No Half Portions</h3><p class="ph-b">Caribbean hospitality means your plate arrives full, your glass stays topped up, and you always leave with something extra.</p></div></div></div>
-  </div>
-</section>
-<section class="menu-sec" id="menu">
-  <div class="menu-inner">
-    <div class="fu"><p class="lbl">What We Serve</p><h2 class="hdg">A taste of the menu</h2></div>
-    <div class="menu-tabs fu" style="transition-delay:.1s">
-      <button class="tab-btn active" onclick="showTab('st',this)">Starters</button>
-      <button class="tab-btn" onclick="showTab('mn',this)">Mains</button>
-      <button class="tab-btn" onclick="showTab('ds',this)">Desserts</button>
-    </div>
-    <div id="tab-st" class="tab-panel active"><div class="mc"><img class="mc-img" src="images/img_1.jpg" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Saltfish Fritters</p><p class="mc-desc">Crisp golden bites of flaked saltfish, scotch bonnet and spring onion, served with a mango-lime dipping sauce.</p><div class="mc-foot"><span class="mc-price">£7</span><a href="https://wa.me/447828009987" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Jerk Chicken Wings</p><p class="mc-desc">Slow-marinated in a smoky allspice and habanero jerk paste, charred and served with cool cucumber yoghurt.</p><div class="mc-foot"><span class="mc-price">£9</span><a href="https://wa.me/447828009987" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Callaloo Soup</p><p class="mc-desc">Velvety leafy greens simmered with coconut milk, crab and fresh thyme — the Caribbean in a bowl.</p><div class="mc-foot"><span class="mc-price">£6</span><a href="https://wa.me/447828009987" class="mc-cta" target="_blank">Order →</a></div></div></div></div>
-    <div id="tab-mn" class="tab-panel"><div class="mc"><img class="mc-img" src="images/img_2.jpg" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Oxtail Stew & Rice</p><p class="mc-desc">Fall-apart oxtail braised low and slow with butter beans, allspice and browning, served over fluffy rice and peas.</p><div class="mc-foot"><span class="mc-price">£17</span><a href="https://wa.me/447828009987" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Escovitch Red Snapper</p><p class="mc-desc">Whole fried snapper crowned with vinegar-pickled scotch bonnet, onion and carrot — sharp, fragrant and fierce.</p><div class="mc-foot"><span class="mc-price">£19</span><a href="https://wa.me/447828009987" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Curry Goat Roti</p><p class="mc-desc">Tender slow-cooked goat in a deep golden curry, wrapped in a warm, flaky dhalpuri roti with mango chutney.</p><div class="mc-foot"><span class="mc-price">£15</span><a href="https://wa.me/447828009987" class="mc-cta" target="_blank">Order →</a></div></div></div></div>
-    <div id="tab-ds" class="tab-panel"><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Coconut Rum Cake</p><p class="mc-desc">Dense, moist and soaked in aged rum syrup, finished with toasted coconut and a vanilla cream.</p><div class="mc-foot"><span class="mc-price">£6</span><a href="https://wa.me/447828009987" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-name">Fried Plantain & Ice Cream</p><p class="mc-desc">Caramelised ripe plantain, cinnamon-dusted and served alongside a scoop of salted caramel ice cream.</p><div class="mc-foot"><span class="mc-price">£5</span><a href="https://wa.me/447828009987" class="mc-cta" target="_blank">Order →</a></div></div></div></div>
-    <p style="font-size:.72rem;color:var(--mut);margin-top:2rem;font-style:italic">* Sample menu — contact us for today's specials.</p>
-  </div>
-</section>
-
-<section class="visit-sec" id="visit">
-  <div style="max-width:1140px;margin:0 auto">
-    <div class="fu"><p class="lbl">Find Us</p><h2 class="hdg">Come visit us</h2></div>
-    <div class="visit-inner">
-      <div class="fu"><p class="vb-lbl">Address</p><p style="font-size:.9rem;color:var(--mut);line-height:1.9">1st Floor, Vicarage Fields Shopping, Centre, Ripple Rd, Barking IG11 8QD, UK</p><a href="https://maps.google.com/?cid=5293423891483408426" target="_blank" class="vb-link" style="color:var(--A)"><i class="fab fa-google"></i> Get Directions</a></div>
-      <div class="fu" style="transition-delay:.07s"><p class="vb-lbl">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:#aaa">Closed</span></div>
-<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--txt)">10:00 AM – 5:30 PM</span></div>
-<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--txt)">10:00 AM – 6:30 PM</span></div>
-<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">10:00 AM – 6:30 PM</span></div>
-<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">10:00 AM – 6:30 PM</span></div>
-<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">10:00 AM – 6:30 PM</span></div>
-<div class="hr"><span class="hr-d">Sun</span><span style="color:#aaa">Closed</span></div></div>
-      <div class="fu" style="transition-delay:.14s"><p class="vb-lbl">Contact Us</p><a href="tel:+447828009987" class="vb-link"><i class="fa fa-phone"></i> 07828 009987</a><a href="https://wa.me/447828009987" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
-    </div>
-  </div>
-</section>
-<footer><span>© 2025 Debbie's Caribbean Delights</span><span style="opacity:.5">1st Floor, Vicarage Fields Shopping, Centre, Ripple Rd, Barking IG11 8QD, UK</span></footer>
-<a class="float-cta" href="https://wa.me/447828009987" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
-<script>
-function showTab(id,btn){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');}
-
-/* ── IntersectionObserver reveal ── */
-const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
-document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
-/* ── Sticky nav ── */
-(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
-if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
-/* ── Hero stagger entrance ── */
-(function(){
-  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
-              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
-              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
-  const seen=new Set(); let i=0;
-  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
-    if(seen.has(el))return; seen.add(el);
-    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
-    i++;
-  }));
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
-  }));
-})();
-/* ── Parallax hero ── */
-(function(){
-  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
-  if(!bg||window.innerWidth<700)return;
-  let tk=false;
-  window.addEventListener('scroll',()=>{
-    if(!tk){requestAnimationFrame(()=>{
-      const y=window.scrollY;
-      bg.style.transform='translateY('+(y*0.32)+'px)';
-      tk=false;
-    });tk=true;}
-  },{passive:true});
-})();
-/* ── Open/close badge ── */
-(function(){const H={"Monday": "Closed", "Tuesday": "10:00 AM – 5:30 PM", "Wednesday": "10:00 AM – 6:30 PM", "Thursday": "10:00 AM – 6:30 PM", "Friday": "10:00 AM – 6:30 PM", "Saturday": "10:00 AM – 6:30 PM", "Sunday": "Closed"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-const day=days[new Date().getDay()],raw=H[day]||'';
-const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
-if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
-const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
-const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
-const op=n2>=o&&n2<(c2<o?c2+1440:c2);
-set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
-const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
-/* ── Hero tone line ── */
-(function(){
-  const ht="Spice, colour, pure Caribbean soul.";if(!ht)return;
-  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
-  const el=document.createElement('p');
-  el.className='hero-tone-line';
-  el.textContent=ht;
-  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
-  title.after(el);
-})();
-/* ── Rating counter ── */
-(function(){const el=document.getElementById('ratingCounter');if(!el||!5)return;
-new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
-const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
-const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,5,true,v=>rs.textContent=v);an(0,1,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();
 </script>
-</body></html>
+
+<style>
+:root{
+  --ink:#3f2e3a;
+  --paper:#fdf6f1;
+  --lavender:#a893cf;
+  --lavender-dp:#6b5290;
+  --pink:#ef9dc0;
+  --gold:#d6a13c;
+  --mut:#9c8b95;
+  --line:rgba(63,46,58,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+body{background:var(--paper);color:var(--ink);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,.disp{font-family:'Fredoka',sans-serif;font-weight:600;}
+:focus-visible{outline:3px solid var(--lavender-dp);outline-offset:3px;}
+button{font-family:inherit;}
+
+.rv{opacity:0;transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1);}
+.rv-up{transform:translateY(26px);}
+.rv-up.show{opacity:1;transform:translateY(0);}
+.rv-pop{transform:scale(.93);}
+.rv-pop.show{opacity:1;transform:scale(1);}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.26s;}.d4{transition-delay:.38s;}.d5{transition-delay:.5s;}
+
+/* ── nav ─────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:var(--paper);border-bottom:1px solid var(--line);}
+.logo{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.2rem;color:var(--ink);}
+.logo span{color:var(--pink);}
+.navlinks{display:none;gap:28px;font-size:.85rem;font-weight:700;}
+@media(min-width:900px){.navlinks{display:flex;}}
+.navlinks a{position:relative;padding-bottom:3px;color:var(--ink);}
+.navlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--pink);transition:width .3s;}
+.navlinks a:hover::after{width:100%;}
+.nav-cta{background:var(--lavender-dp);color:#fff;padding:9px 20px;border-radius:100px;font-size:.78rem;font-weight:700;transition:.3s;}
+.nav-cta:hover{background:var(--pink);}
+.nav-burger{display:flex;flex-direction:column;gap:5px;width:26px;cursor:pointer;background:none;border:none;padding:6px;}
+@media(min-width:900px){.nav-burger{display:none;}}
+.nav-burger span{display:block;height:3px;background:var(--ink);border-radius:2px;}
+
+.mobile-menu{position:fixed;inset:0;background:var(--lavender-dp);z-index:950;display:flex;flex-direction:column;justify-content:center;padding:8% 8%;transform:translateY(-100%);transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{display:block;color:#fff;font-family:'Fredoka',sans-serif;font-size:2rem;padding:.28em 0;border-bottom:1px solid rgba(255,255,255,.22);}
+.mobile-menu-close{position:absolute;top:24px;right:6%;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;padding:8px;}
+.mobile-menu-foot{margin-top:32px;color:rgba(255,255,255,.85);font-size:.9rem;line-height:1.9;}
+.mobile-menu-foot a{color:var(--gold);border:none;font-weight:700;padding:0;}
+
+/* ══════════ HERO — object/detail-led, generous whitespace ══════════ */
+.hero{position:relative;padding:150px 6% 90px;background:linear-gradient(180deg,#fdf6f1 0%,#f6ecf4 100%);overflow:hidden;}
+.hero-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:44px;align-items:center;}
+@media(min-width:980px){.hero-grid{grid-template-columns:1fr .92fr;gap:20px;}}
+.hero-kicker{font-size:.8rem;letter-spacing:.06em;font-weight:700;color:var(--pink);margin-bottom:16px;}
+.hero-title{font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.04;color:var(--ink);}
+.hero-title em{font-style:normal;color:var(--lavender-dp);}
+.hero-sub{margin-top:20px;max-width:440px;font-size:1.05rem;line-height:1.75;color:#5c4d57;}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:15px 28px;font-size:.86rem;font-weight:700;transition:.25s;border-radius:100px;}
+.btn-solid{background:var(--lavender-dp);color:#fff;}
+.btn-solid:hover{background:var(--pink);transform:translateY(-2px);}
+.btn-outline{border:2px solid var(--lavender-dp);color:var(--lavender-dp);}
+.btn-outline:hover{background:rgba(107,82,144,.08);}
+.hero-photo{position:relative;aspect-ratio:1/1;border-radius:50%;overflow:hidden;border:10px solid #fff;box-shadow:0 30px 60px -20px rgba(107,82,144,.35);max-width:480px;margin:0 auto;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;}
+.hero-photo-badge{position:absolute;bottom:6%;left:-6%;background:var(--gold);color:#fff;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.82rem;padding:12px 20px;border-radius:100px;box-shadow:0 10px 24px -8px rgba(0,0,0,.3);}
+
+section{padding:96px 6%;position:relative;}
+@media(max-width:700px){section{padding:64px 6%;}}
+.eyebrow{font-size:.78rem;letter-spacing:.04em;font-weight:700;color:var(--pink);margin-bottom:12px;}
+.sec-title{font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1.05;color:var(--ink);}
+.sec-title em{font-style:normal;color:var(--lavender-dp);}
+
+/* ══════════ THE CAKES — mosaic card grid, priced from the sign ══════════ */
+.cakes{background:var(--paper);}
+.cakes-head{max-width:700px;margin-bottom:44px;}
+.cakes-note{margin-top:14px;font-size:.9rem;color:var(--mut);line-height:1.7;max-width:600px;}
+.cake-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+@media(min-width:700px){.cake-grid{grid-template-columns:repeat(4,1fr);}}
+.cake-card{background:#fff;border-radius:22px;padding:20px 18px;text-align:center;box-shadow:0 10px 30px -18px rgba(63,46,58,.25);transition:transform .3s cubic-bezier(.16,1,.3,1);}
+.cake-card:hover{transform:translateY(-6px);}
+.cake-swatch{width:44px;height:44px;border-radius:50%;margin:0 auto 14px;}
+.cake-card h4{font-size:1.02rem;color:var(--ink);margin-bottom:6px;}
+.cake-card .price{font-family:'Fredoka',sans-serif;font-weight:600;color:var(--lavender-dp);font-size:1.15rem;}
+.cake-card .unit{font-size:.7rem;color:var(--mut);display:block;margin-top:2px;}
+
+/* ══════════ CUSTOM ORDERS — object-led, generous negative space ══════════ */
+.custom{background:var(--lavender-dp);color:#fff;}
+.custom-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:40px;align-items:center;}
+@media(min-width:940px){.custom-grid{grid-template-columns:.9fr 1.1fr;gap:64px;}}
+.custom-frame{aspect-ratio:1/1;border-radius:28px;overflow:hidden;box-shadow:0 24px 50px -18px rgba(0,0,0,.4);}
+.custom-frame img{width:100%;height:100%;object-fit:cover;}
+.custom-title{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.06;}
+.custom-title em{color:var(--gold);font-style:normal;}
+.custom-copy p{margin-top:20px;font-size:1.02rem;line-height:1.8;color:rgba(255,255,255,.85);max-width:480px;}
+.custom-note{margin-top:22px;font-size:.86rem;color:rgba(255,255,255,.65);max-width:480px;line-height:1.7;}
+
+/* ══════════ ON THE STALL — category tiles ══════════ */
+.stall{background:var(--paper);}
+.stall-head{max-width:700px;margin-bottom:44px;}
+.stall-grid{display:grid;grid-template-columns:1fr;gap:20px;}
+@media(min-width:760px){.stall-grid{grid-template-columns:1fr 1fr;}}
+.stall-tile{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:16/10;}
+.stall-tile img{width:100%;height:100%;object-fit:cover;}
+.stall-tile::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(63,46,58,.85) 0%,rgba(63,46,58,.15) 55%,transparent 80%);}
+.stall-tile-cap{position:absolute;left:22px;right:22px;bottom:20px;z-index:2;color:#fff;}
+.stall-tile-cap b{display:block;font-family:'Fredoka',sans-serif;font-size:1.25rem;margin-bottom:4px;}
+.stall-tile-cap span{font-size:.86rem;color:rgba(255,255,255,.85);}
+.stall-facts{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
+.stall-fact{background:#fff;border-radius:100px;padding:10px 20px;font-size:.86rem;font-weight:700;color:var(--lavender-dp);box-shadow:0 8px 20px -12px rgba(63,46,58,.2);}
+
+/* ══════════ VISIT — inside the mall, practical close ══════════ */
+.visit{background:linear-gradient(180deg,#f6ecf4 0%,#fdf6f1 100%);text-align:center;}
+.visit-inner{max-width:600px;margin:0 auto;}
+.status-row{display:flex;align-items:center;justify-content:center;gap:10px;margin:20px 0 26px;font-size:.94rem;font-weight:700;}
+.status-dot{width:9px;height:9px;border-radius:50%;background:#5aa96c;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+.status-row.closed .status-dot{background:var(--pink);animation:none;}
+.visit-addr{color:var(--mut);line-height:1.85;margin-bottom:8px;font-size:1.02rem;}
+.visit-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:28px;}
+.hours-strip{display:flex;justify-content:center;gap:0;flex-wrap:wrap;margin-top:44px;border-top:1px solid var(--line);padding-top:26px;}
+.hours-item{padding:0 16px;border-right:1px solid var(--line);}
+.hours-item:last-child{border-right:none;}
+.hours-item b{display:block;font-family:'Fredoka',sans-serif;font-size:.85rem;margin-bottom:4px;}
+.hours-item span{font-size:.76rem;color:var(--mut);}
+.hours-item.today b{color:var(--lavender-dp);}
+.hours-item.closed span{color:#c2b2bd;}
+.visit-note{margin-top:32px;font-size:.84rem;color:var(--mut);line-height:1.7;max-width:440px;margin-left:auto;margin-right:auto;}
+
+footer{background:var(--ink);color:rgba(253,246,241,.6);padding:44px 6% 32px;}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:22px;padding-bottom:22px;}
+.foot-logo{font-family:'Fredoka',sans-serif;font-size:1.05rem;color:#fff;}
+.foot-logo span{color:var(--pink);}
+.foot-links{display:flex;gap:20px;font-size:.78rem;flex-wrap:wrap;}
+.foot-links a:hover{color:#fff;}
+.foot-disclosure{margin-top:0;padding-top:20px;border-top:1px solid rgba(253,246,241,.14);font-size:.7rem;line-height:1.8;max-width:780px;}
+
+.mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:800;background:#fff;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 -8px 24px -10px rgba(63,46,58,.25);
+  padding-bottom:env(safe-area-inset-bottom);transform:translateY(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);border-top:1px solid var(--line);}
+.mobile-bar.show{transform:translateY(0);}
+@media(min-width:900px){.mobile-bar{display:none;}}
+.mobile-bar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 6px;color:var(--ink);font-size:.78rem;font-weight:700;border-right:1px solid var(--line);}
+.mobile-bar a:last-child{border-right:none;}
+.mobile-bar a.accent{background:var(--lavender-dp);color:#fff;}
+.mobile-bar svg{width:18px;height:18px;}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo">Debbie's <span>Caribbean Delights</span></div>
+  <div class="navlinks">
+    <a href="#cakes">The Cakes</a>
+    <a href="#custom">Custom Orders</a>
+    <a href="#stall">On The Stall</a>
+    <a href="#visit">Find Us</a>
+  </div>
+  <a href="tel:+447828009987" class="nav-cta">Call</a>
+  <button class="nav-burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="closeMenuBtn" aria-label="Close menu">&times;</button>
+  <a href="#cakes">The Cakes</a>
+  <a href="#custom">Custom Orders</a>
+  <a href="#stall">On The Stall</a>
+  <a href="#visit">Find Us</a>
+  <div class="mobile-menu-foot">
+    1st Floor, Vicarage Fields Shopping Centre, Ripple Rd, Barking IG11 8QD<br>
+    <a href="tel:+447828009987">07828 009987</a>
+  </div>
+</div>
+
+<!-- ══════════ HERO — object-led, generous whitespace ══════════ -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-kicker rv rv-up">Vicarage Fields · Barking</div>
+      <h1 class="hero-title rv rv-up d1">Cakes by the slice,<br>made to <em>order.</em></h1>
+      <p class="hero-sub rv rv-up d2">A Caribbean cake and sweet stall on the 1st floor of Vicarage Fields Shopping Centre — seven cakes by the slice, custom-order celebration cakes, Jamaican patties and halal sweets.</p>
+      <div class="hero-ctas rv rv-up d3">
+        <a href="tel:+447828009987" class="btn btn-solid">Call</a>
+        <a href="#cakes" class="btn btn-outline">See The Cakes</a>
+      </div>
+    </div>
+    <div class="hero-photo rv rv-pop d2">
+      <img src="assets/photos/cake-birthday.jpg" alt="A custom-order birthday cake made by Debbie's Caribbean Delights">
+      <div class="hero-photo-badge">Custom orders welcome</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE CAKES — mosaic, priced from the sign ══════════ -->
+<section class="cakes" id="cakes">
+  <div class="cakes-head">
+    <div class="eyebrow rv rv-up">The Cakes</div>
+    <h2 class="sec-title rv rv-up d1">Seven flavours, <em>by the slice.</em></h2>
+    <p class="cakes-note rv rv-up d2">Prices are transcribed directly from the price cards on the stall. All cakes are made from vegetable oil. Call ahead if you're after a specific flavour, as availability changes day to day.</p>
+  </div>
+  <div class="cake-grid rv rv-up d3">
+    <div class="cake-card"><div class="cake-swatch" style="background:#f3e3c9"></div><h4>Plain</h4><div class="price">£1.00<span class="unit">per slice</span></div></div>
+    <div class="cake-card"><div class="cake-swatch" style="background:#f4e07a"></div><h4>Lemon</h4><div class="price">£1.20<span class="unit">per slice</span></div></div>
+    <div class="cake-card"><div class="cake-swatch" style="background:#e3b673"></div><h4>Banana</h4><div class="price">£1.30<span class="unit">per slice</span></div></div>
+    <div class="cake-card"><div class="cake-swatch" style="background:#f6f0dc"></div><h4>Coconut</h4><div class="price">£1.30<span class="unit">per slice</span></div></div>
+    <div class="cake-card"><div class="cake-swatch" style="background:#e8862f"></div><h4>Carrot</h4><div class="price">£1.30<span class="unit">per slice</span></div></div>
+    <div class="cake-card"><div class="cake-swatch" style="background:#a3273a"></div><h4>Red Velvet</h4><div class="price">£1.30<span class="unit">per slice</span></div></div>
+    <div class="cake-card"><div class="cake-swatch" style="background:#5b3524"></div><h4>Rich Fruit</h4><div class="price">£1.30<span class="unit">per slice</span></div></div>
+    <div class="cake-card"><div class="cake-swatch" style="background:#c99bd6"></div><h4>Jamaican Patties</h4><div class="price">£1.50<span class="unit">each</span></div></div>
+  </div>
+</section>
+
+<!-- ══════════ CUSTOM ORDERS — object-led ══════════ -->
+<section class="custom" id="custom">
+  <div class="custom-grid">
+    <div class="custom-frame rv rv-pop">
+      <img src="assets/photos/cake-book.jpg" alt="A custom-order open-book celebration cake made by Debbie's Caribbean Delights">
+    </div>
+    <div>
+      <div class="eyebrow rv rv-up" style="color:var(--gold)">Custom Orders</div>
+      <h2 class="custom-title rv rv-up d1">Made for the <em>occasion.</em></h2>
+      <div class="custom-copy rv rv-up d2">
+        <p>Alongside the everyday slices, Debbie's takes custom orders for birthdays and celebrations — piped lettering, personalised messages and shaped designs.</p>
+      </div>
+      <p class="custom-note rv rv-up d3">Call ahead to discuss your order, flavour and collection date.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ON THE STALL — category tiles ══════════ -->
+<section class="stall" id="stall">
+  <div class="stall-head">
+    <div class="eyebrow rv rv-up">On The Stall</div>
+    <h2 class="sec-title rv rv-up d1">Beyond the <em>cake counter.</em></h2>
+  </div>
+  <div class="stall-grid rv rv-up d2">
+    <div class="stall-tile">
+      <img src="assets/photos/snacks-closeup.jpg" alt="Caribbean sweets and snacks including sesame bites and tamarind sweets at Debbie's Caribbean Delights">
+      <div class="stall-tile-cap"><b>Sweets &amp; Snacks</b><span>Sesame snaps, peanut bites, tamarind sweets — from 30p</span></div>
+    </div>
+    <div class="stall-tile">
+      <img src="assets/photos/drinks-closeup.jpg" alt="Caribbean soft drinks including Rubicon and Levi Roots at Debbie's Caribbean Delights">
+      <div class="stall-tile-cap"><b>Drinks</b><span>Rubicon, Levi Roots, Ribena and more — from £1</span></div>
+    </div>
+    <div class="stall-tile">
+      <img src="assets/photos/bread-buns.jpg" alt="Spice buns and festival bread for sale at Debbie's Caribbean Delights">
+      <div class="stall-tile-cap"><b>Buns &amp; Bread</b><span>Spice buns and fruit loaves</span></div>
+    </div>
+    <div class="stall-tile">
+      <img src="assets/photos/drinks-2.jpg" alt="Maltina, Supermalt, ginger beer and KA drinks at Debbie's Caribbean Delights">
+      <div class="stall-tile-cap"><b>More Drinks</b><span>Maltina, Supermalt, ginger beer, coconut water</span></div>
+    </div>
+  </div>
+  <div class="stall-facts rv rv-up d3">
+    <div class="stall-fact">Halal sweets in stock</div>
+    <div class="stall-fact">Hot drinks available</div>
+    <div class="stall-fact">Cakes made with vegetable oil</div>
+  </div>
+</section>
+
+<!-- ══════════ VISIT — inside the mall, practical close ══════════ -->
+<section id="visit" class="visit">
+  <div class="visit-inner">
+    <div class="eyebrow rv rv-up" style="text-align:center">Find Us</div>
+    <h2 class="sec-title rv rv-up d1">Inside Vicarage Fields.</h2>
+    <div class="status-row rv rv-up d2" id="statusRow"><span class="status-dot"></span><span id="statusText">Checking hours…</span></div>
+    <div class="visit-addr rv rv-up d2">1st Floor, Vicarage Fields Shopping Centre<br>Ripple Rd, Barking IG11 8QD<br>07828 009987</div>
+    <div class="visit-ctas rv rv-up d3">
+      <a href="tel:+447828009987" class="btn btn-solid">Call</a>
+      <a href="https://maps.google.com/?cid=5293423891483408426" target="_blank" rel="noopener" class="btn btn-outline">Get Directions</a>
+    </div>
+    <div class="hours-strip rv rv-up d4">
+      <div class="hours-item closed" data-day="1"><b>Mon</b><span>Closed</span></div>
+      <div class="hours-item" data-day="2"><b>Tue</b><span>10–17:30</span></div>
+      <div class="hours-item" data-day="3"><b>Wed</b><span>10–18:30</span></div>
+      <div class="hours-item" data-day="4"><b>Thu</b><span>10–18:30</span></div>
+      <div class="hours-item" data-day="5"><b>Fri</b><span>10–18:30</span></div>
+      <div class="hours-item" data-day="6"><b>Sat</b><span>10–18:30</span></div>
+      <div class="hours-item closed" data-day="0"><b>Sun</b><span>Closed</span></div>
+    </div>
+    <p class="visit-note">Look for the stall on the 1st floor of Vicarage Fields Shopping Centre. Closed Monday and Sunday.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-logo">Debbie's <span>Caribbean Delights</span></div>
+    <div class="foot-links">
+      <a href="#cakes">The Cakes</a>
+      <a href="#custom">Custom Orders</a>
+      <a href="#stall">On The Stall</a>
+      <a href="#visit">Find Us</a>
+      <a href="https://maps.google.com/?cid=5293423891483408426" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+  <div class="foot-disclosure">
+    Business details and opening hours are sourced from Debbie's Caribbean Delights' Google Business Profile, 1st Floor, Vicarage Fields Shopping Centre, Ripple Rd, Barking IG11 8QD. Cake flavours and prices are transcribed from the price cards on the stall and may change — please call to confirm before visiting.
+  </div>
+</footer>
+
+<div class="mobile-bar" id="mobileBar">
+  <a href="tel:+447828009987"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Call</a>
+  <a href="https://maps.google.com/?cid=5293423891483408426" target="_blank" rel="noopener" class="accent"><svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>Directions</a>
+</div>
+
+<script>
+const nav=document.getElementById('nav');
+const mobileBar=document.getElementById('mobileBar');
+const burgerBtn=document.getElementById('burgerBtn');
+const closeMenuBtn=document.getElementById('closeMenuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+function openMenu(){mobileMenu.classList.add('open');burgerBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function closeMenu(){mobileMenu.classList.remove('open');burgerBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+burgerBtn.addEventListener('click',openMenu);
+closeMenuBtn.addEventListener('click',closeMenu);
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+const rvEls=Array.from(document.querySelectorAll('.rv'));
+function checkReveals(){
+  const vh=window.innerHeight;
+  rvEls.forEach(el=>{
+    if(el.classList.contains('show')) return;
+    const r=el.getBoundingClientRect();
+    if(r.top<vh*0.9 && r.bottom>0){ el.classList.add('show'); }
+  });
+}
+
+(function(){
+  const HOURS={0:null,1:null,2:[10,17.5],3:[10,18.5],4:[10,18.5],5:[10,18.5],6:[10,18.5]};
+  const now=new Date();
+  const day=now.getDay();
+  const hour=now.getHours()+now.getMinutes()/60;
+  const today=HOURS[day];
+  const row=document.getElementById('statusRow');
+  const txt=document.getElementById('statusText');
+  const open = today && hour>=today[0] && hour<today[1];
+  row.classList.toggle('closed', !open);
+  if(!today){ txt.textContent = 'Closed today — see hours below'; }
+  else {
+    const closeH=Math.floor(today[1]); const closeM=today[1]%1===0.5?'30':'00';
+    txt.textContent = open ? `Open now — closes ${closeH}:${closeM}` : 'Closed now — see hours below';
+  }
+  const todayItem=document.querySelector(`.hours-item[data-day="${day}"]`);
+  if(todayItem) todayItem.classList.add('today');
+})();
+
+let ticking=false;
+function onScroll(){
+  if(!ticking){
+    requestAnimationFrame(()=>{
+      mobileBar.classList.toggle('show',window.scrollY>window.innerHeight*0.6);
+      checkReveals();
+      ticking=false;
+    });
+    ticking=true;
+  }
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>
