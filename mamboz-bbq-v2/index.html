@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mamboz BBQ — Tanzanian Grill, Gascoigne Road, Barking</title>
+<meta name="description" content="Mamboz BBQ, 170 Gascoigne Rd, Barking. Tanzanian grill — mishkaki skewers, grilled fish, biriani and pilau. Rated 4.6 from 37 Google reviews.">
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:title" content="Mamboz BBQ — Tanzanian Grill, Barking">
+<meta property="og:description" content="Mishkaki skewers, grilled fish, biriani and pilau on Gascoigne Road, Barking. Rated 4.6 from 37 Google reviews.">
+<meta property="og:type" content="restaurant">
+<meta property="og:image" content="assets/photos/brand-banner.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Mamboz BBQ",
+  "servesCuisine": ["Tanzanian"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "170 Gascoigne Rd",
+    "addressLocality": "Barking",
+    "postalCode": "IG11 7LH",
+    "addressCountry": "UK"
+  },
+  "telephone": "+447794163979",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": "37" },
+  "url": "https://maps.google.com/?cid=14814616996472667456",
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Monday","Tuesday","Friday","Saturday"],"opens":"10:00","closes":"18:00"}
+  ]
+}
+</script>
+
+<style>
+:root{
+  --ink:#1b1a15;
+  --paper:#f1ede2;
+  --red:#ac3020;
+  --green:#3f6b40;
+  --mut:#7c7768;
+  --line:rgba(27,26,21,.28);
+  --line-lt:rgba(27,26,21,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+body{background:var(--paper);color:var(--ink);font-family:'Source Sans 3',sans-serif;overflow-x:hidden;}
+img{max-width:100%;display:block;filter:grayscale(.15) contrast(1.04);}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,.disp{font-family:'Big Shoulders Display',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
+button{font-family:inherit;}
+
+.rv{opacity:0;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.rv-up{transform:translateY(24px);}
+.rv-up.show{opacity:1;transform:translateY(0);}
+.rv-fade.show{opacity:1;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.26s;}.d4{transition-delay:.38s;}
+
+/* ── masthead / nav ─────────────────────────────── */
+.masthead{position:sticky;top:0;z-index:900;background:var(--paper);border-bottom:3px double var(--ink);}
+.masthead-top{display:flex;justify-content:space-between;align-items:center;padding:10px 6%;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);border-bottom:1px solid var(--line-lt);}
+.masthead-main{display:flex;justify-content:space-between;align-items:center;padding:14px 6%;}
+.logo{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:1.7rem;letter-spacing:-.01em;}
+.logo em{font-style:normal;color:var(--red);}
+.navlinks{display:none;gap:26px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+@media(min-width:900px){.navlinks{display:flex;}}
+.navlinks a{border-bottom:2px solid transparent;padding-bottom:2px;transition:.2s;}
+.navlinks a:hover{border-color:var(--red);}
+.nav-cta{background:var(--ink);color:var(--paper);padding:9px 18px;font-size:.72rem;letter-spacing:.06em;font-weight:700;text-transform:uppercase;}
+.nav-cta:hover{background:var(--red);}
+.nav-burger{display:flex;flex-direction:column;gap:5px;width:26px;cursor:pointer;background:none;border:none;padding:6px;}
+@media(min-width:900px){.nav-burger{display:none;}}
+.nav-burger span{display:block;height:2px;background:var(--ink);border-radius:1px;}
+
+.mobile-menu{position:fixed;inset:0;background:var(--paper);z-index:950;display:flex;flex-direction:column;justify-content:center;padding:8% 8%;transform:translateY(-100%);transition:transform .5s cubic-bezier(.16,1,.3,1);border-top:3px double var(--ink);}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{display:block;color:var(--ink);font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:2.4rem;padding:.24em 0;border-bottom:1px solid var(--line-lt);}
+.mobile-menu-close{position:absolute;top:26px;right:6%;background:none;border:none;color:var(--ink);font-size:1.8rem;cursor:pointer;padding:8px;}
+.mobile-menu-foot{margin-top:32px;color:var(--mut);font-size:.9rem;line-height:1.9;}
+.mobile-menu-foot a{color:var(--red);border:none;font-weight:700;padding:0;}
+
+/* ══════════ HERO — front page, menu-board-led ══════════ */
+.hero{padding:64px 6% 0;}
+.hero-kicker{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px solid var(--ink);padding-bottom:10px;margin-bottom:28px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:32px;padding-bottom:56px;}
+@media(min-width:980px){.hero-grid{grid-template-columns:1.15fr .85fr;gap:56px;}}
+.hero-title{font-size:clamp(3.4rem,10vw,7.6rem);line-height:.86;}
+.hero-title .hl{color:var(--red);}
+.hero-dek{margin-top:20px;font-size:1.15rem;line-height:1.6;color:#3a352a;max-width:560px;font-style:italic;font-family:'Source Sans 3',serif;border-left:3px solid var(--red);padding-left:18px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;font-size:.76rem;letter-spacing:.06em;font-weight:700;transition:.25s;text-transform:uppercase;}
+.btn-solid{background:var(--ink);color:var(--paper);}
+.btn-solid:hover{background:var(--red);}
+.btn-outline{border:2px solid var(--ink);color:var(--ink);}
+.btn-outline:hover{background:var(--ink);color:var(--paper);}
+.hero-photo{border:1px solid var(--ink);}
+.hero-photo img{width:100%;object-fit:cover;aspect-ratio:4/5;}
+.hero-photo-cap{padding:10px 12px;font-size:.72rem;color:var(--mut);border-top:1px solid var(--line);font-style:italic;}
+
+section{padding:80px 6%;position:relative;}
+@media(max-width:700px){section{padding:56px 6%;}}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-bottom:16px;}
+.eyebrow::after{content:'';flex:1;height:1px;background:var(--line);}
+.sec-title{font-size:clamp(2rem,4.6vw,3.6rem);line-height:.94;}
+.sec-title .hl{color:var(--red);}
+
+/* ══════════ STRAIGHT FROM THE GRILL — film-strip, static, no scroll gimmick ══════════ */
+.grill{background:var(--ink);color:var(--paper);}
+.grill .eyebrow{color:rgba(241,237,226,.55);}
+.grill .eyebrow::after{background:rgba(241,237,226,.2);}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(241,237,226,.2);margin-top:40px;}
+@media(max-width:860px){.strip{grid-template-columns:repeat(2,1fr);}}
+.strip-item{background:var(--ink);}
+.strip-frame{aspect-ratio:3/4;overflow:hidden;}
+.strip-frame img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4) contrast(1.1);transition:filter .4s;}
+.strip-item:hover .strip-frame img{filter:grayscale(0) contrast(1.05);}
+.strip-cap{padding:14px 16px;}
+.strip-cap b{display:block;font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:-.01em;}
+.strip-cap span{font-size:.72rem;color:rgba(241,237,226,.55);}
+
+/* ══════════ THE SIGN — newspaper column layout ══════════ */
+.sign{background:var(--paper);}
+.sign-grid{display:grid;grid-template-columns:1fr;gap:40px;}
+@media(min-width:940px){.sign-grid{grid-template-columns:1fr 1fr;gap:64px;}}
+.sign-photo{border:1px solid var(--ink);}
+.sign-photo img{width:100%;aspect-ratio:4.2/1;object-fit:cover;object-position:center top;}
+@media(min-width:940px){.sign-photo{align-self:start;}}
+.sign-cols{column-count:1;}
+@media(min-width:600px){.sign-cols.wide{column-count:2;column-gap:32px;}}
+.sign h2{margin-bottom:18px;}
+.sign-cols p{font-size:1rem;line-height:1.75;color:#2c2820;margin-bottom:14px;}
+.sign-cols p:first-child::first-letter{font-family:'Big Shoulders Display',sans-serif;font-size:3.2rem;font-weight:800;float:left;line-height:.8;margin:.05em .08em 0 0;color:var(--red);}
+.sign-facts{display:flex;flex-wrap:wrap;gap:0;margin-top:20px;border-top:1px solid var(--line);}
+.sign-fact{padding:14px 22px 0 0;margin-right:22px;}
+.sign-fact b{display:block;font-family:'Big Shoulders Display',sans-serif;font-size:1.5rem;font-weight:800;}
+.sign-fact span{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);}
+
+/* ══════════ ON THE BOARD — classified-ad menu columns ══════════ */
+.board{background:var(--paper);border-top:3px double var(--ink);border-bottom:3px double var(--ink);}
+.board-head{max-width:760px;margin-bottom:20px;}
+.board-note{margin-top:14px;font-size:.9rem;color:var(--mut);line-height:1.7;max-width:600px;}
+.board-cols{column-count:1;column-gap:36px;margin-top:32px;}
+@media(min-width:700px){.board-cols{column-count:2;}}
+@media(min-width:1100px){.board-cols{column-count:3;}}
+.board-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px dotted var(--line);break-inside:avoid;font-size:.94rem;}
+.board-row .nm{font-weight:600;}
+.board-row .pr{font-family:'Big Shoulders Display',sans-serif;font-weight:700;color:var(--red);white-space:nowrap;}
+
+/* ══════════ WORD ON THE STREET — pull-quotes woven through text ══════════ */
+.street{background:var(--ink);color:var(--paper);}
+.street .eyebrow{color:rgba(241,237,226,.55);}
+.street .eyebrow::after{background:rgba(241,237,226,.2);}
+.street-rating{display:flex;align-items:baseline;gap:12px;margin-bottom:40px;}
+.street-num{font-family:'Big Shoulders Display',sans-serif;font-size:3rem;font-weight:800;color:var(--red);}
+.street-of5{font-size:1rem;color:rgba(241,237,226,.6);}
+.street-count{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(241,237,226,.5);}
+.pull-grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid rgba(241,237,226,.2);}
+@media(min-width:860px){.pull-grid{grid-template-columns:1.3fr 1fr 1fr;}}
+.pull-main{padding:32px 32px 32px 0;border-bottom:1px solid rgba(241,237,226,.2);}
+@media(min-width:860px){.pull-main{border-right:1px solid rgba(241,237,226,.2);border-bottom:none;}}
+.pull-main .q{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.15;text-transform:none;}
+.pull-main .a{margin-top:16px;font-size:.82rem;color:rgba(241,237,226,.55);}
+.pull-minor{padding:28px 0 28px 32px;border-bottom:1px solid rgba(241,237,226,.2);}
+@media(min-width:860px){.pull-minor:last-child{border-left:1px solid rgba(241,237,226,.2);}}
+.pull-minor .q{font-style:italic;font-size:1.02rem;line-height:1.6;}
+.pull-minor .a{margin-top:12px;font-size:.78rem;color:rgba(241,237,226,.5);}
+
+/* ══════════ VISIT — timetable ══════════ */
+.visit{background:var(--paper);}
+.visit-grid{display:grid;grid-template-columns:1fr;gap:40px;}
+@media(min-width:900px){.visit-grid{grid-template-columns:1fr 1fr;gap:64px;}}
+.status-row{display:flex;align-items:center;gap:10px;margin:18px 0 22px;font-size:.94rem;font-weight:700;}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+.status-row.closed .status-dot{background:var(--red);animation:none;}
+.visit-addr{color:var(--mut);line-height:1.8;margin-bottom:22px;font-size:1rem;}
+.visit-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.timetable{border-top:2px solid var(--ink);}
+.tt-row{display:grid;grid-template-columns:1fr auto;padding:11px 0;border-bottom:1px solid var(--line-lt);font-size:.92rem;}
+.tt-row.today{font-weight:700;color:var(--red);}
+.tt-row.closed span:last-child{color:var(--mut);}
+.visit-note{margin-top:24px;font-size:.84rem;color:var(--mut);line-height:1.7;max-width:460px;}
+
+footer{background:var(--ink);color:rgba(241,237,226,.55);padding:44px 6% 32px;border-top:3px double var(--red);}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:22px;padding-bottom:22px;}
+.foot-logo{font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:1.2rem;color:var(--paper);}
+.foot-links{display:flex;gap:20px;font-size:.78rem;flex-wrap:wrap;}
+.foot-links a:hover{color:#fff;}
+.foot-disclosure{margin-top:0;padding-top:20px;border-top:1px solid rgba(241,237,226,.14);font-size:.7rem;line-height:1.8;max-width:780px;}
+
+.mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:800;background:var(--ink);display:grid;grid-template-columns:1fr 1fr 1fr;box-shadow:0 -8px 24px -10px rgba(0,0,0,.4);
+  padding-bottom:env(safe-area-inset-bottom);transform:translateY(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);border-top:2px solid var(--red);}
+.mobile-bar.show{transform:translateY(0);}
+@media(min-width:900px){.mobile-bar{display:none;}}
+.mobile-bar a{display:flex;align-items:center;justify-content:center;gap:7px;padding:14px 6px;color:var(--paper);font-size:.68rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;border-right:1px solid rgba(241,237,226,.15);}
+.mobile-bar a:last-child{border-right:none;}
+.mobile-bar a.accent{background:var(--red);}
+.mobile-bar svg{width:17px;height:17px;}
+</style>
+</head>
+<body>
+
+<header class="masthead" id="nav">
+  <div class="masthead-top">
+    <span>Gascoigne Road · Barking</span>
+    <span>Tanzanian Grill &amp; Kitchen</span>
+  </div>
+  <div class="masthead-main">
+    <div class="logo">Mamboz <em>BBQ</em></div>
+    <div class="navlinks">
+      <a href="#grill">The Grill</a>
+      <a href="#sign">The Sign</a>
+      <a href="#board">On The Board</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a href="tel:+447794163979" class="nav-cta">Call</a>
+    <button class="nav-burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="closeMenuBtn" aria-label="Close menu">&times;</button>
+  <a href="#grill">The Grill</a>
+  <a href="#sign">The Sign</a>
+  <a href="#board">On The Board</a>
+  <a href="#visit">Visit</a>
+  <div class="mobile-menu-foot">
+    170 Gascoigne Rd, Barking IG11 7LH<br>
+    <a href="tel:+447794163979">07794 163979</a>
+  </div>
+</div>
+
+<!-- ══════════ HERO — front page, menu-board-led ══════════ -->
+<section class="hero">
+  <div class="hero-kicker rv rv-fade">
+    <span>Tanzanian Grill &amp; Kitchen</span>
+    <span>Rated 4.6 · 37 Google Reviews</span>
+  </div>
+  <div class="hero-grid">
+    <div>
+      <h1 class="hero-title rv rv-up d1">Mamboz<br><span class="hl">BBQ.</span></h1>
+      <p class="hero-dek rv rv-up d2">A red-signed kiosk on Gascoigne Road serving Tanzanian grill — mishkaki skewers, whole grilled fish and chicken cooked over open coals.</p>
+      <div class="hero-ctas rv rv-up d3">
+        <a href="tel:+447794163979" class="btn btn-solid">Call</a>
+        <a href="#board" class="btn btn-outline">On The Board</a>
+      </div>
+    </div>
+    <div class="hero-photo rv rv-fade d2">
+      <img src="assets/photos/brand-banner.jpg" alt="Mamboz BBQ brand signage — Best Tanzanian Delicious Foods">
+      <div class="hero-photo-cap">The stall's own signage, Gascoigne Road</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STRAIGHT FROM THE GRILL — film-strip ══════════ -->
+<section class="grill" id="grill">
+  <div class="eyebrow">Straight From The Grill</div>
+  <h2 class="sec-title rv rv-up">Off the <span class="hl">coals.</span></h2>
+  <div class="strip rv rv-up d1">
+    <div class="strip-item">
+      <div class="strip-frame"><img src="assets/photos/skewers.jpg" alt="Grilled beef and chicken mishkaki skewers at Mamboz BBQ"></div>
+      <div class="strip-cap"><b>Mishkaki</b><span>Skewers</span></div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-frame"><img src="assets/photos/grill-chicken.jpg" alt="Chicken pieces grilling over an open charcoal grill at Mamboz BBQ"></div>
+      <div class="strip-cap"><b>Chicken</b><span>On the grill</span></div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-frame"><img src="assets/photos/grill-fish.jpg" alt="Whole fish grilling over open coals at Mamboz BBQ"></div>
+      <div class="strip-cap"><b>Whole Fish</b><span>Over coals</span></div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-frame"><img src="assets/photos/grill-plate.jpg" alt="Grilled fish, chicken, fried plantain and coleslaw plated at Mamboz BBQ"></div>
+      <div class="strip-cap"><b>Plated</b><span>Fish &amp; chicken</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE SIGN — newspaper column layout ══════════ -->
+<section class="sign" id="sign">
+  <div class="sign-grid">
+    <div>
+      <div class="eyebrow">The Sign</div>
+      <h2 class="rv rv-up">A red sign on<br>Gascoigne Road.</h2>
+      <div class="sign-cols wide rv rv-up d1">
+        <p>Mamboz BBQ trades from a red-signed kiosk at 170 Gascoigne Road, Barking. The banner above the counter reads "Best Tanzanian Delicious Foods" — skewers, whole fish and chicken are grilled over open coals, alongside biriani, pilau and Zanzibar-style street food.</p>
+        <p>The stall is rated 4.6 from 37 reviews on Google, drawing a steady stream of regulars from across Barking for its grill and its Zanzibar Mix.</p>
+      </div>
+      <div class="sign-facts rv rv-up d2">
+        <div class="sign-fact"><b>4.6</b><span>Rating</span></div>
+        <div class="sign-fact"><b>37</b><span>Reviews</span></div>
+        <div class="sign-fact"><b>IG11 7LH</b><span>Postcode</span></div>
+        <div class="sign-fact"><b>5 Days</b><span>Open weekly</span></div>
+      </div>
+    </div>
+    <div class="sign-photo rv rv-fade d1">
+      <img src="assets/photos/storefront.jpg" alt="Mamboz BBQ signage above the kiosk on Gascoigne Road">
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ON THE BOARD — classified-ad menu columns ══════════ -->
+<section class="board" id="board">
+  <div class="board-head">
+    <div class="eyebrow">On The Board</div>
+    <h2 class="sec-title rv rv-up">Priced &amp; <span class="hl">posted.</span></h2>
+    <p class="board-note rv rv-up d1">The names and prices below are transcribed directly from the menu board at the kiosk. This is what's posted at the till, not a guaranteed full menu — call to confirm before you order, as boards do change.</p>
+  </div>
+  <div class="board-cols rv rv-up d2">
+    <div class="board-row"><span class="nm">Chips &amp; 1/2 Chicken Sekela</span><span class="pr">£8</span></div>
+    <div class="board-row"><span class="nm">Chips &amp; Chicken Mishkaki</span><span class="pr">£8</span></div>
+    <div class="board-row"><span class="nm">Chips &amp; Beef Mishkaki</span><span class="pr">£8</span></div>
+    <div class="board-row"><span class="nm">Chips &amp; Fish</span><span class="pr">£8</span></div>
+    <div class="board-row"><span class="nm">Chips &amp; Wings</span><span class="pr">£6</span></div>
+    <div class="board-row"><span class="nm">Chips Maini</span><span class="pr">£8</span></div>
+    <div class="board-row"><span class="nm">Beef Biriani</span><span class="pr">£7</span></div>
+    <div class="board-row"><span class="nm">Pilau</span><span class="pr">£7</span></div>
+    <div class="board-row"><span class="nm">Ugali Samaki / Nyama / Kuku</span><span class="pr">£12</span></div>
+    <div class="board-row"><span class="nm">Zanzibar Mix (Urojo)</span><span class="pr">£7</span></div>
+    <div class="board-row"><span class="nm">Chips Mayai (Zege)</span><span class="pr">£6</span></div>
+    <div class="board-row"><span class="nm">Samosa</span><span class="pr">£1</span></div>
+    <div class="board-row"><span class="nm">Spring Rolls</span><span class="pr">£3</span></div>
+    <div class="board-row"><span class="nm">Bajia (Pakora)</span><span class="pr">£1</span></div>
+    <div class="board-row"><span class="nm">Fish Katles</span><span class="pr">£1</span></div>
+    <div class="board-row"><span class="nm">Chapati</span><span class="pr">£1</span></div>
+    <div class="board-row"><span class="nm">Maandazi</span><span class="pr">£1</span></div>
+    <div class="board-row"><span class="nm">Vitumbua</span><span class="pr">£1</span></div>
+    <div class="board-row"><span class="nm">Mineral Water</span><span class="pr">£1</span></div>
+    <div class="board-row"><span class="nm">Soft Drinks</span><span class="pr">£1</span></div>
+    <div class="board-row"><span class="nm">Bungo Juice</span><span class="pr">£2</span></div>
+    <div class="board-row"><span class="nm">Mango Juice</span><span class="pr">£2</span></div>
+    <div class="board-row"><span class="nm">Passion Juice</span><span class="pr">£2</span></div>
+    <div class="board-row"><span class="nm">Tamarind Juice</span><span class="pr">£1.50</span></div>
+  </div>
+</section>
+
+<!-- ══════════ WORD ON THE STREET — pull-quotes ══════════ -->
+<section class="street" id="reviews">
+  <div class="eyebrow">Word On The Street</div>
+  <div class="street-rating rv rv-up">
+    <span class="street-num">4.6</span>
+    <span class="street-of5">/ 5</span>
+    <span class="street-count">From 37 Google reviews</span>
+  </div>
+  <div class="pull-grid rv rv-up d1">
+    <div class="pull-main">
+      <div class="q">"We didn't know there was such a good BBQ spot so close! We got the beef mishkaki and chicken sekela, and both were amazing. They had that smoky BBQ flavor."</div>
+      <div class="a">— L W, Google review</div>
+    </div>
+    <div class="pull-minor">
+      <div class="q">"My sister and I went specially to try this authentic food and we were so delighted. Mishkaki and the Biryani brought back beautiful memories of Dar."</div>
+      <div class="a">— Salma Kara, Google review</div>
+    </div>
+    <div class="pull-minor">
+      <div class="q">"Best food in the town. Reasonable price and good service."</div>
+      <div class="a">— Traveler, Google review</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ VISIT — timetable ══════════ -->
+<section id="visit" class="visit">
+  <div class="visit-grid">
+    <div>
+      <div class="eyebrow">Visit</div>
+      <h2 class="sec-title rv rv-up">Find <span class="hl">Mamboz.</span></h2>
+      <div class="status-row rv rv-up d1" id="statusRow"><span class="status-dot"></span><span id="statusText">Checking hours…</span></div>
+      <div class="visit-addr rv rv-up d1">170 Gascoigne Rd, Barking IG11 7LH<br>07794 163979</div>
+      <div class="visit-ctas rv rv-up d2">
+        <a href="tel:+447794163979" class="btn btn-solid">Call</a>
+        <a href="https://maps.google.com/?cid=14814616996472667456" target="_blank" rel="noopener" class="btn btn-outline">Get Directions</a>
+      </div>
+      <p class="visit-note rv rv-up d3">Delivery is listed via Uber Eats and Just Eat on the shopfront — search Mamboz BBQ on either app to order.</p>
+    </div>
+    <div class="timetable rv rv-up d2">
+      <div class="tt-row" data-day="1"><span>Monday</span><span>10:00 – 18:00</span></div>
+      <div class="tt-row" data-day="2"><span>Tuesday</span><span>10:00 – 18:00</span></div>
+      <div class="tt-row closed" data-day="3"><span>Wednesday</span><span>Closed</span></div>
+      <div class="tt-row closed" data-day="4"><span>Thursday</span><span>Closed</span></div>
+      <div class="tt-row" data-day="5"><span>Friday</span><span>10:00 – 18:00</span></div>
+      <div class="tt-row" data-day="6"><span>Saturday</span><span>10:00 – 18:00</span></div>
+      <div class="tt-row" data-day="0"><span>Sunday</span><span>10:00 – 18:00</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-logo">Mamboz BBQ</div>
+    <div class="foot-links">
+      <a href="#grill">The Grill</a>
+      <a href="#sign">The Sign</a>
+      <a href="#board">On The Board</a>
+      <a href="#visit">Visit</a>
+      <a href="https://maps.google.com/?cid=14814616996472667456" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+  <div class="foot-disclosure">
+    Business details, rating and opening hours are sourced from Mamboz BBQ's Google Business Profile, 170 Gascoigne Rd, Barking IG11 7LH. Menu item names and prices are transcribed from the shopfront menu board and may change — please call to confirm before ordering.
+  </div>
+</footer>
+
+<div class="mobile-bar" id="mobileBar">
+  <a href="tel:+447794163979"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Call</a>
+  <a href="https://maps.google.com/?cid=14814616996472667456" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>Directions</a>
+  <a href="#board" class="accent"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Board</a>
+</div>
+
+<script>
+const mobileBar=document.getElementById('mobileBar');
+const burgerBtn=document.getElementById('burgerBtn');
+const closeMenuBtn=document.getElementById('closeMenuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+function openMenu(){mobileMenu.classList.add('open');burgerBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function closeMenu(){mobileMenu.classList.remove('open');burgerBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+burgerBtn.addEventListener('click',openMenu);
+closeMenuBtn.addEventListener('click',closeMenu);
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+const rvEls=Array.from(document.querySelectorAll('.rv'));
+function checkReveals(){
+  const vh=window.innerHeight;
+  rvEls.forEach(el=>{
+    if(el.classList.contains('show')) return;
+    const r=el.getBoundingClientRect();
+    if(r.top<vh*0.9 && r.bottom>0){ el.classList.add('show'); }
+  });
+}
+
+(function(){
+  const HOURS={0:[10,18],1:[10,18],2:[10,18],3:null,4:null,5:[10,18],6:[10,18]};
+  const now=new Date();
+  const day=now.getDay();
+  const hour=now.getHours()+now.getMinutes()/60;
+  const today=HOURS[day];
+  const row=document.getElementById('statusRow');
+  const txt=document.getElementById('statusText');
+  const open = today && hour>=today[0] && hour<today[1];
+  row.classList.toggle('closed', !open);
+  if(!today){ txt.textContent = 'Closed today — see hours below'; }
+  else { txt.textContent = open ? `Open now — closes ${today[1]}:00` : 'Closed now — see hours below'; }
+  const todayRow=document.querySelector(`.tt-row[data-day="${day}"]`);
+  if(todayRow) todayRow.classList.add('today');
+})();
+
+let ticking=false;
+function onScroll(){
+  if(!ticking){
+    requestAnimationFrame(()=>{
+      mobileBar.classList.toggle('show',window.scrollY>window.innerHeight*0.6);
+      checkReveals();
+      ticking=false;
+    });
+    ticking=true;
+  }
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>
