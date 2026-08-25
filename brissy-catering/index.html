@@ -1,232 +1,541 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Brissy Catering — Smethwick, Birmingham</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--P:#0a0a0a;--A:#E5222C;--bg:#111;--txt:#f5f5f5;--mut:#999;--gold:#c9a96e}
-html{scroll-behavior:smooth}body{font-family:'Raleway',sans-serif;background:var(--P);color:var(--txt);padding-top:52px;overflow-x:hidden}
-.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(229,34,44,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
-.proto-banner p{color:#fff;font-weight:500}.proto-banner strong{font-weight:700}
-.proto-banner a{color:#fff;font-weight:600;border:1.5px solid rgba(255,255,255,.7);padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
-#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(10,10,10,.98);border-bottom:1px solid rgba(229,34,44,.25);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
-#stickyNav.visible{transform:translateY(0)}
-.snav-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:#fff;font-style:italic}
-.snav-b{font-size:.68rem;font-weight:600;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
-.snav-b.open{background:rgba(34,197,94,.15);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.15);color:#ef4444}
-.snav-cta{background:var(--A);color:#fff;padding:.4rem 1.1rem;border-radius:4px;font-size:.76rem;font-weight:600;text-decoration:none}
-.hero{min-height:100svh;display:grid;grid-template-columns:50% 50%;background:var(--P);position:relative;overflow:hidden}
-@media(max-width:768px){.hero{grid-template-columns:1fr}.hero-r{display:none!important}}
-.hero-dots{position:absolute;top:1.2rem;left:1.5rem;z-index:10;display:flex;gap:.45rem}
-.hero-dot{width:12px;height:12px;border-radius:50%}
-.hero-l{display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 4rem 4.5rem;position:relative;z-index:2}
-.hero-line{width:36px;height:2px;background:var(--A);margin-bottom:1.8rem}
-.hero-lbl{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.6rem}
-.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,4.5vw,4.8rem);line-height:1.05;font-style:italic;color:#fff;margin-bottom:1.4rem}
-.hero-title span{color:var(--A)}
-.hero-sub{font-size:.9rem;line-height:1.9;color:rgba(255,255,255,.55);max-width:380px;font-weight:300;margin-bottom:1rem}
-#openBadge{display:inline-block;font-size:.76rem;font-weight:500;margin-bottom:1.8rem}
-.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap}
-.btn-red{background:var(--A);color:#fff;padding:.72rem 1.7rem;border-radius:6px;font-size:.83rem;font-weight:600;text-decoration:none;transition:filter .2s}
-.btn-red:hover{filter:brightness(1.1)}
-.btn-outline{background:transparent;color:rgba(255,255,255,.7);padding:.72rem 1.7rem;border:1.5px solid rgba(255,255,255,.25);border-radius:6px;font-size:.83rem;font-weight:400;text-decoration:none;transition:border-color .2s}
-.btn-outline:hover{border-color:rgba(255,255,255,.6);color:#fff}
-.hero-r{position:relative;display:flex;align-items:center;justify-content:center;background:#111;padding:3rem}
-.hero-circle{width:clamp(280px,38vw,480px);height:clamp(280px,38vw,480px);border-radius:50%;overflow:hidden;border:3px solid rgba(229,34,44,.4);box-shadow:0 0 80px rgba(229,34,44,.15)}
-.hero-circle img{width:100%;height:100%;object-fit:cover}
-.hero-r-badge{position:absolute;bottom:3rem;right:3rem;background:rgba(229,34,44,.9);color:#fff;padding:.5rem 1.1rem;font-size:.72rem;font-weight:600;border-radius:4px;letter-spacing:.06em;text-transform:uppercase}
-.stag{font-size:.7rem;padding:.2rem .7rem;border-radius:3px;border:1px solid rgba(229,34,44,.4);color:rgba(255,255,255,.6);margin-right:.4rem}
-.info-bar{background:#111;padding:1rem 5vw;display:flex;gap:1.8rem;flex-wrap:wrap;align-items:center;border-top:1px solid rgba(255,255,255,.07)}
-.ib{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:rgba(255,255,255,.55)}
-.ib i{color:var(--A)}.ib a{color:rgba(255,255,255,.55);text-decoration:none}
-.about-sec{padding:7rem 5vw;background:#0f0f0f}
-.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-@media(max-width:760px){.about-inner{grid-template-columns:1fr;gap:3rem}}
-.lbl{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
-.hdg{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-style:italic;line-height:1.18;color:#fff;margin-bottom:1.2rem}
-.body-txt{font-size:.92rem;line-height:2;color:rgba(255,255,255,.55);font-weight:300}
-.ph{display:flex;gap:1rem;padding:1.3rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.ph:last-child{border-bottom:none}
-.ph-n{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--A);opacity:.45;line-height:1;flex-shrink:0;font-style:italic}
-.ph-t{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);font-weight:500;margin-bottom:.3rem}
-.ph-b{font-size:.84rem;color:rgba(255,255,255,.45);line-height:1.75;font-weight:300}
-.menu-sec{padding:7rem 5vw;background:#0a0a0a;overflow:hidden}
-.menu-inner{max-width:1100px;margin:0 auto}
-.menu-scroll{display:flex;gap:1.4rem;overflow-x:auto;padding-bottom:1.5rem;margin-top:2.5rem;scrollbar-width:thin;scrollbar-color:rgba(229,34,44,.4) transparent}
-.mc{background:#1a1a1a;border-radius:16px;padding:0;overflow:hidden;min-width:220px;border:1px solid rgba(255,255,255,.07);transition:transform .25s,border-color .25s;flex-shrink:0}
-.mc:hover{transform:translateY(-6px);border-color:rgba(229,34,44,.4)}
-.mc-img{width:100%;height:180px;object-fit:cover;background:#222}
-.mc-body{padding:1.2rem}
-.mc-cat{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);margin-bottom:.4rem}
-.mc-name{font-size:.95rem;font-weight:500;color:#fff;margin-bottom:.3rem}
-.mc-desc{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:.9rem;font-weight:300}
-.mc-foot{display:flex;align-items:center;justify-content:space-between}
-.mc-price{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--gold);font-style:italic}
-.mc-cta{font-size:.72rem;font-weight:600;background:var(--A);color:#fff;padding:.28rem .75rem;border-radius:4px;text-decoration:none}
-.rev-sec{padding:7rem 5vw;background:#0f0f0f}
-.rev-inner{max-width:1100px;margin:0 auto}
-.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;margin-top:2.5rem;border:1px solid rgba(255,255,255,.07)}
-.rc{padding:2.2rem;border-right:1px solid rgba(255,255,255,.06)}
-.rc:last-child{border-right:none}
-@media(max-width:700px){.rev-grid{grid-template-columns:1fr;border:none}.rc{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);padding:1.6rem 0}}
-.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem}
-.rc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:700;flex-shrink:0}
-.rc-nm{font-size:.8rem;font-weight:500;color:rgba(255,255,255,.75)}.rc-st{font-size:.88rem;color:var(--gold)}
-.rc-tx{font-size:.88rem;line-height:1.85;color:rgba(255,255,255,.5);font-style:italic;font-weight:300;margin-bottom:.7rem}
-.rc-src{font-size:.65rem;color:rgba(255,255,255,.25)}
-.visit-sec{padding:7rem 5vw;background:#111}
-.visit-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem}
-.vb-lbl{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
-.hr{display:flex;justify-content:space-between;font-size:.83rem;padding:.22rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.hr:last-child{border-bottom:none}.hr-d{font-weight:500;color:rgba(255,255,255,.8)}
-.vb-link{display:block;font-size:.88rem;color:rgba(255,255,255,.45);text-decoration:none;line-height:2.1;font-weight:300}
-.vb-link:hover{color:var(--A)}
-footer{background:#000;padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.72rem;color:rgba(255,255,255,.2);border-top:1px solid rgba(229,34,44,.15)}
-@media(max-width:680px){footer{padding-bottom:6rem}}
-@media(max-width:700px){
-  .hero-l{padding:4.5rem 1.4rem 5.5rem}
-  .hero-title{font-size:clamp(2.4rem,10vw,3.5rem)}
-  .btn-outline{display:none}
-  .btn-red{width:100%;justify-content:center}
-  .info-bar{display:none}
-  .about-sec,.menu-sec,.rev-sec,.visit-sec{padding:3.5rem 1.4rem}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brissy Catering — Caribbean Takeaway &amp; Catering, West Bromwich</title>
+<meta name="description" content="Brissy Catering, 94 High St, West Bromwich. Caribbean takeaway and event catering — curry goat, oxtail, jerk chicken. Halal certified. Rated 4.9 from 72 Google reviews.">
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:title" content="Brissy Catering — West Bromwich">
+<meta property="og:description" content="Caribbean takeaway and event catering, halal certified. Rated 4.9 from 72 Google reviews.">
+<meta property="og:type" content="restaurant">
+<meta property="og:image" content="assets/photos/oxtail-plate.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Italiana&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Brissy Catering",
+  "servesCuisine": ["Caribbean"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "94 High St",
+    "addressLocality": "West Bromwich",
+    "postalCode": "B70 6JW",
+    "addressCountry": "UK"
+  },
+  "telephone": "+447904786504",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "72" },
+  "url": "https://maps.google.com/?cid=3557923085262970338",
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"12:00","closes":"21:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"12:00","closes":"22:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"12:00","closes":"20:00"}
+  ]
 }
-.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.85rem 1.9rem;border-radius:6px;display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.35);white-space:nowrap}
-@media(min-width:700px){.float-cta{display:none!important}}
-.fu{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}.fu.in{opacity:1;transform:none}
-</style><style>:root{--fu-dy:14px}.about-sec,.about{background:var(--bg)!important}.rc{border-radius:20px!important}.tab-btn,.mtab{border-radius:50px!important}</style></head><body>
-<div class="proto-banner"><p><strong>🎨 Free demo for Brissy Catering</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
-<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">Brissy Catering</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447904786504" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
-<section class="hero" data-hero>
-  <div class="hero-dots"><div class="hero-dot" style="background:#ff5f57"></div><div class="hero-dot" style="background:#ffbd2e"></div><div class="hero-dot" style="background:#28c940"></div></div>
-  <div class="hero-l">
-    <div class="hero-line"></div>
-    <p class="hero-lbl">Restaurant · Smethwick, Birmingham</p>
-    <h1 class="hero-title">Every occasion deserves food this good.</h1>
-    <p class="hero-sub">Brissy Catering brings heart and precision to life's most meaningful moments — from intimate celebrations to cherished farewells — with food that feels like a g</p>
-    <span id="openBadge"></span>
-    <div class="hero-ctas">
-      <a href="https://wa.me/447904786504" target="_blank" class="btn-red"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-      <a href="#menu" class="btn-outline">View Menu</a>
-    </div>
+</script>
+
+<style>
+:root{
+  --ink:#15100c;
+  --paper:#f8f2e6;
+  --gold:#c69c4c;
+  --gold-lt:#e7cd8c;
+  --burgundy:#6d1f2a;
+  --mut:#948a76;
+  --line:rgba(21,16,12,.14);
+  --line-lt:rgba(248,242,230,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+body{background:var(--paper);color:var(--ink);font-family:'Jost',sans-serif;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,.disp{font-family:'Cormorant Garamond',serif;font-weight:600;}
+.script{font-family:'Italiana',serif;}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+button{font-family:inherit;}
+
+.rv{opacity:0;transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.rv-up{transform:translateY(30px);}
+.rv-up.show{opacity:1;transform:translateY(0);}
+.rv-fade.show{opacity:1;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.32s;}.d4{transition-delay:.46s;}
+
+/* ── nav ─────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;justify-content:space-between;align-items:center;padding:22px 6%;background:var(--ink);color:#fff;border-bottom:1px solid var(--gold);}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.4rem;letter-spacing:.02em;}
+.logo em{font-style:italic;color:var(--gold);}
+.navlinks{display:none;gap:30px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;}
+@media(min-width:900px){.navlinks{display:flex;}}
+.navlinks a{position:relative;padding-bottom:3px;}
+.navlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
+.navlinks a:hover::after{width:100%;}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:9px 20px;font-size:.72rem;letter-spacing:.08em;font-weight:600;text-transform:uppercase;transition:.3s;}
+.nav-cta:hover{background:var(--gold);color:var(--ink);}
+.nav-burger{display:flex;flex-direction:column;gap:5px;width:26px;cursor:pointer;background:none;border:none;padding:6px;}
+@media(min-width:900px){.nav-burger{display:none;}}
+.nav-burger span{display:block;height:2px;background:#fff;border-radius:1px;}
+
+.mobile-menu{position:fixed;inset:0;background:var(--ink);z-index:950;display:flex;flex-direction:column;justify-content:center;padding:8% 8%;transform:translateY(-100%);transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{display:block;color:var(--paper);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.1rem;font-weight:600;padding:.3em 0;border-bottom:1px solid var(--line-lt);}
+.mobile-menu-close{position:absolute;top:26px;right:6%;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;padding:8px;}
+.mobile-menu-foot{margin-top:34px;color:var(--mut);font-size:.9rem;line-height:1.9;font-family:'Jost',sans-serif;}
+.mobile-menu-foot a{color:var(--gold);border:none;font-weight:600;padding:0;}
+
+/* ══════════ HERO — typography-dominant, gold on black ══════════ */
+.hero{position:relative;min-height:100svh;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:130px 6% 80px;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(ellipse 60% 50% at 85% 20%,rgba(198,156,76,.16),transparent 60%),
+  radial-gradient(ellipse 50% 40% at 10% 85%,rgba(109,31,42,.25),transparent 60%);}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%;text-align:center;}
+.hero-script{font-family:'Italiana',serif;font-size:clamp(1.1rem,2.4vw,1.6rem);color:var(--gold-lt);letter-spacing:.03em;margin-bottom:18px;}
+.hero-title{font-size:clamp(3.2rem,9vw,7.5rem);line-height:.96;font-weight:600;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-rule{width:80px;height:1px;background:var(--gold);margin:30px auto;}
+.hero-sub{max-width:560px;margin:0 auto;font-size:1.05rem;line-height:1.75;color:rgba(248,242,230,.78);}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:36px;}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:16px 32px;font-size:.78rem;letter-spacing:.1em;font-weight:600;transition:.3s;text-transform:uppercase;}
+.btn-solid{background:var(--gold);color:var(--ink);}
+.btn-solid:hover{background:var(--gold-lt);transform:translateY(-2px);}
+.btn-outline{border:1px solid rgba(255,255,255,.5);color:#fff;}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+.hero-badges{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:48px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);}
+.hero-badges span{color:var(--gold-lt);}
+
+section{padding:110px 6%;position:relative;}
+@media(max-width:700px){section{padding:74px 6%;}}
+.eyebrow{font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--burgundy);font-weight:600;margin-bottom:14px;}
+.sec-title{font-size:clamp(2rem,4.6vw,3.6rem);line-height:1.02;}
+.sec-title em{font-style:italic;color:var(--burgundy);}
+
+/* ══════════ THE FOOD — full-bleed alternating chapters ══════════ */
+.food{background:var(--paper);}
+.food-head{max-width:700px;margin-bottom:10px;}
+.chapter{display:grid;grid-template-columns:1fr;margin:0 -6%;}
+@media(min-width:900px){.chapter{grid-template-columns:1fr 1fr;align-items:stretch;}}
+.chapter.r > .ch-copy{order:2;}
+.chapter.r > .ch-img{order:1;}
+.ch-img{aspect-ratio:5/4;overflow:hidden;}
+@media(min-width:900px){.ch-img{aspect-ratio:6/5;min-height:0;max-height:640px;}}
+.ch-img img{width:100%;height:100%;object-fit:cover;}
+.ch-copy{display:flex;flex-direction:column;justify-content:center;padding:56px 8%;}
+.ch-copy .num{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:1.1rem;margin-bottom:10px;}
+.ch-copy h3{font-size:clamp(1.8rem,3.6vw,2.8rem);margin-bottom:16px;}
+.ch-copy p{font-size:1rem;line-height:1.8;color:#3f342a;max-width:440px;}
+
+/* ══════════ CATERING — dark, event-proof ══════════ */
+.catering{background:var(--ink);color:#fff;}
+.catering-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:40px;align-items:center;}
+@media(min-width:940px){.catering-grid{grid-template-columns:1fr 1.05fr;gap:64px;}}
+.catering-frame{aspect-ratio:4/3;overflow:hidden;border:1px solid var(--gold);}
+.catering-frame img{width:100%;height:100%;object-fit:cover;}
+.catering-title{font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.05;}
+.catering-title em{font-style:italic;color:var(--gold);}
+.catering-copy p{margin-top:20px;font-size:1.02rem;line-height:1.85;color:rgba(248,242,230,.78);max-width:480px;}
+.catering-facts{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
+.catering-fact{border:1px solid rgba(255,255,255,.2);padding:10px 18px;font-size:.78rem;letter-spacing:.04em;color:var(--gold-lt);}
+
+/* ══════════ MENU — category tabs, faithful to the flyer ══════════ */
+.menu{background:var(--paper);}
+.menu-head{max-width:760px;margin-bottom:8px;}
+.menu-note{margin-top:16px;font-size:.9rem;color:var(--mut);line-height:1.7;max-width:600px;}
+.menu-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:40px 0 36px;border-bottom:1px solid var(--line);padding-bottom:0;}
+.menu-tab{background:none;border:none;padding:12px 6px;margin-right:18px;font-size:.86rem;letter-spacing:.03em;color:var(--mut);cursor:pointer;position:relative;font-family:'Jost',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:.76rem;}
+.menu-tab::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--burgundy);transform:scaleX(0);transition:transform .3s;}
+.menu-tab.active{color:var(--ink);font-weight:600;}
+.menu-tab.active::after{transform:scaleX(1);}
+.menu-panel{display:none;}
+.menu-panel.active{display:block;}
+.menu-list-row{display:grid;grid-template-columns:1fr auto;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+.menu-list-row .name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;}
+.menu-list-row .sizes{font-size:.82rem;color:var(--mut);margin-top:2px;}
+.menu-list-row .price{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--burgundy);font-size:1.05rem;white-space:nowrap;text-align:right;}
+.menu-sub{margin-top:36px;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;}
+.menu-extra{margin-top:28px;font-size:.86rem;color:var(--mut);line-height:1.7;padding:18px 22px;border:1px dashed var(--line);}
+
+/* ══════════ REVIEWS — scrolling quote strip ══════════ */
+.reviews{background:var(--ink);color:#fff;overflow:hidden;}
+.rev-top{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;flex-wrap:wrap;}
+.rev-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:600;color:var(--gold);}
+.rev-of5{font-size:.9rem;color:var(--mut);}
+.rev-count{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);}
+.rev-strip-outer{margin-top:50px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+.rev-strip{display:flex;gap:0;width:max-content;animation:scrollStrip 42s linear infinite;}
+@media (prefers-reduced-motion: reduce){.rev-strip{animation:none;}}
+.rev-strip:hover{animation-play-state:paused;}
+@keyframes scrollStrip{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.rev-card{flex:0 0 auto;width:min(78vw,420px);padding:0 28px;border-right:1px solid rgba(255,255,255,.14);}
+.rev-card .stars{color:var(--gold);font-size:.8rem;margin-bottom:12px;letter-spacing:.1em;}
+.rev-card .txt{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.18rem;line-height:1.5;color:rgba(248,242,230,.92);}
+.rev-card .author{margin-top:14px;font-size:.78rem;color:var(--mut);}
+
+/* ══════════ VISIT — takeaway + catering, dual CTA ══════════ */
+.visit{background:var(--paper);}
+.visit-grid{display:grid;grid-template-columns:1fr;gap:36px;}
+@media(min-width:860px){.visit-grid{grid-template-columns:1fr 1fr;gap:28px;}}
+.visit-card{background:#fff;padding:40px 34px;border:1px solid var(--line);}
+.visit-card h3{font-size:1.5rem;margin-bottom:14px;}
+.visit-card p{font-size:.94rem;line-height:1.75;color:#4a3f33;margin-bottom:22px;}
+.status-row{display:flex;align-items:center;gap:10px;margin:6px 0 18px;font-size:.9rem;font-weight:600;}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#4d7a4f;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+.status-row.closed .status-dot{background:var(--burgundy);animation:none;}
+.visit-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-dark{background:var(--ink);color:#fff;}
+.btn-dark:hover{background:#2c231a;}
+.btn-line{border:1px solid var(--ink);color:var(--ink);}
+.btn-line:hover{background:rgba(21,16,12,.06);}
+.hours-table{margin-top:44px;max-width:640px;}
+.hours-row{display:flex;justify-content:space-between;font-size:.9rem;padding:10px 0;border-bottom:1px solid var(--line);}
+.hours-row.today{color:var(--burgundy);font-weight:600;}
+.hours-row.closed span:last-child{color:var(--mut);}
+.visit-note{margin-top:28px;font-size:.84rem;color:var(--mut);line-height:1.7;max-width:600px;}
+
+footer{background:var(--ink);color:var(--mut);padding:52px 6% 36px;border-top:1px solid var(--gold);}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;padding-bottom:26px;}
+.foot-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#fff;}
+.foot-logo em{font-style:italic;color:var(--gold);}
+.foot-links{display:flex;gap:22px;font-size:.78rem;flex-wrap:wrap;}
+.foot-links a:hover{color:#fff;}
+.foot-disclosure{margin-top:0;padding-top:22px;border-top:1px solid var(--line-lt);font-size:.7rem;line-height:1.8;max-width:800px;}
+
+.mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:800;background:var(--ink);display:grid;grid-template-columns:1fr 1fr;box-shadow:0 -8px 24px -10px rgba(0,0,0,.4);
+  padding-bottom:env(safe-area-inset-bottom);transform:translateY(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);border-top:1px solid var(--gold);}
+.mobile-bar.show{transform:translateY(0);}
+@media(min-width:900px){.mobile-bar{display:none;}}
+.mobile-bar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 6px;color:#fff;font-size:.76rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,.12);}
+.mobile-bar a:last-child{border-right:none;}
+.mobile-bar a.accent{background:var(--gold);color:var(--ink);}
+.mobile-bar svg{width:18px;height:18px;}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo">Brissy <em>Catering</em></div>
+  <div class="navlinks">
+    <a href="#food">The Food</a>
+    <a href="#catering">Catering</a>
+    <a href="#menu">Menu</a>
+    <a href="#visit">Find Us</a>
   </div>
-  <div class="hero-r">
-    <div class="hero-circle"><img src="images/img_0.jpg" alt="Brissy Catering"/></div>
-    <div class="hero-r-badge">Restaurant</div>
+  <a href="tel:+447904786504" class="nav-cta">Call</a>
+  <button class="nav-burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="closeMenuBtn" aria-label="Close menu">&times;</button>
+  <a href="#food">The Food</a>
+  <a href="#catering">Catering</a>
+  <a href="#menu">Menu</a>
+  <a href="#visit">Find Us</a>
+  <div class="mobile-menu-foot">
+    94 High St, West Bromwich B70 6JW<br>
+    <a href="tel:+447904786504">07904 786504</a>
   </div>
-</section>
-<div class="info-bar">
-  <span class="stag">Dine In</span><span class="stag">Takeaway</span><span class="stag">Delivery</span>
-  <span class="ib"><i class="fab fa-whatsapp"></i><a href="https://wa.me/447904786504" target="_blank">07904 786504</a></span>
-  <span class="ib"><i class="fab fa-google"></i><a href="https://maps.google.com/?cid=3557923085262970338" target="_blank">Google Maps</a></span>
-  <span class="ib" id="ratingCounter"></span>
 </div>
-<section class="about-sec fu" id="about">
-  <div class="about-inner">
+
+<!-- ══════════ HERO — typography-dominant, gold on black ══════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-script rv rv-fade">Experience True Flavours</div>
+    <h1 class="hero-title rv rv-up d1">Brissy<br><em>Catering.</em></h1>
+    <div class="hero-rule rv rv-fade d2"></div>
+    <p class="hero-sub rv rv-up d2">Caribbean takeaway and event catering at 94 High Street, West Bromwich — halal certified, rated 4.9 from 72 Google reviews.</p>
+    <div class="hero-ctas rv rv-up d3">
+      <a href="tel:+447904786504" class="btn btn-solid">Call</a>
+      <a href="#menu" class="btn btn-outline">See The Menu</a>
+    </div>
+    <div class="hero-badges rv rv-up d4">
+      <div><span>Halal</span> Certified</div>
+      <div><span>4.9</span> / 5 · 72 Reviews</div>
+      <div><span>Est.</span> Takeaway &amp; Catering</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE FOOD — full-bleed alternating chapters ══════════ -->
+<section class="food" id="food">
+  <div class="food-head">
+    <div class="eyebrow rv rv-up">The Food</div>
+    <h2 class="sec-title rv rv-up d1">Caribbean, <em>plated full.</em></h2>
+  </div>
+</section>
+<div class="chapter">
+  <div class="ch-img rv rv-fade"><img src="assets/photos/oxtail-box.jpg" alt="Oxtail with rice, peas and coleslaw in a takeaway box from Brissy Catering"></div>
+  <div class="ch-copy rv rv-up d1">
+    <div class="num">01</div>
+    <h3>Oxtail</h3>
+    <p>Oxtail served with rice, peas and coleslaw — one of the main meals on the board, available in small, large and XL portions.</p>
+  </div>
+</div>
+<div class="chapter r">
+  <div class="ch-img rv rv-fade"><img src="assets/photos/curry-goat-box.jpg" alt="Curry goat with rice and peas in a takeaway box from Brissy Catering"></div>
+  <div class="ch-copy rv rv-up d1">
+    <div class="num">02</div>
+    <h3>Curry Goat</h3>
+    <p>Curry goat with rice and peas — served the same way whether you're picking up a takeaway box or feeding a room at an event.</p>
+  </div>
+</div>
+<div class="chapter">
+  <div class="ch-img rv rv-fade"><img src="assets/photos/jerk-and-fried-chicken.jpg" alt="Jerk chicken and fried chicken in takeaway boxes from Brissy Catering"></div>
+  <div class="ch-copy rv rv-up d1">
+    <div class="num">03</div>
+    <h3>Jerk &amp; Fried Chicken</h3>
+    <p>Jerk chicken and fried chicken both appear on the main meals board, each available in small, large, XL and mixed portions.</p>
+  </div>
+</div>
+
+<!-- ══════════ CATERING — dark, event-proof ══════════ -->
+<section class="catering" id="catering">
+  <div class="catering-grid">
+    <div class="catering-frame rv rv-fade">
+      <img src="assets/photos/catering-event.jpg" alt="Brissy Catering chafing dishes and branded banner set up at a catered event">
+    </div>
     <div>
-      <p class="lbl">The Experience</p>
-      <h2 class="hdg">Every occasion deserves food this good.</h2>
-      <p class="body-txt">Brissy Catering brings heart and precision to life's most meaningful moments — from intimate celebrations to cherished farewells — with food that feels like a genuine act of care. Based in Smethwick, Birmingham, Brissy has earned a loyal following over years of showing up with warmth, reliability, and flavours that linger long after the plates are cleared. This is catering with a soul, built on trust earned one table at a time.</p>
-      <a href="https://wa.me/447904786504" target="_blank" class="btn-red" style="margin-top:2rem;display:inline-flex"><i class="fab fa-whatsapp"></i> Reserve via WhatsApp</a>
-    </div>
-    <div><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">Show Up Fully</h3><p class="ph-b">Every event — big or small, joyful or tender — receives the same undivided attention and commitment from the very first conversation.</p></div></div>
-<div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">Flavour as Memory</h3><p class="ph-b">We cook food that becomes part of your story, the kind of dish people are still talking about three years later.</p></div></div>
-<div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">Trust Built by Hand</h3><p class="ph-b">Our reputation isn't built on advertising — it's built on every plate we've sent out and every family that's called us back.</p></div></div></div>
-  </div>
-</section>
-<section class="menu-sec" id="menu">
-  <div class="menu-inner">
-    <div class="fu"><p class="lbl">The Menu</p><h2 class="hdg">A taste of what awaits</h2></div>
-    <div class="menu-scroll fu" style="transition-delay:.1s">
-      <div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Peri-Peri Chicken Skewers</p><p class="mc-desc">Marinated overnight, grilled to char, served with a cooling coriander yoghurt dip.</p><div class="mc-foot"><span class="mc-price">£7</span><a href="https://wa.me/447904786504" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Scotch Bonnet Pepper Soup</p><p class="mc-desc">A rich, slow-cooked broth with goat meat, warming spices, and fresh herb oil.</p><div class="mc-foot"><span class="mc-price">£6</span><a href="https://wa.me/447904786504" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Plantain & Black Bean Bites</p><p class="mc-desc">Crispy fried plantain cups filled with spiced black bean salsa and pickled red onion.</p><div class="mc-foot"><span class="mc-price">£5</span><a href="https://wa.me/447904786504" class="mc-cta" target="_blank">Order</a></div></div></div>
-      <div class="mc"><img class="mc-img" src="images/img_1.jpg" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">Slow-Braised Oxtail</p><p class="mc-desc">Tender oxtail in a deep, wine-dark gravy with butter beans, thyme, and steamed white rice.</p><div class="mc-foot"><span class="mc-price">£18</span><a href="https://wa.me/447904786504" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">Jerk Salmon with Festival Dumplings</p><p class="mc-desc">Bold jerk-spiced fillet, pan-seared golden, served with sweet fried dumplings and mango slaw.</p><div class="mc-foot"><span class="mc-price">£16</span><a href="https://wa.me/447904786504" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">Egusi & Spinach Stew</p><p class="mc-desc">A hearty West African classic of ground melon seeds, leafy greens, and palm oil served over pounded yam.</p><div class="mc-foot"><span class="mc-price">£14</span><a href="https://wa.me/447904786504" class="mc-cta" target="_blank">Order</a></div></div></div>
-      <div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Dessert</p><p class="mc-name">Rum & Raisin Bread Pudding</p><p class="mc-desc">Dense, glossy, and unapologetically indulgent — served warm with a pour of salted caramel.</p><div class="mc-foot"><span class="mc-price">£6</span><a href="https://wa.me/447904786504" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Dessert</p><p class="mc-name">Coconut Panna Cotta</p><p class="mc-desc">Silky coconut cream set firm, topped with a sharp passion fruit coulis and toasted coconut flakes.</p><div class="mc-foot"><span class="mc-price">£6</span><a href="https://wa.me/447904786504" class="mc-cta" target="_blank">Order</a></div></div></div>
-    </div>
-    <p style="font-size:.72rem;color:rgba(255,255,255,.3);margin-top:1rem;font-style:italic">* Sample menu — contact us for today's full menu.</p>
-  </div>
-</section>
-<section class="rev-sec" id="reviews"><div class="rev-inner"><div class="fu"><p class="lbl">Guest Voices</p><h2 class="hdg" id="ratingCounter2"></h2></div><div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#4a1a1a">TD</div><div><div class="rc-nm">Tracey Davis</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Brissy catered my mother’s Wake 19/1/2026. I could not ask for a better experience. From the moment I asked her to take on the job. She went out of her way to contact the venue we were using to see wh"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
-<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#1a1a4a">S8</div><div><div class="rc-nm">Shan 85</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Brissycatering food is truly divine a real blessing every time. I’ve been ordering from them for the past three years, for Christmas, birthdays, and dinner platters and they consistently deliver excel"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
-<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#1a3a2a">TF</div><div><div class="rc-nm">Tamisha Francis</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"I hired Brissy Catering for my partners surprise birthday party having never tried the food before. Everything was amazing! Great portion sizes, delicious flavours, helpful staff. We had so much my fa"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div></div></section>
-<section class="visit-sec" id="visit">
-  <div style="max-width:1100px;margin:0 auto">
-    <div class="fu"><p class="lbl">Find Us</p><h2 class="hdg">Visit Brissy Catering</h2></div>
-    <div class="visit-inner">
-      <div class="fu"><p class="vb-lbl">Address</p><p style="font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.9;font-weight:300">94 High St, West Bromwich B70 6JW, UK</p><a href="https://maps.google.com/?cid=3557923085262970338" target="_blank" class="vb-link" style="color:var(--A)"><i class="fab fa-google"></i> Get Directions</a></div>
-      <div class="fu" style="transition-delay:.07s"><p class="vb-lbl">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:rgba(255,255,255,.35)">Closed</span></div>
-<div class="hr"><span class="hr-d">Tue</span><span style="color:rgba(255,255,255,.75)">12:00 – 9:00 PM</span></div>
-<div class="hr"><span class="hr-d">Wed</span><span style="color:rgba(255,255,255,.75)">12:00 – 9:00 PM</span></div>
-<div class="hr"><span class="hr-d">Thu</span><span style="color:rgba(255,255,255,.75)">12:00 – 9:00 PM</span></div>
-<div class="hr"><span class="hr-d">Fri</span><span style="color:rgba(255,255,255,.75)">12:00 – 9:00 PM</span></div>
-<div class="hr"><span class="hr-d">Sat</span><span style="color:rgba(255,255,255,.75)">12:00 – 9:00 PM</span></div>
-<div class="hr"><span class="hr-d">Sun</span><span style="color:rgba(255,255,255,.75)">12:00 – 8:00 PM</span></div></div>
-      <div class="fu" style="transition-delay:.14s"><p class="vb-lbl">Contact</p><a href="tel:+447904786504" class="vb-link"><i class="fa fa-phone"></i> 07904 786504</a><a href="https://wa.me/447904786504" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+      <div class="eyebrow rv rv-up" style="color:var(--gold-lt)">Catering</div>
+      <h2 class="catering-title rv rv-up d1">For all your<br><em>catering needs.</em></h2>
+      <div class="catering-copy rv rv-up d2">
+        <p>Brissy Catering sets up full chafing-dish service for events, as seen here — Google reviewers describe being catered for wakes, Christmas, birthdays and dinner platters over several years.</p>
+      </div>
+      <div class="catering-facts rv rv-up d3">
+        <div class="catering-fact">Halal certified</div>
+        <div class="catering-fact">Home delivery &amp; collection</div>
+        <div class="catering-fact">Call to enquire about your event</div>
+      </div>
     </div>
   </div>
 </section>
-<footer><span>© 2025 Brissy Catering</span><span style="opacity:.5">94 High St, West Bromwich B70 6JW, UK</span></footer>
-<a class="float-cta" href="https://wa.me/447904786504" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+
+<!-- ══════════ MENU — category tabs, faithful to the flyer ══════════ -->
+<section class="menu" id="menu">
+  <div class="menu-head">
+    <div class="eyebrow rv rv-up">The Menu</div>
+    <h2 class="sec-title rv rv-up d1">Priced on <em>the flyer.</em></h2>
+    <p class="menu-note rv rv-up d2">Every item and price below is transcribed directly from Brissy Catering's printed menu. Prices can change — call to confirm before ordering.</p>
+  </div>
+
+  <div class="menu-tabs rv rv-up d3">
+    <button class="menu-tab active" data-tab="mains">Main Meals</button>
+    <button class="menu-tab" data-tab="sides">Sides, Cakes &amp; Punches</button>
+    <button class="menu-tab" data-tab="breakfast">Breakfast &amp; Lunch</button>
+  </div>
+
+  <div class="menu-panel active" id="panel-mains">
+    <p class="menu-note" style="margin-bottom:20px">All main meals are served with a choice of rice or hardfood and steamed vegetables. S / L / XL / Mix portions shown where listed.</p>
+    <div class="menu-list-row"><div><div class="name">Curry Goat</div><div class="sizes">S £10 · L £12 · XL £13.50 · Mix £13.50</div></div></div>
+    <div class="menu-list-row"><div><div class="name">Oxtail</div><div class="sizes">S £10 · L £12 · XL £13.50 · Mix £13.50</div></div></div>
+    <div class="menu-list-row"><div><div class="name">Fried Chicken</div><div class="sizes">S £9 · L £11.50 · XL £13.50 · Mix £13.50</div></div></div>
+    <div class="menu-list-row"><div><div class="name">BBQ Fry Chicken</div><div class="sizes">S £9 · L £11.50 · XL £13.50 · Mix £13.50</div></div></div>
+    <div class="menu-list-row"><div><div class="name">Cowfoot</div><div class="sizes">S £10 · L £12 · XL £13.50 · Mix £13.50</div></div></div>
+    <div class="menu-list-row"><div><div class="name">Pepper Steak</div><div class="sizes">S £10 · L £12 · XL £13.50 · Mix £13.50</div></div></div>
+    <div class="menu-list-row"><div><div class="name">Stew Chicken</div><div class="sizes">S £9 · L £11.50 · XL £13.50 · Mix £13.50</div></div></div>
+    <div class="menu-list-row"><div><div class="name">Jerk Chicken</div><div class="sizes">S £9 · L £11.50 · XL £13.50 · Mix £13.50</div></div></div>
+    <div class="menu-list-row"><div><div class="name">Chick Pea Curry</div><div class="sizes">S £8.50 · L £10.50 · XL £12.50 · Mix £12.50</div></div></div>
+    <div class="menu-list-row"><div><div class="name">Pepper Prawns</div><div class="sizes">S £10 · L £12</div></div></div>
+    <p class="menu-extra">Build your own platter: 3 items (veg) £20, 4 items £25. Extra meat portions £10. Seafood Fridays are pre-order only — salmon (honey garlic or sweet chilli), southern fry jackfruit, steamfish £25.</p>
+  </div>
+
+  <div class="menu-panel" id="panel-sides">
+    <div class="menu-sub">Sides</div>
+    <div class="menu-list-row"><div class="name">Bun &amp; Cheese</div><div class="price">£2.00</div></div>
+    <div class="menu-list-row"><div class="name">Patties</div><div class="price">£2.50</div></div>
+    <div class="menu-list-row"><div class="name">Bun</div><div class="price">£1.00</div></div>
+    <div class="menu-list-row"><div class="name">Soup</div><div class="price">£5.00</div></div>
+    <div class="menu-list-row"><div class="name">Mac &amp; Cheese</div><div class="price">£3.50</div></div>
+    <div class="menu-list-row"><div class="name">Plantain</div><div class="price">£1.50</div></div>
+    <div class="menu-list-row"><div class="name">Wings</div><div class="price">£1.00 each</div></div>
+    <div class="menu-list-row"><div class="name">Coleslaw</div><div class="price">£2.00</div></div>
+    <div class="menu-list-row"><div class="name">Dumplings</div><div class="price">£1.00</div></div>
+    <div class="menu-list-row"><div class="name">Festival</div><div class="price">£1.10</div></div>
+    <div class="menu-list-row"><div class="name">Prawns</div><div class="price">£5.00</div></div>
+
+    <div class="menu-sub">Cakes</div>
+    <div class="menu-list-row"><div class="name">Rum Cake</div><div class="price">£3.00</div></div>
+    <div class="menu-list-row"><div class="name">Banana Cake</div><div class="price">£2.50</div></div>
+    <div class="menu-list-row"><div class="name">Red Velvet Cake</div><div class="price">£2.50</div></div>
+
+    <div class="menu-sub">Homemade Punches &amp; Drinks</div>
+    <div class="menu-list-row"><div class="name">Guinness Punch</div><div class="price">£4.00</div></div>
+    <div class="menu-list-row"><div class="name">Pineapple Punch</div><div class="price">£4.00</div></div>
+    <div class="menu-list-row"><div class="name">Sky Juice</div><div class="price">£3.50</div></div>
+    <div class="menu-list-row"><div class="name">Peanut Punch</div><div class="price">£1.50</div></div>
+    <div class="menu-list-row"><div class="name">Tropical Rhythms</div><div class="price">£2.50</div></div>
+    <div class="menu-list-row"><div class="name">Bigga</div><div class="price">£2.00</div></div>
+    <div class="menu-list-row"><div class="name">Can Drinks</div><div class="price">£1.00</div></div>
+    <div class="menu-list-row"><div class="name">Water</div><div class="price">£1.00</div></div>
+  </div>
+
+  <div class="menu-panel" id="panel-breakfast">
+    <div class="menu-sub">Breakfast</div>
+    <p class="menu-note" style="margin-bottom:12px">Served with dumplings and plantain.</p>
+    <div class="menu-list-row"><div class="name">Ackee &amp; Saltfish</div><div class="price">£8.00</div></div>
+    <div class="menu-list-row"><div class="name">Fish and Pickle</div><div class="price">£8.00</div></div>
+    <div class="menu-list-row"><div class="name">Callaloo</div><div class="price">£7.00</div></div>
+    <div class="menu-list-row"><div class="name">Bake, Bean &amp; Saltfish</div><div class="price">£6.50</div></div>
+    <div class="menu-list-row"><div class="name">Porridge</div><div class="price">£4.50</div></div>
+
+    <div class="menu-sub">Lunch</div>
+    <div class="menu-list-row"><div class="name">Chicken &amp; Chips</div><div class="price">£4.50</div></div>
+    <div class="menu-list-row"><div class="name">Wings &amp; Chips</div><div class="price">£5.00</div></div>
+    <div class="menu-list-row"><div class="name">Chicken Meal Mini</div><div class="price">£5.50</div></div>
+    <div class="menu-list-row"><div class="name">Jerk Chicken Sandwich</div><div class="price">£5.00</div></div>
+    <div class="menu-list-row"><div class="name">Ackee &amp; Saltfish (Lunch)</div><div class="price">£5.00</div></div>
+    <div class="menu-list-row"><div class="name">Callaloo &amp; Plantain</div><div class="price">£5.00</div></div>
+    <div class="menu-list-row"><div class="name">Patty and Coco Bread</div><div class="price">£4.00</div></div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS — scrolling quote strip ══════════ -->
+<section class="reviews" id="reviews">
+  <div class="rev-top rv rv-up">
+    <span class="rev-num">4.9</span>
+    <span class="rev-of5">/ 5</span>
+    <span class="rev-count">From 72 Google reviews</span>
+  </div>
+  <div class="rev-strip-outer rv rv-fade d1">
+    <div class="rev-strip" id="revStrip">
+      <div class="rev-card"><div class="stars">★★★★★</div><div class="txt">"First time coming here and the experience was absolutely amazing. My husband and I got a large curry goat and stew chicken! 20/10!"</div><div class="author">Patrycja Newcombe</div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><div class="txt">"The meal was truly delicious and felt like a special treat from start to finish. I would definitely recommend Brissy Catering."</div><div class="author">Solomon Oshenyi</div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><div class="txt">"Amazing food, I enjoyed every bite. Truly authentic Caribbean cuisine. Highly recommend."</div><div class="author">Glevan Robinson</div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><div class="txt">"I've been ordering from them for the past three years, for Christmas, birthdays, and dinner platters — they consistently deliver excellence."</div><div class="author">Shan 85</div></div>
+      <!-- duplicate set for seamless loop -->
+      <div class="rev-card"><div class="stars">★★★★★</div><div class="txt">"First time coming here and the experience was absolutely amazing. My husband and I got a large curry goat and stew chicken! 20/10!"</div><div class="author">Patrycja Newcombe</div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><div class="txt">"The meal was truly delicious and felt like a special treat from start to finish. I would definitely recommend Brissy Catering."</div><div class="author">Solomon Oshenyi</div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><div class="txt">"Amazing food, I enjoyed every bite. Truly authentic Caribbean cuisine. Highly recommend."</div><div class="author">Glevan Robinson</div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><div class="txt">"I've been ordering from them for the past three years, for Christmas, birthdays, and dinner platters — they consistently deliver excellence."</div><div class="author">Shan 85</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ VISIT — takeaway + catering, dual CTA ══════════ -->
+<section id="visit" class="visit">
+  <div class="eyebrow rv rv-up">Find Us</div>
+  <h2 class="sec-title rv rv-up d1">Takeaway <em>or catered.</em></h2>
+  <div class="visit-grid" style="margin-top:44px">
+    <div class="visit-card rv rv-up d2">
+      <h3>Visit &amp; Order</h3>
+      <p>94 High St, West Bromwich B70 6JW</p>
+      <div class="status-row" id="statusRow"><span class="status-dot"></span><span id="statusText">Checking hours…</span></div>
+      <div class="visit-ctas">
+        <a href="tel:+447904786504" class="btn btn-dark">Call</a>
+        <a href="https://maps.google.com/?cid=3557923085262970338" target="_blank" rel="noopener" class="btn btn-line">Get Directions</a>
+      </div>
+    </div>
+    <div class="visit-card rv rv-up d3">
+      <h3>Enquire About Catering</h3>
+      <p>For weddings, wakes, birthdays and larger events — call to discuss your date, guest count and menu.</p>
+      <div class="visit-ctas">
+        <a href="tel:+447904786504" class="btn btn-dark">Call To Enquire</a>
+      </div>
+    </div>
+  </div>
+  <div class="hours-table rv rv-up d4">
+    <div class="hours-row closed" data-day="1"><span>Monday</span><span>Closed</span></div>
+    <div class="hours-row" data-day="2"><span>Tuesday</span><span>12:00 – 21:00</span></div>
+    <div class="hours-row" data-day="3"><span>Wednesday</span><span>12:00 – 21:00</span></div>
+    <div class="hours-row" data-day="4"><span>Thursday</span><span>12:00 – 21:00</span></div>
+    <div class="hours-row" data-day="5"><span>Friday</span><span>12:00 – 22:00</span></div>
+    <div class="hours-row" data-day="6"><span>Saturday</span><span>12:00 – 22:00</span></div>
+    <div class="hours-row" data-day="0"><span>Sunday</span><span>12:00 – 20:00</span></div>
+  </div>
+  <p class="visit-note rv rv-up d4">Closed Monday. Also available via Just Eat for delivery — search Brissy Catering to order.</p>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-logo">Brissy <em>Catering</em></div>
+    <div class="foot-links">
+      <a href="#food">The Food</a>
+      <a href="#catering">Catering</a>
+      <a href="#menu">Menu</a>
+      <a href="#visit">Find Us</a>
+      <a href="https://maps.google.com/?cid=3557923085262970338" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+  <div class="foot-disclosure">
+    Business details and rating are sourced from Brissy Catering's Google Business Profile, 94 High St, West Bromwich B70 6JW. Opening hours shown reflect the Google Business Profile, which differs from the printed flyer in-store — please call 07904 786504 to confirm current hours. Menu items and prices are transcribed from the printed menu and may change — please call to confirm before ordering.
+  </div>
+</footer>
+
+<div class="mobile-bar" id="mobileBar">
+  <a href="tel:+447904786504"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Call</a>
+  <a href="https://maps.google.com/?cid=3557923085262970338" target="_blank" rel="noopener" class="accent"><svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>Directions</a>
+</div>
+
 <script>
-/* ── IntersectionObserver reveal ── */
-const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
-document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
-/* ── Sticky nav ── */
-(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
-if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
-/* ── Hero stagger entrance ── */
+const nav=document.getElementById('nav');
+const mobileBar=document.getElementById('mobileBar');
+const burgerBtn=document.getElementById('burgerBtn');
+const closeMenuBtn=document.getElementById('closeMenuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+function openMenu(){mobileMenu.classList.add('open');burgerBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function closeMenu(){mobileMenu.classList.remove('open');burgerBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+burgerBtn.addEventListener('click',openMenu);
+closeMenuBtn.addEventListener('click',closeMenu);
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+/* menu tabs */
+const tabs=document.querySelectorAll('.menu-tab');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-'+tab.dataset.tab).classList.add('active');
+  });
+});
+
+const rvEls=Array.from(document.querySelectorAll('.rv'));
+function checkReveals(){
+  const vh=window.innerHeight;
+  rvEls.forEach(el=>{
+    if(el.classList.contains('show')) return;
+    const r=el.getBoundingClientRect();
+    if(r.top<vh*0.9 && r.bottom>0){ el.classList.add('show'); }
+  });
+}
+
 (function(){
-  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
-              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
-              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
-  const seen=new Set(); let i=0;
-  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
-    if(seen.has(el))return; seen.add(el);
-    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
-    i++;
-  }));
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
-  }));
+  const HOURS={0:[12,20],1:null,2:[12,21],3:[12,21],4:[12,21],5:[12,22],6:[12,22]};
+  const now=new Date();
+  const day=now.getDay();
+  const hour=now.getHours()+now.getMinutes()/60;
+  const today=HOURS[day];
+  const row=document.getElementById('statusRow');
+  const txt=document.getElementById('statusText');
+  const open = today && hour>=today[0] && hour<today[1];
+  row.classList.toggle('closed', !open);
+  if(!today){ txt.textContent = 'Closed today — see hours below'; }
+  else { txt.textContent = open ? `Open now — closes ${today[1]}:00` : 'Closed now — see hours below'; }
+  const todayRow=document.querySelector(`.hours-row[data-day="${day}"]`);
+  if(todayRow) todayRow.classList.add('today');
 })();
-/* ── Parallax hero ── */
-(function(){
-  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
-  if(!bg||window.innerWidth<700)return;
-  let tk=false;
-  window.addEventListener('scroll',()=>{
-    if(!tk){requestAnimationFrame(()=>{
-      const y=window.scrollY;
-      bg.style.transform='translateY('+(y*0.32)+'px)';
-      tk=false;
-    });tk=true;}
-  },{passive:true});
-})();
-/* ── Open/close badge ── */
-(function(){const H={"Monday": "Closed", "Tuesday": "12:00 – 9:00 PM", "Wednesday": "12:00 – 9:00 PM", "Thursday": "12:00 – 9:00 PM", "Friday": "12:00 – 9:00 PM", "Saturday": "12:00 – 9:00 PM", "Sunday": "12:00 – 8:00 PM"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-const day=days[new Date().getDay()],raw=H[day]||'';
-const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
-if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
-const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
-const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
-const op=n2>=o&&n2<(c2<o?c2+1440:c2);
-set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
-const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
-/* ── Hero tone line ── */
-(function(){
-  const ht="Food made with real love.";if(!ht)return;
-  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
-  const el=document.createElement('p');
-  el.className='hero-tone-line';
-  el.textContent=ht;
-  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
-  title.after(el);
-})();
-/* ── Rating counter ── */
-(function(){const el=document.getElementById('ratingCounter');if(!el||!5)return;
-new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
-const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
-const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,5,true,v=>rs.textContent=v);an(0,61,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();</script>
-</body></html>
+
+let ticking=false;
+function onScroll(){
+  if(!ticking){
+    requestAnimationFrame(()=>{
+      nav.classList.toggle('scrolled',window.scrollY>40);
+      mobileBar.classList.toggle('show',window.scrollY>window.innerHeight*0.7);
+      checkReveals();
+      ticking=false;
+    });
+    ticking=true;
+  }
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>
