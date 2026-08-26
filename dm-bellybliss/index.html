@@ -1,232 +1,428 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>DM BELLYBLISS — Plaistow, London</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--P:#0a0a0a;--A:#E5222C;--bg:#111;--txt:#f5f5f5;--mut:#999;--gold:#c9a96e}
-html{scroll-behavior:smooth}body{font-family:'Raleway',sans-serif;background:var(--P);color:var(--txt);padding-top:52px;overflow-x:hidden}
-.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(229,34,44,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
-.proto-banner p{color:#fff;font-weight:500}.proto-banner strong{font-weight:700}
-.proto-banner a{color:#fff;font-weight:600;border:1.5px solid rgba(255,255,255,.7);padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
-#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(10,10,10,.98);border-bottom:1px solid rgba(229,34,44,.25);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
-#stickyNav.visible{transform:translateY(0)}
-.snav-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:#fff;font-style:italic}
-.snav-b{font-size:.68rem;font-weight:600;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
-.snav-b.open{background:rgba(34,197,94,.15);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.15);color:#ef4444}
-.snav-cta{background:var(--A);color:#fff;padding:.4rem 1.1rem;border-radius:4px;font-size:.76rem;font-weight:600;text-decoration:none}
-.hero{min-height:100svh;display:grid;grid-template-columns:50% 50%;background:var(--P);position:relative;overflow:hidden}
-@media(max-width:768px){.hero{grid-template-columns:1fr}.hero-r{display:none!important}}
-.hero-dots{position:absolute;top:1.2rem;left:1.5rem;z-index:10;display:flex;gap:.45rem}
-.hero-dot{width:12px;height:12px;border-radius:50%}
-.hero-l{display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 4rem 4.5rem;position:relative;z-index:2}
-.hero-line{width:36px;height:2px;background:var(--A);margin-bottom:1.8rem}
-.hero-lbl{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.6rem}
-.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,4.5vw,4.8rem);line-height:1.05;font-style:italic;color:#fff;margin-bottom:1.4rem}
-.hero-title span{color:var(--A)}
-.hero-sub{font-size:.9rem;line-height:1.9;color:rgba(255,255,255,.55);max-width:380px;font-weight:300;margin-bottom:1rem}
-#openBadge{display:inline-block;font-size:.76rem;font-weight:500;margin-bottom:1.8rem}
-.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap}
-.btn-red{background:var(--A);color:#fff;padding:.72rem 1.7rem;border-radius:6px;font-size:.83rem;font-weight:600;text-decoration:none;transition:filter .2s}
-.btn-red:hover{filter:brightness(1.1)}
-.btn-outline{background:transparent;color:rgba(255,255,255,.7);padding:.72rem 1.7rem;border:1.5px solid rgba(255,255,255,.25);border-radius:6px;font-size:.83rem;font-weight:400;text-decoration:none;transition:border-color .2s}
-.btn-outline:hover{border-color:rgba(255,255,255,.6);color:#fff}
-.hero-r{position:relative;display:flex;align-items:center;justify-content:center;background:#111;padding:3rem}
-.hero-circle{width:clamp(280px,38vw,480px);height:clamp(280px,38vw,480px);border-radius:50%;overflow:hidden;border:3px solid rgba(229,34,44,.4);box-shadow:0 0 80px rgba(229,34,44,.15)}
-.hero-circle img{width:100%;height:100%;object-fit:cover}
-.hero-r-badge{position:absolute;bottom:3rem;right:3rem;background:rgba(229,34,44,.9);color:#fff;padding:.5rem 1.1rem;font-size:.72rem;font-weight:600;border-radius:4px;letter-spacing:.06em;text-transform:uppercase}
-.stag{font-size:.7rem;padding:.2rem .7rem;border-radius:3px;border:1px solid rgba(229,34,44,.4);color:rgba(255,255,255,.6);margin-right:.4rem}
-.info-bar{background:#111;padding:1rem 5vw;display:flex;gap:1.8rem;flex-wrap:wrap;align-items:center;border-top:1px solid rgba(255,255,255,.07)}
-.ib{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:rgba(255,255,255,.55)}
-.ib i{color:var(--A)}.ib a{color:rgba(255,255,255,.55);text-decoration:none}
-.about-sec{padding:7rem 5vw;background:#0f0f0f}
-.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-@media(max-width:760px){.about-inner{grid-template-columns:1fr;gap:3rem}}
-.lbl{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
-.hdg{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-style:italic;line-height:1.18;color:#fff;margin-bottom:1.2rem}
-.body-txt{font-size:.92rem;line-height:2;color:rgba(255,255,255,.55);font-weight:300}
-.ph{display:flex;gap:1rem;padding:1.3rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.ph:last-child{border-bottom:none}
-.ph-n{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--A);opacity:.45;line-height:1;flex-shrink:0;font-style:italic}
-.ph-t{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);font-weight:500;margin-bottom:.3rem}
-.ph-b{font-size:.84rem;color:rgba(255,255,255,.45);line-height:1.75;font-weight:300}
-.menu-sec{padding:7rem 5vw;background:#0a0a0a;overflow:hidden}
-.menu-inner{max-width:1100px;margin:0 auto}
-.menu-scroll{display:flex;gap:1.4rem;overflow-x:auto;padding-bottom:1.5rem;margin-top:2.5rem;scrollbar-width:thin;scrollbar-color:rgba(229,34,44,.4) transparent}
-.mc{background:#1a1a1a;border-radius:16px;padding:0;overflow:hidden;min-width:220px;border:1px solid rgba(255,255,255,.07);transition:transform .25s,border-color .25s;flex-shrink:0}
-.mc:hover{transform:translateY(-6px);border-color:rgba(229,34,44,.4)}
-.mc-img{width:100%;height:180px;object-fit:cover;background:#222}
-.mc-body{padding:1.2rem}
-.mc-cat{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--A);margin-bottom:.4rem}
-.mc-name{font-size:.95rem;font-weight:500;color:#fff;margin-bottom:.3rem}
-.mc-desc{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:.9rem;font-weight:300}
-.mc-foot{display:flex;align-items:center;justify-content:space-between}
-.mc-price{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--gold);font-style:italic}
-.mc-cta{font-size:.72rem;font-weight:600;background:var(--A);color:#fff;padding:.28rem .75rem;border-radius:4px;text-decoration:none}
-.rev-sec{padding:7rem 5vw;background:#0f0f0f}
-.rev-inner{max-width:1100px;margin:0 auto}
-.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;margin-top:2.5rem;border:1px solid rgba(255,255,255,.07)}
-.rc{padding:2.2rem;border-right:1px solid rgba(255,255,255,.06)}
-.rc:last-child{border-right:none}
-@media(max-width:700px){.rev-grid{grid-template-columns:1fr;border:none}.rc{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);padding:1.6rem 0}}
-.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem}
-.rc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:700;flex-shrink:0}
-.rc-nm{font-size:.8rem;font-weight:500;color:rgba(255,255,255,.75)}.rc-st{font-size:.88rem;color:var(--gold)}
-.rc-tx{font-size:.88rem;line-height:1.85;color:rgba(255,255,255,.5);font-style:italic;font-weight:300;margin-bottom:.7rem}
-.rc-src{font-size:.65rem;color:rgba(255,255,255,.25)}
-.visit-sec{padding:7rem 5vw;background:#111}
-.visit-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-top:2.5rem}
-.vb-lbl{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
-.hr{display:flex;justify-content:space-between;font-size:.83rem;padding:.22rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.hr:last-child{border-bottom:none}.hr-d{font-weight:500;color:rgba(255,255,255,.8)}
-.vb-link{display:block;font-size:.88rem;color:rgba(255,255,255,.45);text-decoration:none;line-height:2.1;font-weight:300}
-.vb-link:hover{color:var(--A)}
-footer{background:#000;padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.72rem;color:rgba(255,255,255,.2);border-top:1px solid rgba(229,34,44,.15)}
-@media(max-width:680px){footer{padding-bottom:6rem}}
-@media(max-width:700px){
-  .hero-l{padding:4.5rem 1.4rem 5.5rem}
-  .hero-title{font-size:clamp(2.4rem,10vw,3.5rem)}
-  .btn-outline{display:none}
-  .btn-red{width:100%;justify-content:center}
-  .info-bar{display:none}
-  .about-sec,.menu-sec,.rev-sec,.visit-sec{padding:3.5rem 1.4rem}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DM BellyBliss — Indian, Grills &amp; Italian, Barking Road</title>
+<meta name="description" content="DM BellyBliss, 237 Barking Road, London E13. Indian, Grills and Italian all day — breakfast, coffee, lunch, peri peri chicken, pasta, pancakes, dinner. Halal. Rated 4.8 from 19 Google reviews.">
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:title" content="DM BellyBliss — Barking Road, London E13">
+<meta property="og:description" content="Indian, Grills and Italian all day. Halal. Rated 4.8 from 19 Google reviews.">
+<meta property="og:type" content="restaurant">
+<meta property="og:image" content="assets/photos/storefront-day.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Unbounded:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "DM BellyBliss",
+  "servesCuisine": ["Indian", "Italian"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "237 Barking Road",
+    "addressLocality": "London",
+    "postalCode": "E13 8EQ",
+    "addressCountry": "UK"
+  },
+  "telephone": "+447404875412",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "19" },
+  "url": "https://maps.google.com/?cid=10491397282320942970"
 }
-.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.85rem 1.9rem;border-radius:6px;display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.35);white-space:nowrap}
-@media(min-width:700px){.float-cta{display:none!important}}
-.fu{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}.fu.in{opacity:1;transform:none}
-</style><style></style></head><body>
-<div class="proto-banner"><p><strong>🎨 Free demo for DM BELLYBLISS</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
-<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">DM BELLYBLISS</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447404875412" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
-<section class="hero" data-hero>
-  <div class="hero-dots"><div class="hero-dot" style="background:#ff5f57"></div><div class="hero-dot" style="background:#ffbd2e"></div><div class="hero-dot" style="background:#28c940"></div></div>
-  <div class="hero-l">
-    <div class="hero-line"></div>
-    <p class="hero-lbl">Restaurant · Plaistow, London</p>
-    <h1 class="hero-title">Where every plate earns its name.</h1>
-    <p class="hero-sub">BellyBliss started with a simple conviction: food should leave you genuinely satisfied, not just fed. Tucked into Plaistow, we serve generous, flavour-forward p</p>
-    <span id="openBadge"></span>
-    <div class="hero-ctas">
-      <a href="https://wa.me/447404875412" target="_blank" class="btn-red"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-      <a href="#menu" class="btn-outline">View Menu</a>
-    </div>
+</script>
+
+<style>
+:root{
+  --ink:#1c2233;
+  --paper:#fbf4e9;
+  --blue:#1f6fd6;
+  --blue-dp:#123d80;
+  --coral:#f0654a;
+  --mut:#8a8172;
+  --line:rgba(28,34,51,.14);
+  --line-lt:rgba(251,244,233,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+body{background:var(--paper);color:var(--ink);font-family:'Karla',sans-serif;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,.disp{font-family:'Unbounded',sans-serif;font-weight:700;letter-spacing:-.01em;}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px;}
+button{font-family:inherit;}
+
+.rv{opacity:0;transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1);}
+.rv-up{transform:translateY(26px);}
+.rv-up.show{opacity:1;transform:translateY(0);}
+.rv-pop{transform:scale(.94);}
+.rv-pop.show{opacity:1;transform:scale(1);}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.26s;}.d4{transition-delay:.38s;}
+
+/* ── nav ─────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:var(--paper);border-bottom:2px solid var(--ink);}
+.logo{font-family:'Unbounded',sans-serif;font-weight:800;font-size:1.15rem;display:flex;align-items:center;gap:8px;}
+.logo .dot{width:10px;height:10px;border-radius:50%;background:var(--coral);}
+.navlinks{display:none;gap:26px;font-size:.82rem;font-weight:600;}
+@media(min-width:900px){.navlinks{display:flex;}}
+.navlinks a{position:relative;padding-bottom:3px;}
+.navlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--coral);transition:width .3s;}
+.navlinks a:hover::after{width:100%;}
+.nav-cta{background:var(--blue);color:#fff;padding:9px 20px;border-radius:100px;font-size:.78rem;font-weight:700;transition:.3s;}
+.nav-cta:hover{background:var(--blue-dp);}
+.nav-burger{display:flex;flex-direction:column;gap:5px;width:26px;cursor:pointer;background:none;border:none;padding:6px;}
+@media(min-width:900px){.nav-burger{display:none;}}
+.nav-burger span{display:block;height:3px;background:var(--ink);border-radius:2px;}
+
+.mobile-menu{position:fixed;inset:0;background:var(--ink);z-index:950;display:flex;flex-direction:column;justify-content:center;padding:8% 8%;transform:translateY(-100%);transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{display:block;color:var(--paper);font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.9rem;padding:.3em 0;border-bottom:1px solid var(--line-lt);}
+.mobile-menu-close{position:absolute;top:24px;right:6%;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;padding:8px;}
+.mobile-menu-foot{margin-top:32px;color:rgba(251,244,233,.7);font-size:.9rem;line-height:1.9;}
+.mobile-menu-foot a{color:var(--coral);border:none;font-weight:700;padding:0;}
+
+/* ══════════ HERO — bento mosaic, no crossfade, no collage-overlap ══════════ */
+.hero{padding:96px 6% 0;background:var(--paper);}
+.hero-top{max-width:1300px;margin:0 auto;}
+.hero-kicker{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-dp);font-weight:700;margin-bottom:14px;}
+.hero-title{font-size:clamp(2.6rem,7vw,5.2rem);line-height:1;margin-bottom:16px;}
+.hero-title .hl{color:var(--coral);}
+.hero-sub{font-size:1.05rem;line-height:1.7;color:#3a3529;max-width:600px;margin-bottom:28px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;font-size:.82rem;font-weight:700;transition:.25s;border-radius:100px;}
+.btn-solid{background:var(--blue);color:#fff;}
+.btn-solid:hover{background:var(--blue-dp);transform:translateY(-2px);}
+.btn-outline{border:2px solid var(--ink);color:var(--ink);}
+.btn-outline:hover{background:var(--ink);color:var(--paper);}
+.bento{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,minmax(140px,22vw));gap:10px;padding-bottom:10px;}
+@media(max-width:760px){.bento{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,32vw);}}
+.bento>div{overflow:hidden;position:relative;border-radius:4px;}
+.bento img{width:100%;height:100%;object-fit:cover;}
+.b-1{grid-column:span 2;grid-row:span 2;}
+.b-2{grid-column:span 1;grid-row:span 1;}
+.b-3{grid-column:span 1;grid-row:span 1;}
+.b-4{grid-column:span 2;grid-row:span 1;}
+@media(max-width:760px){.b-1{grid-column:span 2;grid-row:span 2;}.b-2,.b-3{grid-column:span 1;grid-row:span 1;}.b-4{grid-column:span 2;grid-row:span 1;}}
+.b-tag{position:absolute;left:12px;bottom:12px;background:var(--ink);color:var(--paper);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:6px 12px;border-radius:100px;}
+
+section{padding:96px 6%;position:relative;}
+@media(max-width:700px){section{padding:64px 6%;}}
+.eyebrow{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:14px;}
+.sec-title{font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.02;}
+.sec-title .hl{color:var(--blue);}
+
+/* ══════════ THREE KITCHENS — oversized typographic category index (food-first) ══════════ */
+.kitchens{background:var(--ink);color:var(--paper);}
+.kitchens .eyebrow{color:var(--coral);}
+.k-grid{display:grid;grid-template-columns:1fr;gap:36px;margin-top:44px;}
+@media(min-width:940px){.k-grid{grid-template-columns:.85fr 1.15fr;gap:56px;}}
+.k-photo{aspect-ratio:4/5;overflow:hidden;border-radius:6px;}
+.k-photo img{width:100%;height:100%;object-fit:cover;}
+.k-photo-cap{margin-top:12px;font-size:.78rem;color:rgba(251,244,233,.5);}
+.k-list{border-top:1px solid var(--line-lt);}
+.k-row{display:grid;grid-template-columns:3.5rem 1fr;gap:20px;padding:28px 0;border-bottom:1px solid var(--line-lt);align-items:baseline;}
+.k-num{font-family:'Unbounded',sans-serif;font-weight:800;color:var(--blue);font-size:1.1rem;}
+.k-name{font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(1.6rem,4vw,3rem);line-height:1;}
+.k-body{margin-top:10px;font-size:.98rem;color:rgba(251,244,233,.68);max-width:640px;line-height:1.7;}
+.k-strip{margin-top:44px;display:flex;flex-wrap:wrap;gap:12px;}
+.k-chip{border:1px solid rgba(251,244,233,.3);border-radius:100px;padding:9px 18px;font-size:.82rem;color:var(--paper);}
+
+/* ══════════ SIGNATURE DRINKS — photo + inline review fragment (no dedicated review section) ══════════ */
+.drinks{background:var(--paper);}
+.drinks-grid{display:grid;grid-template-columns:1fr;gap:36px;}
+@media(min-width:940px){.drinks-grid{grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}}
+.drinks-photo{aspect-ratio:4/5;overflow:hidden;border-radius:6px;}
+.drinks-photo img{width:100%;height:100%;object-fit:cover;}
+.drinks-copy p{font-size:1.02rem;line-height:1.8;color:#3a3529;max-width:480px;margin-bottom:24px;}
+.quote-fragment{border-left:3px solid var(--blue);padding-left:20px;margin-top:8px;}
+.quote-fragment .q{font-family:'Unbounded',sans-serif;font-weight:500;font-size:1.05rem;line-height:1.5;color:var(--ink);}
+.quote-fragment .a{margin-top:10px;font-size:.78rem;color:var(--mut);}
+.drinks-thumbs{display:flex;gap:10px;margin-top:20px;}
+.drinks-thumbs img{width:64px;height:64px;object-fit:cover;border-radius:50%;border:2px solid var(--paper);box-shadow:0 0 0 1px var(--line);}
+
+/* ══════════ THE CAFÉ — interior atmosphere + inline review fragment ══════════ */
+.cafe{background:var(--paper);}
+.cafe-grid{display:grid;grid-template-columns:1fr;gap:36px;}
+@media(min-width:940px){.cafe-grid{grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;}}
+@media(min-width:940px){.cafe-grid{direction:rtl;}.cafe-grid>*{direction:ltr;}}
+.cafe-photo{aspect-ratio:5/4;overflow:hidden;border-radius:6px;}
+.cafe-photo img{width:100%;height:100%;object-fit:cover;}
+.cafe-copy p{font-size:1.02rem;line-height:1.8;color:#3a3529;max-width:480px;margin-bottom:24px;}
+.cafe-facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;}
+.cafe-fact{background:var(--ink);color:var(--paper);border-radius:100px;padding:9px 18px;font-size:.8rem;font-weight:600;}
+
+/* ══════════ DESSERTS & TEA — oversized text index, no prices (unreadable on source) ══════════ */
+.sweet{background:var(--blue);color:#fff;}
+.sweet-head{max-width:700px;}
+.sweet-note{margin-top:14px;font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.7;max-width:560px;}
+.sweet-cols{display:grid;grid-template-columns:1fr;gap:0 60px;margin-top:44px;}
+@media(min-width:760px){.sweet-cols{grid-template-columns:1fr 1fr;}}
+.sweet-cat-title{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:700;margin-bottom:6px;margin-top:36px;}
+.sweet-cat-title:first-child{margin-top:0;}
+.sweet-item{font-family:'Unbounded',sans-serif;font-weight:500;font-size:1.3rem;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.18);}
+
+/* ══════════ VISIT — single block, no invented hours table (data unavailable) ══════════ */
+.visit{background:var(--ink);color:var(--paper);}
+.visit-inner{max-width:640px;}
+.visit-addr{color:rgba(251,244,233,.75);line-height:1.9;margin:20px 0 30px;font-size:1.02rem;}
+.visit-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-line{border:2px solid rgba(251,244,233,.4);color:var(--paper);}
+.btn-line:hover{background:rgba(251,244,233,.1);}
+.visit-note{margin-top:32px;font-size:.86rem;color:rgba(251,244,233,.55);line-height:1.75;max-width:520px;}
+.visit-note a{color:var(--coral);border-bottom:1px solid currentColor;}
+
+footer{background:var(--ink);color:rgba(251,244,233,.55);padding:44px 6% 32px;border-top:1px solid var(--line-lt);}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:22px;padding-bottom:22px;}
+.foot-logo{font-family:'Unbounded',sans-serif;font-weight:800;font-size:1.05rem;color:var(--paper);}
+.foot-links{display:flex;gap:20px;font-size:.78rem;flex-wrap:wrap;}
+.foot-links a:hover{color:#fff;}
+.foot-disclosure{margin-top:0;padding-top:20px;border-top:1px solid rgba(251,244,233,.14);font-size:.7rem;line-height:1.8;max-width:800px;}
+
+.mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:800;background:var(--ink);display:grid;grid-template-columns:1fr 1fr 1fr;box-shadow:0 -8px 24px -10px rgba(0,0,0,.4);
+  padding-bottom:env(safe-area-inset-bottom);transform:translateY(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);border-top:2px solid var(--coral);}
+.mobile-bar.show{transform:translateY(0);}
+@media(min-width:900px){.mobile-bar{display:none;}}
+.mobile-bar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 6px;color:var(--paper);font-size:.78rem;font-weight:700;border-right:1px solid rgba(251,244,233,.15);}
+.mobile-bar a:last-child{border-right:none;}
+.mobile-bar a.accent{background:var(--blue);}
+.mobile-bar svg{width:18px;height:18px;}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo"><span class="dot"></span>DM BellyBliss</div>
+  <div class="navlinks">
+    <a href="#kitchens">Menu</a>
+    <a href="#sweet">Desserts &amp; Tea</a>
+    <a href="#cafe">The Café</a>
+    <a href="#visit">Visit</a>
   </div>
-  <div class="hero-r">
-    <div class="hero-circle"><img src="images/img_0.jpg" alt="DM BELLYBLISS"/></div>
-    <div class="hero-r-badge">Restaurant</div>
+  <a href="tel:+447404875412" class="nav-cta">Call</a>
+  <button class="nav-burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="closeMenuBtn" aria-label="Close menu">&times;</button>
+  <a href="#kitchens">Menu</a>
+  <a href="#sweet">Desserts &amp; Tea</a>
+  <a href="#cafe">The Café</a>
+  <a href="#visit">Visit</a>
+  <div class="mobile-menu-foot">
+    237 Barking Road, London E13 8EQ<br>
+    <a href="tel:+447404875412">07404 875412</a>
   </div>
-</section>
-<div class="info-bar">
-  <span class="stag">Dine In</span><span class="stag">Takeaway</span><span class="stag">Delivery</span>
-  <span class="ib"><i class="fab fa-whatsapp"></i><a href="https://wa.me/447404875412" target="_blank">07404 875412</a></span>
-  <span class="ib"><i class="fab fa-google"></i><a href="https://maps.google.com/?cid=10491397282320942970" target="_blank">Google Maps</a></span>
-  <span class="ib" id="ratingCounter"></span>
 </div>
-<section class="about-sec fu" id="about">
-  <div class="about-inner">
+
+<!-- ══════════ HERO — bento photo mosaic ══════════ -->
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-kicker rv rv-up">237 Barking Road · London E13</div>
+    <h1 class="hero-title rv rv-up d1">Indian. Grills.<br><span class="hl">Italian.</span></h1>
+    <p class="hero-sub rv rv-up d2">All day, on Barking Road — breakfast, coffee, lunch, peri peri chicken, pasta, pancakes and dinner under one roof. Halal. Rated 4.8 from 19 Google reviews.</p>
+    <div class="hero-ctas rv rv-up d3">
+      <a href="tel:+447404875412" class="btn btn-solid">Call</a>
+      <a href="#kitchens" class="btn btn-outline">See The Menu</a>
+    </div>
+  </div>
+  <div class="bento rv rv-pop d2">
+    <div class="b-1"><img src="assets/photos/storefront-day.jpg" alt="DM BellyBliss storefront on Barking Road, Indian Grills Italian signage"><div class="b-tag">237 Barking Rd</div></div>
+    <div class="b-2"><img src="assets/photos/blue-ocean-drink.jpg" alt="Blue Ocean signature drink with lime and mint at DM BellyBliss"></div>
+    <div class="b-3"><img src="assets/photos/decor-wall.jpg" alt="Floral wall decoration and framed prints inside DM BellyBliss"></div>
+    <div class="b-4"><img src="assets/photos/storefront-night.jpg" alt="DM BellyBliss storefront lit up at night with halal neon sign"></div>
+  </div>
+</section>
+
+<!-- ══════════ THREE KITCHENS — typographic category index (food arrives immediately) ══════════ -->
+<section class="kitchens" id="kitchens">
+  <div class="eyebrow">What's Cooking</div>
+  <h2 class="sec-title rv rv-up">Three kitchens,<br>one <span class="hl" style="color:var(--coral)">counter.</span></h2>
+  <div class="k-grid">
+    <div class="k-photo rv rv-pop d1">
+      <img src="assets/photos/fried-snack-plate.jpg" alt="Fried snack plate served with pickled onion, cucumber and green chillies at DM BellyBliss">
+    </div>
+    <div class="k-list rv rv-up d2">
+      <div class="k-row">
+        <div class="k-num">01</div>
+        <div>
+          <div class="k-name">Indian</div>
+          <p class="k-body">One of the three kitchens named on the shopfront sign, alongside Grills and Italian.</p>
+        </div>
+      </div>
+      <div class="k-row">
+        <div class="k-num">02</div>
+        <div>
+          <div class="k-name">Grills</div>
+          <p class="k-body">Peri peri chicken is named directly on the shopfront banner — part of the all-day offer.</p>
+        </div>
+      </div>
+      <div class="k-row">
+        <div class="k-num">03</div>
+        <div>
+          <div class="k-name">Italian</div>
+          <p class="k-body">Pasta is named on the shopfront banner as part of the day's offer, alongside the Indian and Grill kitchens.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="k-strip rv rv-up d3">
+    <div class="k-chip">Breakfast</div>
+    <div class="k-chip">Coffee</div>
+    <div class="k-chip">Lunch</div>
+    <div class="k-chip">Peri Peri Chicken</div>
+    <div class="k-chip">Pasta</div>
+    <div class="k-chip">Pancake</div>
+    <div class="k-chip">Dinner</div>
+  </div>
+</section>
+
+<!-- ══════════ SIGNATURE DRINKS — photo + inline review fragment ══════════ -->
+<section class="drinks" id="drinks">
+  <div class="drinks-grid">
+    <div class="drinks-photo rv rv-pop"><img src="assets/photos/blue-ocean-drink.jpg" alt="Blue Ocean signature mocktail with lime and mint at DM BellyBliss"></div>
     <div>
-      <p class="lbl">The Experience</p>
-      <h2 class="hdg">Where every plate earns its name.</h2>
-      <p class="body-txt">BellyBliss started with a simple conviction: food should leave you genuinely satisfied, not just fed. Tucked into Plaistow, we serve generous, flavour-forward plates — from slow-layered lasagna to burgers that actually deliver on the promise. Every order, whether eaten in or delivered to your door, is cooked with the same care we'd give a guest at our own table.</p>
-      <a href="https://wa.me/447404875412" target="_blank" class="btn-red" style="margin-top:2rem;display:inline-flex"><i class="fab fa-whatsapp"></i> Reserve via WhatsApp</a>
-    </div>
-    <div><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">No Half Measures</h3><p class="ph-b">Every portion is sized for people who came hungry and want to leave happy.</p></div></div>
-<div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">Flavour First</h3><p class="ph-b">We season, layer, and taste until the dish earns its place on the menu — nothing leaves the kitchen on luck.</p></div></div>
-<div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">Honest Value</h3><p class="ph-b">Great food shouldn't cost a fortune, so we keep our platters generous and our prices grounded.</p></div></div></div>
-  </div>
-</section>
-<section class="menu-sec" id="menu">
-  <div class="menu-inner">
-    <div class="fu"><p class="lbl">The Menu</p><h2 class="hdg">A taste of what awaits</h2></div>
-    <div class="menu-scroll fu" style="transition-delay:.1s">
-      <div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Crispy Spiced Wings</p><p class="mc-desc">Double-fried chicken wings tossed in a warm chilli-honey glaze with a cooling yoghurt dip.</p><div class="mc-foot"><span class="mc-price">£7</span><a href="https://wa.me/447404875412" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Loaded Garlic Bread</p><p class="mc-desc">Thick-cut sourdough, roasted garlic butter, melted mozzarella and fresh parsley.</p><div class="mc-foot"><span class="mc-price">£5</span><a href="https://wa.me/447404875412" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Starter</p><p class="mc-name">Bliss Platter Bites</p><p class="mc-desc">A tasting board of mini sliders, seasoned fries and house slaw — the perfect opener for two.</p><div class="mc-foot"><span class="mc-price">£9</span><a href="https://wa.me/447404875412" class="mc-cta" target="_blank">Order</a></div></div></div>
-      <div class="mc"><img class="mc-img" src="images/img_1.jpg" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">The BellyBliss Burger</p><p class="mc-desc">Juicy smash-style beef patty, aged cheddar, house pickles and our signature bliss sauce in a brioche bun.</p><div class="mc-foot"><span class="mc-price">£13</span><a href="https://wa.me/447404875412" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">Layered Lasagna</p><p class="mc-desc">Slow-cooked beef ragù between sheets of fresh pasta, blanketed in béchamel and a golden parmesan crust.</p><div class="mc-foot"><span class="mc-price">£12</span><a href="https://wa.me/447404875412" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Main</p><p class="mc-name">Platter for Two</p><p class="mc-desc">A generous sharing board of grilled meats, seasoned rice, charred flatbread and three house sauces.</p><div class="mc-foot"><span class="mc-price">£26</span><a href="https://wa.me/447404875412" class="mc-cta" target="_blank">Order</a></div></div></div>
-      <div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Dessert</p><p class="mc-name">Warm Cookie Skillet</p><p class="mc-desc">Giant double-chocolate cookie baked to order, served with a scoop of vanilla bean ice cream.</p><div class="mc-foot"><span class="mc-price">£6</span><a href="https://wa.me/447404875412" class="mc-cta" target="_blank">Order</a></div></div></div><div class="mc"><img class="mc-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="" loading="lazy"/><div class="mc-body"><p class="mc-cat">Dessert</p><p class="mc-name">Mango Cheesecake Pot</p><p class="mc-desc">Whipped cream cheese on a buttery biscuit base, topped with a sharp mango coulis.</p><div class="mc-foot"><span class="mc-price">£5</span><a href="https://wa.me/447404875412" class="mc-cta" target="_blank">Order</a></div></div></div>
-    </div>
-    <p style="font-size:.72rem;color:rgba(255,255,255,.3);margin-top:1rem;font-style:italic">* Sample menu — contact us for today's full menu.</p>
-  </div>
-</section>
-<section class="rev-sec" id="reviews"><div class="rev-inner"><div class="fu"><p class="lbl">Guest Voices</p><h2 class="hdg" id="ratingCounter2"></h2></div><div class="rev-grid fu" style="transition-delay:.1s"><div class="rc"><div class="rc-h"><div class="rc-av" style="background:#4a1a1a">SM</div><div><div class="rc-nm">Sharmina Monjur</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"I ordered their lasagna and juicy chicken burger online, and I must say, I was pleasantly surprised! The burger definitely lives up to its name — it was incredibly juicy, packed with flavour, and tast"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
-<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#1a1a4a">MN</div><div><div class="rc-nm">Md Noman Talukdar</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"My first visit to BELLYBLISS was a delightful experience. We opted for the platter for two, which turned out to be both generous and affordably priced. The ambience was warm and inviting, perfectly co"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div>
-<div class="rc"><div class="rc-h"><div class="rc-av" style="background:#1a3a2a">MN</div><div><div class="rc-nm">MD NAZMUS SHAKIB</div><div class="rc-st">★★★★★</div></div></div><p class="rc-tx">"Tried the Blue Ocean at DM Bellybilss and absolutely loved it! Sabrina made it perfectly — super refreshing, with just the right mix. It looked amazing and tasted even better. One of the best drinks I"</p><div class="rc-src"><i class="fab fa-google"></i> Google Review</div></div></div></div></section>
-<section class="visit-sec" id="visit">
-  <div style="max-width:1100px;margin:0 auto">
-    <div class="fu"><p class="lbl">Find Us</p><h2 class="hdg">Visit DM BELLYBLISS</h2></div>
-    <div class="visit-inner">
-      <div class="fu"><p class="vb-lbl">Address</p><p style="font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.9;font-weight:300">237 Barking Road, Macdonalds, 1min walk from Rokeby school, 2min walk from Canning town Big, London E13 8EQ, UK</p><a href="https://maps.google.com/?cid=10491397282320942970" target="_blank" class="vb-link" style="color:var(--A)"><i class="fab fa-google"></i> Get Directions</a></div>
-      <div class="fu" style="transition-delay:.07s"><p class="vb-lbl">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:rgba(255,255,255,.35)">Closed</span></div>
-<div class="hr"><span class="hr-d">Tue</span><span style="color:rgba(255,255,255,.35)">Closed</span></div>
-<div class="hr"><span class="hr-d">Wed</span><span style="color:rgba(255,255,255,.35)">Closed</span></div>
-<div class="hr"><span class="hr-d">Thu</span><span style="color:rgba(255,255,255,.35)">Closed</span></div>
-<div class="hr"><span class="hr-d">Fri</span><span style="color:rgba(255,255,255,.35)">Closed</span></div>
-<div class="hr"><span class="hr-d">Sat</span><span style="color:rgba(255,255,255,.35)">Closed</span></div>
-<div class="hr"><span class="hr-d">Sun</span><span style="color:rgba(255,255,255,.35)">Closed</span></div></div>
-      <div class="fu" style="transition-delay:.14s"><p class="vb-lbl">Contact</p><a href="tel:+447404875412" class="vb-link"><i class="fa fa-phone"></i> 07404 875412</a><a href="https://wa.me/447404875412" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+      <div class="eyebrow rv rv-up">Signature Drinks</div>
+      <h2 class="sec-title rv rv-up d1">The <span class="hl">Blue Ocean.</span></h2>
+      <div class="drinks-copy rv rv-up d2">
+        <p>Fresh smoothies and mocktails are made to order at the counter, including the Blue Ocean — a house drink named by reviewers as a standout.</p>
+        <div class="quote-fragment">
+          <div class="q">"Tried the Blue Ocean at DM Bellybliss and absolutely loved it! Sabrina made it perfectly — super refreshing, with just the right mix."</div>
+          <div class="a">— MD Nazmus Shakib, Google review</div>
+        </div>
+      </div>
+      <div class="drinks-thumbs rv rv-up d3">
+        <img src="assets/photos/smoothies.jpg" alt="Three fruit smoothies on a table at DM BellyBliss">
+      </div>
     </div>
   </div>
 </section>
-<footer><span>© 2025 DM BELLYBLISS</span><span style="opacity:.5">237 Barking Road, Macdonalds, 1min walk from Rokeby school, 2min walk from Canning town Big, London E13 8EQ, UK</span></footer>
-<a class="float-cta" href="https://wa.me/447404875412" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+
+<!-- ══════════ THE CAFÉ — interior atmosphere + inline review fragment ══════════ -->
+<section class="cafe" id="cafe">
+  <div class="cafe-grid">
+    <div class="cafe-photo rv rv-pop"><img src="assets/photos/dining-room.jpg" alt="DM BellyBliss dining room with chandelier and wall art"></div>
+    <div>
+      <div class="eyebrow rv rv-up">The Café</div>
+      <h2 class="sec-title rv rv-up d1">Dressed up for<br>a <span class="hl">quick lunch.</span></h2>
+      <div class="cafe-copy rv rv-up d2">
+        <p>Chandeliers, a floral wall and framed prints give the dining room a dressed-up feel for what's otherwise a fast, all-day counter — halal marked, with a bright, colourful interior.</p>
+        <div class="quote-fragment">
+          <div class="q">"The ambience was warm and inviting, perfectly complementing the flavorful spread... a special mention goes to their grill items — the lamb chops and tandoori chicken were absolutely mouthwatering."</div>
+          <div class="a">— Md Noman Talukdar, Google review</div>
+        </div>
+      </div>
+      <div class="cafe-facts rv rv-up d3">
+        <div class="cafe-fact">Halal</div>
+        <div class="cafe-fact">Dine-in &amp; Takeaway</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DESSERTS & TEA — text index, no prices (unreadable on source) ══════════ -->
+<section class="sweet" id="sweet">
+  <div class="sweet-head">
+    <div class="eyebrow" style="color:rgba(255,255,255,.75)">In-Store Menu Board</div>
+    <h2 class="sec-title rv rv-up">Desserts <span class="hl" style="color:#fff">&amp; tea.</span></h2>
+    <p class="sweet-note rv rv-up d1">The items below are transcribed from the menu board displayed in the window. Prices on the board weren't legible in available photos, so they're not shown here — call to confirm before you order.</p>
+  </div>
+  <div class="sweet-cols rv rv-up d2">
+    <div>
+      <div class="sweet-cat-title">Handmade Desserts</div>
+      <div class="sweet-item">Tiramisu</div>
+      <div class="sweet-item">Chocolate Brownie</div>
+      <div class="sweet-item">Homemade Rice Pudding</div>
+      <div class="sweet-item">Homemade Ice Cream</div>
+    </div>
+    <div>
+      <div class="sweet-cat-title">Speciality Tea</div>
+      <div class="sweet-item">Masala Chai</div>
+      <div class="sweet-item">Chai Latte</div>
+      <div class="sweet-item">Karak Chai Masala</div>
+      <div class="sweet-item">English Breakfast Tea</div>
+      <div class="sweet-item">Earl Grey</div>
+      <div class="sweet-item">Green Tea</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ VISIT — no invented hours table (Google data unavailable) ══════════ -->
+<section id="visit" class="visit">
+  <div class="visit-inner">
+    <div class="eyebrow rv rv-up" style="color:var(--coral)">Visit Us</div>
+    <h2 class="sec-title rv rv-up d1">Find DM BellyBliss.</h2>
+    <div class="visit-addr rv rv-up d2">237 Barking Road<br>London E13 8EQ<br>07404 875412</div>
+    <div class="visit-ctas rv rv-up d3">
+      <a href="tel:+447404875412" class="btn btn-solid">Call</a>
+      <a href="https://maps.google.com/?cid=10491397282320942970" target="_blank" rel="noopener" class="btn btn-line">Get Directions</a>
+    </div>
+    <p class="visit-note rv rv-up d4">Opening hours weren't available to verify at the time this page was built — <a href="https://maps.google.com/?cid=10491397282320942970" target="_blank" rel="noopener">check current opening hours on Google Maps</a> or call ahead.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-logo">DM BellyBliss</div>
+    <div class="foot-links">
+      <a href="#kitchens">Menu</a>
+      <a href="#sweet">Desserts &amp; Tea</a>
+      <a href="#cafe">The Café</a>
+      <a href="#visit">Visit</a>
+      <a href="https://maps.google.com/?cid=10491397282320942970" target="_blank" rel="noopener">Google Maps</a>
+      <a href="https://www.dmbellybliss.co.uk" target="_blank" rel="noopener">dmbellybliss.co.uk</a>
+    </div>
+  </div>
+  <div class="foot-disclosure">
+    Business details and rating are sourced from DM BellyBliss's Google Business Profile, 237 Barking Road, London E13 8EQ. The phone number shown is the number listed on the Google Business Profile; the number printed on the shopfront differs — please confirm before relying on either. Menu items are transcribed from shopfront signage and the in-store menu board and may change — please call to confirm before ordering. Opening hours were not available to verify and are not shown; please check Google Maps or call ahead.
+  </div>
+</footer>
+
+<div class="mobile-bar" id="mobileBar">
+  <a href="tel:+447404875412"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Call</a>
+  <a href="https://maps.google.com/?cid=10491397282320942970" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>Directions</a>
+  <a href="#kitchens" class="accent"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Menu</a>
+</div>
+
 <script>
-/* ── IntersectionObserver reveal ── */
-const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
-document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
-/* ── Sticky nav ── */
-(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
-if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
-/* ── Hero stagger entrance ── */
-(function(){
-  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
-              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
-              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
-  const seen=new Set(); let i=0;
-  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
-    if(seen.has(el))return; seen.add(el);
-    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
-    i++;
-  }));
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
-  }));
-})();
-/* ── Parallax hero ── */
-(function(){
-  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
-  if(!bg||window.innerWidth<700)return;
-  let tk=false;
-  window.addEventListener('scroll',()=>{
-    if(!tk){requestAnimationFrame(()=>{
-      const y=window.scrollY;
-      bg.style.transform='translateY('+(y*0.32)+'px)';
-      tk=false;
-    });tk=true;}
-  },{passive:true});
-})();
-/* ── Open/close badge ── */
-(function(){const H={"Monday": "Closed", "Tuesday": "Closed", "Wednesday": "Closed", "Thursday": "Closed", "Friday": "Closed", "Saturday": "Closed", "Sunday": "Closed"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-const day=days[new Date().getDay()],raw=H[day]||'';
-const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
-if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
-const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
-const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
-const op=n2>=o&&n2<(c2<o?c2+1440:c2);
-set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
-const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
-/* ── Hero tone line ── */
-(function(){
-  const ht="Big flavours. Real satisfaction.";if(!ht)return;
-  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
-  const el=document.createElement('p');
-  el.className='hero-tone-line';
-  el.textContent=ht;
-  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
-  title.after(el);
-})();
-/* ── Rating counter ── */
-(function(){const el=document.getElementById('ratingCounter');if(!el||!4.8)return;
-new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
-const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
-const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,4.8,true,v=>rs.textContent=v);an(0,19,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();</script>
-</body></html>
+const mobileBar=document.getElementById('mobileBar');
+const burgerBtn=document.getElementById('burgerBtn');
+const closeMenuBtn=document.getElementById('closeMenuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+function openMenu(){mobileMenu.classList.add('open');burgerBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function closeMenu(){mobileMenu.classList.remove('open');burgerBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+burgerBtn.addEventListener('click',openMenu);
+closeMenuBtn.addEventListener('click',closeMenu);
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+const rvEls=Array.from(document.querySelectorAll('.rv'));
+function checkReveals(){
+  const vh=window.innerHeight;
+  rvEls.forEach(el=>{
+    if(el.classList.contains('show')) return;
+    const r=el.getBoundingClientRect();
+    if(r.top<vh*0.9 && r.bottom>0){ el.classList.add('show'); }
+  });
+}
+
+let ticking=false;
+function onScroll(){
+  if(!ticking){
+    requestAnimationFrame(()=>{
+      mobileBar.classList.toggle('show',window.scrollY>window.innerHeight*0.6);
+      checkReveals();
+      ticking=false;
+    });
+    ticking=true;
+  }
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>
