@@ -1,305 +1,456 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>K&C Kitchen — Lewisham, London</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--P:#1A3C2E;--A:#D4A017;--bg:#FAF5EF;--txt:#1a1a1a;--mut:#6B5B4E}
-html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);padding-top:52px;overflow-x:hidden}
-.proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(212,160,23,.96);backdrop-filter:blur(8px);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.77rem}
-.proto-banner p{color:#1a1a1a;font-weight:500}.proto-banner strong{font-weight:700}
-.proto-banner a{color:#1a1a1a;font-weight:600;border:1.5px solid #1a1a1a;padding:.25rem .8rem;border-radius:50px;text-decoration:none;white-space:nowrap}
-#stickyNav{position:fixed;top:52px;left:0;right:0;z-index:500;background:rgba(26,60,46,.97);backdrop-filter:blur(10px);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;transform:translateY(-200%);transition:transform .3s ease}
-#stickyNav.visible{transform:translateY(0)}
-.snav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#fff;font-style:italic}
-.snav-b{font-size:.68rem;font-weight:600;padding:.18rem .55rem;border-radius:50px;margin-left:.4rem}
-.snav-b.open{background:rgba(34,197,94,.2);color:#22c55e}.snav-b.closed{background:rgba(239,68,68,.2);color:#ef4444}
-.snav-cta{background:var(--A);color:#fff;padding:.42rem 1.1rem;border-radius:50px;font-size:.76rem;font-weight:600;text-decoration:none}
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80') center/cover no-repeat}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,25,18,.88) 0%,rgba(10,25,18,.45) 50%,rgba(10,25,18,.15) 100%)}
-.hero-content{position:relative;z-index:2;padding:6rem 5vw 4.5rem;width:100%}
-.hero-eyebrow{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--A);margin-bottom:1rem;font-weight:500}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,7.5vw,7rem);line-height:1;font-weight:300;font-style:italic;color:#fff;margin-bottom:1.2rem}
-.hero-sub{font-size:.95rem;line-height:1.85;color:rgba(255,255,255,.7);max-width:520px;margin-bottom:.9rem}
-#openBadge{display:inline-block;font-size:.78rem;font-weight:600;margin-bottom:1.5rem}
-.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--A);color:#fff;padding:.78rem 1.8rem;border-radius:50px;font-size:.86rem;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,160,23,.4)}
-.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);color:#fff;padding:.78rem 1.8rem;border-radius:50px;border:1.5px solid rgba(255,255,255,.4);font-size:.86rem;font-weight:400;text-decoration:none;transition:background .2s}
-.btn-secondary:hover{background:rgba(255,255,255,.2)}
-.info-bar{background:var(--P);padding:1.2rem 5vw;display:flex;gap:2rem;flex-wrap:wrap;align-items:center}
-.ib{display:flex;align-items:center;gap:.55rem;font-size:.82rem;color:rgba(255,255,255,.72)}
-.ib i{color:var(--A)}
-.ib a{color:rgba(255,255,255,.72);text-decoration:none}
-.stag{font-size:.72rem;padding:.2rem .7rem;border-radius:50px;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.65);margin-right:.35rem}
-.about-sec{padding:6rem 5vw;background:#fff}
-.about-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-@media(max-width:760px){.about-inner{grid-template-columns:1fr;gap:3rem}}
-.lbl{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
-.hdg{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;font-style:italic;line-height:1.18;color:var(--txt);margin-bottom:1.2rem}
-.body-txt{font-size:.94rem;line-height:2;color:var(--mut)}
-.ph{display:flex;gap:1.1rem;padding:1.3rem 0;border-bottom:1px solid rgba(0,0,0,.07)}
-.ph:last-child{border-bottom:none}
-.ph-n{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--A);opacity:.45;line-height:1;flex-shrink:0;min-width:2.5rem}
-.ph-t{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:.3rem}
-.ph-b{font-size:.85rem;color:var(--mut);line-height:1.75}
-.menu-sec{padding:6rem 5vw;background:var(--bg)}
-.menu-inner{max-width:1140px;margin:0 auto}
-.menu-tabs{display:flex;gap:.7rem;flex-wrap:wrap;margin:2rem 0 2.5rem}
-.tab-btn{padding:.5rem 1.3rem;border-radius:50px;border:1.5px solid rgba(0,0,0,.15);background:#fff;font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s;color:var(--mut)}
-.tab-btn.active{background:var(--P);color:#fff;border-color:var(--P)}
-.tab-panel{display:none;grid-template-columns:repeat(3,1fr);gap:1.6rem}
-.tab-panel.active{display:grid}
-@media(max-width:760px){.tab-panel.active{grid-template-columns:1fr}}
-.mc{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .25s,box-shadow .25s}
-.mc:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.1)}
-.mc-img{width:100%;height:160px;object-fit:cover;background:var(--bg)}
-.mc-body{padding:1.1rem 1.2rem 1.3rem}
-.mc-name{font-size:.95rem;font-weight:600;color:var(--txt);margin-bottom:.3rem}
-.mc-desc{font-size:.8rem;color:var(--mut);line-height:1.6;margin-bottom:.9rem}
-.mc-foot{display:flex;align-items:center;justify-content:space-between}
-.mc-price{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--A);font-weight:500}
-.mc-cta{font-size:.74rem;font-weight:600;color:var(--P);text-decoration:none;border-bottom:1.5px solid var(--P)}
-.rev-sec{padding:6rem 5vw;background:var(--P)}
-.rev-inner{max-width:1140px;margin:0 auto}
-.rev-hdg{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:#fff;margin-bottom:2.2rem}
-.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem}
-.rc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:1.7rem}
-.rc-h{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
-.rc-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0}
-.rc-nm{font-size:.82rem;font-weight:600;color:#fff}.rc-st{font-size:.9rem;color:var(--A)}
-.rc-tx{font-size:.88rem;line-height:1.8;color:rgba(255,255,255,.72);font-style:italic;margin-bottom:.8rem}
-.rc-src{font-size:.68rem;color:rgba(255,255,255,.38)}
-.visit-sec{padding:6rem 5vw;background:#fff}
-.visit-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:3rem;margin-top:2.5rem}
-.vb-lbl{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--A);font-weight:600;margin-bottom:.9rem}
-.hr{display:flex;justify-content:space-between;font-size:.84rem;padding:.25rem 0;border-bottom:1px solid rgba(0,0,0,.06)}
-.hr:last-child{border-bottom:none}.hr-d{font-weight:600;color:var(--txt)}
-.vb-link{display:block;font-size:.9rem;color:var(--mut);text-decoration:none;line-height:2.1}
-.vb-link:hover{color:var(--A)}
-footer{background:var(--P);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.74rem;color:rgba(255,255,255,.35)}
-@media(max-width:680px){footer{padding-bottom:6rem}}
-@media(max-width:700px){
-  .hero-content{padding:4rem 1.4rem 5.5rem}
-  .hero-title{font-size:clamp(2.5rem,11vw,4rem)}
-  .info-bar{display:none}
-  .btn-secondary{display:none}
-  .btn-primary{width:100%;justify-content:center;padding:.85rem 1rem}
-  .about-sec{padding:3.5rem 1.4rem}
-  .menu-sec{padding:3.5rem 1.4rem}
-  .rev-sec{padding:3.5rem 1.4rem}
-  .visit-sec{padding:3.5rem 1.4rem}
-  .menu-tabs{gap:.4rem}
-  .tab-btn{font-size:.75rem;padding:.4rem 1rem}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K&amp;C Kitchen — Jamaican Food, Lee High Road, Lewisham</title>
+<meta name="description" content="K&amp;C Kitchen, 10C Lee High Road, Lewisham SE13. Jamaican takeaway — oxtail, curry goat, jerk chicken, patties. Rated 4.7 on Google.">
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:title" content="K&amp;C Kitchen — Lee High Road, Lewisham">
+<meta property="og:description" content="Jamaican takeaway on Lee High Road, Lewisham. Rated 4.7 on Google.">
+<meta property="og:type" content="restaurant">
+<meta property="og:image" content="assets/photos/storefront-sign.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "K&C Kitchen",
+  "servesCuisine": ["Jamaican"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "10C Lee High Road",
+    "addressLocality": "London",
+    "postalCode": "SE13 5LQ",
+    "addressCountry": "UK"
+  },
+  "telephone": "+447770107174",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "3" },
+  "url": "https://maps.google.com/?cid=9787354029114690743",
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"22:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"20:00"}
+  ]
 }
-.float-cta{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:200;background:#25D366;color:#fff;padding:.85rem 1.9rem;border-radius:50px;display:flex;align-items:center;gap:.5rem;font-size:.86rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(0,0,0,.3);white-space:nowrap}
-@media(min-width:700px){.float-cta{display:none!important}}
-.fu{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.fu.in{opacity:1;transform:none}
-</style>
-<style></style>
-<style>
-:root{--ease:cubic-bezier(.16,1,.3,1)}
-body{position:relative}
-body::before{content:'';position:fixed;inset:0;z-index:9997;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-#scrollProgress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--A),#f3d78a);z-index:10000;width:0%;box-shadow:0 0 12px rgba(212,160,23,.6)}
-
-.hero{isolation:isolate}
-.hero::after{content:'';position:absolute;top:-15%;right:-8%;width:48vw;height:48vw;
-  background:radial-gradient(circle,rgba(212,160,23,.30),transparent 70%);filter:blur(70px);
-  z-index:1;pointer-events:none;animation:orbDrift 16s ease-in-out infinite alternate}
-.hero::before{content:'';position:absolute;bottom:-20%;left:-10%;width:38vw;height:38vw;
-  background:radial-gradient(circle,rgba(26,60,46,.5),transparent 70%);filter:blur(80px);
-  z-index:1;pointer-events:none;animation:orbDrift 20s ease-in-out infinite alternate-reverse}
-@keyframes orbDrift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-34px,44px) scale(1.18)}}
-
-.hero-bg{clip-path:inset(0 0 0 0);animation:heroWipe 1.7s var(--ease) both}
-@keyframes heroWipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0% 0 0)}}
-
-.reveal-line{overflow:hidden;display:block}
-.reveal-line span{display:inline-block;transform:translateY(112%);transition:transform .85s var(--ease)}
-.fu.in .reveal-line span{transform:translateY(0)}
-
-.btn-primary,.btn-secondary,.snav-cta,.float-cta{transition:transform .45s var(--ease),box-shadow .45s var(--ease),background .3s ease!important}
-.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 34px rgba(212,160,23,.45)}
-.btn-secondary:hover{transform:translateY(-3px) scale(1.02)}
-.float-cta:hover{transform:translateX(-50%) translateY(-3px) scale(1.03)}
-
-.mc{transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.mc:hover{transform:translateY(-9px);box-shadow:0 24px 46px -14px rgba(26,60,46,.28)}
-.mc-img-wrap{overflow:hidden;border-radius:16px 16px 0 0}
-.mc-img{transition:transform .7s var(--ease)}
-.mc:hover .mc-img{transform:scale(1.09)}
-.tab-panel.active .mc{animation:cardIn .6s var(--ease) both}
-.tab-panel.active .mc:nth-child(1){animation-delay:.05s}
-.tab-panel.active .mc:nth-child(2){animation-delay:.15s}
-.tab-panel.active .mc:nth-child(3){animation-delay:.25s}
-@keyframes cardIn{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
-
-.tab-panel{transition:opacity .35s ease}
-
-.rev-grid.in .rc{animation:cardIn .6s var(--ease) both}
-.rev-grid.in .rc:nth-child(1){animation-delay:.05s}
-.rev-grid.in .rc:nth-child(2){animation-delay:.18s}
-.rev-grid.in .rc:nth-child(3){animation-delay:.31s}
-.rc{transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
-.rc:hover{transform:translateY(-4px);box-shadow:0 16px 32px -10px rgba(0,0,0,.25)}
-
-.about-sec.in .ph{animation:phIn .6s var(--ease) both}
-.about-sec.in .ph:nth-child(1){animation-delay:.08s}
-.about-sec.in .ph:nth-child(2){animation-delay:.2s}
-.about-sec.in .ph:nth-child(3){animation-delay:.32s}
-@keyframes phIn{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:translateX(0)}}
-
-#stickyNav{transition:transform .5s var(--ease),backdrop-filter .3s ease!important}
-
-@media(max-width:700px){.hero::after,.hero::before{width:70vw;height:70vw}}
-</style>
-</head><body>
-<div id="scrollProgress"></div>
-<div class="proto-banner"><p><strong>🎨 Free demo for K&C Kitchen</strong> — All text, images &amp; colours are placeholders.</p><a href="https://wa.me/447761256742">Let's talk → WhatsApp</a></div>
-<nav id="stickyNav"><div style="display:flex;align-items:center;gap:.5rem"><span class="snav-logo">K&C Kitchen</span><span class="snav-b" id="snavBadge"></span></div><a href="tel:+447770107174" class="snav-cta"><i class="fa fa-phone"></i> Reserve</a></nav>
-<section class="hero" data-hero>
-  <div class="hero-bg" style="will-change:transform"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Restaurant · Lewisham, London</p>
-    <h1 class="hero-title">Good food, good people, Lewisham's table.</h1>
-    <p class="hero-sub">K&C Kitchen is the kind of place Lewisham has always deserved — a no-fuss, full-flavour neighbourhood restaurant where every plate is cooked</p>
-    <div id="ratingCounter" style="color:var(--A);font-size:.88rem;font-weight:500;margin-bottom:.7rem"></div>
-    <span id="openBadge"></span>
-    <div class="hero-ctas">
-      <a href="https://wa.me/447770107174" target="_blank" class="btn-primary"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-      <a href="#menu" class="btn-secondary">View Menu</a>
-    </div>
-  </div>
-</section>
-<div class="info-bar">
-  <span class="stag">Dine In</span><span class="stag">Takeaway</span><span class="stag">Delivery</span>
-  <span class="ib"><i class="fab fa-whatsapp"></i><a href="https://wa.me/447770107174" target="_blank">07770 107174</a></span>
-  <span class="ib"><i class="fab fa-google"></i><a href="https://maps.google.com/?cid=9787354029114690743" target="_blank">Google Maps</a></span>
-</div>
-<section class="about-sec fu" id="about">
-  <div class="about-inner">
-    <div>
-      <p class="lbl">Our Story</p>
-      <h2 class="hdg reveal-line"><span>More than a meal — a gathering place</span></h2>
-      <p class="body-txt">K&C Kitchen is the kind of place Lewisham has always deserved — a no-fuss, full-flavour neighbourhood restaurant where every plate is cooked with genuine care. The menu draws from honest, familiar cooking traditions without pretending to be anything other than what it is: really good food served by people who mean it. Pull up a chair, order something warm, and stay longer than you planned.</p>
-      <a href="https://wa.me/447770107174" target="_blank" class="btn-primary" style="margin-top:2rem;display:inline-flex"><i class="fab fa-whatsapp"></i> Reserve via WhatsApp</a>
-    </div>
-    <div><div class="ph"><span class="ph-n">01</span><div><h3 class="ph-t">Cook Honestly</h3><p class="ph-b">Every dish starts with the right ingredient, not the fancy one — quality lives in the detail, not the price tag.</p></div></div>
-<div class="ph"><span class="ph-n">02</span><div><h3 class="ph-t">Feed the Neighbourhood</h3><p class="ph-b">We're here for the regulars, the first-timers, and everyone who just needs a proper meal after a long day.</p></div></div>
-<div class="ph"><span class="ph-n">03</span><div><h3 class="ph-t">No Fuss, Full Flavour</h3><p class="ph-b">We strip back the noise and let the cooking do the talking — bold where it counts, simple where it should be.</p></div></div></div>
-  </div>
-</section>
-<section class="menu-sec" id="menu">
-  <div class="menu-inner">
-    <div class="fu"><p class="lbl">What We Serve</p><h2 class="hdg reveal-line"><span>A taste of the menu</span></h2></div>
-    <div class="menu-tabs fu" style="transition-delay:.1s">
-      <button class="tab-btn active" onclick="showTab('st',this)">Starters</button>
-      <button class="tab-btn" onclick="showTab('mn',this)">Mains</button>
-      <button class="tab-btn" onclick="showTab('ds',this)">Desserts</button>
-    </div>
-    <div id="tab-st" class="tab-panel active"><div class="mc"><div class="mc-img-wrap"><img class="mc-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" loading="lazy"/></div><div class="mc-body"><p class="mc-name">Crispy Chicken Bites</p><p class="mc-desc">Buttermilk-brined, double-fried, finished with a smoky sriracha glaze and pickled slaw on the side.</p><div class="mc-foot"><span class="mc-price">£7</span><a href="https://wa.me/447770107174" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><div class="mc-img-wrap"><img class="mc-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80" alt="" loading="lazy"/></div><div class="mc-body"><p class="mc-name">Roasted Tomato Soup</p><p class="mc-desc">Slow-roasted vine tomatoes blended with garlic and fresh basil, served with thick-cut sourdough toast.</p><div class="mc-foot"><span class="mc-price">£6</span><a href="https://wa.me/447770107174" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><div class="mc-img-wrap"><img class="mc-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="" loading="lazy"/></div><div class="mc-body"><p class="mc-name">Halloumi & Corn Fritters</p><p class="mc-desc">Golden pan-fried fritters with grilled halloumi, sweet corn, and a chilli-lime yoghurt dip.</p><div class="mc-foot"><span class="mc-price">£8</span><a href="https://wa.me/447770107174" class="mc-cta" target="_blank">Order →</a></div></div></div></div>
-    <div id="tab-mn" class="tab-panel"><div class="mc"><div class="mc-img-wrap"><img class="mc-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="" loading="lazy"/></div><div class="mc-body"><p class="mc-name">K&C Beef Burger</p><p class="mc-desc">Smashed double patty, aged cheddar, caramelised onions, house sauce, brioche bun, served with skin-on fries.</p><div class="mc-foot"><span class="mc-price">£14</span><a href="https://wa.me/447770107174" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><div class="mc-img-wrap"><img class="mc-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80" alt="" loading="lazy"/></div><div class="mc-body"><p class="mc-name">Jerk Chicken Rice Bowl</p><p class="mc-desc">Marinated jerk chicken thigh over coconut rice, with mango salsa, fried plantain, and a lime drizzle.</p><div class="mc-foot"><span class="mc-price">£13</span><a href="https://wa.me/447770107174" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><div class="mc-img-wrap"><img class="mc-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" loading="lazy"/></div><div class="mc-body"><p class="mc-name">Pan-Fried Sea Bass</p><p class="mc-desc">Crispy-skin sea bass fillet resting on warm crushed potatoes with wilted greens and a caper butter sauce.</p><div class="mc-foot"><span class="mc-price">£16</span><a href="https://wa.me/447770107174" class="mc-cta" target="_blank">Order →</a></div></div></div></div>
-    <div id="tab-ds" class="tab-panel"><div class="mc"><div class="mc-img-wrap"><img class="mc-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80" alt="" loading="lazy"/></div><div class="mc-body"><p class="mc-name">Sticky Toffee Pudding</p><p class="mc-desc">Deeply spiced date sponge, warm toffee sauce, one generous scoop of vanilla ice cream.</p><div class="mc-foot"><span class="mc-price">£6</span><a href="https://wa.me/447770107174" class="mc-cta" target="_blank">Order →</a></div></div></div><div class="mc"><div class="mc-img-wrap"><img class="mc-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80" alt="" loading="lazy"/></div><div class="mc-body"><p class="mc-name">Banana & Peanut Butter Waffle</p><p class="mc-desc">Belgian-style waffle stacked with fresh banana, salted peanut butter drizzle, and whipped cream.</p><div class="mc-foot"><span class="mc-price">£7</span><a href="https://wa.me/447770107174" class="mc-cta" target="_blank">Order →</a></div></div></div></div>
-    <p style="font-size:.72rem;color:var(--mut);margin-top:2rem;font-style:italic">* Sample menu — contact us for today's specials.</p>
-  </div>
-</section>
-
-<section class="visit-sec" id="visit">
-  <div style="max-width:1140px;margin:0 auto">
-    <div class="fu"><p class="lbl">Find Us</p><h2 class="hdg reveal-line"><span>Come visit us</span></h2></div>
-    <div class="visit-inner">
-      <div class="fu"><p class="vb-lbl">Address</p><p style="font-size:.9rem;color:var(--mut);line-height:1.9">10 Lee High Rd, London SE13 5LQ, UK</p><a href="https://maps.google.com/?cid=9787354029114690743" target="_blank" class="vb-link" style="color:var(--A)"><i class="fab fa-google"></i> Get Directions</a></div>
-      <div class="fu" style="transition-delay:.07s"><p class="vb-lbl">Opening Hours</p><div class="hr"><span class="hr-d">Mon</span><span style="color:var(--txt)">9:00 AM – 10:00 PM</span></div>
-<div class="hr"><span class="hr-d">Tue</span><span style="color:var(--txt)">9:00 AM – 10:00 PM</span></div>
-<div class="hr"><span class="hr-d">Wed</span><span style="color:var(--txt)">9:00 AM – 10:00 PM</span></div>
-<div class="hr"><span class="hr-d">Thu</span><span style="color:var(--txt)">9:00 AM – 10:00 PM</span></div>
-<div class="hr"><span class="hr-d">Fri</span><span style="color:var(--txt)">9:00 AM – 10:00 PM</span></div>
-<div class="hr"><span class="hr-d">Sat</span><span style="color:var(--txt)">9:00 AM – 10:00 PM</span></div>
-<div class="hr"><span class="hr-d">Sun</span><span style="color:var(--txt)">10:00 AM – 8:00 PM</span></div></div>
-      <div class="fu" style="transition-delay:.14s"><p class="vb-lbl">Contact Us</p><a href="tel:+447770107174" class="vb-link"><i class="fa fa-phone"></i> 07770 107174</a><a href="https://wa.me/447770107174" target="_blank" class="vb-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
-    </div>
-  </div>
-</section>
-<footer><span>© 2025 K&C Kitchen</span><span style="opacity:.5">10 Lee High Rd, London SE13 5LQ, UK</span></footer>
-<a class="float-cta" href="https://wa.me/447770107174" target="_blank"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
-<script>
-function showTab(id,btn){
-  const cur=document.querySelector('.tab-panel.active');
-  const next=document.getElementById('tab-'+id);
-  if(cur===next)return;
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  if(cur){cur.style.opacity='0';setTimeout(()=>{cur.classList.remove('active');next.classList.add('active');requestAnimationFrame(()=>{next.style.opacity='1';});},260);}
-  else{next.classList.add('active');next.style.opacity='1';}
-}
-(function(){const bar=document.getElementById('scrollProgress');if(!bar)return;
-window.addEventListener('scroll',()=>{const h=document.documentElement;const p=h.scrollHeight-h.clientHeight;bar.style.width=(p>0?(h.scrollTop/p*100):0)+'%';},{passive:true});})();
-
-/* ── IntersectionObserver reveal ── */
-const _ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.07});
-document.querySelectorAll('.fu').forEach(el=>_ob.observe(el));
-/* ── Sticky nav ── */
-(function(){const n=document.getElementById('stickyNav'),h=document.querySelector('[data-hero]');
-if(n&&h)new IntersectionObserver(([e])=>n.classList.toggle('visible',!e.isIntersecting),{threshold:0.05}).observe(h);})();
-/* ── Hero stagger entrance ── */
-(function(){
-  const SELS=['.hero-tag','.hero-eyebrow','.hero-rule','.hero-name','.hero-title',
-              '.hero-tagline','.hero-sub','.hero-meta','.hero-rating','#openBadge',
-              '.hero-ctas','.hero-crest','.hero-l-top>*','.hero-l-bot>*','.hero-top>*'];
-  const seen=new Set(); let i=0;
-  SELS.forEach(s=>document.querySelectorAll(s).forEach(el=>{
-    if(seen.has(el))return; seen.add(el);
-    el.style.cssText+='opacity:0;transform:translateY(22px);transition:opacity .65s ease '+(0.08+i*0.1)+'s,transform .65s ease '+(0.08+i*0.1)+'s';
-    i++;
-  }));
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    seen.forEach(el=>{el.style.opacity='1';el.style.transform='none';});
-  }));
-})();
-/* ── Parallax hero ── */
-(function(){
-  const bg=document.querySelector('.hero-bg,.hero-r img,.hero-image,[data-parallax]');
-  if(!bg||window.innerWidth<700)return;
-  let tk=false;
-  window.addEventListener('scroll',()=>{
-    if(!tk){requestAnimationFrame(()=>{
-      const y=window.scrollY;
-      bg.style.transform='translateY('+(y*0.32)+'px)';
-      tk=false;
-    });tk=true;}
-  },{passive:true});
-})();
-/* ── Open/close badge ── */
-(function(){const H={"Monday": "9:00 AM – 10:00 PM", "Tuesday": "9:00 AM – 10:00 PM", "Wednesday": "9:00 AM – 10:00 PM", "Thursday": "9:00 AM – 10:00 PM", "Friday": "9:00 AM – 10:00 PM", "Saturday": "9:00 AM – 10:00 PM", "Sunday": "10:00 AM – 8:00 PM"};const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-const day=days[new Date().getDay()],raw=H[day]||'';
-const m=raw.match(/(\d{1,2}):(\d{2})\s*(AM|PM)[^–—-]*[–—-]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-const set=(id,txt,col)=>{const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}};
-if(!m){set('openBadge','See hours','rgba(255,255,255,.65)');return;}
-const toM=(h,mn,ap)=>((+h%12)+(ap.toUpperCase()==='PM'?12:0))*60+(+mn);
-const o=toM(m[1],m[2],m[3]),c2=toM(m[4],m[5],m[6]),n2=new Date().getHours()*60+new Date().getMinutes();
-const op=n2>=o&&n2<(c2<o?c2+1440:c2);
-set('openBadge',op?'● Open now':'● Closed',op?'#22c55e':'#ef4444');
-const sb=document.getElementById('snavBadge');if(sb){sb.textContent=op?'● Open':'● Closed';sb.className='snav-b '+(op?'open':'closed');}})();
-/* ── Hero tone line ── */
-(function(){
-  const ht="Warm plates, real people.";if(!ht)return;
-  const title=document.querySelector('.hero-title,.hero-name');if(!title)return;
-  const el=document.createElement('p');
-  el.className='hero-tone-line';
-  el.textContent=ht;
-  el.style.cssText='font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin:-.3rem 0 1.2rem;color:var(--A,#D4A017);font-weight:500;font-family:inherit';
-  title.after(el);
-})();
-/* ── Rating counter ── */
-(function(){const el=document.getElementById('ratingCounter');if(!el||!None)return;
-new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;
-const an=(fr,to,dc,cb)=>{const dur=1500;let st=null;(function tick(ts){if(!st)st=ts;const p=Math.min((ts-st)/dur,1),v=fr+(to-fr)*(1-Math.pow(1-p,3));cb(dc?v.toFixed(1):Math.floor(v).toLocaleString());if(p<1)requestAnimationFrame(tick);})( performance.now());};
-const rs=document.createElement('b'),cs=document.createElement('b');el.innerHTML='';el.append('⭐ ',rs,' · ',cs,' Google reviews');an(0,None,true,v=>rs.textContent=v);an(0,None,false,v=>cs.textContent=v);},{threshold:0.5}).observe(el);})();
 </script>
-</body></html>
+
+<style>
+:root{
+  --ink:#181614;
+  --paper:#f5f1e8;
+  --gold:#c99a2e;
+  --gold-dp:#96711e;
+  --green:#3f6b45;
+  --mut:#847c6c;
+  --line:rgba(24,22,20,.15);
+  --line-lt:rgba(245,241,232,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,.disp{font-family:'IBM Plex Sans',sans-serif;font-weight:800;letter-spacing:-.01em;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+button{font-family:inherit;}
+
+.rv{opacity:0;transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1);}
+.rv-up{transform:translateY(26px);}
+.rv-up.show{opacity:1;transform:translateY(0);}
+.rv-fade.show{opacity:1;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.26s;}.d4{transition-delay:.38s;}
+
+/* ── nav ─────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:linear-gradient(180deg,rgba(24,22,20,.55),transparent);color:#fff;transition:.4s;}
+nav.scrolled{background:var(--ink);padding:13px 6%;box-shadow:0 4px 24px -12px rgba(0,0,0,.4);}
+.logo{font-weight:800;font-size:1.1rem;letter-spacing:-.01em;}
+.logo span{color:var(--gold);}
+.navlinks{display:none;gap:26px;font-size:.8rem;font-weight:600;}
+@media(min-width:900px){.navlinks{display:flex;}}
+.navlinks a{position:relative;padding-bottom:3px;}
+.navlinks a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .3s;}
+.navlinks a:hover::after{width:100%;}
+.nav-cta{background:var(--gold);color:var(--ink);padding:9px 18px;font-size:.74rem;letter-spacing:.03em;font-weight:700;transition:.3s;}
+.nav-cta:hover{background:var(--gold-dp);color:#fff;}
+.nav-burger{display:flex;flex-direction:column;gap:5px;width:26px;cursor:pointer;background:none;border:none;padding:6px;}
+@media(min-width:900px){.nav-burger{display:none;}}
+.nav-burger span{display:block;height:2px;background:#fff;border-radius:1px;}
+
+.mobile-menu{position:fixed;inset:0;background:var(--ink);z-index:950;display:flex;flex-direction:column;justify-content:center;padding:8% 8%;transform:translateY(-100%);transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{display:block;color:var(--paper);font-weight:800;font-size:2rem;padding:.28em 0;border-bottom:1px solid var(--line-lt);}
+.mobile-menu-close{position:absolute;top:24px;right:6%;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;padding:8px;}
+.mobile-menu-foot{margin-top:32px;color:var(--mut);font-size:.9rem;line-height:1.9;}
+.mobile-menu-foot a{color:var(--gold);border:none;font-weight:700;padding:0;}
+
+/* ══════════ HERO — signage-led, full-bleed ══════════ */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,13,11,.96) 0%,rgba(15,13,11,.55) 42%,rgba(15,13,11,.15) 65%,rgba(15,13,11,.4) 100%);}
+.hero-inner{position:relative;z-index:2;padding:0 6% 84px;max-width:760px;}
+.hero-kicker{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:700;}
+.hero-title{font-size:clamp(2.6rem,7.4vw,5.4rem);line-height:1;font-weight:800;}
+.hero-sub{margin-top:20px;max-width:480px;font-size:1.02rem;line-height:1.7;color:rgba(245,241,232,.85);}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;font-size:.78rem;letter-spacing:.03em;font-weight:700;transition:.3s;text-transform:uppercase;}
+.btn-solid{background:var(--gold);color:var(--ink);}
+.btn-solid:hover{background:var(--gold-dp);color:#fff;}
+.btn-outline{border:1px solid rgba(255,255,255,.55);color:#fff;}
+.btn-outline:hover{background:rgba(255,255,255,.12);}
+
+section{padding:104px 6%;position:relative;}
+@media(max-width:700px){section{padding:70px 6%;}}
+.eyebrow{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dp);font-weight:700;margin-bottom:14px;}
+.sec-title{font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.05;font-weight:800;}
+.sec-title span{color:var(--gold-dp);}
+
+/* ══════════ IDENTITY — shared shopfront, honest wayfinding ══════════ */
+.identity{background:var(--ink);color:var(--paper);}
+.identity .eyebrow{color:var(--gold);}
+.id-grid{display:grid;grid-template-columns:1fr;gap:36px;}
+@media(min-width:940px){.id-grid{grid-template-columns:1fr 1fr;gap:60px;align-items:center;}}
+.id-frame{aspect-ratio:5/4;overflow:hidden;}
+.id-frame img{width:100%;height:100%;object-fit:cover;}
+.id-copy p{font-size:1.02rem;line-height:1.85;color:rgba(245,241,232,.78);max-width:480px;margin-bottom:20px;}
+.id-facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;}
+.id-fact{border:1px solid rgba(245,241,232,.25);padding:9px 16px;font-size:.78rem;color:var(--paper);}
+
+/* ══════════ FOOD — horizontal swipeable strip (no scroll-pin) ══════════ */
+.food{background:var(--paper);}
+.food-head{max-width:700px;margin-bottom:36px;}
+.strip{display:flex;gap:16px;overflow-x:auto;padding-bottom:16px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;}
+.strip::-webkit-scrollbar{height:6px;}
+.strip::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px;}
+.s-item{flex:0 0 auto;width:280px;scroll-snap-align:start;}
+.s-frame{aspect-ratio:4/5;overflow:hidden;border-radius:2px;}
+.s-frame img{width:100%;height:100%;object-fit:cover;}
+.s-cap{margin-top:12px;}
+.s-cap b{display:block;font-weight:700;font-size:1.02rem;margin-bottom:4px;}
+.s-cap span{font-size:.84rem;color:var(--mut);line-height:1.5;}
+.strip-hint{margin-top:14px;font-size:.76rem;color:var(--mut);letter-spacing:.02em;}
+
+/* ══════════ MENU — clean M/L price table ══════════ */
+.menu{background:var(--ink);color:var(--paper);}
+.menu .eyebrow{color:var(--gold);}
+.menu-head{max-width:700px;}
+.menu-note{margin-top:14px;font-size:.9rem;color:var(--mut);line-height:1.7;max-width:600px;}
+.menu-table{margin-top:40px;border-top:1px solid var(--line-lt);max-width:760px;}
+.mt-row{display:grid;grid-template-columns:1fr 4.5em 4.5em;gap:10px;padding:13px 0;border-bottom:1px solid var(--line-lt);align-items:baseline;}
+.mt-head{color:var(--mut);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding-bottom:8px;}
+.mt-name{font-size:.98rem;}
+.mt-price{font-size:.92rem;text-align:right;color:var(--gold);}
+.menu-served{margin-top:18px;font-size:.84rem;color:var(--mut);font-style:italic;}
+
+.lunch{margin-top:56px;background:rgba(201,154,46,.1);border:1px solid rgba(201,154,46,.3);padding:28px 26px;max-width:520px;}
+.lunch-title{font-weight:800;font-size:1.1rem;margin-bottom:6px;}
+.lunch-sub{font-size:.82rem;color:var(--mut);margin-bottom:18px;}
+.lunch-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(245,241,232,.2);font-size:.92rem;}
+.lunch-row:last-of-type{border-bottom:none;}
+.lunch-quote{margin-top:18px;font-size:.82rem;font-style:italic;color:rgba(245,241,232,.65);border-left:2px solid var(--gold);padding-left:14px;}
+
+.patty-strip{margin-top:56px;display:grid;grid-template-columns:1fr;gap:28px;align-items:center;}
+@media(min-width:860px){.patty-strip{grid-template-columns:.8fr 1.2fr;}}
+.patty-frame{aspect-ratio:4/3;overflow:hidden;}
+.patty-frame img{width:100%;height:100%;object-fit:cover;}
+.patty-copy b{display:block;font-weight:800;font-size:1.15rem;margin-bottom:8px;}
+.patty-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.patty-tag{border:1px solid rgba(245,241,232,.25);padding:6px 12px;font-size:.76rem;}
+
+/* ══════════ VISIT — clean 7-day table ══════════ */
+.visit{background:var(--paper);}
+.visit-grid{display:grid;grid-template-columns:1fr;gap:40px;}
+@media(min-width:940px){.visit-grid{grid-template-columns:1fr 1fr;gap:64px;align-items:start;}}
+.status-row{display:flex;align-items:center;gap:10px;margin:18px 0 24px;font-size:.9rem;font-weight:700;}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+.status-row.closed .status-dot{background:var(--gold-dp);animation:none;}
+.visit-addr{color:var(--mut);line-height:1.85;margin-bottom:26px;font-size:1rem;}
+.visit-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-dark{background:var(--ink);color:#fff;}
+.btn-dark:hover{background:#332e28;}
+.btn-line{border:1px solid var(--ink);color:var(--ink);}
+.btn-line:hover{background:rgba(24,22,20,.06);}
+.hours-table{border-top:1px solid var(--line);}
+.hr-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:.92rem;}
+.hr-row.today{color:var(--gold-dp);font-weight:700;}
+.visit-note{margin-top:22px;font-size:.82rem;color:var(--mut);line-height:1.7;}
+
+footer{background:var(--ink);color:var(--mut);padding:44px 6% 32px;border-top:1px solid var(--line-lt);}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:22px;padding-bottom:22px;}
+.foot-logo{font-weight:800;font-size:1.05rem;color:var(--paper);}
+.foot-logo span{color:var(--gold);}
+.foot-links{display:flex;gap:20px;font-size:.78rem;flex-wrap:wrap;}
+.foot-links a:hover{color:#fff;}
+.foot-disclosure{margin-top:0;padding-top:20px;border-top:1px solid rgba(245,241,232,.14);font-size:.7rem;line-height:1.8;max-width:800px;}
+
+.mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:800;background:var(--ink);display:grid;grid-template-columns:1fr 1fr 1fr;box-shadow:0 -8px 24px -10px rgba(0,0,0,.4);
+  padding-bottom:env(safe-area-inset-bottom);transform:translateY(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);border-top:2px solid var(--gold);}
+.mobile-bar.show{transform:translateY(0);}
+@media(min-width:900px){.mobile-bar{display:none;}}
+.mobile-bar a{display:flex;align-items:center;justify-content:center;gap:7px;padding:14px 6px;color:var(--paper);font-size:.72rem;font-weight:700;border-right:1px solid rgba(245,241,232,.12);}
+.mobile-bar a:last-child{border-right:none;}
+.mobile-bar a.accent{background:var(--gold);color:var(--ink);}
+.mobile-bar svg{width:18px;height:18px;}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo">K<span>&amp;</span>C Kitchen</div>
+  <div class="navlinks">
+    <a href="#identity">The Kitchen</a>
+    <a href="#food">Food</a>
+    <a href="#menu">Menu</a>
+    <a href="#visit">Visit</a>
+  </div>
+  <a href="tel:+447770107174" class="nav-cta">Call</a>
+  <button class="nav-burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="closeMenuBtn" aria-label="Close menu">&times;</button>
+  <a href="#identity">The Kitchen</a>
+  <a href="#food">Food</a>
+  <a href="#menu">Menu</a>
+  <a href="#visit">Visit</a>
+  <div class="mobile-menu-foot">
+    10C Lee High Road, Lewisham SE13 5LQ<br>
+    <a href="tel:+447770107174">07770 107174</a>
+  </div>
+</div>
+
+<!-- ══════════ HERO — signage-led, full-bleed ══════════ -->
+<section class="hero">
+  <div class="hero-bg"><img src="assets/photos/storefront-sign.jpg" alt="K&C Kitchen signage, real taste of Jamaica, above the shopfront on Lee High Road" fetchpriority="high"></div>
+  <div class="hero-inner">
+    <div class="hero-kicker rv rv-up">Lee High Road · Lewisham SE13</div>
+    <h1 class="hero-title rv rv-up d1">Real taste of Jamaica.</h1>
+    <p class="hero-sub rv rv-up d2">Oxtail, curry goat, jerk chicken and patties, cooked and served from a small kitchen on Lee High Road.</p>
+    <div class="hero-ctas rv rv-up d3">
+      <a href="tel:+447770107174" class="btn btn-solid">Call</a>
+      <a href="#menu" class="btn btn-outline">See The Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ IDENTITY — shared shopfront, honest wayfinding ══════════ -->
+<section class="identity" id="identity">
+  <div class="id-grid">
+    <div>
+      <div class="eyebrow rv rv-up">Finding Us</div>
+      <h2 class="sec-title rv rv-up d1">Inside the phone shop<br>on the <span>corner.</span></h2>
+      <div class="id-copy rv rv-up d2">
+        <p>K&amp;C Kitchen operates from 10C Lee High Road — the same shopfront as All 2 One Mobile Phone Shop. Look for the yellow K&amp;C Kitchen sign above the entrance and the counter inside.</p>
+      </div>
+      <div class="id-facts rv rv-up d3">
+        <div class="id-fact">Jamaican takeaway</div>
+        <div class="id-fact">Catering for all occasions</div>
+        <div class="id-fact">Order via Just Eat</div>
+      </div>
+    </div>
+    <div class="id-frame rv rv-fade">
+      <img src="assets/photos/logo-signage.jpg" alt="K&C Kitchen logo signage, real taste of Jamaica, we do catering for all occasions">
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOD — horizontal swipeable strip ══════════ -->
+<section class="food" id="food">
+  <div class="food-head">
+    <div class="eyebrow rv rv-up">From The Kitchen</div>
+    <h2 class="sec-title rv rv-up d1">What's in the <span>box.</span></h2>
+  </div>
+  <div class="strip rv rv-up d2">
+    <div class="s-item">
+      <div class="s-frame"><img src="assets/photos/takeaway-trays.jpg" alt="Jerk chicken, stew and curry takeaway trays with rice and peas at K&C Kitchen"></div>
+      <div class="s-cap"><b>Takeaway Trays</b><span>Rice and peas or white rice, with cabbage salad on the side.</span></div>
+    </div>
+    <div class="s-item">
+      <div class="s-frame"><img src="assets/photos/whole-fish.jpg" alt="Whole steamed fish with vegetables at K&C Kitchen"></div>
+      <div class="s-cap"><b>Steamed Fish</b><span>Whole fish steamed with carrot, okra and potato.</span></div>
+    </div>
+    <div class="s-item">
+      <div class="s-frame"><img src="assets/photos/interior-counter.jpg" alt="Interior counter and seating area at K&C Kitchen"></div>
+      <div class="s-cap"><b>Inside</b><span>A small counter and seating area on Lee High Road.</span></div>
+    </div>
+    <div class="s-item">
+      <div class="s-frame"><img src="assets/photos/street-exterior.jpg" alt="K&C Kitchen and All 2 One shopfront on Lee High Road"></div>
+      <div class="s-cap"><b>On The Street</b><span>Look for the K&amp;C Kitchen sign above the phone shop entrance.</span></div>
+    </div>
+  </div>
+  <p class="strip-hint">Swipe or scroll to see more →</p>
+</section>
+
+<!-- ══════════ MENU — clean M/L price table ══════════ -->
+<section class="menu" id="menu">
+  <div class="menu-head">
+    <div class="eyebrow rv rv-up">Menu</div>
+    <h2 class="sec-title rv rv-up d1">Priced on the <span>window.</span></h2>
+    <p class="menu-note rv rv-up d2">Transcribed directly from the printed menu posted in the shop window, including sizes (M/L) and prices. Prices can change — call to confirm before you order.</p>
+  </div>
+  <div class="menu-table rv rv-up d3">
+    <div class="mt-row mt-head"><span>Dish</span><span>M</span><span>L</span></div>
+    <div class="mt-row"><span class="mt-name">Oxtail</span><span class="mt-price mono">£12.00</span><span class="mt-price mono">£14.00</span></div>
+    <div class="mt-row"><span class="mt-name">Curry Goat</span><span class="mt-price mono">£12.00</span><span class="mt-price mono">£14.00</span></div>
+    <div class="mt-row"><span class="mt-name">Cow Foot</span><span class="mt-price mono">£11.00</span><span class="mt-price mono">£13.00</span></div>
+    <div class="mt-row"><span class="mt-name">Jerk Chicken</span><span class="mt-price mono">£11.00</span><span class="mt-price mono">£13.00</span></div>
+    <div class="mt-row"><span class="mt-name">Jerk Pork</span><span class="mt-price mono">£12.00</span><span class="mt-price mono">£14.00</span></div>
+    <div class="mt-row"><span class="mt-name">Boneless Jerk Chicken</span><span class="mt-price mono">£12.00</span><span class="mt-price mono">£14.00</span></div>
+    <div class="mt-row"><span class="mt-name">Brown Stew Chicken</span><span class="mt-price mono">£11.00</span><span class="mt-price mono">£13.00</span></div>
+    <div class="mt-row"><span class="mt-name">Curry Chicken</span><span class="mt-price mono">£11.00</span><span class="mt-price mono">£13.00</span></div>
+    <div class="mt-row"><span class="mt-name">Red Bream</span><span class="mt-price mono">£12.00</span><span class="mt-price mono">£14.00</span></div>
+    <div class="mt-row"><span class="mt-name">Ackee &amp; Salt Fish</span><span class="mt-price mono">£12.00</span><span class="mt-price mono">£14.00</span></div>
+    <div class="mt-row"><span class="mt-name">Fried Dumpling</span><span class="mt-price mono">£1.00</span><span class="mt-price mono">—</span></div>
+    <div class="mt-row"><span class="mt-name">Ackee Filled Dumpling</span><span class="mt-price mono">£4.00</span><span class="mt-price mono">—</span></div>
+    <div class="mt-row"><span class="mt-name">Jerk Filled Dumpling</span><span class="mt-price mono">£4.00</span><span class="mt-price mono">—</span></div>
+    <div class="mt-row"><span class="mt-name">Jerk Sauce</span><span class="mt-price mono">£2.00</span><span class="mt-price mono">—</span></div>
+    <div class="mt-row"><span class="mt-name">Fried Plantain</span><span class="mt-price mono">£2.00</span><span class="mt-price mono">—</span></div>
+    <div class="mt-row"><span class="mt-name">Cornbread &amp; Patty with Can Drink</span><span class="mt-price mono">£5.00</span><span class="mt-price mono">—</span></div>
+  </div>
+  <p class="menu-served rv rv-up d4">All food served with rice &amp; peas or white rice, and coleslaw.</p>
+
+  <div class="lunch rv rv-up d3">
+    <div class="lunch-title">All Day Lunchtime Special</div>
+    <div class="lunch-sub">With rice &amp; peas or white rice, with a drink.</div>
+    <div class="lunch-row"><span>Jerk Chicken</span><span class="mono">£5.50</span></div>
+    <div class="lunch-row"><span>Fry Chicken</span><span class="mono">£5.50</span></div>
+    <div class="lunch-row"><span>Brown Stew Chicken</span><span class="mono">£5.50</span></div>
+    <div class="lunch-row"><span>Curry Chicken</span><span class="mono">£5.50</span></div>
+    <div class="lunch-row"><span>Curry Goat</span><span class="mono">£6.50</span></div>
+    <div class="lunch-row"><span>Oxtail</span><span class="mono">£7.50</span></div>
+    <div class="lunch-quote">"The food was beautiful and affordable — I got the lunchtime deal." — Janique Lee, Google review</div>
+  </div>
+
+  <div class="patty-strip rv rv-up d4">
+    <div class="patty-frame"><img src="assets/photos/patty-case.jpg" alt="Patty display case at K&C Kitchen, priced £2.80 each"></div>
+    <div class="patty-copy">
+      <b>Patties — £2.80 each</b>
+      <span style="color:var(--mut);font-size:.9rem;">Eight flavours listed on the counter case.</span>
+      <div class="patty-tags">
+        <div class="patty-tag">Salt Fish</div>
+        <div class="patty-tag">Chicken</div>
+        <div class="patty-tag">Jerk Chicken</div>
+        <div class="patty-tag">Callaloo</div>
+        <div class="patty-tag">Beef</div>
+        <div class="patty-tag">Cheesy Beef</div>
+        <div class="patty-tag">Lamb</div>
+        <div class="patty-tag">Veg</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ VISIT — clean 7-day table ══════════ -->
+<section id="visit" class="visit">
+  <div class="visit-grid">
+    <div class="rv rv-up">
+      <div class="eyebrow">Visit Us</div>
+      <h2 class="sec-title" style="margin-bottom:0">Find K&amp;C Kitchen.</h2>
+      <div class="status-row" id="statusRow"><span class="status-dot"></span><span id="statusText">Checking hours…</span></div>
+      <div class="visit-addr">10C Lee High Road, Lewisham SE13 5LQ<br>07770 107174</div>
+      <div class="visit-ctas">
+        <a href="tel:+447770107174" class="btn btn-dark">Call</a>
+        <a href="https://maps.google.com/?cid=9787354029114690743" target="_blank" rel="noopener" class="btn btn-line">Get Directions</a>
+      </div>
+    </div>
+    <div class="rv rv-up d1">
+      <div class="hours-table" id="hoursTable">
+        <div class="hr-row" data-day="1"><span>Monday</span><span>9:00 – 22:00</span></div>
+        <div class="hr-row" data-day="2"><span>Tuesday</span><span>9:00 – 22:00</span></div>
+        <div class="hr-row" data-day="3"><span>Wednesday</span><span>9:00 – 22:00</span></div>
+        <div class="hr-row" data-day="4"><span>Thursday</span><span>9:00 – 22:00</span></div>
+        <div class="hr-row" data-day="5"><span>Friday</span><span>9:00 – 22:00</span></div>
+        <div class="hr-row" data-day="6"><span>Saturday</span><span>9:00 – 22:00</span></div>
+        <div class="hr-row" data-day="0"><span>Sunday</span><span>10:00 – 20:00</span></div>
+      </div>
+      <p class="visit-note">Hours shown are as listed on Google — a printed notice in the window shows slightly different Sunday hours, so call ahead if visiting early on a Sunday.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-logo">K<span>&amp;</span>C Kitchen</div>
+    <div class="foot-links">
+      <a href="#identity">The Kitchen</a>
+      <a href="#food">Food</a>
+      <a href="#menu">Menu</a>
+      <a href="#visit">Visit</a>
+      <a href="https://maps.google.com/?cid=9787354029114690743" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+  <div class="foot-disclosure">
+    Business details, rating and opening hours are sourced from K&amp;C Kitchen's Google Business Profile, 10C Lee High Road, Lewisham SE13 5LQ. Menu items and prices are transcribed from the printed menu displayed in the shop window and may change — please call to confirm before ordering. K&amp;C Kitchen operates from the same shopfront as All 2 One Mobile Phone Shop.
+  </div>
+</footer>
+
+<div class="mobile-bar" id="mobileBar">
+  <a href="tel:+447770107174"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Call</a>
+  <a href="https://maps.google.com/?cid=9787354029114690743" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>Directions</a>
+  <a href="#menu" class="accent"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Menu</a>
+</div>
+
+<script>
+const nav=document.getElementById('nav');
+const mobileBar=document.getElementById('mobileBar');
+const burgerBtn=document.getElementById('burgerBtn');
+const closeMenuBtn=document.getElementById('closeMenuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+function openMenu(){mobileMenu.classList.add('open');burgerBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function closeMenu(){mobileMenu.classList.remove('open');burgerBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+burgerBtn.addEventListener('click',openMenu);
+closeMenuBtn.addEventListener('click',closeMenu);
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+const rvEls=Array.from(document.querySelectorAll('.rv'));
+function checkReveals(){
+  const vh=window.innerHeight;
+  rvEls.forEach(el=>{
+    if(el.classList.contains('show')) return;
+    const r=el.getBoundingClientRect();
+    if(r.top<vh*0.9 && r.bottom>0){ el.classList.add('show'); }
+  });
+}
+
+(function(){
+  const HOURS={0:[10,20],1:[9,22],2:[9,22],3:[9,22],4:[9,22],5:[9,22],6:[9,22]};
+  const now=new Date();
+  const day=now.getDay();
+  const hour=now.getHours()+now.getMinutes()/60;
+  const today=HOURS[day];
+  const row=document.getElementById('statusRow');
+  const txt=document.getElementById('statusText');
+  const open = hour>=today[0] && hour<today[1];
+  row.classList.toggle('closed', !open);
+  txt.textContent = open ? `Open now — closes ${today[1]}:00` : 'Closed now — see hours below';
+  const todayRow=document.querySelector(`.hr-row[data-day="${day}"]`);
+  if(todayRow) todayRow.classList.add('today');
+})();
+
+let ticking=false;
+function onScroll(){
+  if(!ticking){
+    requestAnimationFrame(()=>{
+      nav.classList.toggle('scrolled',window.scrollY>40);
+      mobileBar.classList.toggle('show',window.scrollY>window.innerHeight*0.7);
+      checkReveals();
+      ticking=false;
+    });
+    ticking=true;
+  }
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>
